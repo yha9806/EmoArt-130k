@@ -17,6 +17,10 @@ These runs use a tiny Track2 slice (`Abstract Art`, 12 train examples, 3 test ex
 | DINOv2 base | 13.5 | `calm`: 1, `content`: 1, `tired`: 1 | 0.3333 |
 | SigLIP2 base patch16 224 | 12.2 | `bored`: 2, `tired`: 1 | 0.0 |
 
+## Full I-JEPA Gate
+
+Full I-JEPA Track2 was not run in this local pass. The smoke run completed without encoder failures and was under the 3x DINOv2 smoke ratio, but extrapolating the I-JEPA smoke throughput to the full 132,885-train plus 1,000-test Track2 run gives an optimistic estimate of about 58 hours on this machine. I-JEPA remains a research baseline for structure auditing, not a challenge submission backbone.
+
 ## Review Samples
 
 - `track2_0998` priority=1.45 content -> excited
