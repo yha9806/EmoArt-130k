@@ -26,7 +26,32 @@ class Track1PromptPacketTest(unittest.TestCase):
         self.assertIn("Prussian figures", packet["hard_requirements"])
         self.assertIn("Cyrillic lettering", packet["allowed_text"])
         self.assertIn("gallery wall", packet["forbidden_artifacts"])
+        self.assertIn("aged folded paper", packet["caption_required_surface_features"])
+        self.assertIn("poster layout", packet["allowed_surface_features"])
+        self.assertIn("unrequested white mat border", packet["unrequested_physical_artifact_features"])
         self.assertGreaterEqual(packet["risk_score"], 2.0)
+
+    def test_compile_prompt_packet_does_not_require_surface_artifacts_for_generic_poster(self):
+        packet = compile_prompt_packet(
+            "track1_0990",
+            "A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a hard-hatted industrial worker gesturing toward smoking factories, coal heaps, and a rebuilding mining town in a muted blue and ochre palette.",
+        )
+
+        self.assertEqual(packet["caption_required_surface_features"], [])
+        self.assertIn("poster layout", packet["allowed_surface_features"])
+        self.assertIn("aged paper", packet["unrequested_physical_artifact_features"])
+        self.assertIn("thick decorative border", packet["unrequested_physical_artifact_features"])
+
+    def test_compile_prompt_packet_extracts_album_leaf_surface_requirements(self):
+        packet = compile_prompt_packet(
+            "track1_0429",
+            "Ink and wash painting of an open album leaf with a blank ruled page beside a delicate composition of bamboo, bare tree branches, vertical calligraphy, and red seals within a pale patterned border.",
+        )
+
+        self.assertIn("open album leaf", packet["caption_required_surface_features"])
+        self.assertIn("blank ruled page", packet["caption_required_surface_features"])
+        self.assertIn("pale patterned border", packet["caption_required_surface_features"])
+        self.assertIn("album leaf flat page surface", packet["allowed_surface_features"])
 
     def test_compile_prompt_packet_forbids_text_when_not_requested(self):
         packet = compile_prompt_packet(
@@ -39,6 +64,7 @@ class Track1PromptPacketTest(unittest.TestCase):
         self.assertIn("sample id", packet["forbidden_artifacts"])
         self.assertIn("graph paper", packet["hard_requirements"])
         self.assertIn("rectangular frame", packet["hard_requirements"])
+        self.assertIn("graph paper surface", packet["caption_required_surface_features"])
 
     def test_prompt_packet_risk_sort_prefers_text_and_surface_sensitive_samples(self):
         rows = [

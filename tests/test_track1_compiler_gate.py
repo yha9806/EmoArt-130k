@@ -14,6 +14,9 @@ class Track1CompilerGateTest(unittest.TestCase):
             "hard_requirements": ["lotus blossoms", "side calligraphy"],
             "allowed_text": ["calligraphy"],
             "forbidden_artifacts": ["gallery wall", "sample id"],
+            "caption_required_surface_features": ["hanging scroll surface"],
+            "allowed_surface_features": ["flat scroll paper or silk surface"],
+            "unrequested_physical_artifact_features": ["gallery wall", "framed display"],
             "retrieved_references": [
                 {
                     "style": "Gongbi",
@@ -31,10 +34,30 @@ class Track1CompilerGateTest(unittest.TestCase):
         self.assertIn("lotus blossoms", prompt)
         self.assertIn("side calligraphy", prompt)
         self.assertIn("output must be the artwork surface itself", prompt.lower())
+        self.assertIn("Required surface features from caption: hanging scroll surface", prompt)
+        self.assertIn("Allowed surface treatment: flat scroll paper or silk surface", prompt)
+        self.assertIn("Do not add unrequested physical artifact features", prompt)
         self.assertIn("gallery wall", prompt)
         self.assertNotIn("130K STYLE REFERENCES", prompt)
         self.assertNotIn("Reference subjects are not requirements", prompt)
         self.assertNotIn("Lotus flowers on silk with delicate linework", prompt)
+
+    def test_compile_vulca_prompt_blocks_unrequested_surface_artifacts_for_generic_poster(self):
+        packet = {
+            "caption": "A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a worker, factories, coal heaps, and a rebuilding mining town.",
+            "artwork_category": "poster",
+            "hard_requirements": ["worker", "factories", "coal heaps", "rebuilding mining town"],
+            "allowed_text": ["Cyrillic lettering"],
+            "forbidden_artifacts": ["gallery wall"],
+            "caption_required_surface_features": [],
+            "allowed_surface_features": ["poster layout"],
+            "unrequested_physical_artifact_features": ["aged paper", "unrequested white mat border"],
+        }
+
+        prompt = compile_vulca_prompt(packet)
+
+        self.assertIn("No extra border, aged paper, folded paper, mat, shadow, or physical display treatment unless the caption explicitly asks for it.", prompt)
+        self.assertIn("Do not add unrequested physical artifact features: aged paper, unrequested white mat border", prompt)
 
     def test_compile_vulca_prompt_uses_provider_safe_wording_for_caricature_panels(self):
         packet = {
@@ -43,6 +66,9 @@ class Track1CompilerGateTest(unittest.TestCase):
             "hard_requirements": ["bold Cyrillic headline"],
             "allowed_text": ["Cyrillic lettering"],
             "forbidden_artifacts": ["gallery wall"],
+            "caption_required_surface_features": [],
+            "allowed_surface_features": ["poster layout"],
+            "unrequested_physical_artifact_features": ["aged paper"],
         }
 
         prompt = compile_vulca_prompt(packet)

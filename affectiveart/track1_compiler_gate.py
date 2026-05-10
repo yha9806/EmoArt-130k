@@ -7,6 +7,9 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
     requirements = packet.get("hard_requirements", []) or []
     allowed_text = packet.get("allowed_text", []) or []
     forbidden = packet.get("forbidden_artifacts", []) or []
+    required_surface = packet.get("caption_required_surface_features", []) or []
+    allowed_surface = packet.get("allowed_surface_features", []) or []
+    unrequested_surface = packet.get("unrequested_physical_artifact_features", []) or []
     caption = _provider_safe_caption(str(packet.get("caption", "")))
     lines = [
         "NON-NEGOTIABLE CONTENT REQUIREMENTS",
@@ -28,6 +31,26 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
         lines.append("- Do not add readable or pseudo-readable text.")
     if forbidden:
         lines.append("- Forbidden artifacts: " + ", ".join(forbidden))
+    lines.extend(
+        [
+            "",
+            "SURFACE FEATURE CONTROL",
+        ]
+    )
+    if required_surface:
+        lines.append("- Required surface features from caption: " + ", ".join(required_surface))
+    else:
+        lines.append("- Required surface features from caption: none")
+        lines.append(
+            "- No extra border, aged paper, folded paper, mat, shadow, or physical display treatment unless the caption explicitly asks for it."
+        )
+    if allowed_surface:
+        lines.append("- Allowed surface treatment: " + ", ".join(allowed_surface))
+    if unrequested_surface:
+        lines.append(
+            "- Do not add unrequested physical artifact features: "
+            + ", ".join(unrequested_surface)
+        )
     lines.extend(
         [
             "",
