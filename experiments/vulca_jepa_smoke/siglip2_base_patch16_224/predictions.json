@@ -1,0 +1,127 @@
+{
+  "backend": "hf",
+  "model": "google/siglip2-base-patch16-224",
+  "selection": "limit12_seed20260508",
+  "entries": [
+    {
+      "sample_id": "track2_0001",
+      "current": "sad",
+      "emotion": "bored",
+      "confidence": 0.098486,
+      "margin": 0.002082,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.098486
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.096404
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.093515
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.166667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.312686
+        },
+        {
+          "emotion": "bored",
+          "votes": 1,
+          "similarity_sum": 0.688976
+        },
+        {
+          "emotion": "alarmed",
+          "votes": 1,
+          "similarity_sum": 0.667196
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0002",
+      "current": "calm",
+      "emotion": "tired",
+      "confidence": 0.095374,
+      "margin": 0.000798,
+      "top3": [
+        {
+          "emotion": "tired",
+          "probability": 0.095374
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.094576
+        },
+        {
+          "emotion": "sad",
+          "probability": 0.093932
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.166667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.307475
+        },
+        {
+          "emotion": "sad",
+          "votes": 1,
+          "similarity_sum": 0.684854
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 1,
+          "similarity_sum": 0.666507
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0003",
+      "current": "excited",
+      "emotion": "bored",
+      "confidence": 0.096397,
+      "margin": 0.001942,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.096397
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.094455
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.093749
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.166667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.213202
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 1,
+          "similarity_sum": 0.689498
+        },
+        {
+          "emotion": "aroused",
+          "votes": 1,
+          "similarity_sum": 0.676085
+        }
+      ]
+    }
+  ]
+}

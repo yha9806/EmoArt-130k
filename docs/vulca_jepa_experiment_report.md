@@ -7,6 +7,16 @@
 - Content-to-calm candidates: 181
 - Model/KNN disagreements: 330
 
+## Smoke Runs
+
+These runs use a tiny Track2 slice (`Abstract Art`, 12 train examples, 3 test examples) to check local compatibility and qualitative behavior. They are not leaderboard estimates.
+
+| Run | Wall seconds | Test distribution | Classifier/KNN agreement |
+| --- | ---: | --- | ---: |
+| I-JEPA ViT-H/16 | 23.3 | `content`: 1, `sad`: 2 | 0.0 |
+| DINOv2 base | 13.5 | `calm`: 1, `content`: 1, `tired`: 1 | 0.3333 |
+| SigLIP2 base patch16 224 | 12.2 | `bored`: 2, `tired`: 1 | 0.0 |
+
 ## Review Samples
 
 - `track2_0998` priority=1.45 content -> excited

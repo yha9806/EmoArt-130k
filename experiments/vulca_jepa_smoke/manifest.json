@@ -1,0 +1,21 @@
+{
+  "purpose": "Compare JEPA-style image representations against DINOv2 and SigLIP2 on a tiny Track2 smoke slice.",
+  "runs": [
+    {
+      "name": "ijepa_vith16_1k",
+      "predictions": "experiments/vulca_jepa_smoke/ijepa_vith16_1k/predictions.json",
+      "metrics": "experiments/vulca_jepa_smoke/ijepa_vith16_1k/metrics.json"
+    },
+    {
+      "name": "dinov2_base",
+      "predictions": "experiments/vulca_jepa_smoke/dinov2_base/predictions.json",
+      "metrics": "experiments/vulca_jepa_smoke/dinov2_base/metrics.json"
+    },
+    {
+      "name": "siglip2_base_patch16_224",
+      "predictions": "experiments/vulca_jepa_smoke/siglip2_base_patch16_224/predictions.json",
+      "metrics": "experiments/vulca_jepa_smoke/siglip2_base_patch16_224/metrics.json"
+    }
+  ],
+  "interpretation": "This smoke test checks compatibility and qualitative prediction behavior only. It is not a leaderboard estimate."
+}
