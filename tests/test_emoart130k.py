@@ -75,6 +75,36 @@ class EmoArt130kTest(unittest.TestCase):
         self.assertIn("lotus scroll", row.caption)
         self.assertIn("delicate lines", row.attributes["brushstroke"])
 
+    def test_example_to_compiler_training_row_contains_prompt_signals(self):
+        example = EmoArtExample(
+            request_id="Gongbi_request-1",
+            image_path="Images\\Gongbi\\001.jpg",
+            tar_path="/data/Gongbi.tar.gz",
+            member="Gongbi/001.jpg",
+            style="Gongbi",
+            emotion="calm",
+            valence="Positive",
+            arousal="Low",
+            caption="A lotus scroll with pale silk ground.",
+            attributes={
+                "brushstroke": "delicate lines",
+                "color": "pale beige and pink",
+                "composition": "vertical scroll composition",
+                "line": "fine controlled line",
+                "light": "soft diffuse light",
+            },
+            emotional_impact="calm and contemplative",
+        )
+
+        row = example.to_compiler_training_row()
+
+        self.assertEqual(row["request_id"], "Gongbi_request-1")
+        self.assertEqual(row["style"], "Gongbi")
+        self.assertEqual(row["emotion"], "calm")
+        self.assertIn("lotus scroll", row["source_text"])
+        self.assertIn("brushstroke: delicate lines", row["compiler_target"])
+        self.assertIn("emotion: calm", row["compiler_target"])
+
 
 if __name__ == "__main__":
     unittest.main()

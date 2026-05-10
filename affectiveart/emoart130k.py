@@ -38,6 +38,40 @@ class EmoArtExample:
     attributes: dict[str, str]
     emotional_impact: str
 
+    def to_compiler_training_row(self) -> dict[str, object]:
+        source_parts = [
+            self.caption,
+            self.attributes.get("brushstroke", ""),
+            self.attributes.get("color", ""),
+            self.attributes.get("composition", ""),
+            self.attributes.get("line", ""),
+            self.attributes.get("light", ""),
+            self.emotional_impact,
+        ]
+        source_text = " ".join(part for part in source_parts if part).strip()
+        target_lines = [
+            f"style: {self.style}",
+            f"emotion: {self.emotion}",
+            f"valence: {self.valence}",
+            f"arousal: {self.arousal}",
+        ]
+        for key in ("brushstroke", "color", "composition", "line", "light"):
+            value = self.attributes.get(key, "")
+            if value:
+                target_lines.append(f"{key}: {value}")
+        return {
+            "request_id": self.request_id,
+            "style": self.style,
+            "emotion": self.emotion,
+            "valence": self.valence,
+            "arousal": self.arousal,
+            "image_path": self.image_path,
+            "tar_path": self.tar_path,
+            "member": self.member,
+            "source_text": source_text,
+            "compiler_target": "\n".join(target_lines),
+        }
+
 
 def canonical_emotion(value: str) -> str:
     key = " ".join(str(value or "").strip().lower().split())
