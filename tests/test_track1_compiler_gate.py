@@ -83,8 +83,11 @@ class Track1CompilerGateTest(unittest.TestCase):
 
         prompt = compile_vulca_prompt(packet)
 
-        self.assertIn("non-graphic symbolic anti-fascist caricature panels", prompt)
+        self.assertIn("non-graphic symbolic political caricature panels", prompt)
         self.assertNotIn("anti-fascist caricature scenes", prompt)
+        self.assertNotIn("anti-fascist", prompt)
+        self.assertIn("stark historical poster panels", prompt)
+        self.assertNotIn("wartime panels", prompt)
 
     def test_compile_vulca_prompt_keeps_album_leaf_border_internal(self):
         packet = {

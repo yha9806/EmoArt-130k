@@ -80,9 +80,15 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
 
 
 def _provider_safe_caption(caption: str) -> str:
-    return caption.replace(
-        "anti-fascist caricature scenes",
-        "non-graphic symbolic anti-fascist caricature panels",
+    return (
+        caption.replace(
+            "anti-fascist caricature scenes",
+            "non-graphic symbolic political caricature panels",
+        )
+        .replace(
+            "stark wartime panels",
+            "stark historical poster panels",
+        )
     )
 
 
