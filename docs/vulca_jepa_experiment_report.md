@@ -25,6 +25,14 @@ Full I-JEPA Track2 was not run in this local pass. The smoke run completed witho
 
 The Track1 audit integration now scores generated-image rows for high-style, low-content risk. A row is marked high risk when multiple evidence signals fire, including strong style score with weak caption fidelity, weak structure preservation, and low caption fidelity. This is intended to catch Vulca over-stylization cases where cultural style is strong but the literal caption or subject structure is under-preserved.
 
+## Final Verification
+
+- Focused tests passed: JEPA registry, Vulca JEPA audit, and Track2 embedding script guard.
+- Full unit suite passed: 86 tests.
+- Track2 submission JSON validation passed.
+- Track1 submission ZIP validation passed after extracting the ZIP and checking `submission.json` plus packaged image files.
+- Track1 and Track2 ZIP layouts include `submission.json`.
+
 ## Review Samples
 
 - `track2_0998` priority=1.45 content -> excited
