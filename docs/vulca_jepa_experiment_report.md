@@ -29,6 +29,21 @@ These runs use the same `Abstract Art` slice with 120 train examples and 30 Trac
 
 Across the 30 shared samples, all three models agreed on only 1 sample, two models agreed on 18 samples, and all three differed on 11 samples. The useful signal is disagreement analysis, not direct replacement of the current Track2 labels.
 
+## Medium Review Candidates
+
+The medium comparison produced 13 candidate rows where at least two of I-JEPA, DINOv2, and SigLIP2 agree on a label that differs from the current submission label. The strongest candidate is `track2_0015`, where all three models predicted `bored` while the current label is `calm`.
+
+Top candidates:
+
+| Sample | Current | Consensus | Support | I-JEPA | DINOv2 | SigLIP2 |
+| --- | --- | --- | ---: | --- | --- | --- |
+| `track2_0015` | calm | bored | 3 | bored | bored | bored |
+| `track2_0001` | sad | bored | 2 | annoyed | bored | bored |
+| `track2_0003` | excited | content | 2 | content | content | bored |
+| `track2_0005` | calm | bored | 2 | bored | calm | bored |
+| `track2_0007` | excited | calm | 2 | frustrated | calm | calm |
+| `track2_0009` | content | calm | 2 | calm | bored | calm |
+
 ## Full I-JEPA Gate
 
 Full I-JEPA Track2 was not run in this local pass. The tiny smoke run completed without encoder failures, but the more useful medium run put I-JEPA at 92.4 seconds versus 17.4 seconds for DINOv2 on the same slice, which fails the 3x local runtime gate. The medium holdout macro-F1 was also weak at 0.0364. I-JEPA remains a research baseline for structure auditing, not a challenge submission backbone.
