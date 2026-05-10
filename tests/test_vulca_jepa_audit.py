@@ -1,9 +1,13 @@
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
 from affectiveart.vulca_jepa_audit import (
     build_disagreement_report,
     select_vulca_jepa_review_samples,
 )
+from scripts.vulca_jepa_experiment import load_prediction_entries
 
 
 class VulcaJepaAuditTest(unittest.TestCase):
@@ -59,6 +63,20 @@ class VulcaJepaAuditTest(unittest.TestCase):
         self.assertEqual(report["row_count"], 2)
         self.assertEqual(report["model_current_disagreements"], 1)
         self.assertEqual(report["content_to_calm_candidates"], 1)
+
+
+class VulcaJepaExperimentCliTest(unittest.TestCase):
+    def test_load_prediction_entries_accepts_predictions_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "predictions.json"
+            path.write_text(
+                json.dumps({"entries": [{"sample_id": "track2_0001", "emotion": "calm"}]}),
+                encoding="utf-8",
+            )
+
+            rows = load_prediction_entries(path)
+
+        self.assertEqual(rows, [{"sample_id": "track2_0001", "emotion": "calm"}])
 
 
 if __name__ == "__main__":

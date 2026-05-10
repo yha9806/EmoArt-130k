@@ -1,0 +1,1884 @@
+{
+  "row_count": 1000,
+  "model_current_disagreements": 441,
+  "content_to_calm_candidates": 181,
+  "model_knn_disagreements": 330,
+  "model_distribution": {
+    "alarmed": 23,
+    "annoyed": 26,
+    "aroused": 17,
+    "bored": 34,
+    "calm": 614,
+    "content": 121,
+    "excited": 38,
+    "frustrated": 50,
+    "glad": 3,
+    "happy": 12,
+    "sad": 44,
+    "tired": 18
+  },
+  "selected_review_samples": [
+    {
+      "sample_id": "track2_0998",
+      "current": "content",
+      "emotion": "excited",
+      "confidence": 0.620258,
+      "margin": 0.50674,
+      "top3": [
+        {
+          "emotion": "excited",
+          "probability": 0.620258
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.113518
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.053998
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "excited",
+          "confidence": 0.490927,
+          "knn_emotion": "excited",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.686558,
+          "knn_emotion": "excited",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.68756,
+          "knn_emotion": "excited",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0996",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.693132,
+      "margin": 0.42638,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.693132
+        },
+        {
+          "emotion": "content",
+          "probability": 0.266752
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.007416
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.708566,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.616304,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.764003,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0994",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.575446,
+      "margin": 0.211363,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.575446
+        },
+        {
+          "emotion": "content",
+          "probability": 0.364082
+        },
+        {
+          "emotion": "glad",
+          "probability": 0.017675
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.639562,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.578287,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.501197,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0982",
+      "current": "aroused",
+      "emotion": "excited",
+      "confidence": 0.505095,
+      "margin": 0.392826,
+      "top3": [
+        {
+          "emotion": "excited",
+          "probability": 0.505095
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.11227
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.104125
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "excited",
+          "confidence": 0.442629,
+          "knn_emotion": "excited",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.384343,
+          "knn_emotion": "excited",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.712512,
+          "knn_emotion": "excited",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0975",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.593077,
+      "margin": 0.236363,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.593077
+        },
+        {
+          "emotion": "content",
+          "probability": 0.356714
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.014737
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.534149,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.66776,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.572825,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0966",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.554731,
+      "margin": 0.381238,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.554731
+        },
+        {
+          "emotion": "content",
+          "probability": 0.173493
+        },
+        {
+          "emotion": "sad",
+          "probability": 0.123441
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.63165,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.583076,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.437108,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0956",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.745913,
+      "margin": 0.501132,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.745913
+        },
+        {
+          "emotion": "content",
+          "probability": 0.244781
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.002559
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.683438,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.865907,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.677712,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0942",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.737282,
+      "margin": 0.496481,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.737282
+        },
+        {
+          "emotion": "content",
+          "probability": 0.240801
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.006278
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.742137,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.722329,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.749026,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0941",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.71137,
+      "margin": 0.517279,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.71137
+        },
+        {
+          "emotion": "content",
+          "probability": 0.194091
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.028797
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.711387,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.776759,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.636489,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0937",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.742578,
+      "margin": 0.548025,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.742578
+        },
+        {
+          "emotion": "content",
+          "probability": 0.194553
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.01025
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.694184,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.738372,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.80098,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0928",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.571808,
+      "margin": 0.217349,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.571808
+        },
+        {
+          "emotion": "content",
+          "probability": 0.354459
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.010283
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.601989,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.616764,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.486919,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0914",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.669978,
+      "margin": 0.403769,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.669978
+        },
+        {
+          "emotion": "content",
+          "probability": 0.26621
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.007673
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.746489,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.647971,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.610455,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0908",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.443696,
+      "margin": 0.14287,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.443696
+        },
+        {
+          "emotion": "content",
+          "probability": 0.300825
+        },
+        {
+          "emotion": "sad",
+          "probability": 0.133073
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.543763,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.37948,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.406412,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0904",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.748834,
+      "margin": 0.544227,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.748834
+        },
+        {
+          "emotion": "content",
+          "probability": 0.204607
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.01243
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.730297,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.736947,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.782968,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0899",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.585422,
+      "margin": 0.241895,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.585422
+        },
+        {
+          "emotion": "content",
+          "probability": 0.343526
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.044354
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.603905,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.517139,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.643132,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0880",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.746542,
+      "margin": 0.497534,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.746542
+        },
+        {
+          "emotion": "content",
+          "probability": 0.249008
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.000809
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.703423,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.756252,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.783169,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0871",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.646734,
+      "margin": 0.466554,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.646734
+        },
+        {
+          "emotion": "content",
+          "probability": 0.180181
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.058779
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.563301,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.800791,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.562742,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0869",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.714178,
+      "margin": 0.452447,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.714178
+        },
+        {
+          "emotion": "content",
+          "probability": 0.261731
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.006291
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.74658,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.739951,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.648794,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0866",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.630936,
+      "margin": 0.316682,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.630936
+        },
+        {
+          "emotion": "content",
+          "probability": 0.314255
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.011493
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.599907,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.658112,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.634182,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0864",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.644522,
+      "margin": 0.485354,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.644522
+        },
+        {
+          "emotion": "content",
+          "probability": 0.159168
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.042414
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.743253,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.650804,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.528006,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0842",
+      "current": "annoyed",
+      "emotion": "calm",
+      "confidence": 0.309824,
+      "margin": 0.069874,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.309824
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.239951
+        },
+        {
+          "emotion": "content",
+          "probability": 0.165579
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.267237,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.301664,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.366323,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0841",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.737419,
+      "margin": 0.496195,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.737419
+        },
+        {
+          "emotion": "content",
+          "probability": 0.241224
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.002275
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.679904,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.773725,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.759537,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0832",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.669713,
+      "margin": 0.435691,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.669713
+        },
+        {
+          "emotion": "content",
+          "probability": 0.234022
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.024504
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.642202,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.727494,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.634023,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0830",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.596956,
+      "margin": 0.288204,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.596956
+        },
+        {
+          "emotion": "content",
+          "probability": 0.308752
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.03054
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.514275,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.782145,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.476486,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0809",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.69638,
+      "margin": 0.437592,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.69638
+        },
+        {
+          "emotion": "content",
+          "probability": 0.258788
+        },
+        {
+          "emotion": "glad",
+          "probability": 0.007949
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.669625,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.705217,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.715888,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0807",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.793351,
+      "margin": 0.606817,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.793351
+        },
+        {
+          "emotion": "content",
+          "probability": 0.186534
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.006269
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.772649,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.779071,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.832622,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0806",
+      "current": "annoyed",
+      "emotion": "calm",
+      "confidence": 0.570121,
+      "margin": 0.420716,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.570121
+        },
+        {
+          "emotion": "content",
+          "probability": 0.149404
+        },
+        {
+          "emotion": "sad",
+          "probability": 0.105269
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.588518,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.686459,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.416555,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0800",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.656006,
+      "margin": 0.416156,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.656006
+        },
+        {
+          "emotion": "content",
+          "probability": 0.239849
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.023835
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.606204,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.668575,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.69676,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0798",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.575685,
+      "margin": 0.214881,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.575685
+        },
+        {
+          "emotion": "content",
+          "probability": 0.360804
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.015172
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.558918,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.635441,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.525836,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0795",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.476626,
+      "margin": 0.160977,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.476626
+        },
+        {
+          "emotion": "content",
+          "probability": 0.315649
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.079893
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.58909,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.490213,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.336541,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0794",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.662229,
+      "margin": 0.341169,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.662229
+        },
+        {
+          "emotion": "content",
+          "probability": 0.32106
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.005329
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.577752,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.716646,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.693468,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0791",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.442707,
+      "margin": 0.110785,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.442707
+        },
+        {
+          "emotion": "content",
+          "probability": 0.331922
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.045519
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.462177,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.372528,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.501494,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0781",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.583657,
+      "margin": 0.283917,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.583657
+        },
+        {
+          "emotion": "content",
+          "probability": 0.29974
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.020109
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.596214,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.641051,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.504043,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0779",
+      "current": "content",
+      "emotion": "excited",
+      "confidence": 0.668505,
+      "margin": 0.538789,
+      "top3": [
+        {
+          "emotion": "excited",
+          "probability": 0.668505
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.129716
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.072632
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "excited",
+          "confidence": 0.521931,
+          "knn_emotion": "excited",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.63671,
+          "knn_emotion": "excited",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "excited",
+          "confidence": 0.867206,
+          "knn_emotion": "excited",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0773",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.561667,
+      "margin": 0.151721,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.561667
+        },
+        {
+          "emotion": "content",
+          "probability": 0.409946
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.006194
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.615703,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.532276,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.535484,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0765",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.757771,
+      "margin": 0.549558,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.757771
+        },
+        {
+          "emotion": "content",
+          "probability": 0.208213
+        },
+        {
+          "emotion": "glad",
+          "probability": 0.010934
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.783429,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.788351,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.694348,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0761",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.735734,
+      "margin": 0.526112,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.735734
+        },
+        {
+          "emotion": "content",
+          "probability": 0.209622
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.015171
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.684687,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.723323,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.806468,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0751",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.701337,
+      "margin": 0.459515,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.701337
+        },
+        {
+          "emotion": "content",
+          "probability": 0.241822
+        },
+        {
+          "emotion": "tired",
+          "probability": 0.014518
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.734992,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.741959,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.617564,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0748",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.524053,
+      "margin": 0.135906,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.524053
+        },
+        {
+          "emotion": "content",
+          "probability": 0.388147
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.031481
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.518452,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.504957,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.552119,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    },
+    {
+      "sample_id": "track2_0746",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.577361,
+      "margin": 0.275804,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.577361
+        },
+        {
+          "emotion": "content",
+          "probability": 0.301556
+        },
+        {
+          "emotion": "glad",
+          "probability": 0.027144
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 1.0,
+      "model_vote_count": 3,
+      "source_predictions": [
+        {
+          "emotion": "calm",
+          "confidence": 0.545214,
+          "knn_emotion": "calm",
+          "weight": 0.2415
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.637835,
+          "knn_emotion": "calm",
+          "weight": 0.2497
+        },
+        {
+          "emotion": "calm",
+          "confidence": 0.54372,
+          "knn_emotion": "calm",
+          "weight": 0.2181
+        }
+      ],
+      "review_priority": 1.45
+    }
+  ],
+  "backbones": [
+    {
+      "name": "clip-vit-b-32",
+      "model_id": "ViT-B/32",
+      "backend": "clip",
+      "modality": "image",
+      "family": "clip",
+      "static_image_safe": true,
+      "recommended_for_track2_full": true,
+      "local_notes": "Fast baseline; useful for leakage audit and retrieval sanity checks."
+    },
+    {
+      "name": "siglip2-base-patch16-224",
+      "model_id": "google/siglip2-base-patch16-224",
+      "backend": "hf",
+      "modality": "image",
+      "family": "siglip",
+      "static_image_safe": true,
+      "recommended_for_track2_full": true,
+      "local_notes": "Current strongest Track2 single backbone in local holdout."
+    },
+    {
+      "name": "dinov2-base",
+      "model_id": "facebook/dinov2-base",
+      "backend": "hf",
+      "modality": "image",
+      "family": "dino",
+      "static_image_safe": true,
+      "recommended_for_track2_full": true,
+      "local_notes": "Good structural vision baseline; weaker than SigLIP2 on Track2 emotion labels."
+    },
+    {
+      "name": "ijepa-vith16-1k",
+      "model_id": "facebook/ijepa_vith16_1k",
+      "backend": "hf",
+      "modality": "image",
+      "family": "jepa",
+      "static_image_safe": true,
+      "recommended_for_track2_full": false,
+      "local_notes": "ViT-H 448px I-JEPA; smoke works but local full Track2 is too slow on MPS."
+    },
+    {
+      "name": "ijepa-vith14-1k",
+      "model_id": "facebook/ijepa_vith14_1k",
+      "backend": "hf",
+      "modality": "image",
+      "family": "jepa",
+      "static_image_safe": true,
+      "recommended_for_track2_full": false,
+      "local_notes": "ViT-H 224px I-JEPA; lower resolution, not lower parameter count."
+    },
+    {
+      "name": "vjepa2-vitl",
+      "model_id": "facebook/vjepa2-vitl-fpc64-256",
+      "backend": "hf",
+      "modality": "video",
+      "family": "jepa",
+      "static_image_safe": false,
+      "recommended_for_track2_full": false,
+      "local_notes": "Video model; repeated still frames are not a meaningful Track2 signal."
+    }
+  ]
+}
