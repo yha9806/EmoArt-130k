@@ -29,10 +29,12 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
     if forbidden:
         lines.append("- Forbidden artifacts: " + ", ".join(forbidden))
     lines.extend(["", "130K STYLE REFERENCES"])
+    lines.append("- Reference subjects are not requirements. Do not copy reference objects, layouts, text, or named content.")
     for ref in refs[:3]:
+        style_hint = _reference_style_hint(ref)
         lines.append(
-            f"- {ref.get('style', '')}, emotion={ref.get('emotion', '')}, score={ref.get('score', 0)}: "
-            f"{ref.get('source_text', '')[:240]}"
+            f"- Style={ref.get('style', '')}; emotion={ref.get('emotion', '')}; "
+            f"score={ref.get('score', 0)}; visual calibration={style_hint}"
         )
     lines.extend(
         [
@@ -95,6 +97,20 @@ def _score_audit(row: dict[str, Any]) -> float:
     quality = float(row.get("visual_quality", 0.0))
     emotion = float(row.get("emotional_atmosphere", row.get("emotion", 0.0)) or 0.0)
     return round(fidelity * 0.45 + style * 0.2 + quality * 0.25 + emotion * 0.1, 4)
+
+
+def _reference_style_hint(ref: dict[str, Any]) -> str:
+    target = str(ref.get("compiler_target", "") or "")
+    hints = []
+    for line in target.splitlines():
+        key, sep, value = line.partition(":")
+        if not sep:
+            continue
+        key = key.strip().lower()
+        value = " ".join(value.strip().split())
+        if key in {"brushstroke", "color", "composition", "line", "light"} and value:
+            hints.append(f"{key}: {value[:120]}")
+    return "; ".join(hints[:3]) or "use only broad style, palette, and emotional tone"
 
 
 def summarize_decisions(rows: list[dict[str, Any]]) -> dict[str, int]:

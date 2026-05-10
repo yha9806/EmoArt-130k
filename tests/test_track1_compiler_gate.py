@@ -32,6 +32,8 @@ class Track1CompilerGateTest(unittest.TestCase):
         self.assertIn("side calligraphy", prompt)
         self.assertIn("output must be the artwork surface itself", prompt.lower())
         self.assertIn("gallery wall", prompt)
+        self.assertIn("Reference subjects are not requirements", prompt)
+        self.assertNotIn("Lotus flowers on silk with delicate linework", prompt)
 
     def test_decision_rejects_when_candidate_not_clear_win(self):
         decision = decision_from_scores(
