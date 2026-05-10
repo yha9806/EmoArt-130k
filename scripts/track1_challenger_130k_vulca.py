@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from affectiveart.track1_compiler_gate import compile_vulca_prompt
+from affectiveart.track1_challenger import effective_create_returncode
 from affectiveart.track1_vulca import select_track1_tradition
 
 
@@ -93,10 +94,12 @@ def main() -> int:
         )
         json_path.write_text(completed.stdout, encoding="utf-8")
         stderr_path.write_text(completed.stderr, encoding="utf-8")
+        effective_returncode = effective_create_returncode(completed.returncode, json_path, image_path)
         rows.append(
             {
                 "sample_id": sample_id,
-                "returncode": completed.returncode,
+                "returncode": effective_returncode,
+                "process_returncode": completed.returncode,
                 "image": str(image_path),
                 "json": str(json_path),
                 "stderr_path": str(stderr_path),
