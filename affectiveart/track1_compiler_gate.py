@@ -7,9 +7,10 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
     requirements = packet.get("hard_requirements", []) or []
     allowed_text = packet.get("allowed_text", []) or []
     forbidden = packet.get("forbidden_artifacts", []) or []
+    caption = _provider_safe_caption(str(packet.get("caption", "")))
     lines = [
         "NON-NEGOTIABLE CONTENT REQUIREMENTS",
-        f"Caption: {packet.get('caption', '')}",
+        f"Caption: {caption}",
     ]
     for item in requirements:
         lines.append(f"- Must include: {item}")
@@ -38,6 +39,13 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
         ]
     )
     return "\n".join(lines).strip()
+
+
+def _provider_safe_caption(caption: str) -> str:
+    return caption.replace(
+        "anti-fascist caricature scenes",
+        "non-graphic symbolic anti-fascist caricature panels",
+    )
 
 
 def decision_from_scores(

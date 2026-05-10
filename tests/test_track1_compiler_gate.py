@@ -36,6 +36,20 @@ class Track1CompilerGateTest(unittest.TestCase):
         self.assertNotIn("Reference subjects are not requirements", prompt)
         self.assertNotIn("Lotus flowers on silk with delicate linework", prompt)
 
+    def test_compile_vulca_prompt_uses_provider_safe_wording_for_caricature_panels(self):
+        packet = {
+            "caption": "A Socialist Realism Soviet propaganda poster with a bold Cyrillic headline, heroic soldiers, an industrial worker, anti-fascist caricature scenes, and stark wartime panels in muted reds, blues, and beige tones.",
+            "artwork_category": "poster",
+            "hard_requirements": ["bold Cyrillic headline"],
+            "allowed_text": ["Cyrillic lettering"],
+            "forbidden_artifacts": ["gallery wall"],
+        }
+
+        prompt = compile_vulca_prompt(packet)
+
+        self.assertIn("non-graphic symbolic anti-fascist caricature panels", prompt)
+        self.assertNotIn("anti-fascist caricature scenes", prompt)
+
     def test_decision_rejects_when_candidate_not_clear_win(self):
         decision = decision_from_scores(
             sample_id="track1_0301",

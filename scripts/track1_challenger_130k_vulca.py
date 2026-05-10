@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from affectiveart.track1_compiler_gate import compile_vulca_prompt
-from affectiveart.track1_challenger import effective_create_returncode
+from affectiveart.track1_challenger import effective_create_returncode, merge_run_summary_rows
 from affectiveart.track1_vulca import select_track1_tradition
 
 
@@ -108,6 +108,9 @@ def main() -> int:
         )
 
     summary_path = args.out_dir / "run_summary.json"
+    if selected and summary_path.exists():
+        existing_rows = json.loads(summary_path.read_text(encoding="utf-8"))
+        rows = merge_run_summary_rows(existing_rows, rows)
     summary_path.write_text(json.dumps(rows, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(summary_path)
     return 0
