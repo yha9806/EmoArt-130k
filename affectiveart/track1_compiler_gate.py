@@ -7,7 +7,6 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
     requirements = packet.get("hard_requirements", []) or []
     allowed_text = packet.get("allowed_text", []) or []
     forbidden = packet.get("forbidden_artifacts", []) or []
-    refs = packet.get("retrieved_references", []) or []
     lines = [
         "NON-NEGOTIABLE CONTENT REQUIREMENTS",
         f"Caption: {packet.get('caption', '')}",
@@ -28,14 +27,6 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
         lines.append("- Do not add readable or pseudo-readable text.")
     if forbidden:
         lines.append("- Forbidden artifacts: " + ", ".join(forbidden))
-    lines.extend(["", "130K STYLE REFERENCES"])
-    lines.append("- Reference subjects are not requirements. Do not copy reference objects, layouts, text, or named content.")
-    for ref in refs[:3]:
-        style_hint = _reference_style_hint(ref)
-        lines.append(
-            f"- Style={ref.get('style', '')}; emotion={ref.get('emotion', '')}; "
-            f"score={ref.get('score', 0)}; visual calibration={style_hint}"
-        )
     lines.extend(
         [
             "",
@@ -43,7 +34,7 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
             "1. Exact caption content and named objects.",
             "2. Artwork surface/category boundary.",
             "3. Requested artistic style and emotional atmosphere.",
-            "4. 130k references only as style calibration, never as content replacement.",
+            "4. External references are used only by separate scoring or review steps, not as content requirements in this prompt.",
         ]
     )
     return "\n".join(lines).strip()
@@ -97,20 +88,6 @@ def _score_audit(row: dict[str, Any]) -> float:
     quality = float(row.get("visual_quality", 0.0))
     emotion = float(row.get("emotional_atmosphere", row.get("emotion", 0.0)) or 0.0)
     return round(fidelity * 0.45 + style * 0.2 + quality * 0.25 + emotion * 0.1, 4)
-
-
-def _reference_style_hint(ref: dict[str, Any]) -> str:
-    target = str(ref.get("compiler_target", "") or "")
-    hints = []
-    for line in target.splitlines():
-        key, sep, value = line.partition(":")
-        if not sep:
-            continue
-        key = key.strip().lower()
-        value = " ".join(value.strip().split())
-        if key in {"brushstroke", "color", "composition", "line", "light"} and value:
-            hints.append(f"{key}: {value[:120]}")
-    return "; ".join(hints[:3]) or "use only broad style, palette, and emotional tone"
 
 
 def summarize_decisions(rows: list[dict[str, Any]]) -> dict[str, int]:

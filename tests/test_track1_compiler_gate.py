@@ -7,7 +7,7 @@ from affectiveart.track1_compiler_gate import (
 
 
 class Track1CompilerGateTest(unittest.TestCase):
-    def test_compile_vulca_prompt_puts_caption_requirements_before_style_refs(self):
+    def test_compile_vulca_prompt_keeps_references_out_of_content_lock_prompt_by_default(self):
         packet = {
             "caption": "A Gongbi vertical hanging scroll with lotus blossoms and side calligraphy.",
             "artwork_category": "scroll",
@@ -27,12 +27,13 @@ class Track1CompilerGateTest(unittest.TestCase):
 
         prompt = compile_vulca_prompt(packet)
 
-        self.assertLess(prompt.index("NON-NEGOTIABLE CONTENT"), prompt.index("130K STYLE REFERENCES"))
+        self.assertLess(prompt.index("NON-NEGOTIABLE CONTENT"), prompt.index("GENERATION PRIORITY"))
         self.assertIn("lotus blossoms", prompt)
         self.assertIn("side calligraphy", prompt)
         self.assertIn("output must be the artwork surface itself", prompt.lower())
         self.assertIn("gallery wall", prompt)
-        self.assertIn("Reference subjects are not requirements", prompt)
+        self.assertNotIn("130K STYLE REFERENCES", prompt)
+        self.assertNotIn("Reference subjects are not requirements", prompt)
         self.assertNotIn("Lotus flowers on silk with delicate linework", prompt)
 
     def test_decision_rejects_when_candidate_not_clear_win(self):
