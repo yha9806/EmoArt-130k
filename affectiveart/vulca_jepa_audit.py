@@ -60,3 +60,25 @@ def _review_priority(row: dict[str, Any]) -> float:
     if current == "content" and emotion == "calm" and any(word in caption for word in CALM_WORDS):
         priority += 0.5
     return priority
+
+
+def score_track1_generation_risk(row: dict[str, Any]) -> dict[str, Any]:
+    caption_fidelity = float(row.get("caption_fidelity_score", 0.0))
+    style_score = float(row.get("style_score", 0.0))
+    structure_score = float(row.get("structure_score", 0.0))
+    reasons: list[str] = []
+    if style_score >= 0.85 and caption_fidelity < 0.60:
+        reasons.append("style-content mismatch")
+    if structure_score < 0.50:
+        reasons.append("weak structure preservation")
+    if caption_fidelity < 0.50:
+        reasons.append("low caption fidelity")
+    risk_level = "low"
+    if len(reasons) >= 2:
+        risk_level = "high"
+    elif reasons:
+        risk_level = "medium"
+    scored = dict(row)
+    scored["risk_level"] = risk_level
+    scored["reasons"] = reasons
+    return scored

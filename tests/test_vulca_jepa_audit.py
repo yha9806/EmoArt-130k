@@ -7,6 +7,7 @@ from affectiveart.vulca_jepa_audit import (
     build_disagreement_report,
     select_vulca_jepa_review_samples,
 )
+from affectiveart.vulca_jepa_audit import score_track1_generation_risk
 from scripts.vulca_jepa_experiment import load_prediction_entries
 
 
@@ -77,6 +78,22 @@ class VulcaJepaExperimentCliTest(unittest.TestCase):
             rows = load_prediction_entries(path)
 
         self.assertEqual(rows, [{"sample_id": "track2_0001", "emotion": "calm"}])
+
+
+class Track1VulcaJepaAuditTest(unittest.TestCase):
+    def test_flags_style_high_content_low_generation(self) -> None:
+        row = {
+            "sample_id": "track1_0002",
+            "caption_fidelity_score": 0.42,
+            "style_score": 0.91,
+            "structure_score": 0.38,
+            "caption": "A bamboo, orchid, and calligraphy composition.",
+        }
+
+        scored = score_track1_generation_risk(row)
+
+        self.assertEqual(scored["risk_level"], "high")
+        self.assertIn("style-content mismatch", scored["reasons"])
 
 
 if __name__ == "__main__":

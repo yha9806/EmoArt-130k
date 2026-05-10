@@ -21,6 +21,10 @@ These runs use a tiny Track2 slice (`Abstract Art`, 12 train examples, 3 test ex
 
 Full I-JEPA Track2 was not run in this local pass. The smoke run completed without encoder failures and was under the 3x DINOv2 smoke ratio, but extrapolating the I-JEPA smoke throughput to the full 132,885-train plus 1,000-test Track2 run gives an optimistic estimate of about 58 hours on this machine. I-JEPA remains a research baseline for structure auditing, not a challenge submission backbone.
 
+## Track1 Generation Risk
+
+The Track1 audit integration now scores generated-image rows for high-style, low-content risk. A row is marked high risk when multiple evidence signals fire, including strong style score with weak caption fidelity, weak structure preservation, and low caption fidelity. This is intended to catch Vulca over-stylization cases where cultural style is strong but the literal caption or subject structure is under-preserved.
+
 ## Review Samples
 
 - `track2_0998` priority=1.45 content -> excited
