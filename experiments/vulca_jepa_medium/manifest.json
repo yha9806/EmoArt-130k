@@ -1,0 +1,65 @@
+{
+  "purpose": "Medium bounded Track2 slice for comparing I-JEPA, DINOv2, and SigLIP2 behavior without running full I-JEPA.",
+  "slice": {
+    "style_filter": "Abstract Art",
+    "limit_train": 120,
+    "limit_test": 30,
+    "device": "mps",
+    "batch_size": 4
+  },
+  "runs": [
+    {
+      "name": "ijepa_vith16_1k",
+      "predictions": "experiments/vulca_jepa_medium/ijepa_vith16_1k/predictions.json",
+      "metrics": "experiments/vulca_jepa_medium/ijepa_vith16_1k/metrics.json",
+      "wall_seconds": 92.4,
+      "holdout_macro_f1": 0.0364,
+      "classifier_knn_agreement": 0.4667,
+      "test_distribution": {
+        "alarmed": 1,
+        "annoyed": 2,
+        "aroused": 1,
+        "bored": 6,
+        "calm": 14,
+        "content": 1,
+        "excited": 1,
+        "frustrated": 3,
+        "happy": 1
+      }
+    },
+    {
+      "name": "dinov2_base",
+      "predictions": "experiments/vulca_jepa_medium/dinov2_base/predictions.json",
+      "metrics": "experiments/vulca_jepa_medium/dinov2_base/metrics.json",
+      "wall_seconds": 17.4,
+      "holdout_macro_f1": 0.1186,
+      "classifier_knn_agreement": 0.2667,
+      "test_distribution": {
+        "alarmed": 3,
+        "bored": 8,
+        "calm": 5,
+        "content": 11,
+        "frustrated": 1,
+        "sad": 1,
+        "tired": 1
+      }
+    },
+    {
+      "name": "siglip2_base_patch16_224",
+      "predictions": "experiments/vulca_jepa_medium/siglip2_base_patch16_224/predictions.json",
+      "metrics": "experiments/vulca_jepa_medium/siglip2_base_patch16_224/metrics.json",
+      "wall_seconds": 16.3,
+      "holdout_macro_f1": 0.1753,
+      "classifier_knn_agreement": 0.1667,
+      "test_distribution": {
+        "alarmed": 5,
+        "annoyed": 6,
+        "aroused": 5,
+        "bored": 5,
+        "calm": 5,
+        "content": 3,
+        "tired": 1
+      }
+    }
+  ]
+}

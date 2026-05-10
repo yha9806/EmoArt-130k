@@ -1,0 +1,225 @@
+{
+  "sample_count": 30,
+  "consensus_counts": {
+    "two_of_three": 18,
+    "all_different": 11,
+    "all_three": 1
+  },
+  "current_agreement_counts": {
+    "ijepa_vith16_1k": 8,
+    "dinov2_base": 9,
+    "siglip2_base_patch16_224": 3
+  },
+  "model_rows": [
+    {
+      "sample_id": "track2_0001",
+      "current": "sad",
+      "ijepa_vith16_1k": "annoyed",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "bored"
+    },
+    {
+      "sample_id": "track2_0002",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "calm",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0003",
+      "current": "excited",
+      "ijepa_vith16_1k": "content",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "bored"
+    },
+    {
+      "sample_id": "track2_0004",
+      "current": "content",
+      "ijepa_vith16_1k": "frustrated",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "calm"
+    },
+    {
+      "sample_id": "track2_0005",
+      "current": "calm",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "calm",
+      "siglip2_base_patch16_224": "bored"
+    },
+    {
+      "sample_id": "track2_0006",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "alarmed"
+    },
+    {
+      "sample_id": "track2_0007",
+      "current": "excited",
+      "ijepa_vith16_1k": "frustrated",
+      "dinov2_base": "calm",
+      "siglip2_base_patch16_224": "calm"
+    },
+    {
+      "sample_id": "track2_0008",
+      "current": "alarmed",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "tired",
+      "siglip2_base_patch16_224": "bored"
+    },
+    {
+      "sample_id": "track2_0009",
+      "current": "content",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "calm"
+    },
+    {
+      "sample_id": "track2_0010",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "aroused"
+    },
+    {
+      "sample_id": "track2_0011",
+      "current": "happy",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "aroused"
+    },
+    {
+      "sample_id": "track2_0012",
+      "current": "content",
+      "ijepa_vith16_1k": "excited",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "content"
+    },
+    {
+      "sample_id": "track2_0013",
+      "current": "calm",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0014",
+      "current": "sad",
+      "ijepa_vith16_1k": "alarmed",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "tired"
+    },
+    {
+      "sample_id": "track2_0015",
+      "current": "calm",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "bored"
+    },
+    {
+      "sample_id": "track2_0016",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0017",
+      "current": "content",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "aroused"
+    },
+    {
+      "sample_id": "track2_0018",
+      "current": "frustrated",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "frustrated",
+      "siglip2_base_patch16_224": "calm"
+    },
+    {
+      "sample_id": "track2_0019",
+      "current": "calm",
+      "ijepa_vith16_1k": "aroused",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "content"
+    },
+    {
+      "sample_id": "track2_0020",
+      "current": "content",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "alarmed"
+    },
+    {
+      "sample_id": "track2_0021",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "calm",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0022",
+      "current": "content",
+      "ijepa_vith16_1k": "frustrated",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "content"
+    },
+    {
+      "sample_id": "track2_0023",
+      "current": "content",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "content",
+      "siglip2_base_patch16_224": "aroused"
+    },
+    {
+      "sample_id": "track2_0024",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "sad",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0025",
+      "current": "calm",
+      "ijepa_vith16_1k": "bored",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "alarmed"
+    },
+    {
+      "sample_id": "track2_0026",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "bored",
+      "siglip2_base_patch16_224": "calm"
+    },
+    {
+      "sample_id": "track2_0027",
+      "current": "content",
+      "ijepa_vith16_1k": "happy",
+      "dinov2_base": "alarmed",
+      "siglip2_base_patch16_224": "alarmed"
+    },
+    {
+      "sample_id": "track2_0028",
+      "current": "content",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "alarmed",
+      "siglip2_base_patch16_224": "annoyed"
+    },
+    {
+      "sample_id": "track2_0029",
+      "current": "calm",
+      "ijepa_vith16_1k": "calm",
+      "dinov2_base": "calm",
+      "siglip2_base_patch16_224": "aroused"
+    },
+    {
+      "sample_id": "track2_0030",
+      "current": "sad",
+      "ijepa_vith16_1k": "annoyed",
+      "dinov2_base": "alarmed",
+      "siglip2_base_patch16_224": "alarmed"
+    }
+  ]
+}

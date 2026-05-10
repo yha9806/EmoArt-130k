@@ -1,0 +1,45 @@
+{
+  "train_count": 120,
+  "train_distribution": {
+    "alarmed": 10,
+    "annoyed": 10,
+    "aroused": 4,
+    "bored": 5,
+    "calm": 20,
+    "content": 13,
+    "excited": 27,
+    "frustrated": 11,
+    "happy": 4,
+    "sad": 11,
+    "tired": 5
+  },
+  "logreg_c": 1.0,
+  "knn_k": 15,
+  "holdout_accuracy": 0.3333,
+  "holdout_macro_f1": 0.1753,
+  "holdout_weighted_f1": 0.2976,
+  "test_count": 30,
+  "test_distribution": {
+    "alarmed": 5,
+    "annoyed": 6,
+    "aroused": 5,
+    "bored": 5,
+    "calm": 5,
+    "content": 3,
+    "tired": 1
+  },
+  "current_distribution": {
+    "alarmed": 1,
+    "calm": 13,
+    "content": 9,
+    "excited": 2,
+    "frustrated": 1,
+    "happy": 1,
+    "sad": 3
+  },
+  "classifier_knn_agreement": 0.1667,
+  "wall_seconds": 16.3,
+  "predictions_json": "experiments/vulca_jepa_medium/siglip2_base_patch16_224/predictions.json",
+  "excluded_public_overlap_count": 10,
+  "exclude_public_overlap_json": "experiments/track2_emoart130k_clip/suspected_public_test_overlap.json"
+}

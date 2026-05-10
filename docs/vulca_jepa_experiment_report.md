@@ -17,9 +17,21 @@ These runs use a tiny Track2 slice (`Abstract Art`, 12 train examples, 3 test ex
 | DINOv2 base | 13.5 | `calm`: 1, `content`: 1, `tired`: 1 | 0.3333 |
 | SigLIP2 base patch16 224 | 12.2 | `bored`: 2, `tired`: 1 | 0.0 |
 
+## Medium Runs
+
+These runs use the same `Abstract Art` slice with 120 train examples and 30 Track2 test examples. This is still a bounded diagnostic, but it gives a more useful runtime and holdout signal than the tiny smoke.
+
+| Run | Wall seconds | Holdout macro-F1 | Test distribution | Current-label agreement |
+| --- | ---: | ---: | --- | ---: |
+| I-JEPA ViT-H/16 | 92.4 | 0.0364 | `calm`: 14, `bored`: 6, other: 10 | 8/30 |
+| DINOv2 base | 17.4 | 0.1186 | `content`: 11, `bored`: 8, other: 11 | 9/30 |
+| SigLIP2 base patch16 224 | 16.3 | 0.1753 | `annoyed`: 6, `alarmed`: 5, `aroused`: 5, `bored`: 5, `calm`: 5, other: 4 | 3/30 |
+
+Across the 30 shared samples, all three models agreed on only 1 sample, two models agreed on 18 samples, and all three differed on 11 samples. The useful signal is disagreement analysis, not direct replacement of the current Track2 labels.
+
 ## Full I-JEPA Gate
 
-Full I-JEPA Track2 was not run in this local pass. The smoke run completed without encoder failures and was under the 3x DINOv2 smoke ratio, but extrapolating the I-JEPA smoke throughput to the full 132,885-train plus 1,000-test Track2 run gives an optimistic estimate of about 58 hours on this machine. I-JEPA remains a research baseline for structure auditing, not a challenge submission backbone.
+Full I-JEPA Track2 was not run in this local pass. The tiny smoke run completed without encoder failures, but the more useful medium run put I-JEPA at 92.4 seconds versus 17.4 seconds for DINOv2 on the same slice, which fails the 3x local runtime gate. The medium holdout macro-F1 was also weak at 0.0364. I-JEPA remains a research baseline for structure auditing, not a challenge submission backbone.
 
 ## Track1 Generation Risk
 

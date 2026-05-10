@@ -1,0 +1,1207 @@
+{
+  "backend": "hf",
+  "model": "facebook/ijepa_vith16_1k",
+  "selection": "limit120_seed20260508",
+  "entries": [
+    {
+      "sample_id": "track2_0001",
+      "current": "sad",
+      "emotion": "annoyed",
+      "confidence": 0.091225,
+      "margin": 8.7e-05,
+      "top3": [
+        {
+          "emotion": "annoyed",
+          "probability": 0.091225
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.091138
+        },
+        {
+          "emotion": "sad",
+          "probability": 0.091018
+        }
+      ],
+      "knn_emotion": "annoyed",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "annoyed",
+          "votes": 3,
+          "similarity_sum": 2.994021
+        },
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.996022
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.996022
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0002",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091218,
+      "margin": 0.000214,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091218
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091004
+        },
+        {
+          "emotion": "content",
+          "probability": 0.090983
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 5,
+          "similarity_sum": 4.989893
+        },
+        {
+          "emotion": "excited",
+          "votes": 4,
+          "similarity_sum": 3.992242
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.996239
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0003",
+      "current": "excited",
+      "emotion": "content",
+      "confidence": 0.091148,
+      "margin": 0.000166,
+      "top3": [
+        {
+          "emotion": "content",
+          "probability": 0.091148
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.090983
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.090943
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 4,
+          "similarity_sum": 3.993335
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.995237
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.996732
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0004",
+      "current": "content",
+      "emotion": "frustrated",
+      "confidence": 0.091116,
+      "margin": 7.9e-05,
+      "top3": [
+        {
+          "emotion": "frustrated",
+          "probability": 0.091116
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.091036
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.091008
+        }
+      ],
+      "knn_emotion": "alarmed",
+      "knn_confidence": 0.133333,
+      "knn_top3": [
+        {
+          "emotion": "alarmed",
+          "votes": 2,
+          "similarity_sum": 1.996964
+        },
+        {
+          "emotion": "excited",
+          "votes": 2,
+          "similarity_sum": 1.996835
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 2,
+          "similarity_sum": 1.996661
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0005",
+      "current": "calm",
+      "emotion": "bored",
+      "confidence": 0.091272,
+      "margin": 0.000127,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.091272
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.091145
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.091051
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.994362
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 2,
+          "similarity_sum": 1.996914
+        },
+        {
+          "emotion": "bored",
+          "votes": 2,
+          "similarity_sum": 1.996108
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0006",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091225,
+      "margin": 0.000197,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091225
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091028
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.091028
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.466667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 7,
+          "similarity_sum": 6.989169
+        },
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.995685
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.996814
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0007",
+      "current": "excited",
+      "emotion": "frustrated",
+      "confidence": 0.091093,
+      "margin": 6.5e-05,
+      "top3": [
+        {
+          "emotion": "frustrated",
+          "probability": 0.091093
+        },
+        {
+          "emotion": "content",
+          "probability": 0.091028
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.091006
+        }
+      ],
+      "knn_emotion": "frustrated",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "frustrated",
+          "votes": 4,
+          "similarity_sum": 3.99329
+        },
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.995317
+        },
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.995033
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0008",
+      "current": "alarmed",
+      "emotion": "bored",
+      "confidence": 0.091168,
+      "margin": 3.4e-05,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.091168
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.091134
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.091133
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.993711
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.993357
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.9962
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0009",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.091127,
+      "margin": 2.3e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091127
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091104
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.090964
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.99484
+        },
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.994447
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.997105
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0010",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091097,
+      "margin": 8.4e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091097
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091013
+        },
+        {
+          "emotion": "content",
+          "probability": 0.090972
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 4,
+          "similarity_sum": 3.992059
+        },
+        {
+          "emotion": "excited",
+          "votes": 2,
+          "similarity_sum": 1.996029
+        },
+        {
+          "emotion": "annoyed",
+          "votes": 2,
+          "similarity_sum": 1.995952
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0011",
+      "current": "happy",
+      "emotion": "calm",
+      "confidence": 0.09108,
+      "margin": 0.000127,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.09108
+        },
+        {
+          "emotion": "content",
+          "probability": 0.090953
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.09095
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.99485
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.994835
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.997014
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0012",
+      "current": "content",
+      "emotion": "excited",
+      "confidence": 0.091182,
+      "margin": 7.4e-05,
+      "top3": [
+        {
+          "emotion": "excited",
+          "probability": 0.091182
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.091108
+        },
+        {
+          "emotion": "content",
+          "probability": 0.091064
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 5,
+          "similarity_sum": 4.991333
+        },
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.99447
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 2,
+          "similarity_sum": 1.996584
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0013",
+      "current": "calm",
+      "emotion": "bored",
+      "confidence": 0.091208,
+      "margin": 0.000141,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.091208
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.091067
+        },
+        {
+          "emotion": "content",
+          "probability": 0.090945
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 4,
+          "similarity_sum": 3.993992
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.997177
+        },
+        {
+          "emotion": "excited",
+          "votes": 2,
+          "similarity_sum": 1.997071
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0014",
+      "current": "sad",
+      "emotion": "alarmed",
+      "confidence": 0.091081,
+      "margin": 4.7e-05,
+      "top3": [
+        {
+          "emotion": "alarmed",
+          "probability": 0.091081
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091034
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.09103
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 4,
+          "similarity_sum": 3.990225
+        },
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.992989
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 2,
+          "similarity_sum": 1.995414
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0015",
+      "current": "calm",
+      "emotion": "bored",
+      "confidence": 0.09113,
+      "margin": 6.8e-05,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.09113
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.091062
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.091052
+        }
+      ],
+      "knn_emotion": "sad",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.992095
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.994677
+        },
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.99455
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0016",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091083,
+      "margin": 2.6e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091083
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091056
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.090954
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 4,
+          "similarity_sum": 3.994209
+        },
+        {
+          "emotion": "annoyed",
+          "votes": 2,
+          "similarity_sum": 1.997162
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.997029
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0017",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.091023,
+      "margin": 4e-06,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091023
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.091019
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.090982
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.266667,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 4,
+          "similarity_sum": 3.991035
+        },
+        {
+          "emotion": "content",
+          "votes": 4,
+          "similarity_sum": 3.991031
+        },
+        {
+          "emotion": "alarmed",
+          "votes": 2,
+          "similarity_sum": 1.995658
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0018",
+      "current": "frustrated",
+      "emotion": "calm",
+      "confidence": 0.091133,
+      "margin": 0.000113,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091133
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.09102
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.090998
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.994158
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 3,
+          "similarity_sum": 2.994057
+        },
+        {
+          "emotion": "alarmed",
+          "votes": 2,
+          "similarity_sum": 1.996541
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0019",
+      "current": "calm",
+      "emotion": "aroused",
+      "confidence": 0.091098,
+      "margin": 5.2e-05,
+      "top3": [
+        {
+          "emotion": "aroused",
+          "probability": 0.091098
+        },
+        {
+          "emotion": "annoyed",
+          "probability": 0.091046
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.09104
+        }
+      ],
+      "knn_emotion": "content",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.99342
+        },
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.992891
+        },
+        {
+          "emotion": "excited",
+          "votes": 2,
+          "similarity_sum": 1.995824
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0020",
+      "current": "content",
+      "emotion": "bored",
+      "confidence": 0.091067,
+      "margin": 6.9e-05,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.091067
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.090998
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.09097
+        }
+      ],
+      "knn_emotion": "content",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.995085
+        },
+        {
+          "emotion": "calm",
+          "votes": 3,
+          "similarity_sum": 2.995069
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.997141
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0021",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.09124,
+      "margin": 0.000164,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.09124
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091075
+        },
+        {
+          "emotion": "content",
+          "probability": 0.091062
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 5,
+          "similarity_sum": 4.992975
+        },
+        {
+          "emotion": "excited",
+          "votes": 4,
+          "similarity_sum": 3.993636
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.995478
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0022",
+      "current": "content",
+      "emotion": "frustrated",
+      "confidence": 0.091134,
+      "margin": 3.4e-05,
+      "top3": [
+        {
+          "emotion": "frustrated",
+          "probability": 0.091134
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.0911
+        },
+        {
+          "emotion": "aroused",
+          "probability": 0.091095
+        }
+      ],
+      "knn_emotion": "sad",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.99487
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.99429
+        },
+        {
+          "emotion": "calm",
+          "votes": 2,
+          "similarity_sum": 1.996868
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0023",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.091169,
+      "margin": 0.000126,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091169
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.091043
+        },
+        {
+          "emotion": "content",
+          "probability": 0.09104
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 5,
+          "similarity_sum": 4.991966
+        },
+        {
+          "emotion": "calm",
+          "votes": 4,
+          "similarity_sum": 3.993513
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.996926
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0024",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091111,
+      "margin": 1.5e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091111
+        },
+        {
+          "emotion": "content",
+          "probability": 0.091096
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.091061
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 5,
+          "similarity_sum": 4.988756
+        },
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.994102
+        },
+        {
+          "emotion": "content",
+          "votes": 3,
+          "similarity_sum": 2.993778
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0025",
+      "current": "calm",
+      "emotion": "bored",
+      "confidence": 0.091104,
+      "margin": 7.9e-05,
+      "top3": [
+        {
+          "emotion": "bored",
+          "probability": 0.091104
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.091025
+        },
+        {
+          "emotion": "calm",
+          "probability": 0.091009
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.4,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 6,
+          "similarity_sum": 5.986171
+        },
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.992871
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.9954
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0026",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091152,
+      "margin": 0.000106,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091152
+        },
+        {
+          "emotion": "happy",
+          "probability": 0.091046
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.09099
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.333333,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 5,
+          "similarity_sum": 4.990805
+        },
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.994861
+        },
+        {
+          "emotion": "content",
+          "votes": 2,
+          "similarity_sum": 1.996431
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0027",
+      "current": "content",
+      "emotion": "happy",
+      "confidence": 0.091133,
+      "margin": 4.1e-05,
+      "top3": [
+        {
+          "emotion": "happy",
+          "probability": 0.091133
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.091093
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.091071
+        }
+      ],
+      "knn_emotion": "sad",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "sad",
+          "votes": 3,
+          "similarity_sum": 2.993207
+        },
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.993049
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 2,
+          "similarity_sum": 1.995961
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0028",
+      "current": "content",
+      "emotion": "calm",
+      "confidence": 0.091033,
+      "margin": 2.7e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091033
+        },
+        {
+          "emotion": "alarmed",
+          "probability": 0.091006
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.090995
+        }
+      ],
+      "knn_emotion": "excited",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "excited",
+          "votes": 3,
+          "similarity_sum": 2.99517
+        },
+        {
+          "emotion": "annoyed",
+          "votes": 2,
+          "similarity_sum": 1.997123
+        },
+        {
+          "emotion": "sad",
+          "votes": 2,
+          "similarity_sum": 1.996797
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0029",
+      "current": "calm",
+      "emotion": "calm",
+      "confidence": 0.091135,
+      "margin": 4.6e-05,
+      "top3": [
+        {
+          "emotion": "calm",
+          "probability": 0.091135
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091089
+        },
+        {
+          "emotion": "excited",
+          "probability": 0.090979
+        }
+      ],
+      "knn_emotion": "calm",
+      "knn_confidence": 0.4,
+      "knn_top3": [
+        {
+          "emotion": "calm",
+          "votes": 6,
+          "similarity_sum": 5.991237
+        },
+        {
+          "emotion": "excited",
+          "votes": 5,
+          "similarity_sum": 4.992534
+        },
+        {
+          "emotion": "content",
+          "votes": 1,
+          "similarity_sum": 0.998754
+        }
+      ]
+    },
+    {
+      "sample_id": "track2_0030",
+      "current": "sad",
+      "emotion": "annoyed",
+      "confidence": 0.091222,
+      "margin": 3.5e-05,
+      "top3": [
+        {
+          "emotion": "annoyed",
+          "probability": 0.091222
+        },
+        {
+          "emotion": "bored",
+          "probability": 0.091187
+        },
+        {
+          "emotion": "frustrated",
+          "probability": 0.091117
+        }
+      ],
+      "knn_emotion": "annoyed",
+      "knn_confidence": 0.2,
+      "knn_top3": [
+        {
+          "emotion": "annoyed",
+          "votes": 3,
+          "similarity_sum": 2.994878
+        },
+        {
+          "emotion": "alarmed",
+          "votes": 3,
+          "similarity_sum": 2.994497
+        },
+        {
+          "emotion": "frustrated",
+          "votes": 3,
+          "similarity_sum": 2.994386
+        }
+      ]
+    }
+  ]
+}
