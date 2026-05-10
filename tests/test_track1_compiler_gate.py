@@ -53,6 +53,21 @@ class Track1CompilerGateTest(unittest.TestCase):
         self.assertEqual(decision["decision"], "accept")
         self.assertGreaterEqual(decision["margin"], 0.2)
 
+    def test_summarize_decisions_counts_accepts_and_rejects(self):
+        from affectiveart.track1_compiler_gate import summarize_decisions
+
+        summary = summarize_decisions(
+            [
+                {"sample_id": "track1_0001", "decision": "accept"},
+                {"sample_id": "track1_0002", "decision": "reject"},
+                {"sample_id": "track1_0003", "decision": "reject"},
+            ]
+        )
+
+        self.assertEqual(summary["accepted"], 1)
+        self.assertEqual(summary["rejected"], 2)
+        self.assertEqual(summary["total"], 3)
+
 
 if __name__ == "__main__":
     unittest.main()

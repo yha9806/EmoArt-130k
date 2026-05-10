@@ -95,3 +95,10 @@ def _score_audit(row: dict[str, Any]) -> float:
     quality = float(row.get("visual_quality", 0.0))
     emotion = float(row.get("emotional_atmosphere", row.get("emotion", 0.0)) or 0.0)
     return round(fidelity * 0.45 + style * 0.2 + quality * 0.25 + emotion * 0.1, 4)
+
+
+def summarize_decisions(rows: list[dict[str, Any]]) -> dict[str, int]:
+    accepted = sum(1 for row in rows if row.get("decision") == "accept")
+    rejected = sum(1 for row in rows if row.get("decision") == "reject")
+    held = sum(1 for row in rows if row.get("decision") == "hold")
+    return {"total": len(rows), "accepted": accepted, "rejected": rejected, "held": held}
