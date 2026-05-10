@@ -40,6 +40,20 @@ class Track1PromptPacketTest(unittest.TestCase):
         self.assertIn("graph paper", packet["hard_requirements"])
         self.assertIn("rectangular frame", packet["hard_requirements"])
 
+    def test_prompt_packet_risk_sort_prefers_text_and_surface_sensitive_samples(self):
+        rows = [
+            {"sample_id": "track1_0001", "caption": "A calm watercolor lake."},
+            {"sample_id": "track1_0002", "caption": "A poster with Cyrillic lettering and soldiers."},
+            {"sample_id": "track1_0003", "caption": "A graph paper pencil drawing with a rectangular frame."},
+        ]
+        from affectiveart.track1_prompt_packet import compile_and_rank_packets
+
+        packets = compile_and_rank_packets(rows)
+
+        self.assertEqual(packets[0]["sample_id"], "track1_0003")
+        self.assertEqual(packets[1]["sample_id"], "track1_0002")
+        self.assertEqual(packets[-1]["sample_id"], "track1_0001")
+
 
 if __name__ == "__main__":
     unittest.main()

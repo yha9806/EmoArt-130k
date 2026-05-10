@@ -75,6 +75,15 @@ def compile_prompt_packet(sample_id: str, caption: str) -> dict[str, Any]:
     }
 
 
+def compile_and_rank_packets(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    packets = [
+        compile_prompt_packet(str(row["sample_id"]), str(row["caption"]))
+        for row in rows
+    ]
+    packets.sort(key=lambda item: (item["risk_score"], item["sample_id"]), reverse=True)
+    return packets
+
+
 def _extract_allowed_text(caption: str) -> list[str]:
     found = []
     for label, pattern in TEXT_PATTERNS:
@@ -125,6 +134,8 @@ def _risk_score(caption: str, allowed_text: list[str], category: str) -> float:
         score += 1.0
     if category in {"poster", "scroll", "drawing_on_paper", "album_leaf"}:
         score += 1.0
+    if category == "drawing_on_paper":
+        score += 0.6
     for clue in ("graph paper", "rectangular frame", "calligraphy", "Cyrillic", "propaganda", "border"):
         if clue.lower() in caption.lower():
             score += 0.5
