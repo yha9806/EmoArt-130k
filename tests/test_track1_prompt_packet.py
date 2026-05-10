@@ -41,6 +41,7 @@ class Track1PromptPacketTest(unittest.TestCase):
         self.assertIn("poster layout", packet["allowed_surface_features"])
         self.assertIn("aged paper", packet["unrequested_physical_artifact_features"])
         self.assertIn("thick decorative border", packet["unrequested_physical_artifact_features"])
+        self.assertIn("outer gray or black frame", packet["unrequested_physical_artifact_features"])
 
     def test_compile_prompt_packet_extracts_album_leaf_surface_requirements(self):
         packet = compile_prompt_packet(
@@ -52,6 +53,7 @@ class Track1PromptPacketTest(unittest.TestCase):
         self.assertIn("blank ruled page", packet["caption_required_surface_features"])
         self.assertIn("pale patterned border", packet["caption_required_surface_features"])
         self.assertIn("album leaf flat page surface", packet["allowed_surface_features"])
+        self.assertIn("photo-style mat border", packet["unrequested_physical_artifact_features"])
 
     def test_compile_prompt_packet_forbids_text_when_not_requested(self):
         packet = compile_prompt_packet(
