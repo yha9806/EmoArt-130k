@@ -41,11 +41,26 @@ def compile_vulca_prompt(packet: dict[str, Any]) -> str:
         lines.append("- Required surface features from caption: " + ", ".join(required_surface))
     else:
         lines.append("- Required surface features from caption: none")
-        lines.append(
-            "- No extra border, aged paper, folded paper, mat, shadow, or physical display treatment unless the caption explicitly asks for it."
-        )
+        if packet.get("artwork_category") == "poster":
+            lines.append(
+                "- Poster may include internal printed margins, typography blocks, or graphic border lines as part of the poster design."
+            )
+            lines.append(
+                "- Do not add an external frame, photo mat, wall display, drop shadow, catalog mockup, or product-photo presentation."
+            )
+        else:
+            lines.append(
+                "- No extra border, aged paper, folded paper, mat, shadow, or physical display treatment unless the caption explicitly asks for it."
+            )
     if allowed_surface:
         lines.append("- Allowed surface treatment: " + ", ".join(allowed_surface))
+    if packet.get("artwork_category") == "album_leaf":
+        lines.append(
+            "- Album leaf borders must be printed or painted internal page design only, not an external frame."
+        )
+        lines.append(
+            "- Do not surround the album leaf with an outer gray or black frame, photo mat, shadow, or display mount."
+        )
     if unrequested_surface:
         lines.append(
             "- Do not add unrequested physical artifact features: "

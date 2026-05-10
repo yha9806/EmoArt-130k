@@ -50,14 +50,24 @@ class Track1CompilerGateTest(unittest.TestCase):
             "allowed_text": ["Cyrillic lettering"],
             "forbidden_artifacts": ["gallery wall"],
             "caption_required_surface_features": [],
-            "allowed_surface_features": ["poster layout"],
-            "unrequested_physical_artifact_features": ["aged paper", "unrequested white mat border"],
+            "allowed_surface_features": [
+                "poster layout",
+                "internal printed margin",
+                "graphic border line",
+                "poster design border",
+            ],
+            "unrequested_physical_artifact_features": [
+                "aged paper",
+                "external decorative frame",
+                "unrequested white mat border",
+            ],
         }
 
         prompt = compile_vulca_prompt(packet)
 
-        self.assertIn("No extra border, aged paper, folded paper, mat, shadow, or physical display treatment unless the caption explicitly asks for it.", prompt)
-        self.assertIn("Do not add unrequested physical artifact features: aged paper, unrequested white mat border", prompt)
+        self.assertIn("Poster may include internal printed margins, typography blocks, or graphic border lines as part of the poster design.", prompt)
+        self.assertIn("Do not add an external frame, photo mat, wall display, drop shadow, catalog mockup, or product-photo presentation.", prompt)
+        self.assertIn("Do not add unrequested physical artifact features: aged paper, external decorative frame, unrequested white mat border", prompt)
 
     def test_compile_vulca_prompt_uses_provider_safe_wording_for_caricature_panels(self):
         packet = {
@@ -75,6 +85,26 @@ class Track1CompilerGateTest(unittest.TestCase):
 
         self.assertIn("non-graphic symbolic anti-fascist caricature panels", prompt)
         self.assertNotIn("anti-fascist caricature scenes", prompt)
+
+    def test_compile_vulca_prompt_keeps_album_leaf_border_internal(self):
+        packet = {
+            "caption": "A Gongbi album leaf with calligraphy, lychee fruits, and a pale patterned border.",
+            "artwork_category": "album_leaf",
+            "hard_requirements": ["lychee fruits", "pale patterned border"],
+            "allowed_text": ["calligraphy"],
+            "forbidden_artifacts": ["gallery wall"],
+            "caption_required_surface_features": ["open album leaf", "pale patterned border"],
+            "allowed_surface_features": ["album leaf flat page surface"],
+            "unrequested_physical_artifact_features": [
+                "photo-style mat border",
+                "outer gray or black frame",
+            ],
+        }
+
+        prompt = compile_vulca_prompt(packet)
+
+        self.assertIn("Album leaf borders must be printed or painted internal page design only", prompt)
+        self.assertIn("Do not surround the album leaf with an outer gray or black frame, photo mat, shadow, or display mount.", prompt)
 
     def test_decision_rejects_when_candidate_not_clear_win(self):
         decision = decision_from_scores(

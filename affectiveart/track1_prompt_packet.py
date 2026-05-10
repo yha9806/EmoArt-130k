@@ -62,7 +62,7 @@ UNREQUESTED_PHYSICAL_ARTIFACT_FEATURES = [
     "folded paper",
     "unrequested white mat border",
     "photo-style mat border",
-    "thick decorative border",
+    "external decorative frame",
     "outer gray or black frame",
     "paper curl",
     "drop shadow",
@@ -151,7 +151,12 @@ def _extract_caption_required_surface_features(caption: str) -> list[str]:
 
 def _allowed_surface_features(category: str) -> list[str]:
     return {
-        "poster": ["poster layout"],
+        "poster": [
+            "poster layout",
+            "internal printed margin",
+            "graphic border line",
+            "poster design border",
+        ],
         "album_leaf": ["album leaf flat page surface"],
         "scroll": ["flat scroll paper or silk surface"],
         "drawing_on_paper": ["flat drawing paper surface"],

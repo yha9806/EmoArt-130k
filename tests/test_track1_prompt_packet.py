@@ -39,8 +39,12 @@ class Track1PromptPacketTest(unittest.TestCase):
 
         self.assertEqual(packet["caption_required_surface_features"], [])
         self.assertIn("poster layout", packet["allowed_surface_features"])
+        self.assertIn("internal printed margin", packet["allowed_surface_features"])
+        self.assertIn("graphic border line", packet["allowed_surface_features"])
+        self.assertIn("poster design border", packet["allowed_surface_features"])
         self.assertIn("aged paper", packet["unrequested_physical_artifact_features"])
-        self.assertIn("thick decorative border", packet["unrequested_physical_artifact_features"])
+        self.assertNotIn("thick decorative border", packet["unrequested_physical_artifact_features"])
+        self.assertIn("external decorative frame", packet["unrequested_physical_artifact_features"])
         self.assertIn("outer gray or black frame", packet["unrequested_physical_artifact_features"])
 
     def test_compile_prompt_packet_extracts_album_leaf_surface_requirements(self):
