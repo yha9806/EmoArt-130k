@@ -1,0 +1,52 @@
+{
+  "decisions": [
+    {
+      "sample_id": "track1_0151",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0193",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0235",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0534",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0686",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0694",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0709",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    },
+    {
+      "sample_id": "track1_0802",
+      "decision": "accept",
+      "status": "accept",
+      "source": "high_precision_8"
+    }
+  ]
+}

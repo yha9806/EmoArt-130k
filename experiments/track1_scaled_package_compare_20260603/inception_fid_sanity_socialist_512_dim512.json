@@ -1,0 +1,59 @@
+{
+  "method": {
+    "batch_size": 32,
+    "device": "mps",
+    "fid_feature_dim": 512,
+    "name": "local_inception_v3_fid_like_sanity",
+    "note": "Not the official hidden evaluator. Uses torchvision InceptionV3 pool features, torchvision-style resize/normalization, sampled local EmoArt reference images, and an optional deterministic Gaussian random projection before Fréchet distance.",
+    "projection": "deterministic Gaussian random projection seeded by reference_seed when fid_feature_dim < Inception feature dim",
+    "reference_count": 512,
+    "reference_feature_shape": [
+      512,
+      512
+    ],
+    "reference_limit": 512,
+    "reference_root": "/Users/yhryzy/dev/emoart-challenge/data/EmoArt-130k",
+    "reference_seed": 20260603,
+    "reference_styles": [
+      "Socialist Realism",
+      "Social Realism"
+    ]
+  },
+  "packages": [
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 82.361616,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_scaled_expanded_20260603/images",
+      "package": "expanded_12",
+      "submission_json": "submissions/track1_candidate_scaled_expanded_20260603/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 82.379847,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_scaled_high_precision_20260602/images",
+      "package": "high_precision_8",
+      "submission_json": "submissions/track1_candidate_scaled_high_precision_20260602/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 82.40618,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_human_v21_plus0816_20260514/images",
+      "package": "base",
+      "submission_json": "submissions/track1_candidate_human_v21_plus0816_20260514/submission.json"
+    }
+  ],
+  "recommended_by_fid_like": "expanded_12",
+  "wall_seconds": 94.42
+}
