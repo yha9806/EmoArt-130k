@@ -4,12 +4,19 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from affectiveart.track2_disagreement_review import write_disagreement_review_outputs
 from affectiveart.track2_public_style_distillation import load_high_similarity_sample_ids
+
+
+def validate_input_paths(parser: argparse.ArgumentParser, paths: list[Path]) -> None:
+    for path in paths:
+        if not path.exists():
+            parser.error(f"missing required input: {path}")
 
 
 def main() -> None:
@@ -44,15 +51,29 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    high_similarity_sample_ids = load_high_similarity_sample_ids(args.high_similarity_json)
-    report = write_disagreement_review_outputs(
-        current_json=args.current_json,
-        clean_predictions_json=args.clean_predictions_json,
-        inclusive_predictions_json=args.inclusive_predictions_json,
-        image_zip=args.image_zip,
-        out_dir=args.out_dir,
-        high_similarity_sample_ids=high_similarity_sample_ids,
+    validate_input_paths(
+        parser,
+        [
+            args.current_json,
+            args.clean_predictions_json,
+            args.inclusive_predictions_json,
+            args.high_similarity_json,
+            args.image_zip,
+        ],
     )
+    try:
+        high_similarity_sample_ids = load_high_similarity_sample_ids(args.high_similarity_json)
+        report = write_disagreement_review_outputs(
+            current_json=args.current_json,
+            clean_predictions_json=args.clean_predictions_json,
+            inclusive_predictions_json=args.inclusive_predictions_json,
+            image_zip=args.image_zip,
+            out_dir=args.out_dir,
+            high_similarity_sample_ids=high_similarity_sample_ids,
+        )
+    except (OSError, ValueError, json.JSONDecodeError, zipfile.BadZipFile) as exc:
+        parser.error(str(exc) or exc.__class__.__name__)
+
     print(
         json.dumps(
             {
