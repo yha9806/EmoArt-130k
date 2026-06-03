@@ -10,9 +10,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
-from affectiveart.track2_visual_audit import find_track2_image_member
-
-
 DECISION_COLUMNS = [
     "sample_id",
     "category",
@@ -575,6 +572,23 @@ def _image_members_by_sample_id(image_zip: str | Path, sample_ids: Iterable[str]
     with zipfile.ZipFile(image_zip) as zf:
         names = zf.namelist()
     return {sample_id: find_track2_image_member(names, sample_id) for sample_id in sample_ids}
+
+
+def find_track2_image_member(names: Iterable[str], sample_id: str) -> str:
+    candidates = [
+        f"images/{sample_id}.jpg",
+        f"track2_testset/images/{sample_id}.jpg",
+        f"{sample_id}.jpg",
+    ]
+    name_set = set(names)
+    for candidate in candidates:
+        if candidate in name_set:
+            return candidate
+    suffix = f"/{sample_id}.jpg"
+    for name in names:
+        if name.endswith(suffix) and "__MACOSX" not in name:
+            return name
+    return ""
 
 
 def _extract_assets(image_zip: str | Path, rows: list[dict[str, Any]], assets_dir: Path) -> None:

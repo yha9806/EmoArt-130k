@@ -10,13 +10,26 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from affectiveart.track2_disagreement_review import write_disagreement_review_outputs
-from affectiveart.track2_public_style_distillation import load_high_similarity_sample_ids
 
 
 def validate_input_paths(parser: argparse.ArgumentParser, paths: list[Path]) -> None:
     for path in paths:
         if not path.exists():
             parser.error(f"missing required input: {path}")
+
+
+def load_high_similarity_sample_ids(path: str | Path) -> set[str]:
+    payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    if isinstance(payload, dict) and isinstance(payload.get("unique_sample_ids"), list):
+        return {str(sample_id) for sample_id in payload["unique_sample_ids"] if sample_id}
+    rows = payload.get("entries", payload) if isinstance(payload, dict) else payload
+    if not isinstance(rows, list):
+        raise TypeError(f"expected list or object with entries: {path}")
+    ids: set[str] = set()
+    for row in rows:
+        if isinstance(row, dict) and row.get("sample_id"):
+            ids.add(str(row["sample_id"]))
+    return ids
 
 
 def main() -> None:
