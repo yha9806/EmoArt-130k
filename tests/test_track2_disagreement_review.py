@@ -252,6 +252,8 @@ class Track2DisagreementReviewTest(unittest.TestCase):
         import sys
 
         with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(__file__).resolve().parents[1]
+            script = repo_root / "scripts" / "build_track2_clean_inclusive_disagreement_review.py"
             tmp_path = Path(tmp)
             current_json = tmp_path / "current.json"
             clean_json = tmp_path / "clean.json"
@@ -280,7 +282,7 @@ class Track2DisagreementReviewTest(unittest.TestCase):
             result = subprocess.run(
                 [
                     sys.executable,
-                    "scripts/build_track2_clean_inclusive_disagreement_review.py",
+                    str(script),
                     "--current-json",
                     str(current_json),
                     "--clean-predictions-json",
@@ -295,14 +297,74 @@ class Track2DisagreementReviewTest(unittest.TestCase):
                     str(out_dir),
                 ],
                 check=True,
-                cwd=Path.cwd(),
+                cwd=repo_root,
                 capture_output=True,
                 text=True,
             )
 
-            self.assertIn("track2_clean_inclusive_disagreement_review.html", result.stdout)
+            payload = json.loads(result.stdout)
+            self.assertEqual(payload["row_count"], 1)
+            self.assertEqual(payload["category_counts"]["inclusive_only_change"], 1)
+            self.assertEqual(payload["category_counts"]["clean_only_change"], 0)
+            self.assertEqual(payload["category_counts"]["clean_inclusive_conflict"], 0)
+            self.assertEqual(payload["high_similarity_count"], 1)
+            self.assertEqual(set(payload["outputs"]), {"html", "csv", "json", "markdown"})
+            self.assertIn("track2_clean_inclusive_disagreement_review.html", payload["outputs"]["html"])
             self.assertTrue((out_dir / "html_review" / "track2_clean_inclusive_disagreement_review.html").exists())
             self.assertTrue((out_dir / "track2_clean_inclusive_disagreement_decisions.csv").exists())
+
+    def test_cli_missing_high_similarity_manifest_fails_cleanly(self):
+        import subprocess
+        import sys
+
+        with tempfile.TemporaryDirectory() as tmp:
+            repo_root = Path(__file__).resolve().parents[1]
+            script = repo_root / "scripts" / "build_track2_clean_inclusive_disagreement_review.py"
+            tmp_path = Path(tmp)
+            current_json = tmp_path / "current.json"
+            clean_json = tmp_path / "clean.json"
+            inclusive_json = tmp_path / "inclusive.json"
+            high_similarity_json = tmp_path / "missing_high_similarity.json"
+            image_zip = tmp_path / "track2.zip"
+            out_dir = tmp_path / "out"
+            current_json.write_text(json.dumps([current_row("track2_0001", "content")]), encoding="utf-8")
+            clean_json.write_text(
+                json.dumps({"entries": [pred("track2_0001", "content", "content")]}),
+                encoding="utf-8",
+            )
+            inclusive_json.write_text(
+                json.dumps({"entries": [pred("track2_0001", "content", "calm")]}),
+                encoding="utf-8",
+            )
+            img1 = tmp_path / "track2_0001.jpg"
+            Image.new("RGB", (64, 48), (200, 100, 20)).save(img1)
+            with zipfile.ZipFile(image_zip, "w") as zf:
+                zf.write(img1, "images/track2_0001.jpg")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(script),
+                    "--current-json",
+                    str(current_json),
+                    "--clean-predictions-json",
+                    str(clean_json),
+                    "--inclusive-predictions-json",
+                    str(inclusive_json),
+                    "--high-similarity-json",
+                    str(high_similarity_json),
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ],
+                cwd=repo_root,
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("missing required input", result.stderr)
 
 
 if __name__ == "__main__":
