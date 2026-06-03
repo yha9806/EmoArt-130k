@@ -71,8 +71,8 @@ def main() -> None:
             out_dir=args.out_dir,
             high_similarity_sample_ids=high_similarity_sample_ids,
         )
-    except (OSError, ValueError, json.JSONDecodeError, zipfile.BadZipFile) as exc:
-        parser.error(str(exc) or exc.__class__.__name__)
+    except (OSError, TypeError, ValueError, json.JSONDecodeError, zipfile.BadZipFile) as exc:
+        parser.error(f"invalid input: {str(exc) or exc.__class__.__name__}")
 
     print(
         json.dumps(
