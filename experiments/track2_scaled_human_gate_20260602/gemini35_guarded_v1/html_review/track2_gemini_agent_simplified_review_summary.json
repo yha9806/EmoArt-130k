@@ -1,0 +1,16 @@
+{
+  "method": "track2_gemini_agent_simplified_review_v1",
+  "html": "/Users/yhryzy/dev/emoart-130k/experiments/track2_scaled_human_gate_20260602/gemini35_guarded_v1/html_review/track2_gemini_agent_simplified_review.html",
+  "csv": "/Users/yhryzy/dev/emoart-130k/experiments/track2_scaled_human_gate_20260602/gemini35_guarded_v1/html_review/track2_gemini_agent_simplified_review.csv",
+  "tier_counts": {
+    "A": 19,
+    "B": 2,
+    "C": 3
+  },
+  "human_final_confirmed": false,
+  "formal_submission_overwritten": false,
+  "gemini_agent_result_summary": {
+    "high_conf_contact_sheet": "Gemini-agent judged the 19 high-confidence rollback rows as favoring guarded/base labels.",
+    "risk_context_contact_sheet": "Gemini-agent agreed with guarded for 0139 and 0635, and suggested base for 0547, 0869, 0964 at confidence 3."
+  }
+}

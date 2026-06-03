@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AffectiveArt Track2 Gemini 3.5 Guarded Review</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: #d7dbe0;
+      --panel: #f7f8fa;
+      --white: #ffffff;
+      --blue: #1f5eff;
+      --green: #0b7f58;
+      --orange: #b75e00;
+      --red: #b3261e;
+      --shadow: 0 8px 22px rgba(32, 33, 36, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background: #eef1f5;
+      letter-spacing: 0;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .topbar {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .subtitle {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      padding: 8px 11px;
+      border-radius: 7px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button.active {
+      color: white;
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    main {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 18px 20px 48px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .metric, .nav-panel, .review-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .metric {
+      padding: 14px;
+      min-height: 88px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+    .metric span, .muted, figcaption, .bucket {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .nav-panel {
+      padding: 12px;
+      margin-bottom: 18px;
+    }
+    .nav-panel h2 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .nav-links a {
+      color: var(--blue);
+      text-decoration: none;
+      border: 1px solid #cbd6ff;
+      background: #f4f6ff;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .nav-links a[data-bucket="high_conf_rollback"] {
+      color: var(--red);
+      border-color: #ffd0cc;
+      background: #fff5f4;
+    }
+    .review-card {
+      margin: 0 0 18px;
+      padding: 16px;
+      scroll-margin-top: 104px;
+    }
+    .card-head, .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .index {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    h2 {
+      margin: 2px 0;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+    h3 {
+      margin: 0 0 7px;
+      font-size: 13px;
+    }
+    .anchor {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 45%) minmax(420px, 1fr);
+      gap: 18px;
+      margin-top: 12px;
+    }
+    figure {
+      margin: 0;
+    }
+    img {
+      display: block;
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      background: #f0f0f0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .label-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .label {
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px;
+      min-height: 76px;
+      display: grid;
+      gap: 5px;
+      background: var(--panel);
+    }
+    .label strong {
+      font-size: 18px;
+    }
+    .label.base { border-left: 5px solid var(--green); }
+    .label.desc { border-left: 5px solid var(--orange); }
+    .label.guarded { border-left: 5px solid var(--blue); }
+    .meta-row {
+      margin: 12px 0;
+      justify-content: flex-start;
+      color: #363a3f;
+      font-size: 13px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .chip {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #fbfbfc;
+      color: #41464c;
+      font-size: 12px;
+    }
+    .rationale {
+      line-height: 1.55;
+      margin: 10px 0 12px;
+      padding: 11px;
+      border-left: 4px solid var(--red);
+      background: #fff7f5;
+      border-radius: 5px;
+    }
+    .human-box {
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+      border-radius: 7px;
+      padding: 12px;
+    }
+    .choices {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 72px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px;
+      font: inherit;
+      background: white;
+    }
+    details {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    dl {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 8px 14px;
+      margin: 12px 0 0;
+    }
+    dt {
+      color: var(--muted);
+      font-weight: 700;
+    }
+    dd {
+      margin: 0;
+      line-height: 1.5;
+    }
+    .transitions {
+      columns: 2;
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #40444a;
+      font-size: 13px;
+    }
+    .transitions li {
+      break-inside: avoid;
+      margin-bottom: 5px;
+    }
+    .transitions strong {
+      margin-left: 6px;
+    }
+    pre {
+      overflow: auto;
+      max-height: 180px;
+      padding: 10px;
+      background: #202124;
+      color: #f8fafd;
+      border-radius: 7px;
+      font-size: 12px;
+    }
+    .hidden { display: none; }
+    @media (max-width: 980px) {
+      .topbar, .card-grid, .label-grid, .summary-grid {
+        grid-template-columns: 1fr;
+      }
+      .toolbar {
+        justify-content: flex-start;
+      }
+      .review-card {
+        scroll-margin-top: 156px;
+      }
+      dl {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div>
+      <h1>Track2 Gemini 3.5 Guarded 人工复审 / Manual Review</h1>
+      <p class="subtitle">Draft review console. It does not modify submission files or mark rows as human-confirmed.</p>
+    </div>
+    <div class="toolbar">
+      <button class="active" data-filter="all">全部 All</button>
+      <button data-filter="high_conf_rollback">只看 19 个回滚</button>
+      <button data-filter="risk_context">旁证 Risk rows</button>
+      <button id="export-json">导出决策 JSON</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="summary-grid">
+    <div class="metric"><span>Risk rows / 风险样本</span><strong>24</strong></div>
+    <div class="metric"><span>High-conf rollback / 高置信回滚</span><strong>19</strong></div>
+    <div class="metric"><span>Guarded rollback count</span><strong>19</strong></div>
+    <div class="metric"><span>Formal submission overwritten?</span><strong>False</strong></div>
+  </section>
+  <section class="nav-panel">
+    <h2>快速跳转 / Quick jump</h2>
+    <div class="nav-links"><a href="#track2_0259" data-bucket="high_conf_rollback">track2_0259</a><a href="#track2_0383" data-bucket="high_conf_rollback">track2_0383</a><a href="#track2_0564" data-bucket="high_conf_rollback">track2_0564</a><a href="#track2_0591" data-bucket="high_conf_rollback">track2_0591</a><a href="#track2_0357" data-bucket="high_conf_rollback">track2_0357</a><a href="#track2_0441" data-bucket="high_conf_rollback">track2_0441</a><a href="#track2_0506" data-bucket="high_conf_rollback">track2_0506</a><a href="#track2_0666" data-bucket="high_conf_rollback">track2_0666</a><a href="#track2_0976" data-bucket="high_conf_rollback">track2_0976</a><a href="#track2_0123" data-bucket="high_conf_rollback">track2_0123</a><a href="#track2_0733" data-bucket="high_conf_rollback">track2_0733</a><a href="#track2_0161" data-bucket="high_conf_rollback">track2_0161</a><a href="#track2_0199" data-bucket="high_conf_rollback">track2_0199</a><a href="#track2_0281" data-bucket="high_conf_rollback">track2_0281</a><a href="#track2_0308" data-bucket="high_conf_rollback">track2_0308</a><a href="#track2_0569" data-bucket="high_conf_rollback">track2_0569</a><a href="#track2_0606" data-bucket="high_conf_rollback">track2_0606</a><a href="#track2_0794" data-bucket="high_conf_rollback">track2_0794</a><a href="#track2_0866" data-bucket="high_conf_rollback">track2_0866</a><a href="#track2_0139" data-bucket="risk_context">track2_0139</a><a href="#track2_0547" data-bucket="risk_context">track2_0547</a><a href="#track2_0635" data-bucket="risk_context">track2_0635</a><a href="#track2_0869" data-bucket="risk_context">track2_0869</a><a href="#track2_0964" data-bucket="risk_context">track2_0964</a></div>
+    <details>
+      <summary>Transition summary / 标签迁移概览</summary>
+      <ul class="transitions"><li><span>calm-&gt;content</span><strong>8</strong></li><li><span>calm-&gt;annoyed</span><strong>3</strong></li><li><span>calm-&gt;tired</span><strong>2</strong></li><li><span>calm-&gt;bored</span><strong>1</strong></li><li><span>calm-&gt;sad</span><strong>1</strong></li><li><span>calm-&gt;frustrated</span><strong>1</strong></li><li><span>annoyed-&gt;calm</span><strong>1</strong></li><li><span>alarmed-&gt;sad</span><strong>1</strong></li><li><span>content-&gt;tired</span><strong>1</strong></li><li><span>aroused-&gt;calm</span><strong>1</strong></li><li><span>content-&gt;glad</span><strong>1</strong></li><li><span>tired-&gt;calm</span><strong>1</strong></li><li><span>excited-&gt;happy</span><strong>1</strong></li><li><span>happy-&gt;excited</span><strong>1</strong></li></ul>
+      <pre>{
+  &quot;audit_model&quot;: &quot;gemini-3.5-flash&quot;,
+  &quot;queue_count&quot;: 79,
+  &quot;decision_counts&quot;: {
+    &quot;change_to_base&quot;: 22,
+    &quot;keep_final&quot;: 57
+  },
+  &quot;high_conf_block_count&quot;: 19,
+  &quot;guarded_rollback_count&quot;: 19,
+  &quot;formal_submission_overwritten&quot;: false
+}</pre>
+    </details>
+  </section>
+
+<article class="review-card" id="track2_0259" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#01</div>
+      <h2>track2_0259</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0259">#track2_0259</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0259.jpg" alt="track2_0259 artwork">
+      <figcaption>track2_0259 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>tired</strong><span class="muted">疲惫</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;tired</span>
+        <span><strong>Confidence:</strong> 5/5</span>
+        <span><strong>Text:</strong> major_issue</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_negative_low_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The artwork depicts a serene, peaceful expression of a woman with closed eyes, which is described in the text as evoking inner peace and tranquility, making &#x27;calm&#x27; a much more accurate label than &#x27;tired&#x27;.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0259" value="keep_guarded_rollback" data-sample="track2_0259" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0259" value="restore_desc_v1" data-sample="track2_0259" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0259" value="hold_manual" data-sample="track2_0259" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0259" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene and intimate close-up of a woman&#x27;s face with closed eyes, rendered in a traditional Japanese woodblock print style that evokes a sense of quietude and inner peace.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>The woodblock technique produces smooth, flat color fields and meticulously carved details, particularly visible in the fine strands of hair and the repetitive pattern of the garment.</dd><dt>Composition / 构图</dt><dd>The composition is a tight, diagonal close-up of the face, creating an intimate and focused perspective that emphasizes the subject&#x27;s tranquil expression.</dd><dt>Color / 色彩</dt><dd>A minimalist palette featuring deep black for the hair, a soft white for the skin, and a muted reddish-brown for the patterned fabric, all set against a dark, weathered background.</dd><dt>Line / 线条</dt><dd>Delicate, flowing black lines define the facial features and the complex arrangement of the hair, contributing to the overall sense of elegance and refinement.</dd><dt>Light / 光线</dt><dd>The lighting is flat and even, characteristic of ukiyo-e prints, which avoids harsh shadows and maintains a soft, gentle atmosphere across the subject&#x27;s face.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0383" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#02</div>
+      <h2>track2_0383</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0383">#track2_0383</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0383.jpg" alt="track2_0383 artwork">
+      <figcaption>track2_0383 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>bored</strong><span class="muted">厌倦</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;bored</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_negative_low_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The neutral, serene expressions of the figures in this classical portrait are better described as calm rather than bored.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0383" value="keep_guarded_rollback" data-sample="track2_0383" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0383" value="restore_desc_v1" data-sample="track2_0383" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0383" value="hold_manual" data-sample="track2_0383" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0383" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A detailed engraving depicting a bearded man in profile looking towards a woman wearing an ornate headpiece and veil, set against a neutral background.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, meticulous stippling and cross-hatching create subtle tonal gradations and textures in the hair and skin.</dd><dt>Composition / 构图</dt><dd>A close-up, side-by-side arrangement of two heads, with the man on the left and the woman on the right, creating a sense of intimate proximity.</dd><dt>Color / 色彩</dt><dd>A monochromatic palette of sepia and cream tones, emphasizing form and texture over hue.</dd><dt>Line / 线条</dt><dd>Precise, delicate lines define the intricate details of the hair, facial features, and the woman&#x27;s elaborate headpiece.</dd><dt>Light / 光线</dt><dd>Soft, diffused light coming from the front-left, casting gentle shadows that model the facial features and provide a sense of three-dimensionality.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0564" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#03</div>
+      <h2>track2_0564</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0564">#track2_0564</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0564.jpg" alt="track2_0564 artwork">
+      <figcaption>track2_0564 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>tired</strong><span class="muted">疲惫</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;tired</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_negative_low_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene depiction of a resting bird in a traditional Japanese woodblock print evokes a sense of peace and calmness rather than negative exhaustion or tiredness.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0564" value="keep_guarded_rollback" data-sample="track2_0564" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0564" value="restore_desc_v1" data-sample="track2_0564" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0564" value="hold_manual" data-sample="track2_0564" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0564" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene Japanese woodblock print featuring a resting bird with its head tucked, accompanied by elegant calligraphic poetry.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Precise woodblock carving creates fine details in the feathers, while subtle ink gradations provide soft shading.</dd><dt>Composition / 构图</dt><dd>An asymmetrical arrangement where the bird occupies the lower right, balanced by vertical columns of flowing calligraphy on the left.</dd><dt>Color / 色彩</dt><dd>A restrained palette of muted greys, blacks, and creams, with soft blue-grey accents in the background elements.</dd><dt>Line / 线条</dt><dd>Elegant, fluid calligraphic strokes contrast with the delicate, descriptive outlines of the bird&#x27;s form.</dd><dt>Light / 光线</dt><dd>Soft, ambient light without direct shadows, emphasizing the flat, decorative quality of the print.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0591" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#04</div>
+      <h2>track2_0591</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0591">#track2_0591</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0591.jpg" alt="track2_0591 artwork">
+      <figcaption>track2_0591 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>sad</strong><span class="muted">悲伤</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;sad</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_negative_low_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The subject&#x27;s gentle, serene facial expression and poised posture convey a sense of quiet dignity and calm rather than sadness, despite the dark color palette.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0591" value="keep_guarded_rollback" data-sample="track2_0591" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0591" value="restore_desc_v1" data-sample="track2_0591" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0591" value="hold_manual" data-sample="track2_0591" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0591" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> An elderly woman in a black dress sits in a dimly lit interior, her presence marked by a sense of quiet dignity and stillness.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Broad, confident strokes define the clothing, while finer details are reserved for the face and lace curtains.</dd><dt>Composition / 构图</dt><dd>The subject is centrally placed, creating a stable arrangement framed by the vertical lines of a mirror and window.</dd><dt>Color / 色彩</dt><dd>A dark, tonalist palette of black, navy, and deep brown contrasts with the pale skin tones of the subject.</dd><dt>Line / 线条</dt><dd>Softened edges and atmospheric blending minimize harsh lines, while the shutters and mirror provide vertical structure.</dd><dt>Light / 光线</dt><dd>A side light source creates a strong chiaroscuro effect, highlighting the woman&#x27;s features against the dark background.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0357" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#05</div>
+      <h2>track2_0357</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0357">#track2_0357</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0357.jpg" alt="track2_0357 artwork">
+      <figcaption>track2_0357 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>frustrated</strong><span class="muted">挫败/受阻</span><span>Negative / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;frustrated</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> major_issue</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The caption explicitly describes the scene as having a calm and contemplative atmosphere, which directly contradicts the final label of frustrated.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0357" value="keep_guarded_rollback" data-sample="track2_0357" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0357" value="restore_desc_v1" data-sample="track2_0357" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0357" value="hold_manual" data-sample="track2_0357" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0357" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A woodblock print capturing people moving across a bridge during a summer rainstorm, where the rhythmic rain and structured bridge create a calm, contemplative emotional atmosphere.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, repetitive carved lines create the texture of the rain and the wooden bridge, characteristic of the ukiyo-e woodblock technique.</dd><dt>Composition / 构图</dt><dd>Strong diagonal lines of the bridge and rain organize the scene into a rhythmic, balanced movement.</dd><dt>Color / 色彩</dt><dd>Dominated by cool blues and greys with a dark, brooding sky, contrasted by the warm wood tones of the bridge and small red accents.</dd><dt>Line / 线条</dt><dd>Sharp, straight, and densely packed diagonal lines represent the driving rain, cutting across the scene to emphasize the storm&#x27;s power.</dd><dt>Light / 光线</dt><dd>Low-key and atmospheric, with a dark gradient at the top of the sky suggesting storm clouds and diffused daylight.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0441" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#06</div>
+      <h2>track2_0441</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0441">#track2_0441</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0441.jpg" alt="track2_0441 artwork">
+      <figcaption>track2_0441 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> annoyed-&gt;calm</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The painting depicts two water buffaloes locked in a head-butting struggle, which conveys physical tension and conflict rather than calmness.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0441" value="keep_guarded_rollback" data-sample="track2_0441" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0441" value="restore_desc_v1" data-sample="track2_0441" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0441" value="hold_manual" data-sample="track2_0441" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0441" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A traditional Chinese ink painting on aged silk depicting two water buffaloes locked in a head-butting struggle, emphasizing physical power and tension.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Subtle ink washes create the rounded volumes of the buffaloes&#x27; bodies, while more defined strokes detail their horns and legs.</dd><dt>Composition / 构图</dt><dd>The animals are clustered in the lower left, leaving significant negative space filled with calligraphic inscriptions and seals.</dd><dt>Color / 色彩</dt><dd>Dominated by the warm, sepia tones of the aged silk background and the muted greys and browns of the ink.</dd><dt>Line / 线条</dt><dd>Expressive yet controlled lines outline the animals, capturing the strain in their postures and the curve of their horns.</dd><dt>Light / 光线</dt><dd>Flat, ambient lighting characteristic of traditional ink wash painting, using tonal gradation rather than direct light sources to suggest form.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0506" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#07</div>
+      <h2>track2_0506</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0506">#track2_0506</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0506.jpg" alt="track2_0506 artwork">
+      <figcaption>track2_0506 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;annoyed</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The balanced, centered composition and structured rhythmic depth of this abstract still life evoke a sense of order and calm rather than annoyance.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0506" value="keep_guarded_rollback" data-sample="track2_0506" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0506" value="restore_desc_v1" data-sample="track2_0506" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0506" value="hold_manual" data-sample="track2_0506" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0506" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A stark black and white abstract composition featuring a complex interplay of geometric shapes, sharp angles, and organic curves that suggest a fragmented still life.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>The ink is applied in flat, solid blocks and clean lines, showing no visible brush texture or variation in density.</dd><dt>Composition / 构图</dt><dd>A balanced, centered arrangement of overlapping abstract forms and planes that creates a sense of structured, rhythmic depth.</dd><dt>Color / 色彩</dt><dd>A high-contrast monochromatic palette consisting solely of black ink on a light-colored, neutral background.</dd><dt>Line / 线条</dt><dd>Bold and varied, featuring both sharp, jagged edges and smooth, sweeping curves that define the boundaries of the abstract forms.</dd><dt>Light / 光线</dt><dd>There is no directional light source; the image relies entirely on the graphic contrast between black and white to define its spatial relationships.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0666" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#08</div>
+      <h2>track2_0666</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0666">#track2_0666</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0666.jpg" alt="track2_0666 artwork">
+      <figcaption>track2_0666 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>alarmed</strong><span class="muted">惊恐/警觉</span><span>Negative / High</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>sad</strong><span class="muted">悲伤</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>alarmed</strong><span class="muted">惊恐/警觉</span><span>Negative / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> alarmed-&gt;sad</span>
+        <span><strong>Confidence:</strong> 5/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The depiction of a desperate struggle with a beast and the text&#x27;s mention of violent movement and tension strongly align with high-arousal alarm rather than sadness.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0666" value="keep_guarded_rollback" data-sample="track2_0666" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0666" value="restore_desc_v1" data-sample="track2_0666" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0666" value="hold_manual" data-sample="track2_0666" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0666" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A person is depicted in a desperate struggle, pinned to the ground by a large, dark beast in a stark, monochromatic etching.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, dense cross-hatching and aquatint textures create a gritty, somber atmosphere.</dd><dt>Composition / 构图</dt><dd>The central focus is on the low-lying figures, creating a heavy, oppressive feeling within the rectangular frame.</dd><dt>Color / 色彩</dt><dd>A monochromatic palette of deep blacks, varied greys, and the aged cream of the paper.</dd><dt>Line / 线条</dt><dd>Jagged, expressive lines define the forms and convey a sense of violent movement and tension.</dd><dt>Light / 光线</dt><dd>Dramatic chiaroscuro with a strong light source from the left casting deep, textured shadows.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0976" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#09</div>
+      <h2>track2_0976</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0976">#track2_0976</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0976.jpg" alt="track2_0976 artwork">
+      <figcaption>track2_0976 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;annoyed</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The balanced, minimalist composition with clean lines and a neutral cream background evokes a sense of quiet and calm rather than the high-arousal irritation associated with annoyance.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0976" value="keep_guarded_rollback" data-sample="track2_0976" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0976" value="restore_desc_v1" data-sample="track2_0976" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0976" value="hold_manual" data-sample="track2_0976" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0976" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A minimalist abstract composition featuring bold, black geometric blocks and delicate curved lines against a neutral cream background.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Broad, flat applications of black ink with slightly textured, irregular edges characteristic of printmaking.</dd><dt>Composition / 构图</dt><dd>An asymmetrical but balanced arrangement of heavy vertical and horizontal forms interconnected by thin, sweeping lines.</dd><dt>Color / 色彩</dt><dd>A stark, high-contrast palette consisting solely of deep black and a warm, off-white background.</dd><dt>Line / 线条</dt><dd>A juxtaposition of thick, solid rectangular boundaries and thin, fluid, hand-drawn arcs.</dd><dt>Light / 光线</dt><dd>Flat, non-representational lighting where the white space acts as a source of brightness against the dense black shapes.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0123" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#10</div>
+      <h2>track2_0123</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0123">#track2_0123</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0123.jpg" alt="track2_0123 artwork">
+      <figcaption>track2_0123 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>tired</strong><span class="muted">疲惫</span><span>Negative / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> content-&gt;tired</span>
+        <span><strong>Confidence:</strong> 5/5</span>
+        <span><strong>Text:</strong> minor_issue</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The depiction of a man drinking from a wineskin represents refreshment and physical satisfaction, which aligns much better with &#x27;content&#x27; than &#x27;tired&#x27;.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0123" value="keep_guarded_rollback" data-sample="track2_0123" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0123" value="restore_desc_v1" data-sample="track2_0123" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0123" value="hold_manual" data-sample="track2_0123" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0123" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A man tilts his head back to catch a stream of liquid from a raised wineskin, capturing a moment of simple physical satisfaction.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Broad, confident brushstrokes define the textures of the clothing and the skin, with more delicate touches for the stream of liquid.</dd><dt>Composition / 构图</dt><dd>A vertical composition centered on the figure, with the raised arms and wineskin creating a dynamic upward movement balanced by the downward stream.</dd><dt>Color / 色彩</dt><dd>A limited palette of earthy browns, grays, and muted whites creates a somber yet warm atmosphere.</dd><dt>Line / 线条</dt><dd>Soft, blended lines define the forms, with sharper edges where the light hits the man&#x27;s profile and the stream of water.</dd><dt>Light / 光线</dt><dd>Dramatic side-lighting creates strong highlights on the man&#x27;s face and the wineskin, casting deep shadows that emphasize the three-dimensionality of the scene.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0733" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#11</div>
+      <h2>track2_0733</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0733">#track2_0733</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0733.jpg" alt="track2_0733 artwork">
+      <figcaption>track2_0733 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>aroused</strong><span class="muted">激发/兴奋</span><span>Positive / High</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>aroused</strong><span class="muted">激发/兴奋</span><span>Positive / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> aroused-&gt;calm</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> major_issue</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The dynamic composition, fierce warrior, and menacing dragon claw contradict the label &#x27;calm&#x27;, making the high-arousal base label &#x27;aroused&#x27; more appropriate.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0733" value="keep_guarded_rollback" data-sample="track2_0733" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0733" value="restore_desc_v1" data-sample="track2_0733" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0733" value="hold_manual" data-sample="track2_0733" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0733" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A dynamic and powerful ink wash painting depicting a fierce celestial warrior or deity amidst swirling clouds, with a dragon&#x27;s claw emerging from the mist.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>The brushwork combines fluid, atmospheric ink washes for the clouds with precise, rhythmic strokes for the figure&#x27;s armor and the dragon&#x27;s features.</dd><dt>Composition / 构图</dt><dd>An asymmetrical composition that creates a sense of movement and tension, balancing the detailed figure on the right with the dragon&#x27;s claw on the left through swirling negative space.</dd><dt>Color / 色彩</dt><dd>A monochromatic palette of ink on paper, ranging from deep, saturated blacks to soft, translucent grays that suggest depth and mist.</dd><dt>Line / 线条</dt><dd>Energetic, calligraphic lines define the flowing drapery and the sharp, menacing curves of the dragon&#x27;s claw, conveying a sense of supernatural power.</dd><dt>Light / 光线</dt><dd>The light is diffused and atmospheric, appearing to emanate from the paper itself and filtering through the dense, swirling clouds to highlight the central figures.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0161" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#12</div>
+      <h2>track2_0161</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0161">#track2_0161</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0161.jpg" alt="track2_0161 artwork">
+      <figcaption>track2_0161 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene and tranquil mood of the traditional landscape painting, described as peaceful and quiet, is more directly captured by the label calm than content.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0161" value="keep_guarded_rollback" data-sample="track2_0161" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0161" value="restore_desc_v1" data-sample="track2_0161" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0161" value="hold_manual" data-sample="track2_0161" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0161" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene traditional Chinese landscape painting depicting a rocky mountain overlooking a quiet village and a small boat on the water, evoking a sense of peaceful seclusion.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Delicate and varied ink washes combined with precise, fine-line detailing on the trees and architecture.</dd><dt>Composition / 构图</dt><dd>An asymmetrical balance with a dominant mountain mass on the left and open space with calligraphy on the right, creating a sense of depth and airiness.</dd><dt>Color / 色彩</dt><dd>A muted palette of earthy browns, pale blues, and subtle greens, typical of traditional ink and wash paintings.</dd><dt>Line / 线条</dt><dd>Fine, rhythmic lines define the contours of the rocks and the intricate branches of the trees, providing structure and texture.</dd><dt>Light / 光线</dt><dd>Soft, diffused light that suggests a hazy or overcast day, with no harsh shadows, contributing to the tranquil mood.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0199" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#13</div>
+      <h2>track2_0199</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0199">#track2_0199</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0199.jpg" alt="track2_0199 artwork">
+      <figcaption>track2_0199 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The subdued palette and soft lighting create a peaceful atmosphere of quietude, which is more directly aligned with the base label &#x27;calm&#x27; than &#x27;content&#x27;.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0199" value="keep_guarded_rollback" data-sample="track2_0199" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0199" value="restore_desc_v1" data-sample="track2_0199" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0199" value="hold_manual" data-sample="track2_0199" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0199" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A traditional Chinese painting depicting a group of scholars gathered under a gnarled pine tree, accompanied by a large section of elegant calligraphy above.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, meticulous strokes define the figures and calligraphy, while more textured, expressive brushwork is used for the tree bark and foliage.</dd><dt>Composition / 构图</dt><dd>An asymmetrical arrangement where a large, ancient tree on the left balances the group of figures and the open space on the right.</dd><dt>Color / 色彩</dt><dd>A subdued palette of earthy browns, tans, and muted greens, creating a sense of antiquity and quietude.</dd><dt>Line / 线条</dt><dd>Delicate and precise lines outline the figures&#x27; robes and facial features, contrasting with the rugged, twisting lines of the tree.</dd><dt>Light / 光线</dt><dd>Soft, diffused lighting without strong shadows, emphasizing the clarity of the forms and the overall peaceful atmosphere.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0281" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#14</div>
+      <h2>track2_0281</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0281">#track2_0281</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0281.jpg" alt="track2_0281 artwork">
+      <figcaption>track2_0281 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene and gentle atmosphere of this traditional bird-and-flower painting, described as having soft, diffused lighting, is more directly aligned with a feeling of calm than contentment.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0281" value="keep_guarded_rollback" data-sample="track2_0281" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0281" value="restore_desc_v1" data-sample="track2_0281" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0281" value="hold_manual" data-sample="track2_0281" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0281" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene traditional Chinese painting depicting a small bird perched on a branch of a loquat tree, surrounded by ripe fruit and lush green leaves against a warm, aged silk background.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, delicate, and precise brushwork used to define the bird&#x27;s feathers and the textures of the leaves and fruit.</dd><dt>Composition / 构图</dt><dd>A vertical, asymmetrical composition where the branches enter from the right and extend across the frame, creating a balanced yet dynamic flow.</dd><dt>Color / 色彩</dt><dd>A warm, muted palette dominated by the golden-yellow of the aged silk, soft oranges of the loquat fruit, and earthy greens of the leaves.</dd><dt>Line / 线条</dt><dd>Elegant, fluid, and controlled lines define the contours of the branches, leaves, and the bird.</dd><dt>Light / 光线</dt><dd>Soft, diffused, and even lighting that creates a gentle atmosphere without harsh shadows.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0308" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#15</div>
+      <h2>track2_0308</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0308">#track2_0308</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0308.jpg" alt="track2_0308 artwork">
+      <figcaption>track2_0308 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>glad</strong><span class="muted">高兴</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> content-&gt;glad</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene, reverent, and peaceful atmosphere of this classical Adoration scene is better characterized by a sense of quiet contentment than gladness.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0308" value="keep_guarded_rollback" data-sample="track2_0308" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0308" value="restore_desc_v1" data-sample="track2_0308" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0308" value="hold_manual" data-sample="track2_0308" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0308" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> This tondo painting depicts the Adoration of the Magi, where a large, diverse crowd gathers around the Virgin and Child seated within a ruined classical structure.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>The brushwork is meticulous and smooth, typical of the period, focusing on intricate details of clothing, architecture, and the surrounding landscape.</dd><dt>Composition / 构图</dt><dd>The circular tondo format uses the central architectural ruins to frame the Holy Family, while the surrounding figures and landscape create a sense of depth and narrative complexity.</dd><dt>Color / 色彩</dt><dd>A vibrant palette features rich reds, deep blues, and warm golds, which stand out against the muted, earthy tones of the stone ruins and the naturalistic greens and browns of the landscape.</dd><dt>Line / 线条</dt><dd>Strong, clear lines define the architectural elements and the contours of the figures, providing a structured and orderly feel to the busy scene.</dd><dt>Light / 光线</dt><dd>The scene is bathed in a clear, even light that suggests a bright day, casting soft shadows and emphasizing the three-dimensional forms of the figures and buildings.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0569" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#16</div>
+      <h2>track2_0569</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0569">#track2_0569</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0569.jpg" alt="track2_0569 artwork">
+      <figcaption>track2_0569 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene and peaceful atmosphere of the traditional landscape painting, as described in the text, is more directly aligned with the emotion of calm than content.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0569" value="keep_guarded_rollback" data-sample="track2_0569" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0569" value="restore_desc_v1" data-sample="track2_0569" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0569" value="hold_manual" data-sample="track2_0569" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0569" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene traditional Chinese landscape painting depicting a sprawling garden with pavilions, bridges, and figures amidst lush trees and rolling hills.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, meticulous brushwork used for architectural details and delicate foliage, characteristic of the gongbi style.</dd><dt>Composition / 构图</dt><dd>A wide, panoramic bird&#x27;s-eye view that balances architectural structures with natural elements across a horizontal plane.</dd><dt>Color / 色彩</dt><dd>A harmonious palette of muted greens, blues, and earthy ochres set against a warm, aged silk background.</dd><dt>Line / 线条</dt><dd>Precise, thin lines define the structures, while softer, more organic lines delineate the trees and terrain.</dd><dt>Light / 光线</dt><dd>Soft, diffused light creates an even tone across the scene, lacking harsh shadows and emphasizing a peaceful atmosphere.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0606" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#17</div>
+      <h2>track2_0606</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0606">#track2_0606</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0606.jpg" alt="track2_0606 artwork">
+      <figcaption>track2_0606 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene river landscape and garden scene, described as tranquil and calm in the text, align more naturally with calm than content.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0606" value="keep_guarded_rollback" data-sample="track2_0606" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0606" value="restore_desc_v1" data-sample="track2_0606" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0606" value="hold_manual" data-sample="track2_0606" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0606" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene landscape painting depicting a traditional Chinese garden and palace complex along a winding river, with figures engaged in leisurely activities like swinging.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, controlled, and detailed brushwork, characteristic of traditional Chinese court or academic painting styles.</dd><dt>Composition / 构图</dt><dd>A wide, horizontal composition with a diagonal flow following the river and the garden walls, creating a sense of depth and expansive space.</dd><dt>Color / 色彩</dt><dd>A muted and harmonious palette of greens, browns, and pale blues, with subtle touches of pink for blossoms and red for architectural details.</dd><dt>Line / 线条</dt><dd>Precise and delicate lines define the architectural structures, the contours of the landscape, and the figures.</dd><dt>Light / 光线</dt><dd>Even, diffused light that suggests a clear, calm day without strong shadows, contributing to the overall sense of tranquility.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0794" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#18</div>
+      <h2>track2_0794</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0794">#track2_0794</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0794.jpg" alt="track2_0794 artwork">
+      <figcaption>track2_0794 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The artwork&#x27;s serene, tranquil atmosphere and muted color palette are more directly and strongly characterized by the emotion &#x27;calm&#x27; than &#x27;content&#x27;.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0794" value="keep_guarded_rollback" data-sample="track2_0794" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0794" value="restore_desc_v1" data-sample="track2_0794" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0794" value="hold_manual" data-sample="track2_0794" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0794" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene landscape painting depicting a bustling yet peaceful riverside scene with a prominent bridge, traditional architecture, and lush greenery.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, controlled, and detailed brushwork that precisely defines architectural structures and the textures of trees and rocks.</dd><dt>Composition / 构图</dt><dd>A balanced, multi-focal composition with a strong diagonal bridge leading the eye across a river dotted with buildings and islands.</dd><dt>Color / 色彩</dt><dd>A muted palette of earthy ochres, soft greens, and pale blues set against a warm, neutral background.</dd><dt>Line / 线条</dt><dd>Delicate and precise lines define the intricate details of the architecture, foliage, and small figures throughout the landscape.</dd><dt>Light / 光线</dt><dd>Even, diffused light creates a clear and tranquil atmosphere without strong shadows, emphasizing the overall harmony.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0866" data-bucket="high_conf_rollback" data-diff="changed">
+  <div class="card-head">
+    <div>
+      <div class="index">#19</div>
+      <h2>track2_0866</h2>
+      <p class="bucket">高置信回滚 / High-confidence rollback</p>
+    </div>
+    <a class="anchor" href="#track2_0866">#track2_0866</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0866.jpg" alt="track2_0866 artwork">
+      <figcaption>track2_0866 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 4/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene and harmonious atmosphere of this traditional Chinese ink painting, depicting a bird and blossoms in a quiet natural setting, is more directly and strongly characterized as calm rather than content.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0866" value="keep_guarded_rollback" data-sample="track2_0866" checked> 保留 guarded 回滚 / Keep guarded rollback</label><label class="choice"><input type="radio" name="decision_track2_0866" value="restore_desc_v1" data-sample="track2_0866" > 恢复 scaled desc_v1 / Restore desc_v1</label><label class="choice"><input type="radio" name="decision_track2_0866" value="hold_manual" data-sample="track2_0866" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0866" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A serene traditional Chinese ink painting featuring a bird in flight near blossoming branches and a weathered rock, evoking a sense of natural harmony.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>The brushwork combines broad, textured ink washes for the rock with delicate, rhythmic strokes for the bird&#x27;s feathers and the fine details of the flowers.</dd><dt>Composition / 构图</dt><dd>The composition uses an asymmetrical balance, with the solid form of the rock on the left countered by the dynamic movement of the bird and the reaching branches on the right.</dd><dt>Color / 色彩</dt><dd>A restrained palette of sepia tones, deep blacks, and subtle white highlights on the blossoms creates a warm, antique atmosphere.</dd><dt>Line / 线条</dt><dd>Lines vary from the jagged, expressive contours of the rock to the graceful, calligraphic curves of the branches and the precise outlines of the bird.</dd><dt>Light / 光线</dt><dd>The scene is characterized by a soft, ambient light that provides a gentle clarity without harsh shadows, emphasizing the texture of the paper and ink.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0139" data-bucket="risk_context" data-diff="same">
+  <div class="card-head">
+    <div>
+      <div class="index">#20</div>
+      <h2>track2_0139</h2>
+      <p class="bucket">风险旁证 / Risk context</p>
+    </div>
+    <a class="anchor" href="#track2_0139">#track2_0139</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0139.jpg" alt="track2_0139 artwork">
+      <figcaption>track2_0139 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>tired</strong><span class="muted">疲惫</span><span>Negative / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> tired-&gt;calm</span>
+        <span><strong>Confidence:</strong> 3/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_negative_low_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The contemplative poses of the figures and the muted, traditional ink style support a calm and reflective mood.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0139" value="keep_guarded" data-sample="track2_0139" checked> 保留 guarded 当前值 / Keep guarded current</label><label class="choice"><input type="radio" name="decision_track2_0139" value="change_after_review" data-sample="track2_0139" > 人工认为需改 / Human thinks change needed</label><label class="choice"><input type="radio" name="decision_track2_0139" value="hold_manual" data-sample="track2_0139" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0139" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A traditional East Asian ink painting showing four figures in a somber meeting under a pine tree, their expressions and postures suggesting a sense of weariness and quiet reflection.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Precise ink outlines for the figures are paired with expressive, textured brushwork for the gnarled tree and rocky foreground.</dd><dt>Composition / 构图</dt><dd>The figures are arranged in a loose group in the center-foreground, anchored by the diagonal sweep of a large pine tree from the upper left.</dd><dt>Color / 色彩</dt><dd>Dominated by monochromatic ink washes with subtle, desaturated tints of ochre, blue, and red on the clothing.</dd><dt>Line / 线条</dt><dd>Fine, calligraphic lines define the drapery and facial features, while more jagged, broken lines describe the natural environment.</dd><dt>Light / 光线</dt><dd>Even, ambient lighting without strong highlights or deep shadows, creating a subdued and atmospheric mood.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0547" data-bucket="risk_context" data-diff="same">
+  <div class="card-head">
+    <div>
+      <div class="index">#21</div>
+      <h2>track2_0547</h2>
+      <p class="bucket">风险旁证 / Risk context</p>
+    </div>
+    <a class="anchor" href="#track2_0547">#track2_0547</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0547.jpg" alt="track2_0547 artwork">
+      <figcaption>track2_0547 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>annoyed</strong><span class="muted">恼怒</span><span>Negative / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;annoyed</span>
+        <span><strong>Confidence:</strong> 3/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">cross_quadrant_change</span><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">negative_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The balanced abstract composition and clean monochrome lines evoke a neutral or calm feeling rather than annoyance.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0547" value="keep_guarded" data-sample="track2_0547" checked> 保留 guarded 当前值 / Keep guarded current</label><label class="choice"><input type="radio" name="decision_track2_0547" value="change_after_review" data-sample="track2_0547" > 人工认为需改 / Human thinks change needed</label><label class="choice"><input type="radio" name="decision_track2_0547" value="hold_manual" data-sample="track2_0547" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0547" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> An abstract composition from 1937 by G.L.K. Morris featuring a dynamic interplay of geometric and organic shapes in monochrome.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Visible charcoal or pencil hatching and shading create texture within the shapes, contrasting with solid black fills.</dd><dt>Composition / 构图</dt><dd>A balanced yet active arrangement of overlapping triangles, curves, and linear elements centered on a light background.</dd><dt>Color / 色彩</dt><dd>A monochrome palette consisting of deep blacks, various shades of gray through hatching, and the off-white tone of the paper.</dd><dt>Line / 线条</dt><dd>Bold, thick black outlines define the primary forms, complemented by thinner, sketchy lines and parallel hatching.</dd><dt>Light / 光线</dt><dd>Even, ambient light is suggested by the white space of the paper, with no directional light source or cast shadows.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0635" data-bucket="risk_context" data-diff="same">
+  <div class="card-head">
+    <div>
+      <div class="index">#22</div>
+      <h2>track2_0635</h2>
+      <p class="bucket">风险旁证 / Risk context</p>
+    </div>
+    <a class="anchor" href="#track2_0635">#track2_0635</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0635.jpg" alt="track2_0635 artwork">
+      <figcaption>track2_0635 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>excited</strong><span class="muted">兴奋</span><span>Positive / High</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>happy</strong><span class="muted">快乐</span><span>Positive / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>happy</strong><span class="muted">快乐</span><span>Positive / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> excited-&gt;happy</span>
+        <span><strong>Confidence:</strong> 3/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The vibrant red patterns and bustling trade scene depict a prosperous and lively atmosphere that supports a happy emotion.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0635" value="keep_guarded" data-sample="track2_0635" checked> 保留 guarded 当前值 / Keep guarded current</label><label class="choice"><input type="radio" name="decision_track2_0635" value="change_after_review" data-sample="track2_0635" > 人工认为需改 / Human thinks change needed</label><label class="choice"><input type="radio" name="decision_track2_0635" value="hold_manual" data-sample="track2_0635" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0635" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A vibrant Japanese woodblock print depicting a busy commercial interior in Yokohama, filled with a diverse array of Western and Eastern goods, with figures in period attire and a view of the harbor through large arches.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Precise and clean lines characteristic of woodblock printing, with flat areas of saturated color.</dd><dt>Composition / 构图</dt><dd>A dense, multi-layered arrangement featuring a crowded foreground of merchandise and figures, framed by large architectural arches that reveal a harbor view.</dd><dt>Color / 色彩</dt><dd>A bold and diverse palette featuring a prominent red floral ground, complemented by a wide range of greens, blues, and yellows across the various objects.</dd><dt>Line / 线条</dt><dd>Sharp, well-defined outlines that delineate the intricate details of the numerous goods, figures, and architectural elements.</dd><dt>Light / 光线</dt><dd>Uniform and bright lighting that eliminates deep shadows, highlighting the intricate patterns and varied textures of the scene.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0869" data-bucket="risk_context" data-diff="same">
+  <div class="card-head">
+    <div>
+      <div class="index">#23</div>
+      <h2>track2_0869</h2>
+      <p class="bucket">风险旁证 / Risk context</p>
+    </div>
+    <a class="anchor" href="#track2_0869">#track2_0869</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0869.jpg" alt="track2_0869 artwork">
+      <figcaption>track2_0869 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>calm</strong><span class="muted">平静</span><span>Positive / Low</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>content</strong><span class="muted">满足/安适</span><span>Positive / Low</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> calm-&gt;content</span>
+        <span><strong>Confidence:</strong> 3/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">calm_content_glad_boundary</span><span class="chip">label_changed_by_scaled_human_gate</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The serene, misty landscape and scholarly gathering evoke a sense of tranquility and calmness better represented by the base label.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0869" value="keep_guarded" data-sample="track2_0869" checked> 保留 guarded 当前值 / Keep guarded current</label><label class="choice"><input type="radio" name="decision_track2_0869" value="change_after_review" data-sample="track2_0869" > 人工认为需改 / Human thinks change needed</label><label class="choice"><input type="radio" name="decision_track2_0869" value="hold_manual" data-sample="track2_0869" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0869" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A traditional Chinese landscape painting depicting a scholarly gathering in a pavilion surrounded by lush, blue-green mountains and misty valleys.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Fine, detailed brushwork for the figures and architecture, with softer, more atmospheric washes for the mountains and mist.</dd><dt>Composition / 构图</dt><dd>A vertical scroll composition with a foreground featuring the pavilion and figures, a middle ground with trees and rocks, and a background of towering, misty mountains.</dd><dt>Color / 色彩</dt><dd>A palette dominated by earthy browns, muted greens, and striking blue-green tones on the mountain peaks, typical of the blue-green landscape style.</dd><dt>Line / 线条</dt><dd>Precise and delicate lines define the architectural structures and the figures&#x27; garments, while more fluid, calligraphic lines outline the rocks and trees.</dd><dt>Light / 光线</dt><dd>Soft, diffused light that creates a sense of depth and atmosphere, with no strong shadows, suggesting a misty or overcast day.</dd></dl>
+  </details>
+</article>
+
+
+<article class="review-card" id="track2_0964" data-bucket="risk_context" data-diff="same">
+  <div class="card-head">
+    <div>
+      <div class="index">#24</div>
+      <h2>track2_0964</h2>
+      <p class="bucket">风险旁证 / Risk context</p>
+    </div>
+    <a class="anchor" href="#track2_0964">#track2_0964</a>
+  </div>
+  <div class="card-grid">
+    <figure>
+      <img src="assets/track2_0964.jpg" alt="track2_0964 artwork">
+      <figcaption>track2_0964 test image</figcaption>
+    </figure>
+    <section class="decision-panel">
+      <div class="label-grid">
+        <div><h3>Base 20260512</h3><div class="label base"><strong>happy</strong><span class="muted">快乐</span><span>Positive / High</span></div></div>
+        <div><h3>Scaled desc_v1</h3><div class="label desc"><strong>excited</strong><span class="muted">兴奋</span><span>Positive / High</span></div></div>
+        <div><h3>Guarded v1</h3><div class="label guarded"><strong>excited</strong><span class="muted">兴奋</span><span>Positive / High</span></div></div>
+      </div>
+      <div class="meta-row">
+        <span><strong>Transition:</strong> happy-&gt;excited</span>
+        <span><strong>Confidence:</strong> 3/5</span>
+        <span><strong>Text:</strong> consistent</span>
+      </div>
+      <div class="chips"><span class="chip">label_changed_by_scaled_human_gate</span><span class="chip">positive_high_arousal_boundary</span></div>
+      <p class="rationale"><strong>Gemini 3.5:</strong> The figures in the procession exhibit focused and mildly pleasant expressions rather than high-energy excitement, making the base label of happy more appropriate.</p>
+      <div class="human-box">
+        <h3>人工复审 / Manual decision</h3>
+        <div class="choices"><label class="choice"><input type="radio" name="decision_track2_0964" value="keep_guarded" data-sample="track2_0964" checked> 保留 guarded 当前值 / Keep guarded current</label><label class="choice"><input type="radio" name="decision_track2_0964" value="change_after_review" data-sample="track2_0964" > 人工认为需改 / Human thinks change needed</label><label class="choice"><input type="radio" name="decision_track2_0964" value="hold_manual" data-sample="track2_0964" > 暂缓人工再议 / Hold for manual decision</label></div>
+        <textarea data-note="track2_0964" placeholder="Reviewer notes / 人工备注"></textarea>
+      </div>
+    </section>
+  </div>
+  <details>
+    <summary>查看 caption 和 attribute 文本 / Show caption and attributes</summary>
+    <p><strong>Overall caption:</strong> A lively woodblock print depicting a traditional Chinese musical procession with figures playing cymbals, drums, and horns while carrying a large flag and baskets.</p>
+    <dl><dt>Brushstroke / 笔触</dt><dd>Flat color applications and subtle wood grain textures characteristic of traditional woodblock printing.</dd><dt>Composition / 构图</dt><dd>A rhythmic, horizontal arrangement of figures that suggests a continuous, energetic movement across the frame.</dd><dt>Color / 色彩</dt><dd>A harmonious mix of primary and secondary colors like blue, red, and yellow, balanced by neutral tones and black outlines.</dd><dt>Line / 线条</dt><dd>Strong, expressive black outlines that define the contours of the figures and their instruments with graphic clarity.</dd><dt>Light / 光线</dt><dd>Uniform and diffused lighting that avoids shadows, focusing on the decorative and narrative elements of the scene.</dd></dl>
+  </details>
+</article>
+
+</main>
+<script>
+  const stateKey = "track2_gemini35_guarded_manual_review_v1";
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(stateKey) || "{}"); }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(stateKey, JSON.stringify(state));
+  }
+
+  function collectState() {
+    const out = loadState();
+    document.querySelectorAll(".review-card").forEach(card => {
+      const id = card.id;
+      const selected = card.querySelector("input[type=radio]:checked");
+      const note = card.querySelector("textarea").value;
+      out[id] = {
+        sample_id: id,
+        decision: selected ? selected.value : "",
+        note,
+        bucket: card.dataset.bucket
+      };
+    });
+    return out;
+  }
+
+  function applyState() {
+    const state = loadState();
+    for (const [id, row] of Object.entries(state)) {
+      const input = document.querySelector(`input[data-sample="${id}"][value="${row.decision}"]`);
+      if (input) input.checked = true;
+      const note = document.querySelector(`textarea[data-note="${id}"]`);
+      if (note && row.note) note.value = row.note;
+    }
+  }
+
+  document.querySelectorAll("input[type=radio], textarea").forEach(el => {
+    el.addEventListener("change", () => saveState(collectState()));
+    el.addEventListener("input", () => saveState(collectState()));
+  });
+
+  document.querySelectorAll("button[data-filter]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("button[data-filter]").forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
+      const filter = button.dataset.filter;
+      document.querySelectorAll(".review-card").forEach(card => {
+        card.classList.toggle("hidden", filter !== "all" && card.dataset.bucket !== filter);
+      });
+    });
+  });
+
+  document.getElementById("export-json").addEventListener("click", () => {
+    const payload = JSON.stringify(Object.values(collectState()), null, 2);
+    const blob = new Blob([payload], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "track2_gemini35_manual_review_decisions.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  applyState();
+</script>
+</body>
+</html>

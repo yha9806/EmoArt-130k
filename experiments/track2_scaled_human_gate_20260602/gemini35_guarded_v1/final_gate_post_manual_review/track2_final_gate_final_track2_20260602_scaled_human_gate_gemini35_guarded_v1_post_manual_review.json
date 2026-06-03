@@ -1,0 +1,828 @@
+{
+  "candidate_name": "final_track2_20260602_scaled_human_gate_gemini35_guarded_v1_post_manual_review",
+  "baseline_json": "submissions/final_track2_20260512_description_v2_vulca_audited.json",
+  "candidate_json": "submissions/final_track2_20260602_scaled_human_gate_gemini35_guarded_v1.json",
+  "candidate_zip": "submissions/final_track2_20260602_scaled_human_gate_gemini35_guarded_v1.zip",
+  "row_count": 1000,
+  "distribution": {
+    "count": 1000,
+    "emotion": {
+      "calm": 485,
+      "content": 243,
+      "alarmed": 54,
+      "frustrated": 46,
+      "tired": 40,
+      "sad": 33,
+      "aroused": 29,
+      "annoyed": 22,
+      "bored": 20,
+      "excited": 15,
+      "happy": 8,
+      "glad": 5
+    },
+    "valence": {
+      "Positive": 785,
+      "Negative": 215
+    },
+    "arousal": {
+      "Low": 826,
+      "High": 174
+    },
+    "top_emotion": "calm",
+    "top_emotion_share": 0.485,
+    "top_two_emotion_share": 0.728,
+    "missing_emotions": [],
+    "collapse_flags": []
+  },
+  "label_consistency": {
+    "issue_count": 0,
+    "issues": []
+  },
+  "diff": {
+    "changed_rows": 56,
+    "emotion_changes": {
+      "glad->content": 5,
+      "content->calm": 29,
+      "tired->calm": 3,
+      "calm->content": 6,
+      "excited->happy": 2,
+      "bored->calm": 2,
+      "tired->sad": 1,
+      "aroused->calm": 2,
+      "calm->annoyed": 1,
+      "glad->calm": 2,
+      "aroused->alarmed": 1,
+      "calm->aroused": 1,
+      "happy->excited": 1
+    },
+    "changed": [
+      {
+        "sample_id": "track2_0027",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0028",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0045",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0047",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0057",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0088",
+        "baseline_label": {
+          "emotion": "tired",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0089",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0102",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0104",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0109",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0111",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0139",
+        "baseline_label": {
+          "emotion": "tired",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0147",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0193",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0210",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0266",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0316",
+        "baseline_label": {
+          "emotion": "excited",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "happy",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0319",
+        "baseline_label": {
+          "emotion": "bored",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0343",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0408",
+        "baseline_label": {
+          "emotion": "tired",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "sad",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0414",
+        "baseline_label": {
+          "emotion": "bored",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0426",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0430",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0434",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0456",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0457",
+        "baseline_label": {
+          "emotion": "aroused",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0496",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0534",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0547",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "annoyed",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0555",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0588",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0597",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0604",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0622",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0633",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0635",
+        "baseline_label": {
+          "emotion": "excited",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "happy",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0638",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0642",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0652",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0665",
+        "baseline_label": {
+          "emotion": "aroused",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0702",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0728",
+        "baseline_label": {
+          "emotion": "aroused",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "alarmed",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0744",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0751",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0761",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0807",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0819",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0869",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0871",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0873",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "aroused",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0897",
+        "baseline_label": {
+          "emotion": "glad",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0914",
+        "baseline_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0925",
+        "baseline_label": {
+          "emotion": "tired",
+          "emotional_valence": "Negative",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0937",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      },
+      {
+        "sample_id": "track2_0964",
+        "baseline_label": {
+          "emotion": "happy",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        },
+        "candidate_label": {
+          "emotion": "excited",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "High"
+        }
+      },
+      {
+        "sample_id": "track2_0975",
+        "baseline_label": {
+          "emotion": "content",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        },
+        "candidate_label": {
+          "emotion": "calm",
+          "emotional_valence": "Positive",
+          "emotional_arousal_level": "Low"
+        }
+      }
+    ]
+  },
+  "suspected_overlap_guard": {
+    "suspected_overlap_count": 10,
+    "overlap_present_count": 10,
+    "missing_overlap_ids": [],
+    "checked_ids": [
+      "track2_0062",
+      "track2_0085",
+      "track2_0126",
+      "track2_0154",
+      "track2_0272",
+      "track2_0326",
+      "track2_0330",
+      "track2_0391",
+      "track2_0446",
+      "track2_0841"
+    ],
+    "unchanged_count": 10,
+    "overlap_changed_count": 0,
+    "approved_overlap_changed_count": 0,
+    "unapproved_overlap_changed_count": 0,
+    "changed": [],
+    "approved_changed": [],
+    "unapproved_changed": []
+  },
+  "no_leak_guard": {
+    "public_labels_used_as_answers": false,
+    "public_label_fields_omitted": true,
+    "policy": "Suspected public/test overlaps are used only as leakage evidence; public labels are not copied into the report or used as answers."
+  },
+  "public_gate_metrics": {},
+  "safe_to_freeze": true,
+  "formal_submission_overwritten": false,
+  "recommendation": {
+    "recommended_candidate": "final_track2_20260602_scaled_human_gate_gemini35_guarded_v1_post_manual_review",
+    "candidate_json": "submissions/final_track2_20260602_scaled_human_gate_gemini35_guarded_v1.json",
+    "candidate_zip": "submissions/final_track2_20260602_scaled_human_gate_gemini35_guarded_v1.zip",
+    "submit_as_formal": false,
+    "risk_summary": ""
+  }
+}

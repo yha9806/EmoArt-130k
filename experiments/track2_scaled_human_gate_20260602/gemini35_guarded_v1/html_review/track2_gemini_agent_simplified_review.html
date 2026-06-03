@@ -1,0 +1,2034 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track2 Simplified Manual Review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif; background: #f0f2f5; color: #202124; letter-spacing: 0; }
+    header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.96); border-bottom: 1px solid #d7dbe0; }
+    .top { max-width: 1380px; margin: 0 auto; padding: 14px 20px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+    h1 { margin: 0; font-size: 21px; }
+    .sub { margin: 4px 0 0; color: #5f6368; font-size: 13px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    button { border: 1px solid #d7dbe0; background: white; padding: 8px 11px; border-radius: 7px; cursor: pointer; }
+    button.active { background: #1f5eff; border-color: #1f5eff; color: white; }
+    main { max-width: 1380px; margin: 0 auto; padding: 18px 20px 56px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+    .metric, .quick, .card, .protocol { background: white; border: 1px solid #d7dbe0; border-radius: 8px; box-shadow: 0 8px 22px rgba(32,33,36,.08); }
+    .metric { padding: 14px; }
+    .metric span { color: #5f6368; font-size: 13px; }
+    .metric strong { display: block; font-size: 30px; margin-top: 4px; }
+    .protocol { padding: 14px; margin-bottom: 16px; }
+    .protocol h2 { margin: 0 0 10px; font-size: 17px; }
+    .protocol-grid { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 10px; }
+    .protocol-grid div { border: 1px solid #d7dbe0; border-radius: 7px; padding: 10px; background: #fbfcfd; }
+    .protocol-grid strong { display: block; margin-bottom: 5px; }
+    .protocol-grid span { color: #5f6368; font-size: 13px; line-height: 1.45; }
+    .quick { padding: 12px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .quick a { text-decoration: none; padding: 5px 8px; border-radius: 6px; border: 1px solid #d7dbe0; color: #202124; font-size: 12px; }
+    .quick a[data-tier="A"] { border-color: #b8dfd1; background: #f0fbf7; color: #0b7f58; }
+    .quick a[data-tier="B"] { border-color: #cbd6ff; background: #f4f6ff; color: #1f5eff; }
+    .quick a[data-tier="C"] { border-color: #ffd0cc; background: #fff5f4; color: #b3261e; }
+    .card { margin-bottom: 18px; padding: 16px; scroll-margin-top: 94px; }
+    .head { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 12px; }
+    .num { color: #5f6368; font-size: 12px; font-weight: 700; }
+    h2 { margin: 2px 0; font-size: 25px; }
+    .status { text-align: right; }
+    .status strong { display: block; font-size: 18px; }
+    .status span { color: #5f6368; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: minmax(320px, 42%) 1fr; gap: 18px; }
+    img { width: 100%; max-height: 660px; object-fit: contain; border: 1px solid #d7dbe0; border-radius: 6px; background: #f3f4f6; }
+    .labels { display: grid; grid-template-columns: repeat(3, minmax(150px, 1fr)); gap: 10px; }
+    .label { min-height: 92px; border: 1px solid #d7dbe0; border-left-width: 5px; border-radius: 7px; padding: 10px; display: grid; gap: 4px; background: #fbfcfd; }
+    .label span, .label em { color: #5f6368; font-size: 12px; font-style: normal; }
+    .label strong { font-size: 20px; }
+    .base { border-left-color: #0b7f58; }
+    .desc { border-left-color: #b75e00; }
+    .guarded { border-left-color: #1f5eff; }
+    h3 { margin: 0 0 7px; font-size: 14px; }
+    .instruction, .agent, .choices, .wizard { margin-top: 12px; padding: 12px; border-radius: 7px; border: 1px solid #d7dbe0; background: #fbfcfd; }
+    .tier-C .instruction { border-color: #ffd0cc; background: #fff7f5; }
+    .wizard ol { margin: 0 0 10px 20px; padding: 0; }
+    .wizard li { margin-bottom: 6px; line-height: 1.45; }
+    .candidate-guide { border-top: 1px solid #d7dbe0; padding-top: 10px; }
+    .candidate-guide h4 { margin: 0 0 6px; font-size: 13px; }
+    .candidate-guide ul { margin: 0 0 0 18px; padding: 0; }
+    .candidate-guide li { margin-bottom: 5px; line-height: 1.45; }
+    p { line-height: 1.55; margin: 6px 0; }
+    details { margin-top: 12px; }
+    summary { cursor: pointer; color: #1f5eff; font-weight: 600; }
+    .choices { display: grid; gap: 8px; }
+    label { display: flex; gap: 8px; align-items: center; }
+    textarea { width: 100%; min-height: 64px; border: 1px solid #d7dbe0; border-radius: 6px; padding: 8px; font: inherit; resize: vertical; }
+    .hidden { display: none; }
+    @media (max-width: 980px) { .top, .grid, .labels, .metrics, .protocol-grid { grid-template-columns: 1fr; } .filters { justify-content: flex-start; } .status { text-align: left; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div>
+      <h1>Track2 低抽象人工复审 / Simplified Review</h1>
+      <p class="sub">不要从 12 类自由标注。只按“正负 → 唤醒 → 候选二选一”仲裁冲突样本。AI recommendations are draft second opinions, not human-confirmed evidence.</p>
+    </div>
+    <div class="filters">
+      <button class="active" data-filter="all">全部</button>
+      <button data-filter="A">Tier A 默认通过</button>
+      <button data-filter="B">Tier B 抽查</button>
+      <button data-filter="C">Tier C 必看</button>
+      <button id="export">导出 JSON</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="metrics">
+    <div class="metric"><span>Tier A: high-conf rollback confirmed</span><strong>19</strong></div>
+    <div class="metric"><span>Tier B: keep guarded, low priority</span><strong>2</strong></div>
+    <div class="metric"><span>Tier C: must review manually</span><strong>3</strong></div>
+  </section>
+  <section class="protocol">
+    <h2>人评员只做这件事 / What the rater actually does</h2>
+    <div class="protocol-grid">
+      <div><strong>1. 不自由打标签</strong><span>只在 Base、Scaled desc_v1、Guarded v1 给出的候选中选。</span></div>
+      <div><strong>2. 先判正负和唤醒</strong><span>正负/高低唤醒错了，比 calm/content 边界更严重。</span></div>
+      <div><strong>3. 没有强证据就保守</strong><span>Tier A/B 默认保留 guarded；Tier C 才认真二选一。</span></div>
+      <div><strong>4. 备注只写画面证据</strong><span>例如“静态山水、无冲突、低唤醒，选 calm”。</span></div>
+    </div>
+    <details>
+      <summary>查看完整人评协议 / full protocol</summary>
+      <p>完整文档：<code>docs/track2_human_review_protocol_zh.md</code></p>
+      <p>不要按模型权威投票，不要按 caption 文采投票，不要猜艺术家原意。只看画面证据是否支持候选标签。</p>
+    </details>
+  </section>
+  <nav class="quick"><a href="#track2_0259" data-tier="A">track2_0259</a><a href="#track2_0383" data-tier="A">track2_0383</a><a href="#track2_0564" data-tier="A">track2_0564</a><a href="#track2_0591" data-tier="A">track2_0591</a><a href="#track2_0357" data-tier="A">track2_0357</a><a href="#track2_0441" data-tier="A">track2_0441</a><a href="#track2_0506" data-tier="A">track2_0506</a><a href="#track2_0666" data-tier="A">track2_0666</a><a href="#track2_0976" data-tier="A">track2_0976</a><a href="#track2_0123" data-tier="A">track2_0123</a><a href="#track2_0733" data-tier="A">track2_0733</a><a href="#track2_0161" data-tier="A">track2_0161</a><a href="#track2_0199" data-tier="A">track2_0199</a><a href="#track2_0281" data-tier="A">track2_0281</a><a href="#track2_0308" data-tier="A">track2_0308</a><a href="#track2_0569" data-tier="A">track2_0569</a><a href="#track2_0606" data-tier="A">track2_0606</a><a href="#track2_0794" data-tier="A">track2_0794</a><a href="#track2_0866" data-tier="A">track2_0866</a><a href="#track2_0139" data-tier="B">track2_0139</a><a href="#track2_0547" data-tier="C">track2_0547</a><a href="#track2_0635" data-tier="B">track2_0635</a><a href="#track2_0869" data-tier="C">track2_0869</a><a href="#track2_0964" data-tier="C">track2_0964</a></nav>
+
+<article class="card tier-A" id="track2_0259" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#01</span>
+      <h2>track2_0259</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0259.jpg" alt="track2_0259">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>tired</strong>
+        <em>疲惫</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>tired</strong> / 疲惫: 负向低唤醒：耗尽、困倦、无力；闭眼不等于 tired。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=5; suggested=calm / Positive / Low</p>
+        <p>The artwork depicts a serene, peaceful expression of a woman with closed eyes, which is described in the text as evoking inner peace and tranquility, making &#x27;calm&#x27; a much more accurate label than &#x27;tired&#x27;.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene and intimate close-up of a woman&#x27;s face with closed eyes, rendered in a traditional Japanese woodblock print style that evokes a sense of quietude and inner peace.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0259" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0259" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0259" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0259" value="hold"> Hold</label>
+        <textarea data-note="track2_0259" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0383" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#02</span>
+      <h2>track2_0383</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0383.jpg" alt="track2_0383">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>bored</strong>
+        <em>厌倦</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>bored</strong> / 厌倦: 负向低唤醒：无聊、冷漠、缺乏兴趣。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The neutral, serene expressions of the figures in this classical portrait are better described as calm rather than bored.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A detailed engraving depicting a bearded man in profile looking towards a woman wearing an ornate headpiece and veil, set against a neutral background.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0383" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0383" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0383" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0383" value="hold"> Hold</label>
+        <textarea data-note="track2_0383" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0564" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#03</span>
+      <h2>track2_0564</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0564.jpg" alt="track2_0564">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>tired</strong>
+        <em>疲惫</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>tired</strong> / 疲惫: 负向低唤醒：耗尽、困倦、无力；闭眼不等于 tired。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene depiction of a resting bird in a traditional Japanese woodblock print evokes a sense of peace and calmness rather than negative exhaustion or tiredness.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene Japanese woodblock print featuring a resting bird with its head tucked, accompanied by elegant calligraphic poetry.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0564" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0564" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0564" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0564" value="hold"> Hold</label>
+        <textarea data-note="track2_0564" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0591" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#04</span>
+      <h2>track2_0591</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0591.jpg" alt="track2_0591">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>sad</strong>
+        <em>悲伤</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>sad</strong> / 悲伤: 负向低唤醒：失落、哀悼、孤独、沉重。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The subject&#x27;s gentle, serene facial expression and poised posture convey a sense of quiet dignity and calm rather than sadness, despite the dark color palette.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>An elderly woman in a black dress sits in a dimly lit interior, her presence marked by a sense of quiet dignity and stillness.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0591" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0591" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0591" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0591" value="hold"> Hold</label>
+        <textarea data-note="track2_0591" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0357" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#05</span>
+      <h2>track2_0357</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0357.jpg" alt="track2_0357">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>frustrated</strong>
+        <em>挫败/受阻</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>frustrated</strong> / 挫败/受阻: 负向高唤醒：努力受阻、压抑、挣扎、失败感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The caption explicitly describes the scene as having a calm and contemplative atmosphere, which directly contradicts the final label of frustrated.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A woodblock print capturing people moving across a bridge during a summer rainstorm, where the rhythmic rain and structured bridge create a calm, contemplative emotional atmosphere.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0357" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0357" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0357" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0357" value="hold"> Hold</label>
+        <textarea data-note="track2_0357" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0441" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#06</span>
+      <h2>track2_0441</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0441.jpg" alt="track2_0441">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>annoyed</strong> / 恼怒: 负向高唤醒：恼怒、不耐烦、冲突姿态。</li><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=annoyed / Negative / High</p>
+        <p>The painting depicts two water buffaloes locked in a head-butting struggle, which conveys physical tension and conflict rather than calmness.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A traditional Chinese ink painting on aged silk depicting two water buffaloes locked in a head-butting struggle, emphasizing physical power and tension.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0441" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0441" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0441" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0441" value="hold"> Hold</label>
+        <textarea data-note="track2_0441" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0506" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#07</span>
+      <h2>track2_0506</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0506.jpg" alt="track2_0506">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>annoyed</strong> / 恼怒: 负向高唤醒：恼怒、不耐烦、冲突姿态。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The balanced, centered composition and structured rhythmic depth of this abstract still life evoke a sense of order and calm rather than annoyance.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A stark black and white abstract composition featuring a complex interplay of geometric shapes, sharp angles, and organic curves that suggest a fragmented still life.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0506" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0506" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0506" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0506" value="hold"> Hold</label>
+        <textarea data-note="track2_0506" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0666" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#08</span>
+      <h2>track2_0666</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0666.jpg" alt="track2_0666">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>alarmed</strong>
+        <em>惊恐/警觉</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>sad</strong>
+        <em>悲伤</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>alarmed</strong>
+        <em>惊恐/警觉</em>
+        <b>Negative / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>alarmed</strong> / 惊恐/警觉: 负向高唤醒：危险、惊惧、警戒、突发威胁。</li><li><strong>sad</strong> / 悲伤: 负向低唤醒：失落、哀悼、孤独、沉重。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=5; suggested=alarmed / Negative / High</p>
+        <p>The depiction of a desperate struggle with a beast and the text&#x27;s mention of violent movement and tension strongly align with high-arousal alarm rather than sadness.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A person is depicted in a desperate struggle, pinned to the ground by a large, dark beast in a stark, monochromatic etching.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0666" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0666" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0666" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0666" value="hold"> Hold</label>
+        <textarea data-note="track2_0666" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0976" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#09</span>
+      <h2>track2_0976</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0976.jpg" alt="track2_0976">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>annoyed</strong> / 恼怒: 负向高唤醒：恼怒、不耐烦、冲突姿态。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The balanced, minimalist composition with clean lines and a neutral cream background evokes a sense of quiet and calm rather than the high-arousal irritation associated with annoyance.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A minimalist abstract composition featuring bold, black geometric blocks and delicate curved lines against a neutral cream background.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0976" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0976" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0976" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0976" value="hold"> Hold</label>
+        <textarea data-note="track2_0976" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0123" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#10</span>
+      <h2>track2_0123</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0123.jpg" alt="track2_0123">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>tired</strong>
+        <em>疲惫</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li><li><strong>tired</strong> / 疲惫: 负向低唤醒：耗尽、困倦、无力；闭眼不等于 tired。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=5; suggested=content / Positive / Low</p>
+        <p>The depiction of a man drinking from a wineskin represents refreshment and physical satisfaction, which aligns much better with &#x27;content&#x27; than &#x27;tired&#x27;.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A man tilts his head back to catch a stream of liquid from a raised wineskin, capturing a moment of simple physical satisfaction.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0123" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0123" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0123" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0123" value="hold"> Hold</label>
+        <textarea data-note="track2_0123" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0733" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#11</span>
+      <h2>track2_0733</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0733.jpg" alt="track2_0733">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>aroused</strong>
+        <em>激发/兴奋</em>
+        <b>Positive / High</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>aroused</strong>
+        <em>激发/兴奋</em>
+        <b>Positive / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>aroused</strong> / 激发/兴奋: 高唤醒但不一定快乐：激情、震撼、紧张、强刺激。</li><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=aroused / Positive / High</p>
+        <p>The dynamic composition, fierce warrior, and menacing dragon claw contradict the label &#x27;calm&#x27;, making the high-arousal base label &#x27;aroused&#x27; more appropriate.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A dynamic and powerful ink wash painting depicting a fierce celestial warrior or deity amidst swirling clouds, with a dragon&#x27;s claw emerging from the mist.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0733" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0733" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0733" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0733" value="hold"> Hold</label>
+        <textarea data-note="track2_0733" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0161" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#12</span>
+      <h2>track2_0161</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0161.jpg" alt="track2_0161">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene and tranquil mood of the traditional landscape painting, described as peaceful and quiet, is more directly captured by the label calm than content.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene traditional Chinese landscape painting depicting a rocky mountain overlooking a quiet village and a small boat on the water, evoking a sense of peaceful seclusion.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0161" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0161" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0161" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0161" value="hold"> Hold</label>
+        <textarea data-note="track2_0161" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0199" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#13</span>
+      <h2>track2_0199</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0199.jpg" alt="track2_0199">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The subdued palette and soft lighting create a peaceful atmosphere of quietude, which is more directly aligned with the base label &#x27;calm&#x27; than &#x27;content&#x27;.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A traditional Chinese painting depicting a group of scholars gathered under a gnarled pine tree, accompanied by a large section of elegant calligraphy above.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0199" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0199" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0199" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0199" value="hold"> Hold</label>
+        <textarea data-note="track2_0199" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0281" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#14</span>
+      <h2>track2_0281</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0281.jpg" alt="track2_0281">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene and gentle atmosphere of this traditional bird-and-flower painting, described as having soft, diffused lighting, is more directly aligned with a feeling of calm than contentment.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene traditional Chinese painting depicting a small bird perched on a branch of a loquat tree, surrounded by ripe fruit and lush green leaves against a warm, aged silk background.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0281" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0281" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0281" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0281" value="hold"> Hold</label>
+        <textarea data-note="track2_0281" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0308" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#15</span>
+      <h2>track2_0308</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0308.jpg" alt="track2_0308">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>glad</strong>
+        <em>高兴</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li><li><strong>glad</strong> / 高兴: 正向低或中唤醒：明显喜悦、庆贺、成功感，但不一定很热闹。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=content / Positive / Low</p>
+        <p>The serene, reverent, and peaceful atmosphere of this classical Adoration scene is better characterized by a sense of quiet contentment than gladness.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>This tondo painting depicts the Adoration of the Magi, where a large, diverse crowd gathers around the Virgin and Child seated within a ruined classical structure.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0308" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0308" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0308" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0308" value="hold"> Hold</label>
+        <textarea data-note="track2_0308" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0569" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#16</span>
+      <h2>track2_0569</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0569.jpg" alt="track2_0569">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene and peaceful atmosphere of the traditional landscape painting, as described in the text, is more directly aligned with the emotion of calm than content.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene traditional Chinese landscape painting depicting a sprawling garden with pavilions, bridges, and figures amidst lush trees and rolling hills.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0569" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0569" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0569" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0569" value="hold"> Hold</label>
+        <textarea data-note="track2_0569" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0606" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#17</span>
+      <h2>track2_0606</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0606.jpg" alt="track2_0606">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene river landscape and garden scene, described as tranquil and calm in the text, align more naturally with calm than content.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene landscape painting depicting a traditional Chinese garden and palace complex along a winding river, with figures engaged in leisurely activities like swinging.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0606" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0606" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0606" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0606" value="hold"> Hold</label>
+        <textarea data-note="track2_0606" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0794" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#18</span>
+      <h2>track2_0794</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0794.jpg" alt="track2_0794">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The artwork&#x27;s serene, tranquil atmosphere and muted color palette are more directly and strongly characterized by the emotion &#x27;calm&#x27; than &#x27;content&#x27;.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene landscape painting depicting a bustling yet peaceful riverside scene with a prominent bridge, traditional architecture, and lush greenery.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0794" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0794" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0794" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0794" value="hold"> Hold</label>
+        <textarea data-note="track2_0794" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-A" id="track2_0866" data-tier="A">
+  <div class="head">
+    <div>
+      <span class="num">#19</span>
+      <h2>track2_0866</h2>
+    </div>
+    <div class="status">
+      <strong>默认保留 Guarded v1</strong>
+      <span>Tier A</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0866.jpg" alt="track2_0866">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>快速看图确认是否明显错；没有明显错就通过。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent contact sheet second opinion: 19/19 high-conf rollback rows favor Guarded/Base over Scaled desc_v1.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=4; suggested=calm / Positive / Low</p>
+        <p>The serene and harmonious atmosphere of this traditional Chinese ink painting, depicting a bird and blossoms in a quiet natural setting, is more directly and strongly characterized as calm rather than content.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A serene traditional Chinese ink painting featuring a bird in flight near blossoming branches and a weathered rock, evoking a sense of natural harmony.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0866" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0866" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0866" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0866" value="hold"> Hold</label>
+        <textarea data-note="track2_0866" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-B" id="track2_0139" data-tier="B">
+  <div class="head">
+    <div>
+      <span class="num">#20</span>
+      <h2>track2_0139</h2>
+    </div>
+    <div class="status">
+      <strong>保留 Guarded v1</strong>
+      <span>Tier B</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0139.jpg" alt="track2_0139">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>tired</strong>
+        <em>疲惫</em>
+        <b>Negative / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>低优先级抽查；如果图像明显不符再改。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>tired</strong> / 疲惫: 负向低唤醒：耗尽、困倦、无力；闭眼不等于 tired。</li><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent risk sheet agrees with the current Guarded v1 direction.</p>
+        <p><strong>Prior Gemini 3.5:</strong> keep_final; conf=3; suggested=calm / Positive / Low</p>
+        <p>The contemplative poses of the figures and the muted, traditional ink style support a calm and reflective mood.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A traditional East Asian ink painting showing four figures in a somber meeting under a pine tree, their expressions and postures suggesting a sense of weariness and quiet reflection.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0139" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0139" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0139" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0139" value="hold"> Hold</label>
+        <textarea data-note="track2_0139" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-C" id="track2_0547" data-tier="C">
+  <div class="head">
+    <div>
+      <span class="num">#21</span>
+      <h2>track2_0547</h2>
+    </div>
+    <div class="status">
+      <strong>重点人工复核</strong>
+      <span>Tier C</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0547.jpg" alt="track2_0547">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>annoyed</strong>
+        <em>恼怒</em>
+        <b>Negative / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>必须人工二选一：若图像更平静/快乐，改回 Base；否则保留 Guarded v1。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>annoyed</strong> / 恼怒: 负向高唤醒：恼怒、不耐烦、冲突姿态。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent risk sheet points back toward Base, but confidence is only 3, so do not auto-change.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=3; suggested=calm / Positive / Low</p>
+        <p>The balanced abstract composition and clean monochrome lines evoke a neutral or calm feeling rather than annoyance.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>An abstract composition from 1937 by G.L.K. Morris featuring a dynamic interplay of geometric and organic shapes in monochrome.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0547" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0547" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0547" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0547" value="hold"> Hold</label>
+        <textarea data-note="track2_0547" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-B" id="track2_0635" data-tier="B">
+  <div class="head">
+    <div>
+      <span class="num">#22</span>
+      <h2>track2_0635</h2>
+    </div>
+    <div class="status">
+      <strong>保留 Guarded v1</strong>
+      <span>Tier B</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0635.jpg" alt="track2_0635">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>excited</strong>
+        <em>兴奋</em>
+        <b>Positive / High</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>happy</strong>
+        <em>快乐</em>
+        <b>Positive / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>happy</strong>
+        <em>快乐</em>
+        <b>Positive / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>低优先级抽查；如果图像明显不符再改。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>excited</strong> / 兴奋: 正向高唤醒：活跃、热闹、期待、节庆、运动感。</li><li><strong>happy</strong> / 快乐: 正向高唤醒：快乐、欢快、友好或节庆感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent risk sheet agrees with the current Guarded v1 direction.</p>
+        <p><strong>Prior Gemini 3.5:</strong> keep_final; conf=3; suggested=happy / Positive / High</p>
+        <p>The vibrant red patterns and bustling trade scene depict a prosperous and lively atmosphere that supports a happy emotion.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A vibrant Japanese woodblock print depicting a busy commercial interior in Yokohama, filled with a diverse array of Western and Eastern goods, with figures in period attire and a view of the harbor through large arches.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0635" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0635" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0635" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0635" value="hold"> Hold</label>
+        <textarea data-note="track2_0635" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-C" id="track2_0869" data-tier="C">
+  <div class="head">
+    <div>
+      <span class="num">#23</span>
+      <h2>track2_0869</h2>
+    </div>
+    <div class="status">
+      <strong>重点人工复核</strong>
+      <span>Tier C</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0869.jpg" alt="track2_0869">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>calm</strong>
+        <em>平静</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>content</strong>
+        <em>满足/安适</em>
+        <b>Positive / Low</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>必须人工二选一：若图像更平静/快乐，改回 Base；否则保留 Guarded v1。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>calm</strong> / 平静: 正向低唤醒：安静、松弛、平和，没有明显欲望或庆祝。</li><li><strong>content</strong> / 满足/安适: 正向低唤醒：满足、安适、生活圆满，比 calm 更有享受或拥有感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent risk sheet points back toward Base, but confidence is only 3, so do not auto-change.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=3; suggested=calm / Positive / Low</p>
+        <p>The serene, misty landscape and scholarly gathering evoke a sense of tranquility and calmness better represented by the base label.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A traditional Chinese landscape painting depicting a scholarly gathering in a pavilion surrounded by lush, blue-green mountains and misty valleys.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0869" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0869" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0869" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0869" value="hold"> Hold</label>
+        <textarea data-note="track2_0869" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+
+<article class="card tier-C" id="track2_0964" data-tier="C">
+  <div class="head">
+    <div>
+      <span class="num">#24</span>
+      <h2>track2_0964</h2>
+    </div>
+    <div class="status">
+      <strong>重点人工复核</strong>
+      <span>Tier C</span>
+    </div>
+  </div>
+  <div class="grid">
+    <img src="assets/track2_0964.jpg" alt="track2_0964">
+    <section>
+      <div class="labels">
+
+      <div class="label base">
+        <span>Base</span>
+        <strong>happy</strong>
+        <em>快乐</em>
+        <b>Positive / High</b>
+      </div>
+
+
+      <div class="label desc">
+        <span>Scaled desc_v1</span>
+        <strong>excited</strong>
+        <em>兴奋</em>
+        <b>Positive / High</b>
+      </div>
+
+
+      <div class="label guarded">
+        <span>Guarded v1</span>
+        <strong>excited</strong>
+        <em>兴奋</em>
+        <b>Positive / High</b>
+      </div>
+
+      </div>
+      <div class="instruction">
+        <h3>你要做什么 / Human task</h3>
+        <p>必须人工二选一：若图像更平静/快乐，改回 Base；否则保留 Guarded v1。</p>
+      </div>
+      <div class="wizard">
+        <h3>三步判断 / Evidence workflow</h3>
+        <ol>
+          <li><strong>正负：</strong>画面主导感受是安宁、快乐、满足，还是痛苦、威胁、疲惫、冲突？</li>
+          <li><strong>唤醒：</strong>画面是静止低强度，还是有危险、打斗、骚动、强烈动作？</li>
+          <li><strong>二选一：</strong>先排除正负/唤醒不匹配的候选；如果同象限，再按下面候选定义选择。</li>
+        </ol>
+        <div class="candidate-guide">
+          <h4>本图候选标签边界</h4>
+          <ul><li><strong>happy</strong> / 快乐: 正向高唤醒：快乐、欢快、友好或节庆感。</li><li><strong>excited</strong> / 兴奋: 正向高唤醒：活跃、热闹、期待、节庆、运动感。</li></ul>
+        </div>
+      </div>
+      <div class="agent">
+        <h3>Gemini-agent second opinion</h3>
+        <p>Gemini-agent risk sheet points back toward Base, but confidence is only 3, so do not auto-change.</p>
+        <p><strong>Prior Gemini 3.5:</strong> change_to_base; conf=3; suggested=happy / Positive / High</p>
+        <p>The figures in the procession exhibit focused and mildly pleasant expressions rather than high-energy excitement, making the base label of happy more appropriate.</p>
+      </div>
+      <details>
+        <summary>Caption / 文本</summary>
+        <p>A lively woodblock print depicting a traditional Chinese musical procession with figures playing cymbals, drums, and horns while carrying a large flag and baskets.</p>
+      </details>
+      <div class="choices">
+        <label><input type="radio" name="track2_0964" value="accept_recommendation" checked> 接受推荐 / accept recommendation</label>
+        <label><input type="radio" name="track2_0964" value="use_base"> 用 Base</label>
+        <label><input type="radio" name="track2_0964" value="use_scaled_desc_v1"> 用 Scaled desc_v1</label>
+        <label><input type="radio" name="track2_0964" value="hold"> Hold</label>
+        <textarea data-note="track2_0964" placeholder="人工备注 / reviewer notes"></textarea>
+      </div>
+    </section>
+  </div>
+</article>
+
+</main>
+<script>
+const key = "track2_simplified_manual_review_v1";
+function collect() {
+  const rows = [];
+  document.querySelectorAll(".card").forEach(card => {
+    const id = card.id;
+    rows.push({
+      sample_id: id,
+      tier: card.dataset.tier,
+      decision: card.querySelector("input[type=radio]:checked")?.value || "",
+      note: card.querySelector("textarea")?.value || ""
+    });
+  });
+  return rows;
+}
+function save() { localStorage.setItem(key, JSON.stringify(collect(), null, 2)); }
+function restore() {
+  try {
+    const rows = JSON.parse(localStorage.getItem(key) || "[]");
+    rows.forEach(row => {
+      const radio = document.querySelector(`input[name="${row.sample_id}"][value="${row.decision}"]`);
+      if (radio) radio.checked = true;
+      const note = document.querySelector(`textarea[data-note="${row.sample_id}"]`);
+      if (note) note.value = row.note || "";
+    });
+  } catch {}
+}
+document.querySelectorAll("input, textarea").forEach(el => {
+  el.addEventListener("change", save);
+  el.addEventListener("input", save);
+});
+document.querySelectorAll("button[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("button[data-filter]").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    const filter = button.dataset.filter;
+    document.querySelectorAll(".card").forEach(card => {
+      card.classList.toggle("hidden", filter !== "all" && card.dataset.tier !== filter);
+    });
+  });
+});
+document.getElementById("export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(collect(), null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "track2_simplified_manual_review_decisions.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+restore();
+</script>
+</body>
+</html>
