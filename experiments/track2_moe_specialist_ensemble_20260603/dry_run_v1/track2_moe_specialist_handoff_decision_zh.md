@@ -91,12 +91,12 @@ VA 风险：
 
 推荐下一轮执行：
 
-先生成一个 `boundary + va + description` 三源 expert JSON，再用本 dry-run gate 复跑 56 个 disagreement 样本。只有出现 `accept_change > 0` 且没有 VA/description 风险时，才考虑写旁路 candidate，例如 `submissions/track2_submission_moe_specialist_candidate_*.json/.zip`。
+先生成一个 `boundary + va + description` 三源 expert JSON，再用本 dry-run gate 复跑 56 个 disagreement 样本。本计划仍只输出 dry-run JSON/Markdown/HTML 报告；即使出现 `accept_change > 0`，也只进入下一轮独立候选生成计划，不在本计划内写任何 submission JSON/ZIP。
 
-## 生成最终 Track2 Submission 还缺什么
+## 若另开候选生成计划还缺什么
 
 - 至少一个独立 specialist/VLM/异构模型 evidence source。
 - 对所有 `accept_change` 样本同步更新 emotion、valence、arousal。
 - 对所有改标样本做 Description Score rewrite/audit，保证 caption 和 attribute 不和新 emotion 冲突。
 - 运行 Track2 validator 和 focused tests。
-- 只写旁路 candidate，不覆盖现有正式提交包。
+- 先设计新的候选生成计划和输出路径；该步骤不属于当前 dry-run gate 计划。
