@@ -4,6 +4,7 @@ import math
 from dataclasses import dataclass
 from typing import Any
 
+from affectiveart.challenge import TRACK2_JSON_EMOTIONS
 from affectiveart.track2_audit import (
     HIGH_AROUSAL_EMOTIONS,
     LOW_AROUSAL_EMOTIONS,
@@ -12,12 +13,7 @@ from affectiveart.track2_audit import (
 )
 
 
-VALID_TRACK2_EMOTIONS = (
-    POSITIVE_EMOTIONS
-    | NEGATIVE_EMOTIONS
-    | HIGH_AROUSAL_EMOTIONS
-    | LOW_AROUSAL_EMOTIONS
-)
+VALID_TRACK2_EMOTIONS = TRACK2_JSON_EMOTIONS
 
 
 @dataclass(frozen=True)
