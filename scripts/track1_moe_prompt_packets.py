@@ -28,25 +28,31 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out-dir", required=True, type=Path)
     parser.add_argument("--limit", type=int, default=28)
     parser.add_argument("--max-strategies-per-sample", type=int)
+    parser.add_argument("--strategy-mode", choices=["auto", "legacy", "distribution"], default="auto")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    rows = build_moe_prompt_packets(
-        load_routes(args.routes_json),
-        contracts=load_contracts(args.contract_json),
-        reference_text_bank=load_reference_text_packets(args.reference_text_bank_jsonl),
-        out_dir=args.out_dir,
-        limit=args.limit,
-        distribution_routes=(
-            load_distribution_routes(args.distribution_routes_json)
-            if args.distribution_routes_json
-            else None
-        ),
-        max_strategies_per_sample=args.max_strategies_per_sample,
-    )
-    write_moe_prompt_packet_reports(rows, out_dir=args.out_dir)
+    try:
+        rows = build_moe_prompt_packets(
+            load_routes(args.routes_json),
+            contracts=load_contracts(args.contract_json),
+            reference_text_bank=load_reference_text_packets(args.reference_text_bank_jsonl),
+            out_dir=args.out_dir,
+            limit=args.limit,
+            distribution_routes=(
+                load_distribution_routes(args.distribution_routes_json)
+                if args.distribution_routes_json
+                else None
+            ),
+            max_strategies_per_sample=args.max_strategies_per_sample,
+            strategy_mode=args.strategy_mode,
+        )
+        write_moe_prompt_packet_reports(rows, out_dir=args.out_dir)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     print(json.dumps({"out_dir": str(args.out_dir), "total": len(rows)}, ensure_ascii=False, indent=2))
     return 0
 

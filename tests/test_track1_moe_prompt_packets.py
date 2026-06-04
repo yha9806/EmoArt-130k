@@ -358,6 +358,66 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
         self.assertEqual(payload["summary"]["total"], 3)
         self.assertEqual([row["candidate_strategy"] for row in payload["packets"]], ["aas_safe", "reference_style", "fid_diverse"])
 
+    def test_cli_strategy_mode_controls_distribution_expansion(self):
+        contract = _contract()
+        route = _route(candidate_count=3)
+        distribution_route = _distribution_route()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            route_json = root / "routes.json"
+            contract_json = root / "contracts.json"
+            distribution_json = root / "distribution.json"
+            legacy_out = root / "legacy"
+            distribution_out = root / "distribution"
+            route_json.write_text(json.dumps({"rows": [route]}), encoding="utf-8")
+            contract_json.write_text(json.dumps({"rows": [contract]}), encoding="utf-8")
+            distribution_json.write_text(json.dumps({"routes": [distribution_route]}), encoding="utf-8")
+
+            module = self._load_cli_module("track1_moe_prompt_packets_cli_strategy")
+            self.assertIn("--strategy-mode", module.build_parser().format_help())
+            legacy_code = module.main(
+                [
+                    "--routes-json",
+                    str(route_json),
+                    "--contract-json",
+                    str(contract_json),
+                    "--distribution-routes-json",
+                    str(distribution_json),
+                    "--strategy-mode",
+                    "legacy",
+                    "--out-dir",
+                    str(legacy_out),
+                    "--limit",
+                    "3",
+                ]
+            )
+            distribution_code = module.main(
+                [
+                    "--routes-json",
+                    str(route_json),
+                    "--contract-json",
+                    str(contract_json),
+                    "--distribution-routes-json",
+                    str(distribution_json),
+                    "--strategy-mode",
+                    "distribution",
+                    "--out-dir",
+                    str(distribution_out),
+                    "--limit",
+                    "3",
+                ]
+            )
+            legacy_payload = json.loads((legacy_out / "track1_moe_prompt_packets.json").read_text(encoding="utf-8"))
+            distribution_payload = json.loads((distribution_out / "track1_moe_prompt_packets.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(legacy_code, 0)
+        self.assertEqual(distribution_code, 0)
+        self.assertEqual([row["candidate_strategy"] for row in legacy_payload["packets"]], ["legacy"])
+        self.assertEqual(
+            [row["candidate_strategy"] for row in distribution_payload["packets"]],
+            ["aas_safe", "reference_style", "fid_diverse"],
+        )
+
     def test_distribution_expanded_fixture_does_not_fail_lint_from_global_template_phrases(self):
         contracts = [_contract(sample_id=f"track1_080{index}") for index in range(3)]
         routes = [_route(sample_id=contract["sample_id"], candidate_count=3) for contract in contracts]
@@ -463,6 +523,86 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
 
             self.assertEqual(load_routes(routes_json), [route])
             self.assertEqual(load_contracts(contracts_json)[contract["sample_id"]]["caption"], contract["caption"])
+
+    def test_load_routes_rejects_malformed_payloads_with_indexed_errors(self):
+        malformed_payloads = [
+            ({"routes": [_route()]}, "routes JSON"),
+            (["not an object"], "route row 0"),
+            ([{"candidate_count": 1}], "route row 0.*sample_id"),
+            ([_route(candidate_count="many")], "route row 0.*candidate_count"),
+            ([_route(candidate_count=None)], "route row 0.*candidate_count"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for index, (payload, pattern) in enumerate(malformed_payloads):
+                path = root / f"bad_routes_{index}.json"
+                path.write_text(json.dumps(payload), encoding="utf-8")
+                with self.subTest(payload=index):
+                    with self.assertRaisesRegex(ValueError, pattern):
+                        load_routes(path)
+
+    def test_load_contracts_rejects_malformed_payloads_with_indexed_errors(self):
+        malformed_payloads = [
+            ({"contracts": [_contract()]}, "contracts JSON"),
+            (["not an object"], "contract row 0"),
+            ([{"caption": "caption"}], "contract row 0.*sample_id"),
+            ([_contract(caption="")], "contract row 0.*caption"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for index, (payload, pattern) in enumerate(malformed_payloads):
+                path = root / f"bad_contracts_{index}.json"
+                path.write_text(json.dumps(payload), encoding="utf-8")
+                with self.subTest(payload=index):
+                    with self.assertRaisesRegex(ValueError, pattern):
+                        load_contracts(path)
+
+    def test_build_packets_rejects_missing_contract_before_creating_prompt_dir(self):
+        route = _route(sample_id="track1_missing", candidate_count=1)
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "out"
+            with self.assertRaisesRegex(ValueError, "track1_missing"):
+                build_moe_prompt_packets(
+                    [route],
+                    contracts={},
+                    reference_text_bank={},
+                    out_dir=out_dir,
+                )
+
+            self.assertFalse((out_dir / "provider_prompts_top").exists())
+
+    def test_cli_returns_two_for_malformed_inputs_without_prompt_dir(self):
+        contract = _contract()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            route_json = root / "bad_routes.json"
+            contract_json = root / "contracts.json"
+            out_dir = root / "out"
+            route_json.write_text(json.dumps([{"candidate_count": 1}]), encoding="utf-8")
+            contract_json.write_text(json.dumps([contract]), encoding="utf-8")
+
+            module = self._load_cli_module("track1_moe_prompt_packets_cli_bad_inputs")
+            code = module.main(
+                [
+                    "--routes-json",
+                    str(route_json),
+                    "--contract-json",
+                    str(contract_json),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(code, 2)
+            self.assertFalse((out_dir / "provider_prompts_top").exists())
+
+    def _load_cli_module(self, name: str):
+        path = Path(__file__).resolve().parents[1] / "scripts" / "track1_moe_prompt_packets.py"
+        spec = importlib.util.spec_from_file_location(name, path)
+        module = importlib.util.module_from_spec(spec)
+        assert spec and spec.loader
+        spec.loader.exec_module(module)
+        return module
 
 
 if __name__ == "__main__":

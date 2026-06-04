@@ -80,13 +80,26 @@ def build_moe_prompt_packets(
     limit: int | None = None,
     distribution_routes: dict[str, dict[str, Any]] | list[dict[str, Any]] | None = None,
     max_strategies_per_sample: int | None = None,
+    strategy_mode: str = "auto",
 ) -> list[dict[str, Any]]:
     out_dir = _safe_output_dir(out_dir)
-    prompt_dir = out_dir / "provider_prompts_top"
-    prompt_dir.mkdir(parents=True, exist_ok=True)
     packets: list[dict[str, Any]] = []
     route_by_sample = _distribution_routes_by_sample(distribution_routes)
-    generation_routes = [route for route in routes if int(route.get("candidate_count") or 0) > 0]
+    mode = _validate_strategy_mode(strategy_mode)
+    if mode == "legacy":
+        route_by_sample = {}
+    generation_routes = [route for route in _validate_route_rows(list(routes)) if int(route.get("candidate_count") or 0) > 0]
+    _validate_contract_map(contracts)
+    missing_contracts = [str(route["sample_id"]) for route in generation_routes if str(route["sample_id"]) not in contracts]
+    if missing_contracts:
+        raise ValueError(f"missing contracts for sample_id: {', '.join(missing_contracts)}")
+    if mode == "distribution":
+        missing_distribution = [str(route["sample_id"]) for route in generation_routes if str(route["sample_id"]) not in route_by_sample]
+        if missing_distribution:
+            raise ValueError(f"missing distribution routes for sample_id: {', '.join(missing_distribution)}")
+
+    prompt_dir = out_dir / "provider_prompts_top"
+    prompt_dir.mkdir(parents=True, exist_ok=True)
     rank = 0
     for route in generation_routes:
         sample_id = str(route["sample_id"])
@@ -197,10 +210,12 @@ def write_moe_prompt_packet_reports(rows: list[dict[str, Any]], *, out_dir: str 
 def load_routes(path: str | Path) -> list[dict[str, Any]]:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
     if isinstance(payload, list):
-        return [dict(row) for row in payload if isinstance(row, dict)]
-    if isinstance(payload, dict) and isinstance(payload.get("rows"), list):
-        return [dict(row) for row in payload["rows"] if isinstance(row, dict)]
-    return []
+        rows = payload
+    elif isinstance(payload, dict) and isinstance(payload.get("rows"), list):
+        rows = payload["rows"]
+    else:
+        raise ValueError("routes JSON must be a list or an object with 'rows'")
+    return _validate_route_rows(rows)
 
 
 def load_distribution_routes(path: str | Path) -> dict[str, dict[str, Any]]:
@@ -223,8 +238,9 @@ def load_contracts(path: str | Path) -> dict[str, dict[str, Any]]:
     elif isinstance(payload, dict) and isinstance(payload.get("rows"), list):
         rows = payload["rows"]
     else:
-        rows = []
-    return {str(row["sample_id"]): dict(row) for row in rows if isinstance(row, dict) and row.get("sample_id")}
+        raise ValueError("contracts JSON must be a list or an object with 'rows'")
+    contract_map = {str(row["sample_id"]): dict(row) for row in _validate_contract_rows(rows)}
+    return contract_map
 
 
 def load_reference_text_packets(path: str | Path | None) -> dict[str, dict[str, Any]]:
@@ -330,6 +346,59 @@ def _distribution_routes_by_sample(
         if isinstance(row, dict) and row.get("sample_id"):
             result[str(row["sample_id"])] = dict(row)
     return result
+
+
+def _validate_strategy_mode(strategy_mode: str) -> str:
+    mode = str(strategy_mode or "auto")
+    if mode not in {"auto", "legacy", "distribution"}:
+        raise ValueError(f"strategy_mode must be one of auto, legacy, distribution: {mode}")
+    return mode
+
+
+def _validate_route_rows(rows: list[Any]) -> list[dict[str, Any]]:
+    validated: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"route row {index} must be an object")
+        if not row.get("sample_id"):
+            raise ValueError(f"route row {index} missing required sample_id")
+        if "candidate_count" not in row:
+            raise ValueError(f"route row {index} missing required candidate_count")
+        try:
+            candidate_count = int(row["candidate_count"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"route row {index} has invalid candidate_count") from exc
+        if candidate_count < 0:
+            raise ValueError(f"route row {index} has invalid candidate_count")
+        normalized = dict(row)
+        normalized["sample_id"] = str(row["sample_id"])
+        normalized["candidate_count"] = candidate_count
+        validated.append(normalized)
+    return validated
+
+
+def _validate_contract_rows(rows: list[Any]) -> list[dict[str, Any]]:
+    validated: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"contract row {index} must be an object")
+        if not row.get("sample_id"):
+            raise ValueError(f"contract row {index} missing required sample_id")
+        if not row.get("caption"):
+            raise ValueError(f"contract row {index} missing required caption")
+        normalized = dict(row)
+        normalized["sample_id"] = str(row["sample_id"])
+        normalized["caption"] = str(row["caption"])
+        validated.append(normalized)
+    return validated
+
+
+def _validate_contract_map(contracts: dict[str, dict[str, Any]]) -> None:
+    for sample_id, contract in contracts.items():
+        if not isinstance(contract, dict):
+            raise ValueError(f"contract for sample_id {sample_id} must be an object")
+        if not contract.get("caption"):
+            raise ValueError(f"contract for sample_id {sample_id} missing required caption")
 
 
 def _candidate_strategies(
