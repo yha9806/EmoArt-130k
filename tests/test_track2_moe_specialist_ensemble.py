@@ -1,7 +1,10 @@
+import copy
+import json
 import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest import mock
 
 from PIL import Image
 
@@ -65,6 +68,14 @@ def _expert_row(sample_id="track2_0001", emotion="calm", **overrides):
     }
     row.update(overrides)
     return row
+
+
+def _write_track2_image_zip(image_zip, sample_ids):
+    source_image = image_zip.parent / "source.jpg"
+    Image.new("RGB", (64, 48), (190, 170, 140)).save(source_image)
+    with zipfile.ZipFile(image_zip, "w") as zf:
+        for sample_id in sample_ids:
+            zf.write(source_image, f"track2_testset/images/{sample_id}.jpg")
 
 
 class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
@@ -535,11 +546,8 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
             image_zip = tmp_path / "track2_images.zip"
-            image_path = tmp_path / "track2_0001.jpg"
             out_dir = tmp_path / "out"
-            Image.new("RGB", (64, 48), (190, 170, 140)).save(image_path)
-            with zipfile.ZipFile(image_zip, "w") as zf:
-                zf.write(image_path, "track2_testset/images/track2_0001.jpg")
+            _write_track2_image_zip(image_zip, ["track2_0001"])
 
             report = build_dry_run_report(
                 [current_row(sample_id="track2_0001", emotion="content")],
@@ -565,6 +573,155 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             )
             self.assertFalse((out_dir / "submission.json").exists())
             self.assertFalse((out_dir / "submission.zip").exists())
+
+    def test_write_dry_run_outputs_rejects_repo_submissions_out_dir_without_creating_it(self):
+        from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
+
+        repo_root = Path(__file__).resolve().parents[1]
+        blocked_out_dir = repo_root / "submissions" / "track2_moe_policy_guard_test_output"
+        self.assertFalse(blocked_out_dir.exists())
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            image_zip = tmp_path / "track2_images.zip"
+            _write_track2_image_zip(image_zip, ["track2_0001"])
+            report = build_dry_run_report(
+                [current_row(sample_id="track2_0001", emotion="content")],
+                [
+                    expert("track2_0001", "clip_clean", "calm", role="global"),
+                    expert("track2_0001", "boundary_head", "calm", role="boundary"),
+                ],
+                queue_sample_ids=["track2_0001"],
+            )
+
+            with mock.patch(
+                "affectiveart.track2_moe_specialist_ensemble.Path.mkdir"
+            ) as mkdir_mock, mock.patch(
+                "affectiveart.track2_moe_specialist_ensemble._extract_review_assets",
+                return_value={},
+            ), mock.patch(
+                "affectiveart.track2_moe_specialist_ensemble.Path.write_text",
+                return_value=None,
+            ):
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "dry-run output must not be under submissions/",
+                ):
+                    write_dry_run_outputs(
+                        report,
+                        image_zip=image_zip,
+                        out_dir=blocked_out_dir,
+                    )
+                mkdir_mock.assert_not_called()
+
+        self.assertFalse(blocked_out_dir.exists())
+
+    def test_write_dry_run_outputs_does_not_mutate_input_report(self):
+        from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            image_zip = tmp_path / "track2_images.zip"
+            out_dir = tmp_path / "out"
+            _write_track2_image_zip(image_zip, ["track2_0001"])
+            report = build_dry_run_report(
+                [current_row(sample_id="track2_0001", emotion="content")],
+                [
+                    expert("track2_0001", "clip_clean", "calm", role="global"),
+                    expert("track2_0001", "boundary_head", "calm", role="boundary"),
+                ],
+                queue_sample_ids=["track2_0001"],
+            )
+            original_report = copy.deepcopy(report)
+
+            outputs = write_dry_run_outputs(report, image_zip=image_zip, out_dir=out_dir)
+
+            self.assertEqual(report, original_report)
+            output_report = json.loads(Path(outputs["json"]).read_text(encoding="utf-8"))
+            self.assertIn("outputs", output_report)
+            self.assertIn("image_asset", output_report["rows"][0])
+
+    def test_render_dry_run_html_escapes_hostile_sample_id_reason_and_evidence(self):
+        from affectiveart.track2_moe_specialist_ensemble import render_dry_run_html
+
+        html_text = render_dry_run_html(
+            {
+                "row_count": 1,
+                "decision_counts": {"hold": 1},
+                "rows": [
+                    {
+                        "sample_id": 'track2_<script>alert("x")</script>',
+                        "decision": "hold",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "reasons": ['<img src=x onerror=alert("x")>'],
+                        "expert_evidence": [
+                            {
+                                "source": "<b>clip</b>",
+                                "role": "global",
+                                "emotion": "calm",
+                                "confidence": 0.9,
+                                "margin": 0.2,
+                                "top3": [
+                                    {
+                                        "emotion": "<i>calm</i>",
+                                        "probability": 0.9,
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ],
+            }
+        )
+
+        self.assertNotIn('<script>alert("x")</script>', html_text)
+        self.assertNotIn('<img src=x onerror=alert("x")>', html_text)
+        self.assertNotIn("<b>clip</b>", html_text)
+        self.assertNotIn("<i>calm</i>", html_text)
+        self.assertIn("&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;", html_text)
+        self.assertIn(
+            "&lt;img src=x onerror=alert(&quot;x&quot;)&gt;",
+            html_text,
+        )
+        self.assertIn("&lt;b&gt;clip&lt;/b&gt;", html_text)
+        self.assertIn("&lt;i&gt;calm&lt;/i&gt;", html_text)
+
+    def test_write_dry_run_outputs_uses_distinct_assets_for_colliding_hostile_ids(self):
+        from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
+
+        sample_ids = ["bad id", "bad?id"]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            image_zip = tmp_path / "track2_images.zip"
+            out_dir = tmp_path / "out"
+            _write_track2_image_zip(image_zip, sample_ids)
+            report = build_dry_run_report(
+                [
+                    current_row(sample_id="bad id", emotion="content"),
+                    current_row(sample_id="bad?id", emotion="content"),
+                ],
+                [
+                    expert("bad id", "clip_clean", "calm", role="global"),
+                    expert("bad id", "boundary_head", "calm", role="boundary"),
+                    expert("bad?id", "clip_clean", "calm", role="global"),
+                    expert("bad?id", "boundary_head", "calm", role="boundary"),
+                ],
+                queue_sample_ids=sample_ids,
+            )
+
+            outputs = write_dry_run_outputs(report, image_zip=image_zip, out_dir=out_dir)
+
+            output_report = json.loads(Path(outputs["json"]).read_text(encoding="utf-8"))
+            asset_paths = [row["image_asset"] for row in output_report["rows"]]
+            self.assertEqual(len(set(asset_paths)), 2)
+            for asset_path in asset_paths:
+                self.assertRegex(asset_path, r"^assets/bad_id-[0-9a-f]{8}\.jpg$")
+                self.assertTrue((out_dir / "html_review" / asset_path).exists())
 
 
 if __name__ == "__main__":

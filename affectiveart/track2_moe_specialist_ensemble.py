@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
+import hashlib
 import html
 import json
 import math
@@ -255,6 +256,7 @@ def write_dry_run_outputs(
     out_dir: str | Path,
 ) -> dict[str, str]:
     out_dir = Path(out_dir)
+    _validate_dry_run_out_dir(out_dir)
     html_dir = out_dir / "html_review"
     assets_dir = html_dir / "assets"
     assets_dir.mkdir(parents=True, exist_ok=True)
@@ -830,16 +832,31 @@ def _extract_review_assets(
 
 
 def _safe_asset_filename(sample_id: str) -> str:
+    raw_sample_id = str(sample_id).strip()
     safe_stem = "".join(
         character
         if character.isascii()
         and (character.isalnum() or character in {"_", "-"})
         else "_"
-        for character in str(sample_id).strip()
-    ).strip("_")
+        for character in raw_sample_id
+    )
     if not safe_stem:
         safe_stem = "sample"
+    if safe_stem != raw_sample_id:
+        suffix = hashlib.sha256(raw_sample_id.encode("utf-8")).hexdigest()[:8]
+        safe_stem = f"{safe_stem}-{suffix}"
     return f"{safe_stem}.jpg"
+
+
+def _validate_dry_run_out_dir(out_dir: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    submissions_dir = (repo_root / "submissions").resolve(strict=False)
+    resolved_out_dir = out_dir.expanduser().resolve(strict=False)
+    try:
+        resolved_out_dir.relative_to(submissions_dir)
+    except ValueError:
+        return
+    raise ValueError("dry-run output must not be under submissions/")
 
 
 def _dry_run_rows(report: dict[str, Any]) -> list[dict[str, Any]]:
