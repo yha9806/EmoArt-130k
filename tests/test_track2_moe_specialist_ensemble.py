@@ -1,4 +1,9 @@
+import tempfile
 import unittest
+import zipfile
+from pathlib import Path
+
+from PIL import Image
 
 from affectiveart.challenge import TRACK2_JSON_EMOTIONS
 from affectiveart.track2_moe_specialist_ensemble import (
@@ -520,6 +525,46 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             "description_contradiction",
             rows_by_id["track2_0002"]["reasons"],
         )
+
+    def test_write_dry_run_outputs_writes_review_artifacts_without_submission_files(self):
+        try:
+            from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
+        except ImportError:
+            self.fail("write_dry_run_outputs is missing")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            image_zip = tmp_path / "track2_images.zip"
+            image_path = tmp_path / "track2_0001.jpg"
+            out_dir = tmp_path / "out"
+            Image.new("RGB", (64, 48), (190, 170, 140)).save(image_path)
+            with zipfile.ZipFile(image_zip, "w") as zf:
+                zf.write(image_path, "track2_testset/images/track2_0001.jpg")
+
+            report = build_dry_run_report(
+                [current_row(sample_id="track2_0001", emotion="content")],
+                [
+                    expert("track2_0001", "clip_clean", "calm", role="global"),
+                    expert("track2_0001", "boundary_head", "calm", role="boundary"),
+                ],
+                queue_sample_ids=["track2_0001"],
+            )
+
+            outputs = write_dry_run_outputs(report, image_zip=image_zip, out_dir=out_dir)
+
+            self.assertTrue(Path(outputs["json"]).exists())
+            self.assertTrue(Path(outputs["markdown"]).exists())
+            self.assertTrue(Path(outputs["html"]).exists())
+
+            html_text = Path(outputs["html"]).read_text(encoding="utf-8")
+            self.assertIn("Track2 MoE Specialist Dry-Run", html_text)
+            self.assertIn("track2_0001", html_text)
+            self.assertIn("accept_change", html_text)
+            self.assertTrue(
+                (out_dir / "html_review" / "assets" / "track2_0001.jpg").exists()
+            )
+            self.assertFalse((out_dir / "submission.json").exists())
+            self.assertFalse((out_dir / "submission.zip").exists())
 
 
 if __name__ == "__main__":

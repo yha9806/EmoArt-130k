@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 from collections import Counter
-import math
 from dataclasses import dataclass
+import html
+import json
+import math
+from pathlib import Path
+import shutil
 from typing import Any
+import zipfile
 
 from affectiveart.challenge import TRACK2_JSON_EMOTIONS
 from affectiveart.track2_audit import (
@@ -13,12 +18,18 @@ from affectiveart.track2_audit import (
     POSITIVE_EMOTIONS,
     compute_track2_distribution,
 )
+from affectiveart.track2_visual_audit import find_track2_image_member
 
 
 VALID_TRACK2_EMOTIONS = TRACK2_JSON_EMOTIONS
 SINGLE_SOURCE_SPECIALIST_ROLES = frozenset(
     {"boundary", "tail", "va", "description", "specialist"}
 )
+DRY_RUN_OUTPUT_FILENAMES = {
+    "json": "track2_moe_specialist_dry_run_report.json",
+    "markdown": "track2_moe_specialist_dry_run_report.md",
+    "html": "html_review/track2_moe_specialist_dry_run_review.html",
+}
 
 
 @dataclass(frozen=True)
@@ -235,6 +246,289 @@ def build_dry_run_report(
         "candidate_zip_written": False,
         "rows": decisions,
     }
+
+
+def write_dry_run_outputs(
+    report: dict[str, Any],
+    *,
+    image_zip: str | Path,
+    out_dir: str | Path,
+) -> dict[str, str]:
+    out_dir = Path(out_dir)
+    html_dir = out_dir / "html_review"
+    assets_dir = html_dir / "assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
+
+    outputs = {
+        key: str(out_dir / filename)
+        for key, filename in DRY_RUN_OUTPUT_FILENAMES.items()
+    }
+    rows = [dict(row) for row in report.get("rows", []) if isinstance(row, dict)]
+    asset_by_sample_id = _extract_review_assets(rows, image_zip, assets_dir)
+    for row in rows:
+        sample_id = str(row.get("sample_id", "")).strip()
+        if sample_id in asset_by_sample_id:
+            row["image_asset"] = asset_by_sample_id[sample_id]
+
+    output_report = dict(report)
+    output_report["outputs"] = outputs
+    output_report["rows"] = rows
+
+    Path(outputs["json"]).write_text(
+        json.dumps(output_report, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    Path(outputs["markdown"]).write_text(
+        render_dry_run_markdown(output_report, outputs),
+        encoding="utf-8",
+    )
+    Path(outputs["html"]).write_text(
+        render_dry_run_html(output_report),
+        encoding="utf-8",
+    )
+    return outputs
+
+
+def render_dry_run_markdown(
+    report: dict[str, Any],
+    outputs: dict[str, str],
+) -> str:
+    rows = _dry_run_rows(report)
+    lines = [
+        "# Track2 MoE Specialist Dry-Run",
+        "",
+        f"- rows: {report.get('row_count', len(rows))}",
+        f"- formal_submission_overwritten: {bool(report.get('formal_submission_overwritten', False))}",
+        f"- candidate_json_written: {bool(report.get('candidate_json_written', False))}",
+        f"- candidate_zip_written: {bool(report.get('candidate_zip_written', False))}",
+        f"- HTML review: {outputs.get('html', '')}",
+        "",
+        "## Decision Counts",
+    ]
+
+    decision_counts = report.get("decision_counts", {})
+    if isinstance(decision_counts, dict) and decision_counts:
+        for decision, count in sorted(decision_counts.items()):
+            lines.append(f"- {decision}: {count}")
+    else:
+        lines.append("- none")
+
+    lines.extend(["", "## Accepted Transitions"])
+    transitions = report.get("accepted_transition_counts", {})
+    if isinstance(transitions, dict) and transitions:
+        for transition, count in sorted(transitions.items()):
+            lines.append(f"- {transition}: {count}")
+    else:
+        lines.append("- none")
+
+    lines.extend(["", "## Rows"])
+    if not rows:
+        lines.append("- none")
+    for row in rows:
+        sample_id = str(row.get("sample_id", "")).strip()
+        lines.extend(
+            [
+                "",
+                f"### {sample_id}",
+                f"- decision: {row.get('decision', '')}",
+                (
+                    "- current: "
+                    f"{row.get('current_emotion', '')} / "
+                    f"{row.get('current_valence', '')} / "
+                    f"{row.get('current_arousal', '')}"
+                ),
+                (
+                    "- proposed: "
+                    f"{row.get('proposed_emotion', '')} / "
+                    f"{row.get('proposed_valence', '')} / "
+                    f"{row.get('proposed_arousal', '')}"
+                ),
+                f"- reasons: {', '.join(_string_list(row.get('reasons'))) or 'none'}",
+            ]
+        )
+
+    return "\n".join(lines) + "\n"
+
+
+def render_dry_run_html(report: dict[str, Any]) -> str:
+    rows = _dry_run_rows(report)
+    cards = "\n".join(_render_dry_run_card(row) for row in rows)
+    decision_counts = report.get("decision_counts", {})
+    count_pills = ""
+    if isinstance(decision_counts, dict):
+        count_pills = "\n".join(
+            f'<span class="pill">{_escape(decision)}: {_escape(count)}</span>'
+            for decision, count in sorted(decision_counts.items())
+        )
+    html_text = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track2 MoE Specialist Dry-Run</title>
+  <style>
+    :root {{
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #52606d;
+      --line: #d7dee8;
+      --panel: #ffffff;
+      --page: #f5f7fa;
+      --accent: #0f766e;
+      --hold: #925a14;
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--page);
+    }}
+    header {{
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }}
+    main {{
+      width: min(1180px, calc(100% - 32px));
+      margin: 20px auto 36px;
+    }}
+    h1 {{
+      margin: 0 0 12px;
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }}
+    h2 {{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }}
+    .summary {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }}
+    .pill {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      padding: 5px 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.2;
+    }}
+    .notice {{
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }}
+    .card {{
+      display: grid;
+      grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+      gap: 18px;
+      margin: 0 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 16px;
+    }}
+    .artwork {{
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #eef2f6;
+    }}
+    .meta {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 12px;
+    }}
+    .decision {{
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+      color: var(--accent);
+      font-weight: 650;
+    }}
+    .decision.hold {{
+      border-color: color-mix(in srgb, var(--hold) 35%, var(--line));
+      color: var(--hold);
+    }}
+    .labels {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 12px;
+    }}
+    .label-box {{
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfe;
+    }}
+    .label-title {{
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }}
+    .triplet {{
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.35;
+    }}
+    .reasons {{
+      margin: 0 0 12px 18px;
+      padding: 0;
+    }}
+    .reasons li {{
+      margin: 4px 0;
+    }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }}
+    th, td {{
+      border-top: 1px solid var(--line);
+      padding: 7px 6px;
+      text-align: left;
+      vertical-align: top;
+    }}
+    th {{
+      color: var(--muted);
+      font-weight: 650;
+      background: #f7f9fc;
+    }}
+    @media (max-width: 760px) {{
+      .card, .labels {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Track2 MoE Specialist Dry-Run</h1>
+    <div class="summary">
+      <span class="pill">Rows: {_escape(report.get('row_count', len(rows)))}</span>
+      {count_pills}
+    </div>
+    <p class="notice">Dry-run review only. No submission JSON or ZIP is written.</p>
+  </header>
+  <main>
+    {cards}
+  </main>
+</body>
+</html>
+"""
+    return html_text
 
 
 def _normalized_unique_sample_ids(values) -> list[str]:
@@ -510,10 +804,165 @@ def _top3_probability(value: dict[str, Any]) -> Any:
     return None
 
 
+def _extract_review_assets(
+    rows: list[dict[str, Any]],
+    image_zip: str | Path,
+    assets_dir: Path,
+) -> dict[str, str]:
+    assets_dir.mkdir(parents=True, exist_ok=True)
+    asset_by_sample_id: dict[str, str] = {}
+    seen_sample_ids: set[str] = set()
+    with zipfile.ZipFile(image_zip) as zf:
+        names = zf.namelist()
+        for row in rows:
+            sample_id = str(row.get("sample_id", "")).strip()
+            if not sample_id or sample_id in seen_sample_ids:
+                continue
+            seen_sample_ids.add(sample_id)
+            member = find_track2_image_member(names, sample_id)
+            if not member:
+                continue
+            target = assets_dir / _safe_asset_filename(sample_id)
+            with zf.open(member) as source, target.open("wb") as destination:
+                shutil.copyfileobj(source, destination)
+            asset_by_sample_id[sample_id] = f"assets/{target.name}"
+    return asset_by_sample_id
+
+
+def _safe_asset_filename(sample_id: str) -> str:
+    safe_stem = "".join(
+        character
+        if character.isascii()
+        and (character.isalnum() or character in {"_", "-"})
+        else "_"
+        for character in str(sample_id).strip()
+    ).strip("_")
+    if not safe_stem:
+        safe_stem = "sample"
+    return f"{safe_stem}.jpg"
+
+
+def _dry_run_rows(report: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = report.get("rows", [])
+    if not isinstance(rows, list):
+        return []
+    return [row for row in rows if isinstance(row, dict)]
+
+
+def _render_dry_run_card(row: dict[str, Any]) -> str:
+    sample_id = str(row.get("sample_id", "")).strip()
+    decision = str(row.get("decision", "")).strip()
+    decision_class = " hold" if decision == "hold" else ""
+    image_src = str(row.get("image_asset") or f"assets/{_safe_asset_filename(sample_id)}")
+    reasons = _string_list(row.get("reasons"))
+    reason_items = "\n".join(f"<li>{_escape(reason)}</li>" for reason in reasons)
+    if not reason_items:
+        reason_items = "<li>none</li>"
+
+    evidence = row.get("expert_evidence", [])
+    evidence_rows = ""
+    if isinstance(evidence, list):
+        evidence_rows = "\n".join(
+            _render_evidence_row(expert_row)
+            for expert_row in evidence
+            if isinstance(expert_row, dict)
+        )
+    if not evidence_rows:
+        evidence_rows = '<tr><td colspan="6">No expert evidence</td></tr>'
+
+    return f"""<section class="card" id="{_escape(sample_id)}">
+  <img class="artwork" src="{_escape(image_src)}" alt="{_escape(sample_id)}">
+  <div>
+    <h2>{_escape(sample_id)}</h2>
+    <div class="meta">
+      <span class="pill decision{decision_class}">{_escape(decision)}</span>
+    </div>
+    <div class="labels">
+      <div class="label-box">
+        <p class="label-title">Current label</p>
+        <p class="triplet">{_escape(row.get('current_emotion', ''))} / {_escape(row.get('current_valence', ''))} / {_escape(row.get('current_arousal', ''))}</p>
+      </div>
+      <div class="label-box">
+        <p class="label-title">Proposed label</p>
+        <p class="triplet">{_escape(row.get('proposed_emotion', ''))} / {_escape(row.get('proposed_valence', ''))} / {_escape(row.get('proposed_arousal', ''))}</p>
+      </div>
+    </div>
+    <ul class="reasons">
+      {reason_items}
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Role</th>
+          <th>Emotion</th>
+          <th>Confidence</th>
+          <th>Margin</th>
+          <th>Top 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        {evidence_rows}
+      </tbody>
+    </table>
+  </div>
+</section>"""
+
+
+def _render_evidence_row(row: dict[str, Any]) -> str:
+    return f"""<tr>
+  <td>{_escape(row.get('source', ''))}</td>
+  <td>{_escape(row.get('role', ''))}</td>
+  <td>{_escape(row.get('emotion', ''))}</td>
+  <td>{_escape(_format_number(row.get('confidence')))}</td>
+  <td>{_escape(_format_number(row.get('margin')))}</td>
+  <td>{_escape(_format_top3(row.get('top3')))}</td>
+</tr>"""
+
+
+def _format_top3(value: Any) -> str:
+    if not isinstance(value, list):
+        return ""
+    entries: list[str] = []
+    for item in value:
+        if not isinstance(item, dict):
+            continue
+        emotion = str(item.get("emotion", "")).strip()
+        probability = _format_number(item.get("probability"))
+        if emotion and probability:
+            entries.append(f"{emotion} {probability}")
+        elif emotion:
+            entries.append(emotion)
+    return ", ".join(entries)
+
+
+def _format_number(value: Any) -> str:
+    if value is None or value == "":
+        return ""
+    number = _safe_float(value)
+    return f"{number:.3f}".rstrip("0").rstrip(".")
+
+
+def _string_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    if str(value or "").strip():
+        return [str(value).strip()]
+    return []
+
+
+def _escape(value: Any) -> str:
+    return html.escape(str(value), quote=True)
+
+
 __all__ = [
+    "DRY_RUN_OUTPUT_FILENAMES",
     "GateThresholds",
     "build_dry_run_report",
     "build_gate_decision",
     "expected_label_for_emotion",
     "normalize_expert_entries",
+    "render_dry_run_html",
+    "render_dry_run_markdown",
+    "write_dry_run_outputs",
 ]
