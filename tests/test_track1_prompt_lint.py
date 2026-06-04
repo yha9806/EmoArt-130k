@@ -58,6 +58,39 @@ class Track1PromptLintTest(unittest.TestCase):
         self.assertEqual(report["summary"]["warned_phrases"], [])
         self.assertEqual(report["summary"]["justified_phrases"], [])
 
+    def test_exact_threshold_boundary_does_not_fail(self):
+        rows = [
+            {"sample_id": f"track1_{index:04d}", "provider_prompt": "front-facing figure study"}
+            for index in range(3)
+        ] + [
+            {"sample_id": "track1_0003", "provider_prompt": "wide landscape"},
+            {"sample_id": "track1_0004", "provider_prompt": "vertical scroll"},
+        ]
+
+        report = lint_prompt_batch(rows, threshold=0.6)
+
+        self.assertEqual(report["phrases"]["front-facing"]["ratio"], 0.6)
+        self.assertEqual(report["phrases"]["front-facing"]["status"], "pass")
+        self.assertEqual(report["summary"]["status"], "pass")
+        self.assertNotIn("front-facing", report["summary"]["failed_phrases"])
+
+    def test_detects_slash_variant_for_fewer_larger_text_blocks(self):
+        rows = [
+            {
+                "sample_id": f"track1_{index:04d}",
+                "provider_prompt": "Use fewer/larger text blocks across the poster area.",
+            }
+            for index in range(4)
+        ] + [
+            {"sample_id": "track1_0004", "provider_prompt": "loose brushwork without typography"},
+        ]
+
+        report = lint_prompt_batch(rows, threshold=0.6)
+
+        self.assertEqual(report["summary"]["status"], "fail")
+        self.assertIn("fewer/larger text blocks", report["summary"]["failed_phrases"])
+        self.assertEqual(report["phrases"]["fewer/larger text blocks"]["count"], 4)
+
     def test_caption_required_and_metadata_justification_warns_instead_of_failing(self):
         rows = [
             {
@@ -87,6 +120,37 @@ class Track1PromptLintTest(unittest.TestCase):
         self.assertIn("flat printed poster", report["summary"]["justified_phrases"])
         self.assertEqual(report["phrases"]["portrait poster canvas"]["justified_count"], 3)
         self.assertIn("caption_mentions_poster", report["phrases"]["portrait poster canvas"]["justifications"])
+
+    def test_unjustified_matches_keep_high_frequency_phrase_failed(self):
+        rows = [
+            {
+                "sample_id": f"track1_poster_{index:04d}",
+                "caption": "A public event poster with visible printed support.",
+                "provider_prompt": "portrait poster canvas with thick ink texture",
+            }
+            for index in range(8)
+        ] + [
+            {
+                "sample_id": "track1_nonposter_0001",
+                "caption": "A quiet watercolor landscape.",
+                "provider_prompt": "portrait poster canvas with thick ink texture",
+            },
+            {
+                "sample_id": "track1_nonposter_0002",
+                "caption": "An oil painting of a crowded factory floor.",
+                "provider_prompt": "portrait poster canvas with thick ink texture",
+            },
+        ]
+
+        report = lint_prompt_batch(rows, threshold=0.6)
+
+        self.assertEqual(report["summary"]["status"], "fail")
+        self.assertIn("portrait poster canvas", report["summary"]["failed_phrases"])
+        self.assertEqual(report["phrases"]["portrait poster canvas"]["justified_count"], 8)
+        self.assertEqual(
+            report["phrases"]["portrait poster canvas"]["unjustified_sample_ids"],
+            ["track1_nonposter_0001", "track1_nonposter_0002"],
+        )
 
     def test_front_facing_is_not_automatically_justified_for_posters(self):
         rows = [
@@ -159,6 +223,49 @@ class Track1PromptLintTest(unittest.TestCase):
                         {"provider_prompt": "missing id"},
                     ]
                 )
+
+    def test_empty_inputs_reject_in_api_and_loaders(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            empty_list = root / "empty_list.json"
+            empty_rows = root / "empty_rows.json"
+            empty_packets = root / "empty_packets.json"
+            empty_dir = root / "empty_prompts"
+            empty_dir.mkdir()
+            empty_list.write_text("[]", encoding="utf-8")
+            empty_rows.write_text(json.dumps({"rows": []}), encoding="utf-8")
+            empty_packets.write_text(json.dumps({"packets": []}), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "no prompt rows"):
+                lint_prompt_batch([])
+            for source in [empty_list, empty_rows, empty_packets, empty_dir]:
+                with self.subTest(source=source):
+                    with self.assertRaisesRegex(ValueError, "no prompt rows"):
+                        load_prompt_rows(source)
+
+    def test_cli_returns_two_for_empty_input(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            packets = root / "packets.json"
+            packets.write_text(json.dumps({"packets": []}), encoding="utf-8")
+            out_json = root / "lint.json"
+            out_md = root / "lint.md"
+            module = self._load_cli_module()
+
+            code = module.main(
+                [
+                    "--packets-json",
+                    str(packets),
+                    "--out-json",
+                    str(out_json),
+                    "--out-md",
+                    str(out_md),
+                ]
+            )
+
+            self.assertEqual(code, 2)
+            self.assertFalse(out_json.exists())
+            self.assertFalse(out_md.exists())
 
     def test_reports_and_cli_return_two_on_fail_without_allow_fail(self):
         with tempfile.TemporaryDirectory() as tmp:

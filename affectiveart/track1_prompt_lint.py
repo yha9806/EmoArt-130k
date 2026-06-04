@@ -15,10 +15,10 @@ DEFAULT_PHRASES = (
     "medium-distance figures",
     "fewer, larger",
     "fewer, larger text blocks",
+    "fewer/larger text blocks",
     "internal poster margins",
     "graphic poster composition",
 )
-MOST_JUSTIFIED_RATIO = 0.8
 POSTER_SUPPORT_PHRASES = {
     "portrait poster canvas",
     "flat printed poster",
@@ -33,6 +33,7 @@ def lint_prompt_batch(
     phrases: Iterable[str] = DEFAULT_PHRASES,
 ) -> dict[str, Any]:
     items = [_validated_prompt_row(row, index) for index, row in enumerate(rows)]
+    _require_prompt_rows(items)
     total = len(items)
     failed: list[str] = []
     warned: list[str] = []
@@ -58,10 +59,15 @@ def lint_prompt_batch(
         ]
         justified_count = len(justified_sample_ids)
         justification_ratio = justified_count / len(matching_rows) if matching_rows else 0.0
+        unjustified_sample_ids = [
+            sample_id
+            for sample_id in sample_ids
+            if sample_id not in set(justified_sample_ids)
+        ]
         phrase_status = "pass"
 
-        if total and ratio >= threshold:
-            if matching_rows and justification_ratio >= MOST_JUSTIFIED_RATIO:
+        if total and ratio > threshold:
+            if matching_rows and not unjustified_sample_ids:
                 phrase_status = "warn"
                 warned.append(phrase)
                 justified.append(phrase)
@@ -77,11 +83,7 @@ def lint_prompt_batch(
             "justified_count": justified_count,
             "justified_ratio": round(justification_ratio, 6),
             "justified_sample_ids": justified_sample_ids,
-            "unjustified_sample_ids": [
-                sample_id
-                for sample_id in sample_ids
-                if sample_id not in set(justified_sample_ids)
-            ],
+            "unjustified_sample_ids": unjustified_sample_ids,
             "justifications": sorted({reason for reasons in justification_by_sample.values() for reason in reasons}),
         }
 
@@ -127,6 +129,7 @@ def load_prompt_rows(path_or_dir: str | Path) -> list[dict[str, Any]]:
             }
             for txt_path in sorted(source.glob("*.txt"))
         ]
+        _require_prompt_rows(rows)
         return [_validated_prompt_row(row, index) for index, row in enumerate(rows)]
 
     if source.suffix.lower() == ".jsonl":
@@ -138,6 +141,7 @@ def load_prompt_rows(path_or_dir: str | Path) -> list[dict[str, Any]]:
                 rows.append(json.loads(line))
             except json.JSONDecodeError as exc:
                 raise ValueError(f"prompt row {line_index} is malformed JSONL: {exc}") from exc
+        _require_prompt_rows(rows)
         return [_validated_prompt_row(row, index) for index, row in enumerate(rows)]
 
     payload = json.loads(source.read_text(encoding="utf-8"))
@@ -149,6 +153,7 @@ def load_prompt_rows(path_or_dir: str | Path) -> list[dict[str, Any]]:
         rows = payload["rows"]
     else:
         raise ValueError("prompt input must be a list, an object with packets/rows, JSONL, or a directory")
+    _require_prompt_rows(rows)
     return [_validated_prompt_row(row, index) for index, row in enumerate(rows)]
 
 
@@ -160,6 +165,11 @@ def _validated_prompt_row(row: Any, index: int) -> dict[str, Any]:
     if not isinstance(_prompt_text(row), str) or not _prompt_text(row).strip():
         raise ValueError(f"prompt row {index} missing required provider_prompt or prompt")
     return dict(row)
+
+
+def _require_prompt_rows(rows: list[Any]) -> None:
+    if not rows:
+        raise ValueError("no prompt rows found")
 
 
 def _prompt_text(row: dict[str, Any]) -> str:
