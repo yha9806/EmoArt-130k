@@ -66,7 +66,12 @@ def expected_label_for_emotion(emotion: str) -> tuple[str, str]:
     return valence, arousal
 
 
-def normalize_expert_entries(payload: Any, source: str, role: str) -> list[dict[str, Any]]:
+def normalize_expert_entries(
+    payload: Any,
+    source: str,
+    role: str,
+    family: str | None = None,
+) -> list[dict[str, Any]]:
     rows = _extract_payload_rows(payload)
     normalized_rows: list[dict[str, Any]] = []
     for row in rows:
@@ -84,6 +89,7 @@ def normalize_expert_entries(payload: Any, source: str, role: str) -> list[dict[
             {
                 "sample_id": sample_id,
                 "source": str(source),
+                "family": str(family or source),
                 "role": str(role),
                 "emotion": emotion,
                 "confidence": confidence,
@@ -572,6 +578,8 @@ def _normalize_gate_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
     sample_id = str(row.get("sample_id", "")).strip()
     raw_source = row.get("source", "")
     source = "" if raw_source is None else str(raw_source).strip()
+    raw_family = row.get("family", row.get("model_family", ""))
+    family = "" if raw_family is None else str(raw_family).strip()
     emotion = str(row.get("emotion", "")).strip().lower()
     if not sample_id or not source or emotion not in VALID_TRACK2_EMOTIONS:
         return None
@@ -579,6 +587,7 @@ def _normalize_gate_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
     return {
         "sample_id": sample_id,
         "source": source,
+        "family": family or source,
         "role": str(row.get("role", "")).strip(),
         "emotion": emotion,
         "confidence": confidence,
@@ -624,7 +633,7 @@ def _supporting_source_count(rows: list[dict[str, Any]]) -> int:
 
 
 def _source_key(row: dict[str, Any]) -> str:
-    return str(row.get("source", "")).strip()
+    return str(row.get("family") or row.get("source", "")).strip()
 
 
 def _has_single_high_confidence_source(
@@ -729,6 +738,7 @@ def _decision_row(
         "expert_evidence": sorted(
             expert_rows,
             key=lambda row: (
+                str(row.get("family", "")),
                 str(row.get("source", "")),
                 str(row.get("emotion", "")),
                 str(row.get("role", "")),
@@ -883,7 +893,7 @@ def _render_dry_run_card(row: dict[str, Any]) -> str:
             if isinstance(expert_row, dict)
         )
     if not evidence_rows:
-        evidence_rows = '<tr><td colspan="6">No expert evidence</td></tr>'
+        evidence_rows = '<tr><td colspan="7">No expert evidence</td></tr>'
 
     return f"""<section class="card" id="{_escape(sample_id)}">
   <img class="artwork" src="{_escape(image_src)}" alt="{_escape(sample_id)}">
@@ -909,6 +919,7 @@ def _render_dry_run_card(row: dict[str, Any]) -> str:
       <thead>
         <tr>
           <th>Source</th>
+          <th>Family</th>
           <th>Role</th>
           <th>Emotion</th>
           <th>Confidence</th>
@@ -927,6 +938,7 @@ def _render_dry_run_card(row: dict[str, Any]) -> str:
 def _render_evidence_row(row: dict[str, Any]) -> str:
     return f"""<tr>
   <td>{_escape(row.get('source', ''))}</td>
+  <td>{_escape(row.get('family', row.get('source', '')))}</td>
   <td>{_escape(row.get('role', ''))}</td>
   <td>{_escape(row.get('emotion', ''))}</td>
   <td>{_escape(_format_number(row.get('confidence')))}</td>

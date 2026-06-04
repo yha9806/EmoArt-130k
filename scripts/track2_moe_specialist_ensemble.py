@@ -35,6 +35,12 @@ def main(argv: list[str] | None = None) -> int:
         default=[],
         help="name=role=path",
     )
+    dry_run_parser.add_argument(
+        "--expert-family",
+        action="append",
+        default=[],
+        help="name=family; defaults to name when omitted",
+    )
     dry_run_parser.add_argument("--queue-sample-id", action="append", default=[])
     dry_run_parser.add_argument("--queue-csv", type=Path, default=None)
     dry_run_parser.add_argument("--image-zip", type=Path, required=True)
@@ -55,12 +61,18 @@ def main(argv: list[str] | None = None) -> int:
 def _run_dry_run(args: argparse.Namespace) -> dict[str, Any]:
     _validate_dry_run_out_dir(args.out_dir)
     current_rows = _read_json_list(args.current_json)
+    family_by_source = _parse_family_specs(args.expert_family)
     expert_rows: list[dict[str, Any]] = []
     for spec in args.expert_source:
         source, role, source_path = _parse_source_spec(spec)
         payload = json.loads(source_path.read_text(encoding="utf-8"))
         expert_rows.extend(
-            normalize_expert_entries(payload, source=source, role=role)
+            normalize_expert_entries(
+                payload,
+                source=source,
+                role=role,
+                family=family_by_source.get(source, source),
+            )
         )
 
     queue_ids = _queue_sample_ids(
@@ -96,6 +108,19 @@ def _parse_source_spec(spec: str) -> tuple[str, str, Path]:
     if not source or not role or not path:
         raise ValueError(f"expected name=role=path expert source: {spec}")
     return source, role, Path(path)
+
+
+def _parse_family_specs(specs: list[str]) -> dict[str, str]:
+    families: dict[str, str] = {}
+    for spec in specs:
+        parts = spec.split("=", 1)
+        if len(parts) != 2:
+            raise ValueError(f"expected name=family expert family: {spec}")
+        source, family = (part.strip() for part in parts)
+        if not source or not family:
+            raise ValueError(f"expected name=family expert family: {spec}")
+        families[source] = family
+    return families
 
 
 def _queue_sample_ids(

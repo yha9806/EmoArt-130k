@@ -47,8 +47,9 @@ def expert(
     confidence=0.9,
     margin=0.2,
     role="global",
+    family=None,
 ):
-    return {
+    row = {
         "sample_id": sample_id,
         "source": source,
         "role": role,
@@ -57,6 +58,9 @@ def expert(
         "margin": margin,
         "top3": [{"emotion": emotion, "probability": confidence}],
     }
+    if family is not None:
+        row["family"] = family
+    return row
 
 
 def _expert_row(sample_id="track2_0001", emotion="calm", **overrides):
@@ -147,6 +151,7 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["sample_id"], "track2_0001")
         self.assertEqual(rows[0]["source"], "siglip2_clean")
+        self.assertEqual(rows[0]["family"], "siglip2_clean")
         self.assertEqual(rows[0]["role"], "global")
         self.assertEqual(rows[0]["emotion"], "calm")
         self.assertEqual(rows[0]["confidence"], 0.91)
@@ -197,6 +202,17 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["sample_id"], "track2_0006")
         self.assertEqual(rows[0]["emotion"], "happy")
+
+    def test_normalize_expert_entries_preserves_explicit_model_family(self):
+        rows = normalize_expert_entries(
+            [_expert_row("track2_0010", "calm")],
+            source="siglip2_inclusive",
+            role="global",
+            family="siglip2_logreg",
+        )
+
+        self.assertEqual(rows[0]["source"], "siglip2_inclusive")
+        self.assertEqual(rows[0]["family"], "siglip2_logreg")
 
     def test_normalize_expert_entries_bad_numbers_fall_back_to_zero(self):
         payload = [
@@ -426,6 +442,37 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
 
         self.assertEqual(decision["decision"], "hold")
         self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("insufficient_independent_support", decision["reasons"])
+
+    def test_gate_same_model_family_rows_do_not_count_as_independent_support(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "siglip2_clean",
+                    "calm",
+                    confidence=0.82,
+                    margin=0.13,
+                    family="siglip2_logreg",
+                ),
+                expert(
+                    "track2_0001",
+                    "siglip2_inclusive",
+                    "calm",
+                    confidence=0.81,
+                    margin=0.12,
+                    family="siglip2_logreg",
+                ),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertEqual(
+            {row["family"] for row in decision["expert_evidence"]},
+            {"siglip2_logreg"},
+        )
         self.assertIn("insufficient_independent_support", decision["reasons"])
 
     def test_gate_ignores_irrelevant_expert_rows_for_other_sample_id(self):
@@ -732,6 +779,70 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             )
             self.assertFalse((out_dir / "submission.json").exists())
             self.assertFalse((out_dir / "submission.zip").exists())
+
+    def test_cli_dry_run_accepts_optional_model_family_mapping(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
+            out_dir = tmp_path / "out"
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"clean=global={source_json}",
+                    "--expert-family",
+                    "clean=siglip2_logreg",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            output_report = json.loads(
+                (out_dir / "track2_moe_specialist_dry_run_report.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(
+                output_report["rows"][0]["expert_evidence"][0]["family"],
+                "siglip2_logreg",
+            )
+
+    def test_cli_malformed_expert_family_fails_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
+            out_dir = tmp_path / "out"
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"clean=global={source_json}",
+                    "--expert-family",
+                    "malformed-family",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("expected name=family", result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+            self.assertFalse(out_dir.exists())
 
     def test_cli_queue_csv_missing_sample_id_column_fails_cleanly(self):
         with tempfile.TemporaryDirectory() as tmp:
