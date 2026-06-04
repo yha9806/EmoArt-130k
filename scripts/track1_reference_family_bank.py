@@ -27,9 +27,19 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
-    rows = load_reference_rows(args.references_json)
-    bank = build_reference_family_bank(rows)
-    write_reference_family_reports(bank, json_path=args.out_json, csv_path=args.out_csv, md_path=args.out_md)
+    try:
+        rows = load_reference_rows(args.references_json)
+        bank = build_reference_family_bank(rows)
+        write_reference_family_reports(
+            bank,
+            json_path=args.out_json,
+            csv_path=args.out_csv,
+            md_path=args.out_md,
+            repo_root=ROOT,
+        )
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
     print(json.dumps(bank["summary"], indent=2, ensure_ascii=False, sort_keys=True))
     return 0
 

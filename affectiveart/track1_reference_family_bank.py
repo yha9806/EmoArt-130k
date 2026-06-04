@@ -9,6 +9,7 @@ from typing import Any, Iterable
 
 
 BANK_VERSION = "track1_reference_family_bank_v1"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 FAMILY_RULES: list[dict[str, Any]] = [
     {
@@ -140,10 +141,12 @@ def write_reference_family_reports(
     json_path: str | Path,
     csv_path: str | Path,
     md_path: str | Path,
+    repo_root: str | Path | None = None,
 ) -> None:
-    json_path = Path(json_path)
-    csv_path = Path(csv_path)
-    md_path = Path(md_path)
+    json_path, csv_path, md_path = _safe_output_paths(
+        [json_path, csv_path, md_path],
+        repo_root=repo_root,
+    )
     json_path.parent.mkdir(parents=True, exist_ok=True)
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     md_path.parent.mkdir(parents=True, exist_ok=True)
@@ -154,14 +157,69 @@ def write_reference_family_reports(
 
 
 def load_reference_rows(path: str | Path) -> list[dict[str, Any]]:
-    payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    source_path = Path(path)
+    payload = json.loads(source_path.read_text(encoding="utf-8"))
     if isinstance(payload, list):
         rows = payload
     elif isinstance(payload, dict) and isinstance(payload.get("rows"), list):
         rows = payload["rows"]
     else:
         raise ValueError("reference JSON must be a list or an object with a 'rows' list")
-    return [dict(row) for row in rows if isinstance(row, dict)]
+    return [_validated_reference_row(row, index, source_path.parent) for index, row in enumerate(rows)]
+
+
+def _safe_output_paths(
+    paths: Iterable[str | Path],
+    *,
+    repo_root: str | Path | None = None,
+) -> tuple[Path, ...]:
+    root = Path(repo_root) if repo_root is not None else REPO_ROOT
+    root = root.resolve(strict=False)
+    resolved_paths = tuple(_resolve_under_root(path, root) for path in paths)
+    protected_files = {
+        (root / "submissions" / "track1_submission.json").resolve(strict=False),
+        (root / "submissions" / "track1_submission.zip").resolve(strict=False),
+    }
+    protected_images = (root / "submissions" / "track1" / "images").resolve(strict=False)
+    for output_path in resolved_paths:
+        if output_path in protected_files or _is_relative_to(output_path, protected_images):
+            raise ValueError(f"protected output path is not allowed: {output_path}")
+    return resolved_paths
+
+
+def _resolve_under_root(path: str | Path, root: Path) -> Path:
+    output_path = Path(path)
+    if not output_path.is_absolute():
+        output_path = root / output_path
+    return output_path.resolve(strict=False)
+
+
+def _is_relative_to(path: Path, parent: Path) -> bool:
+    try:
+        path.relative_to(parent)
+    except ValueError:
+        return False
+    return True
+
+
+def _validated_reference_row(row: Any, index: int, base_dir: Path) -> dict[str, Any]:
+    if not isinstance(row, dict):
+        raise ValueError(f"reference row {index} must be an object")
+    if not row.get("sample_id"):
+        raise ValueError(f"reference row {index} missing required sample_id")
+    if not row.get("caption"):
+        raise ValueError(f"reference row {index} missing required caption")
+    if not (row.get("reference_path") or row.get("path")):
+        raise ValueError(f"reference row {index} missing required reference_path or path")
+
+    validated = dict(row)
+    for key in ("reference_path", "path"):
+        if validated.get(key):
+            reference_path = Path(str(validated[key]))
+            if not reference_path.is_absolute():
+                reference_path = base_dir / reference_path
+            validated[key] = str(reference_path)
+    return validated
 
 
 def _normalise_search_text(*parts: object) -> str:
