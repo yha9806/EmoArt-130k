@@ -79,6 +79,42 @@ def _write_track2_image_zip(image_zip, sample_ids):
             zf.write(source_image, f"track2_testset/images/{sample_id}.jpg")
 
 
+def _write_cli_fixture(tmp_path):
+    current_json = tmp_path / "current.json"
+    source_json = tmp_path / "source.json"
+    image_zip = tmp_path / "track2_images.zip"
+
+    current_json.write_text(
+        json.dumps([current_row("track2_0001", "content")]),
+        encoding="utf-8",
+    )
+    source_json.write_text(
+        json.dumps(
+            {
+                "entries": [
+                    _expert_row("track2_0001", "calm"),
+                    _expert_row("track2_0001", "calm", confidence=0.88),
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    _write_track2_image_zip(image_zip, ["track2_0001"])
+    return current_json, source_json, image_zip
+
+
+def _run_cli(args):
+    repo_root = Path(__file__).resolve().parents[1]
+    script = repo_root / "scripts" / "track2_moe_specialist_ensemble.py"
+    return subprocess.run(
+        ["python3", str(script), *args],
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+
 class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
     def test_valid_emotions_are_anchored_to_official_track2_json_enum(self):
         self.assertIs(VALID_TRACK2_EMOTIONS, TRACK2_JSON_EMOTIONS)
@@ -622,37 +658,13 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertFalse(blocked_out_dir.exists())
 
     def test_cli_dry_run_writes_artifacts_and_no_submission_files(self):
-        repo_root = Path(__file__).resolve().parents[1]
-        script = repo_root / "scripts" / "track2_moe_specialist_ensemble.py"
-
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            current_json = tmp_path / "current.json"
-            source_json = tmp_path / "source.json"
-            image_zip = tmp_path / "track2_images.zip"
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
             out_dir = tmp_path / "out"
 
-            current_json.write_text(
-                json.dumps([current_row("track2_0001", "content")]),
-                encoding="utf-8",
-            )
-            source_json.write_text(
-                json.dumps(
-                    {
-                        "entries": [
-                            _expert_row("track2_0001", "calm"),
-                            _expert_row("track2_0001", "calm", confidence=0.88),
-                        ]
-                    }
-                ),
-                encoding="utf-8",
-            )
-            _write_track2_image_zip(image_zip, ["track2_0001"])
-
-            result = subprocess.run(
+            result = _run_cli(
                 [
-                    "python3",
-                    str(script),
                     "dry-run",
                     "--current-json",
                     str(current_json),
@@ -664,11 +676,7 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
                     str(image_zip),
                     "--out-dir",
                     str(out_dir),
-                ],
-                cwd=repo_root,
-                text=True,
-                capture_output=True,
-                check=False,
+                ]
             )
 
             self.assertEqual(result.returncode, 0, result.stderr)
@@ -685,38 +693,167 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             self.assertFalse((out_dir / "submission.json").exists())
             self.assertFalse((out_dir / "submission.zip").exists())
 
+    def test_cli_dry_run_uses_queue_csv_sample_id_column(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
+            queue_csv = tmp_path / "queue.csv"
+            out_dir = tmp_path / "out"
+            queue_csv.write_text("sample_id\ntrack2_0001\n", encoding="utf-8")
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={source_json}",
+                    "--queue-csv",
+                    str(queue_csv),
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            summary = json.loads(result.stdout)
+            self.assertEqual(summary["row_count"], 1)
+            self.assertTrue(
+                (out_dir / "track2_moe_specialist_dry_run_report.json").exists()
+            )
+            self.assertTrue(
+                (
+                    out_dir
+                    / "html_review"
+                    / "track2_moe_specialist_dry_run_review.html"
+                ).exists()
+            )
+            self.assertFalse((out_dir / "submission.json").exists())
+            self.assertFalse((out_dir / "submission.zip").exists())
+
+    def test_cli_queue_csv_missing_sample_id_column_fails_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
+            queue_csv = tmp_path / "queue.csv"
+            out_dir = tmp_path / "out"
+            queue_csv.write_text("wrong_id\ntrack2_0001\n", encoding="utf-8")
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={source_json}",
+                    "--queue-csv",
+                    str(queue_csv),
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("sample_id", result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+            self.assertFalse(out_dir.exists())
+
+    def test_cli_malformed_expert_source_fails_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, _, image_zip = _write_cli_fixture(tmp_path)
+            out_dir = tmp_path / "out"
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    "malformed-source",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("expected name=role=path", result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+            self.assertFalse(out_dir.exists())
+
+    def test_cli_missing_expert_source_file_fails_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, _, image_zip = _write_cli_fixture(tmp_path)
+            missing_source = tmp_path / "missing.json"
+            out_dir = tmp_path / "out"
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={missing_source}",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn(str(missing_source), result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+            self.assertFalse(out_dir.exists())
+
+    def test_cli_bad_image_zip_fails_cleanly(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
+            image_zip.write_text("not a zip", encoding="utf-8")
+            out_dir = tmp_path / "out"
+
+            result = _run_cli(
+                [
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={source_json}",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ]
+            )
+
+            self.assertEqual(result.returncode, 2, result.stdout)
+            self.assertIn("zip", result.stderr.lower())
+            self.assertNotIn("Traceback", result.stderr)
+
     def test_cli_rejects_output_under_submissions_directory(self):
         repo_root = Path(__file__).resolve().parents[1]
-        script = repo_root / "scripts" / "track2_moe_specialist_ensemble.py"
         blocked_out = repo_root / "submissions" / "moe_dry_run_blocked"
 
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            current_json = tmp_path / "current.json"
-            source_json = tmp_path / "source.json"
-            image_zip = tmp_path / "track2_images.zip"
+            current_json, source_json, image_zip = _write_cli_fixture(tmp_path)
 
-            current_json.write_text(
-                json.dumps([current_row("track2_0001", "content")]),
-                encoding="utf-8",
-            )
-            source_json.write_text(
-                json.dumps(
-                    {
-                        "entries": [
-                            _expert_row("track2_0001", "calm"),
-                            _expert_row("track2_0001", "calm", confidence=0.88),
-                        ]
-                    }
-                ),
-                encoding="utf-8",
-            )
-            _write_track2_image_zip(image_zip, ["track2_0001"])
-
-            result = subprocess.run(
+            result = _run_cli(
                 [
-                    "python3",
-                    str(script),
                     "dry-run",
                     "--current-json",
                     str(current_json),
@@ -728,18 +865,15 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
                     str(image_zip),
                     "--out-dir",
                     str(blocked_out),
-                ],
-                cwd=repo_root,
-                text=True,
-                capture_output=True,
-                check=False,
+                ]
             )
 
-            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertEqual(result.returncode, 2, result.stdout)
             self.assertIn(
                 "dry-run output must not be under submissions",
                 result.stderr,
             )
+            self.assertNotIn("Traceback", result.stderr)
             self.assertFalse(blocked_out.exists())
 
     def test_write_dry_run_outputs_does_not_mutate_input_report(self):

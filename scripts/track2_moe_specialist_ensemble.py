@@ -5,6 +5,7 @@ import argparse
 import csv
 import json
 import sys
+import zipfile
 from pathlib import Path
 from typing import Any
 
@@ -45,7 +46,7 @@ def main(argv: list[str] | None = None) -> int:
             summary = _run_dry_run(args)
             print(json.dumps(summary, sort_keys=True))
             return 0
-    except ValueError as exc:
+    except (OSError, json.JSONDecodeError, zipfile.BadZipFile, ValueError) as exc:
         print(str(exc), file=sys.stderr)
         return 2
     return 2
