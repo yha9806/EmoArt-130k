@@ -134,31 +134,27 @@ def build_gate_decision(
     quality_supporting_source_count = _supporting_source_count(
         _quality_support_rows(support, thresholds)
     )
+    has_high_confidence_source = _has_high_confidence_source(support, thresholds)
+    has_high_confidence_specialist_source = _has_high_confidence_specialist_source(
+        support,
+        thresholds,
+    )
     strong_opposition = _strong_opposition(
         proposed_emotion,
         evidence,
         thresholds,
     )
-    if supporting_source_count >= thresholds.min_supporting_sources:
-        if quality_supporting_source_count >= thresholds.min_supporting_sources:
-            reasons.append(f"supported_by_{quality_supporting_source_count}_sources")
-        else:
-            reasons.append("support_below_quality_bar")
-    elif _has_single_high_confidence_source(
-        proposed_emotion,
-        evidence,
-        thresholds,
-    ):
+    if quality_supporting_source_count >= thresholds.min_supporting_sources:
+        reasons.append(f"supported_by_{quality_supporting_source_count}_sources")
+    elif has_high_confidence_specialist_source:
         if strong_opposition:
             reasons.append("insufficient_independent_support")
-        elif _has_single_high_confidence_specialist_source(
-            proposed_emotion,
-            evidence,
-            thresholds,
-        ):
-            reasons.append("single_high_confidence_source_without_strong_opposition")
         else:
-            reasons.append("single_source_not_specialist")
+            reasons.append("single_high_confidence_source_without_strong_opposition")
+    elif supporting_source_count >= thresholds.min_supporting_sources:
+        reasons.append("support_below_quality_bar")
+    elif has_high_confidence_source:
+        reasons.append("single_source_not_specialist")
     else:
         reasons.append("insufficient_independent_support")
     if strong_opposition:
@@ -636,14 +632,10 @@ def _source_key(row: dict[str, Any]) -> str:
     return str(row.get("family") or row.get("source", "")).strip()
 
 
-def _has_single_high_confidence_source(
-    proposed_emotion: str,
-    evidence: dict[str, list[dict[str, Any]]],
+def _has_high_confidence_source(
+    support: list[dict[str, Any]],
     thresholds: GateThresholds,
 ) -> bool:
-    support = evidence.get(proposed_emotion, [])
-    if _supporting_source_count(support) != 1:
-        return False
     return any(
         _safe_float(row.get("confidence")) >= thresholds.high_confidence
         and _safe_float(row.get("margin")) >= thresholds.min_margin
@@ -651,14 +643,10 @@ def _has_single_high_confidence_source(
     )
 
 
-def _has_single_high_confidence_specialist_source(
-    proposed_emotion: str,
-    evidence: dict[str, list[dict[str, Any]]],
+def _has_high_confidence_specialist_source(
+    support: list[dict[str, Any]],
     thresholds: GateThresholds,
 ) -> bool:
-    support = evidence.get(proposed_emotion, [])
-    if _supporting_source_count(support) != 1:
-        return False
     return any(
         _safe_float(row.get("confidence")) >= thresholds.high_confidence
         and _safe_float(row.get("margin")) >= thresholds.min_margin

@@ -391,6 +391,87 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(decision["proposed_emotion"], "calm")
         self.assertIn("support_below_quality_bar", decision["reasons"])
 
+    def test_gate_accepts_high_confidence_specialist_with_extra_low_quality_support(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "siglip2_clean",
+                    "calm",
+                    confidence=0.49,
+                    margin=0.03,
+                    role="global",
+                    family="siglip2_logreg",
+                ),
+                expert(
+                    "track2_0001",
+                    "gemini35_vlm",
+                    "calm",
+                    confidence=0.90,
+                    margin=0.40,
+                    role="specialist",
+                    family="gemini35_vlm",
+                ),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "accept_change")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn(
+            "single_high_confidence_source_without_strong_opposition",
+            decision["reasons"],
+        )
+        self.assertNotIn("support_below_quality_bar", decision["reasons"])
+
+    def test_gate_blocks_high_confidence_specialist_with_current_label_opposition(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "gemini35_vlm",
+                    "calm",
+                    confidence=0.90,
+                    margin=0.40,
+                    role="specialist",
+                    family="gemini35_vlm",
+                ),
+                expert(
+                    "track2_0001",
+                    "vulca_va",
+                    "content",
+                    confidence=0.91,
+                    margin=0.35,
+                    role="va",
+                    family="vulca_va",
+                ),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertIn("strong_opposition", decision["reasons"])
+
+    def test_gate_blocks_high_confidence_specialist_with_description_contradiction(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "gemini35_vlm",
+                    "calm",
+                    confidence=0.90,
+                    margin=0.40,
+                    role="specialist",
+                    family="gemini35_vlm",
+                )
+            ],
+            description_audit={"verdict": "contradiction"},
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertIn("description_contradiction", decision["reasons"])
+
     def test_gate_holds_supported_change_with_strong_opposition(self):
         decision = build_gate_decision(
             current_row(),
