@@ -81,14 +81,12 @@ def build_moe_prompt_packets(
     distribution_routes: dict[str, dict[str, Any]] | list[dict[str, Any]] | None = None,
     max_strategies_per_sample: int | None = None,
 ) -> list[dict[str, Any]]:
-    out_dir = Path(out_dir)
+    out_dir = _safe_output_dir(out_dir)
     prompt_dir = out_dir / "provider_prompts_top"
     prompt_dir.mkdir(parents=True, exist_ok=True)
     packets: list[dict[str, Any]] = []
     route_by_sample = _distribution_routes_by_sample(distribution_routes)
     generation_routes = [route for route in routes if int(route.get("candidate_count") or 0) > 0]
-    if limit is not None and limit > 0:
-        generation_routes = generation_routes[:limit]
     rank = 0
     for route in generation_routes:
         sample_id = str(route["sample_id"])
@@ -96,6 +94,8 @@ def build_moe_prompt_packets(
         distribution_route = route_by_sample.get(sample_id)
         strategies = _candidate_strategies(distribution_route, max_strategies_per_sample=max_strategies_per_sample)
         for candidate_strategy in strategies:
+            if limit is not None and limit > 0 and len(packets) >= limit:
+                return packets
             rank += 1
             suffix = "" if candidate_strategy == "legacy" else f"_{candidate_strategy}"
             prompt_path = prompt_dir / f"{rank:02d}_{sample_id}{suffix}.txt"
@@ -180,7 +180,7 @@ def render_distribution_strategy_section(
 
 
 def write_moe_prompt_packet_reports(rows: list[dict[str, Any]], *, out_dir: str | Path) -> None:
-    out_dir = Path(out_dir)
+    out_dir = _safe_output_dir(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = _summary(rows)
     (out_dir / "track1_moe_prompt_packets.json").write_text(
@@ -196,7 +196,11 @@ def write_moe_prompt_packet_reports(rows: list[dict[str, Any]], *, out_dir: str 
 
 def load_routes(path: str | Path) -> list[dict[str, Any]]:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
-    return list(payload.get("rows", payload if isinstance(payload, list) else []))
+    if isinstance(payload, list):
+        return [dict(row) for row in payload if isinstance(row, dict)]
+    if isinstance(payload, dict) and isinstance(payload.get("rows"), list):
+        return [dict(row) for row in payload["rows"] if isinstance(row, dict)]
+    return []
 
 
 def load_distribution_routes(path: str | Path) -> dict[str, dict[str, Any]]:
@@ -214,7 +218,12 @@ def load_distribution_routes(path: str | Path) -> dict[str, dict[str, Any]]:
 
 def load_contracts(path: str | Path) -> dict[str, dict[str, Any]]:
     payload = json.loads(Path(path).read_text(encoding="utf-8"))
-    rows = payload.get("rows", payload if isinstance(payload, list) else [])
+    if isinstance(payload, list):
+        rows = payload
+    elif isinstance(payload, dict) and isinstance(payload.get("rows"), list):
+        rows = payload["rows"]
+    else:
+        rows = []
     return {str(row["sample_id"]): dict(row) for row in rows if isinstance(row, dict) and row.get("sample_id")}
 
 
@@ -384,12 +393,40 @@ def _clean_provider_list(values: Any) -> list[str]:
 
 
 def _summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    source_budget_by_sample: dict[str, int] = {}
+    for row in rows:
+        sample_id = str(row.get("sample_id") or "")
+        if sample_id and sample_id not in source_budget_by_sample:
+            source_budget_by_sample[sample_id] = int(row["review_metadata"].get("candidate_count") or 0)
     return {
         "total": len(rows),
-        "candidate_budget": sum(int(row["review_metadata"]["candidate_count"]) for row in rows),
+        "candidate_budget": len(rows),
+        "source_candidate_budget": sum(source_budget_by_sample.values()),
         "models": _counts(row["review_metadata"]["recommended_model"] for row in rows),
         "experts": _counts(row["review_metadata"]["primary_expert"] for row in rows),
     }
+
+
+def _safe_output_dir(out_dir: str | Path) -> Path:
+    path = Path(out_dir).expanduser()
+    resolved = path.resolve()
+    repo_root = Path(__file__).resolve().parents[1]
+    protected_images = (repo_root / "submissions" / "track1" / "images").resolve()
+    protected_files = {
+        (repo_root / "submissions" / "track1_submission.json").resolve(),
+        (repo_root / "submissions" / "track1_submission.zip").resolve(),
+    }
+    if resolved == protected_images or protected_images in resolved.parents:
+        raise ValueError(f"protected output path rejected: {resolved}")
+    report_paths = {
+        (resolved / "track1_moe_prompt_packets.json").resolve(),
+        (resolved / "track1_moe_prompt_packets.jsonl").resolve(),
+        (resolved / "track1_moe_prompt_packets.csv").resolve(),
+        (resolved / "track1_moe_prompt_packets_zh.md").resolve(),
+    }
+    if resolved in protected_files or report_paths.intersection(protected_files):
+        raise ValueError(f"protected output path rejected: {resolved}")
+    return resolved
 
 
 def _render_md(rows: list[dict[str, Any]], summary: dict[str, Any]) -> str:

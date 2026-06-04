@@ -7,7 +7,9 @@ from pathlib import Path
 from affectiveart.track1_moe_prompt_packets import (
     build_moe_prompt_packet,
     build_moe_prompt_packets,
+    load_contracts,
     load_distribution_routes,
+    load_routes,
     render_provider_text_section,
     write_moe_prompt_packet_reports,
 )
@@ -174,7 +176,7 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
                     "--out-dir",
                     str(out_dir),
                     "--limit",
-                    "1",
+                    "3",
                 ]
             )
             payload = json.loads((out_dir / "track1_moe_prompt_packets.json").read_text(encoding="utf-8"))
@@ -347,7 +349,7 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
                     "--out-dir",
                     str(out_dir),
                     "--limit",
-                    "1",
+                    "3",
                 ]
             )
             payload = json.loads((out_dir / "track1_moe_prompt_packets.json").read_text(encoding="utf-8"))
@@ -377,6 +379,90 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
         report = lint_prompt_batch(rows, threshold=0.6)
 
         self.assertEqual(report["summary"]["failed_phrases"], [])
+
+    def test_limit_caps_final_emitted_packets_after_strategy_expansion(self):
+        contract = _contract()
+        route = _route(candidate_count=3)
+        distribution_routes = {contract["sample_id"]: _distribution_route()}
+
+        with tempfile.TemporaryDirectory() as tmp:
+            one = build_moe_prompt_packets(
+                [route],
+                contracts={contract["sample_id"]: contract},
+                reference_text_bank={},
+                distribution_routes=distribution_routes,
+                out_dir=Path(tmp) / "one",
+                limit=1,
+            )
+            two = build_moe_prompt_packets(
+                [route],
+                contracts={contract["sample_id"]: contract},
+                reference_text_bank={},
+                distribution_routes=distribution_routes,
+                out_dir=Path(tmp) / "two",
+                limit=2,
+            )
+
+        self.assertEqual([row["candidate_strategy"] for row in one], ["aas_safe"])
+        self.assertEqual([row["candidate_strategy"] for row in two], ["aas_safe", "reference_style"])
+
+    def test_summary_candidate_budget_matches_emitted_packets_not_repeated_source_budget(self):
+        rows = [
+            {
+                "rank": index,
+                "sample_id": "track1_0803",
+                "caption": "caption",
+                "candidate_strategy": strategy,
+                "provider_prompt": "prompt",
+                "provider_prompt_path": "",
+                "review_metadata": {
+                    "recommended_model": "model",
+                    "candidate_count": 4,
+                    "primary_expert": "poster_expert",
+                    "support_experts": [],
+                },
+            }
+            for index, strategy in enumerate(["aas_safe", "reference_style", "fid_diverse"], start=1)
+        ]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            write_moe_prompt_packet_reports(rows, out_dir=out_dir)
+            payload = json.loads((out_dir / "track1_moe_prompt_packets.json").read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["summary"]["total"], 3)
+        self.assertEqual(payload["summary"]["candidate_budget"], 3)
+        self.assertEqual(payload["summary"]["source_candidate_budget"], 4)
+
+    def test_protected_submission_outputs_are_rejected_before_creating_files(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        protected_out = repo_root / "submissions" / "track1" / "images" / "task4_guard_tmp"
+        self.assertFalse(protected_out.exists())
+
+        with self.assertRaisesRegex(ValueError, "protected"):
+            build_moe_prompt_packets(
+                [_route()],
+                contracts={_contract()["sample_id"]: _contract()},
+                reference_text_bank={},
+                out_dir=protected_out,
+            )
+        with self.assertRaisesRegex(ValueError, "protected"):
+            write_moe_prompt_packet_reports([], out_dir=protected_out)
+
+        self.assertFalse(protected_out.exists())
+
+    def test_load_routes_and_contracts_accept_list_payloads(self):
+        route = _route()
+        contract = _contract()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            routes_json = root / "routes.json"
+            contracts_json = root / "contracts.json"
+            routes_json.write_text(json.dumps([route]), encoding="utf-8")
+            contracts_json.write_text(json.dumps([contract]), encoding="utf-8")
+
+            self.assertEqual(load_routes(routes_json), [route])
+            self.assertEqual(load_contracts(contracts_json)[contract["sample_id"]]["caption"], contract["caption"])
 
 
 if __name__ == "__main__":
