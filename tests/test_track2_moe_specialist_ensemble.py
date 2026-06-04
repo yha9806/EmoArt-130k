@@ -568,8 +568,12 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             self.assertIn("Track2 MoE Specialist Dry-Run", html_text)
             self.assertIn("track2_0001", html_text)
             self.assertIn("accept_change", html_text)
+            output_report = json.loads(Path(outputs["json"]).read_text(encoding="utf-8"))
+            image_asset = output_report["rows"][0]["image_asset"]
+            self.assertRegex(image_asset, r"^assets/track2_0001-[0-9a-f]{8}\.jpg$")
+            self.assertIn(f'src="{image_asset}"', html_text)
             self.assertTrue(
-                (out_dir / "html_review" / "assets" / "track2_0001.jpg").exists()
+                (out_dir / "html_review" / image_asset).exists()
             )
             self.assertFalse((out_dir / "submission.json").exists())
             self.assertFalse((out_dir / "submission.zip").exists())
@@ -721,6 +725,50 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             self.assertEqual(len(set(asset_paths)), 2)
             for asset_path in asset_paths:
                 self.assertRegex(asset_path, r"^assets/bad_id-[0-9a-f]{8}\.jpg$")
+                self.assertTrue((out_dir / "html_review" / asset_path).exists())
+
+    def test_write_dry_run_outputs_avoids_adversarial_hash_suffix_collision(self):
+        from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
+
+        sample_ids = ["bad id", "bad_id-4b2d2ff6"]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            image_zip = tmp_path / "track2_images.zip"
+            out_dir = tmp_path / "out"
+            _write_track2_image_zip(image_zip, sample_ids)
+            report = build_dry_run_report(
+                [
+                    current_row(sample_id="bad id", emotion="content"),
+                    current_row(sample_id="bad_id-4b2d2ff6", emotion="content"),
+                ],
+                [
+                    expert("bad id", "clip_clean", "calm", role="global"),
+                    expert("bad id", "boundary_head", "calm", role="boundary"),
+                    expert("bad_id-4b2d2ff6", "clip_clean", "calm", role="global"),
+                    expert("bad_id-4b2d2ff6", "boundary_head", "calm", role="boundary"),
+                ],
+                queue_sample_ids=sample_ids,
+            )
+
+            outputs = write_dry_run_outputs(report, image_zip=image_zip, out_dir=out_dir)
+
+            output_report = json.loads(Path(outputs["json"]).read_text(encoding="utf-8"))
+            html_text = Path(outputs["html"]).read_text(encoding="utf-8")
+            asset_paths = {
+                row["sample_id"]: row["image_asset"]
+                for row in output_report["rows"]
+            }
+            self.assertNotEqual(
+                asset_paths["bad id"],
+                asset_paths["bad_id-4b2d2ff6"],
+            )
+            self.assertRegex(asset_paths["bad id"], r"^assets/bad_id-[0-9a-f]{8}\.jpg$")
+            self.assertRegex(
+                asset_paths["bad_id-4b2d2ff6"],
+                r"^assets/bad_id-4b2d2ff6-[0-9a-f]{8}\.jpg$",
+            )
+            for asset_path in asset_paths.values():
+                self.assertIn(f'src="{asset_path}"', html_text)
                 self.assertTrue((out_dir / "html_review" / asset_path).exists())
 
 

@@ -842,10 +842,8 @@ def _safe_asset_filename(sample_id: str) -> str:
     )
     if not safe_stem:
         safe_stem = "sample"
-    if safe_stem != raw_sample_id:
-        suffix = hashlib.sha256(raw_sample_id.encode("utf-8")).hexdigest()[:8]
-        safe_stem = f"{safe_stem}-{suffix}"
-    return f"{safe_stem}.jpg"
+    suffix = hashlib.sha256(raw_sample_id.encode("utf-8")).hexdigest()[:8]
+    return f"{safe_stem}-{suffix}.jpg"
 
 
 def _validate_dry_run_out_dir(out_dir: Path) -> None:
