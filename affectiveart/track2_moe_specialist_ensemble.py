@@ -180,8 +180,11 @@ def build_dry_run_report(
     high_similarity_sample_ids=None,
     description_audit_by_id=None,
 ) -> dict[str, Any]:
-    high_similarity_ids = set(high_similarity_sample_ids or set())
-    description_audits = description_audit_by_id or {}
+    queued_ids = _normalized_unique_sample_ids(queue_sample_ids)
+    high_similarity_ids = set(
+        _normalized_unique_sample_ids(high_similarity_sample_ids or set())
+    )
+    description_audits = _normalize_sample_id_mapping(description_audit_by_id)
     current_by_id = {
         str(row.get("sample_id", "")).strip(): row
         for row in current_rows
@@ -189,9 +192,10 @@ def build_dry_run_report(
     }
 
     decisions: list[dict[str, Any]] = []
-    for sample_id in sorted(dict.fromkeys(queue_sample_ids)):
-        sample_id = str(sample_id).strip()
+    missing_current_sample_ids: list[str] = []
+    for sample_id in queued_ids:
         if sample_id not in current_by_id:
+            missing_current_sample_ids.append(sample_id)
             continue
         decisions.append(
             build_gate_decision(
@@ -202,7 +206,18 @@ def build_dry_run_report(
             )
         )
 
-    decision_counts = Counter(row["decision"] for row in decisions)
+    decision_counter = Counter(row["decision"] for row in decisions)
+    decision_counts = {
+        decision: decision_counter.get(decision, 0)
+        for decision in ("accept_change", "hold", "keep_current")
+    }
+    decision_counts.update(
+        {
+            decision: count
+            for decision, count in decision_counter.items()
+            if decision not in decision_counts
+        }
+    )
     accepted_transition_counts = Counter(
         f"{row['current_emotion']}->{row['proposed_emotion']}"
         for row in decisions
@@ -214,10 +229,30 @@ def build_dry_run_report(
         "decision_counts": dict(decision_counts),
         "accepted_transition_counts": dict(accepted_transition_counts),
         "baseline_distribution": compute_track2_distribution(current_rows),
+        "missing_current_sample_ids": missing_current_sample_ids,
         "formal_submission_overwritten": False,
         "candidate_json_written": False,
         "candidate_zip_written": False,
         "rows": decisions,
+    }
+
+
+def _normalized_unique_sample_ids(values) -> list[str]:
+    normalized_ids = [
+        str(value).strip()
+        for value in (values or [])
+        if str(value).strip()
+    ]
+    return sorted(dict.fromkeys(normalized_ids))
+
+
+def _normalize_sample_id_mapping(value: Any) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        return {}
+    return {
+        str(sample_id).strip(): payload
+        for sample_id, payload in value.items()
+        if str(sample_id).strip()
     }
 
 

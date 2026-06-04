@@ -442,12 +442,84 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(report["row_count"], 2)
         self.assertEqual(report["decision_counts"]["accept_change"], 1)
         self.assertEqual(report["decision_counts"]["hold"], 1)
+        self.assertEqual(report["decision_counts"]["keep_current"], 0)
+        self.assertEqual(report["missing_current_sample_ids"], [])
         self.assertIs(report["formal_submission_overwritten"], False)
         self.assertIs(report["candidate_json_written"], False)
         self.assertIs(report["candidate_zip_written"], False)
         rows_by_id = {row["sample_id"]: row for row in report["rows"]}
         self.assertEqual(rows_by_id["track2_0001"]["proposed_emotion"], "calm")
         self.assertEqual(rows_by_id["track2_0002"]["decision"], "hold")
+
+    def test_build_dry_run_report_deduplicates_normalized_queue_ids(self):
+        report = build_dry_run_report(
+            [current_row(sample_id="track2_0001", emotion="content")],
+            [
+                expert("track2_0001", "clip_clean", "calm", role="global"),
+                expert("track2_0001", "boundary_head", "calm", role="boundary"),
+            ],
+            queue_sample_ids=[" track2_0001 ", "track2_0001"],
+        )
+
+        self.assertEqual(report["row_count"], 1)
+        self.assertEqual([row["sample_id"] for row in report["rows"]], ["track2_0001"])
+
+    def test_build_dry_run_report_lists_missing_current_sample_ids(self):
+        report = build_dry_run_report(
+            [current_row(sample_id="track2_0001", emotion="content")],
+            [],
+            queue_sample_ids=[" track2_0001 ", " track2_9999 "],
+        )
+
+        self.assertEqual(report["row_count"], 1)
+        self.assertEqual(report["missing_current_sample_ids"], ["track2_9999"])
+
+    def test_build_dry_run_report_uses_stable_counts_for_all_hold_queue(self):
+        report = build_dry_run_report(
+            [current_row(sample_id="track2_0001", emotion="content")],
+            [expert("track2_0001", "clip_clean", "sad")],
+            queue_sample_ids=["track2_0001"],
+        )
+
+        self.assertEqual(
+            report["decision_counts"],
+            {"accept_change": 0, "hold": 1, "keep_current": 0},
+        )
+        self.assertEqual(report["accepted_transition_counts"], {})
+
+    def test_build_dry_run_report_passes_safety_gate_controls(self):
+        current_rows = [
+            current_row(sample_id="track2_0001", emotion="content"),
+            current_row(sample_id="track2_0002", emotion="content"),
+        ]
+        expert_rows = [
+            expert("track2_0001", "clip_clean", "calm", role="global"),
+            expert("track2_0001", "boundary_head", "calm", role="boundary"),
+            expert("track2_0002", "clip_clean", "calm", role="global"),
+            expert("track2_0002", "boundary_head", "calm", role="boundary"),
+        ]
+
+        report = build_dry_run_report(
+            current_rows,
+            expert_rows,
+            queue_sample_ids=["track2_0001", "track2_0002"],
+            high_similarity_sample_ids=[" track2_0001 "],
+            description_audit_by_id={
+                " track2_0002 ": {"verdict": "contradiction"}
+            },
+        )
+
+        rows_by_id = {row["sample_id"]: row for row in report["rows"]}
+        self.assertEqual(rows_by_id["track2_0001"]["decision"], "hold")
+        self.assertIn(
+            "high_similarity_requires_explicit_review",
+            rows_by_id["track2_0001"]["reasons"],
+        )
+        self.assertEqual(rows_by_id["track2_0002"]["decision"], "hold")
+        self.assertIn(
+            "description_contradiction",
+            rows_by_id["track2_0002"]["reasons"],
+        )
 
 
 if __name__ == "__main__":
