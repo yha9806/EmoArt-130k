@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 import math
 from dataclasses import dataclass
 from typing import Any
@@ -10,6 +11,7 @@ from affectiveart.track2_audit import (
     LOW_AROUSAL_EMOTIONS,
     NEGATIVE_EMOTIONS,
     POSITIVE_EMOTIONS,
+    compute_track2_distribution,
 )
 
 
@@ -168,6 +170,55 @@ def build_gate_decision(
         proposed_valence=proposed_valence,
         proposed_arousal=proposed_arousal,
     )
+
+
+def build_dry_run_report(
+    current_rows: list[dict[str, Any]],
+    expert_rows: list[dict[str, Any]],
+    *,
+    queue_sample_ids,
+    high_similarity_sample_ids=None,
+    description_audit_by_id=None,
+) -> dict[str, Any]:
+    high_similarity_ids = set(high_similarity_sample_ids or set())
+    description_audits = description_audit_by_id or {}
+    current_by_id = {
+        str(row.get("sample_id", "")).strip(): row
+        for row in current_rows
+        if isinstance(row, dict) and str(row.get("sample_id", "")).strip()
+    }
+
+    decisions: list[dict[str, Any]] = []
+    for sample_id in sorted(dict.fromkeys(queue_sample_ids)):
+        sample_id = str(sample_id).strip()
+        if sample_id not in current_by_id:
+            continue
+        decisions.append(
+            build_gate_decision(
+                current_by_id[sample_id],
+                expert_rows,
+                description_audit=description_audits.get(sample_id),
+                high_similarity_public_reference=sample_id in high_similarity_ids,
+            )
+        )
+
+    decision_counts = Counter(row["decision"] for row in decisions)
+    accepted_transition_counts = Counter(
+        f"{row['current_emotion']}->{row['proposed_emotion']}"
+        for row in decisions
+        if row["decision"] == "accept_change"
+    )
+    return {
+        "method": "track2_moe_specialist_dry_run_v1",
+        "row_count": len(decisions),
+        "decision_counts": dict(decision_counts),
+        "accepted_transition_counts": dict(accepted_transition_counts),
+        "baseline_distribution": compute_track2_distribution(current_rows),
+        "formal_submission_overwritten": False,
+        "candidate_json_written": False,
+        "candidate_zip_written": False,
+        "rows": decisions,
+    }
 
 
 def _relevant_expert_rows(
@@ -426,6 +477,7 @@ def _top3_probability(value: dict[str, Any]) -> Any:
 
 __all__ = [
     "GateThresholds",
+    "build_dry_run_report",
     "build_gate_decision",
     "expected_label_for_emotion",
     "normalize_expert_entries",

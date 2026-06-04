@@ -4,6 +4,7 @@ from affectiveart.challenge import TRACK2_JSON_EMOTIONS
 from affectiveart.track2_moe_specialist_ensemble import (
     GateThresholds,
     VALID_TRACK2_EMOTIONS,
+    build_dry_run_report,
     build_gate_decision,
     expected_label_for_emotion,
     normalize_expert_entries,
@@ -418,6 +419,35 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
     def test_gate_optional_controls_are_keyword_only(self):
         with self.assertRaises(TypeError):
             build_gate_decision(current_row(), [], GateThresholds())
+
+    def test_build_dry_run_report_summarizes_gate_decisions(self):
+        current_rows = [
+            current_row(sample_id="track2_0001", emotion="content"),
+            current_row(sample_id="track2_0002", emotion="content"),
+        ]
+        expert_rows = [
+            expert("track2_0001", "clip_clean", "calm", role="global"),
+            expert("track2_0001", "boundary_head", "calm", role="boundary"),
+            expert("track2_0002", "clip_clean", "sad"),
+        ]
+
+        report = build_dry_run_report(
+            current_rows,
+            expert_rows,
+            queue_sample_ids=["track2_0001", "track2_0002"],
+            high_similarity_sample_ids=set(),
+        )
+
+        self.assertEqual(report["method"], "track2_moe_specialist_dry_run_v1")
+        self.assertEqual(report["row_count"], 2)
+        self.assertEqual(report["decision_counts"]["accept_change"], 1)
+        self.assertEqual(report["decision_counts"]["hold"], 1)
+        self.assertIs(report["formal_submission_overwritten"], False)
+        self.assertIs(report["candidate_json_written"], False)
+        self.assertIs(report["candidate_zip_written"], False)
+        rows_by_id = {row["sample_id"]: row for row in report["rows"]}
+        self.assertEqual(rows_by_id["track2_0001"]["proposed_emotion"], "calm")
+        self.assertEqual(rows_by_id["track2_0002"]["decision"], "hold")
 
 
 if __name__ == "__main__":
