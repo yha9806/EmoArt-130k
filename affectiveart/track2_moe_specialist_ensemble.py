@@ -80,6 +80,215 @@ def normalize_expert_entries(payload: Any, source: str, role: str) -> list[dict[
     return normalized_rows
 
 
+def build_gate_decision(
+    current_row: dict[str, Any],
+    expert_rows: list[dict[str, Any]],
+    thresholds: GateThresholds | None = None,
+    description_audit: dict[str, Any] | None = None,
+    high_similarity_public_reference: bool = False,
+) -> dict[str, Any]:
+    thresholds = thresholds or GateThresholds()
+    sample_id = str(current_row.get("sample_id", "")).strip()
+    current_emotion = str(current_row.get("emotion", "")).strip().lower()
+    relevant_rows = _relevant_expert_rows(sample_id, expert_rows)
+    evidence = _summarize_evidence(relevant_rows)
+    proposed_emotion = _choose_proposal(current_emotion, evidence)
+
+    if not proposed_emotion:
+        return _decision_row(
+            current_row,
+            relevant_rows,
+            "keep_current",
+            current_emotion,
+            ["no_supported_change"],
+        )
+
+    reasons: list[str] = []
+    supporting_source_count = _supporting_source_count(
+        evidence.get(proposed_emotion, [])
+    )
+    if supporting_source_count >= thresholds.min_supporting_sources:
+        reasons.append(f"supported_by_{supporting_source_count}_sources")
+    elif _has_single_high_confidence_source(
+        proposed_emotion,
+        evidence,
+        thresholds,
+    ) and not _strong_opposition(proposed_emotion, evidence, thresholds):
+        reasons.append("single_high_confidence_source_without_strong_opposition")
+    else:
+        reasons.append("insufficient_independent_support")
+
+    if _description_verdict(description_audit) == "contradiction":
+        reasons.append("description_contradiction")
+    if high_similarity_public_reference:
+        reasons.append("high_similarity_requires_explicit_review")
+
+    blocking_reasons = {
+        "insufficient_independent_support",
+        "description_contradiction",
+        "high_similarity_requires_explicit_review",
+    }
+    decision = "hold" if blocking_reasons.intersection(reasons) else "accept_change"
+    proposed_valence, proposed_arousal = expected_label_for_emotion(proposed_emotion)
+    return _decision_row(
+        current_row,
+        relevant_rows,
+        decision,
+        proposed_emotion,
+        reasons,
+        proposed_valence=proposed_valence,
+        proposed_arousal=proposed_arousal,
+    )
+
+
+def _relevant_expert_rows(
+    sample_id: str,
+    expert_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    relevant_rows: list[dict[str, Any]] = []
+    for row in expert_rows or []:
+        if not isinstance(row, dict):
+            continue
+        if str(row.get("sample_id", "")).strip() != sample_id:
+            continue
+        normalized = _normalize_gate_evidence_row(row)
+        if normalized:
+            relevant_rows.append(normalized)
+    return relevant_rows
+
+
+def _normalize_gate_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
+    sample_id = str(row.get("sample_id", "")).strip()
+    emotion = str(row.get("emotion", "")).strip().lower()
+    if not sample_id or emotion not in VALID_TRACK2_EMOTIONS:
+        return None
+    confidence = _safe_float(row.get("confidence"))
+    return {
+        "sample_id": sample_id,
+        "source": str(row.get("source", "")).strip(),
+        "role": str(row.get("role", "")).strip(),
+        "emotion": emotion,
+        "confidence": confidence,
+        "margin": _safe_float(row.get("margin")),
+        "top3": _normalize_top3(
+            row.get("top3"),
+            fallback=emotion,
+            fallback_probability=confidence,
+        ),
+    }
+
+
+def _summarize_evidence(
+    expert_rows: list[dict[str, Any]],
+) -> dict[str, list[dict[str, Any]]]:
+    evidence: dict[str, list[dict[str, Any]]] = {}
+    for row in expert_rows:
+        emotion = str(row.get("emotion", "")).strip().lower()
+        if emotion in VALID_TRACK2_EMOTIONS:
+            evidence.setdefault(emotion, []).append(row)
+    return evidence
+
+
+def _choose_proposal(
+    current_emotion: str,
+    evidence: dict[str, list[dict[str, Any]]],
+) -> str:
+    candidates = [emotion for emotion in evidence if emotion != current_emotion]
+    if not candidates:
+        return ""
+    return sorted(
+        candidates,
+        key=lambda emotion: (
+            -_supporting_source_count(evidence[emotion]),
+            -sum(_safe_float(row.get("confidence")) for row in evidence[emotion]),
+            emotion,
+        ),
+    )[0]
+
+
+def _supporting_source_count(rows: list[dict[str, Any]]) -> int:
+    return len({_source_key(row) for row in rows})
+
+
+def _source_key(row: dict[str, Any]) -> str:
+    return str(row.get("source", "")).strip()
+
+
+def _has_single_high_confidence_source(
+    proposed_emotion: str,
+    evidence: dict[str, list[dict[str, Any]]],
+    thresholds: GateThresholds,
+) -> bool:
+    support = evidence.get(proposed_emotion, [])
+    if _supporting_source_count(support) != 1:
+        return False
+    return any(
+        _safe_float(row.get("confidence")) >= thresholds.high_confidence
+        and _safe_float(row.get("margin")) >= thresholds.min_margin
+        for row in support
+    )
+
+
+def _strong_opposition(
+    proposed_emotion: str,
+    evidence: dict[str, list[dict[str, Any]]],
+    thresholds: GateThresholds,
+) -> bool:
+    for emotion, rows in evidence.items():
+        if emotion == proposed_emotion:
+            continue
+        for row in rows:
+            if (
+                _safe_float(row.get("confidence")) >= thresholds.high_confidence
+                and _safe_float(row.get("margin")) >= thresholds.min_margin
+            ):
+                return True
+    return False
+
+
+def _description_verdict(description_audit: dict[str, Any] | None) -> str:
+    if not isinstance(description_audit, dict):
+        return ""
+    return str(description_audit.get("verdict", "")).strip().lower()
+
+
+def _decision_row(
+    current_row: dict[str, Any],
+    expert_rows: list[dict[str, Any]],
+    decision: str,
+    proposed_emotion: str,
+    reasons: list[str],
+    *,
+    proposed_valence: str | None = None,
+    proposed_arousal: str | None = None,
+) -> dict[str, Any]:
+    if proposed_valence is None or proposed_arousal is None:
+        proposed_valence, proposed_arousal = expected_label_for_emotion(
+            proposed_emotion
+        )
+    return {
+        "sample_id": str(current_row.get("sample_id", "")).strip(),
+        "decision": decision,
+        "current_emotion": str(current_row.get("emotion", "")).strip().lower(),
+        "current_valence": str(current_row.get("emotional_valence", "")).strip(),
+        "current_arousal": str(
+            current_row.get("emotional_arousal_level", "")
+        ).strip(),
+        "proposed_emotion": proposed_emotion,
+        "proposed_valence": proposed_valence,
+        "proposed_arousal": proposed_arousal,
+        "reasons": list(reasons),
+        "expert_evidence": sorted(
+            expert_rows,
+            key=lambda row: (
+                str(row.get("source", "")),
+                str(row.get("emotion", "")),
+                str(row.get("role", "")),
+            ),
+        ),
+    }
+
+
 def _extract_payload_rows(payload: Any) -> list[Any]:
     if isinstance(payload, list):
         return payload
@@ -151,6 +360,7 @@ def _top3_probability(value: dict[str, Any]) -> Any:
 
 __all__ = [
     "GateThresholds",
+    "build_gate_decision",
     "expected_label_for_emotion",
     "normalize_expert_entries",
 ]

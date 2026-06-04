@@ -4,9 +4,49 @@ from affectiveart.challenge import TRACK2_JSON_EMOTIONS
 from affectiveart.track2_moe_specialist_ensemble import (
     GateThresholds,
     VALID_TRACK2_EMOTIONS,
+    build_gate_decision,
     expected_label_for_emotion,
     normalize_expert_entries,
 )
+
+
+def current_row(
+    sample_id="track2_0001",
+    emotion="content",
+    valence="Positive",
+    arousal="Low",
+):
+    return {
+        "sample_id": sample_id,
+        "emotion": emotion,
+        "emotional_valence": valence,
+        "emotional_arousal_level": arousal,
+        "overall_caption": "A quiet portrait with balanced color and soft light.",
+        "brushstroke": "smooth",
+        "composition": "centered",
+        "color": "warm muted tones",
+        "line": "soft",
+        "light": "diffuse",
+    }
+
+
+def expert(
+    sample_id,
+    source,
+    emotion,
+    confidence=0.9,
+    margin=0.2,
+    role="global",
+):
+    return {
+        "sample_id": sample_id,
+        "source": source,
+        "role": role,
+        "emotion": emotion,
+        "confidence": confidence,
+        "margin": margin,
+        "top3": [{"emotion": emotion, "probability": confidence}],
+    }
 
 
 def _expert_row(sample_id="track2_0001", emotion="calm", **overrides):
@@ -159,6 +199,60 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         rows = normalize_expert_entries(payload, source="siglip2_clean", role="global")
 
         self.assertEqual(rows[0]["top3"], [{"emotion": "glad", "probability": 0.73}])
+
+    def test_gate_accepts_two_source_supported_va_consistent_change(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "calm"),
+                expert("track2_0001", "siglip2_clean", "calm", confidence=0.87),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "accept_change")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertEqual(decision["proposed_valence"], "Positive")
+        self.assertEqual(decision["proposed_arousal"], "Low")
+        self.assertIn("supported_by_2_sources", decision["reasons"])
+
+    def test_gate_holds_single_source_change(self):
+        decision = build_gate_decision(
+            current_row(),
+            [expert("track2_0001", "clip_clean", "calm", confidence=0.82, margin=0.11)],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("insufficient_independent_support", decision["reasons"])
+
+    def test_gate_rejects_text_contradiction(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "sad"),
+                expert("track2_0001", "siglip2_clean", "sad", confidence=0.88),
+            ],
+            description_audit={"verdict": "contradiction"},
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertIn("description_contradiction", decision["reasons"])
+
+    def test_gate_holds_high_similarity_change_without_human_approval(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "calm"),
+                expert("track2_0001", "siglip2_clean", "calm", confidence=0.88),
+            ],
+            high_similarity_public_reference=True,
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertIn(
+            "high_similarity_requires_explicit_review",
+            decision["reasons"],
+        )
 
 
 if __name__ == "__main__":
