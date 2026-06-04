@@ -55,6 +55,35 @@ GENERIC_FAMILY: dict[str, Any] = {
     "composition_hints": ["caption-led subject", "medium-appropriate composition", "avoid batch template"],
 }
 
+MEDIUM_RULES: list[dict[str, Any]] = [
+    {
+        "medium_id": "propaganda_poster_print",
+        "terms": [
+            "poster",
+            "propaganda",
+            "cyrillic typography",
+            "cyrillic",
+            "typography",
+            "sailor",
+            "socialist realism",
+        ],
+    },
+    {
+        "medium_id": "scroll_or_album_paper_support",
+        "terms": ["scroll", "album", "graph paper", "folded paper", "ruled page"],
+    },
+    {
+        "medium_id": "painting_or_brushwork_surface",
+        "terms": ["oil painting", "watercolor", "ink", "brushwork", "canvas"],
+    },
+    {
+        "medium_id": "document_or_tableau_surface",
+        "terms": ["document", "surrender", "treaty", "tableau"],
+    },
+]
+
+GENERIC_MEDIUM_HINT = "generic_artwork_surface"
+
 
 def classify_aspect(width: int, height: int) -> dict[str, Any]:
     width = int(width)
@@ -97,6 +126,20 @@ def infer_reference_family(
     }
 
 
+def infer_medium_hints(
+    sample_id: str,
+    caption: str,
+    reference_path: str | Path = "",
+    metadata: dict[str, Any] | None = None,
+) -> list[str]:
+    searchable = _normalise_search_text(sample_id, caption, reference_path, metadata or {})
+    hints: list[str] = []
+    for rule in MEDIUM_RULES:
+        if any(_term_matches(searchable, term) for term in rule["terms"]):
+            hints.append(rule["medium_id"])
+    return hints or [GENERIC_MEDIUM_HINT]
+
+
 def build_reference_family_bank(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
     output_rows: list[dict[str, Any]] = []
     for row in rows:
@@ -105,6 +148,7 @@ def build_reference_family_bank(rows: Iterable[dict[str, Any]]) -> dict[str, Any
         reference_path = _reference_path_from_row(row)
         image_status = _read_image_status(reference_path)
         family = infer_reference_family(sample_id, caption, reference_path)
+        medium_hints = infer_medium_hints(sample_id, caption, reference_path, row)
         output_rows.append(
             {
                 "sample_id": sample_id,
@@ -116,11 +160,13 @@ def build_reference_family_bank(rows: Iterable[dict[str, Any]]) -> dict[str, Any
                 "family_id": family["family_id"],
                 "matched_terms": family["matched_terms"],
                 "composition_hints": family["composition_hints"],
+                "medium_hints": medium_hints,
             }
         )
 
     aspect_counts = Counter(row["aspect"]["label"] for row in output_rows)
     family_counts = Counter(row["family_id"] for row in output_rows)
+    medium_counts = Counter(hint for row in output_rows for hint in row["medium_hints"])
     return {
         "version": BANK_VERSION,
         "summary": {
@@ -129,6 +175,7 @@ def build_reference_family_bank(rows: Iterable[dict[str, Any]]) -> dict[str, Any
             "missing_images": sum(1 for row in output_rows if not row["image_exists"]),
             "aspect_labels": dict(sorted(aspect_counts.items())),
             "family_counts": dict(sorted(family_counts.items())),
+            "medium_counts": dict(sorted(medium_counts.items())),
         },
         "rows": output_rows,
         "families": _summarize_families(output_rows),
@@ -288,6 +335,7 @@ def _summarize_families(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "aspect_labels": dict(sorted(aspect_counts.items())),
             "matched_terms": _unique(term for row in family_rows for term in row["matched_terms"]),
             "composition_hints": _unique(hint for row in family_rows for hint in row["composition_hints"]),
+            "medium_hints": _unique(hint for row in family_rows for hint in row["medium_hints"]),
         }
     return families
 
@@ -304,6 +352,7 @@ def _write_rows_csv(rows: list[dict[str, Any]], csv_path: Path) -> None:
         "reference_path",
         "matched_terms",
         "composition_hints",
+        "medium_hints",
         "caption",
     ]
     with csv_path.open("w", encoding="utf-8", newline="") as fh:
@@ -324,6 +373,7 @@ def _write_rows_csv(rows: list[dict[str, Any]], csv_path: Path) -> None:
                     "reference_path": row.get("reference_path", ""),
                     "matched_terms": " | ".join(row.get("matched_terms", [])),
                     "composition_hints": " | ".join(row.get("composition_hints", [])),
+                    "medium_hints": " | ".join(row.get("medium_hints", [])),
                     "caption": row.get("caption", ""),
                 }
             )
@@ -348,19 +398,40 @@ def _render_markdown_report(bank: dict[str, Any]) -> str:
     else:
         lines.append("- none: 0")
 
-    lines.extend(["", "## Families", "", "| Family | Count | Aspect labels | Hints |", "| --- | ---: | --- | --- |"])
+    lines.extend(
+        [
+            "",
+            "## Families",
+            "",
+            "| Family | Count | Aspect labels | Composition hints | Medium hints |",
+            "| --- | ---: | --- | --- | --- |",
+        ]
+    )
     families = bank.get("families", {})
     for family_id, family in families.items():
         aspect_text = ", ".join(f"{label}:{count}" for label, count in family.get("aspect_labels", {}).items())
-        hint_text = "; ".join(family.get("composition_hints", []))
-        lines.append(f"| {family_id} | {family.get('count', 0)} | {aspect_text} | {hint_text} |")
+        composition_text = "; ".join(family.get("composition_hints", []))
+        medium_text = "; ".join(family.get("medium_hints", []))
+        lines.append(
+            f"| {family_id} | {family.get('count', 0)} | {aspect_text} | "
+            f"{composition_text} | {medium_text} |"
+        )
 
-    lines.extend(["", "## Rows", "", "| Sample | Family | Aspect | Reference |", "| --- | --- | --- | --- |"])
+    lines.extend(
+        [
+            "",
+            "## Rows",
+            "",
+            "| Sample | Family | Aspect | Medium hints | Reference |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+    )
     for row in bank.get("rows", []):
         aspect = row.get("aspect", {})
+        medium_text = "; ".join(row.get("medium_hints", []))
         lines.append(
             f"| {row.get('sample_id', '')} | {row.get('family_id', '')} | "
-            f"{aspect.get('label', '')} | {row.get('reference_path', '')} |"
+            f"{aspect.get('label', '')} | {medium_text} | {row.get('reference_path', '')} |"
         )
     return "\n".join(lines).strip() + "\n"
 

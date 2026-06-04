@@ -67,6 +67,52 @@ class Track1ReferenceFamilyBankTest(unittest.TestCase):
         self.assertIn("naval_aviation_vehicle", bank["families"])
         self.assertIn("generic_artwork", bank["families"])
 
+    def test_build_reference_family_bank_includes_deterministic_medium_hints(self):
+        rows = [
+            {
+                "sample_id": "track1_poster",
+                "caption": "A Socialist Realism propaganda poster with bold Cyrillic typography.",
+                "reference_path": "refs/soviet_poster.jpg",
+            },
+            {
+                "sample_id": "track1_scroll",
+                "caption": "Abstract branching lines on graph paper with a folded ruled page edge.",
+                "reference_path": "refs/graph_paper.jpg",
+            },
+            {
+                "sample_id": "track1_painting",
+                "caption": "A watercolor and ink brushwork study on canvas.",
+                "reference_path": "refs/watercolor_canvas.jpg",
+            },
+            {
+                "sample_id": "track1_document",
+                "caption": "A surrender treaty document tableau with officers around a table.",
+                "reference_path": "refs/surrender_document.jpg",
+            },
+            {
+                "sample_id": "track1_generic",
+                "caption": "A quiet generic artwork study.",
+                "reference_path": "refs/generic.jpg",
+            },
+        ]
+
+        bank = build_reference_family_bank(rows)
+        repeated_bank = build_reference_family_bank(rows)
+
+        mediums_by_id = {row["sample_id"]: row["medium_hints"] for row in bank["rows"]}
+        repeated_mediums_by_id = {row["sample_id"]: row["medium_hints"] for row in repeated_bank["rows"]}
+        self.assertEqual(mediums_by_id, repeated_mediums_by_id)
+        self.assertEqual(mediums_by_id["track1_poster"][0], "propaganda_poster_print")
+        self.assertEqual(mediums_by_id["track1_scroll"][0], "scroll_or_album_paper_support")
+        self.assertEqual(mediums_by_id["track1_painting"][0], "painting_or_brushwork_surface")
+        self.assertEqual(mediums_by_id["track1_document"][0], "document_or_tableau_surface")
+        self.assertEqual(mediums_by_id["track1_generic"][0], "generic_artwork_surface")
+        self.assertIn("medium_hints", bank["families"]["scroll_album_paper_support"])
+        self.assertIn(
+            "scroll_or_album_paper_support",
+            bank["families"]["scroll_album_paper_support"]["medium_hints"],
+        )
+
     def test_write_reports_and_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -118,6 +164,33 @@ class Track1ReferenceFamilyBankTest(unittest.TestCase):
             self.assertIn("kremlin_red_square", out_json.read_text(encoding="utf-8"))
             self.assertIn("kremlin_red_square", out_csv.read_text(encoding="utf-8"))
             self.assertIn("kremlin_red_square", out_md.read_text(encoding="utf-8"))
+
+    def test_write_reports_include_medium_hints(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            rows = [
+                {
+                    "sample_id": "track1_0803",
+                    "caption": "A Socialist Realism propaganda poster with Kremlin tower and searchlights.",
+                    "reference_path": str(root / "missing.jpg"),
+                }
+            ]
+            bank = build_reference_family_bank(rows)
+            out_json = root / "bank.json"
+            out_csv = root / "bank.csv"
+            out_md = root / "bank.md"
+
+            write_reference_family_reports(bank, json_path=out_json, csv_path=out_csv, md_path=out_md)
+            json_payload = json.loads(out_json.read_text(encoding="utf-8"))
+            csv_text = out_csv.read_text(encoding="utf-8")
+            md_text = out_md.read_text(encoding="utf-8")
+
+        self.assertEqual(json_payload["rows"][0]["medium_hints"][0], "propaganda_poster_print")
+        self.assertIn("propaganda_poster_print", json_payload["families"]["kremlin_red_square"]["medium_hints"])
+        self.assertIn("medium_hints", csv_text)
+        self.assertIn("propaganda_poster_print", csv_text)
+        self.assertIn("Medium hints", md_text)
+        self.assertIn("propaganda_poster_print", md_text)
 
     def test_rejects_protected_output_paths_before_writing(self):
         bank = build_reference_family_bank(
