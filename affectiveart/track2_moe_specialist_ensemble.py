@@ -842,7 +842,7 @@ def _safe_asset_filename(sample_id: str) -> str:
     )
     if not safe_stem:
         safe_stem = "sample"
-    suffix = hashlib.sha256(raw_sample_id.encode("utf-8")).hexdigest()[:8]
+    suffix = hashlib.sha256(raw_sample_id.encode("utf-8")).hexdigest()
     return f"{safe_stem}-{suffix}.jpg"
 
 
