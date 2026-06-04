@@ -112,7 +112,6 @@ def build_gate_decision(
         _quality_support_rows(support, thresholds)
     )
     strong_opposition = _strong_opposition(
-        current_emotion,
         proposed_emotion,
         evidence,
         thresholds,
@@ -261,13 +260,12 @@ def _quality_support_rows(
 
 
 def _strong_opposition(
-    current_emotion: str,
     proposed_emotion: str,
     evidence: dict[str, list[dict[str, Any]]],
     thresholds: GateThresholds,
 ) -> bool:
     for emotion, rows in evidence.items():
-        if emotion in {current_emotion, proposed_emotion}:
+        if emotion == proposed_emotion:
             continue
         for row in rows:
             if (

@@ -294,6 +294,45 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(decision["proposed_emotion"], "calm")
         self.assertIn("strong_opposition", decision["reasons"])
 
+    def test_gate_holds_supported_change_with_current_label_opposition(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "calm", confidence=0.7),
+                expert("track2_0001", "siglip2_clean", "calm", confidence=0.72),
+                expert("track2_0001", "dinov2_clean", "content", confidence=0.91),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("strong_opposition", decision["reasons"])
+
+    def test_gate_duplicate_source_rows_do_not_count_as_independent_support(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "clip_clean",
+                    "calm",
+                    confidence=0.82,
+                    margin=0.11,
+                ),
+                expert(
+                    "track2_0001",
+                    "clip_clean",
+                    "calm",
+                    confidence=0.81,
+                    margin=0.10,
+                ),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("insufficient_independent_support", decision["reasons"])
+
     def test_gate_ignores_irrelevant_expert_rows_for_other_sample_id(self):
         decision = build_gate_decision(
             current_row(),
