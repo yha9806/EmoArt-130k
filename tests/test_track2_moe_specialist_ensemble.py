@@ -226,6 +226,47 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         self.assertEqual(decision["proposed_emotion"], "calm")
         self.assertIn("insufficient_independent_support", decision["reasons"])
 
+    def test_gate_accepts_single_high_confidence_specialist_change(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "boundary_head",
+                    "calm",
+                    confidence=0.91,
+                    margin=0.21,
+                    role="specialist",
+                )
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "accept_change")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn(
+            "single_high_confidence_source_without_strong_opposition",
+            decision["reasons"],
+        )
+
+    def test_gate_holds_single_high_confidence_global_change(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "clip_clean",
+                    "calm",
+                    confidence=0.91,
+                    margin=0.21,
+                    role="global",
+                )
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("single_source_not_specialist", decision["reasons"])
+
     def test_gate_rejects_text_contradiction(self):
         decision = build_gate_decision(
             current_row(),

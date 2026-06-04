@@ -14,6 +14,9 @@ from affectiveart.track2_audit import (
 
 
 VALID_TRACK2_EMOTIONS = TRACK2_JSON_EMOTIONS
+SINGLE_SOURCE_SPECIALIST_ROLES = frozenset(
+    {"boundary", "tail", "va", "description", "specialist"}
+)
 
 
 @dataclass(frozen=True)
@@ -125,8 +128,17 @@ def build_gate_decision(
         proposed_emotion,
         evidence,
         thresholds,
-    ) and not strong_opposition:
-        reasons.append("single_high_confidence_source_without_strong_opposition")
+    ):
+        if strong_opposition:
+            reasons.append("insufficient_independent_support")
+        elif _has_single_high_confidence_specialist_source(
+            proposed_emotion,
+            evidence,
+            thresholds,
+        ):
+            reasons.append("single_high_confidence_source_without_strong_opposition")
+        else:
+            reasons.append("single_source_not_specialist")
     else:
         reasons.append("insufficient_independent_support")
     if strong_opposition:
@@ -139,6 +151,7 @@ def build_gate_decision(
 
     blocking_reasons = {
         "insufficient_independent_support",
+        "single_source_not_specialist",
         "strong_opposition",
         "support_below_quality_bar",
         "description_contradiction",
@@ -244,6 +257,29 @@ def _has_single_high_confidence_source(
         _safe_float(row.get("confidence")) >= thresholds.high_confidence
         and _safe_float(row.get("margin")) >= thresholds.min_margin
         for row in support
+    )
+
+
+def _has_single_high_confidence_specialist_source(
+    proposed_emotion: str,
+    evidence: dict[str, list[dict[str, Any]]],
+    thresholds: GateThresholds,
+) -> bool:
+    support = evidence.get(proposed_emotion, [])
+    if _supporting_source_count(support) != 1:
+        return False
+    return any(
+        _safe_float(row.get("confidence")) >= thresholds.high_confidence
+        and _safe_float(row.get("margin")) >= thresholds.min_margin
+        and _is_single_source_specialist_role(row)
+        for row in support
+    )
+
+
+def _is_single_source_specialist_role(row: dict[str, Any]) -> bool:
+    return (
+        str(row.get("role", "")).strip().lower()
+        in SINGLE_SOURCE_SPECIALIST_ROLES
     )
 
 
