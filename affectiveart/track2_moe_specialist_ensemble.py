@@ -19,6 +19,7 @@ VALID_TRACK2_EMOTIONS = TRACK2_JSON_EMOTIONS
 @dataclass(frozen=True)
 class GateThresholds:
     min_supporting_sources: int = 2
+    min_support_confidence: float = 0.50
     high_confidence: float = 0.86
     min_margin: float = 0.12
     min_macro_f1_gain: float = 0.015
@@ -83,6 +84,7 @@ def normalize_expert_entries(payload: Any, source: str, role: str) -> list[dict[
 def build_gate_decision(
     current_row: dict[str, Any],
     expert_rows: list[dict[str, Any]],
+    *,
     thresholds: GateThresholds | None = None,
     description_audit: dict[str, Any] | None = None,
     high_similarity_public_reference: bool = False,
@@ -104,19 +106,32 @@ def build_gate_decision(
         )
 
     reasons: list[str] = []
-    supporting_source_count = _supporting_source_count(
-        evidence.get(proposed_emotion, [])
+    support = evidence.get(proposed_emotion, [])
+    supporting_source_count = _supporting_source_count(support)
+    quality_supporting_source_count = _supporting_source_count(
+        _quality_support_rows(support, thresholds)
+    )
+    strong_opposition = _strong_opposition(
+        current_emotion,
+        proposed_emotion,
+        evidence,
+        thresholds,
     )
     if supporting_source_count >= thresholds.min_supporting_sources:
-        reasons.append(f"supported_by_{supporting_source_count}_sources")
+        if quality_supporting_source_count >= thresholds.min_supporting_sources:
+            reasons.append(f"supported_by_{quality_supporting_source_count}_sources")
+        else:
+            reasons.append("support_below_quality_bar")
     elif _has_single_high_confidence_source(
         proposed_emotion,
         evidence,
         thresholds,
-    ) and not _strong_opposition(proposed_emotion, evidence, thresholds):
+    ) and not strong_opposition:
         reasons.append("single_high_confidence_source_without_strong_opposition")
     else:
         reasons.append("insufficient_independent_support")
+    if strong_opposition:
+        reasons.append("strong_opposition")
 
     if _description_verdict(description_audit) == "contradiction":
         reasons.append("description_contradiction")
@@ -125,6 +140,8 @@ def build_gate_decision(
 
     blocking_reasons = {
         "insufficient_independent_support",
+        "strong_opposition",
+        "support_below_quality_bar",
         "description_contradiction",
         "high_similarity_requires_explicit_review",
     }
@@ -159,13 +176,15 @@ def _relevant_expert_rows(
 
 def _normalize_gate_evidence_row(row: dict[str, Any]) -> dict[str, Any] | None:
     sample_id = str(row.get("sample_id", "")).strip()
+    raw_source = row.get("source", "")
+    source = "" if raw_source is None else str(raw_source).strip()
     emotion = str(row.get("emotion", "")).strip().lower()
-    if not sample_id or emotion not in VALID_TRACK2_EMOTIONS:
+    if not sample_id or not source or emotion not in VALID_TRACK2_EMOTIONS:
         return None
     confidence = _safe_float(row.get("confidence"))
     return {
         "sample_id": sample_id,
-        "source": str(row.get("source", "")).strip(),
+        "source": source,
         "role": str(row.get("role", "")).strip(),
         "emotion": emotion,
         "confidence": confidence,
@@ -229,13 +248,26 @@ def _has_single_high_confidence_source(
     )
 
 
+def _quality_support_rows(
+    rows: list[dict[str, Any]],
+    thresholds: GateThresholds,
+) -> list[dict[str, Any]]:
+    return [
+        row
+        for row in rows
+        if _safe_float(row.get("confidence")) >= thresholds.min_support_confidence
+        and _safe_float(row.get("margin")) >= thresholds.min_margin
+    ]
+
+
 def _strong_opposition(
+    current_emotion: str,
     proposed_emotion: str,
     evidence: dict[str, list[dict[str, Any]]],
     thresholds: GateThresholds,
 ) -> bool:
     for emotion, rows in evidence.items():
-        if emotion == proposed_emotion:
+        if emotion in {current_emotion, proposed_emotion}:
             continue
         for row in rows:
             if (

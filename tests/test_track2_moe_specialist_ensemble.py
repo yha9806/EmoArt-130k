@@ -75,6 +75,7 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
         thresholds = GateThresholds()
 
         self.assertEqual(thresholds.min_supporting_sources, 2)
+        self.assertEqual(thresholds.min_support_confidence, 0.50)
         self.assertEqual(thresholds.high_confidence, 0.86)
         self.assertEqual(thresholds.min_macro_f1_gain, 0.015)
         self.assertEqual(thresholds.max_accuracy_drop, 0.010)
@@ -253,6 +254,90 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
             "high_similarity_requires_explicit_review",
             decision["reasons"],
         )
+
+    def test_gate_holds_two_source_change_below_quality_bar(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert(
+                    "track2_0001",
+                    "clip_clean",
+                    "calm",
+                    confidence=0.49,
+                    margin=0.0,
+                ),
+                expert(
+                    "track2_0001",
+                    "siglip2_clean",
+                    "calm",
+                    confidence=0.47,
+                    margin=0.0,
+                ),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("support_below_quality_bar", decision["reasons"])
+
+    def test_gate_holds_supported_change_with_strong_opposition(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "calm", confidence=0.7),
+                expert("track2_0001", "siglip2_clean", "calm", confidence=0.72),
+                expert("track2_0001", "dinov2_clean", "sad", confidence=0.91),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "hold")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+        self.assertIn("strong_opposition", decision["reasons"])
+
+    def test_gate_ignores_irrelevant_expert_rows_for_other_sample_id(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_9999", "clip_clean", "calm"),
+                expert("track2_9999", "siglip2_clean", "calm"),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "keep_current")
+        self.assertEqual(decision["proposed_emotion"], "content")
+        self.assertEqual(decision["expert_evidence"], [])
+        self.assertIn("no_supported_change", decision["reasons"])
+
+    def test_gate_ignores_blank_source_identities(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", None, "calm"),
+                expert("track2_0001", "   ", "calm"),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "keep_current")
+        self.assertEqual(decision["expert_evidence"], [])
+        self.assertIn("no_supported_change", decision["reasons"])
+
+    def test_gate_tie_breaks_same_support_and_confidence_lexically(self):
+        decision = build_gate_decision(
+            current_row(),
+            [
+                expert("track2_0001", "clip_clean", "glad", confidence=0.6),
+                expert("track2_0001", "siglip2_clean", "glad", confidence=0.6),
+                expert("track2_0001", "dinov2_clean", "calm", confidence=0.6),
+                expert("track2_0001", "boundary_head", "calm", confidence=0.6),
+            ],
+        )
+
+        self.assertEqual(decision["decision"], "accept_change")
+        self.assertEqual(decision["proposed_emotion"], "calm")
+
+    def test_gate_optional_controls_are_keyword_only(self):
+        with self.assertRaises(TypeError):
+            build_gate_decision(current_row(), [], GateThresholds())
 
 
 if __name__ == "__main__":
