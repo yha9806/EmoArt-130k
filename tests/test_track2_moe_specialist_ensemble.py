@@ -1,5 +1,6 @@
 import copy
 import json
+import subprocess
 import tempfile
 import unittest
 import zipfile
@@ -619,6 +620,127 @@ class Track2MoeSpecialistEnsembleTest(unittest.TestCase):
                 mkdir_mock.assert_not_called()
 
         self.assertFalse(blocked_out_dir.exists())
+
+    def test_cli_dry_run_writes_artifacts_and_no_submission_files(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        script = repo_root / "scripts" / "track2_moe_specialist_ensemble.py"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json = tmp_path / "current.json"
+            source_json = tmp_path / "source.json"
+            image_zip = tmp_path / "track2_images.zip"
+            out_dir = tmp_path / "out"
+
+            current_json.write_text(
+                json.dumps([current_row("track2_0001", "content")]),
+                encoding="utf-8",
+            )
+            source_json.write_text(
+                json.dumps(
+                    {
+                        "entries": [
+                            _expert_row("track2_0001", "calm"),
+                            _expert_row("track2_0001", "calm", confidence=0.88),
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            _write_track2_image_zip(image_zip, ["track2_0001"])
+
+            result = subprocess.run(
+                [
+                    "python3",
+                    str(script),
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={source_json}",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(out_dir),
+                ],
+                cwd=repo_root,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue(
+                (out_dir / "track2_moe_specialist_dry_run_report.json").exists()
+            )
+            self.assertTrue(
+                (
+                    out_dir
+                    / "html_review"
+                    / "track2_moe_specialist_dry_run_review.html"
+                ).exists()
+            )
+            self.assertFalse((out_dir / "submission.json").exists())
+            self.assertFalse((out_dir / "submission.zip").exists())
+
+    def test_cli_rejects_output_under_submissions_directory(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        script = repo_root / "scripts" / "track2_moe_specialist_ensemble.py"
+        blocked_out = repo_root / "submissions" / "moe_dry_run_blocked"
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            current_json = tmp_path / "current.json"
+            source_json = tmp_path / "source.json"
+            image_zip = tmp_path / "track2_images.zip"
+
+            current_json.write_text(
+                json.dumps([current_row("track2_0001", "content")]),
+                encoding="utf-8",
+            )
+            source_json.write_text(
+                json.dumps(
+                    {
+                        "entries": [
+                            _expert_row("track2_0001", "calm"),
+                            _expert_row("track2_0001", "calm", confidence=0.88),
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            _write_track2_image_zip(image_zip, ["track2_0001"])
+
+            result = subprocess.run(
+                [
+                    "python3",
+                    str(script),
+                    "dry-run",
+                    "--current-json",
+                    str(current_json),
+                    "--expert-source",
+                    f"combined=global={source_json}",
+                    "--queue-sample-id",
+                    "track2_0001",
+                    "--image-zip",
+                    str(image_zip),
+                    "--out-dir",
+                    str(blocked_out),
+                ],
+                cwd=repo_root,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertNotEqual(result.returncode, 0, result.stdout)
+            self.assertIn(
+                "dry-run output must not be under submissions",
+                result.stderr,
+            )
+            self.assertFalse(blocked_out.exists())
 
     def test_write_dry_run_outputs_does_not_mutate_input_report(self):
         from affectiveart.track2_moe_specialist_ensemble import write_dry_run_outputs
