@@ -72,6 +72,38 @@ class Track1ReferenceRoleGateTest(unittest.TestCase):
         self.assertEqual(row["status"], "fail")
         self.assertIn("train_window", row["missing_required_roles"])
 
+    def test_allied_flags_requires_flag_evidence_not_just_american_word(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            abstract = _image(root / "BalcombGreene_Untitled_fromtheAmericanAbstractArtistsportfolio.jpg", (30, 50, 90))
+            route = {
+                "sample_id": "track1_0803",
+                "caption": "A Soviet poster with Soviet, American, and British flags above the Kremlin.",
+                "reference_assets": [abstract],
+            }
+
+            report = build_reference_role_gate([route])
+
+        row = report["rows"][0]
+        self.assertEqual(row["status"], "fail")
+        self.assertIn("allied_flags", row["missing_required_roles"])
+
+    def test_aircraft_role_does_not_match_generic_flight_title(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            renaissance = _image(root / "FraAngelico_FlightintoEgypt.jpg", (90, 70, 60))
+            route = {
+                "sample_id": "track1_0747",
+                "caption": "A wartime poster with mounted soldiers, fleeing civilians, and aircraft overhead.",
+                "reference_assets": [renaissance],
+            }
+
+            report = build_reference_role_gate([route])
+
+        row = report["rows"][0]
+        self.assertEqual(row["status"], "fail")
+        self.assertIn("aircraft", row["missing_required_roles"])
+
     def test_candidate_reference_fallback_is_hard_failure(self):
         route = {
             "sample_id": "track1_0747",

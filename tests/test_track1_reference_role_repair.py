@@ -84,6 +84,47 @@ class Track1ReferenceRoleRepairTest(unittest.TestCase):
         self.assertEqual(result["summary"]["unresolved_routes"], 1)
         self.assertEqual(result["unresolved_rows"][0]["missing_role"], "poster_print")
 
+    def test_repair_does_not_use_substring_false_positive_donors(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            oil_ship = _image(root / "FishingHarbor.jpg", (20, 60, 90))
+            false_cannon = _image(root / "ChildrenPlayingunderaPomegranateTree.jpg", (80, 90, 40))
+            false_medal = _image(root / "StBenedictOrdersStMaurus.jpg", (90, 70, 50))
+            routes = [
+                {
+                    "sample_id": "track1_0476",
+                    "caption": "A Socialist Realism propaganda poster with a naval medal and cannon.",
+                    "reference_assets": [oil_ship],
+                },
+                {
+                    "sample_id": "track1_0621",
+                    "caption": "Children playing under a tree.",
+                    "reference_assets": [false_cannon],
+                    "reference_asset_notes": ["source=ChildrenPlayingunderaPomegranateTree.jpg"],
+                },
+                {
+                    "sample_id": "track1_0203",
+                    "caption": "Saint Benedict orders a rescue.",
+                    "reference_assets": [false_medal],
+                    "reference_asset_notes": ["source=StBenedictOrdersStMaurus.jpg"],
+                },
+            ]
+
+            result = repair_reference_routes(
+                routes,
+                repair_roles=["medal_symbol", "cannon_artillery"],
+                max_assets_per_route=4,
+            )
+
+        repaired = {row["sample_id"]: row for row in result["routes"]}["track1_0476"]
+        names = [Path(asset).name for asset in repaired["reference_assets"]]
+        self.assertNotIn("ChildrenPlayingunderaPomegranateTree.jpg", names)
+        self.assertNotIn("StBenedictOrdersStMaurus.jpg", names)
+        self.assertEqual(
+            sorted(row["missing_role"] for row in result["unresolved_rows"]),
+            ["cannon_artillery", "medal_symbol"],
+        )
+
     def test_repair_does_not_trim_existing_unique_required_role_asset(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

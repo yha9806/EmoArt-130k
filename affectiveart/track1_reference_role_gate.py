@@ -303,7 +303,7 @@ def _role_check(
     matches = [
         item
         for item in asset_texts
-        if any(term in item["text"] for term in role.evidence_terms)
+        if _role_matches_text(item["text"], role)
     ]
     return {
         "role": role.name,
@@ -349,6 +349,44 @@ def _normalise_text(value: str) -> str:
     value = re.sub(r"([a-z])([A-Z])", r"\1 \2", value)
     value = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", value)
     return " ".join(re.findall(r"[a-z0-9]+", value.lower()))
+
+
+_COMPACT_ROLE_TERMS = {
+    "redsquare",
+}
+
+
+def _role_matches_text(normalised_text: str, role: ReferenceRole) -> bool:
+    if role.name == "allied_flags":
+        return _text_has_any_role_term(normalised_text, ("flag", "flags")) and _text_has_any_role_term(
+            normalised_text,
+            ("allied", "american", "british", "united", "soviet"),
+        )
+    if role.name == "mounted_civilian_relation":
+        return _text_has_any_role_term(normalised_text, ("mounted", "cavalry", "horse", "horses")) and _text_has_any_role_term(
+            normalised_text,
+            ("civilian", "civilians", "refugee", "village", "evacuation"),
+        )
+    for raw_term in role.evidence_terms:
+        if _text_has_role_term(normalised_text, raw_term):
+            return True
+    return False
+
+
+def _text_has_any_role_term(normalised_text: str, raw_terms: tuple[str, ...]) -> bool:
+    return any(_text_has_role_term(normalised_text, term) for term in raw_terms)
+
+
+def _text_has_role_term(normalised_text: str, raw_term: str) -> bool:
+    term = _normalise_text(raw_term)
+    if not term:
+        return False
+    padded = f" {normalised_text} "
+    tokens = set(normalised_text.split())
+    compact = normalised_text.replace(" ", "")
+    if " " in term:
+        return f" {term} " in padded or term.replace(" ", "") in compact
+    return term in tokens or (term in _COMPACT_ROLE_TERMS and term in compact)
 
 
 def _caption_has_any(caption: str, *needles: str) -> bool:
@@ -473,7 +511,7 @@ REFERENCE_ROLES: tuple[ReferenceRole, ...] = (
         label_zh="飞机/空中主体",
         why_zh="caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。",
         required_if=lambda caption, route: _caption_has_any(caption, "aircraft", "airplane", "airplanes", "plane", "planes"),
-        evidence_terms=("aircraft", "airplane", "airplanes", "plane", "planes", "airmen", "aviation", "flight", "bomber"),
+        evidence_terms=("aircraft", "airplane", "airplanes", "plane", "planes", "airmen", "aviation", "bomber"),
     ),
 )
 

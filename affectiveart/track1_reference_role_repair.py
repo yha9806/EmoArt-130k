@@ -9,6 +9,7 @@ from affectiveart.track1_reference_role_gate import (
     REFERENCE_ROLES,
     build_reference_role_gate,
     _normalise_text,
+    _role_matches_text,
 )
 
 
@@ -171,7 +172,7 @@ def _donor_pool(routes: list[dict[str, Any]], role_names: list[str]) -> dict[str
             note = notes[index] if index < len(notes) else ""
             text = _normalise_text(f"{asset} {note}")
             for role_name, role in roles.items():
-                if not any(term in text for term in role.evidence_terms):
+                if not _role_matches_text(text, role):
                     continue
                 key = (role_name, asset)
                 if key in seen:
@@ -278,7 +279,7 @@ def _required_role_protected_indices(route: dict[str, Any], assets: list[str], n
 
 def _asset_matches_role(asset: str, note: str, role: Any) -> bool:
     text = _normalise_text(f"{asset} {note}")
-    return any(term in text for term in role.evidence_terms)
+    return _role_matches_text(text, role)
 
 
 def _last_unprotected_position(indices: list[int], protected: set[int]) -> int | None:
