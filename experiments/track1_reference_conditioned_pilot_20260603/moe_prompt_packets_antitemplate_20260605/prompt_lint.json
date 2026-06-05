@@ -1,0 +1,113 @@
+{
+  "phrases": {
+    "fewer, larger": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "fewer, larger text blocks": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "fewer/larger text blocks": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "flat printed poster": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "front-facing": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "graphic poster composition": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "internal poster margins": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "medium-distance figures": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    },
+    "portrait poster canvas": {
+      "count": 0,
+      "justifications": [],
+      "justified_count": 0,
+      "justified_ratio": 0.0,
+      "justified_sample_ids": [],
+      "ratio": 0.0,
+      "sample_ids": [],
+      "status": "pass",
+      "unjustified_sample_ids": []
+    }
+  },
+  "summary": {
+    "failed_phrases": [],
+    "justified_phrases": [],
+    "status": "pass",
+    "threshold": 0.6,
+    "total": 28,
+    "version": "track1_prompt_lint_v1",
+    "warned_phrases": []
+  },
+  "version": "track1_prompt_lint_v1"
+}
