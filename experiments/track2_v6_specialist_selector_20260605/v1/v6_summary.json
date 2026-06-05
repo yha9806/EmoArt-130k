@@ -1,0 +1,2059 @@
+{
+  "method": "track2_v6_risk_calibrated_specialist_selector",
+  "decision": "recommend_hold",
+  "baseline_json": "submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+  "evidence_matrix": "experiments/track2_score_calibrated_champion_20260605/v1/evidence_matrix.csv",
+  "out_dir": "experiments/track2_v6_specialist_selector_20260605/v1",
+  "evidence_row_count": 156,
+  "selector_decision_count": 156,
+  "candidates": {
+    "v6_safe_sameq": {
+      "ladder": "v6_safe_sameq",
+      "json": "submissions/track2_submission_v6_safe_sameq_candidate.json",
+      "zip": "submissions/track2_submission_v6_safe_sameq_candidate.zip",
+      "changed_rows": 0,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0112",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0347",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0798",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0960",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0745",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 23.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0147",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0316",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0635",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0638",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0642",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0975",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0028",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0045",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0047",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0102",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0104",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0109",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0193",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0266",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0343",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0426",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0430",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0456",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0496",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0534",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0588",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0597",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0633",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0652",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0702",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0744",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0751",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0761",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0807",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0819",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0937",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0089",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 14.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0408",
+          "transition": "sad->tired",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0434",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0604",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0964",
+          "transition": "excited->happy",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0027",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0057",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0111",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0622",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0897",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0210",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0495",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0555",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0869",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0871",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0914",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0955",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0956",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0023",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0130",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0169",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0285",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0410",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0443",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0515",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0580",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0647",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0651",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0765",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0841",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0864",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0880",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0904",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0704",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0944",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 466,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 22,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 785,
+          "Negative": 215
+        },
+        "arousal": {
+          "Low": 826,
+          "High": 174
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.466,
+        "top_two_emotion_share": 0.726,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    },
+    "v6_cross_micro": {
+      "ladder": "v6_cross_micro",
+      "json": "submissions/track2_submission_v6_cross_micro_candidate.json",
+      "zip": "submissions/track2_submission_v6_cross_micro_candidate.zip",
+      "changed_rows": 0,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0112",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0347",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0798",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0960",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0745",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 23.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0147",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0316",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0635",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0638",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0642",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0975",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0028",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0045",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0047",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0102",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0104",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0109",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0193",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0266",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0343",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0426",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0430",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0456",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0496",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0534",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0588",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0597",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0633",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0652",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0702",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0744",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0751",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0761",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0807",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0819",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0937",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0089",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 14.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0408",
+          "transition": "sad->tired",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0434",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0604",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0964",
+          "transition": "excited->happy",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0027",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0057",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0111",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0622",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0897",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0210",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0495",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0555",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0869",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0871",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0914",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0955",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0956",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0023",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0130",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0169",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0285",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0410",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0443",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0515",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0580",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0647",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0651",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0765",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0841",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0864",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0880",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0904",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0704",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0944",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 466,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 22,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 785,
+          "Negative": 215
+        },
+        "arousal": {
+          "Low": 826,
+          "High": 174
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.466,
+        "top_two_emotion_share": 0.726,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    },
+    "v6_desc_plus": {
+      "ladder": "v6_desc_plus",
+      "json": "submissions/track2_submission_v6_desc_plus_candidate.json",
+      "zip": "submissions/track2_submission_v6_desc_plus_candidate.zip",
+      "changed_rows": 0,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0112",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0347",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0798",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0960",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 24.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0745",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 23.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0147",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0316",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0635",
+          "transition": "happy->excited",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0638",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0642",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0975",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 16.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0028",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0045",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0047",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0102",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0104",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0109",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0193",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0266",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0343",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0426",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0430",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0456",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0496",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0534",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0588",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0597",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0633",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0652",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0702",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0744",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0751",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0761",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0807",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0819",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0937",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 15.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0089",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 14.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0408",
+          "transition": "sad->tired",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0434",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0604",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0964",
+          "transition": "excited->happy",
+          "decision": "accept_safe",
+          "evidence_score": 12.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0027",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0057",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0111",
+          "transition": "content->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0622",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0897",
+          "transition": "calm->glad",
+          "decision": "accept_safe",
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0210",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0495",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0555",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0869",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0871",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0914",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0955",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0956",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 10.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0023",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0130",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0169",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0285",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0410",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0443",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0515",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0580",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0647",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0651",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0765",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0841",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0864",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0880",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0904",
+          "transition": "calm->content",
+          "decision": "accept_safe",
+          "evidence_score": 9.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0704",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        },
+        {
+          "sample_id": "track2_0944",
+          "transition": "content->calm",
+          "decision": "accept_safe",
+          "evidence_score": 8.0,
+          "reason_codes": [
+            "same_quadrant_multi_source_support"
+          ]
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 466,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 22,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 785,
+          "Negative": 215
+        },
+        "arousal": {
+          "Low": 826,
+          "High": 174
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.466,
+        "top_two_emotion_share": 0.726,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    }
+  },
+  "normalized_evidence_json": "experiments/track2_v6_specialist_selector_20260605/v1/normalized_evidence.json",
+  "normalized_evidence_csv": "experiments/track2_v6_specialist_selector_20260605/v1/normalized_evidence.csv",
+  "selector_decisions_json": "experiments/track2_v6_specialist_selector_20260605/v1/selector_decisions.json",
+  "selector_decisions_csv": "experiments/track2_v6_specialist_selector_20260605/v1/selector_decisions.csv",
+  "stability_report_json": "experiments/track2_v6_specialist_selector_20260605/v1/hard96_stability_report.json",
+  "shadow_report_json": "experiments/track2_v6_specialist_selector_20260605/v1/shadow_eval/shadow_score_report.json",
+  "html_review_path": "experiments/track2_v6_specialist_selector_20260605/v1/html_review/track2_v6_specialist_selector_review.html",
+  "formal_submission_overwritten": false
+}

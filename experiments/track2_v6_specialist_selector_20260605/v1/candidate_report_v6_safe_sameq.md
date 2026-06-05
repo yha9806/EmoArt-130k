@@ -1,0 +1,82 @@
+# Track2 v6_safe_sameq Candidate Report
+
+- JSON: `submissions/track2_submission_v6_safe_sameq_candidate.json`
+- ZIP: `submissions/track2_submission_v6_safe_sameq_candidate.zip`
+- Changed rows: 0
+- Label consistency issues: 0
+- Missing emotions: none
+- Formal submission overwritten: False
+
+## Selected Changes
+
+- track2_0112: calm->content; score=24.0; reasons=same_quadrant_multi_source_support
+- track2_0347: calm->content; score=24.0; reasons=same_quadrant_multi_source_support
+- track2_0798: calm->content; score=24.0; reasons=same_quadrant_multi_source_support
+- track2_0960: calm->content; score=24.0; reasons=same_quadrant_multi_source_support
+- track2_0745: calm->content; score=23.0; reasons=same_quadrant_multi_source_support
+- track2_0147: calm->content; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0316: happy->excited; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0635: happy->excited; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0638: calm->content; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0642: calm->content; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0975: calm->content; score=16.0; reasons=same_quadrant_multi_source_support
+- track2_0028: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0045: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0047: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0102: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0104: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0109: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0193: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0266: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0343: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0426: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0430: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0456: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0496: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0534: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0588: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0597: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0633: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0652: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0702: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0744: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0751: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0761: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0807: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0819: content->calm; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0937: calm->content; score=15.0; reasons=same_quadrant_multi_source_support
+- track2_0089: calm->content; score=14.0; reasons=same_quadrant_multi_source_support
+- track2_0408: sad->tired; score=12.0; reasons=same_quadrant_multi_source_support
+- track2_0434: content->glad; score=12.0; reasons=same_quadrant_multi_source_support
+- track2_0604: content->glad; score=12.0; reasons=same_quadrant_multi_source_support
+- track2_0964: excited->happy; score=12.0; reasons=same_quadrant_multi_source_support
+- track2_0027: content->glad; score=11.0; reasons=same_quadrant_multi_source_support
+- track2_0057: content->glad; score=11.0; reasons=same_quadrant_multi_source_support
+- track2_0111: content->glad; score=11.0; reasons=same_quadrant_multi_source_support
+- track2_0622: calm->glad; score=11.0; reasons=same_quadrant_multi_source_support
+- track2_0897: calm->glad; score=11.0; reasons=same_quadrant_multi_source_support
+- track2_0210: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0495: calm->content; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0555: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0869: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0871: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0914: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0955: calm->content; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0956: content->calm; score=10.0; reasons=same_quadrant_multi_source_support
+- track2_0023: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0130: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0169: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0285: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0410: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0443: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0515: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0580: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0647: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0651: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0765: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0841: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0864: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0880: content->calm; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0904: calm->content; score=9.0; reasons=same_quadrant_multi_source_support
+- track2_0704: content->calm; score=8.0; reasons=same_quadrant_multi_source_support
+- track2_0944: content->calm; score=8.0; reasons=same_quadrant_multi_source_support

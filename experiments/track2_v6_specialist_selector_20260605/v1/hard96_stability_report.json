@@ -1,0 +1,48 @@
+{
+  "method": "track2_v6_rule_stability_summary",
+  "passed": false,
+  "accepted_count": 71,
+  "raw_accepted_count": 71,
+  "applied_accepted_count": 71,
+  "safe_sameq_count": 71,
+  "cross_micro_count": 0,
+  "raw_cross_micro_count": 0,
+  "applied_cross_micro_count": 0,
+  "hold_count": 85,
+  "block_count": 0,
+  "transition_counts": {
+    "calm->content": 43,
+    "calm->glad": 2,
+    "content->calm": 17,
+    "content->glad": 5,
+    "excited->happy": 1,
+    "happy->excited": 2,
+    "sad->tired": 1
+  },
+  "raw_transition_counts": {
+    "calm->content": 43,
+    "calm->glad": 2,
+    "content->calm": 17,
+    "content->glad": 5,
+    "excited->happy": 1,
+    "happy->excited": 2,
+    "sad->tired": 1
+  },
+  "applied_transition_counts": {
+    "calm->content": 43,
+    "calm->glad": 2,
+    "content->calm": 17,
+    "content->glad": 5,
+    "excited->happy": 1,
+    "happy->excited": 2,
+    "sad->tired": 1
+  },
+  "issues": [
+    {
+      "code": "transition_concentration",
+      "transition": "calm->content",
+      "count": 43
+    }
+  ],
+  "info": []
+}
