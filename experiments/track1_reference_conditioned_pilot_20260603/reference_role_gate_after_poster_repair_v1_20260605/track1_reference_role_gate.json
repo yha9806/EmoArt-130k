@@ -96,10 +96,6 @@
       "role": "medal_symbol"
     },
     {
-      "count": 13,
-      "role": "poster_print"
-    },
-    {
       "count": 8,
       "role": "aircraft"
     },
@@ -368,20 +364,18 @@
     {
       "caption": "A Socialist Realism Soviet propaganda poster with a group of young people holding bouquets around a decorated soldier, backed by sweeping red flags, Cyrillic slogans, and a bright celebratory color palette.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0049; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=48.511; candidate_pool=550; source=Images\\Socialist Realism\\0181627_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=30.964; candidate_pool=550; source=Images\\Socialist Realism\\0187485_KonstantinYuon-Nurses.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=28.263; candidate_pool=550; source=Images\\Socialist Realism\\0007702_IvanVladimirov-TheSurrenderoftheFinnsin1940(Russian-FinnishWar).jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=28.252; candidate_pool=550; source=Images\\Socialist Realism\\0048276_VictorPuzyrkov-PeaceAhead.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=28.235; candidate_pool=550; source=Images\\Socialist Realism\\0168454_VictorPuzyrkov-Immortality.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=28.252; candidate_pool=550; source=Images\\Socialist Realism\\0048276_VictorPuzyrkov-PeaceAhead.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -389,7 +383,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -403,12 +399,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0370",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Socialist Realism Soviet wartime propaganda poster with bold Cyrillic lettering, mounted soldiers, fleeing civilians, burning village ruins, aircraft overhead, and dramatic brushwork in a muted blue, red, and ochre palette.",
@@ -503,21 +499,20 @@
       "caption": "A Socialist Realism propaganda poster with bold Cyrillic lettering, a naval medal, sailing ships, cannon, and uniformed sailors in a dramatic maritime battle scene rendered with graphic linework and muted watercolor tones.",
       "fallback_reason": "",
       "missing_required_roles": [
-        "poster_print",
         "medal_symbol",
         "cannon_artillery"
       ],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0077; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.827; candidate_pool=550; source=Images\\Socialist Realism\\0024021_Kukryniksy-Wherewesouldbetterland.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=30.971; candidate_pool=550; source=Images\\Socialist Realism\\0122383_DmitryNalbandyan-Italie.Naples.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=30.937; candidate_pool=550; source=Images\\Socialist Realism\\0124205_LeonidMuchnyk-CitySketch.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=30.627; candidate_pool=550; source=Images\\Socialist Realism\\0100591_LeonidMuchnyk-FishingHarborofIllichivsk.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=27.054; candidate_pool=550; source=Images\\Socialist Realism\\0134286_LeonidMuchnyk-TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=30.627; candidate_pool=550; source=Images\\Socialist Realism\\0100591_LeonidMuchnyk-FishingHarborofIllichivsk.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0122383_DmitryNalbandyan_Italie_Naples_2bb4d2e878.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0124205_LeonidMuchnyk_CitySketch_34f03f27cd.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -528,7 +523,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -542,7 +539,7 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
@@ -561,8 +558,7 @@
         },
         {
           "evidence_assets": [
-            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg",
-            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg"
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg"
           ],
           "evidence_terms": [
             "naval",
@@ -699,20 +695,18 @@
     {
       "caption": "A Socialist Realism Soviet poster-style scene with a jubilant crowd of soldiers and civilians watching fireworks over the Kremlin and Red Square beneath bold Cyrillic lettering, rendered in a vintage muted palette with dramatic light and shadow.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0665; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.577; candidate_pool=550; source=Images\\Socialist Realism\\0140890_Kukryniksy-TheMoscowkalatchisnotoftheirbatch….jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=41.731; candidate_pool=550; source=Images\\Socialist Realism\\0128648_KonstantinYuon-Moscowsalutes.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=37.739; candidate_pool=550; source=Images\\Socialist Realism\\0109226_KonstantinYuon-MilitaryParadeinRedSquare,7thNovember1941.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=37.723; candidate_pool=550; source=Images\\Socialist Realism\\0106843_KonstantinYuon-EntryintotheKremlinthroughtheTrinityGates2(15)November1917.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=35.669; candidate_pool=550; source=Images\\Socialist Realism\\0134499_KonstantinYuon-TheRedArmyparade.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=37.723; candidate_pool=550; source=Images\\Socialist Realism\\0106843_KonstantinYuon-EntryintotheKremlinthroughtheTrinityGates2(15)November1917.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -721,7 +715,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -735,11 +731,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
           "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg",
             "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg",
             "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg",
             "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg"
@@ -759,7 +756,7 @@
         }
       ],
       "sample_id": "track1_0353",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a monumental sword-wielding historical figure above soldiers raising red flags amid a liberated battlefield town, rendered in dramatic colors and strong graphic brushwork.",
@@ -904,20 +901,19 @@
       "caption": "A Socialist Realism poster of a uniformed border guard saluting joyful passengers leaning from a train window beside a red and green frontier post, with bold Cyrillic lettering, muted washes, and a solemn patriotic mood.",
       "fallback_reason": "",
       "missing_required_roles": [
-        "poster_print",
         "train_window"
       ],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0077; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.827; candidate_pool=550; source=Images\\Socialist Realism\\0024021_Kukryniksy-Wherewesouldbetterland.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=14.970; candidate_pool=550; source=Images\\Socialist Realism\\0084071_ViktorShatalin-PortraitofaMilitaryMan.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=13.795; candidate_pool=550; source=Images\\Socialist Realism\\0006128_VyacheslavNazaruk-IllustrationforTheUralTales.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=10.700; candidate_pool=550; source=Images\\Socialist Realism\\0184355_VajihaSamadova-BulgarianRoofs.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=10.089; candidate_pool=550; source=Images\\Socialist Realism\\0078194_ЮрийПименов-Женщинавгамаке.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=10.700; candidate_pool=550; source=Images\\Socialist Realism\\0184355_VajihaSamadova-BulgarianRoofs.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0084071_ViktorShatalin_PortraitofaMilitaryMan_977970d8f8.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0006128_VyacheslavNazaruk_IllustrationforTheUralTales_cac6ea69bf.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0184355_VajihaSamadova_BulgarianRoofs_482658a138.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0078194_82985f8d53.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0184355_VajihaSamadova_BulgarianRoofs_482658a138.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -926,7 +922,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -940,7 +938,7 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
@@ -1237,20 +1235,18 @@
     {
       "caption": "A Socialist Realism propaganda poster of railway workers honoring a locomotive engineer beside a steaming train, with red flags, bouquets, bold Cyrillic slogans, warm muted colors, and a heroic celebratory atmosphere.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0077; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.827; candidate_pool=550; source=Images\\Socialist Realism\\0024021_Kukryniksy-Wherewesouldbetterland.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=27.436; candidate_pool=550; source=Images\\Socialist Realism\\0071481_TahirSalahov-MorningEchelon.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=22.691; candidate_pool=550; source=Images\\Socialist Realism\\0173921_BorisKustodiev-PeoplesoftheUSSRbeforeandnow(oldandnewlifeinCentralAsia).jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=22.687; candidate_pool=550; source=Images\\Socialist Realism\\0142415_DavidKakabadze-ProcessinggumbrineinthevicinityifKutaisi.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=22.635; candidate_pool=550; source=Images\\Socialist Realism\\0093653_KarpoTrokhymenko-Mowing.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=22.687; candidate_pool=550; source=Images\\Socialist Realism\\0142415_DavidKakabadze-ProcessinggumbrineinthevicinityifKutaisi.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0071481_TahirSalahov_MorningEchelon_fb06c14cc8.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0142415_DavidKakabadze_ProcessinggumbrineinthevicinityifKutaisi_27bf942763.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0093653_KarpoTrokhymenko_Mowing_4b94733248.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0142415_DavidKakabadze_ProcessinggumbrineinthevicinityifKutaisi_27bf942763.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -1258,7 +1254,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -1272,12 +1270,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0831",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Socialist Realism propaganda poster of heroic partisans with rifles before rugged mountains and a red-star flag, framed by Cyrillic text, rendered in bold flat brushwork with a muted turquoise, orange, and beige palette.",
@@ -1721,20 +1719,19 @@
       "caption": "A Socialist Realism Soviet propaganda poster with Cyrillic text, Baltic republic emblems, a large red Roman numeral V, golden ribbons, oak leaves, and a pale map background on aged paper.",
       "fallback_reason": "",
       "missing_required_roles": [
-        "poster_print",
         "medal_symbol"
       ],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0049; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=48.511; candidate_pool=550; source=Images\\Socialist Realism\\0181627_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=17.544; candidate_pool=550; source=Images\\Socialist Realism\\0029242_TetyanaYablonska-HasCaughtaCold.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=16.817; candidate_pool=550; source=Images\\Socialist Realism\\0118841_TetyanaYablonska-SpringattheWindow.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=14.873; candidate_pool=550; source=Images\\Socialist Realism\\0128648_KonstantinYuon-Moscowsalutes.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=13.256; candidate_pool=550; source=Images\\Socialist Realism\\0015370_VolodymyrBondarenko-TheGirlneartheLilac.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=14.873; candidate_pool=550; source=Images\\Socialist Realism\\0128648_KonstantinYuon-Moscowsalutes.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0118841_TetyanaYablonska_SpringattheWindow_c93d5a733e.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0015370_VolodymyrBondarenko_TheGirlneartheLilac_e93b1ec9cb.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -1743,7 +1740,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -1757,7 +1756,7 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
@@ -2391,21 +2390,20 @@
       "caption": "A Socialist Realism wartime poster composition with Soviet naval officers and sailors beside a cannon in a smoky harbor battle, dominated by a large heroic medal emblem and dramatic muted colors.",
       "fallback_reason": "",
       "missing_required_roles": [
-        "poster_print",
         "medal_symbol",
         "cannon_artillery"
       ],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0077; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.827; candidate_pool=550; source=Images\\Socialist Realism\\0024021_Kukryniksy-Wherewesouldbetterland.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=22.844; candidate_pool=550; source=Images\\Socialist Realism\\0137310_DavidKakabadze-ElevatorinPoti.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=22.672; candidate_pool=550; source=Images\\Socialist Realism\\0100591_LeonidMuchnyk-FishingHarborofIllichivsk.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=19.351; candidate_pool=550; source=Images\\Socialist Realism\\0138808_IlyaMashkov-Pioneerwithahorn.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=19.099; candidate_pool=550; source=Images\\Socialist Realism\\0134286_LeonidMuchnyk-TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=19.351; candidate_pool=550; source=Images\\Socialist Realism\\0138808_IlyaMashkov-Pioneerwithahorn.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0138808_IlyaMashkov_Pioneerwithahorn_d21443e303.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0138808_IlyaMashkov_Pioneerwithahorn_d21443e303.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -2416,7 +2414,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -2430,7 +2430,7 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
@@ -2449,8 +2449,7 @@
         },
         {
           "evidence_assets": [
-            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg",
-            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg"
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg"
           ],
           "evidence_terms": [
             "naval",
@@ -2605,20 +2604,18 @@
     {
       "caption": "A Socialist Realism wartime propaganda poster of Allied cargo ships, sailors, naval flags, and sea convoy scenes, rendered with bold graphic composition, flat colors, and a solemn patriotic atmosphere.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0077; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=18.827; candidate_pool=550; source=Images\\Socialist Realism\\0024021_Kukryniksy-Wherewesouldbetterland.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=38.698; candidate_pool=550; source=Images\\Socialist Realism\\0100591_LeonidMuchnyk-FishingHarborofIllichivsk.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=35.104; candidate_pool=550; source=Images\\Socialist Realism\\0134286_LeonidMuchnyk-TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.567; candidate_pool=550; source=Images\\Socialist Realism\\0114026_VictorPuzyrkov-Silence.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.464; candidate_pool=550; source=Images\\Socialist Realism\\0137310_DavidKakabadze-ElevatorinPoti.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.567; candidate_pool=550; source=Images\\Socialist Realism\\0114026_VictorPuzyrkov-Silence.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg"
       ],
       "required_roles": [
         "poster_print",
@@ -2627,7 +2624,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -2641,7 +2640,7 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         },
         {
@@ -2673,7 +2672,7 @@
         }
       ],
       "sample_id": "track1_0818",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "Ukiyo-e style coastal scene with travelers, a horse, and porters carrying a palanquin along a shoreline road, boats on calm water, distant hills, calligraphy above, and a red sun casting bold radiating beams across a muted pink sky.",
@@ -2766,20 +2765,18 @@
     {
       "caption": "A Socialist Realism Soviet naval poster with bold Cyrillic lettering, soldiers crowded on boats crossing rough blue water toward a rocky coast, rendered in broad painterly strokes and a solemn heroic mood.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0128; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=22.167; candidate_pool=550; source=Images\\Socialist Realism\\0110349_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=37.722; candidate_pool=550; source=Images\\Socialist Realism\\0168454_VictorPuzyrkov-Immortality.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=30.453; candidate_pool=550; source=Images\\Socialist Realism\\0051830_VeniaminKremer-TheMarinesontheFightattheLeningradFrontinJanuary1941.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.138; candidate_pool=550; source=Images\\Socialist Realism\\0062663_BoyukaghaMirzazade-Caspiansea.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.066; candidate_pool=550; source=Images\\Socialist Realism\\0114026_VictorPuzyrkov-Silence.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=26.138; candidate_pool=550; source=Images\\Socialist Realism\\0062663_BoyukaghaMirzazade-Caspiansea.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0062663_BoyukaghaMirzazade_Caspiansea_00449e4e31.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0062663_BoyukaghaMirzazade_Caspiansea_00449e4e31.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -2787,7 +2784,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -2801,12 +2800,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0166",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Socialist Realism propaganda poster of a triumphant armored rider on horseback beside Soviet soldiers with rifles, fallen enemies in the foreground, and a fortified city rising in the background under bold Cyrillic lettering.",
@@ -3059,20 +3058,18 @@
     {
       "caption": "A Socialist Realism poster-style scene with bold Russian typography above a snowy village where families unload bags from a horse cart and enter a wooden house, painted in a muted winter palette with simplified figures and sturdy brushwork.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0049; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=48.511; candidate_pool=550; source=Images\\Socialist Realism\\0181627_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=40.240; candidate_pool=550; source=Images\\Socialist Realism\\0029018_PyotrKonchalovsky-Wheretogivebloodhere.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=31.904; candidate_pool=550; source=Images\\Socialist Realism\\0182168_GeorgyiYakutovytch-HutsulWedding.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=31.699; candidate_pool=550; source=Images\\Socialist Realism\\0082093_KarpoTrokhymenko-DneprostroyShots.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=31.550; candidate_pool=550; source=Images\\Socialist Realism\\0125237_KonstantinYuon-Barbara'sGate.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=31.699; candidate_pool=550; source=Images\\Socialist Realism\\0082093_KarpoTrokhymenko-DneprostroyShots.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -3080,7 +3077,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -3094,12 +3093,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0939",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Socialist Realism Soviet poster of two industrial workers in white coats shaking hands before smokestacks and machinery, with bold Cyrillic May Day lettering, strong graphic lines, and a muted blue, cream, and red palette.",
@@ -3149,20 +3148,18 @@
     {
       "caption": "A Socialist Realism Soviet agricultural propaganda poster with collective farm workers at a desk, a man handing documents, harvest activity and rural buildings in the background, bold Cyrillic lettering, warm muted colors, and a solemn productive atmosphere.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0628; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=30.676; candidate_pool=550; source=Images\\Socialist Realism\\0100747_Kukryniksy-Tovictory!.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=44.584; candidate_pool=550; source=Images\\Socialist Realism\\0033259_AllaHorska-Harvesting.jpg",
         "official EmoArt-130k retrieval; style=Socialist Realism; score=41.731; candidate_pool=550; source=Images\\Socialist Realism\\0017437_TetyanaYablonska-Bread.jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=38.976; candidate_pool=550; source=Images\\Socialist Realism\\0173921_BorisKustodiev-PeoplesoftheUSSRbeforeandnow(oldandnewlifeinCentralAsia).jpg",
-        "official EmoArt-130k retrieval; style=Socialist Realism; score=37.375; candidate_pool=550; source=Images\\Socialist Realism\\0191207_KarpoTrokhymenko-VillageLandscape1957.jpg"
+        "official EmoArt-130k retrieval; style=Socialist Realism; score=38.976; candidate_pool=550; source=Images\\Socialist Realism\\0173921_BorisKustodiev-PeoplesoftheUSSRbeforeandnow(oldandnewlifeinCentralAsia).jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100747_Kukryniksy_Tovictory_f3eedd454f.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0033259_AllaHorska_Harvesting_61c523eaf9.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0017437_TetyanaYablonska_Bread_28bc571d60.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -3170,7 +3167,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100747_Kukryniksy_Tovictory_f3eedd454f.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -3184,12 +3183,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0752",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "Ink and wash painting of a vertical Chinese landscape scroll with layered mountains, a broad river, sparse trees, calligraphy inscriptions, red seals, and soft sepia brushwork creating a calm atmosphere.",
@@ -5020,20 +5019,18 @@
     {
       "caption": "Abstract geometric poster composition with bold black outlines, yellow and off-white panels, diagonal blue and black hatching, and vertical Roy Lichtenstein typography along the right side.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0049; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=48.511; candidate_pool=550; source=Images\\Socialist Realism\\0181627_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Abstract Art; score=31.296; candidate_pool=1759; source=Images\\Abstract Art\\0033953_JoaquinTorresGarcia-Constructivo.jpg",
         "official EmoArt-130k retrieval; style=Abstract Art; score=26.360; candidate_pool=1759; source=Images\\Abstract Art\\0192521_TiberiySzilvashi-Untitled.jpg",
-        "official EmoArt-130k retrieval; style=Abstract Art; score=26.325; candidate_pool=1759; source=Images\\Abstract Art\\0192921_WassilyKandinsky-VariousParts.jpg",
-        "official EmoArt-130k retrieval; style=Abstract Art; score=24.019; candidate_pool=1759; source=Images\\Abstract Art\\0027579_AlexanderCalder-PuppetMan.jpg"
+        "official EmoArt-130k retrieval; style=Abstract Art; score=26.325; candidate_pool=1759; source=Images\\Abstract Art\\0192921_WassilyKandinsky-VariousParts.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0033953_JoaquinTorresGarcia_Constructivo_ecd1bc6d2d.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0192521_TiberiySzilvashi_Untitled_99ba2a1d85.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0192921_WassilyKandinsky_VariousParts_6624118206.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0027579_AlexanderCalder_PuppetMan_86dd6ffa23.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0192921_WassilyKandinsky_VariousParts_6624118206.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -5041,7 +5038,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -5055,12 +5054,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0916",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "A Gongbi handscroll scene with delicate linework and muted silk tones, featuring calligraphy beside an ancient procession of riders and attendants beneath pine trees in a calm mountainous landscape.",
@@ -24230,20 +24229,18 @@
     {
       "caption": "Abstract typographic poster collage filled with oversized letters, numbers, and layered blocks in teal, green, yellow, and cream, with dense geometric composition and printed text textures.",
       "fallback_reason": "",
-      "missing_required_roles": [
-        "poster_print"
-      ],
+      "missing_required_roles": [],
       "reference_asset_notes": [
+        "role_repair: added poster_print reference; donor_sample_id=track1_0049; donor_note=official EmoArt-130k retrieval; style=Socialist Realism; score=48.511; candidate_pool=550; source=Images\\Socialist Realism\\0181627_Kukryniksy-Untitled.jpg",
         "official EmoArt-130k retrieval; style=Abstract Art; score=37.584; candidate_pool=1759; source=Images\\Abstract Art\\0036742_HillyvanEerten-DanielMeyerplein'No6.-mono-print,2007;artistHillyvanEerten.jpg",
         "official EmoArt-130k retrieval; style=Abstract Art; score=37.419; candidate_pool=1759; source=Images\\Abstract Art\\0028157_JoaquinTorresGarcia-Untitled.jpg",
-        "official EmoArt-130k retrieval; style=Abstract Art; score=33.427; candidate_pool=1759; source=Images\\Abstract Art\\0015034_TiberiySzilvashi-Untitled.jpg",
-        "official EmoArt-130k retrieval; style=Abstract Art; score=33.259; candidate_pool=1759; source=Images\\Abstract Art\\0007297_SallyGabori-DibirdibiCountry.jpg"
+        "official EmoArt-130k retrieval; style=Abstract Art; score=33.427; candidate_pool=1759; source=Images\\Abstract Art\\0015034_TiberiySzilvashi-Untitled.jpg"
       ],
       "reference_assets": [
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0036742_HillyvanEerten_DanielMeyerplein_No6_mono_print_2007_artistHillyvanEerten_1812af0546.jpg",
         "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0028157_JoaquinTorresGarcia_Untitled_14a7cd29f4.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0015034_TiberiySzilvashi_Untitled_2ee9dc98f9.jpg",
-        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0007297_SallyGabori_DibirdibiCountry_f584ce074c.jpg"
+        "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0015034_TiberiySzilvashi_Untitled_2ee9dc98f9.jpg"
       ],
       "required_roles": [
         "poster_print"
@@ -24251,7 +24248,9 @@
       "risk_flags": [],
       "role_checks": [
         {
-          "evidence_assets": [],
+          "evidence_assets": [
+            "experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181627_Kukryniksy_Untitled_5347c09325.jpg"
+          ],
           "evidence_terms": [
             "poster",
             "tass",
@@ -24265,12 +24264,12 @@
           ],
           "label_zh": "海报/印刷媒介",
           "role": "poster_print",
-          "status": "missing",
+          "status": "pass",
           "why_zh": "caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。"
         }
       ],
       "sample_id": "track1_0397",
-      "status": "fail"
+      "status": "pass"
     },
     {
       "caption": "Ink and wash painting of an open album spread with two muted landscape panels featuring misty rocky mountains, dense trees, riverside terrain, delicate brushwork, red seal stamps, and aged paper texture.",
@@ -24582,8 +24581,8 @@
     }
   ],
   "summary": {
-    "fail": 41,
-    "pass": 959,
+    "fail": 32,
+    "pass": 968,
     "provider_reference_fallback": 1,
     "total": 1000
   }

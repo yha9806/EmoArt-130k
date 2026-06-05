@@ -459,7 +459,7 @@ REFERENCE_ROLES: tuple[ReferenceRole, ...] = (
         label_zh="火车窗/乘客空间关系",
         why_zh="caption 要求 train window/passengers/frontier post 时，reference 需要支撑火车、窗洞和人物互动关系。",
         required_if=_needs_train_window,
-        evidence_terms=("train", "railway", "rail", "locomotive", "echelon", "passenger", "window", "frontier", "border"),
+        evidence_terms=("train", "railway", "rail", "locomotive", "echelon", "passenger", "frontier", "border"),
     ),
     ReferenceRole(
         name="mounted_civilian_relation",
