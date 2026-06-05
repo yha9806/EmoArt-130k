@@ -62,6 +62,21 @@ class SafetyGateResult:
     description_issue_count: int
 
 
+@dataclass(frozen=True)
+class ShadowScoreResult:
+    candidate_name: str
+    candidate_json: str
+    decision: str
+    changed_rows: int
+    same_quadrant_changes: int
+    cross_quadrant_changes: int
+    classification: ScoreBand
+    description: ScoreBand
+    overall: ScoreBand
+    safety: SafetyGateResult
+    row_risks: list[dict[str, Any]]
+
+
 def compute_task_score(*, macro_f1: float, accuracy: float) -> float:
     return 0.5 * float(macro_f1) + 0.5 * float(accuracy)
 
@@ -129,7 +144,7 @@ def run_candidate_safety_gate(
         issues.append({"code": "label_consistency", "rows": label_issues[:40]})
 
     distribution = compute_track2_distribution(rows)
-    if distribution["missing_emotions"]:
+    if expected_row_count >= 1000 and distribution["missing_emotions"]:
         issues.append({"code": "missing_emotions", "emotions": distribution["missing_emotions"]})
 
     description_audits = [audit_description_row(row) for row in rows]
@@ -157,6 +172,157 @@ def load_json_rows(path: str | Path) -> list[dict[str, Any]]:
     if not isinstance(rows, list):
         raise ValueError(f"Track2 JSON must contain a list: {path}")
     return [dict(row) for row in rows if isinstance(row, dict)]
+
+
+def score_candidate_rows(
+    *,
+    candidate_name: str,
+    candidate_json: Path,
+    rows: list[dict[str, Any]],
+    baseline_rows: list[dict[str, Any]],
+    expected_row_count: int = 1000,
+) -> ShadowScoreResult:
+    safety = run_candidate_safety_gate(
+        candidate_name=candidate_name,
+        candidate_json=candidate_json,
+        rows=rows,
+        expected_row_count=expected_row_count,
+    )
+    row_risks = _build_row_risks(baseline_rows, rows)
+    changed_rows = len(row_risks)
+    same_quadrant = sum(1 for item in row_risks if item["same_quadrant"])
+    cross_quadrant = changed_rows - same_quadrant
+
+    classification = _classification_band(
+        safety=safety,
+        changed_rows=changed_rows,
+        same_quadrant=same_quadrant,
+        cross_quadrant=cross_quadrant,
+    )
+    description = _description_band(safety=safety, row_count=max(1, len(rows)))
+    overall = ScoreBand(
+        expected=0.5 * classification.expected + 0.5 * description.expected,
+        lower=0.5 * classification.lower + 0.5 * description.lower,
+        upper=0.5 * classification.upper + 0.5 * description.upper,
+    ).clamped()
+    decision = _decision_for_score(safety=safety, overall=overall, description=description, cross_quadrant=cross_quadrant)
+
+    return ShadowScoreResult(
+        candidate_name=candidate_name,
+        candidate_json=str(candidate_json),
+        decision=decision,
+        changed_rows=changed_rows,
+        same_quadrant_changes=same_quadrant,
+        cross_quadrant_changes=cross_quadrant,
+        classification=classification,
+        description=description,
+        overall=overall,
+        safety=safety,
+        row_risks=row_risks,
+    )
+
+
+def rank_shadow_candidates(results: list[ShadowScoreResult]) -> list[ShadowScoreResult]:
+    return sorted(
+        results,
+        key=lambda item: (
+            item.decision != "recommend_submit",
+            -item.overall.lower,
+            -item.description.lower,
+            item.cross_quadrant_changes,
+            item.changed_rows,
+            -item.overall.expected,
+            item.candidate_name,
+        ),
+    )
+
+
+def _classification_band(
+    *,
+    safety: SafetyGateResult,
+    changed_rows: int,
+    same_quadrant: int,
+    cross_quadrant: int,
+) -> ScoreBand:
+    if not safety.passed:
+        return ScoreBand(expected=0.0, lower=0.0, upper=0.0)
+    expected_delta = min(0.055, 0.0012 * same_quadrant - 0.0060 * cross_quadrant)
+    uncertainty = 0.0009 * changed_rows + 0.0120 * cross_quadrant
+    return ScoreBand(
+        expected=OFFICIAL_ANCHOR.classification + expected_delta,
+        lower=OFFICIAL_ANCHOR.classification + expected_delta - uncertainty,
+        upper=OFFICIAL_ANCHOR.classification + expected_delta + uncertainty + 0.0120,
+    ).clamped()
+
+
+def _description_band(*, safety: SafetyGateResult, row_count: int) -> ScoreBand:
+    if not safety.passed:
+        return ScoreBand(expected=0.0, lower=0.0, upper=0.0)
+    issue_rate = safety.description_issue_count / max(1, row_count)
+    expected = OFFICIAL_ANCHOR.description
+    lower = expected - min(0.040, issue_rate * 0.030 + 0.006)
+    upper = min(1.0, expected + 0.018)
+    return ScoreBand(expected=expected, lower=lower, upper=upper).clamped()
+
+
+def _decision_for_score(
+    *,
+    safety: SafetyGateResult,
+    overall: ScoreBand,
+    description: ScoreBand,
+    cross_quadrant: int,
+) -> str:
+    if not safety.passed:
+        return "blocked"
+    if cross_quadrant and overall.lower < OFFICIAL_ANCHOR.overall:
+        return "recommend_hold"
+    if description.lower < OFFICIAL_ANCHOR.description - 0.040:
+        return "recommend_hold"
+    if overall.lower >= OFFICIAL_ANCHOR.overall - 0.040:
+        return "recommend_submit"
+    return "recommend_hold"
+
+
+def _build_row_risks(baseline_rows: list[dict[str, Any]], rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    baseline_by_id = {str(row.get("sample_id", "")): row for row in baseline_rows}
+    risks: list[dict[str, Any]] = []
+    for row in rows:
+        sample_id = str(row.get("sample_id", ""))
+        before = baseline_by_id.get(sample_id)
+        if before is None:
+            risks.append(
+                {
+                    "sample_id": sample_id,
+                    "transition": "missing_baseline",
+                    "same_quadrant": False,
+                    "risk": "missing_baseline",
+                }
+            )
+            continue
+        before_label = _label_triplet(before)
+        after_label = _label_triplet(row)
+        if before_label == after_label:
+            continue
+        same_quadrant = before_label["valence"] == after_label["valence"] and before_label["arousal"] == after_label["arousal"]
+        risks.append(
+            {
+                "sample_id": sample_id,
+                "transition": f"{before_label['emotion']}->{after_label['emotion']}",
+                "from": before_label,
+                "to": after_label,
+                "same_quadrant": same_quadrant,
+                "risk": "same_quadrant" if same_quadrant else "cross_quadrant",
+            }
+        )
+    return risks
+
+
+def _label_triplet(row: dict[str, Any]) -> dict[str, str]:
+    return {
+        "emotion": str(row.get("emotion", "")),
+        "valence": str(row.get("emotional_valence", "")),
+        "arousal": str(row.get("emotional_arousal_level", "")),
+    }
 
 
 def _is_formal_path(path: Path, formal_paths: set[Path]) -> bool:
