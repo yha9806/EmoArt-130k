@@ -92,7 +92,7 @@ def _validated_manifest_row(
         raise ValueError(f"manifest row {index} must be an object")
     if not row.get("sample_id"):
         raise ValueError(f"manifest row {index} missing required sample_id")
-    if not _prompt_text(row).strip():
+    if not _prompt_text(row):
         raise ValueError(f"manifest row {index} missing required provider_prompt or prompt")
 
     validated = dict(row)
@@ -110,7 +110,13 @@ def _require_manifest_rows(rows: list[Any]) -> None:
 
 
 def _prompt_text(row: dict[str, Any]) -> str:
-    return str(row.get("provider_prompt") or row.get("prompt") or "")
+    provider_prompt = row.get("provider_prompt")
+    if isinstance(provider_prompt, str) and provider_prompt.strip():
+        return provider_prompt
+    prompt = row.get("prompt")
+    if isinstance(prompt, str) and prompt.strip():
+        return prompt
+    return ""
 
 
 def _family_id_from_row(row: dict[str, Any]) -> str:
@@ -134,6 +140,7 @@ def _audit_row(row: dict[str, Any]) -> dict[str, Any]:
         "mean_luma": image_stats["mean_luma"],
         "luma_stddev": image_stats["luma_stddev"],
         "aspect": image_stats["aspect"],
+        "image_error": str(image_stats.get("image_error") or ""),
         "candidate_strategy": str(row.get("candidate_strategy") or "unspecified"),
         "family_id": _family_id_from_row(row),
     }
@@ -215,8 +222,8 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
             "",
             "## Rows",
             "",
-            "| Sample | Exists | Aspect | Size | Mean luma | Luma stddev | Strategy | Family |",
-            "| --- | --- | --- | --- | ---: | ---: | --- | --- |",
+            "| Sample | Exists | Aspect | Size | Mean luma | Luma stddev | Image error | Strategy | Family |",
+            "| --- | --- | --- | --- | ---: | ---: | --- | --- | --- |",
         ]
     )
     for row in report.get("rows", []):
@@ -226,6 +233,7 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
             f"{row.get('aspect', {}).get('label', '')} | {size} | "
             f"{_format_optional_float(row.get('mean_luma'))} | "
             f"{_format_optional_float(row.get('luma_stddev'))} | "
+            f"{row.get('image_error', '')} | "
             f"{row.get('candidate_strategy', '')} | {row.get('family_id', '')} |"
         )
     return "\n".join(lines).strip() + "\n"

@@ -94,6 +94,36 @@ class Track1DistributionAuditTest(unittest.TestCase):
         self.assertFalse(report["rows"][0]["exists"])
         self.assertFalse(report["rows"][1]["exists"])
 
+    def test_corrupt_image_counts_unreadable_and_keeps_error_detail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            corrupt = root / "corrupt.png"
+            out_json = root / "audit.json"
+            out_md = root / "audit.md"
+            corrupt.write_text("not an image", encoding="utf-8")
+
+            report = audit_candidate_distribution(
+                [
+                    {
+                        "sample_id": "track1_0001",
+                        "image_path": str(corrupt),
+                        "provider_prompt": "wide landscape",
+                    }
+                ]
+            )
+            write_distribution_audit_reports(report, json_path=out_json, md_path=out_md)
+            payload = json.loads(out_json.read_text(encoding="utf-8"))
+            markdown = out_md.read_text(encoding="utf-8")
+
+        self.assertEqual(report["summary"]["existing_image_count"], 0)
+        self.assertEqual(report["summary"]["missing_image_count"], 1)
+        self.assertEqual(report["summary"]["aspect_labels"], {"unreadable": 1})
+        self.assertFalse(report["rows"][0]["exists"])
+        self.assertEqual(report["rows"][0]["aspect"]["label"], "unreadable")
+        self.assertTrue(report["rows"][0]["image_error"])
+        self.assertTrue(payload["rows"][0]["image_error"])
+        self.assertIn("unreadable", markdown)
+
     def test_loader_supports_list_rows_candidates_and_packets(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -137,6 +167,27 @@ class Track1DistributionAuditTest(unittest.TestCase):
                 load_manifest_rows(empty)
             with self.assertRaisesRegex(ValueError, "no manifest rows"):
                 audit_candidate_distribution([])
+
+    def test_loader_rejects_non_string_prompt_values_with_indexed_error(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            object_prompt = root / "object_prompt.json"
+            list_prompt = root / "list_prompt.json"
+            object_prompt.write_text(
+                json.dumps({"rows": [{"sample_id": "track1_0001", "provider_prompt": {"text": "wide"}}]}),
+                encoding="utf-8",
+            )
+            list_prompt.write_text(
+                json.dumps({"rows": [{"sample_id": "track1_0002", "prompt": ["wide"]}]}),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+                load_manifest_rows(object_prompt)
+            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+                load_manifest_rows(list_prompt)
+            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+                audit_candidate_distribution([{"sample_id": "track1_0003", "provider_prompt": {"text": "wide"}}])
 
     def test_reports_and_cli_work(self):
         with tempfile.TemporaryDirectory() as tmp:
