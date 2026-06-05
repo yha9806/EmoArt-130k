@@ -103,6 +103,7 @@ def run_candidate_safety_gate(
     rows: list[dict[str, Any]],
     expected_row_count: int = 1000,
     formal_submission_paths: set[Path] | None = None,
+    require_all_emotions: bool | None = None,
 ) -> SafetyGateResult:
     formal_paths = formal_submission_paths or FORMAL_SUBMISSION_PATHS
     issues: list[dict[str, Any]] = []
@@ -144,7 +145,8 @@ def run_candidate_safety_gate(
         issues.append({"code": "label_consistency", "rows": label_issues[:40]})
 
     distribution = compute_track2_distribution(rows)
-    if expected_row_count >= 1000 and distribution["missing_emotions"]:
+    enforce_all_emotions = expected_row_count >= 1000 if require_all_emotions is None else require_all_emotions
+    if enforce_all_emotions and distribution["missing_emotions"]:
         issues.append({"code": "missing_emotions", "emotions": distribution["missing_emotions"]})
 
     description_audits = [audit_description_row(row) for row in rows]
@@ -181,12 +183,14 @@ def score_candidate_rows(
     rows: list[dict[str, Any]],
     baseline_rows: list[dict[str, Any]],
     expected_row_count: int = 1000,
+    require_all_emotions: bool | None = None,
 ) -> ShadowScoreResult:
     safety = run_candidate_safety_gate(
         candidate_name=candidate_name,
         candidate_json=candidate_json,
         rows=rows,
         expected_row_count=expected_row_count,
+        require_all_emotions=require_all_emotions,
     )
     row_risks = _build_row_risks(baseline_rows, rows)
     changed_rows = len(row_risks)
@@ -282,6 +286,7 @@ def write_shadow_evaluator_outputs(
     candidates: list[dict[str, Any]],
     out_dir: str | Path,
     expected_row_count: int = 1000,
+    require_all_emotions: bool | None = None,
 ) -> dict[str, Any]:
     baseline_json = Path(baseline_json)
     out_dir = Path(out_dir)
@@ -298,6 +303,7 @@ def write_shadow_evaluator_outputs(
                 rows=rows,
                 baseline_rows=baseline_rows,
                 expected_row_count=expected_row_count,
+                require_all_emotions=require_all_emotions,
             )
         )
     ranked = rank_shadow_candidates(results)
