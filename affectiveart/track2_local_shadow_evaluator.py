@@ -5,21 +5,64 @@ import fcntl
 import html
 import json
 import math
+import re
 import zipfile
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from affectiveart.challenge import TRACK2_JSON_EMOTIONS, TRACK2_JSON_SUBMISSION_KEYS
-from affectiveart.track2_audit import compute_track2_distribution, strict_track2_label_issues
-from affectiveart.track2_description_score import audit_description_row
-
 
 FORMAL_SUBMISSION_PATHS = {
     Path("submissions/track2_submission.json"),
     Path("submissions/track2_submission.zip"),
 }
+TRACK2_JSON_SUBMISSION_KEYS = [
+    "sample_id",
+    "emotion",
+    "emotional_valence",
+    "emotional_arousal_level",
+    "overall_caption",
+    "brushstroke",
+    "composition",
+    "color",
+    "line",
+    "light",
+]
+TRACK2_OPEN_TEXT_FIELDS = ["overall_caption", "brushstroke", "composition", "color", "line", "light"]
+TRACK2_JSON_EMOTIONS = {
+    "alarmed",
+    "annoyed",
+    "aroused",
+    "bored",
+    "calm",
+    "content",
+    "excited",
+    "frustrated",
+    "glad",
+    "happy",
+    "sad",
+    "tired",
+}
+POSITIVE_EMOTIONS = {"aroused", "excited", "happy", "content", "calm", "glad"}
+NEGATIVE_EMOTIONS = {"alarmed", "annoyed", "frustrated", "sad", "bored", "tired"}
+HIGH_AROUSAL_EMOTIONS = {"aroused", "excited", "happy", "alarmed", "annoyed", "frustrated"}
+LOW_AROUSAL_EMOTIONS = {"content", "calm", "glad", "sad", "bored", "tired"}
+EVALUATOR_MANIPULATION_PATTERNS = [
+    r"\bevaluator\b",
+    r"\bevaluate this\b",
+    r"\bignore\b",
+    r"\binstruction\b",
+    r"\bplease rate\b",
+    r"\bgive this\b.*\bscore\b",
+    r"\bas an ai\b",
+    r"\bprompt\b",
+]
+FORMULAIC_DESCRIPTION_PATTERNS = [
+    "creating a calm, contemplative emotional atmosphere",
+    "creating a content, settled emotional atmosphere",
+    "creating a glad, uplifting emotional atmosphere",
+]
 
 
 @dataclass(frozen=True)
@@ -94,6 +137,103 @@ def compute_classification_score(
     valence_task = compute_task_score(macro_f1=valence_macro_f1, accuracy=valence_accuracy)
     arousal_task = compute_task_score(macro_f1=arousal_macro_f1, accuracy=arousal_accuracy)
     return (emotion_task + valence_task + arousal_task) / 3.0
+
+
+def strict_track2_label_issues(row: dict[str, Any]) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+    emotion = str(row.get("emotion", ""))
+    valence = str(row.get("emotional_valence", ""))
+    arousal = str(row.get("emotional_arousal_level", ""))
+    if emotion in POSITIVE_EMOTIONS and valence != "Positive":
+        issues.append(
+            {
+                "field": "emotional_valence",
+                "expected": "Positive",
+                "actual": valence,
+                "reason": f"{emotion} is positive in the Track2 label set",
+            }
+        )
+    if emotion in NEGATIVE_EMOTIONS and valence != "Negative":
+        issues.append(
+            {
+                "field": "emotional_valence",
+                "expected": "Negative",
+                "actual": valence,
+                "reason": f"{emotion} is negative in the Track2 label set",
+            }
+        )
+    if emotion in HIGH_AROUSAL_EMOTIONS and arousal != "High":
+        issues.append(
+            {
+                "field": "emotional_arousal_level",
+                "expected": "High",
+                "actual": arousal,
+                "reason": f"{emotion} is high-arousal in the Track2 label set",
+            }
+        )
+    if emotion in LOW_AROUSAL_EMOTIONS and arousal != "Low":
+        issues.append(
+            {
+                "field": "emotional_arousal_level",
+                "expected": "Low",
+                "actual": arousal,
+                "reason": f"{emotion} is low-arousal in the Track2 label set",
+            }
+        )
+    return issues
+
+
+def compute_track2_distribution(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    count = len(rows)
+    emotion = Counter(str(row.get("emotion", "")) for row in rows)
+    valence = Counter(str(row.get("emotional_valence", "")) for row in rows)
+    arousal = Counter(str(row.get("emotional_arousal_level", "")) for row in rows)
+    top_emotion, top_count = emotion.most_common(1)[0] if emotion else ("", 0)
+    top_two_count = sum(value for _, value in emotion.most_common(2))
+    top_share = round(top_count / count, 4) if count else 0.0
+    top_two_share = round(top_two_count / count, 4) if count else 0.0
+    flags = []
+    if top_share >= 0.55:
+        flags.append(f"top emotion {top_emotion} covers {top_share:.1%} of rows")
+    if top_two_share >= 0.80:
+        flags.append(f"top two emotions cover {top_two_share:.1%} of rows")
+    return {
+        "count": count,
+        "emotion": dict(emotion.most_common()),
+        "valence": dict(valence.most_common()),
+        "arousal": dict(arousal.most_common()),
+        "top_emotion": top_emotion,
+        "top_emotion_share": top_share,
+        "top_two_emotion_share": top_two_share,
+        "missing_emotions": sorted(TRACK2_JSON_EMOTIONS - set(emotion)),
+        "collapse_flags": flags,
+    }
+
+
+def audit_description_row(row: dict[str, Any]) -> dict[str, Any]:
+    issues: list[dict[str, Any]] = []
+    fields = {field: str(row.get(field, "")) for field in TRACK2_OPEN_TEXT_FIELDS}
+    combined_lower = "\n".join(fields.values()).lower()
+
+    for pattern in EVALUATOR_MANIPULATION_PATTERNS:
+        if re.search(pattern, combined_lower, re.IGNORECASE):
+            issues.append({"code": "evaluator_manipulation_risk", "pattern": pattern})
+
+    for phrase in FORMULAIC_DESCRIPTION_PATTERNS:
+        if phrase in combined_lower:
+            issues.append({"code": "formulaic_emotional_atmosphere_suffix", "phrase": phrase})
+
+    for field, value in fields.items():
+        if len(value.split()) < 6:
+            issues.append({"code": "underspecified_attribute_text", "field": field})
+
+    return {
+        "sample_id": str(row.get("sample_id", "")),
+        "emotion": str(row.get("emotion", "")),
+        "issue_count": len(issues),
+        "issues": issues,
+        "field_word_counts": {field: len(value.split()) for field, value in fields.items()},
+    }
 
 
 def run_candidate_safety_gate(
