@@ -192,12 +192,75 @@ class Track1DistributionAuditTest(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid provider_prompt"):
                 load_manifest_rows(object_prompt)
-            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid prompt"):
                 load_manifest_rows(list_prompt)
-            with self.assertRaisesRegex(ValueError, "manifest row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid provider_prompt"):
                 audit_candidate_distribution([{"sample_id": "track1_0003", "provider_prompt": {"text": "wide"}}])
+
+            mixed_bad_provider = root / "mixed_bad_provider.json"
+            mixed_bad_prompt = root / "mixed_bad_prompt.json"
+            mixed_blank_provider = root / "mixed_blank_provider.json"
+            mixed_bad_provider.write_text(
+                json.dumps(
+                    {
+                        "rows": [
+                            {
+                                "sample_id": "track1_0004",
+                                "provider_prompt": {"text": "bad"},
+                                "prompt": "fallback should not hide bad field",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            mixed_bad_prompt.write_text(
+                json.dumps(
+                    {
+                        "rows": [
+                            {
+                                "sample_id": "track1_0005",
+                                "provider_prompt": "valid provider prompt",
+                                "prompt": ["bad"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            mixed_blank_provider.write_text(
+                json.dumps(
+                    {
+                        "rows": [
+                            {
+                                "sample_id": "track1_0006",
+                                "provider_prompt": "  ",
+                                "prompt": "fallback should not hide blank field",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid provider_prompt"):
+                load_manifest_rows(mixed_bad_provider)
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid prompt"):
+                load_manifest_rows(mixed_bad_prompt)
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid provider_prompt"):
+                load_manifest_rows(mixed_blank_provider)
+            with self.assertRaisesRegex(ValueError, "manifest row 0 invalid provider_prompt"):
+                audit_candidate_distribution(
+                    [
+                        {
+                            "sample_id": "track1_0007",
+                            "provider_prompt": {"text": "bad"},
+                            "prompt": "fallback should not hide bad field",
+                        }
+                    ]
+                )
 
     def test_reports_and_cli_work(self):
         with tempfile.TemporaryDirectory() as tmp:

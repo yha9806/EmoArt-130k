@@ -224,18 +224,51 @@ class Track1PromptLintTest(unittest.TestCase):
                     ]
                 )
 
-            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid provider_prompt"):
                 lint_prompt_batch([{"sample_id": "track1_0002", "provider_prompt": {"text": "wide landscape"}}])
 
-            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid prompt"):
                 lint_prompt_batch([{"sample_id": "track1_0003", "prompt": ["wide landscape"]}])
 
             malformed.write_text(
                 json.dumps({"rows": [{"sample_id": "track1_0004", "provider_prompt": {"text": "wide"}}]}),
                 encoding="utf-8",
             )
-            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid provider_prompt"):
                 load_prompt_rows(malformed)
+
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid provider_prompt"):
+                lint_prompt_batch(
+                    [
+                        {
+                            "sample_id": "track1_0005",
+                            "provider_prompt": {"text": "bad"},
+                            "prompt": "fallback should not hide bad field",
+                        }
+                    ]
+                )
+
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid prompt"):
+                lint_prompt_batch(
+                    [
+                        {
+                            "sample_id": "track1_0006",
+                            "provider_prompt": "valid provider prompt",
+                            "prompt": ["bad"],
+                        }
+                    ]
+                )
+
+            with self.assertRaisesRegex(ValueError, "prompt row 0 invalid provider_prompt"):
+                lint_prompt_batch(
+                    [
+                        {
+                            "sample_id": "track1_0007",
+                            "provider_prompt": "  ",
+                            "prompt": "fallback should not hide blank field",
+                        }
+                    ]
+                )
 
     def test_empty_inputs_reject_in_api_and_loaders(self):
         with tempfile.TemporaryDirectory() as tmp:

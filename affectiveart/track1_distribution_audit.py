@@ -103,6 +103,8 @@ def _validated_manifest_row(
         raise ValueError(f"manifest row {index} must be an object")
     if not row.get("sample_id"):
         raise ValueError(f"manifest row {index} missing required sample_id")
+    _validate_present_prompt_field(row, index, "provider_prompt")
+    _validate_present_prompt_field(row, index, "prompt")
     if not _prompt_text(row):
         raise ValueError(f"manifest row {index} missing required provider_prompt or prompt")
 
@@ -128,6 +130,14 @@ def _prompt_text(row: dict[str, Any]) -> str:
     if isinstance(prompt, str) and prompt.strip():
         return prompt
     return ""
+
+
+def _validate_present_prompt_field(row: dict[str, Any], index: int, field: str) -> None:
+    if field not in row:
+        return
+    value = row.get(field)
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"manifest row {index} invalid {field}; expected a non-empty string")
 
 
 def _family_id_from_row(row: dict[str, Any]) -> str:
