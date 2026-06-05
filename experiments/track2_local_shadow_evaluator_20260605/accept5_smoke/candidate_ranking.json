@@ -1,0 +1,24 @@
+[
+  {
+    "candidate_name": "accept5",
+    "candidate_json": "submissions/track2_submission_moe_v2_accept5_candidate.json",
+    "decision": "recommend_submit",
+    "changed_rows": 0,
+    "same_quadrant_changes": 0,
+    "cross_quadrant_changes": 0,
+    "classification_expected": 0.72315,
+    "classification_lower": 0.72315,
+    "classification_upper": 0.73515,
+    "description_expected": 0.949667,
+    "description_lower": 0.943667,
+    "description_upper": 0.967667,
+    "overall_expected": 0.8364085,
+    "overall_lower": 0.8334085,
+    "overall_upper": 0.8514085,
+    "safety_passed": true,
+    "safety_issue_codes": "",
+    "description_issue_count": 0,
+    "top_emotion": "calm",
+    "top_emotion_share": 0.49
+  }
+]
