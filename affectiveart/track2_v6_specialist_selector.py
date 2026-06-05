@@ -160,11 +160,9 @@ def write_v6_outputs(
     out_dir = Path(out_dir)
     submission_dir = Path(submission_dir)
     names = {**DEFAULT_OUTPUT_NAMES, **(output_names or {})}
+    submission_root = submission_dir.resolve()
     candidate_paths = {
-        ladder: (
-            submission_dir / f"{names[ladder]}.json",
-            submission_dir / f"{names[ladder]}.zip",
-        )
+        ladder: _candidate_paths_for_name(names[ladder], submission_dir, submission_root)
         for ladder in V6_LADDERS
     }
     for json_path, zip_path in candidate_paths.values():
@@ -481,8 +479,7 @@ def _candidate_report(
             "evidence_score": decision.evidence_score,
             "reason_codes": list(decision.reason_codes),
         }
-        for decision in decisions
-        if decision.sample_id in selected
+        for decision in selected.values()
     ]
     distribution = compute_track2_distribution(rows)
     label_issue_count = sum(len(strict_track2_label_issues(row)) for row in rows)
@@ -504,11 +501,22 @@ def _build_stability_report(
     thresholds: SelectorThresholds,
 ) -> dict[str, Any]:
     accepted = [item for item in decisions if item.decision in {ACCEPT_SAFE, ACCEPT_CROSS_MICRO}]
-    cross = [item for item in accepted if item.decision == ACCEPT_CROSS_MICRO]
+    raw_cross = [item for item in accepted if item.decision == ACCEPT_CROSS_MICRO]
+    applied_cross = _capped_cross_micro_decisions(decisions, thresholds.max_cross_micro)
     transition_counts = Counter(item.transition for item in accepted)
     issues: list[dict[str, Any]] = []
-    if len(cross) > thresholds.max_cross_micro:
-        issues.append({"code": "too_many_cross_micro", "count": len(cross)})
+    info: list[dict[str, Any]] = []
+    if len(applied_cross) > thresholds.max_cross_micro:
+        issues.append({"code": "too_many_cross_micro", "count": len(applied_cross)})
+    if len(raw_cross) > len(applied_cross):
+        info.append(
+            {
+                "code": "raw_cross_micro_capped",
+                "raw_count": len(raw_cross),
+                "applied_count": len(applied_cross),
+                "cap": thresholds.max_cross_micro,
+            }
+        )
     if accepted:
         top_transition, top_count = transition_counts.most_common(1)[0]
         if top_count >= 5 and top_count / len(accepted) > 0.55:
@@ -524,11 +532,14 @@ def _build_stability_report(
         "passed": not issues,
         "accepted_count": len(accepted),
         "safe_sameq_count": sum(1 for item in accepted if item.decision == ACCEPT_SAFE),
-        "cross_micro_count": len(cross),
+        "cross_micro_count": len(applied_cross),
+        "raw_cross_micro_count": len(raw_cross),
+        "applied_cross_micro_count": len(applied_cross),
         "hold_count": sum(1 for item in decisions if item.decision == HOLD_REVIEW),
         "block_count": sum(1 for item in decisions if item.decision == BLOCK),
         "transition_counts": dict(sorted(transition_counts.items())),
         "issues": issues,
+        "info": info,
     }
 
 
@@ -626,6 +637,35 @@ def _load_json_rows(path: Path) -> list[dict[str, Any]]:
     if not isinstance(payload, list):
         raise ValueError(f"expected Track2 JSON list: {path}")
     return [dict(row) for row in payload if isinstance(row, dict)]
+
+
+def _candidate_paths_for_name(
+    name: str,
+    submission_dir: Path,
+    submission_root: Path,
+) -> tuple[Path, Path]:
+    _assert_safe_output_name(name)
+    json_path = submission_dir / f"{name}.json"
+    zip_path = submission_dir / f"{name}.zip"
+    _assert_under_directory(json_path, submission_root)
+    _assert_under_directory(zip_path, submission_root)
+    return json_path, zip_path
+
+
+def _assert_safe_output_name(name: str) -> None:
+    text = str(name)
+    if not text:
+        raise ValueError("candidate output name must be non-empty")
+    if Path(text).is_absolute() or "/" in text or "\\" in text or ".." in text:
+        raise ValueError(f"candidate output name must be a safe basename: {name}")
+
+
+def _assert_under_directory(path: Path, root: Path) -> None:
+    resolved_path = path.resolve()
+    try:
+        resolved_path.relative_to(root)
+    except ValueError as exc:
+        raise ValueError(f"candidate output path escapes submission directory: {path}") from exc
 
 
 def _assert_safe_candidate_path(path: Path) -> None:

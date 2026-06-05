@@ -610,3 +610,184 @@ class Track2V6WriterTest(unittest.TestCase):
 
             with zipfile.ZipFile(report["candidates"]["v6_cross_micro"]["zip"]) as archive:
                 self.assertEqual(archive.namelist(), ["submission.json"])
+
+    def test_output_names_reject_parent_and_absolute_paths_without_writing_outside_submission_dir(self):
+        baseline = [row("track2_0200", "content")]
+        matrix_row = {
+            "sample_id": "track2_0200",
+            "current_emotion": "content",
+            "current_valence": "Positive",
+            "current_arousal": "Low",
+            "proposed_emotion": "calm",
+            "proposed_valence": "Positive",
+            "proposed_arousal": "Low",
+            "supporting_source_count": "3",
+            "supporting_family_count": "2",
+            "supporting_sources": "public_style;teacher;siglip2",
+            "supporting_families": "public_style;teacher",
+            "same_quadrant": "true",
+            "evidence_score": "8",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            outside_parent_json = tmp_path / "track2_submission_v6_safe_sameq_candidate.json"
+            absolute_name = str(tmp_path / "absolute" / "track2_submission_v6_safe_sameq_candidate")
+            backslash_name = "nested\\track2_submission_v6_safe_sameq_candidate"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(matrix_path, [matrix_row])
+
+            with self.assertRaises(ValueError):
+                write_v6_outputs(
+                    baseline_json=baseline_json,
+                    evidence_matrix=matrix_path,
+                    out_dir=out_dir,
+                    submission_dir=submission_dir,
+                    output_names={"v6_safe_sameq": "../track2_submission_v6_safe_sameq_candidate"},
+                    expected_row_count=len(baseline),
+                    require_all_emotions=False,
+                )
+            with self.assertRaises(ValueError):
+                write_v6_outputs(
+                    baseline_json=baseline_json,
+                    evidence_matrix=matrix_path,
+                    out_dir=out_dir,
+                    submission_dir=submission_dir,
+                    output_names={"v6_safe_sameq": absolute_name},
+                    expected_row_count=len(baseline),
+                    require_all_emotions=False,
+                )
+            with self.assertRaises(ValueError):
+                write_v6_outputs(
+                    baseline_json=baseline_json,
+                    evidence_matrix=matrix_path,
+                    out_dir=out_dir,
+                    submission_dir=submission_dir,
+                    output_names={"v6_safe_sameq": backslash_name},
+                    expected_row_count=len(baseline),
+                    require_all_emotions=False,
+                )
+
+            self.assertFalse(outside_parent_json.exists())
+            self.assertFalse((tmp_path / "absolute").exists())
+
+    def test_stability_uses_applied_cross_cap_not_raw_accepted_cross_count(self):
+        baseline = [
+            row("track2_0300", "annoyed"),
+            row("track2_0301", "alarmed"),
+            row("track2_0302", "frustrated"),
+            row("track2_0303", "bored"),
+            row("track2_0304", "tired"),
+        ]
+        proposals = [
+            ("track2_0300", "annoyed", "calm", "9.5"),
+            ("track2_0301", "alarmed", "content", "9.4"),
+            ("track2_0302", "frustrated", "glad", "9.3"),
+            ("track2_0303", "bored", "happy", "9.2"),
+            ("track2_0304", "tired", "excited", "9.1"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": sample_id,
+                        "current_emotion": current,
+                        "proposed_emotion": proposed,
+                        "supporting_source_count": "4",
+                        "supporting_family_count": "3",
+                        "supporting_sources": "gemini35;teacher;siglip2;dinov2",
+                        "supporting_families": "gemini35;teacher;embedding",
+                        "same_quadrant": "false",
+                        "gemini35_prefers_proposed": "true",
+                        "gemini35_fit_margin": "0.41",
+                        "evidence_score": score,
+                        "hard96_net_gain": "2",
+                        "hard96_net_loss": "0",
+                    }
+                    for sample_id, current, proposed, score in proposals
+                ],
+            )
+
+            report = write_v6_outputs(
+                baseline_json=baseline_json,
+                evidence_matrix=matrix_path,
+                out_dir=out_dir,
+                submission_dir=submission_dir,
+                expected_row_count=len(baseline),
+                require_all_emotions=False,
+            )
+
+            stability = json.loads(Path(report["stability_report_json"]).read_text(encoding="utf-8"))
+            self.assertTrue(stability["passed"])
+            self.assertEqual(stability["raw_cross_micro_count"], 5)
+            self.assertEqual(stability["applied_cross_micro_count"], 3)
+            self.assertTrue(any(item["code"] == "raw_cross_micro_capped" for item in stability["info"]))
+            self.assertFalse(any(item["code"] == "too_many_cross_micro" for item in stability["issues"]))
+
+    def test_candidate_report_selected_changes_excludes_non_selected_same_sample_decisions(self):
+        baseline = [row("track2_0400", "content")]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": "track2_0400",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "3",
+                        "supporting_family_count": "2",
+                        "supporting_sources": "public_style;teacher;siglip2",
+                        "supporting_families": "public_style;teacher",
+                        "same_quadrant": "true",
+                        "evidence_score": "8",
+                    },
+                    {
+                        "sample_id": "track2_0400",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "glad",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "3",
+                        "supporting_family_count": "2",
+                        "supporting_sources": "public_style;teacher;siglip2",
+                        "supporting_families": "public_style;teacher",
+                        "same_quadrant": "true",
+                        "evidence_score": "7",
+                    },
+                ],
+            )
+
+            report = write_v6_outputs(
+                baseline_json=baseline_json,
+                evidence_matrix=matrix_path,
+                out_dir=out_dir,
+                submission_dir=submission_dir,
+                expected_row_count=len(baseline),
+                require_all_emotions=False,
+            )
+
+            selected_changes = report["candidates"]["v6_safe_sameq"]["selected_changes"]
+            self.assertEqual(len(selected_changes), 1)
+            self.assertEqual(selected_changes[0]["transition"], "content->calm")
