@@ -359,6 +359,10 @@ def _malformed_reasons(
         supporting_family_count > 0 and not supporting_families
     ):
         reasons.append("missing_support_traceability")
+    if supporting_source_count > len(supporting_sources) or supporting_family_count > len(
+        supporting_families
+    ):
+        reasons.append("support_count_traceability_mismatch")
     return tuple(dict.fromkeys(reasons))
 
 

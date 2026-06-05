@@ -382,6 +382,37 @@ class Track2V6SelectorCoreTest(unittest.TestCase):
         self.assertEqual(decisions[0].decision, HOLD_REVIEW)
         self.assertIn("missing_support_traceability", decisions[0].reason_codes)
 
+    def test_inflated_support_counts_default_to_hold(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            matrix_path = Path(tmp) / "evidence.csv"
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": "track2_0011",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "4",
+                        "supporting_family_count": "3",
+                        "supporting_sources": "teacher",
+                        "supporting_families": "teacher",
+                        "same_quadrant": "true",
+                        "evidence_score": "9",
+                    }
+                ],
+            )
+
+            deltas = load_evidence_matrix(matrix_path)
+            decisions = select_v6_deltas(deltas)
+
+        self.assertTrue(deltas[0].malformed)
+        self.assertEqual(decisions[0].decision, HOLD_REVIEW)
+        self.assertIn("support_count_traceability_mismatch", decisions[0].reason_codes)
+
     def test_cross_micro_caps_cross_quadrant_changes_at_three(self):
         baseline = [row(f"track2_010{index}", "annoyed") for index in range(5)]
         matrix_rows = []
