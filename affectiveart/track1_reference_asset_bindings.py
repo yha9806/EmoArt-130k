@@ -73,6 +73,9 @@ def load_reference_asset_index(path: str | Path) -> dict[str, Any]:
     references = payload.get("references", {})
     if references is not None and not isinstance(references, dict):
         raise ValueError("reference asset index 'references' must be an object")
+    route_references = payload.get("route_references", {})
+    if route_references is not None and not isinstance(route_references, dict):
+        raise ValueError("reference asset index 'route_references' must be an object")
     family_references = payload.get("family_references", {})
     if family_references is not None and not isinstance(family_references, dict):
         raise ValueError("reference asset index 'family_references' must be an object")
@@ -170,8 +173,12 @@ def _candidate_items_for_route(route: dict[str, Any], index: dict[str, Any]) -> 
     sample_id = str(route.get("sample_id") or "")
     family_id = str(route.get("family_id") or "")
     references = index.get("references", {})
+    route_references = index.get("route_references", {})
     family_references = index.get("family_references", {})
     caption_style_references = index.get("caption_style_references", {})
+    official_route_items = _normalise_index_items(route_references.get(sample_id, []), source="official_retrieval")
+    if official_route_items:
+        return official_route_items
     direct_items = _normalise_index_items(references.get(sample_id, []), source="sample")
     if direct_items:
         return direct_items

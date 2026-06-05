@@ -46,6 +46,27 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
         self.assertEqual(routes[0]["reference_asset_source"], "sample")
         self.assertEqual(routes[0]["reference_asset_notes"], ["direct Kremlin reference"])
 
+    def test_official_route_references_override_legacy_sample_references(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            Image.new("RGB", (320, 180), (100, 40, 40)).save(assets / "legacy_sample.jpg")
+            Image.new("RGB", (320, 180), (40, 100, 40)).save(assets / "official_ref.jpg")
+            index = {
+                "references": {"track1_0803": [{"file": "legacy_sample.jpg", "note": "legacy sample"}]},
+                "route_references": {
+                    "track1_0803": [{"file": "official_ref.jpg", "note": "official EmoArt retrieval"}]
+                },
+            }
+
+            routes = attach_reference_assets_to_routes([_route()], index, asset_root=assets)
+
+        self.assertEqual(len(routes[0]["reference_assets"]), 1)
+        self.assertTrue(routes[0]["reference_assets"][0].endswith("official_ref.jpg"))
+        self.assertEqual(routes[0]["reference_asset_source"], "official_retrieval")
+        self.assertEqual(routes[0]["reference_asset_notes"], ["official EmoArt retrieval"])
+
     def test_family_fallback_references_are_used_when_sample_is_absent(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
