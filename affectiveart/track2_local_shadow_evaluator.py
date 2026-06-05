@@ -276,6 +276,192 @@ def load_calibration_summary(ledger_path: str | Path) -> dict[str, Any]:
     }
 
 
+def write_shadow_evaluator_outputs(
+    *,
+    baseline_json: str | Path,
+    candidates: list[dict[str, Any]],
+    out_dir: str | Path,
+    expected_row_count: int = 1000,
+) -> dict[str, Any]:
+    baseline_json = Path(baseline_json)
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    baseline_rows = load_json_rows(baseline_json)
+    results: list[ShadowScoreResult] = []
+    for candidate in candidates:
+        candidate_json = Path(candidate["json"])
+        rows = load_json_rows(candidate_json)
+        results.append(
+            score_candidate_rows(
+                candidate_name=str(candidate["name"]),
+                candidate_json=candidate_json,
+                rows=rows,
+                baseline_rows=baseline_rows,
+                expected_row_count=expected_row_count,
+            )
+        )
+    ranked = rank_shadow_candidates(results)
+    ranking_rows = [_result_to_dict(item) for item in ranked]
+    row_risks = [
+        {"candidate_name": result.candidate_name, **risk}
+        for result in ranked
+        for risk in result.row_risks
+    ]
+    report = {
+        "method": "track2_shadow_score_v1_formula_proxy",
+        "warning": (
+            "This is a local shadow score. It is not the official Codabench score "
+            "and must not be treated as hidden-test ground truth."
+        ),
+        "baseline_json": str(baseline_json),
+        "official_anchor": OFFICIAL_ANCHOR.__dict__,
+        "ranking": ranking_rows,
+        "row_risk_count": len(row_risks),
+        "formal_submission_overwritten": False,
+    }
+    _write_json(out_dir / "shadow_score_report.json", report)
+    _write_json(out_dir / "candidate_ranking.json", ranking_rows)
+    _write_json(out_dir / "row_risk_matrix.json", row_risks)
+    _write_csv(out_dir / "candidate_ranking.csv", ranking_rows)
+    _write_csv(out_dir / "row_risk_matrix.csv", row_risks)
+    (out_dir / "shadow_score_report.md").write_text(_render_shadow_markdown(report), encoding="utf-8")
+    html_dir = out_dir / "html_review"
+    html_dir.mkdir(parents=True, exist_ok=True)
+    (html_dir / "track2_shadow_evaluator_review.html").write_text(
+        _render_shadow_html(report, row_risks),
+        encoding="utf-8",
+    )
+    return report
+
+
+def _result_to_dict(result: ShadowScoreResult) -> dict[str, Any]:
+    return {
+        "candidate_name": result.candidate_name,
+        "candidate_json": result.candidate_json,
+        "decision": result.decision,
+        "changed_rows": result.changed_rows,
+        "same_quadrant_changes": result.same_quadrant_changes,
+        "cross_quadrant_changes": result.cross_quadrant_changes,
+        "classification_expected": result.classification.expected,
+        "classification_lower": result.classification.lower,
+        "classification_upper": result.classification.upper,
+        "description_expected": result.description.expected,
+        "description_lower": result.description.lower,
+        "description_upper": result.description.upper,
+        "overall_expected": result.overall.expected,
+        "overall_lower": result.overall.lower,
+        "overall_upper": result.overall.upper,
+        "safety_passed": result.safety.passed,
+        "safety_issue_codes": ",".join(result.safety.issue_codes),
+        "description_issue_count": result.safety.description_issue_count,
+        "top_emotion": result.safety.distribution.get("top_emotion", ""),
+        "top_emotion_share": result.safety.distribution.get("top_emotion_share", 0.0),
+    }
+
+
+def _render_shadow_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Track2 Local Shadow Evaluator Report",
+        "",
+        f"> {report['warning']}",
+        "",
+        f"- Method: `{report['method']}`",
+        f"- Baseline JSON: `{report['baseline_json']}`",
+        f"- Formal submission overwritten: {report['formal_submission_overwritten']}",
+        "",
+        "## Candidate Ranking",
+        "",
+        "| rank | candidate | decision | overall lower | overall expected | class expected | desc expected | changes | cross quadrant |",
+        "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for index, item in enumerate(report["ranking"], start=1):
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    str(index),
+                    str(item["candidate_name"]),
+                    str(item["decision"]),
+                    f"{float(item['overall_lower']):.6f}",
+                    f"{float(item['overall_expected']):.6f}",
+                    f"{float(item['classification_expected']):.6f}",
+                    f"{float(item['description_expected']):.6f}",
+                    str(item["changed_rows"]),
+                    str(item["cross_quadrant_changes"]),
+                ]
+            )
+            + " |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _render_shadow_html(report: dict[str, Any], row_risks: list[dict[str, Any]]) -> str:
+    rows = "\n".join(
+        "<tr>"
+        f"<td>{html.escape(str(item['candidate_name']))}</td>"
+        f"<td>{html.escape(str(item['decision']))}</td>"
+        f"<td>{float(item['overall_lower']):.6f}</td>"
+        f"<td>{float(item['overall_expected']):.6f}</td>"
+        f"<td>{int(item['changed_rows'])}</td>"
+        f"<td>{int(item['cross_quadrant_changes'])}</td>"
+        "</tr>"
+        for item in report["ranking"]
+    )
+    risk_rows = "\n".join(
+        "<tr>"
+        f"<td>{html.escape(str(item.get('candidate_name', '')))}</td>"
+        f"<td>{html.escape(str(item.get('sample_id', '')))}</td>"
+        f"<td>{html.escape(str(item.get('transition', '')))}</td>"
+        f"<td>{html.escape(str(item.get('risk', '')))}</td>"
+        "</tr>"
+        for item in row_risks[:300]
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 Shadow Evaluator</title>
+  <style>
+    body {{ font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #17202a; }}
+    table {{ border-collapse: collapse; width: 100%; margin: 16px 0 28px; }}
+    th, td {{ border: 1px solid #d7dde5; padding: 8px; text-align: left; }}
+    th {{ background: #eef2f6; }}
+    .warning {{ padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }}
+  </style>
+</head>
+<body>
+  <h1>Track2 Local Shadow Evaluator</h1>
+  <p class="warning">{html.escape(str(report['warning']))}</p>
+  <h2>Candidate Ranking</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>decision</th><th>overall lower</th><th>overall expected</th><th>changes</th><th>cross quadrant</th></tr></thead>
+    <tbody>{rows}</tbody>
+  </table>
+  <h2>Top Row Risks</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>sample</th><th>transition</th><th>risk</th></tr></thead>
+    <tbody>{risk_rows}</tbody>
+  </table>
+</body>
+</html>
+"""
+
+
+def _write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = sorted({key for row in rows for key in row})
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
 def _normalize_calibration_entry(entry: dict[str, Any]) -> dict[str, Any]:
     normalized = {
         "submission_id": str(entry["submission_id"]),

@@ -13,6 +13,7 @@ from affectiveart.track2_local_shadow_evaluator import (
     rank_shadow_candidates,
     run_candidate_safety_gate,
     score_candidate_rows,
+    write_shadow_evaluator_outputs,
 )
 
 
@@ -234,6 +235,39 @@ class Track2LocalShadowCalibrationTest(unittest.TestCase):
                         "official_description": 0.949667,
                         "notes": "bad anchor",
                     },
-                )
+            )
             summary = load_calibration_summary(ledger)
             self.assertEqual(summary["entry_count"], 1)
+
+
+class Track2LocalShadowArtifactsTest(unittest.TestCase):
+    def test_write_shadow_outputs_creates_reports_and_html(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            candidate_json = tmp_path / "candidate.json"
+            out_dir = tmp_path / "shadow"
+            rows = full_label_rows()
+            candidate_rows = [dict(item) for item in rows]
+            candidate_rows[5] = row("track2_0005", "calm", "Positive", "Low")
+            baseline_json.write_text(json.dumps(rows), encoding="utf-8")
+            candidate_json.write_text(json.dumps(candidate_rows), encoding="utf-8")
+
+            report = write_shadow_evaluator_outputs(
+                baseline_json=baseline_json,
+                candidates=[{"name": "safe_plus", "json": candidate_json}],
+                out_dir=out_dir,
+                expected_row_count=len(rows),
+            )
+
+            self.assertEqual(report["ranking"][0]["candidate_name"], "safe_plus")
+            self.assertTrue((out_dir / "shadow_score_report.json").exists())
+            self.assertTrue((out_dir / "shadow_score_report.md").exists())
+            self.assertTrue((out_dir / "candidate_ranking.csv").exists())
+            self.assertTrue((out_dir / "candidate_ranking.json").exists())
+            self.assertTrue((out_dir / "row_risk_matrix.csv").exists())
+            self.assertTrue((out_dir / "row_risk_matrix.json").exists())
+            self.assertTrue((out_dir / "html_review" / "track2_shadow_evaluator_review.html").exists())
+            markdown = (out_dir / "shadow_score_report.md").read_text(encoding="utf-8")
+            self.assertIn("This is a local shadow score", markdown)
+            self.assertIn("safe_plus", markdown)
