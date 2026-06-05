@@ -102,6 +102,17 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
         self.assertEqual(packet["review_metadata"]["candidate_count"], 4)
         self.assertEqual(packet["review_metadata"]["recommended_model"], "gemini-3-pro-image")
 
+    def test_provider_prompt_adds_neutral_historical_context_for_block_prone_symbols(self):
+        contract = _contract()
+        route = _route()
+
+        packet = build_moe_prompt_packet(rank=1, route=route, contract=contract)
+        prompt = packet["provider_prompt"]
+
+        self.assertIn("NEUTRAL HISTORICAL ART CONTEXT", prompt)
+        self.assertIn("not political advocacy", prompt)
+        self.assertIn("caption-required visual attributes", prompt)
+
     def test_document_text_section_prefers_document_terms_not_generic_victory_slogans(self):
         caption = (
             "A Socialist Realism propaganda poster with bold Cyrillic typography, a central "
@@ -301,6 +312,29 @@ class Track1MoePromptPacketsTest(unittest.TestCase):
             "candidate_strategies",
         ]:
             self.assertNotIn(forbidden, prompt)
+
+    def test_distribution_reference_assets_are_kept_as_generation_metadata_only(self):
+        contract = _contract()
+        route = _route(candidate_count=3)
+        distribution_route = _distribution_route(
+            reference_assets=[
+                "/tmp/emoart/reference/kremlin_a.jpg",
+                "/tmp/emoart/reference/kremlin_b.jpg",
+            ]
+        )
+
+        packet = build_moe_prompt_packet(
+            rank=1,
+            route=route,
+            contract=contract,
+            distribution_route=distribution_route,
+            candidate_strategy="reference_style",
+        )
+
+        self.assertEqual(packet["reference_assets"], distribution_route["reference_assets"])
+        self.assertEqual(packet["review_metadata"]["reference_asset_count"], 2)
+        self.assertIn("attached reference board", packet["provider_prompt"])
+        self.assertNotIn("/tmp/emoart/reference", packet["provider_prompt"])
 
     def test_load_distribution_routes_accepts_routes_rows_and_list_payloads(self):
         route = _distribution_route()

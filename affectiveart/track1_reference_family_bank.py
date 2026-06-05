@@ -333,6 +333,11 @@ def _summarize_families(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "count": len(family_rows),
             "sample_ids": [row["sample_id"] for row in family_rows],
             "aspect_labels": dict(sorted(aspect_counts.items())),
+            "reference_assets": _unique(
+                row["reference_path"]
+                for row in family_rows
+                if row.get("reference_path") and row.get("image_exists")
+            ),
             "matched_terms": _unique(term for row in family_rows for term in row["matched_terms"]),
             "composition_hints": _unique(hint for row in family_rows for hint in row["composition_hints"]),
             "medium_hints": _unique(hint for row in family_rows for hint in row["medium_hints"]),

@@ -83,6 +83,7 @@ class Track1DistributionRouterTest(unittest.TestCase):
                 {
                     "sample_id": "track1_0999",
                     "family_id": "agriculture_industry_worker",
+                    "reference_path": "/tmp/emoart/reference/agriculture.jpg",
                     "aspect": {"label": "landscape", "width": 1600, "height": 900, "ratio": 1.777777},
                     "composition_hints": ["field depth", "working hands"],
                     "medium_hints": ["oil_paint_surface", "aged_canvas"],
@@ -108,9 +109,37 @@ class Track1DistributionRouterTest(unittest.TestCase):
         self.assertIn("field depth", route["composition_hints"])
         self.assertIn("working hands", route["composition_hints"])
         self.assertEqual(route["medium_options"], ["oil_paint_surface", "aged_canvas"])
+        self.assertEqual(route["reference_assets"], ["/tmp/emoart/reference/agriculture.jpg"])
         serialized = json.dumps(route)
         self.assertNotIn("reference_path", serialized)
         self.assertNotIn("matched_terms", serialized)
+
+    def test_family_reference_assets_propagate_when_sample_has_no_direct_bank_row(self):
+        bank = {
+            "rows": [],
+            "families": {
+                "kremlin_red_square": {
+                    "family_id": "kremlin_red_square",
+                    "composition_hints": ["red brick tower"],
+                    "medium_hints": ["poster paint"],
+                    "aspect_labels": {"landscape": 2, "portrait": 1},
+                    "reference_assets": [
+                        "/tmp/emoart/reference/kremlin_a.jpg",
+                        "/tmp/emoart/reference/kremlin_b.jpg",
+                    ],
+                }
+            },
+        }
+
+        route = build_distribution_route(
+            _contract("track1_0803", "A Kremlin tower with searchlights."),
+            reference_family_bank=bank,
+        )
+
+        self.assertEqual(
+            route["reference_assets"],
+            ["/tmp/emoart/reference/kremlin_a.jpg", "/tmp/emoart/reference/kremlin_b.jpg"],
+        )
 
     def test_build_routes_writes_reports_and_cli(self):
         contracts = [

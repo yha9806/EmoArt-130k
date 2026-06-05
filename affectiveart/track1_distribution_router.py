@@ -45,6 +45,7 @@ def build_distribution_route(
     composition_hints = _composition_hints(bank_row, family_summary, inferred_family)
     medium_options = _medium_options(sample_id, caption, bank_row, family_summary)
     aspect_hints = _aspect_hints(contract, bank_row, family_summary)
+    reference_assets = _reference_assets(bank_row, family_summary)
 
     return {
         "version": ROUTER_VERSION,
@@ -56,6 +57,7 @@ def build_distribution_route(
         "composition_hints": composition_hints,
         "medium_options": medium_options,
         "aspect_hints": aspect_hints,
+        "reference_assets": reference_assets,
         "candidate_strategies": [{"strategy": strategy} for strategy in DEFAULT_STRATEGIES],
     }
 
@@ -193,6 +195,22 @@ def _aspect_hints(
     return []
 
 
+def _reference_assets(
+    bank_row: dict[str, Any] | None,
+    family_summary: dict[str, Any] | None,
+) -> list[str]:
+    assets: list[str] = []
+    if bank_row:
+        direct = bank_row.get("reference_asset") or bank_row.get("reference_path") or bank_row.get("path")
+        if direct:
+            assets.append(str(direct))
+        if isinstance(bank_row.get("reference_assets"), list):
+            assets.extend(str(item) for item in bank_row["reference_assets"] if str(item))
+    if family_summary and isinstance(family_summary.get("reference_assets"), list):
+        assets.extend(str(item) for item in family_summary["reference_assets"] if str(item))
+    return _unique(assets)
+
+
 def _bank_row_for_sample(bank: dict[str, Any] | None, sample_id: str) -> dict[str, Any] | None:
     if not bank:
         return None
@@ -237,6 +255,7 @@ def _write_routes_csv(routes: list[dict[str, Any]], csv_path: Path) -> None:
         "composition_hints",
         "medium_options",
         "aspect_hints",
+        "reference_assets",
         "candidate_strategies",
         "caption",
     ]
@@ -253,6 +272,7 @@ def _write_routes_csv(routes: list[dict[str, Any]], csv_path: Path) -> None:
                     "composition_hints": " | ".join(route.get("composition_hints", [])),
                     "medium_options": " | ".join(route.get("medium_options", [])),
                     "aspect_hints": json.dumps(route.get("aspect_hints", []), sort_keys=True),
+                    "reference_assets": " | ".join(route.get("reference_assets", [])),
                     "candidate_strategies": " | ".join(
                         strategy.get("strategy", "")
                         for strategy in route.get("candidate_strategies", [])

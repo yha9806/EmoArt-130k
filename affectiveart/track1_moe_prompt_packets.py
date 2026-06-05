@@ -26,6 +26,9 @@ def build_moe_prompt_packet(
     provider_prompt = build_reference_guided_prompt(sample_id, caption, pack, variant=variant)
     if reference_text_packet:
         provider_prompt += "\n\n" + render_provider_text_section(reference_text_packet, caption=caption)
+    safety_context = render_neutral_historical_context(caption)
+    if safety_context:
+        provider_prompt += "\n\n" + safety_context
     if distribution_route and candidate_strategy != "legacy":
         provider_prompt = _soften_template_phrases(provider_prompt, strategy=candidate_strategy)
         provider_prompt += "\n\n" + render_distribution_strategy_section(
@@ -33,6 +36,7 @@ def build_moe_prompt_packet(
             candidate_strategy=candidate_strategy,
             caption=caption,
         )
+    reference_assets = _clean_reference_assets((distribution_route or {}).get("reference_assets", []))
     provider_prompt += "\n\nASPECT AND CANVAS PLAN\n"
     aspect = dict(contract.get("aspect_plan") or {})
     if aspect.get("prompt_directive"):
@@ -62,7 +66,9 @@ def build_moe_prompt_packet(
             "priority_bucket": route.get("priority_bucket", ""),
             "queue_score": route.get("queue_score", 0),
             "reference_level": route.get("reference_level", ""),
+            "reference_asset_count": len(reference_assets),
         },
+        "reference_assets": reference_assets,
         "aspect_plan": aspect,
         "reference_contract": contract.get("reference_contract", {}),
         "text_contract": contract.get("text_contract", {}),
@@ -153,6 +159,33 @@ def render_provider_text_section(packet: dict[str, Any], *, caption: str) -> str
     return "\n".join(lines).strip()
 
 
+def render_neutral_historical_context(caption: str) -> str:
+    text = caption.lower()
+    block_prone_terms = (
+        "propaganda",
+        "soviet",
+        "kremlin",
+        "wartime",
+        "war",
+        "soldier",
+        "military",
+        "tank",
+        "rifle",
+        "flag",
+        "surrender",
+    )
+    if not any(term in text for term in block_prone_terms):
+        return ""
+    return "\n".join(
+        [
+            "NEUTRAL HISTORICAL ART CONTEXT",
+            "- Treat this as a neutral historical artwork reconstruction for an art dataset challenge, not political advocacy, persuasion, recruitment, or a real-world call to action.",
+            "- Depict flags, slogans, uniforms, vehicles, emblems, and architecture only as caption-required visual attributes of a historical artwork surface.",
+            "- Avoid explicit injury, gore, hatred, extremist praise, contemporary political claims, or instructions for real-world action.",
+        ]
+    )
+
+
 def render_distribution_strategy_section(
     route: dict[str, Any],
     *,
@@ -189,6 +222,10 @@ def render_distribution_strategy_section(
         lines.append("- Allowed variation: " + "; ".join(style_freedom[:6]) + ".")
     if "poster" in caption.lower() and candidate_strategy != "fid_diverse":
         lines.append("- Poster support may remain visible when it helps the caption, but avoid a repeated stock layout.")
+    if _clean_reference_assets(route.get("reference_assets", [])):
+        lines.append(
+            "- Use the attached reference board only for official style-family, medium, landmark, symbol, and composition cues; do not copy unrelated exact objects."
+        )
     return "\n".join(lines).strip()
 
 
@@ -459,6 +496,12 @@ def _clean_provider_list(values: Any) -> list[str]:
             continue
         result.append(text.replace("_", " "))
     return _unique(result)
+
+
+def _clean_reference_assets(values: Any) -> list[str]:
+    if not isinstance(values, list):
+        return []
+    return _unique(str(value).strip() for value in values if str(value).strip())
 
 
 def _summary(rows: list[dict[str, Any]]) -> dict[str, Any]:

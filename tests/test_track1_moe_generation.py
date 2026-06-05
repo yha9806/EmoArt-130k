@@ -62,6 +62,21 @@ class FakeProviderFactory:
         return provider
 
 
+class ReferenceBlockingProvider(FakeProvider):
+    async def generate(self, prompt, **kwargs):
+        self.calls.append({"prompt": prompt, "kwargs": kwargs, "model": self.model})
+        if kwargs.get("reference_image_b64"):
+            raise RuntimeError("Gemini blocked the request: BlockedReason.OTHER")
+        return FakeImageResult()
+
+
+class ReferenceBlockingProviderFactory(FakeProviderFactory):
+    def __call__(self, model):
+        provider = ReferenceBlockingProvider(model)
+        self.providers.append(provider)
+        return provider
+
+
 class Track1MoeGenerationTest(unittest.TestCase):
     def test_build_jobs_expands_candidate_count_and_paths(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -99,6 +114,31 @@ class Track1MoeGenerationTest(unittest.TestCase):
             ],
         )
 
+    def test_build_jobs_creates_reference_board_for_packet_assets(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            ref_a = root / "ref_a.jpg"
+            ref_b = root / "ref_b.jpg"
+            from PIL import Image
+
+            Image.new("RGB", (320, 180), (120, 40, 40)).save(ref_a)
+            Image.new("RGB", (180, 320), (40, 80, 120)).save(ref_b)
+            jobs = build_generation_jobs(
+                [
+                    _packet(
+                        candidate_strategy="reference_style",
+                        reference_assets=[str(ref_a), str(ref_b)],
+                        review_metadata={**_packet()["review_metadata"], "candidate_count": 1},
+                    )
+                ],
+                out_dir=root / "out",
+                max_candidates_per_sample=1,
+            )
+
+            self.assertTrue(jobs[0]["reference_image_path"].endswith("reference_boards/track1_0803_reference_style.jpg"))
+            self.assertEqual(jobs[0]["reference_image_source_paths"], [str(ref_a), str(ref_b)])
+            self.assertTrue(Path(jobs[0]["reference_image_path"]).exists())
+
     def test_resolve_image_model_uses_flash_default_unless_pro_override_is_supplied(self):
         self.assertEqual(resolve_image_model("gemini-3.1-flash-image"), DEFAULT_FLASH_IMAGE_MODEL)
         self.assertEqual(resolve_image_model("gemini-3-pro-image"), DEFAULT_FLASH_IMAGE_MODEL)
@@ -125,6 +165,63 @@ class Track1MoeGenerationTest(unittest.TestCase):
             self.assertEqual(manifest["summary"]["generated"], 1)
             self.assertEqual(len(factory.providers), 1)
             self.assertEqual(factory.providers[0].calls[0]["kwargs"]["raw_prompt"], True)
+
+    def test_run_generation_jobs_passes_reference_image_to_provider_and_metadata(self):
+        factory = FakeProviderFactory()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            ref_a = root / "ref_a.jpg"
+            from PIL import Image
+
+            Image.new("RGB", (200, 120), (80, 30, 30)).save(ref_a)
+            jobs = build_generation_jobs(
+                [
+                    _packet(
+                        candidate_strategy="reference_style",
+                        reference_assets=[str(ref_a)],
+                        review_metadata={**_packet()["review_metadata"], "candidate_count": 1},
+                    )
+                ],
+                out_dir=root / "out",
+                max_candidates_per_sample=1,
+            )
+            rows = run_generation_jobs(jobs, provider_factory=factory)
+            metadata = json.loads(Path(rows[0]["metadata_path"]).read_text(encoding="utf-8"))
+
+        call = factory.providers[0].calls[0]
+        self.assertTrue(call["kwargs"]["reference_image_b64"])
+        self.assertEqual(metadata["reference_image_path"], rows[0]["reference_image_path"])
+        self.assertEqual(metadata["reference_image_source_paths"], [str(ref_a)])
+
+    def test_run_generation_jobs_retries_blocked_reference_without_reference_and_marks_metadata(self):
+        factory = ReferenceBlockingProviderFactory()
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            ref_a = root / "ref_a.jpg"
+            from PIL import Image
+
+            Image.new("RGB", (200, 120), (80, 30, 30)).save(ref_a)
+            jobs = build_generation_jobs(
+                [
+                    _packet(
+                        candidate_strategy="reference_style",
+                        reference_assets=[str(ref_a)],
+                        review_metadata={**_packet()["review_metadata"], "candidate_count": 1},
+                    )
+                ],
+                out_dir=root / "out",
+                max_candidates_per_sample=1,
+            )
+            rows = run_generation_jobs(jobs, provider_factory=factory)
+            metadata = json.loads(Path(rows[0]["metadata_path"]).read_text(encoding="utf-8"))
+
+        calls = factory.providers[0].calls
+        self.assertEqual(rows[0]["status"], "generated")
+        self.assertEqual(len(calls), 2)
+        self.assertTrue(calls[0]["kwargs"]["reference_image_b64"])
+        self.assertEqual(calls[1]["kwargs"]["reference_image_b64"], "")
+        self.assertTrue(metadata["reference_image_fallback_without_reference"])
+        self.assertIn("BlockedReason.OTHER", metadata["reference_image_fallback_reason"])
 
     def test_cli_dry_run_writes_manifest_without_generating_images(self):
         with tempfile.TemporaryDirectory() as tmp:
