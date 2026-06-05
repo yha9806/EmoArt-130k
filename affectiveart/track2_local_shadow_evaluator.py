@@ -237,6 +237,76 @@ def rank_shadow_candidates(results: list[ShadowScoreResult]) -> list[ShadowScore
     )
 
 
+def append_calibration_entry(*, ledger_path: str | Path, entry: dict[str, Any]) -> dict[str, Any]:
+    ledger_path = Path(ledger_path)
+    ledger_path.parent.mkdir(parents=True, exist_ok=True)
+    normalized = _normalize_calibration_entry(entry)
+    lock_path = ledger_path.with_suffix(ledger_path.suffix + ".lock")
+    with lock_path.open("w", encoding="utf-8") as lock_fh:
+        fcntl.flock(lock_fh.fileno(), fcntl.LOCK_EX)
+        existing = ledger_path.read_text(encoding="utf-8") if ledger_path.exists() else ""
+        temp_path = ledger_path.with_suffix(ledger_path.suffix + ".tmp")
+        temp_path.write_text(existing + json.dumps(normalized, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+        temp_path.replace(ledger_path)
+        fcntl.flock(lock_fh.fileno(), fcntl.LOCK_UN)
+    return normalized
+
+
+def load_calibration_summary(ledger_path: str | Path) -> dict[str, Any]:
+    ledger_path = Path(ledger_path)
+    if not ledger_path.exists():
+        return {
+            "entry_count": 0,
+            "overall_mae": 0.0,
+            "classification_mae": 0.0,
+            "description_mae": 0.0,
+            "entries": [],
+        }
+    entries = [
+        _normalize_calibration_entry(json.loads(line))
+        for line in ledger_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    return {
+        "entry_count": len(entries),
+        "overall_mae": _mean_abs_error(entries, "shadow_overall_expected", "official_overall"),
+        "classification_mae": _mean_abs_error(entries, "shadow_classification_expected", "official_classification"),
+        "description_mae": _mean_abs_error(entries, "shadow_description_expected", "official_description"),
+        "entries": entries,
+    }
+
+
+def _normalize_calibration_entry(entry: dict[str, Any]) -> dict[str, Any]:
+    normalized = {
+        "submission_id": str(entry["submission_id"]),
+        "file_name": str(entry["file_name"]),
+        "shadow_overall_expected": float(entry["shadow_overall_expected"]),
+        "shadow_classification_expected": float(entry["shadow_classification_expected"]),
+        "shadow_description_expected": float(entry["shadow_description_expected"]),
+        "official_overall": float(entry["official_overall"]),
+        "official_classification": float(entry["official_classification"]),
+        "official_description": float(entry["official_description"]),
+        "notes": str(entry.get("notes", "")),
+    }
+    for key, value in normalized.items():
+        if key.endswith("_expected") or key.startswith("official_"):
+            if not math.isfinite(float(value)):
+                raise ValueError(f"calibration value must be finite: {key}")
+            if not 0.0 <= float(value) <= 1.0:
+                raise ValueError(f"calibration value must be in [0, 1]: {key}")
+    if not normalized["submission_id"]:
+        raise ValueError("submission_id is required")
+    if not normalized["file_name"]:
+        raise ValueError("file_name is required")
+    return normalized
+
+
+def _mean_abs_error(entries: list[dict[str, Any]], predicted_key: str, actual_key: str) -> float:
+    if not entries:
+        return 0.0
+    return sum(abs(float(item[predicted_key]) - float(item[actual_key])) for item in entries) / len(entries)
+
+
 def _classification_band(
     *,
     safety: SafetyGateResult,

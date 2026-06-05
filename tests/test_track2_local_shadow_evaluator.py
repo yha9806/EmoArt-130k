@@ -6,8 +6,10 @@ from pathlib import Path
 from affectiveart.track2_local_shadow_evaluator import (
     OFFICIAL_ANCHOR,
     ScoreBand,
+    append_calibration_entry,
     compute_classification_score,
     compute_task_score,
+    load_calibration_summary,
     rank_shadow_candidates,
     run_candidate_safety_gate,
     score_candidate_rows,
@@ -175,3 +177,63 @@ class Track2LocalShadowScoringTest(unittest.TestCase):
         )
         ranked = rank_shadow_candidates([risky, safe])
         self.assertEqual([item.candidate_name for item in ranked], ["safe", "risky"])
+
+
+class Track2LocalShadowCalibrationTest(unittest.TestCase):
+    def test_calibration_ledger_records_feedback_and_mae(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "calibration_ledger.jsonl"
+            append_calibration_entry(
+                ledger_path=ledger,
+                entry={
+                    "submission_id": "779605",
+                    "file_name": "track2_submission_moe_v2_accept5_candidate.zip",
+                    "shadow_overall_expected": 0.840000,
+                    "shadow_classification_expected": 0.724000,
+                    "shadow_description_expected": 0.956000,
+                    "official_overall": 0.836408,
+                    "official_classification": 0.723150,
+                    "official_description": 0.949667,
+                    "notes": "first anchor",
+                },
+            )
+            summary = load_calibration_summary(ledger)
+            self.assertEqual(summary["entry_count"], 1)
+            self.assertAlmostEqual(summary["overall_mae"], abs(0.840000 - 0.836408))
+            self.assertAlmostEqual(summary["classification_mae"], abs(0.724000 - 0.723150))
+            self.assertAlmostEqual(summary["description_mae"], abs(0.956000 - 0.949667))
+
+    def test_calibration_ledger_rejects_nan_and_preserves_existing_entry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "calibration_ledger.jsonl"
+            append_calibration_entry(
+                ledger_path=ledger,
+                entry={
+                    "submission_id": "779605",
+                    "file_name": "track2_submission_moe_v2_accept5_candidate.zip",
+                    "shadow_overall_expected": 0.840000,
+                    "shadow_classification_expected": 0.724000,
+                    "shadow_description_expected": 0.956000,
+                    "official_overall": 0.836408,
+                    "official_classification": 0.723150,
+                    "official_description": 0.949667,
+                    "notes": "first anchor",
+                },
+            )
+            with self.assertRaises(ValueError):
+                append_calibration_entry(
+                    ledger_path=ledger,
+                    entry={
+                        "submission_id": "bad",
+                        "file_name": "bad.zip",
+                        "shadow_overall_expected": float("nan"),
+                        "shadow_classification_expected": 0.724000,
+                        "shadow_description_expected": 0.956000,
+                        "official_overall": 0.836408,
+                        "official_classification": 0.723150,
+                        "official_description": 0.949667,
+                        "notes": "bad anchor",
+                    },
+                )
+            summary = load_calibration_summary(ledger)
+            self.assertEqual(summary["entry_count"], 1)
