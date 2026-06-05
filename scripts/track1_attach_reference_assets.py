@@ -26,6 +26,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out-csv", required=True, type=Path)
     parser.add_argument("--out-md", required=True, type=Path)
     parser.add_argument("--max-assets-per-route", type=int, default=4)
+    parser.add_argument(
+        "--selection-mode",
+        choices=["stable", "diversity_balanced"],
+        default="stable",
+    )
     return parser
 
 
@@ -37,6 +42,7 @@ def main(argv: list[str] | None = None) -> int:
             load_reference_asset_index(args.reference_assets_index_json),
             asset_root=args.reference_assets_dir,
             max_assets_per_route=args.max_assets_per_route,
+            selection_mode=args.selection_mode,
         )
         write_reference_asset_route_reports(
             routes,
@@ -48,7 +54,24 @@ def main(argv: list[str] | None = None) -> int:
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
-    print(json.dumps({"out_json": str(args.out_json), "total": len(routes)}, indent=2, ensure_ascii=False))
+    unique_assets = {
+        Path(asset).name
+        for route in routes
+        for asset in route.get("reference_assets", [])
+    }
+    print(
+        json.dumps(
+            {
+                "out_json": str(args.out_json),
+                "total": len(routes),
+                "selection_mode": args.selection_mode,
+                "unique_reference_assets": len(unique_assets),
+                "diversity_limited_routes": sum(1 for route in routes if route.get("reference_diversity_limited")),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+    )
     return 0
 
 

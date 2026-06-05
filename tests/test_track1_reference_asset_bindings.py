@@ -195,6 +195,107 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
             _reference_identity("different_1941_battlefront.jpg"),
         )
 
+    def test_diversity_balanced_rotates_candidates_when_pool_exceeds_slots(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            style_items = []
+            for index in range(6):
+                filename = f"abstract_ref_{index}.jpg"
+                Image.new("RGB", (180, 180), (20 + index, 40, 80)).save(assets / filename)
+                style_items.append({"file": filename, "note": f"abstract reference {index}"})
+            routes_in = []
+            for index in range(3):
+                route = _route(sample_id=f"track1_{index:04d}", family_id="generic_artwork")
+                route["caption"] = "An abstract composition with geometric forms."
+                routes_in.append(route)
+            index_payload = {"references": {}, "family_references": {}, "caption_style_references": {"abstract": style_items}}
+
+            routes = attach_reference_assets_to_routes(
+                routes_in,
+                index_payload,
+                asset_root=assets,
+                max_assets_per_route=2,
+                selection_mode="diversity_balanced",
+            )
+
+        selected_names = {Path(asset).name for route in routes for asset in route["reference_assets"]}
+        self.assertGreater(len(selected_names), 2)
+        self.assertTrue(all(route["reference_selection_mode"] == "diversity_balanced" for route in routes))
+        self.assertTrue(all(route["reference_candidate_pool_size"] == 6 for route in routes))
+        self.assertTrue(all(route["reference_diversity_limited"] is False for route in routes))
+
+    def test_diversity_balanced_reports_limited_pool_when_all_candidates_are_required(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            style_items = []
+            for index in range(2):
+                filename = f"abstract_limited_{index}.jpg"
+                Image.new("RGB", (180, 180), (80, 40 + index, 20)).save(assets / filename)
+                style_items.append({"file": filename, "note": f"abstract reference {index}"})
+            routes_in = []
+            for index in range(2):
+                route = _route(sample_id=f"track1_{index:04d}", family_id="generic_artwork")
+                route["caption"] = "An abstract composition with geometric forms."
+                routes_in.append(route)
+            index_payload = {"references": {}, "family_references": {}, "caption_style_references": {"abstract": style_items}}
+
+            routes = attach_reference_assets_to_routes(
+                routes_in,
+                index_payload,
+                asset_root=assets,
+                max_assets_per_route=2,
+                selection_mode="diversity_balanced",
+            )
+
+        self.assertTrue(all(route["reference_candidate_pool_size"] == 2 for route in routes))
+        self.assertTrue(all(route["reference_diversity_limited"] is True for route in routes))
+        self.assertTrue(all(len(route["reference_selected_identities"]) == 2 for route in routes))
+        self.assertTrue(all(Path(route["reference_assets"][0]).name == "abstract_limited_0.jpg" for route in routes))
+
+    def test_diversity_balanced_keeps_family_poster_anchors_before_media_fill(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            family_items = []
+            for filename in ("Kukryniksy-AnchorA.jpg", "Kukryniksy-AnchorB.jpg"):
+                Image.new("RGB", (180, 320), (180, 30, 30)).save(assets / filename)
+                family_items.append({"file": filename, "note": "family poster anchor"})
+            media_items = []
+            for index in range(4):
+                filename = f"TASSWindowPoster{index}.jpg"
+                Image.new("RGB", (180, 320), (30, 30, 150 + index)).save(assets / filename)
+                media_items.append({"file": filename, "note": f"media poster {index}"})
+            routes_in = []
+            for index in range(2):
+                route = _route(sample_id=f"track1_{index:04d}", family_id="battle_tank_cavalry")
+                route["caption"] = "A Socialist Realism propaganda poster with soldiers and bold Cyrillic typography."
+                routes_in.append(route)
+            index_payload = {
+                "references": {},
+                "family_references": {"battle_tank_cavalry": family_items},
+                "caption_style_references": {"socialist realism": media_items},
+            }
+
+            routes = attach_reference_assets_to_routes(
+                routes_in,
+                index_payload,
+                asset_root=assets,
+                max_assets_per_route=4,
+                selection_mode="diversity_balanced",
+            )
+
+        for route in routes:
+            selected = [Path(asset).name for asset in route["reference_assets"]]
+            self.assertIn("Kukryniksy-AnchorA.jpg", selected)
+            self.assertIn("Kukryniksy-AnchorB.jpg", selected)
+            self.assertEqual(route["reference_asset_source"], "caption_media_reranked")
+            self.assertEqual(route["reference_candidate_pool_size"], 6)
+
     def test_non_poster_caption_keeps_family_reference_priority(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

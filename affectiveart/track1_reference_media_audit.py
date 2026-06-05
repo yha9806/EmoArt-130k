@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import json
 import os
+from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -76,6 +77,7 @@ def build_reference_media_audit(
         },
         "changed_rows": changed_rows,
         "sample_source_risks": sample_source_risks,
+        "selection_summary": _reference_selection_summary(new_by_id.values()),
         "tainted_partial_samples": tainted_ids,
         "tainted_partial_rows": tainted_rows,
     }
@@ -109,9 +111,29 @@ def render_reference_media_audit_md(report: dict[str, Any]) -> str:
         f"- Partial candidate samples: {summary.get('partial_candidate_samples', 0)}",
         f"- Tainted partial samples: {summary.get('tainted_partial_samples', 0)}",
         "",
-        "## Changed Samples",
+        "## Reference 多样性诊断",
         "",
     ]
+    selection_summary = report.get("selection_summary", {})
+    lines.extend(
+        [
+            f"- Reference slots: {selection_summary.get('reference_asset_slots', 0)}",
+            f"- Unique reference assets: {selection_summary.get('unique_reference_assets', 0)}",
+            f"- Diversity-limited routes: {selection_summary.get('diversity_limited_routes', 0)}",
+            "",
+            "### Top Reference Reuse",
+            "",
+        ]
+    )
+    for row in selection_summary.get("top_reference_reuse", []):
+        lines.append(f"- {row.get('count')}: {row.get('file')}")
+    lines.extend(
+        [
+            "",
+            "## Changed Samples",
+            "",
+        ]
+    )
     for row in report.get("changed_rows", []):
         lines.append(
             f"- `{row.get('sample_id')}`: {row.get('old_source')} -> {row.get('new_source')} "
@@ -132,6 +154,7 @@ def render_reference_media_audit_md(report: dict[str, Any]) -> str:
 def render_reference_media_audit_html(report: dict[str, Any], *, out_html: str | Path) -> str:
     out_html = Path(out_html)
     summary = report.get("summary", {})
+    selection_summary = report.get("selection_summary", {})
     changed_cards = "\n".join(_render_changed_card(row, out_html) for row in report.get("changed_rows", []))
     sample_cards = "\n".join(_render_sample_risk_card(row, out_html) for row in report.get("sample_source_risks", []))
     tainted_cards = "\n".join(_render_tainted_card(row, out_html) for row in report.get("tainted_partial_rows", []))
@@ -265,8 +288,11 @@ def render_reference_media_audit_html(report: dict[str, Any], *, out_html: str |
       {_metric('Sample-source risks', summary.get('sample_source_manual_review', 0))}
       {_metric('Partial candidate samples', summary.get('partial_candidate_samples', 0))}
       {_metric('Tainted partial samples', summary.get('tainted_partial_samples', 0))}
+      {_metric('Unique reference assets', selection_summary.get('unique_reference_assets', 0))}
+      {_metric('多样性受限 routes', selection_summary.get('diversity_limited_routes', 0))}
     </section>
-    <h2>一、v1 -> v2 reference board 变化</h2>
+    {_render_selection_summary(selection_summary)}
+    <h2>一、reference board 变化</h2>
     {changed_cards or '<p>没有变化样本。</p>'}
     <h2>二、sample-specific reference 残留风险</h2>
     {sample_cards or '<p>没有 sample-specific 残留风险。</p>'}
@@ -299,6 +325,32 @@ def _changed_rows(old_by_id: dict[str, dict[str, Any]], new_by_id: dict[str, dic
             }
         )
     return rows
+
+
+def _reference_selection_summary(routes: Iterable[dict[str, Any]]) -> dict[str, Any]:
+    route_list = list(routes)
+    asset_counts = Counter(
+        Path(asset).name
+        for route in route_list
+        for asset in _as_list(route.get("reference_assets"))
+    )
+    mode_counts = Counter(str(route.get("reference_selection_mode") or "") for route in route_list)
+    limited_by_source = Counter(
+        str(route.get("reference_asset_source") or "")
+        for route in route_list
+        if route.get("reference_diversity_limited")
+    )
+    return {
+        "reference_asset_slots": sum(len(_as_list(route.get("reference_assets"))) for route in route_list),
+        "unique_reference_assets": len(asset_counts),
+        "diversity_limited_routes": sum(1 for route in route_list if route.get("reference_diversity_limited")),
+        "selection_modes": dict(sorted(mode_counts.items())),
+        "limited_by_source": dict(sorted(limited_by_source.items())),
+        "top_reference_reuse": [
+            {"file": file, "count": count}
+            for file, count in asset_counts.most_common(20)
+        ],
+    }
 
 
 def _sample_source_risks(new_by_id: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
@@ -464,6 +516,51 @@ def _render_tainted_card(row: dict[str, Any], out_html: Path) -> str:
   </div>
   <p class="caption">{_escape(row.get('reason', ''))}</p>
   <div class="candidate-grid">{figures}</div>
+</section>
+"""
+
+
+def _render_selection_summary(selection_summary: dict[str, Any]) -> str:
+    top_rows = "\n".join(
+        f"<li><strong>{_escape(row.get('count', 0))}</strong> {_escape(row.get('file', ''))}</li>"
+        for row in selection_summary.get("top_reference_reuse", [])[:12]
+    )
+    limited_items = "\n".join(
+        f"<li><strong>{_escape(count)}</strong> {_escape(source or 'unknown source')}</li>"
+        for source, count in selection_summary.get("limited_by_source", {}).items()
+    )
+    mode_items = "\n".join(
+        f"<li><strong>{_escape(count)}</strong> {_escape(mode or 'unspecified')}</li>"
+        for mode, count in selection_summary.get("selection_modes", {}).items()
+    )
+    return f"""
+<section class="card">
+  <div class="head">
+    <div>
+      <h2>Reference 多样性诊断</h2>
+      <p class="caption">这部分判断重复 reference 是 selector 排序问题，还是候选池本身太小。多样性受限 route 表示合法候选数不超过每个样本可携带的 reference 槽位，不能靠重排解决。</p>
+    </div>
+    <span class="badge">diversity ceiling</span>
+  </div>
+  <div class="summary">
+    {_metric('Reference slots', selection_summary.get('reference_asset_slots', 0))}
+    {_metric('Unique refs used', selection_summary.get('unique_reference_assets', 0))}
+    {_metric('多样性受限 routes', selection_summary.get('diversity_limited_routes', 0))}
+  </div>
+  <div class="board-grid">
+    <div>
+      <h3>Selection modes</h3>
+      <ul>{mode_items or '<li>无</li>'}</ul>
+    </div>
+    <div>
+      <h3>Limited by source</h3>
+      <ul>{limited_items or '<li>无</li>'}</ul>
+    </div>
+    <div>
+      <h3>Top reference reuse</h3>
+      <ul>{top_rows or '<li>无</li>'}</ul>
+    </div>
+  </div>
 </section>
 """
 

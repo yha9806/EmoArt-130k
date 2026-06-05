@@ -142,6 +142,36 @@ class Track1ReferenceMediaAuditTest(unittest.TestCase):
         self.assertNotIn("<script>", html)
         self.assertIn("&lt;script&gt;", html)
 
+    def test_audit_summarizes_reference_diversity_ceiling(self):
+        route_a = {
+            "sample_id": "track1_0001",
+            "caption": "An abstract artwork.",
+            "reference_asset_source": "caption_style",
+            "reference_assets": ["/tmp/ref_a.jpg", "/tmp/ref_b.jpg"],
+            "reference_selection_mode": "diversity_balanced",
+            "reference_candidate_pool_size": 2,
+            "reference_diversity_limited": True,
+        }
+        route_b = {
+            "sample_id": "track1_0002",
+            "caption": "An abstract artwork.",
+            "reference_asset_source": "caption_style",
+            "reference_assets": ["/tmp/ref_a.jpg", "/tmp/ref_c.jpg"],
+            "reference_selection_mode": "diversity_balanced",
+            "reference_candidate_pool_size": 3,
+            "reference_diversity_limited": False,
+        }
+
+        report = build_reference_media_audit([route_a, route_b], [route_a, route_b])
+        rendered = render_reference_media_audit_html(report, out_html=Path("/tmp/audit.html"))
+
+        self.assertEqual(report["selection_summary"]["reference_asset_slots"], 4)
+        self.assertEqual(report["selection_summary"]["unique_reference_assets"], 3)
+        self.assertEqual(report["selection_summary"]["diversity_limited_routes"], 1)
+        self.assertEqual(report["selection_summary"]["top_reference_reuse"][0]["file"], "ref_a.jpg")
+        self.assertIn("Reference 多样性诊断", rendered)
+        self.assertIn("多样性受限 routes", rendered)
+
     def test_write_artifacts_sanitizes_sample_id_board_filenames(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

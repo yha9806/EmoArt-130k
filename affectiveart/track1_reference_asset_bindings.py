@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 from collections import Counter
 from pathlib import Path
@@ -9,7 +10,10 @@ from typing import Any, Iterable
 from affectiveart.track1_reference_family_bank import _safe_output_paths
 
 
-BINDING_VERSION = "track1_reference_asset_bindings_v3"
+BINDING_VERSION = "track1_reference_asset_bindings_v4"
+
+VALID_SELECTION_MODES = {"stable", "diversity_balanced"}
+PROTECTED_FAMILY_POSTER_NOTE = "preserved family poster/print reference"
 
 POSTER_CAPTION_KEYWORDS = (
     "propaganda poster",
@@ -97,21 +101,37 @@ def attach_reference_assets_to_routes(
     *,
     asset_root: str | Path,
     max_assets_per_route: int = 4,
+    selection_mode: str = "stable",
 ) -> list[dict[str, Any]]:
     if max_assets_per_route <= 0:
         raise ValueError("max_assets_per_route must be positive")
+    if selection_mode not in VALID_SELECTION_MODES:
+        valid = ", ".join(sorted(VALID_SELECTION_MODES))
+        raise ValueError(f"selection_mode must be one of: {valid}")
     asset_root_path = Path(asset_root).expanduser()
+    usage_counts: Counter[str] = Counter()
     output: list[dict[str, Any]] = []
     for route in routes:
         normalized = _validated_route(route, len(output))
         candidates = _candidate_items_for_route(normalized, reference_asset_index)
-        selected = _select_existing_assets(candidates, asset_root_path, max_assets_per_route=max_assets_per_route)
+        selected = _select_existing_assets(
+            candidates,
+            asset_root_path,
+            max_assets_per_route=max_assets_per_route,
+            selection_mode=selection_mode,
+            sample_id=normalized["sample_id"],
+            usage_counts=usage_counts,
+        )
         route_out = dict(normalized)
         route_out["reference_assets"] = [str(item["path"]) for item in selected["items"]]
         route_out["reference_asset_notes"] = [str(item["note"]) for item in selected["items"] if str(item["note"])]
         route_out["reference_asset_source"] = selected["source"]
         route_out["reference_style_key"] = selected["style_key"]
         route_out["reference_asset_missing"] = selected["missing"]
+        route_out["reference_selection_mode"] = selection_mode
+        route_out["reference_candidate_pool_size"] = selected["candidate_pool_size"]
+        route_out["reference_selected_identities"] = selected["selected_identities"]
+        route_out["reference_diversity_limited"] = selected["diversity_limited"]
         output.append(route_out)
     return output
 
@@ -191,12 +211,14 @@ def _select_existing_assets(
     asset_root: Path,
     *,
     max_assets_per_route: int,
+    selection_mode: str,
+    sample_id: str,
+    usage_counts: Counter[str],
 ) -> dict[str, Any]:
-    selected: list[dict[str, str]] = []
+    resolved: list[dict[str, str]] = []
     missing: list[str] = []
-    source = "missing"
     seen: set[str] = set()
-    for item in candidates:
+    for index, item in enumerate(candidates):
         path = _asset_path(asset_root, item["file"])
         key = str(path)
         if key in seen:
@@ -205,20 +227,71 @@ def _select_existing_assets(
         if not path.exists() or not path.is_file():
             missing.append(str(path))
             continue
-        if source == "missing":
-            source = item["source"]
-        selected.append(
+        resolved.append(
             {
                 "path": str(path),
                 "note": item.get("note", ""),
                 "source": item["source"],
                 "style_key": item.get("style_key", ""),
+                "identity": _reference_identity(path.name),
+                "original_index": str(index),
             }
         )
-        if len(selected) >= max_assets_per_route:
-            break
+    selected = _select_resolved_assets(
+        resolved,
+        max_assets_per_route=max_assets_per_route,
+        selection_mode=selection_mode,
+        sample_id=sample_id,
+        usage_counts=usage_counts,
+    )
+    for item in selected:
+        usage_counts.update([item["identity"]])
+    source = str(selected[0]["source"]) if selected else "missing"
     style_key = str(selected[0].get("style_key") or "") if selected else ""
-    return {"items": selected, "source": source, "style_key": style_key, "missing": missing}
+    diversity_limited = bool(selected and source != "sample" and len(resolved) <= max_assets_per_route)
+    return {
+        "items": selected,
+        "source": source,
+        "style_key": style_key,
+        "missing": missing,
+        "candidate_pool_size": len(resolved),
+        "selected_identities": [str(item["identity"]) for item in selected],
+        "diversity_limited": diversity_limited,
+    }
+
+
+def _select_resolved_assets(
+    resolved: list[dict[str, str]],
+    *,
+    max_assets_per_route: int,
+    selection_mode: str,
+    sample_id: str,
+    usage_counts: Counter[str],
+) -> list[dict[str, str]]:
+    if selection_mode == "stable" or len(resolved) <= max_assets_per_route:
+        return resolved[:max_assets_per_route]
+    if resolved and resolved[0].get("source") == "sample":
+        return resolved[:max_assets_per_route]
+    protected = [
+        item
+        for item in resolved
+        if PROTECTED_FAMILY_POSTER_NOTE in str(item.get("note", ""))
+    ][: min(2, max_assets_per_route)]
+    protected_keys = {str(item["path"]) for item in protected}
+    remaining = [item for item in resolved if str(item["path"]) not in protected_keys]
+    remaining.sort(
+        key=lambda item: (
+            usage_counts[str(item["identity"])],
+            _stable_diversity_tiebreaker(sample_id, str(item["identity"])),
+            int(item["original_index"]),
+        )
+    )
+    return (protected + remaining)[:max_assets_per_route]
+
+
+def _stable_diversity_tiebreaker(sample_id: str, identity: str) -> int:
+    digest = hashlib.sha1(f"{sample_id}:{identity}".encode("utf-8")).hexdigest()
+    return int(digest[:12], 16)
 
 
 def _caption_style_items(
@@ -330,10 +403,22 @@ def _asset_path(asset_root: Path, file_value: str) -> Path:
 def _summary(routes: list[dict[str, Any]]) -> dict[str, Any]:
     family_counts = Counter(str(route.get("family_id") or "") for route in routes)
     source_counts = Counter(str(route.get("reference_asset_source") or "") for route in routes)
+    asset_counts = Counter(
+        Path(str(asset)).name
+        for route in routes
+        for asset in route.get("reference_assets", [])
+    )
     return {
         "version": BINDING_VERSION,
         "total": len(routes),
         "routes_with_reference_assets": sum(1 for route in routes if route.get("reference_assets")),
+        "reference_asset_slots": sum(len(route.get("reference_assets", [])) for route in routes),
+        "unique_reference_assets": len(asset_counts),
+        "diversity_limited_routes": sum(1 for route in routes if route.get("reference_diversity_limited")),
+        "top_reference_reuse": [
+            {"file": file, "count": count}
+            for file, count in asset_counts.most_common(20)
+        ],
         "reference_asset_sources": dict(sorted(source_counts.items())),
         "families": dict(sorted(family_counts.items())),
     }
@@ -348,6 +433,10 @@ def _write_csv(routes: list[dict[str, Any]], csv_path: Path) -> None:
         "reference_assets",
         "reference_asset_notes",
         "reference_asset_missing",
+        "reference_selection_mode",
+        "reference_candidate_pool_size",
+        "reference_diversity_limited",
+        "reference_selected_identities",
         "caption",
     ]
     with csv_path.open("w", encoding="utf-8", newline="") as fh:
@@ -363,6 +452,10 @@ def _write_csv(routes: list[dict[str, Any]], csv_path: Path) -> None:
                     "reference_assets": " | ".join(route.get("reference_assets", [])),
                     "reference_asset_notes": " | ".join(route.get("reference_asset_notes", [])),
                     "reference_asset_missing": " | ".join(route.get("reference_asset_missing", [])),
+                    "reference_selection_mode": route.get("reference_selection_mode", ""),
+                    "reference_candidate_pool_size": route.get("reference_candidate_pool_size", ""),
+                    "reference_diversity_limited": route.get("reference_diversity_limited", ""),
+                    "reference_selected_identities": " | ".join(route.get("reference_selected_identities", [])),
                     "caption": route.get("caption", ""),
                 }
             )
@@ -380,12 +473,18 @@ def _render_md(payload: dict[str, Any]) -> str:
         f"- Version: {summary['version']}",
         f"- Routes: {summary['total']}",
         f"- Routes with reference assets: {summary['routes_with_reference_assets']}",
+        f"- Reference asset slots: {summary['reference_asset_slots']}",
+        f"- Unique reference assets: {summary['unique_reference_assets']}",
+        f"- Diversity-limited routes: {summary['diversity_limited_routes']}",
         "",
         "## Sources",
         "",
     ]
     for source, count in summary["reference_asset_sources"].items():
         lines.append(f"- {source}: {count}")
+    lines.extend(["", "## Top Reference Reuse", ""])
+    for row in summary["top_reference_reuse"]:
+        lines.append(f"- {row['count']}: {row['file']}")
     lines.extend(["", "## Routes", ""])
     for route in payload["routes"]:
         assets = route.get("reference_assets", [])
@@ -396,6 +495,9 @@ def _render_md(payload: dict[str, Any]) -> str:
                 f"- Family: {route.get('family_id', '')}",
                 f"- Source: {route.get('reference_asset_source', '')}",
                 f"- Style key: {route.get('reference_style_key', '')}",
+                f"- Selection mode: {route.get('reference_selection_mode', '')}",
+                f"- Candidate pool size: {route.get('reference_candidate_pool_size', '')}",
+                f"- Diversity limited: {route.get('reference_diversity_limited', '')}",
                 f"- Reference assets: {len(assets)}",
             ]
         )
