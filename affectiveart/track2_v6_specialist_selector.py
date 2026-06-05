@@ -5,7 +5,7 @@ from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
-from affectiveart.challenge import TRACK2_JSON_SUBMISSION_KEYS
+from affectiveart.challenge import TRACK2_JSON_EMOTIONS, TRACK2_JSON_SUBMISSION_KEYS
 from affectiveart.track2_moe_specialist_ensemble import expected_label_for_emotion
 
 
@@ -44,6 +44,7 @@ class V6Delta:
     hard96_net_gain: int = 0
     hard96_net_loss: int = 0
     malformed: bool = False
+    malformed_reasons: tuple[str, ...] = ()
     raw: dict[str, Any] = field(default_factory=dict)
 
 
@@ -57,6 +58,7 @@ class SelectorThresholds:
     cross_min_families: int = 3
     cross_min_fit_margin: float = 0.30
     cross_min_hard96_gain: int = 1
+    max_cross_micro: int = 3
 
 
 @dataclass(frozen=True)
@@ -114,12 +116,9 @@ def build_candidate_rows(
     decisions: list[SelectorDecision],
     *,
     ladder: str,
+    thresholds: SelectorThresholds | None = None,
 ) -> list[dict[str, Any]]:
-    selected = {
-        decision.sample_id: decision
-        for decision in decisions
-        if decision.ladder == ladder and decision.decision in {ACCEPT_SAFE, ACCEPT_CROSS_MICRO}
-    }
+    selected = _selected_decisions_for_ladder(decisions, ladder, thresholds or SelectorThresholds())
     output: list[dict[str, Any]] = []
     for baseline in baseline_rows:
         row = dict(baseline)
@@ -141,7 +140,19 @@ def _delta_from_row(row: dict[str, Any]) -> V6Delta:
     sample_id = _text(row.get("sample_id"))
     current_emotion = _emotion(row.get("current_emotion"))
     proposed_emotion = _emotion(row.get("proposed_emotion"))
-    malformed = any(not item for item in (sample_id, current_emotion, proposed_emotion))
+    supporting_source_count = _int(row.get("supporting_source_count"))
+    supporting_family_count = _int(row.get("supporting_family_count"))
+    supporting_sources = _split_list(row.get("supporting_sources"))
+    supporting_families = _split_list(row.get("supporting_families"))
+    malformed_reasons = _malformed_reasons(
+        sample_id=sample_id,
+        current_emotion=current_emotion,
+        proposed_emotion=proposed_emotion,
+        supporting_source_count=supporting_source_count,
+        supporting_family_count=supporting_family_count,
+        supporting_sources=supporting_sources,
+        supporting_families=supporting_families,
+    )
 
     current_valence, current_arousal = _labels_for(
         current_emotion,
@@ -177,10 +188,10 @@ def _delta_from_row(row: dict[str, Any]) -> V6Delta:
         transition=transition,
         same_quadrant=same_quadrant,
         cross_quadrant_risk=not same_quadrant,
-        supporting_source_count=_int(row.get("supporting_source_count")),
-        supporting_family_count=_int(row.get("supporting_family_count")),
-        supporting_sources=_split_list(row.get("supporting_sources")),
-        supporting_families=_split_list(row.get("supporting_families")),
+        supporting_source_count=supporting_source_count,
+        supporting_family_count=supporting_family_count,
+        supporting_sources=supporting_sources,
+        supporting_families=supporting_families,
         evidence_score=_float(row.get("evidence_score")),
         gemini35_prefers_proposed=_bool(row.get("gemini35_prefers_proposed")),
         gemini35_fit_margin=_float(row.get("gemini35_fit_margin")),
@@ -191,7 +202,8 @@ def _delta_from_row(row: dict[str, Any]) -> V6Delta:
         human_confirmed=_bool(row.get("human_confirmed")),
         hard96_net_gain=_int(row.get("hard96_net_gain")),
         hard96_net_loss=_int(row.get("hard96_net_loss")),
-        malformed=malformed,
+        malformed=bool(malformed_reasons),
+        malformed_reasons=malformed_reasons,
         raw=raw,
     )
 
@@ -202,7 +214,7 @@ def _select_one(delta: V6Delta, thresholds: SelectorThresholds) -> SelectorDecis
     ladder = ""
 
     if delta.malformed:
-        reasons.append("missing_required_delta_field")
+        reasons.extend(delta.malformed_reasons or ("missing_required_delta_field",))
     if delta.public_reference_contradiction:
         reasons.append("public_reference_contradiction")
     if delta.gemini35_objection:
@@ -282,6 +294,72 @@ def _dangerous_positive_low_to_negative(delta: V6Delta) -> bool:
         and delta.current_arousal == "Low"
         and delta.proposed_valence == "Negative"
     )
+
+
+def _selected_decisions_for_ladder(
+    decisions: list[SelectorDecision],
+    ladder: str,
+    thresholds: SelectorThresholds,
+) -> dict[str, SelectorDecision]:
+    if ladder not in V6_LADDERS:
+        raise ValueError(f"unknown v6 ladder: {ladder}")
+
+    safe_decisions = [
+        decision
+        for decision in decisions
+        if decision.decision == ACCEPT_SAFE and decision.ladder == "v6_safe_sameq"
+    ]
+    if ladder == "v6_safe_sameq":
+        return {decision.sample_id: decision for decision in safe_decisions}
+
+    cross_decisions = _capped_cross_micro_decisions(decisions, thresholds.max_cross_micro)
+    return {
+        decision.sample_id: decision
+        for decision in (*safe_decisions, *cross_decisions)
+    }
+
+
+def _capped_cross_micro_decisions(
+    decisions: list[SelectorDecision],
+    limit: int,
+) -> list[SelectorDecision]:
+    accepted = [
+        decision
+        for decision in decisions
+        if decision.decision == ACCEPT_CROSS_MICRO and decision.ladder == "v6_cross_micro"
+    ]
+    return sorted(
+        accepted,
+        key=lambda decision: (
+            -decision.evidence_score,
+            decision.sample_id,
+            decision.proposed_emotion,
+        ),
+    )[: max(0, limit)]
+
+
+def _malformed_reasons(
+    *,
+    sample_id: str,
+    current_emotion: str,
+    proposed_emotion: str,
+    supporting_source_count: int,
+    supporting_family_count: int,
+    supporting_sources: tuple[str, ...],
+    supporting_families: tuple[str, ...],
+) -> tuple[str, ...]:
+    reasons: list[str] = []
+    if not sample_id or not current_emotion or not proposed_emotion:
+        reasons.append("missing_required_delta_field")
+    if current_emotion and current_emotion not in TRACK2_JSON_EMOTIONS:
+        reasons.append("invalid_track2_emotion")
+    if proposed_emotion and proposed_emotion not in TRACK2_JSON_EMOTIONS:
+        reasons.append("invalid_track2_emotion")
+    if (supporting_source_count > 0 and not supporting_sources) or (
+        supporting_family_count > 0 and not supporting_families
+    ):
+        reasons.append("missing_support_traceability")
+    return tuple(dict.fromkeys(reasons))
 
 
 def _labels_for(emotion: str, valence: Any, arousal: Any) -> tuple[str, str]:
