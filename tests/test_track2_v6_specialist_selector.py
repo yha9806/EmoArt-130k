@@ -16,6 +16,7 @@ from affectiveart.track2_v6_specialist_selector import (
     select_v6_deltas,
     write_v6_outputs,
 )
+from scripts.track2_v6_specialist_selector import _format_cli_summary
 
 
 def row(sample_id, emotion, valence=None, arousal=None):
@@ -843,6 +844,24 @@ class Track2V6WriterTest(unittest.TestCase):
 
 
 class Track2V6CliTest(unittest.TestCase):
+    def test_cli_summary_formatter_handles_empty_ranking(self):
+        line = _format_cli_summary({}, {"ranking": []})
+        malformed_line = _format_cli_summary({"decision": "review"}, {"ranking": {}})
+
+        self.assertEqual(
+            line,
+            (
+                "track2 v6 selector "
+                "decision=invalid "
+                "top_candidate=none "
+                "overall_expected=0.000000 "
+                "overall_lower=0.000000"
+            ),
+        )
+        self.assertIn("decision=review", malformed_line)
+        self.assertIn("top_candidate=none", malformed_line)
+        self.assertIn("overall_expected=0.000000", malformed_line)
+
     def test_cli_run_writes_summary_and_safe_sameq_zip(self):
         repo_root = Path(__file__).resolve().parents[1]
         baseline = [
