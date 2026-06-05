@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0708",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism wartime poster of Soviet soldiers advancing through a rugged battlefield, with a front soldier holding a submachine gun and another raising a red banner, rendered in heroic composition, muted earth tones, and bold Cyrillic typography.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

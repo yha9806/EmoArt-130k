@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0593",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a monumental sword-wielding historical figure above soldiers raising red flags amid a liberated battlefield town, rendered in dramatic colors and strong graphic brushwork.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

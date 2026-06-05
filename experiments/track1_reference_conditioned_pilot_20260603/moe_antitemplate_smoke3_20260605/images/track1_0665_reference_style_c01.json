@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0665",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

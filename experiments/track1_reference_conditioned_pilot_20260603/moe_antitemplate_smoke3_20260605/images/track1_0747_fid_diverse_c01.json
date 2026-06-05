@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0747",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet wartime propaganda poster with bold Cyrillic lettering, mounted soldiers, fleeing civilians, burning village ruins, aircraft overhead, and dramatic brushwork in a muted blue, red, and ochre palette.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

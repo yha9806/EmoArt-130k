@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0898",
+  "candidate_index": 1,
+  "caption": "Socialist Realism poster art of Soviet soldiers charging through a snowy battlefield with a raised rifle, a red flag, bold Cyrillic slogans, dramatic action, and a muted red-blue color palette.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

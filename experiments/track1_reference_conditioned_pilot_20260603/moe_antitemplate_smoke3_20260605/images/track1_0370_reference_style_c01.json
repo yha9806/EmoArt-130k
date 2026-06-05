@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0370",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet propaganda poster with a group of young people holding bouquets around a decorated soldier, backed by sweeping red flags, Cyrillic slogans, and a bright celebratory color palette.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

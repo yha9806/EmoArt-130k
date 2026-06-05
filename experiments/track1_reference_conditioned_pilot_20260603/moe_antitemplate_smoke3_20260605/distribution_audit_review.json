@@ -1,0 +1,674 @@
+{
+  "prompt_lint": {
+    "phrases": {
+      "fewer, larger": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "fewer, larger text blocks": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "fewer/larger text blocks": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "flat printed poster": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "front-facing": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "graphic poster composition": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "internal poster margins": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "medium-distance figures": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "portrait poster canvas": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      }
+    },
+    "summary": {
+      "failed_phrases": [],
+      "justified_phrases": [],
+      "status": "pass",
+      "threshold": 0.6,
+      "total": 28,
+      "version": "track1_prompt_lint_v1",
+      "warned_phrases": []
+    },
+    "version": "track1_prompt_lint_v1"
+  },
+  "rows": [
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0665_aas_safe_c01.png",
+      "luma_stddev": 64.152605,
+      "mean_luma": 83.209523,
+      "sample_id": "track1_0665",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0665_reference_style_c01.png",
+      "luma_stddev": 68.675329,
+      "mean_luma": 93.896329,
+      "sample_id": "track1_0665",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0665_fid_diverse_c01.png",
+      "luma_stddev": 67.278749,
+      "mean_luma": 92.998346,
+      "sample_id": "track1_0665",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_aas_safe_c01.png",
+      "luma_stddev": 58.467065,
+      "mean_luma": 73.318631,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_reference_style_c01.png",
+      "luma_stddev": 66.698243,
+      "mean_luma": 86.516664,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_fid_diverse_c01.png",
+      "luma_stddev": 66.301785,
+      "mean_luma": 87.132909,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_aas_safe_c01.png",
+      "luma_stddev": 76.014031,
+      "mean_luma": 123.319145,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_reference_style_c01.png",
+      "luma_stddev": 77.946865,
+      "mean_luma": 117.338226,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_fid_diverse_c01.png",
+      "luma_stddev": 82.255204,
+      "mean_luma": 138.740552,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "generic_artwork",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0370_aas_safe_c01.png",
+      "luma_stddev": 76.476135,
+      "mean_luma": 145.318717,
+      "sample_id": "track1_0370",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "generic_artwork",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0370_reference_style_c01.png",
+      "luma_stddev": 62.249842,
+      "mean_luma": 109.6825,
+      "sample_id": "track1_0370",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "generic_artwork",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0370_fid_diverse_c01.png",
+      "luma_stddev": 75.326919,
+      "mean_luma": 128.220706,
+      "sample_id": "track1_0370",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_aas_safe_c01.png",
+      "luma_stddev": 66.29722,
+      "mean_luma": 107.803001,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_reference_style_c01.png",
+      "luma_stddev": 72.969944,
+      "mean_luma": 109.007852,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_fid_diverse_c01.png",
+      "luma_stddev": 70.783931,
+      "mean_luma": 110.33073,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0476_aas_safe_c01.png",
+      "luma_stddev": 79.821308,
+      "mean_luma": 137.545278,
+      "sample_id": "track1_0476",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0476_reference_style_c01.png",
+      "luma_stddev": 78.738652,
+      "mean_luma": 141.510983,
+      "sample_id": "track1_0476",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "naval_aviation_vehicle",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0476_fid_diverse_c01.png",
+      "luma_stddev": 77.138313,
+      "mean_luma": 145.287474,
+      "sample_id": "track1_0476",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0898_aas_safe_c01.png",
+      "luma_stddev": 78.061512,
+      "mean_luma": 128.98767,
+      "sample_id": "track1_0898",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0898_reference_style_c01.png",
+      "luma_stddev": 77.225426,
+      "mean_luma": 133.076227,
+      "sample_id": "track1_0898",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0898_fid_diverse_c01.png",
+      "luma_stddev": 73.176659,
+      "mean_luma": 128.096049,
+      "sample_id": "track1_0898",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0708_aas_safe_c01.png",
+      "luma_stddev": 70.149722,
+      "mean_luma": 104.959049,
+      "sample_id": "track1_0708",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0708_reference_style_c01.png",
+      "luma_stddev": 73.850595,
+      "mean_luma": 121.674524,
+      "sample_id": "track1_0708",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0708_fid_diverse_c01.png",
+      "luma_stddev": 71.698259,
+      "mean_luma": 117.290087,
+      "sample_id": "track1_0708",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0353_aas_safe_c01.png",
+      "luma_stddev": 62.227193,
+      "mean_luma": 88.121177,
+      "sample_id": "track1_0353",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0353_reference_style_c01.png",
+      "luma_stddev": 68.04958,
+      "mean_luma": 97.515448,
+      "sample_id": "track1_0353",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "kremlin_red_square",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0353_fid_diverse_c01.png",
+      "luma_stddev": 57.650002,
+      "mean_luma": 85.260206,
+      "sample_id": "track1_0353",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "battle_tank_cavalry",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0593_aas_safe_c01.png",
+      "luma_stddev": 76.773956,
+      "mean_luma": 120.440699,
+      "sample_id": "track1_0593",
+      "style_family": "",
+      "width": 896
+    }
+  ],
+  "summary": {
+    "aspect_labels": {
+      "portrait": 28
+    },
+    "existing_image_count": 28,
+    "family_counts": {
+      "battle_tank_cavalry": 10,
+      "generic_artwork": 3,
+      "kremlin_red_square": 9,
+      "naval_aviation_vehicle": 6
+    },
+    "invalid_image_count": 0,
+    "missing_image_count": 0,
+    "prompt_lint_status": "pass",
+    "strategy_counts": {
+      "aas_safe": 10,
+      "fid_diverse": 9,
+      "reference_style": 9
+    },
+    "style_counts": {},
+    "total": 28,
+    "unreadable_image_count": 0,
+    "version": "track1_distribution_audit_v1"
+  },
+  "version": "track1_distribution_audit_v1"
+}

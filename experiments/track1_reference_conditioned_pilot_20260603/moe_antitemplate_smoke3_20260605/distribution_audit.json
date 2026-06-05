@@ -1,0 +1,308 @@
+{
+  "prompt_lint": {
+    "phrases": {
+      "fewer, larger": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "fewer, larger text blocks": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "fewer/larger text blocks": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "flat printed poster": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "front-facing": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "graphic poster composition": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "internal poster margins": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "medium-distance figures": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      },
+      "portrait poster canvas": {
+        "count": 0,
+        "justifications": [],
+        "justified_count": 0,
+        "justified_ratio": 0.0,
+        "justified_sample_ids": [],
+        "ratio": 0.0,
+        "sample_ids": [],
+        "status": "pass",
+        "unjustified_sample_ids": []
+      }
+    },
+    "summary": {
+      "failed_phrases": [],
+      "justified_phrases": [],
+      "status": "pass",
+      "threshold": 0.6,
+      "total": 9,
+      "version": "track1_prompt_lint_v1",
+      "warned_phrases": []
+    },
+    "version": "track1_prompt_lint_v1"
+  },
+  "rows": [
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_aas_safe_c01.png",
+      "luma_stddev": 58.467065,
+      "mean_luma": 73.318631,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_reference_style_c01.png",
+      "luma_stddev": 66.698243,
+      "mean_luma": 86.516664,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0803_fid_diverse_c01.png",
+      "luma_stddev": 66.301785,
+      "mean_luma": 87.132909,
+      "sample_id": "track1_0803",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_aas_safe_c01.png",
+      "luma_stddev": 76.014031,
+      "mean_luma": 123.319145,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_reference_style_c01.png",
+      "luma_stddev": 77.946865,
+      "mean_luma": 117.338226,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0077_fid_diverse_c01.png",
+      "luma_stddev": 82.255204,
+      "mean_luma": 138.740552,
+      "sample_id": "track1_0077",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "aas_safe",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_aas_safe_c01.png",
+      "luma_stddev": 66.29722,
+      "mean_luma": 107.803001,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "reference_style",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_reference_style_c01.png",
+      "luma_stddev": 72.969944,
+      "mean_luma": 109.007852,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    },
+    {
+      "aspect": {
+        "height": 1200,
+        "label": "portrait",
+        "ratio": 0.7466666666666667,
+        "width": 896
+      },
+      "candidate_strategy": "fid_diverse",
+      "exists": true,
+      "family_id": "",
+      "height": 1200,
+      "image_error": "",
+      "image_path": "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/moe_antitemplate_smoke3_20260605/images/track1_0747_fid_diverse_c01.png",
+      "luma_stddev": 70.783931,
+      "mean_luma": 110.33073,
+      "sample_id": "track1_0747",
+      "style_family": "",
+      "width": 896
+    }
+  ],
+  "summary": {
+    "aspect_labels": {
+      "portrait": 9
+    },
+    "existing_image_count": 9,
+    "family_counts": {},
+    "invalid_image_count": 0,
+    "missing_image_count": 0,
+    "prompt_lint_status": "pass",
+    "strategy_counts": {
+      "aas_safe": 3,
+      "fid_diverse": 3,
+      "reference_style": 3
+    },
+    "style_counts": {},
+    "total": 9,
+    "unreadable_image_count": 0,
+    "version": "track1_distribution_audit_v1"
+  },
+  "version": "track1_distribution_audit_v1"
+}

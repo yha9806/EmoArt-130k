@@ -1,0 +1,14 @@
+{
+  "sample_id": "track1_0803",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism propaganda poster with the Soviet, American, and British flags flying above a Kremlin tower crowned by a red star, framed by dramatic blue searchlight beams, bold Russian text, and a solemn wartime color palette.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}
