@@ -27,13 +27,17 @@ class Track1DistributionAuditTest(unittest.TestCase):
                     "image_path": str(landscape),
                     "candidate_strategy": "fid_diverse",
                     "family_id": "kremlin_red_square",
+                    "style_family": "socialist_realism_poster",
                     "provider_prompt": "front-facing flat printed poster",
                 },
                 {
                     "sample_id": "track1_0002",
                     "image_path": str(portrait),
                     "candidate_strategy": "aas_safe",
-                    "review_metadata": {"family_id": "naval_aviation_vehicle"},
+                    "review_metadata": {
+                        "family_id": "naval_aviation_vehicle",
+                        "style_family": "socialist_realism_poster",
+                    },
                     "provider_prompt": "front-facing flat printed poster",
                 },
             ]
@@ -46,6 +50,7 @@ class Track1DistributionAuditTest(unittest.TestCase):
         self.assertEqual(report["summary"]["aspect_labels"], {"landscape": 1, "portrait": 1})
         self.assertEqual(report["summary"]["strategy_counts"], {"aas_safe": 1, "fid_diverse": 1})
         self.assertEqual(report["summary"]["family_counts"], {"kremlin_red_square": 1, "naval_aviation_vehicle": 1})
+        self.assertEqual(report["summary"]["style_counts"], {"socialist_realism_poster": 2})
         self.assertEqual(report["prompt_lint"]["phrases"]["front-facing"]["count"], 2)
         self.assertEqual(report["prompt_lint"]["summary"]["status"], "fail")
         self.assertEqual(report["rows"][0]["width"], 120)
@@ -54,6 +59,7 @@ class Track1DistributionAuditTest(unittest.TestCase):
         self.assertEqual(report["rows"][0]["mean_luma"], 100.0)
         self.assertEqual(report["rows"][0]["luma_stddev"], 0.0)
         self.assertEqual(report["rows"][1]["aspect"]["label"], "portrait")
+        self.assertEqual(report["rows"][0]["style_family"], "socialist_realism_poster")
 
     def test_family_counts_accept_direct_and_nested_metadata(self):
         rows = [
@@ -61,15 +67,17 @@ class Track1DistributionAuditTest(unittest.TestCase):
                 "sample_id": "track1_0001",
                 "provider_prompt": "wide oil painting",
                 "family_id": "direct_family",
+                "style": "oil_painting",
             },
             {
                 "sample_id": "track1_0002",
                 "provider_prompt": "vertical scroll",
-                "review_metadata": {"family_id": "nested_family"},
+                "review_metadata": {"family_id": "nested_family", "reference_style": "ink_scroll"},
             },
             {
                 "sample_id": "track1_0003",
                 "provider_prompt": "square watercolor",
+                "style_family": "watercolor",
                 "review_metadata": {"family_id": "nested_family"},
             },
         ]
@@ -77,6 +85,7 @@ class Track1DistributionAuditTest(unittest.TestCase):
         report = audit_candidate_distribution(rows)
 
         self.assertEqual(report["summary"]["family_counts"], {"direct_family": 1, "nested_family": 2})
+        self.assertEqual(report["summary"]["style_counts"], {"ink_scroll": 1, "oil_painting": 1, "watercolor": 1})
 
     def test_missing_image_path_or_file_counts_missing_without_crashing(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -116,7 +125,8 @@ class Track1DistributionAuditTest(unittest.TestCase):
             markdown = out_md.read_text(encoding="utf-8")
 
         self.assertEqual(report["summary"]["existing_image_count"], 0)
-        self.assertEqual(report["summary"]["missing_image_count"], 1)
+        self.assertEqual(report["summary"]["missing_image_count"], 0)
+        self.assertEqual(report["summary"]["unreadable_image_count"], 1)
         self.assertEqual(report["summary"]["aspect_labels"], {"unreadable": 1})
         self.assertFalse(report["rows"][0]["exists"])
         self.assertEqual(report["rows"][0]["aspect"]["label"], "unreadable")

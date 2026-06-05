@@ -30,7 +30,15 @@ def audit_candidate_distribution(rows: Iterable[dict[str, Any]]) -> dict[str, An
         for family_id in [_family_id_from_row(row)]
         if family_id
     )
+    style_counts = Counter(
+        style_id
+        for row in items
+        for style_id in [_style_family_from_row(row)]
+        if style_id
+    )
     prompt_lint = lint_prompt_batch(items)
+    missing_image_count = sum(1 for row in audit_rows if row["aspect"]["label"] == "missing")
+    unreadable_image_count = sum(1 for row in audit_rows if row["aspect"]["label"] == "unreadable")
 
     return {
         "version": AUDIT_VERSION,
@@ -38,10 +46,13 @@ def audit_candidate_distribution(rows: Iterable[dict[str, Any]]) -> dict[str, An
             "version": AUDIT_VERSION,
             "total": len(items),
             "existing_image_count": sum(1 for row in audit_rows if row["exists"]),
-            "missing_image_count": sum(1 for row in audit_rows if not row["exists"]),
+            "missing_image_count": missing_image_count,
+            "unreadable_image_count": unreadable_image_count,
+            "invalid_image_count": missing_image_count + unreadable_image_count,
             "aspect_labels": dict(sorted(aspect_counts.items())),
             "strategy_counts": dict(sorted(strategy_counts.items())),
             "family_counts": dict(sorted(family_counts.items())),
+            "style_counts": dict(sorted(style_counts.items())),
             "prompt_lint_status": prompt_lint["summary"]["status"],
         },
         "prompt_lint": prompt_lint,
@@ -129,6 +140,20 @@ def _family_id_from_row(row: dict[str, Any]) -> str:
     return ""
 
 
+def _style_family_from_row(row: dict[str, Any]) -> str:
+    for key in ("style_family", "reference_style", "style", "artistic_style"):
+        value = row.get(key)
+        if value:
+            return str(value)
+    review_metadata = row.get("review_metadata")
+    if isinstance(review_metadata, dict):
+        for key in ("style_family", "reference_style", "style", "artistic_style"):
+            value = review_metadata.get(key)
+            if value:
+                return str(value)
+    return ""
+
+
 def _audit_row(row: dict[str, Any]) -> dict[str, Any]:
     image_stats = _image_stats(row.get("image_path"))
     return {
@@ -143,6 +168,7 @@ def _audit_row(row: dict[str, Any]) -> dict[str, Any]:
         "image_error": str(image_stats.get("image_error") or ""),
         "candidate_strategy": str(row.get("candidate_strategy") or "unspecified"),
         "family_id": _family_id_from_row(row),
+        "style_family": _style_family_from_row(row),
     }
 
 
@@ -193,6 +219,8 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
         f"- Total candidates: {summary.get('total', 0)}",
         f"- Existing images: {summary.get('existing_image_count', 0)}",
         f"- Missing images: {summary.get('missing_image_count', 0)}",
+        f"- Unreadable images: {summary.get('unreadable_image_count', 0)}",
+        f"- Invalid images: {summary.get('invalid_image_count', 0)}",
         f"- Prompt lint status: `{summary.get('prompt_lint_status', '')}`",
         "",
         "## Aspect Labels",
@@ -203,6 +231,8 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
     _append_counts(lines, summary.get("strategy_counts", {}))
     lines.extend(["", "## Reference Families", ""])
     _append_counts(lines, summary.get("family_counts", {}))
+    lines.extend(["", "## Style Families", ""])
+    _append_counts(lines, summary.get("style_counts", {}))
     lines.extend(
         [
             "",
@@ -222,8 +252,8 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
             "",
             "## Rows",
             "",
-            "| Sample | Exists | Aspect | Size | Mean luma | Luma stddev | Image error | Strategy | Family |",
-            "| --- | --- | --- | --- | ---: | ---: | --- | --- | --- |",
+            "| Sample | Exists | Aspect | Size | Mean luma | Luma stddev | Image error | Strategy | Family | Style |",
+            "| --- | --- | --- | --- | ---: | ---: | --- | --- | --- | --- |",
         ]
     )
     for row in report.get("rows", []):
@@ -234,7 +264,8 @@ def _render_markdown_report(report: dict[str, Any]) -> str:
             f"{_format_optional_float(row.get('mean_luma'))} | "
             f"{_format_optional_float(row.get('luma_stddev'))} | "
             f"{row.get('image_error', '')} | "
-            f"{row.get('candidate_strategy', '')} | {row.get('family_id', '')} |"
+            f"{row.get('candidate_strategy', '')} | {row.get('family_id', '')} | "
+            f"{row.get('style_family', '')} |"
         )
     return "\n".join(lines).strip() + "\n"
 

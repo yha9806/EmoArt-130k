@@ -162,7 +162,7 @@ def _validated_prompt_row(row: Any, index: int) -> dict[str, Any]:
         raise ValueError(f"prompt row {index} must be an object")
     if not row.get("sample_id"):
         raise ValueError(f"prompt row {index} missing required sample_id")
-    if not isinstance(_prompt_text(row), str) or not _prompt_text(row).strip():
+    if not _prompt_text(row):
         raise ValueError(f"prompt row {index} missing required provider_prompt or prompt")
     return dict(row)
 
@@ -173,7 +173,13 @@ def _require_prompt_rows(rows: list[Any]) -> None:
 
 
 def _prompt_text(row: dict[str, Any]) -> str:
-    return str(row.get("provider_prompt") or row.get("prompt") or "")
+    provider_prompt = row.get("provider_prompt")
+    if isinstance(provider_prompt, str) and provider_prompt.strip():
+        return provider_prompt
+    prompt = row.get("prompt")
+    if isinstance(prompt, str) and prompt.strip():
+        return prompt
+    return ""
 
 
 def _justification_reasons(row: dict[str, Any], phrase: str) -> list[str]:

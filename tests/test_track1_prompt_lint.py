@@ -224,6 +224,19 @@ class Track1PromptLintTest(unittest.TestCase):
                     ]
                 )
 
+            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+                lint_prompt_batch([{"sample_id": "track1_0002", "provider_prompt": {"text": "wide landscape"}}])
+
+            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+                lint_prompt_batch([{"sample_id": "track1_0003", "prompt": ["wide landscape"]}])
+
+            malformed.write_text(
+                json.dumps({"rows": [{"sample_id": "track1_0004", "provider_prompt": {"text": "wide"}}]}),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "prompt row 0 missing required provider_prompt or prompt"):
+                load_prompt_rows(malformed)
+
     def test_empty_inputs_reject_in_api_and_loaders(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
