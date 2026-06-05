@@ -1,4 +1,5 @@
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -271,3 +272,79 @@ class Track2LocalShadowArtifactsTest(unittest.TestCase):
             markdown = (out_dir / "shadow_score_report.md").read_text(encoding="utf-8")
             self.assertIn("This is a local shadow score", markdown)
             self.assertIn("safe_plus", markdown)
+
+
+class Track2LocalShadowCliTest(unittest.TestCase):
+    def test_cli_scores_candidates_and_writes_report(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            candidate_json = tmp_path / "candidate.json"
+            out_dir = tmp_path / "shadow"
+            rows = full_label_rows()
+            baseline_json.write_text(json.dumps(rows), encoding="utf-8")
+            candidate_json.write_text(json.dumps(rows), encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/track2_local_shadow_evaluator.py",
+                    "score",
+                    "--baseline-json",
+                    str(baseline_json),
+                    "--candidate",
+                    f"baseline={candidate_json}",
+                    "--out-dir",
+                    str(out_dir),
+                    "--expected-row-count",
+                    str(len(rows)),
+                ],
+                cwd=Path.cwd(),
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("local shadow score", result.stdout)
+            self.assertIn("top_candidate=baseline", result.stdout)
+            self.assertTrue((out_dir / "shadow_score_report.md").exists())
+
+    def test_cli_appends_calibration_entry(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "calibration_ledger.jsonl"
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/track2_local_shadow_evaluator.py",
+                    "ledger-add",
+                    "--ledger",
+                    str(ledger),
+                    "--submission-id",
+                    "779605",
+                    "--file-name",
+                    "track2_submission_moe_v2_accept5_candidate.zip",
+                    "--shadow-overall-expected",
+                    "0.840000",
+                    "--shadow-classification-expected",
+                    "0.724000",
+                    "--shadow-description-expected",
+                    "0.956000",
+                    "--official-overall",
+                    "0.836408",
+                    "--official-classification",
+                    "0.723150",
+                    "--official-description",
+                    "0.949667",
+                    "--notes",
+                    "first anchor",
+                ],
+                cwd=Path.cwd(),
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("entry_count=1", result.stdout)
+            self.assertTrue(ledger.exists())
