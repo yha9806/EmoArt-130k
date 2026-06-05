@@ -1,0 +1,50 @@
+{
+  "method": "track2_v5_cross1_candidate_v1",
+  "source_json": "submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+  "json": "submissions/track2_submission_v5_cross1_gemini35_desc_192_candidate.json",
+  "zip": "submissions/track2_submission_v5_cross1_gemini35_desc_192_candidate.zip",
+  "changed_rows": 1,
+  "classification_label_changes": 1,
+  "text_aligned_for_changed_rows": true,
+  "changes": [
+    {
+      "sample_id": "track2_0547",
+      "before": {
+        "sample_id": "track2_0547",
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High",
+        "overall_caption": "An abstract composition from 1937 by G.L.K. Morris featuring a dynamic interplay of geometric and organic shapes in monochrome.",
+        "brushstroke": "Visible charcoal or pencil hatching and shading create texture within the shapes, contrasting with solid black fills.",
+        "composition": "A balanced yet active arrangement of overlapping triangles, curves, and linear elements centered on a light background.",
+        "color": "A monochrome palette consisting of deep blacks, various shades of gray through hatching, and the off-white tone of the paper.",
+        "line": "Bold, thick black outlines define the primary forms, complemented by thinner, sketchy lines and parallel hatching.",
+        "light": "Even, ambient light is suggested by the white space of the paper, with no directional light source or cast shadows."
+      },
+      "after": {
+        "sample_id": "track2_0547",
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low",
+        "overall_caption": "A quiet monochrome abstract drawing uses balanced curves and geometric forms to create a restrained, contemplative mood.",
+        "brushstroke": "Soft pencil hatching and firm black strokes create gentle texture without aggressive visual pressure.",
+        "composition": "Curved and angular shapes are spaced across the page in a balanced arrangement with ample open ground.",
+        "color": "The limited palette of black, gray, and warm paper tones keeps the image subdued and low in intensity.",
+        "line": "Thick black contours are offset by thin sketch lines, giving the abstraction a controlled and orderly rhythm.",
+        "light": "Even ambient paper tone provides soft visual clarity without dramatic shadows or harsh contrast."
+      },
+      "changed_fields": [
+        "emotion",
+        "emotional_valence",
+        "emotional_arousal_level",
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    }
+  ],
+  "formal_submission_overwritten": false
+}

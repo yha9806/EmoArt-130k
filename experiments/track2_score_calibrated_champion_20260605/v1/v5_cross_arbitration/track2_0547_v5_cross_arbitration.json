@@ -1,0 +1,50 @@
+{
+  "method": "track2_v5_cross_single_arbitration_v1",
+  "model": "gemini-3.5-flash",
+  "sample_id": "track2_0547",
+  "image_path": "data/raw/track2_testset_20260507/track2_testset/images/track2_0547.jpg",
+  "current": {
+    "emotion": "annoyed",
+    "valence": "Negative",
+    "arousal": "High"
+  },
+  "proposed": {
+    "emotion": "calm",
+    "valence": "Positive",
+    "arousal": "Low"
+  },
+  "evidence_matrix": {
+    "cross_quadrant_risk": "True",
+    "current_arousal": "High",
+    "current_emotion": "annoyed",
+    "current_valence": "Negative",
+    "decision": "accept_push_cross_quadrant",
+    "evidence_score": "11",
+    "gemini35_objection": "False",
+    "human_accept_support": "False",
+    "proposed_arousal": "Low",
+    "proposed_emotion": "calm",
+    "proposed_valence": "Positive",
+    "public_style_agreement": "False",
+    "same_quadrant": "False",
+    "sample_id": "track2_0547",
+    "supporting_families": "label_rubric;model;public_reference;selective;teacher",
+    "supporting_family_count": "5",
+    "supporting_source_count": "10",
+    "supporting_sources": "balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120",
+    "transition": "annoyed->calm"
+  },
+  "decision": {
+    "sample_id": "track2_0547",
+    "preferred_option": "proposed",
+    "preferred_emotion": "calm",
+    "preferred_valence": "Positive",
+    "preferred_arousal": "Low",
+    "confidence": 0.8,
+    "current_fit_score": 0.35,
+    "proposed_fit_score": 0.68,
+    "visual_evidence": "The composition features balanced, flowing organic curves and stable geometric shapes with soft pencil hatching. There is no visual tension, harshness, or chaotic agitation that would suggest annoyance.",
+    "risk_notes": "The work is abstract and neutral, so some viewers might find it devoid of strong emotion, but it aligns much better with calm than annoyed.",
+    "should_enter_v5_cross_candidate": true
+  }
+}

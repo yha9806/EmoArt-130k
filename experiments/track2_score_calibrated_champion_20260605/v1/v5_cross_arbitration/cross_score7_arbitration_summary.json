@@ -1,0 +1,173 @@
+[
+  {
+    "sample_id": "track2_0547",
+    "transition": "annoyed->calm",
+    "evidence_score": 11,
+    "preferred_option": "proposed",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.8,
+    "current_fit_score": 0.35,
+    "proposed_fit_score": 0.68,
+    "fit_margin": 0.33000000000000007,
+    "enter_strict_candidate": true,
+    "raw_scores": {
+      "confidence": 0.8,
+      "current_fit_score": 0.35,
+      "proposed_fit_score": 0.68
+    },
+    "visual_evidence": "The composition features balanced, flowing organic curves and stable geometric shapes with soft pencil hatching. There is no visual tension, harshness, or chaotic agitation that would suggest annoyance.",
+    "risk_notes": "The work is abstract and neutral, so some viewers might find it devoid of strong emotion, but it aligns much better with calm than annoyed."
+  },
+  {
+    "sample_id": "track2_0088",
+    "transition": "calm->tired",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.75,
+    "current_fit_score": 0.7,
+    "proposed_fit_score": 0.4,
+    "fit_margin": -0.29999999999999993,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.75,
+      "current_fit_score": 0.7,
+      "proposed_fit_score": 0.4
+    },
+    "visual_evidence": "The figure's steady, focused gaze and upright posture, combined with the rhythmic, flowing wave patterns, convey a sense of meditative tranquility and spiritual composure rather than physical fatigue.",
+    "risk_notes": "The stern facial expression of the sage might be misread as negative or weary by some viewers, but within the context of traditional East Asian art, it denotes concentration and inner peace."
+  },
+  {
+    "sample_id": "track2_0139",
+    "transition": "calm->tired",
+    "evidence_score": 7,
+    "preferred_option": "proposed",
+    "preferred_label": "tired / Negative / Low",
+    "confidence": 0.7,
+    "current_fit_score": 0.4,
+    "proposed_fit_score": 0.6,
+    "fit_margin": 0.19999999999999996,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.7,
+      "current_fit_score": 0.4,
+      "proposed_fit_score": 0.6
+    },
+    "visual_evidence": "The figures exhibit slumped postures, somber facial expressions, and worn clothing, particularly the figure on the right, suggesting fatigue rather than peaceful calmness.",
+    "risk_notes": "Distinguishing between calm contemplation and weary exhaustion in historical ink paintings can be subjective."
+  },
+  {
+    "sample_id": "track2_0319",
+    "transition": "calm->bored",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.75,
+    "current_fit_score": 0.6,
+    "proposed_fit_score": 0.4,
+    "fit_margin": -0.19999999999999996,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.75,
+      "current_fit_score": 0.6,
+      "proposed_fit_score": 0.4
+    },
+    "visual_evidence": "The engraving displays a structured, academic collection of anatomical studies and natural elements, conveying a sense of quiet, balanced observation rather than negative disengagement.",
+    "risk_notes": "The neutral, educational nature of a study sheet can be perceived as dry, but labeling it as bored introduces an unfitting negative emotional state."
+  },
+  {
+    "sample_id": "track2_0414",
+    "transition": "calm->bored",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.7,
+    "current_fit_score": 0.6,
+    "proposed_fit_score": 0.4,
+    "fit_margin": -0.19999999999999996,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.7,
+      "current_fit_score": 0.6,
+      "proposed_fit_score": 0.4
+    },
+    "visual_evidence": "The academic figure studies depict posed models in a neutral, quiet setting, which aligns better with a calm, balanced state than with boredom.",
+    "risk_notes": "Academic sketches are inherently neutral, so attributing negative emotions like boredom is less accurate than a calm classification."
+  },
+  {
+    "sample_id": "track2_0457",
+    "transition": "calm->aroused",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.7,
+    "current_fit_score": 0.6,
+    "proposed_fit_score": 0.4,
+    "fit_margin": -0.19999999999999996,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.7,
+      "current_fit_score": 0.6,
+      "proposed_fit_score": 0.4
+    },
+    "visual_evidence": "The formal, static poses of the figures and the balanced, structured composition suggest a stable, quiet, and ceremonial atmosphere rather than high energy.",
+    "risk_notes": "The presence of multiple figures and detailed armor might be interpreted as visually active, but the emotional tone remains restrained and solemn."
+  },
+  {
+    "sample_id": "track2_0665",
+    "transition": "calm->aroused",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.75,
+    "current_fit_score": 0.6799999999999999,
+    "proposed_fit_score": 0.52,
+    "fit_margin": -0.15999999999999992,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.75,
+      "current_fit_score": 3.4,
+      "proposed_fit_score": 2.6
+    },
+    "visual_evidence": "The quiet, solemn interaction between the figures and the gentle act of charity support a calm, contemplative mood.",
+    "risk_notes": "El Greco's expressive brushwork and dramatic sky introduce some visual movement, but the overall theme is peaceful."
+  },
+  {
+    "sample_id": "track2_0728",
+    "transition": "alarmed->aroused",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "alarmed / Negative / High",
+    "confidence": 0.8,
+    "current_fit_score": 0.65,
+    "proposed_fit_score": 0.45,
+    "fit_margin": -0.2,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.8,
+      "current_fit_score": 0.65,
+      "proposed_fit_score": 0.45
+    },
+    "visual_evidence": "The painting depicts a dramatic narrative of trial and martyrdom, including a figure in a boiling cauldron on the far right, which aligns with themes of danger and alarm.",
+    "risk_notes": "The extensive use of gold leaf and decorative patterns can sometimes be misconstrued as purely decorative or positive, but the narrative content is tense and serious."
+  },
+  {
+    "sample_id": "track2_0925",
+    "transition": "calm->tired",
+    "evidence_score": 7,
+    "preferred_option": "current",
+    "preferred_label": "calm / Positive / Low",
+    "confidence": 0.7,
+    "current_fit_score": 0.6,
+    "proposed_fit_score": 0.4,
+    "fit_margin": -0.19999999999999996,
+    "enter_strict_candidate": false,
+    "raw_scores": {
+      "confidence": 0.7,
+      "current_fit_score": 0.6,
+      "proposed_fit_score": 0.4
+    },
+    "visual_evidence": "The printmaker is standing upright and actively engaged in his craft, suggesting quiet concentration and a stable, focused atmosphere rather than physical exhaustion.",
+    "risk_notes": "The heavy, dark cross-hatching and cluttered studio setting could be perceived as gloomy or heavy, but the overall mood remains one of industrious calm."
+  }
+]
