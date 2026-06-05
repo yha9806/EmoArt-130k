@@ -8,7 +8,9 @@ from affectiveart.track2_local_shadow_evaluator import (
     ScoreBand,
     compute_classification_score,
     compute_task_score,
+    rank_shadow_candidates,
     run_candidate_safety_gate,
+    score_candidate_rows,
 )
 
 
@@ -103,3 +105,73 @@ class Track2LocalShadowEvaluatorTest(unittest.TestCase):
         )
         self.assertTrue(result.passed)
         self.assertEqual(result.issue_codes, [])
+
+
+class Track2LocalShadowScoringTest(unittest.TestCase):
+    def test_baseline_candidate_scores_at_anchor_with_no_label_changes(self):
+        rows = full_label_rows()
+        result = score_candidate_rows(
+            candidate_name="baseline",
+            candidate_json=Path("submissions/baseline_candidate.json"),
+            rows=rows,
+            baseline_rows=rows,
+            expected_row_count=len(rows),
+        )
+        self.assertEqual(result.decision, "recommend_submit")
+        self.assertEqual(result.changed_rows, 0)
+        self.assertAlmostEqual(result.classification.expected, OFFICIAL_ANCHOR.classification)
+        self.assertAlmostEqual(result.description.expected, OFFICIAL_ANCHOR.description)
+        self.assertAlmostEqual(result.overall.expected, OFFICIAL_ANCHOR.overall, places=5)
+
+    def test_same_quadrant_changes_raise_expected_but_not_lower_bound_too_far(self):
+        baseline = full_label_rows()
+        candidate = [dict(item) for item in baseline]
+        candidate[5] = row("track2_0005", "calm", "Positive", "Low")
+        result = score_candidate_rows(
+            candidate_name="safe_plus",
+            candidate_json=Path("submissions/safe_plus_candidate.json"),
+            rows=candidate,
+            baseline_rows=baseline,
+            expected_row_count=len(candidate),
+        )
+        self.assertEqual(result.changed_rows, 1)
+        self.assertEqual(result.cross_quadrant_changes, 0)
+        self.assertGreater(result.classification.expected, OFFICIAL_ANCHOR.classification)
+        self.assertGreaterEqual(result.overall.lower, 0.80)
+        self.assertEqual(result.decision, "recommend_submit")
+
+    def test_cross_quadrant_changes_reduce_lower_bound_and_hold(self):
+        baseline = full_label_rows()
+        candidate = [dict(item) for item in baseline]
+        candidate[5] = row("track2_0005", "frustrated", "Negative", "High")
+        result = score_candidate_rows(
+            candidate_name="risky",
+            candidate_json=Path("submissions/risky_candidate.json"),
+            rows=candidate,
+            baseline_rows=baseline,
+            expected_row_count=len(candidate),
+        )
+        self.assertEqual(result.cross_quadrant_changes, 1)
+        self.assertEqual(result.decision, "recommend_hold")
+        self.assertLess(result.overall.lower, OFFICIAL_ANCHOR.overall)
+
+    def test_ranking_uses_lower_bound_then_expected(self):
+        baseline = full_label_rows()
+        safe = score_candidate_rows(
+            candidate_name="safe",
+            candidate_json=Path("submissions/safe_candidate.json"),
+            rows=baseline,
+            baseline_rows=baseline,
+            expected_row_count=len(baseline),
+        )
+        risky_rows = [dict(item) for item in baseline]
+        risky_rows[5] = row("track2_0005", "frustrated", "Negative", "High")
+        risky = score_candidate_rows(
+            candidate_name="risky",
+            candidate_json=Path("submissions/risky_candidate.json"),
+            rows=risky_rows,
+            baseline_rows=baseline,
+            expected_row_count=len(risky_rows),
+        )
+        ranked = rank_shadow_candidates([risky, safe])
+        self.assertEqual([item.candidate_name for item in ranked], ["safe", "risky"])
