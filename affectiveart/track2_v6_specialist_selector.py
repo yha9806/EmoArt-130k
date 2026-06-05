@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 import csv
+import html
+import json
+import zipfile
+from collections import Counter
 from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
 from affectiveart.challenge import TRACK2_JSON_EMOTIONS, TRACK2_JSON_SUBMISSION_KEYS
+from affectiveart.track2_audit import compute_track2_distribution, strict_track2_label_issues
+from affectiveart.track2_local_shadow_evaluator import write_shadow_evaluator_outputs
 from affectiveart.track2_moe_specialist_ensemble import expected_label_for_emotion
 
 
@@ -15,6 +21,12 @@ HOLD_REVIEW = "hold_review"
 BLOCK = "block"
 
 V6_LADDERS = ("v6_safe_sameq", "v6_cross_micro", "v6_desc_plus")
+DEFAULT_OUTPUT_NAMES = {
+    "v6_safe_sameq": "track2_submission_v6_safe_sameq_candidate",
+    "v6_cross_micro": "track2_submission_v6_cross_micro_candidate",
+    "v6_desc_plus": "track2_submission_v6_desc_plus_candidate",
+}
+FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
 
 
 @dataclass(frozen=True)
@@ -131,8 +143,120 @@ def build_candidate_rows(
     return output
 
 
-def write_v6_outputs(*args: Any, **kwargs: Any) -> None:
-    raise NotImplementedError("write_v6_outputs is implemented in Task 3")
+def write_v6_outputs(
+    *,
+    baseline_json: str | Path,
+    evidence_matrix: str | Path,
+    out_dir: str | Path,
+    submission_dir: str | Path,
+    output_names: dict[str, str] | None = None,
+    expected_row_count: int = 1000,
+    require_all_emotions: bool | None = None,
+    thresholds: SelectorThresholds | None = None,
+) -> dict[str, Any]:
+    thresholds = thresholds or SelectorThresholds()
+    baseline_json = Path(baseline_json)
+    evidence_matrix = Path(evidence_matrix)
+    out_dir = Path(out_dir)
+    submission_dir = Path(submission_dir)
+    names = {**DEFAULT_OUTPUT_NAMES, **(output_names or {})}
+    candidate_paths = {
+        ladder: (
+            submission_dir / f"{names[ladder]}.json",
+            submission_dir / f"{names[ladder]}.zip",
+        )
+        for ladder in V6_LADDERS
+    }
+    for json_path, zip_path in candidate_paths.values():
+        _assert_safe_candidate_path(json_path)
+        _assert_safe_candidate_path(zip_path)
+
+    baseline_rows = _load_json_rows(baseline_json)
+    deltas = load_evidence_matrix(evidence_matrix)
+    decisions = select_v6_deltas(deltas, thresholds)
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    submission_dir.mkdir(parents=True, exist_ok=True)
+    html_dir = out_dir / "html_review"
+    html_dir.mkdir(parents=True, exist_ok=True)
+
+    normalized_rows = [_delta_to_dict(delta) for delta in deltas]
+    decision_rows = [_decision_to_dict(decision) for decision in decisions]
+    normalized_evidence_json = out_dir / "normalized_evidence.json"
+    normalized_evidence_csv = out_dir / "normalized_evidence.csv"
+    selector_decisions_json = out_dir / "selector_decisions.json"
+    selector_decisions_csv = out_dir / "selector_decisions.csv"
+    _write_json(normalized_evidence_json, normalized_rows)
+    _write_csv(normalized_evidence_csv, normalized_rows)
+    _write_json(selector_decisions_json, decision_rows)
+    _write_csv(selector_decisions_csv, decision_rows)
+
+    candidates: dict[str, Any] = {}
+    shadow_candidates: list[dict[str, Any]] = []
+    for ladder in V6_LADDERS:
+        json_path, zip_path = candidate_paths[ladder]
+        rows = build_candidate_rows(baseline_rows, decisions, ladder=ladder, thresholds=thresholds)
+        _write_json(json_path, rows)
+        _write_zip(zip_path, json_path)
+        candidate_report = _candidate_report(
+            ladder=ladder,
+            json_path=json_path,
+            zip_path=zip_path,
+            rows=rows,
+            baseline_rows=baseline_rows,
+            decisions=decisions,
+            thresholds=thresholds,
+        )
+        _write_json(out_dir / f"candidate_report_{ladder}.json", candidate_report)
+        (out_dir / f"candidate_report_{ladder}.md").write_text(
+            _render_candidate_report_markdown(candidate_report),
+            encoding="utf-8",
+        )
+        candidates[ladder] = candidate_report
+        shadow_candidates.append({"name": ladder, "json": json_path})
+
+    stability_report_json = out_dir / "hard96_stability_report.json"
+    stability = _build_stability_report(decisions, thresholds)
+    _write_json(stability_report_json, stability)
+    (out_dir / "hard96_stability_report.md").write_text(
+        _render_stability_markdown(stability),
+        encoding="utf-8",
+    )
+
+    shadow_report = write_shadow_evaluator_outputs(
+        baseline_json=baseline_json,
+        candidates=shadow_candidates,
+        out_dir=out_dir / "shadow_eval",
+        expected_row_count=expected_row_count,
+        require_all_emotions=require_all_emotions,
+    )
+    decision = _top_level_decision(stability, shadow_report)
+    html_review_path = html_dir / "track2_v6_specialist_selector_review.html"
+    summary = {
+        "method": "track2_v6_risk_calibrated_specialist_selector",
+        "decision": decision,
+        "baseline_json": str(baseline_json),
+        "evidence_matrix": str(evidence_matrix),
+        "out_dir": str(out_dir),
+        "evidence_row_count": len(deltas),
+        "selector_decision_count": len(decisions),
+        "candidates": candidates,
+        "normalized_evidence_json": str(normalized_evidence_json),
+        "normalized_evidence_csv": str(normalized_evidence_csv),
+        "selector_decisions_json": str(selector_decisions_json),
+        "selector_decisions_csv": str(selector_decisions_csv),
+        "stability_report_json": str(stability_report_json),
+        "shadow_report_json": str(out_dir / "shadow_eval" / "shadow_score_report.json"),
+        "html_review_path": str(html_review_path),
+        "formal_submission_overwritten": False,
+    }
+    _write_json(out_dir / "v6_summary.json", summary)
+    (out_dir / "v6_summary.md").write_text(
+        _render_summary_markdown(summary, shadow_report),
+        encoding="utf-8",
+    )
+    html_review_path.write_text(_render_html_review(summary, decision_rows), encoding="utf-8")
+    return summary
 
 
 def _delta_from_row(row: dict[str, Any]) -> V6Delta:
@@ -336,6 +460,309 @@ def _capped_cross_micro_decisions(
             decision.proposed_emotion,
         ),
     )[: max(0, limit)]
+
+
+def _candidate_report(
+    *,
+    ladder: str,
+    json_path: Path,
+    zip_path: Path,
+    rows: list[dict[str, Any]],
+    baseline_rows: list[dict[str, Any]],
+    decisions: list[SelectorDecision],
+    thresholds: SelectorThresholds,
+) -> dict[str, Any]:
+    selected = _selected_decisions_for_ladder(decisions, ladder, thresholds)
+    changed = [
+        {
+            "sample_id": decision.sample_id,
+            "transition": decision.transition,
+            "decision": decision.decision,
+            "evidence_score": decision.evidence_score,
+            "reason_codes": list(decision.reason_codes),
+        }
+        for decision in decisions
+        if decision.sample_id in selected
+    ]
+    distribution = compute_track2_distribution(rows)
+    label_issue_count = sum(len(strict_track2_label_issues(row)) for row in rows)
+    return {
+        "ladder": ladder,
+        "json": str(json_path),
+        "zip": str(zip_path),
+        "changed_rows": len(_changed_rows(baseline_rows, rows)),
+        "selected_changes": changed,
+        "distribution": distribution,
+        "label_consistency_issue_count": label_issue_count,
+        "missing_emotions": distribution.get("missing_emotions", []),
+        "formal_submission_overwritten": False,
+    }
+
+
+def _build_stability_report(
+    decisions: list[SelectorDecision],
+    thresholds: SelectorThresholds,
+) -> dict[str, Any]:
+    accepted = [item for item in decisions if item.decision in {ACCEPT_SAFE, ACCEPT_CROSS_MICRO}]
+    cross = [item for item in accepted if item.decision == ACCEPT_CROSS_MICRO]
+    transition_counts = Counter(item.transition for item in accepted)
+    issues: list[dict[str, Any]] = []
+    if len(cross) > thresholds.max_cross_micro:
+        issues.append({"code": "too_many_cross_micro", "count": len(cross)})
+    if accepted:
+        top_transition, top_count = transition_counts.most_common(1)[0]
+        if top_count >= 5 and top_count / len(accepted) > 0.55:
+            issues.append(
+                {
+                    "code": "transition_concentration",
+                    "transition": top_transition,
+                    "count": top_count,
+                }
+            )
+    return {
+        "method": "track2_v6_rule_stability_summary",
+        "passed": not issues,
+        "accepted_count": len(accepted),
+        "safe_sameq_count": sum(1 for item in accepted if item.decision == ACCEPT_SAFE),
+        "cross_micro_count": len(cross),
+        "hold_count": sum(1 for item in decisions if item.decision == HOLD_REVIEW),
+        "block_count": sum(1 for item in decisions if item.decision == BLOCK),
+        "transition_counts": dict(sorted(transition_counts.items())),
+        "issues": issues,
+    }
+
+
+def _top_level_decision(stability: dict[str, Any], shadow_report: dict[str, Any]) -> str:
+    if not stability.get("passed", False):
+        return "recommend_hold"
+    ranking = shadow_report.get("ranking", [])
+    if not ranking:
+        return "invalid"
+    top = ranking[0]
+    if top.get("decision") != "recommend_submit":
+        return "recommend_hold"
+    if float(top.get("overall_expected", 0.0)) >= 0.8639085 and float(top.get("overall_lower", 0.0)) >= 0.796000:
+        return "recommend_submit"
+    return "recommend_hold"
+
+
+def _changed_rows(
+    baseline_rows: list[dict[str, Any]],
+    rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    baseline_by_id = {str(row.get("sample_id", "")): row for row in baseline_rows}
+    changed: list[dict[str, Any]] = []
+    for row in rows:
+        sample_id = str(row.get("sample_id", ""))
+        before = baseline_by_id.get(sample_id)
+        if not before:
+            continue
+        before_labels = (
+            before.get("emotion"),
+            before.get("emotional_valence"),
+            before.get("emotional_arousal_level"),
+        )
+        after_labels = (
+            row.get("emotion"),
+            row.get("emotional_valence"),
+            row.get("emotional_arousal_level"),
+        )
+        if before_labels != after_labels:
+            changed.append({"sample_id": sample_id, "before": before, "after": row})
+    return changed
+
+
+def _delta_to_dict(delta: V6Delta) -> dict[str, Any]:
+    return {
+        "sample_id": delta.sample_id,
+        "current_emotion": delta.current_emotion,
+        "current_valence": delta.current_valence,
+        "current_arousal": delta.current_arousal,
+        "proposed_emotion": delta.proposed_emotion,
+        "proposed_valence": delta.proposed_valence,
+        "proposed_arousal": delta.proposed_arousal,
+        "transition": delta.transition,
+        "same_quadrant": delta.same_quadrant,
+        "cross_quadrant_risk": delta.cross_quadrant_risk,
+        "supporting_source_count": delta.supporting_source_count,
+        "supporting_family_count": delta.supporting_family_count,
+        "supporting_sources": ";".join(delta.supporting_sources),
+        "supporting_families": ";".join(delta.supporting_families),
+        "evidence_score": delta.evidence_score,
+        "gemini35_prefers_proposed": delta.gemini35_prefers_proposed,
+        "gemini35_fit_margin": delta.gemini35_fit_margin,
+        "gemini35_objection": delta.gemini35_objection,
+        "vulca_objection": delta.vulca_objection,
+        "public_reference_support": delta.public_reference_support,
+        "public_reference_contradiction": delta.public_reference_contradiction,
+        "human_confirmed": delta.human_confirmed,
+        "hard96_net_gain": delta.hard96_net_gain,
+        "hard96_net_loss": delta.hard96_net_loss,
+        "malformed": delta.malformed,
+        "malformed_reasons": ";".join(delta.malformed_reasons),
+    }
+
+
+def _decision_to_dict(decision: SelectorDecision) -> dict[str, Any]:
+    return {
+        "sample_id": decision.sample_id,
+        "proposed_emotion": decision.proposed_emotion,
+        "transition": decision.transition,
+        "decision": decision.decision,
+        "ladder": decision.ladder,
+        "reason_codes": ";".join(decision.reason_codes),
+        "evidence_score": decision.evidence_score,
+        "same_quadrant": decision.same_quadrant,
+        "cross_quadrant_risk": decision.cross_quadrant_risk,
+        "proposed_valence": decision.proposed_valence,
+        "proposed_arousal": decision.proposed_arousal,
+        "source_count": decision.source_count,
+        "family_count": decision.family_count,
+    }
+
+
+def _load_json_rows(path: Path) -> list[dict[str, Any]]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        raise ValueError(f"expected Track2 JSON list: {path}")
+    return [dict(row) for row in payload if isinstance(row, dict)]
+
+
+def _assert_safe_candidate_path(path: Path) -> None:
+    if path.name in FORMAL_SUBMISSION_NAMES:
+        raise ValueError(f"refusing to write formal Track2 submission path: {path}")
+    if path.suffix not in {".json", ".zip"}:
+        raise ValueError(f"candidate output must be JSON or ZIP: {path}")
+    if not path.stem.startswith("track2_submission_v6_") or not path.stem.endswith("_candidate"):
+        raise ValueError(f"candidate output must be a v6 side-path candidate: {path}")
+
+
+def _write_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = sorted({key for row in rows for key in row})
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        if rows:
+            writer.writerows(rows)
+
+
+def _write_zip(zip_path: Path, json_path: Path) -> None:
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.write(json_path, "submission.json")
+
+
+def _render_candidate_report_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        f"# Track2 {report['ladder']} Candidate Report",
+        "",
+        f"- JSON: `{report['json']}`",
+        f"- ZIP: `{report['zip']}`",
+        f"- Changed rows: {report['changed_rows']}",
+        f"- Label consistency issues: {report['label_consistency_issue_count']}",
+        f"- Missing emotions: {', '.join(report.get('missing_emotions') or []) or 'none'}",
+        f"- Formal submission overwritten: {report['formal_submission_overwritten']}",
+        "",
+        "## Selected Changes",
+        "",
+    ]
+    for item in report.get("selected_changes", []):
+        lines.append(
+            f"- {item['sample_id']}: {item['transition']}; "
+            f"score={item['evidence_score']}; reasons={','.join(item['reason_codes'])}"
+        )
+    if not report.get("selected_changes"):
+        lines.append("- none")
+    return "\n".join(lines) + "\n"
+
+
+def _render_stability_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Track2 V6 Stability Report",
+        "",
+        f"- Passed: {report['passed']}",
+        f"- Accepted count: {report['accepted_count']}",
+        f"- Safe same-quadrant count: {report['safe_sameq_count']}",
+        f"- Cross micro count: {report['cross_micro_count']}",
+        f"- Hold count: {report['hold_count']}",
+        f"- Block count: {report['block_count']}",
+        "",
+        "## Issues",
+        "",
+    ]
+    for issue in report.get("issues", []):
+        lines.append(f"- {issue['code']}: `{json.dumps(issue, ensure_ascii=False, sort_keys=True)}`")
+    if not report.get("issues"):
+        lines.append("- none")
+    return "\n".join(lines) + "\n"
+
+
+def _render_summary_markdown(summary: dict[str, Any], shadow_report: dict[str, Any]) -> str:
+    lines = [
+        "# Track2 V6 Specialist Selector Summary",
+        "",
+        f"- Decision: `{summary['decision']}`",
+        f"- Baseline JSON: `{summary['baseline_json']}`",
+        f"- Evidence rows: {summary['evidence_row_count']}",
+        f"- Selector decisions: {summary['selector_decision_count']}",
+        f"- Formal submission overwritten: {summary['formal_submission_overwritten']}",
+        "",
+        "## Shadow Ranking",
+        "",
+        "| rank | candidate | decision | overall lower | overall expected | changes | cross |",
+        "| --- | --- | --- | ---: | ---: | ---: | ---: |",
+    ]
+    for index, item in enumerate(shadow_report.get("ranking", []), start=1):
+        lines.append(
+            f"| {index} | {item['candidate_name']} | {item['decision']} | "
+            f"{float(item['overall_lower']):.6f} | {float(item['overall_expected']):.6f} | "
+            f"{int(item['changed_rows'])} | {int(item['cross_quadrant_changes'])} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _render_html_review(summary: dict[str, Any], decisions: list[dict[str, Any]]) -> str:
+    rows = "\n".join(
+        "<tr>"
+        f"<td>{html.escape(str(item['sample_id']))}</td>"
+        f"<td>{html.escape(str(item['transition']))}</td>"
+        f"<td>{html.escape(str(item['decision']))}</td>"
+        f"<td>{html.escape(str(item['evidence_score']))}</td>"
+        f"<td>{html.escape(str(item['reason_codes']))}</td>"
+        "</tr>"
+        for item in decisions[:500]
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 V6 Specialist Selector</title>
+  <style>
+    body {{ font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #1f2933; }}
+    table {{ border-collapse: collapse; width: 100%; margin-top: 18px; font-size: 13px; }}
+    th, td {{ border: 1px solid #d7dde5; padding: 7px; text-align: left; }}
+    th {{ background: #eef2f6; }}
+    .decision {{ padding: 12px; background: #eef7ee; border: 1px solid #b9d8b9; }}
+  </style>
+</head>
+<body>
+  <h1>Track2 V6 Specialist Selector</h1>
+  <p class="decision">Decision: <code>{html.escape(str(summary['decision']))}</code></p>
+  <p>Baseline: <code>{html.escape(str(summary['baseline_json']))}</code></p>
+  <h2>Selector Decisions</h2>
+  <table>
+    <thead><tr><th>sample</th><th>transition</th><th>decision</th><th>score</th><th>reasons</th></tr></thead>
+    <tbody>{rows}</tbody>
+  </table>
+</body>
+</html>
+"""
 
 
 def _malformed_reasons(

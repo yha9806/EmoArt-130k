@@ -513,3 +513,100 @@ class Track2V6SelectorCoreTest(unittest.TestCase):
         desc_rows = build_candidate_rows(baseline, decisions, ladder="v6_desc_plus")
 
         self.assertEqual(cross_rows, desc_rows)
+
+
+class Track2V6WriterTest(unittest.TestCase):
+    def test_write_outputs_creates_side_path_candidates_reports_and_shadow_eval(self):
+        baseline = [
+            row("track2_0001", "content"),
+            row("track2_0002", "annoyed"),
+            row("track2_0003", "sad"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": "track2_0001",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "3",
+                        "supporting_family_count": "2",
+                        "supporting_sources": "public_style;teacher;siglip2",
+                        "supporting_families": "public_style;teacher",
+                        "same_quadrant": "true",
+                        "evidence_score": "8",
+                    },
+                    {
+                        "sample_id": "track2_0002",
+                        "current_emotion": "annoyed",
+                        "current_valence": "Negative",
+                        "current_arousal": "High",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "4",
+                        "supporting_family_count": "3",
+                        "supporting_sources": "gemini35;teacher;siglip2;dinov2",
+                        "supporting_families": "gemini35;teacher;embedding",
+                        "same_quadrant": "false",
+                        "gemini35_prefers_proposed": "true",
+                        "gemini35_fit_margin": "0.41",
+                        "evidence_score": "9",
+                        "hard96_net_gain": "2",
+                        "hard96_net_loss": "0",
+                    },
+                ],
+            )
+
+            with self.assertRaises(ValueError):
+                write_v6_outputs(
+                    baseline_json=baseline_json,
+                    evidence_matrix=matrix_path,
+                    out_dir=out_dir,
+                    submission_dir=submission_dir,
+                    output_names={"v6_safe_sameq": "track2_submission"},
+                )
+
+            report = write_v6_outputs(
+                baseline_json=baseline_json,
+                evidence_matrix=matrix_path,
+                out_dir=out_dir,
+                submission_dir=submission_dir,
+                expected_row_count=len(baseline),
+                require_all_emotions=False,
+            )
+
+            self.assertEqual(report["decision"], "recommend_hold")
+            self.assertEqual(report["evidence_row_count"], 2)
+            self.assertTrue(Path(report["normalized_evidence_csv"]).exists())
+            self.assertTrue(Path(report["selector_decisions_csv"]).exists())
+            self.assertTrue(Path(report["stability_report_json"]).exists())
+            self.assertTrue(Path(report["html_review_path"]).exists())
+            self.assertTrue(Path(report["shadow_report_json"]).exists())
+
+            for ladder in ("v6_safe_sameq", "v6_cross_micro", "v6_desc_plus"):
+                self.assertTrue(Path(report["candidates"][ladder]["json"]).exists())
+                self.assertTrue(Path(report["candidates"][ladder]["zip"]).exists())
+
+            safe_rows = json.loads(Path(report["candidates"]["v6_safe_sameq"]["json"]).read_text(encoding="utf-8"))
+            cross_rows = json.loads(Path(report["candidates"]["v6_cross_micro"]["json"]).read_text(encoding="utf-8"))
+            safe_by_id = {item["sample_id"]: item for item in safe_rows}
+            cross_by_id = {item["sample_id"]: item for item in cross_rows}
+            self.assertEqual(safe_by_id["track2_0001"]["emotion"], "calm")
+            self.assertEqual(safe_by_id["track2_0002"]["emotion"], "annoyed")
+            self.assertEqual(cross_by_id["track2_0001"]["emotion"], "calm")
+            self.assertEqual(cross_by_id["track2_0002"]["emotion"], "calm")
+
+            with zipfile.ZipFile(report["candidates"]["v6_cross_micro"]["zip"]) as archive:
+                self.assertEqual(archive.namelist(), ["submission.json"])
