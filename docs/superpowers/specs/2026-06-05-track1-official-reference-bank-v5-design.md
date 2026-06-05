@@ -19,6 +19,7 @@ V5 uses all annotation rows from `Annotation.json` as the candidate retrieval po
 
 1. Infers the official style archive from the caption, using explicit aliases plus automatic matching over the official 56 style names.
 2. Scores every official artwork in that style using caption-token overlap, filename text, annotation text, and poster-specific boosts.
+   The scorer splits CamelCase official filenames, filters low-information query words such as common colors and spatial fillers, and rewards high-value anchor groups such as naval/fleet, Kremlin/searchlight/tower, train/border, tank/soldier, pilot/aircraft, harvest/wheat, medal/ribbon, and horse/cavalry.
 3. Applies a small usage penalty so repeated top references do not dominate.
 4. Extracts only the top candidates per route into an experiment reference asset directory.
 5. Writes a compatible `route_references` index consumed by `track1_attach_reference_assets.py`.
@@ -66,6 +67,8 @@ Extracted filenames include a stable hash suffix derived from the official archi
 
 ## Observed Outcome
 
-The v5 route/audit report should show many more unique reference assets than v4. In the 2026-06-05 run, unique references increased from 78 to 1680 across 4000 slots, with 1000/1000 samples receiving official references.
+The v5 route/audit report showed many more unique reference assets than v4. In the 2026-06-05 v5 run, unique references increased from 78 to 1680 across 4000 slots, with 1000/1000 samples receiving official references.
+
+The later v7 reranker reduced the main Socialist Realism failure mode: a single generic victory poster no longer dominates the first reference for dozens of unrelated samples. The highest first-reference reuse dropped from 58 in v5 to 19 in v7, while keeping 1000/1000 samples routed to official references.
 
 `diversity_limited_routes` remains 1000 in the top4 run because each route materializes exactly four official candidates and the downstream selector also requests four slots. That is not evidence that the official pool is small; the summary records the full official candidate pool by style.

@@ -48,6 +48,55 @@ POSTER_TERMS = {
     "flags",
 }
 
+GENERIC_STYLE_TOKENS = {
+    "art",
+    "artwork",
+    "bold",
+    "cyrillic",
+    "lettering",
+    "painting",
+    "poster",
+    "propaganda",
+    "realism",
+    "realist",
+    "socialism",
+    "socialist",
+    "soviet",
+    "style",
+    "typography",
+}
+
+LOW_SIGNAL_QUERY_TOKENS = {
+    "above",
+    "accents",
+    "before",
+    "behind",
+    "black",
+    "blue",
+    "bold",
+    "celebratory",
+    "composition",
+    "dramatic",
+    "framed",
+    "golden",
+    "large",
+    "patriotic",
+    "red",
+    "solemn",
+    "white",
+}
+
+ANCHOR_TOKEN_GROUPS = (
+    frozenset({"naval", "sailor", "fleet", "warship", "ship", "sea", "battle", "battles"}),
+    frozenset({"kremlin", "moscow", "square", "searchlight", "tower"}),
+    frozenset({"train", "railway", "passenger", "border", "frontier"}),
+    frozenset({"tank", "soldier", "soldiers", "banner", "banners"}),
+    frozenset({"pilot", "airplane", "aircraft", "plane", "planes", "flight"}),
+    frozenset({"wheat", "harvest", "harvesting", "peasant", "peasants", "barbed", "wire"}),
+    frozenset({"medal", "ribbon", "firework", "fireworks", "searchlight", "kremlin"}),
+    frozenset({"horse", "horses", "cavalry", "mounted"}),
+)
+
 STOPWORDS = {
     "a",
     "an",
@@ -267,17 +316,21 @@ def _rank_candidates(
 ) -> list[tuple[OfficialArtwork, float]]:
     caption = str(route.get("caption") or "")
     query_tokens = _tokens(caption)
+    specific_query_tokens = _specific_query_tokens(caption)
     poster_requested = _poster_requested(caption)
     ranked: list[tuple[OfficialArtwork, float]] = []
     for artwork in candidates:
         text = artwork.searchable_text.lower()
         candidate_tokens = _tokens(text)
-        overlap = len(query_tokens & candidate_tokens)
-        score = float(overlap)
+        generic_overlap = len(query_tokens & candidate_tokens)
+        specific_overlap = len(specific_query_tokens & candidate_tokens)
+        specific_coverage = specific_overlap / max(1, len(specific_query_tokens))
+        score = (0.65 * generic_overlap) + (3.25 * specific_overlap) + (6.0 * specific_coverage)
+        score += _anchor_group_score(specific_query_tokens, candidate_tokens)
         if poster_requested:
-            score += 2.5 * len(POSTER_TERMS & candidate_tokens)
+            score += min(3.0, 0.75 * len(POSTER_TERMS & candidate_tokens))
             if any(term in Path(artwork.filename).stem.lower() for term in POSTER_TERMS):
-                score += 4.0
+                score += 1.0
         score -= 0.15 * usage_counts[artwork.member_path]
         score += _stable_fraction(str(route.get("sample_id") or ""), artwork.member_path)
         ranked.append((artwork, score))
@@ -285,12 +338,39 @@ def _rank_candidates(
     return ranked
 
 
+def _anchor_group_score(query_tokens: set[str], candidate_tokens: set[str]) -> float:
+    score = 0.0
+    for group in ANCHOR_TOKEN_GROUPS:
+        requested = group & query_tokens
+        if not requested:
+            continue
+        matched = group & candidate_tokens
+        if matched:
+            score += (3.0 * len(matched)) + (4.0 * (len(matched) / max(1, len(requested))))
+        else:
+            score -= 4.0
+    return score
+
+
+def _specific_query_tokens(caption: str) -> set[str]:
+    return _tokens(caption) - GENERIC_STYLE_TOKENS - POSTER_TERMS - LOW_SIGNAL_QUERY_TOKENS
+
+
 def _tokens(value: str) -> set[str]:
-    return {
+    prepared = re.sub(r"([a-z])([A-Z])", r"\1 \2", value)
+    prepared = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", prepared)
+    tokens = {
         token
-        for token in re.findall(r"[a-zA-Z0-9]+", value.lower())
+        for token in re.findall(r"[a-zA-Z0-9]+", prepared.lower())
         if len(token) >= 3 and token not in STOPWORDS
     }
+    expanded = set(tokens)
+    for token in tokens:
+        if token.endswith("ies") and len(token) > 4:
+            expanded.add(token[:-3] + "y")
+        elif token.endswith("s") and not token.endswith("ss") and len(token) > 4:
+            expanded.add(token[:-1])
+    return expanded
 
 
 def _poster_requested(caption: str) -> bool:

@@ -127,6 +127,71 @@ class Track1OfficialReferenceBankTest(unittest.TestCase):
         self.assertIn("VictoryPoster", refs[0]["file"])
         self.assertIn("candidate_pool=3", refs[0]["note"])
 
+    def test_socialist_realism_specific_objects_outrank_generic_poster(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            emoart = root / "emoart"
+            emoart.mkdir()
+            _write_style_tar(
+                emoart,
+                "Socialist Realism",
+                [
+                    "0000001_GenericVictoryPoster.jpg",
+                    "0000002_BlackSeaFleet.jpg",
+                    "0000003_KremlinSearchlights.jpg",
+                ],
+            )
+            (emoart / "Annotation.json").write_text(
+                json.dumps(
+                    [
+                        _annotation(
+                            "Socialist Realism",
+                            "0000001_GenericVictoryPoster.jpg",
+                            "victory propaganda poster with red flags and bold Cyrillic typography",
+                        ),
+                        _annotation(
+                            "Socialist Realism",
+                            "0000002_BlackSeaFleet.jpg",
+                            "naval fleet with sailors, warships, sea battles, and signal flags",
+                        ),
+                        _annotation(
+                            "Socialist Realism",
+                            "0000003_KremlinSearchlights.jpg",
+                            "Kremlin tower with red star, searchlights, and allied flags above Red Square",
+                        ),
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            naval = build_official_reference_bank(
+                [
+                    {
+                        "sample_id": "track1_0077",
+                        "caption": "A Socialist Realism Soviet naval propaganda poster with a sailor hoisting red and white flags before panels of warships and sea battles, using bold Cyrillic typography.",
+                    }
+                ],
+                emoart_root=emoart,
+                out_dir=root / "bank_naval",
+                max_candidates_per_route=2,
+            )
+            kremlin = build_official_reference_bank(
+                [
+                    {
+                        "sample_id": "track1_0803",
+                        "caption": "A Socialist Realism propaganda poster with the Soviet, American, and British flags flying above a Kremlin tower crowned by a red star, framed by dramatic blue searchlight beams.",
+                    }
+                ],
+                emoart_root=emoart,
+                out_dir=root / "bank_kremlin",
+                max_candidates_per_route=2,
+            )
+
+        naval_refs = naval["index"]["route_references"]["track1_0077"]
+        kremlin_refs = kremlin["index"]["route_references"]["track1_0803"]
+        self.assertIn("BlackSeaFleet", naval_refs[0]["file"])
+        self.assertIn("KremlinSearchlights", kremlin_refs[0]["file"])
+
     def test_official_style_matching_covers_parenthetical_and_diacritic_styles(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
