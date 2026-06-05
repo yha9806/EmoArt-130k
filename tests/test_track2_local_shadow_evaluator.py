@@ -110,6 +110,19 @@ class Track2LocalShadowEvaluatorTest(unittest.TestCase):
         self.assertTrue(result.passed)
         self.assertEqual(result.issue_codes, [])
 
+    def test_safety_gate_can_force_all_emotions_for_non_full_datasets(self):
+        rows = full_label_rows()
+        rows = [row for row in rows if row["emotion"] != "content"]
+        result = run_candidate_safety_gate(
+            candidate_name="forced",
+            candidate_json=Path("submissions/side_path_candidate.json"),
+            rows=rows,
+            expected_row_count=len(rows),
+            require_all_emotions=True,
+        )
+        self.assertFalse(result.passed)
+        self.assertIn("missing_emotions", result.issue_codes)
+
 
 class Track2LocalShadowScoringTest(unittest.TestCase):
     def test_baseline_candidate_scores_at_anchor_with_no_label_changes(self):
