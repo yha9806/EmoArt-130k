@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 V7 Hard-Case Arbitration</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #1f2933; }
+    table { border-collapse: collapse; width: 100%; margin-top: 18px; font-size: 13px; }
+    th, td { border: 1px solid #d7dde5; padding: 7px; text-align: left; }
+    th { background: #eef2f6; }
+    section { border: 1px solid #d7dde5; padding: 12px; margin: 12px 0; }
+    .decision { padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }
+  </style>
+</head>
+<body>
+  <h1>Track2 V7 Hard-Case Arbitration</h1>
+  <p class="decision">Decision: <code>recommend_manual_review_cross1</code></p>
+  <p>Baseline: <code>submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json</code></p>
+  <section><h2>v7_cross1</h2><p>Changed rows: 1</p><p><code>submissions/track2_submission_v7_cross1_candidate.zip</code></p></section>
+<section><h2>v7_cross3</h2><p>Changed rows: 1</p><p><code>submissions/track2_submission_v7_cross3_candidate.zip</code></p></section>
+<section><h2>v7_hardcase_push</h2><p>Changed rows: 1</p><p><code>submissions/track2_submission_v7_hardcase_push_candidate.zip</code></p></section>
+  <h2>Arbitration Decisions</h2>
+  <table>
+    <thead><tr><th>sample</th><th>transition</th><th>decision</th><th>confidence</th><th>margin</th><th>reasons</th></tr></thead>
+    <tbody><tr><td>track2_0547</td><td>annoyed-&gt;calm</td><td>accept_strict</td><td>0.8</td><td>0.33000000000000007</td><td>strict_multimodal_arbitration_support</td></tr>
+<tr><td>track2_0088</td><td>calm-&gt;tired</td><td>hold</td><td>0.75</td><td>-0.29999999999999993</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0139</td><td>calm-&gt;tired</td><td>hold</td><td>0.7</td><td>0.19999999999999996</td><td>missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_confidence;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0319</td><td>calm-&gt;bored</td><td>hold</td><td>0.75</td><td>-0.19999999999999996</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0414</td><td>calm-&gt;bored</td><td>hold</td><td>0.7</td><td>-0.19999999999999996</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_confidence;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0457</td><td>calm-&gt;aroused</td><td>hold</td><td>0.7</td><td>-0.19999999999999996</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_confidence;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0665</td><td>calm-&gt;aroused</td><td>hold</td><td>0.75</td><td>-0.15999999999999992</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0728</td><td>alarmed-&gt;aroused</td><td>hold</td><td>0.8</td><td>-0.2</td><td>arbitration_prefers_current;missing_label_aligned_text_override;not_enter_strict_candidate;low_strict_fit_margin;low_strict_evidence_score</td></tr>
+<tr><td>track2_0925</td><td>calm-&gt;tired</td><td>hold</td><td>0.7</td><td>-0.19999999999999996</td><td>arbitration_prefers_current;missing_label_aligned_text_override;dangerous_positive_low_shift_without_strict_gate;not_enter_strict_candidate;low_strict_confidence;low_strict_fit_margin;low_strict_evidence_score</td></tr></tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,4 @@
+candidate_json,candidate_name,changed_rows,classification_expected,classification_lower,classification_upper,cross_quadrant_changes,decision,description_expected,description_issue_count,description_lower,description_upper,overall_expected,overall_lower,overall_upper,safety_issue_codes,safety_passed,same_quadrant_changes,top_emotion,top_emotion_share
+submissions/track2_submission_v7_cross1_candidate.json,v7_cross1,86,0.77815,0.68875,0.87955,1,recommend_hold,0.949667,0,0.943667,0.967667,0.8639085,0.8162085,0.9236085,,True,85,calm,0.467
+submissions/track2_submission_v7_cross3_candidate.json,v7_cross3,86,0.77815,0.68875,0.87955,1,recommend_hold,0.949667,0,0.943667,0.967667,0.8639085,0.8162085,0.9236085,,True,85,calm,0.467
+submissions/track2_submission_v7_hardcase_push_candidate.json,v7_hardcase_push,86,0.77815,0.68875,0.87955,1,recommend_hold,0.949667,0,0.943667,0.967667,0.8639085,0.8162085,0.9236085,,True,85,calm,0.467

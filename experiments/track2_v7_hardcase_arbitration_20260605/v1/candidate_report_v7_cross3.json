@@ -1,0 +1,53 @@
+{
+  "ladder": "v7_cross3",
+  "json": "submissions/track2_submission_v7_cross3_candidate.json",
+  "zip": "submissions/track2_submission_v7_cross3_candidate.zip",
+  "changed_rows": 1,
+  "selected_changes": [
+    {
+      "sample_id": "track2_0547",
+      "transition": "annoyed->calm",
+      "decision": "accept_strict",
+      "confidence": 0.8,
+      "fit_margin": 0.33000000000000007,
+      "evidence_score": 11.0,
+      "reason_codes": [
+        "strict_multimodal_arbitration_support"
+      ],
+      "text_override_applied": true
+    }
+  ],
+  "distribution": {
+    "count": 1000,
+    "emotion": {
+      "calm": 467,
+      "content": 260,
+      "alarmed": 54,
+      "frustrated": 46,
+      "tired": 38,
+      "sad": 36,
+      "aroused": 28,
+      "annoyed": 21,
+      "bored": 19,
+      "excited": 18,
+      "glad": 7,
+      "happy": 6
+    },
+    "valence": {
+      "Positive": 786,
+      "Negative": 214
+    },
+    "arousal": {
+      "Low": 827,
+      "High": 173
+    },
+    "top_emotion": "calm",
+    "top_emotion_share": 0.467,
+    "top_two_emotion_share": 0.727,
+    "missing_emotions": [],
+    "collapse_flags": []
+  },
+  "label_consistency_issue_count": 0,
+  "missing_emotions": [],
+  "formal_submission_overwritten": false
+}

@@ -1,0 +1,180 @@
+{
+  "method": "track2_v7_hardcase_arbitration",
+  "decision": "recommend_manual_review_cross1",
+  "baseline_json": "submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+  "shadow_baseline_json": "submissions/track2_submission_moe_v2_accept5_candidate.json",
+  "evidence_matrix": "experiments/track2_score_calibrated_champion_20260605/v1/evidence_matrix.csv",
+  "arbitration_json": "experiments/track2_score_calibrated_champion_20260605/v1/v5_cross_arbitration/cross_score7_arbitration_summary.json",
+  "text_override_json": "submissions/track2_submission_v5_cross1_gemini35_desc_192_candidate.json",
+  "out_dir": "experiments/track2_v7_hardcase_arbitration_20260605/v1",
+  "decision_count": 9,
+  "strict_accept_count": 1,
+  "borderline_accept_count": 0,
+  "hold_count": 8,
+  "decisions_json": "experiments/track2_v7_hardcase_arbitration_20260605/v1/v7_arbitration_decisions.json",
+  "decisions_csv": "experiments/track2_v7_hardcase_arbitration_20260605/v1/v7_arbitration_decisions.csv",
+  "candidates": {
+    "v7_cross1": {
+      "ladder": "v7_cross1",
+      "json": "submissions/track2_submission_v7_cross1_candidate.json",
+      "zip": "submissions/track2_submission_v7_cross1_candidate.zip",
+      "changed_rows": 1,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0547",
+          "transition": "annoyed->calm",
+          "decision": "accept_strict",
+          "confidence": 0.8,
+          "fit_margin": 0.33000000000000007,
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "strict_multimodal_arbitration_support"
+          ],
+          "text_override_applied": true
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 467,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 21,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 786,
+          "Negative": 214
+        },
+        "arousal": {
+          "Low": 827,
+          "High": 173
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.467,
+        "top_two_emotion_share": 0.727,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    },
+    "v7_cross3": {
+      "ladder": "v7_cross3",
+      "json": "submissions/track2_submission_v7_cross3_candidate.json",
+      "zip": "submissions/track2_submission_v7_cross3_candidate.zip",
+      "changed_rows": 1,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0547",
+          "transition": "annoyed->calm",
+          "decision": "accept_strict",
+          "confidence": 0.8,
+          "fit_margin": 0.33000000000000007,
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "strict_multimodal_arbitration_support"
+          ],
+          "text_override_applied": true
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 467,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 21,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 786,
+          "Negative": 214
+        },
+        "arousal": {
+          "Low": 827,
+          "High": 173
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.467,
+        "top_two_emotion_share": 0.727,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    },
+    "v7_hardcase_push": {
+      "ladder": "v7_hardcase_push",
+      "json": "submissions/track2_submission_v7_hardcase_push_candidate.json",
+      "zip": "submissions/track2_submission_v7_hardcase_push_candidate.zip",
+      "changed_rows": 1,
+      "selected_changes": [
+        {
+          "sample_id": "track2_0547",
+          "transition": "annoyed->calm",
+          "decision": "accept_strict",
+          "confidence": 0.8,
+          "fit_margin": 0.33000000000000007,
+          "evidence_score": 11.0,
+          "reason_codes": [
+            "strict_multimodal_arbitration_support"
+          ],
+          "text_override_applied": true
+        }
+      ],
+      "distribution": {
+        "count": 1000,
+        "emotion": {
+          "calm": 467,
+          "content": 260,
+          "alarmed": 54,
+          "frustrated": 46,
+          "tired": 38,
+          "sad": 36,
+          "aroused": 28,
+          "annoyed": 21,
+          "bored": 19,
+          "excited": 18,
+          "glad": 7,
+          "happy": 6
+        },
+        "valence": {
+          "Positive": 786,
+          "Negative": 214
+        },
+        "arousal": {
+          "Low": 827,
+          "High": 173
+        },
+        "top_emotion": "calm",
+        "top_emotion_share": 0.467,
+        "top_two_emotion_share": 0.727,
+        "missing_emotions": [],
+        "collapse_flags": []
+      },
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "formal_submission_overwritten": false
+    }
+  },
+  "shadow_report_json": "experiments/track2_v7_hardcase_arbitration_20260605/v1/shadow_eval/shadow_score_report.json",
+  "html_review_path": "experiments/track2_v7_hardcase_arbitration_20260605/v1/html_review/track2_v7_hardcase_arbitration_review.html",
+  "formal_submission_overwritten": false
+}
