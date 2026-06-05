@@ -840,3 +840,80 @@ class Track2V6WriterTest(unittest.TestCase):
             selected_changes = report["candidates"]["v6_safe_sameq"]["selected_changes"]
             self.assertEqual(len(selected_changes), 1)
             self.assertEqual(selected_changes[0]["transition"], "content->calm")
+
+
+class Track2V6CliTest(unittest.TestCase):
+    def test_cli_run_writes_summary_and_safe_sameq_zip(self):
+        repo_root = Path(__file__).resolve().parents[1]
+        baseline = [
+            row("track2_0500", "content"),
+            row("track2_0501", "annoyed"),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": "track2_0500",
+                        "current_emotion": "content",
+                        "current_valence": "Positive",
+                        "current_arousal": "Low",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "3",
+                        "supporting_family_count": "2",
+                        "supporting_sources": "public_style;teacher;siglip2",
+                        "supporting_families": "public_style;teacher",
+                        "same_quadrant": "true",
+                        "public_reference_support": "true",
+                        "public_reference_contradiction": "false",
+                        "gemini35_objection": "false",
+                        "vulca_objection": "false",
+                        "evidence_score": "8",
+                    }
+                ],
+            )
+
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/track2_v6_specialist_selector.py",
+                    "run",
+                    "--baseline-json",
+                    str(baseline_json),
+                    "--evidence-matrix",
+                    str(matrix_path),
+                    "--out-dir",
+                    str(out_dir),
+                    "--submission-dir",
+                    str(submission_dir),
+                    "--expected-row-count",
+                    "2",
+                    "--allow-missing-emotions-for-smoke",
+                ],
+                cwd=repo_root,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("track2 v6 selector", result.stdout)
+            self.assertTrue((out_dir / "v6_summary.json").exists())
+            self.assertTrue(
+                (
+                    submission_dir
+                    / "track2_submission_v6_safe_sameq_candidate.zip"
+                ).exists()
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
