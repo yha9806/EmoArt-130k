@@ -1,0 +1,115 @@
+{
+  "method": "track2_multimodal_description_rewrite_v1",
+  "row_count": 1000,
+  "decision_count": 32,
+  "changed_rows": 5,
+  "changed_fields": 30,
+  "classification_label_changes": 0,
+  "rejection_counts": {
+    "low_confidence": 3,
+    "low_dimension_score": 3,
+    "rewrite_not_needed": 26
+  },
+  "changes": [
+    {
+      "sample_id": "track2_0104",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to eliminate generic art-history terms and focus purely on the direct visual attributes of the print.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0147",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.98,
+        "attribute_quality": 0.98,
+        "caption_quality": 0.97
+      },
+      "reason": "The original descriptions were highly accurate, but the overall caption included interpretive iconographic claims about symbolism. The rewritten fields focus purely on the visible elements, refining the descriptions of brushwork, composition, and line quality to be entirely objective and visually grounded.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0347",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Refined the overall caption to focus purely on visible elements rather than symbolic interpretation, and enhanced the other fields with more concrete visual details.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0744",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original text was highly accurate but was enhanced to explicitly mention the prominent red collector seals and calligraphic inscriptions, which are key visual elements of this traditional Chinese scroll format.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0960",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on visible elements, removing references to printmaking techniques and styles while enhancing the description of colors, lines, and composition.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    }
+  ],
+  "formal_submission_overwritten": false,
+  "source_json": "submissions/track2_submission_v3_mid_candidate.json",
+  "decisions_jsonl": "experiments/track2_score_calibrated_champion_20260605/v1/description_gemini35_v1/decisions_top32.jsonl",
+  "out_json": "submissions/track2_submission_v3_mid_gemini35_desc_top32_candidate.json",
+  "out_zip": "submissions/track2_submission_v3_mid_gemini35_desc_top32_candidate.zip"
+}
