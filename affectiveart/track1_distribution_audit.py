@@ -8,7 +8,7 @@ from typing import Any, Iterable
 from PIL import Image, ImageStat
 
 from affectiveart.track1_prompt_lint import lint_prompt_batch
-from affectiveart.track1_reference_family_bank import classify_aspect, _safe_output_paths
+from affectiveart.track1_reference_family_bank import REPO_ROOT, classify_aspect, _safe_output_paths
 
 
 AUDIT_VERSION = "track1_distribution_audit_v1"
@@ -110,10 +110,7 @@ def _validated_manifest_row(
 
     validated = dict(row)
     if base_dir is not None and validated.get("image_path"):
-        image_path = Path(str(validated["image_path"]))
-        if not image_path.is_absolute():
-            image_path = base_dir / image_path
-        validated["image_path"] = str(image_path)
+        validated["image_path"] = str(_resolve_manifest_image_path(str(validated["image_path"]), base_dir))
     return validated
 
 
@@ -138,6 +135,17 @@ def _validate_present_prompt_field(row: dict[str, Any], index: int, field: str) 
     value = row.get(field)
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"manifest row {index} invalid {field}; expected a non-empty string")
+
+
+def _resolve_manifest_image_path(path_value: str, base_dir: Path) -> Path:
+    image_path = Path(path_value)
+    if image_path.is_absolute():
+        return image_path
+    candidates = [base_dir / image_path, REPO_ROOT / image_path]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve(strict=False)
+    return candidates[0].resolve(strict=False)
 
 
 def _family_id_from_row(row: dict[str, Any]) -> str:

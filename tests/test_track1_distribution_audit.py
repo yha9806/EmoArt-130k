@@ -151,6 +151,37 @@ class Track1DistributionAuditTest(unittest.TestCase):
                     self.assertEqual(len(rows), 1)
                     self.assertTrue(rows[0]["sample_id"].startswith("track1_"))
 
+    def test_loader_resolves_repo_root_relative_image_paths(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            root = Path(tmp)
+            image_path = root / "image.png"
+            manifest_dir = root / "nested"
+            manifest_dir.mkdir()
+            manifest_path = manifest_dir / "manifest.json"
+            Image.new("RGB", (32, 16), (70, 80, 90)).save(image_path)
+            repo_relative_image = image_path.relative_to(Path.cwd())
+            manifest_path.write_text(
+                json.dumps(
+                    {
+                        "rows": [
+                            {
+                                "sample_id": "track1_0001",
+                                "image_path": str(repo_relative_image),
+                                "provider_prompt": "wide landscape",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rows = load_manifest_rows(manifest_path)
+            report = audit_candidate_distribution(rows)
+
+        self.assertTrue(Path(rows[0]["image_path"]).is_absolute())
+        self.assertEqual(report["summary"]["existing_image_count"], 1)
+        self.assertEqual(report["summary"]["aspect_labels"], {"landscape": 1})
+
     def test_loader_rejects_malformed_and_empty_inputs(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
