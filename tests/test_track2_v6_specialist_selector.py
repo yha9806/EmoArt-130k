@@ -119,6 +119,45 @@ class Track2V6SelectorCoreTest(unittest.TestCase):
         self.assertEqual(decisions[0].decision, ACCEPT_SAFE)
         self.assertEqual(decisions[0].ladder, "v6_safe_sameq")
 
+    def test_same_quadrant_flag_conflicting_with_labels_fails_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            matrix_path = Path(tmp) / "evidence.csv"
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": "track2_0002_bad_sameq",
+                        "current_emotion": "annoyed",
+                        "current_valence": "Negative",
+                        "current_arousal": "High",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "5",
+                        "supporting_family_count": "4",
+                        "supporting_sources": "public_style;teacher;siglip2;dinov2;clip",
+                        "supporting_families": "public_style;teacher;embedding;vision",
+                        "same_quadrant": "true",
+                        "public_reference_support": "true",
+                        "public_reference_contradiction": "false",
+                        "gemini35_objection": "false",
+                        "vulca_objection": "false",
+                        "evidence_score": "10",
+                        "hard96_net_gain": "0",
+                        "hard96_net_loss": "0",
+                    }
+                ],
+            )
+
+            deltas = load_evidence_matrix(matrix_path)
+            decisions = select_v6_deltas(deltas)
+
+        self.assertFalse(deltas[0].same_quadrant)
+        self.assertTrue(deltas[0].malformed)
+        self.assertIn("same_quadrant_label_mismatch", deltas[0].malformed_reasons)
+        self.assertEqual(decisions[0].decision, HOLD_REVIEW)
+        self.assertIn("same_quadrant_label_mismatch", decisions[0].reason_codes)
+
     def test_public_reference_contradiction_overrides_model_votes(self):
         with tempfile.TemporaryDirectory() as tmp:
             matrix_path = Path(tmp) / "evidence.csv"

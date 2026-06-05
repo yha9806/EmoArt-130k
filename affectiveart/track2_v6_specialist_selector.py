@@ -286,13 +286,19 @@ def _delta_from_row(row: dict[str, Any]) -> V6Delta:
         row.get("proposed_valence"),
         row.get("proposed_arousal"),
     )
-    same_quadrant = _optional_bool(row.get("same_quadrant"))
-    if same_quadrant is None:
-        same_quadrant = bool(
-            current_valence
-            and current_arousal
-            and current_valence == proposed_valence
-            and current_arousal == proposed_arousal
+    actual_same_quadrant = bool(
+        current_valence
+        and current_arousal
+        and proposed_valence
+        and proposed_arousal
+        and current_valence == proposed_valence
+        and current_arousal == proposed_arousal
+    )
+    claimed_same_quadrant = _optional_bool(row.get("same_quadrant"))
+    if claimed_same_quadrant is not None and claimed_same_quadrant != actual_same_quadrant:
+        malformed_reasons = _append_reason(
+            malformed_reasons,
+            "same_quadrant_label_mismatch",
         )
 
     transition = ""
@@ -308,8 +314,8 @@ def _delta_from_row(row: dict[str, Any]) -> V6Delta:
         proposed_valence=proposed_valence,
         proposed_arousal=proposed_arousal,
         transition=transition,
-        same_quadrant=same_quadrant,
-        cross_quadrant_risk=not same_quadrant,
+        same_quadrant=actual_same_quadrant,
+        cross_quadrant_risk=not actual_same_quadrant,
         supporting_source_count=supporting_source_count,
         supporting_family_count=supporting_family_count,
         supporting_sources=supporting_sources,
