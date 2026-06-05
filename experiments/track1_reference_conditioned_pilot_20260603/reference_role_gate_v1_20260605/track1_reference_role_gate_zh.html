@@ -1,0 +1,2687 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track1 Reference Role Gate</title>
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --panel: #fff;
+      --line: #d7d1c5;
+      --text: #202225;
+      --muted: #64707d;
+      --bad: #b42318;
+      --good: #0f766e;
+      --warn: #a15c07;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 243, 238, 0.96);
+    }
+    h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: 0; }
+    .intro { margin: 0; color: var(--muted); max-width: 1120px; }
+    main { padding: 20px 24px 56px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .metric {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .metric strong { display: block; font-size: 24px; color: var(--good); }
+    .metric.bad strong { color: var(--bad); }
+    .metric span { color: var(--muted); font-size: 13px; }
+    h2 { margin: 28px 0 12px; font-size: 19px; letter-spacing: 0; }
+    .card {
+      margin: 0 0 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .head {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .sid { font-weight: 700; font-size: 17px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      background: #f9fafb;
+    }
+    .badge.fail { color: var(--bad); border-color: #f0b8b2; background: #fff4f2; }
+    .badge.pass { color: var(--good); border-color: #a7d8d2; background: #effaf8; }
+    .caption { margin: 8px 0 12px; color: var(--muted); }
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .check {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfaf7;
+      font-size: 13px;
+    }
+    .check strong { display: block; margin-bottom: 3px; }
+    .missing { color: var(--bad); font-weight: 650; }
+    .ok { color: var(--good); font-weight: 650; }
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    figure { margin: 0; }
+    figure img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      background: #eee9df;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    figcaption {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Track1 Reference Role Gate</h1>
+    <p class="intro">角色质量门：检查 reference board 是否真的支撑 caption 的媒介、主体、符号、地标和空间关系。这个报告用于重检索和重生成前的拦截，不是最终人评。</p>
+  </header>
+  <main>
+    <section class="summary">
+      <div class="metric"><strong>1000</strong><span>Total</span></div>
+      <div class="metric"><strong>959</strong><span>Pass</span></div>
+      <div class="metric bad"><strong>41</strong><span>Fail</span></div>
+      <div class="metric bad"><strong>1</strong><span>Fallback</span></div>
+    </section>
+    <h2>一、缺失角色统计</h2>
+    <div class="card"><ul><li><code>medal_symbol</code>: 14</li>
+<li><code>poster_print</code>: 13</li>
+<li><code>aircraft</code>: 8</li>
+<li><code>cannon_artillery</code>: 6</li>
+<li><code>allied_flags</code>: 4</li>
+<li><code>mounted_civilian_relation</code>: 2</li>
+<li><code>train_window</code>: 1</li>
+<li><code>naval_battle</code>: 1</li></ul></div>
+    <h2>二、Fail 样本</h2>
+    
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0665</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</div>
+</div>
+
+<div class="check">
+  <strong>克林姆林/红场地标 <span class="ok">pass</span></strong>
+  <div>caption 点名 Kremlin/Red Square 时，reference 需要支撑塔楼、城墙或莫斯科红场视觉锚点。</div>
+  <div>证据: official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg, official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg, official_Socialist_Realism_0156362_KonstantinYuon_MoscowMorning_315ba99b71.jpg, official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg" alt="official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg">
+  <figcaption>official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0156362_KonstantinYuon_MoscowMorning_315ba99b71.jpg" alt="official_Socialist_Realism_0156362_KonstantinYuon_MoscowMorning_315ba99b71.jpg">
+  <figcaption>official_Socialist_Realism_0156362_KonstantinYuon_MoscowMorning_315ba99b71.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0803</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: allied_flags</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with the Soviet, American, and British flags flying above a Kremlin tower crowned by a red star, framed by dramatic blue searchlight beams, bold Russian text, and a solemn wartime color palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</div>
+</div>
+
+<div class="check">
+  <strong>克林姆林/红场地标 <span class="ok">pass</span></strong>
+  <div>caption 点名 Kremlin/Red Square 时，reference 需要支撑塔楼、城墙或莫斯科红场视觉锚点。</div>
+  <div>证据: official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg, official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg, official_Socialist_Realism_0168264_KarpoTrokhymenko_Moscow_f366183d53.jpg</div>
+</div>
+
+<div class="check">
+  <strong>盟国旗帜符号 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 Soviet/American/British flags 时，reference 需要支持多国旗帜主次关系。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168264_KarpoTrokhymenko_Moscow_f366183d53.jpg" alt="official_Socialist_Realism_0168264_KarpoTrokhymenko_Moscow_f366183d53.jpg">
+  <figcaption>official_Socialist_Realism_0168264_KarpoTrokhymenko_Moscow_f366183d53.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0370</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with a group of young people holding bouquets around a decorated soldier, backed by sweeping red flags, Cyrillic slogans, and a bright celebratory color palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg" alt="official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg">
+  <figcaption>official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0747</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: mounted_civilian_relation, aircraft</span>
+    <span class="badge">风险: provider_reference_fallback</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet wartime propaganda poster with bold Cyrillic lettering, mounted soldiers, fleeing civilians, burning village ruins, aircraft overhead, and dramatic brushwork in a muted blue, red, and ochre palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</div>
+</div>
+
+<div class="check">
+  <strong>骑兵与平民关系 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 mounted soldiers 和 fleeing civilians 时，reference 需要支撑骑兵、平民、村庄/撤离方向等关系，而不只是军人风格。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0476</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print, medal_symbol, cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Cyrillic lettering, a naval medal, sailing ships, cannon, and uniformed sailors in a dramatic maritime battle scene rendered with graphic linework and muted watercolor tones.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>海军/舰船/海战主体 <span class="ok">pass</span></strong>
+  <div>caption 要求 naval/sailor/warships/cannon/maritime battle 时，reference 需要有舰船、海军或海战主体。</div>
+  <div>证据: official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg, official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0122383_DmitryNalbandyan_Italie_Naples_2bb4d2e878.jpg" alt="official_Socialist_Realism_0122383_DmitryNalbandyan_Italie_Naples_2bb4d2e878.jpg">
+  <figcaption>official_Socialist_Realism_0122383_DmitryNalbandyan_Italie_Naples_2bb4d2e878.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0124205_LeonidMuchnyk_CitySketch_34f03f27cd.jpg" alt="official_Socialist_Realism_0124205_LeonidMuchnyk_CitySketch_34f03f27cd.jpg">
+  <figcaption>official_Socialist_Realism_0124205_LeonidMuchnyk_CitySketch_34f03f27cd.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg" alt="official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg">
+  <figcaption>official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg" alt="official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg">
+  <figcaption>official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0353</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster-style scene with a jubilant crowd of soldiers and civilians watching fireworks over the Kremlin and Red Square beneath bold Cyrillic lettering, rendered in a vintage muted palette with dramatic light and shadow.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>克林姆林/红场地标 <span class="ok">pass</span></strong>
+  <div>caption 点名 Kremlin/Red Square 时，reference 需要支撑塔楼、城墙或莫斯科红场视觉锚点。</div>
+  <div>证据: official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg, official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg, official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg" alt="official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg">
+  <figcaption>official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg" alt="official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg">
+  <figcaption>official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0091</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print, train_window</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism poster of a uniformed border guard saluting joyful passengers leaning from a train window beside a red and green frontier post, with bold Cyrillic lettering, muted washes, and a solemn patriotic mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>火车窗/乘客空间关系 <span class="missing">missing</span></strong>
+  <div>caption 要求 train window/passengers/frontier post 时，reference 需要支撑火车、窗洞和人物互动关系。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0084071_ViktorShatalin_PortraitofaMilitaryMan_977970d8f8.jpg" alt="official_Socialist_Realism_0084071_ViktorShatalin_PortraitofaMilitaryMan_977970d8f8.jpg">
+  <figcaption>official_Socialist_Realism_0084071_ViktorShatalin_PortraitofaMilitaryMan_977970d8f8.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0006128_VyacheslavNazaruk_IllustrationforTheUralTales_cac6ea69bf.jpg" alt="official_Socialist_Realism_0006128_VyacheslavNazaruk_IllustrationforTheUralTales_cac6ea69bf.jpg">
+  <figcaption>official_Socialist_Realism_0006128_VyacheslavNazaruk_IllustrationforTheUralTales_cac6ea69bf.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0184355_VajihaSamadova_BulgarianRoofs_482658a138.jpg" alt="official_Socialist_Realism_0184355_VajihaSamadova_BulgarianRoofs_482658a138.jpg">
+  <figcaption>official_Socialist_Realism_0184355_VajihaSamadova_BulgarianRoofs_482658a138.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0078194_82985f8d53.jpg" alt="official_Socialist_Realism_0078194_82985f8d53.jpg">
+  <figcaption>official_Socialist_Realism_0078194_82985f8d53.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0816</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: mounted_civilian_relation</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Cyrillic lettering, heroic cavalry, soldiers, and civilians marching through a rural wartime landscape in vivid brushstrokes and dramatic warm light.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg, official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</div>
+</div>
+
+<div class="check">
+  <strong>骑兵与平民关系 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 mounted soldiers 和 fleeing civilians 时，reference 需要支撑骑兵、平民、村庄/撤离方向等关系，而不只是军人风格。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg" alt="official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg">
+  <figcaption>official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0721</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: allied_flags</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Cyrillic typography, a central surrender declaration document, and four military portraits framed by Soviet, American, British, and French flags on a mint-green vintage paper background.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>盟国旗帜符号 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 Soviet/American/British flags 时，reference 需要支持多国旗帜主次关系。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0166014_MykhailoBoychuk_FrescoesofKharkivChervonozavodskytheatre_Theholidayofharvest_3234272d9d.jpg" alt="official_Socialist_Realism_0166014_MykhailoBoychuk_FrescoesofKharkivChervonozavodskytheatre_Theholidayofharvest_3234272d9d.jpg">
+  <figcaption>official_Socialist_Realism_0166014_MykhailoBoychuk_FrescoesofKharkivChervonozavodskytheatre_Theholidayofharvest_3234272d9d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0155984_SergiyGrigoriev_PortraitofDinaFrumina_Study_cb6f67ba22.jpg" alt="official_Socialist_Realism_0155984_SergiyGrigoriev_PortraitofDinaFrumina_Study_cb6f67ba22.jpg">
+  <figcaption>official_Socialist_Realism_0155984_SergiyGrigoriev_PortraitofDinaFrumina_Study_cb6f67ba22.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161200_ViktorShatalin_Grandma_1a9bdd4e0d.jpg" alt="official_Socialist_Realism_0161200_ViktorShatalin_Grandma_1a9bdd4e0d.jpg">
+  <figcaption>official_Socialist_Realism_0161200_ViktorShatalin_Grandma_1a9bdd4e0d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0831</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of railway workers honoring a locomotive engineer beside a steaming train, with red flags, bouquets, bold Cyrillic slogans, warm muted colors, and a heroic celebratory atmosphere.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0071481_TahirSalahov_MorningEchelon_fb06c14cc8.jpg" alt="official_Socialist_Realism_0071481_TahirSalahov_MorningEchelon_fb06c14cc8.jpg">
+  <figcaption>official_Socialist_Realism_0071481_TahirSalahov_MorningEchelon_fb06c14cc8.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg" alt="official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg">
+  <figcaption>official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0142415_DavidKakabadze_ProcessinggumbrineinthevicinityifKutaisi_27bf942763.jpg" alt="official_Socialist_Realism_0142415_DavidKakabadze_ProcessinggumbrineinthevicinityifKutaisi_27bf942763.jpg">
+  <figcaption>official_Socialist_Realism_0142415_DavidKakabadze_ProcessinggumbrineinthevicinityifKutaisi_27bf942763.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0093653_KarpoTrokhymenko_Mowing_4b94733248.jpg" alt="official_Socialist_Realism_0093653_KarpoTrokhymenko_Mowing_4b94733248.jpg">
+  <figcaption>official_Socialist_Realism_0093653_KarpoTrokhymenko_Mowing_4b94733248.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0802</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster of three decorated citizens holding tall red banners before a fiery red flag with a star emblem, rendered in bold flat colors and heroic propaganda composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg" alt="official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg">
+  <figcaption>official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024929_KonstantinYuon_TheHolidayofCooperationinCountryside_06529913c8.jpg" alt="official_Socialist_Realism_0024929_KonstantinYuon_TheHolidayofCooperationinCountryside_06529913c8.jpg">
+  <figcaption>official_Socialist_Realism_0024929_KonstantinYuon_TheHolidayofCooperationinCountryside_06529913c8.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0534</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with a Soviet soldier embracing a woman in traditional embroidered clothing beneath red banners, a Soviet emblem, and bold Cyrillic lettering, rendered in strong graphic colors and heroic composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg" alt="official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg">
+  <figcaption>official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0327</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster of soldiers and pack horses hauling a cannon through a snowy Carpathian mountain pass, with bold Cyrillic typography, muted blue-white winter tones, and a heroic, determined mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg" alt="official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg">
+  <figcaption>official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0686</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print, medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with Cyrillic text, Baltic republic emblems, a large red Roman numeral V, golden ribbons, oak leaves, and a pale map background on aged paper.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg" alt="official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg">
+  <figcaption>official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0118841_TetyanaYablonska_SpringattheWindow_c93d5a733e.jpg" alt="official_Socialist_Realism_0118841_TetyanaYablonska_SpringattheWindow_c93d5a733e.jpg">
+  <figcaption>official_Socialist_Realism_0118841_TetyanaYablonska_SpringattheWindow_c93d5a733e.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0015370_VolodymyrBondarenko_TheGirlneartheLilac_e93b1ec9cb.jpg" alt="official_Socialist_Realism_0015370_VolodymyrBondarenko_TheGirlneartheLilac_e93b1ec9cb.jpg">
+  <figcaption>official_Socialist_Realism_0015370_VolodymyrBondarenko_TheGirlneartheLilac_e93b1ec9cb.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0038</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster of Soviet soldiers raising red victory banners beneath communist emblems and the bold year 1944, with a liberated city skyline and a heroic, triumphant red-and-gold composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024337_ViktorShatalin_SpeechofLeninontheRedSquare_fe39171079.jpg" alt="official_Socialist_Realism_0024337_ViktorShatalin_SpeechofLeninontheRedSquare_fe39171079.jpg">
+  <figcaption>official_Socialist_Realism_0024337_ViktorShatalin_SpeechofLeninontheRedSquare_fe39171079.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0197</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster of uniformed artillerymen standing among large shells beneath towering guns and bold Cyrillic slogans, rendered with graphic brushwork, muted red-blue-yellow tones, and a solemn patriotic mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg, official_Socialist_Realism_0032084_Kukryniksy_AgoodlessontotheGermans_TheTASSWindowNo929_3c9768edd5.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg" alt="official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg">
+  <figcaption>official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0032084_Kukryniksy_AgoodlessontotheGermans_TheTASSWindowNo929_3c9768edd5.jpg" alt="official_Socialist_Realism_0032084_Kukryniksy_AgoodlessontotheGermans_TheTASSWindowNo929_3c9768edd5.jpg">
+  <figcaption>official_Socialist_Realism_0032084_Kukryniksy_AgoodlessontotheGermans_TheTASSWindowNo929_3c9768edd5.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0192867_VictorZaretsky_PortraitofaGirl_73cef6accc.jpg" alt="official_Socialist_Realism_0192867_VictorZaretsky_PortraitofaGirl_73cef6accc.jpg">
+  <figcaption>official_Socialist_Realism_0192867_VictorZaretsky_PortraitofaGirl_73cef6accc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg" alt="official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg">
+  <figcaption>official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0643</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster art with bold Cyrillic typography and dynamic brushwork, showing mounted cavalrymen charging across a grassy landscape beneath a pale sky with aircraft overhead.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</div>
+</div>
+
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg" alt="official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg">
+  <figcaption>official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg" alt="official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg">
+  <figcaption>official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg" alt="official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg">
+  <figcaption>official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0973</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism wartime propaganda poster with Cyrillic slogans, Red Army soldiers crouched in a trench beside a large artillery gun and battlefield smoke, rendered in a muted palette with bold, urgent composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0188871_Kukryniksy_Backandforth_TASSWindowNo897_e1ddf58de1.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg" alt="official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg">
+  <figcaption>official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0188871_Kukryniksy_Backandforth_TASSWindowNo897_e1ddf58de1.jpg" alt="official_Socialist_Realism_0188871_Kukryniksy_Backandforth_TASSWindowNo897_e1ddf58de1.jpg">
+  <figcaption>official_Socialist_Realism_0188871_Kukryniksy_Backandforth_TASSWindowNo897_e1ddf58de1.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0241</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: allied_flags</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with soldiers raising Soviet, American, and British flags against a bright blue sky, rendered in bold colors and heroic upward composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</div>
+</div>
+
+<div class="check">
+  <strong>盟国旗帜符号 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 Soviet/American/British flags 时，reference 需要支持多国旗帜主次关系。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg" alt="official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg">
+  <figcaption>official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0661</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print, medal_symbol, cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism wartime poster composition with Soviet naval officers and sailors beside a cannon in a smoky harbor battle, dominated by a large heroic medal emblem and dramatic muted colors.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>海军/舰船/海战主体 <span class="ok">pass</span></strong>
+  <div>caption 要求 naval/sailor/warships/cannon/maritime battle 时，reference 需要有舰船、海军或海战主体。</div>
+  <div>证据: official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg, official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg" alt="official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg">
+  <figcaption>official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg" alt="official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg">
+  <figcaption>official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0138808_IlyaMashkov_Pioneerwithahorn_d21443e303.jpg" alt="official_Socialist_Realism_0138808_IlyaMashkov_Pioneerwithahorn_d21443e303.jpg">
+  <figcaption>official_Socialist_Realism_0138808_IlyaMashkov_Pioneerwithahorn_d21443e303.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg" alt="official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg">
+  <figcaption>official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0108</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: allied_flags</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with Soviet, American, and British flags planted triumphantly over a defeated black eagle, using bold red and blue colors, stark composition, and solemn wartime symbolism.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg, official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg, official_Socialist_Realism_0050697_Kukryniksy_ClawsinClaw_3fa9387c67.jpg</div>
+</div>
+
+<div class="check">
+  <strong>盟国旗帜符号 <span class="missing">missing</span></strong>
+  <div>caption 同时要求 Soviet/American/British flags 时，reference 需要支持多国旗帜主次关系。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg" alt="official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg">
+  <figcaption>official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0050697_Kukryniksy_ClawsinClaw_3fa9387c67.jpg" alt="official_Socialist_Realism_0050697_Kukryniksy_ClawsinClaw_3fa9387c67.jpg">
+  <figcaption>official_Socialist_Realism_0050697_Kukryniksy_ClawsinClaw_3fa9387c67.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0818</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism wartime propaganda poster of Allied cargo ships, sailors, naval flags, and sea convoy scenes, rendered with bold graphic composition, flat colors, and a solemn patriotic atmosphere.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>海军/舰船/海战主体 <span class="ok">pass</span></strong>
+  <div>caption 要求 naval/sailor/warships/cannon/maritime battle 时，reference 需要有舰船、海军或海战主体。</div>
+  <div>证据: official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg, official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg" alt="official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg">
+  <figcaption>official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg" alt="official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg">
+  <figcaption>official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg" alt="official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg">
+  <figcaption>official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg" alt="official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg">
+  <figcaption>official_Socialist_Realism_0137310_DavidKakabadze_ElevatorinPoti_6fbd219496.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0166</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet naval poster with bold Cyrillic lettering, soldiers crowded on boats crossing rough blue water toward a rocky coast, rendered in broad painterly strokes and a solemn heroic mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg" alt="official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg">
+  <figcaption>official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0062663_BoyukaghaMirzazade_Caspiansea_00449e4e31.jpg" alt="official_Socialist_Realism_0062663_BoyukaghaMirzazade_Caspiansea_00449e4e31.jpg">
+  <figcaption>official_Socialist_Realism_0062663_BoyukaghaMirzazade_Caspiansea_00449e4e31.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg" alt="official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg">
+  <figcaption>official_Socialist_Realism_0114026_VictorPuzyrkov_Silence_f4fad05682.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0865</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with Cyrillic text combines a snowy battlefield of tanks, soldiers, and aircraft above with steelworkers handling molten metal in a smoky foundry below, using bold colors and dramatic industrial lighting.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg" alt="official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg">
+  <figcaption>official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0939</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism poster-style scene with bold Russian typography above a snowy village where families unload bags from a horse cart and enter a wooden house, painted in a muted winter palette with simplified figures and sturdy brushwork.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg" alt="official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg">
+  <figcaption>official_Socialist_Realism_0029018_PyotrKonchalovsky_Wheretogivebloodhere_0fda77eaa5.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg" alt="official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg">
+  <figcaption>official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg" alt="official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg">
+  <figcaption>official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg" alt="official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg">
+  <figcaption>official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0752</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet agricultural propaganda poster with collective farm workers at a desk, a man handing documents, harvest activity and rural buildings in the background, bold Cyrillic lettering, warm muted colors, and a solemn productive atmosphere.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0033259_AllaHorska_Harvesting_61c523eaf9.jpg" alt="official_Socialist_Realism_0033259_AllaHorska_Harvesting_61c523eaf9.jpg">
+  <figcaption>official_Socialist_Realism_0033259_AllaHorska_Harvesting_61c523eaf9.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0017437_TetyanaYablonska_Bread_28bc571d60.jpg" alt="official_Socialist_Realism_0017437_TetyanaYablonska_Bread_28bc571d60.jpg">
+  <figcaption>official_Socialist_Realism_0017437_TetyanaYablonska_Bread_28bc571d60.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg" alt="official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg">
+  <figcaption>official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg" alt="official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg">
+  <figcaption>official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0705</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Baroque engraved scene with cherubs holding ribbon banners above a kneeling woman beside flowing water, framed by a vine-covered tree, rocky mountains, radiant light, and dense cross-hatched shadows.</p>
+  <div class="checks">
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0150117_TheodoorvanThulden_DutchVirginandFrederik_b19e3f7b85.jpg" alt="official_Baroque_0150117_TheodoorvanThulden_DutchVirginandFrederik_b19e3f7b85.jpg">
+  <figcaption>official_Baroque_0150117_TheodoorvanThulden_DutchVirginandFrederik_b19e3f7b85.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0136741_PeterPaulRubens_HenryIvintheBattleofArques_498a88fc4a.jpg" alt="official_Baroque_0136741_PeterPaulRubens_HenryIvintheBattleofArques_498a88fc4a.jpg">
+  <figcaption>official_Baroque_0136741_PeterPaulRubens_HenryIvintheBattleofArques_498a88fc4a.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0076887_OttovanVeen_BataviansDefeatingRomansontheRhine_128b32b5f2.jpg" alt="official_Baroque_0076887_OttovanVeen_BataviansDefeatingRomansontheRhine_128b32b5f2.jpg">
+  <figcaption>official_Baroque_0076887_OttovanVeen_BataviansDefeatingRomansontheRhine_128b32b5f2.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0132456_FranciscodeZurbaran_BattlebetweenChristiansandMuslimsatElSotillo_2b264b72b7.jpg" alt="official_Baroque_0132456_FranciscodeZurbaran_BattlebetweenChristiansandMuslimsatElSotillo_2b264b72b7.jpg">
+  <figcaption>official_Baroque_0132456_FranciscodeZurbaran_BattlebetweenChristiansandMuslimsatElSotillo_2b264b72b7.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0308</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: cannon_artillery</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism poster-style scene of a helmeted soldier with a rifle standing beside a historical military figure near a large cannon, rendered with bold outlines, vivid colors, and dramatic graphic composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>大炮/火炮结构 <span class="missing">missing</span></strong>
+  <div>caption 点名 cannon/artillery/shells 时，reference 需要支撑火炮机械结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg" alt="official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg">
+  <figcaption>official_Socialist_Realism_0182136_KonstantinYuon_BeforeenteringintoKremlin_NikolskyGate2_15_November1917_63d9696023.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0916</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract geometric poster composition with bold black outlines, yellow and off-white panels, diagonal blue and black hatching, and vertical Roy Lichtenstein typography along the right side.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0033953_JoaquinTorresGarcia_Constructivo_ecd1bc6d2d.jpg" alt="official_Abstract_Art_0033953_JoaquinTorresGarcia_Constructivo_ecd1bc6d2d.jpg">
+  <figcaption>official_Abstract_Art_0033953_JoaquinTorresGarcia_Constructivo_ecd1bc6d2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0192521_TiberiySzilvashi_Untitled_99ba2a1d85.jpg" alt="official_Abstract_Art_0192521_TiberiySzilvashi_Untitled_99ba2a1d85.jpg">
+  <figcaption>official_Abstract_Art_0192521_TiberiySzilvashi_Untitled_99ba2a1d85.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0192921_WassilyKandinsky_VariousParts_6624118206.jpg" alt="official_Abstract_Art_0192921_WassilyKandinsky_VariousParts_6624118206.jpg">
+  <figcaption>official_Abstract_Art_0192921_WassilyKandinsky_VariousParts_6624118206.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0027579_AlexanderCalder_PuppetMan_86dd6ffa23.jpg" alt="official_Abstract_Art_0027579_AlexanderCalder_PuppetMan_86dd6ffa23.jpg">
+  <figcaption>official_Abstract_Art_0027579_AlexanderCalder_PuppetMan_86dd6ffa23.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0386</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Baroque portrait of a richly dressed figure in dark armor and a plumed hat, adorned with a gold chain and medallion, set against a muted background with dramatic chiaroscuro lighting.</p>
+  <div class="checks">
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0178098_DavidDesGranges_CharlesII_16301685_afterAdriaenHanneman_34c27e337b.jpg" alt="official_Baroque_0178098_DavidDesGranges_CharlesII_16301685_afterAdriaenHanneman_34c27e337b.jpg">
+  <figcaption>official_Baroque_0178098_DavidDesGranges_CharlesII_16301685_afterAdriaenHanneman_34c27e337b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0110830_JacobHuysmans_PORTRAITOFAGENTLEMAN_SAIDTOBECORNETGEORGEJOYCE_1bb23410c5.jpg" alt="official_Baroque_0110830_JacobHuysmans_PORTRAITOFAGENTLEMAN_SAIDTOBECORNETGEORGEJOYCE_1bb23410c5.jpg">
+  <figcaption>official_Baroque_0110830_JacobHuysmans_PORTRAITOFAGENTLEMAN_SAIDTOBECORNETGEORGEJOYCE_1bb23410c5.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0021006_GilbertSoest_EdwardHerbert_16331678_3rdBaronHerbertofChirbury_b195e0905d.jpg" alt="official_Baroque_0021006_GilbertSoest_EdwardHerbert_16331678_3rdBaronHerbertofChirbury_b195e0905d.jpg">
+  <figcaption>official_Baroque_0021006_GilbertSoest_EdwardHerbert_16331678_3rdBaronHerbertofChirbury_b195e0905d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Baroque_0078688_JohnGreenhill_JamesII_16331701_asDukeofYork_288a64d6b9.jpg" alt="official_Baroque_0078688_JohnGreenhill_JamesII_16331701_asDukeofYork_288a64d6b9.jpg">
+  <figcaption>official_Baroque_0078688_JohnGreenhill_JamesII_16331701_asDukeofYork_288a64d6b9.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0005</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract cubist portrait of a fragmented human face with angular geometric planes, mismatched colorful eyes, rough black outlines, and textured pastel brushstrokes in yellow, green, red, and muted gray tones.</p>
+  <div class="checks">
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg" alt="official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg">
+  <figcaption>official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0055616_YiannisMoralis_Erotic_a27523d308.jpg" alt="official_Abstract_Art_0055616_YiannisMoralis_Erotic_a27523d308.jpg">
+  <figcaption>official_Abstract_Art_0055616_YiannisMoralis_Erotic_a27523d308.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg" alt="official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg">
+  <figcaption>official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0079441_JosefSima_PaysageII_d5ddb78162.jpg" alt="official_Abstract_Art_0079441_JosefSima_PaysageII_d5ddb78162.jpg">
+  <figcaption>official_Abstract_Art_0079441_JosefSima_PaysageII_d5ddb78162.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0273</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract watercolor composition with loose black scribble lines, soft gray washes, pink ribbon-like forms, blue patches and dots, and a bright red circular shape in a delicate, airy arrangement.</p>
+  <div class="checks">
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0018279_AkkithamNarayanan_Untitled_46807a95ca.jpg" alt="official_Abstract_Art_0018279_AkkithamNarayanan_Untitled_46807a95ca.jpg">
+  <figcaption>official_Abstract_Art_0018279_AkkithamNarayanan_Untitled_46807a95ca.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0030278_JohnMarin_WeehawkenSequence_No_30_f851c2c08d.jpg" alt="official_Abstract_Art_0030278_JohnMarin_WeehawkenSequence_No_30_f851c2c08d.jpg">
+  <figcaption>official_Abstract_Art_0030278_JohnMarin_WeehawkenSequence_No_30_f851c2c08d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0048216_HilmaafKlint_Chaos_Nr_2_4308aa5391.jpg" alt="official_Abstract_Art_0048216_HilmaafKlint_Chaos_Nr_2_4308aa5391.jpg">
+  <figcaption>official_Abstract_Art_0048216_HilmaafKlint_Chaos_Nr_2_4308aa5391.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0189101_EmmaOdette_ReachingintheDark_ThatSummerinNewYork_2a6744cf27.jpg" alt="official_Abstract_Art_0189101_EmmaOdette_ReachingintheDark_ThatSummerinNewYork_2a6744cf27.jpg">
+  <figcaption>official_Abstract_Art_0189101_EmmaOdette_ReachingintheDark_ThatSummerinNewYork_2a6744cf27.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0770</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract composition of layered geometric planes in red, blue, pink, ochre, and green, with shadowy organic silhouettes, textured brushwork, and a dynamic fragmented arrangement.</p>
+  <div class="checks">
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg" alt="official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg">
+  <figcaption>official_Abstract_Art_0010470_ValentinKhrushch_Fish_8fffc7d5f9.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg" alt="official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg">
+  <figcaption>official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0182919_LyubovPopova_Painterly_Architectonic_3e02b2368d.jpg" alt="official_Abstract_Art_0182919_LyubovPopova_Painterly_Architectonic_3e02b2368d.jpg">
+  <figcaption>official_Abstract_Art_0182919_LyubovPopova_Painterly_Architectonic_3e02b2368d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg" alt="official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg">
+  <figcaption>official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0663</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Two elaborately dressed foreign figures stand on a warm silk-toned background in a Gongbi style, with fine linework, muted mineral colors, flowing ribbons, and a calm ceremonial atmosphere.</p>
+  <div class="checks">
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg" alt="official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg">
+  <figcaption>official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0118393_QiuYing_SpringMorningintheHanPalace_ViewH_93552351a5.jpg" alt="official_Gongbi_0118393_QiuYing_SpringMorningintheHanPalace_ViewH_93552351a5.jpg">
+  <figcaption>official_Gongbi_0118393_QiuYing_SpringMorningintheHanPalace_ViewH_93552351a5.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0124877_QiuYing_Landscape_fffe4e554d.jpg" alt="official_Gongbi_0124877_QiuYing_Landscape_fffe4e554d.jpg">
+  <figcaption>official_Gongbi_0124877_QiuYing_Landscape_fffe4e554d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg" alt="official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg">
+  <figcaption>official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0692</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract grayscale geometric composition with two dark diagonal cylindrical forms above a pale plane marked by three black circles, featuring soft shadows and a grainy textured surface.</p>
+  <div class="checks">
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg" alt="official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg">
+  <figcaption>official_Abstract_Art_0046859_EdwardWadsworth_AbstractComposition_db881ac71b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0152262_DavidSmith_Blueconstruction_d263e57656.jpg" alt="official_Abstract_Art_0152262_DavidSmith_Blueconstruction_d263e57656.jpg">
+  <figcaption>official_Abstract_Art_0152262_DavidSmith_Blueconstruction_d263e57656.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg" alt="official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg">
+  <figcaption>official_Abstract_Art_0173059_JeanArp_GeometricForms_0c9d40242f.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0093062_AugusteHerbin_Nude_c442c45016.jpg" alt="official_Abstract_Art_0093062_AugusteHerbin_Nude_c442c45016.jpg">
+  <figcaption>official_Abstract_Art_0093062_AugusteHerbin_Nude_c442c45016.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0717</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster with two medal-wearing figures holding a commemorative scroll for the 220th anniversary of the USSR Academy of Sciences, framed by bold Cyrillic lettering, pastel watercolor washes, and a formal building below.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0096446_Kukryniksy_Untitled_05bc60554e.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0096446_Kukryniksy_Untitled_05bc60554e.jpg" alt="official_Socialist_Realism_0096446_Kukryniksy_Untitled_05bc60554e.jpg">
+  <figcaption>official_Socialist_Realism_0096446_Kukryniksy_Untitled_05bc60554e.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041261_GeorgyiYakutovytch_Untitled_7a07b3d58e.jpg" alt="official_Socialist_Realism_0041261_GeorgyiYakutovytch_Untitled_7a07b3d58e.jpg">
+  <figcaption>official_Socialist_Realism_0041261_GeorgyiYakutovytch_Untitled_7a07b3d58e.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg" alt="official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg">
+  <figcaption>official_Socialist_Realism_0173921_BorisKustodiev_PeoplesoftheUSSRbeforeandnow_oldandnewlifeinCentralAsia_3c7ec50057.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0881</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol, aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of a decorated Soviet pilot holding a flight map before military airplanes in a blue sky, framed by laurel wreaths, red ribbons, bold Cyrillic lettering, and heroic patriotic composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg, official_Socialist_Realism_0033477_Kukryniksy_Untitled_f1e35748e3.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div>
+
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0033477_Kukryniksy_Untitled_f1e35748e3.jpg" alt="official_Socialist_Realism_0033477_Kukryniksy_Untitled_f1e35748e3.jpg">
+  <figcaption>official_Socialist_Realism_0033477_Kukryniksy_Untitled_f1e35748e3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg" alt="official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg">
+  <figcaption>official_Socialist_Realism_0029242_TetyanaYablonska_HasCaughtaCold_e0a22ad65f.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0235</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: aircraft</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster of decorated airmen standing beneath red flags and Cyrillic slogans, with formations of airplanes, parachutes, flowers, and a bright patriotic sky rendered in bold colors.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</div>
+</div>
+
+<div class="check">
+  <strong>飞机/空中主体 <span class="missing">missing</span></strong>
+  <div>caption 点名 aircraft/airplane/plane 时，reference 需要支撑空中飞机主体，避免模型凭模板乱补。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg" alt="official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg">
+  <figcaption>official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg" alt="official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg">
+  <figcaption>official_Socialist_Realism_0062873_AleksandrDeyneka_FuturePilots_e01fb31c4e.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0108435_SattarBahlulzade_Landscape_50ec7a3637.jpg" alt="official_Socialist_Realism_0108435_SattarBahlulzade_Landscape_50ec7a3637.jpg">
+  <figcaption>official_Socialist_Realism_0108435_SattarBahlulzade_Landscape_50ec7a3637.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0124349_VolodymyrBondarenko_StillLife_CossackSong_152d998472.jpg" alt="official_Socialist_Realism_0124349_VolodymyrBondarenko_StillLife_CossackSong_152d998472.jpg">
+  <figcaption>official_Socialist_Realism_0124349_VolodymyrBondarenko_StillLife_CossackSong_152d998472.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0732</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: naval_battle</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of children offering flowers to a decorated soldier and a sailor raising a red flag, with ships, cheering figures, bold heroic composition, and a muted pastel palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div>
+
+<div class="check">
+  <strong>海军/舰船/海战主体 <span class="missing">missing</span></strong>
+  <div>caption 要求 naval/sailor/warships/cannon/maritime battle 时，reference 需要有舰船、海军或海战主体。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0397</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: poster_print</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract typographic poster collage filled with oversized letters, numbers, and layered blocks in teal, green, yellow, and cream, with dense geometric composition and printed text textures.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="missing">missing</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0036742_HillyvanEerten_DanielMeyerplein_No6_mono_print_2007_artistHillyvanEerten_1812af0546.jpg" alt="official_Abstract_Art_0036742_HillyvanEerten_DanielMeyerplein_No6_mono_print_2007_artistHillyvanEerten_1812af0546.jpg">
+  <figcaption>official_Abstract_Art_0036742_HillyvanEerten_DanielMeyerplein_No6_mono_print_2007_artistHillyvanEerten_1812af0546.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0028157_JoaquinTorresGarcia_Untitled_14a7cd29f4.jpg" alt="official_Abstract_Art_0028157_JoaquinTorresGarcia_Untitled_14a7cd29f4.jpg">
+  <figcaption>official_Abstract_Art_0028157_JoaquinTorresGarcia_Untitled_14a7cd29f4.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0015034_TiberiySzilvashi_Untitled_2ee9dc98f9.jpg" alt="official_Abstract_Art_0015034_TiberiySzilvashi_Untitled_2ee9dc98f9.jpg">
+  <figcaption>official_Abstract_Art_0015034_TiberiySzilvashi_Untitled_2ee9dc98f9.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0007297_SallyGabori_DibirdibiCountry_f584ce074c.jpg" alt="official_Abstract_Art_0007297_SallyGabori_DibirdibiCountry_f584ce074c.jpg">
+  <figcaption>official_Abstract_Art_0007297_SallyGabori_DibirdibiCountry_f584ce074c.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0251</span>
+    <span class="badge fail">fail</span>
+    <span class="badge">缺失: medal_symbol</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Abstract pencil sketch on aged beige paper with a tall rectangular form and flowing curved ribbon-like lines extending to the right in a sparse, delicate composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>勋章/丝带符号 <span class="missing">missing</span></strong>
+  <div>caption 要求 medal/ribbon 时，reference 需要支撑勋章、丝带或徽章结构。</div>
+  <div>证据: 无</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0007430_AlvarAalto_WoodReliefExperiments_46107c3cf5.jpg" alt="official_Abstract_Art_0007430_AlvarAalto_WoodReliefExperiments_46107c3cf5.jpg">
+  <figcaption>official_Abstract_Art_0007430_AlvarAalto_WoodReliefExperiments_46107c3cf5.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0047934_EvanMagar_game_b723328945.jpg" alt="official_Abstract_Art_0047934_EvanMagar_game_b723328945.jpg">
+  <figcaption>official_Abstract_Art_0047934_EvanMagar_game_b723328945.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0063747_GeorgiaO_Keeffe_Blue_04_ec57e4ac9f.jpg" alt="official_Abstract_Art_0063747_GeorgiaO_Keeffe_Blue_04_ec57e4ac9f.jpg">
+  <figcaption>official_Abstract_Art_0063747_GeorgiaO_Keeffe_Blue_04_ec57e4ac9f.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0116117_TihamerGyarmathy_TheDepthofSea_578cd84477.jpg" alt="official_Abstract_Art_0116117_TihamerGyarmathy_TheDepthofSea_578cd84477.jpg">
+  <figcaption>official_Abstract_Art_0116117_TihamerGyarmathy_TheDepthofSea_578cd84477.jpg</figcaption>
+</figure></div>
+</article>
+    <h2>三、Pass 抽样</h2>
+    
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0077</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet naval propaganda poster with a sailor hoisting red and white flags before panels of warships and sea battles, using bold Cyrillic typography, patriotic red accents, and a solemn heroic composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg</div>
+</div>
+
+<div class="check">
+  <strong>海军/舰船/海战主体 <span class="ok">pass</span></strong>
+  <div>caption 要求 naval/sailor/warships/cannon/maritime battle 时，reference 需要有舰船、海军或海战主体。</div>
+  <div>证据: official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg, official_Socialist_Realism_0057340_VictorPuzyrkov_YachtsintheSea_f3dc9b8262.jpg, official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg" alt="official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg">
+  <figcaption>official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg" alt="official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg">
+  <figcaption>official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0057340_VictorPuzyrkov_YachtsintheSea_f3dc9b8262.jpg" alt="official_Socialist_Realism_0057340_VictorPuzyrkov_YachtsintheSea_f3dc9b8262.jpg">
+  <figcaption>official_Socialist_Realism_0057340_VictorPuzyrkov_YachtsintheSea_f3dc9b8262.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg" alt="official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg">
+  <figcaption>official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0898</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster art of Soviet soldiers charging through a snowy battlefield with a raised rifle, a red flag, bold Cyrillic slogans, dramatic action, and a muted red-blue color palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg, official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg" alt="official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg">
+  <figcaption>official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0708</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism wartime poster of Soviet soldiers advancing through a rugged battlefield, with a front soldier holding a submachine gun and another raising a red banner, rendered in heroic composition, muted earth tones, and bold Cyrillic typography.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg" alt="official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg">
+  <figcaption>official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0593</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a monumental sword-wielding historical figure above soldiers raising red flags amid a liberated battlefield town, rendered in dramatic colors and strong graphic brushwork.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg" alt="official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg">
+  <figcaption>official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0680</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Russian typography portrays armed Allied soldiers advancing beneath a waving red flag and a monumental liberty figure, using strong graphic lines and a muted wartime color palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109550_Kukryniksy_Onlyafewmonthshavepassed_Lookingtothefaces_a6555675cb.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109550_Kukryniksy_Onlyafewmonthshavepassed_Lookingtothefaces_a6555675cb.jpg" alt="official_Socialist_Realism_0109550_Kukryniksy_Onlyafewmonthshavepassed_Lookingtothefaces_a6555675cb.jpg">
+  <figcaption>official_Socialist_Realism_0109550_Kukryniksy_Onlyafewmonthshavepassed_Lookingtothefaces_a6555675cb.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0769</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with heroic Soviet soldiers raising weapons before red battle flags, bold Cyrillic lettering, a coastal city below, and dramatic warm-toned light with strong graphic brushwork.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg, official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg" alt="official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg">
+  <figcaption>official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg" alt="official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg">
+  <figcaption>official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0128</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism poster of Soviet soldiers marching beside a tank with red banners, celebratory flowers, and bold Cyrillic slogans in a patriotic, triumphant composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg" alt="official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg">
+  <figcaption>official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0151</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster on aged folded paper, with bold Cyrillic lettering and dramatic Soviet soldiers charging with rifles and bayonets against historical Prussian figures, using muted greens, reds, and tan tones.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg" alt="official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg">
+  <figcaption>official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0696</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Cyrillic lettering portrays Allied and Soviet military figures around a table as a defeated German officer signs an unconditional surrender, framed by national flags, strong outlines, muted wartime colors, and a solemn dramatic mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg, official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg, official_Socialist_Realism_0094636_Kukryniksy_AsitcalledbyOrelsoitechoedinRome_TheTASSWindowNo779_2e25cc9a82.jpg, official_Socialist_Realism_0138668_Kukryniksy_Untitled_ed468f4c8e.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg" alt="official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg">
+  <figcaption>official_Socialist_Realism_0179521_Kukryniksy_Untitled_c375ff7e51.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg" alt="official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg">
+  <figcaption>official_Socialist_Realism_0188159_Kukryniksy_Nuremberg_CathedralofSt_Lorenz_30f60d6305.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0094636_Kukryniksy_AsitcalledbyOrelsoitechoedinRome_TheTASSWindowNo779_2e25cc9a82.jpg" alt="official_Socialist_Realism_0094636_Kukryniksy_AsitcalledbyOrelsoitechoedinRome_TheTASSWindowNo779_2e25cc9a82.jpg">
+  <figcaption>official_Socialist_Realism_0094636_Kukryniksy_AsitcalledbyOrelsoitechoedinRome_TheTASSWindowNo779_2e25cc9a82.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0138668_Kukryniksy_Untitled_ed468f4c8e.jpg" alt="official_Socialist_Realism_0138668_Kukryniksy_Untitled_ed468f4c8e.jpg">
+  <figcaption>official_Socialist_Realism_0138668_Kukryniksy_Untitled_ed468f4c8e.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0971</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of heroic partisans with rifles before rugged mountains and a red-star flag, framed by Cyrillic text, rendered in bold flat brushwork with a muted turquoise, orange, and beige palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0037502_DavidKakabadze_MiningatKazbegi_19787eecf4.jpg" alt="official_Socialist_Realism_0037502_DavidKakabadze_MiningatKazbegi_19787eecf4.jpg">
+  <figcaption>official_Socialist_Realism_0037502_DavidKakabadze_MiningatKazbegi_19787eecf4.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg" alt="official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg">
+  <figcaption>official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114095_VajihaSamadova_MountKepez_41c1a4d7d4.jpg" alt="official_Socialist_Realism_0114095_VajihaSamadova_MountKepez_41c1a4d7d4.jpg">
+  <figcaption>official_Socialist_Realism_0114095_VajihaSamadova_MountKepez_41c1a4d7d4.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0491</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet agricultural poster with a farm woman holding a basket of vegetables before green fields, surrounded by abundant produce, bold Cyrillic lettering, bright flat colors, and strong poster-like composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0114440_BorisKustodiev_SketchofPosterCitygivesTextiles_aVillagegivesBread_651235bacc.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114440_BorisKustodiev_SketchofPosterCitygivesTextiles_aVillagegivesBread_651235bacc.jpg" alt="official_Socialist_Realism_0114440_BorisKustodiev_SketchofPosterCitygivesTextiles_aVillagegivesBread_651235bacc.jpg">
+  <figcaption>official_Socialist_Realism_0114440_BorisKustodiev_SketchofPosterCitygivesTextiles_aVillagegivesBread_651235bacc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0028452_BoyukaghaMirzazade_Pickingofpaddy_efa2857d65.jpg" alt="official_Socialist_Realism_0028452_BoyukaghaMirzazade_Pickingofpaddy_efa2857d65.jpg">
+  <figcaption>official_Socialist_Realism_0028452_BoyukaghaMirzazade_Pickingofpaddy_efa2857d65.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110810_KonstantinYuon_ReturningfromtheWork_5e1190c7b9.jpg" alt="official_Socialist_Realism_0110810_KonstantinYuon_ReturningfromtheWork_5e1190c7b9.jpg">
+  <figcaption>official_Socialist_Realism_0110810_KonstantinYuon_ReturningfromtheWork_5e1190c7b9.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg" alt="official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg">
+  <figcaption>official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0649</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Cyrillic typography, Soviet soldiers greeting a coastal villager beside a river or bay, wooden houses and boats in the background, painted in warm yellows, reds, and muted greens with strong graphic brushwork.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg" alt="official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg">
+  <figcaption>official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg" alt="official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg">
+  <figcaption>official_Socialist_Realism_0043890_Kukryniksy_Twopots_TASSWindowNo1027_51f3233ffe.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0776</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Gongbi hanging scroll with elegant calligraphy and red seals above a finely outlined bearded man in a long robe holding the reins of a pale horse, rendered with delicate linework and muted ink colors.</p>
+  <div class="checks"></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0008228_QiuYing_SpringMorningintheHanPalace_ViewA_3137b656d7.jpg" alt="official_Gongbi_0008228_QiuYing_SpringMorningintheHanPalace_ViewA_3137b656d7.jpg">
+  <figcaption>official_Gongbi_0008228_QiuYing_SpringMorningintheHanPalace_ViewA_3137b656d7.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg" alt="official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg">
+  <figcaption>official_Gongbi_0096009_QiuYing_SpringMorningintheHanPalace_ViewC_e39f9a71c6.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg" alt="official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg">
+  <figcaption>official_Gongbi_0133722_QiuYing_SpringMorningintheHanPalace_ViewJ_8b2d5443db.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0187247_EmperorHuizong_FinchesandBamboo_66ae8b4982.jpg" alt="official_Gongbi_0187247_EmperorHuizong_FinchesandBamboo_66ae8b4982.jpg">
+  <figcaption>official_Gongbi_0187247_EmperorHuizong_FinchesandBamboo_66ae8b4982.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0457</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster with bold Cyrillic lettering, showing a heroic medieval smith and armored warrior forging a sword above a modern soldier and factory worker shaking hands beside a tank, rendered with strong outlines, muted colors, and patriotic dramatic composition.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg, official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg, official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0958</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism wartime poster of a nurse in a white uniform tending a wounded soldier beside a rifle, with bold Cyrillic typography, strong ink outlines, muted watercolor tones, and a solemn heroic mood.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg, official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg" alt="official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg">
+  <figcaption>official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0444</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Russian text, a heroic soldier holding a rifle beside a farmer sowing seeds in a plowed field, and a defeated Nazi figure under dramatic blue skies and strong graphic colors.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg, official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg, official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg" alt="official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg">
+  <figcaption>official_Socialist_Realism_0014909_Kukryniksy_WipeFascismofftheFaceoftheEarth_Frontpageofthe_MoscowNews_27thJune1941_80cb164445.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0435</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of a Soviet soldier in a white winter coat standing triumphantly on rocky heights with a rifle, arm outstretched over a distant city under a dramatic orange smoky sky and bold Cyrillic lettering.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg" alt="official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg">
+  <figcaption>official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg" alt="official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg">
+  <figcaption>official_Socialist_Realism_0051830_VeniaminKremer_TheMarinesontheFightattheLeningradFrontinJanuary1941_1106f64591.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0314</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with a bold Cyrillic headline, heroic soldiers, an industrial worker, anti-fascist caricature scenes, and stark wartime panels in muted reds, blues, and beige tones.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg" alt="official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg">
+  <figcaption>official_Socialist_Realism_0168454_VictorPuzyrkov_Immortality_ae4cb1c931.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg" alt="official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg">
+  <figcaption>official_Socialist_Realism_0109226_KonstantinYuon_MilitaryParadeinRedSquare_7thNovember1941_1cbfe418a3.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg" alt="official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg">
+  <figcaption>official_Socialist_Realism_0007702_IvanVladimirov_TheSurrenderoftheFinnsin1940_Russian_FinnishWar_31b46f5ef0.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg" alt="official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg">
+  <figcaption>official_Socialist_Realism_0046996_Kukryniksy_Untitled_3cd627faec.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0160</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism Soviet poster with a vast red banner bearing Stalin’s profile above the Kremlin tower, crossed by dramatic searchlights against a dark night sky in a bold red and orange palette.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</div>
+</div>
+
+<div class="check">
+  <strong>克林姆林/红场地标 <span class="ok">pass</span></strong>
+  <div>caption 点名 Kremlin/Red Square 时，reference 需要支撑塔楼、城墙或莫斯科红场视觉锚点。</div>
+  <div>证据: official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg, official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg" alt="official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg">
+  <figcaption>official_Socialist_Realism_0134499_KonstantinYuon_TheRedArmyparade_8ac2a88581.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg" alt="official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg">
+  <figcaption>official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg" alt="official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg">
+  <figcaption>official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg" alt="official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg">
+  <figcaption>official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0923</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Socialist Realism propaganda poster with bold Cyrillic headlines, a chaotic caricature of a defeated military officer and soldiers in retreat, dynamic angular brushstrokes, muted tan and blue colors, and a dramatic folded-paper texture.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg" alt="official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg">
+  <figcaption>official_Socialist_Realism_0181151_Kukryniksy_Untitled_665919b1ea.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg" alt="official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg">
+  <figcaption>official_Socialist_Realism_0106843_KonstantinYuon_EntryintotheKremlinthroughtheTrinityGates2_15_November1917_6d851eb1df.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg" alt="official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg">
+  <figcaption>official_Socialist_Realism_0026031_VictorPuzyrkov_BlackSeaFleet_ebd933cd03.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0533</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster of a mounted Red Army soldier charging forward on a horse while raising a large red flag, with dramatic clouds, battlefield silhouettes, and bold painterly colors.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg" alt="official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg">
+  <figcaption>official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg" alt="official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg">
+  <figcaption>official_Socialist_Realism_0109853_Kukryniksy_Aliethrower_TheTASSWindowNo625_be56c04c6d.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg" alt="official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg">
+  <figcaption>official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg" alt="official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg">
+  <figcaption>official_Socialist_Realism_0048276_VictorPuzyrkov_PeaceAhead_f9695133cc.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0891</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">A Socialist Realism propaganda poster with bold Russian victory text, a statue-like figure in a horse-drawn chariot raising Soviet and Allied flags, and a defeated Nazi beast against a warm orange background.</p>
+  <div class="checks">
+<div class="check">
+  <strong>海报/印刷媒介 <span class="ok">pass</span></strong>
+  <div>caption 要求 poster/propaganda/Cyrillic typography 时，reference 需要至少有海报或宣传印刷媒介信号。</div>
+  <div>证据: official_Socialist_Realism_0108635_Kukryniksy_OnfrontlinesbytheDnieper_TheTASSWindowNo906_faaa3e5317.jpg</div>
+</div></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0108635_Kukryniksy_OnfrontlinesbytheDnieper_TheTASSWindowNo906_faaa3e5317.jpg" alt="official_Socialist_Realism_0108635_Kukryniksy_OnfrontlinesbytheDnieper_TheTASSWindowNo906_faaa3e5317.jpg">
+  <figcaption>official_Socialist_Realism_0108635_Kukryniksy_OnfrontlinesbytheDnieper_TheTASSWindowNo906_faaa3e5317.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg" alt="official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg">
+  <figcaption>official_Socialist_Realism_0182168_GeorgyiYakutovytch_HutsulWedding_28aef465af.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg" alt="official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg">
+  <figcaption>official_Socialist_Realism_0082093_KarpoTrokhymenko_DneprostroyShots_eb850516c2.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg" alt="official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg">
+  <figcaption>official_Socialist_Realism_0125237_KonstantinYuon_Barbara_sGate_bff1332b4a.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0187</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Ukiyo-e style coastal scene with travelers, a horse, and porters carrying a palanquin along a shoreline road, boats on calm water, distant hills, calligraphy above, and a red sun casting bold radiating beams across a muted pink sky.</p>
+  <div class="checks"></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0126245_Hiroshige_116_SugatamiBridge_OmokageBridgeandJaribaatTakata_33d0c9e388.jpg" alt="official_Ukiyo_e_0126245_Hiroshige_116_SugatamiBridge_OmokageBridgeandJaribaatTakata_33d0c9e388.jpg">
+  <figcaption>official_Ukiyo_e_0126245_Hiroshige_116_SugatamiBridge_OmokageBridgeandJaribaatTakata_33d0c9e388.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0085968_KitagawaUtamaro_TravelsLookingatMt_Fuji_c2416bd9bf.jpg" alt="official_Ukiyo_e_0085968_KitagawaUtamaro_TravelsLookingatMt_Fuji_c2416bd9bf.jpg">
+  <figcaption>official_Ukiyo_e_0085968_KitagawaUtamaro_TravelsLookingatMt_Fuji_c2416bd9bf.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_99107_513138_ffed526092.jpg" alt="official_Ukiyo_e_99107_513138_ffed526092.jpg">
+  <figcaption>official_Ukiyo_e_99107_513138_ffed526092.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_18107_002f252bde.jpg" alt="official_Ukiyo_e_18107_002f252bde.jpg">
+  <figcaption>official_Ukiyo_e_18107_002f252bde.jpg</figcaption>
+</figure></div>
+</article>
+
+<article class="card">
+  <div class="head">
+    <span class="sid">track1_0583</span>
+    <span class="badge pass">pass</span>
+    <span class="badge">缺失: 无</span>
+    <span class="badge">风险: 无</span>
+  </div>
+  <p class="caption">Ukiyo-e portrait of an elegant woman in a red patterned kimono holding a small tray, set in an interior with calligraphy, a potted plant, delicate linework, muted colors, and a calm atmosphere.</p>
+  <div class="checks"></div>
+  <div class="thumbs">
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_00169_64a7da50e0.jpg" alt="official_Ukiyo_e_00169_64a7da50e0.jpg">
+  <figcaption>official_Ukiyo_e_00169_64a7da50e0.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_91319_457764_df55269107.jpg" alt="official_Ukiyo_e_91319_457764_df55269107.jpg">
+  <figcaption>official_Ukiyo_e_91319_457764_df55269107.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_dscn1859_a5e16bd3ad.jpg" alt="official_Ukiyo_e_dscn1859_a5e16bd3ad.jpg">
+  <figcaption>official_Ukiyo_e_dscn1859_a5e16bd3ad.jpg</figcaption>
+</figure>
+
+<figure>
+  <img src="../official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0149772_PaulJacoulet_PortraitofaChamorroWoman_Green_c7305bc307.jpg" alt="official_Ukiyo_e_0149772_PaulJacoulet_PortraitofaChamorroWoman_Green_c7305bc307.jpg">
+  <figcaption>official_Ukiyo_e_0149772_PaulJacoulet_PortraitofaChamorroWoman_Green_c7305bc307.jpg</figcaption>
+</figure></div>
+</article>
+  </main>
+</body>
+</html>
