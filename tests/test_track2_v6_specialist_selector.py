@@ -734,6 +734,55 @@ class Track2V6WriterTest(unittest.TestCase):
             self.assertTrue(any(item["code"] == "raw_cross_micro_capped" for item in stability["info"]))
             self.assertFalse(any(item["code"] == "too_many_cross_micro" for item in stability["issues"]))
 
+    def test_stability_transition_concentration_ignores_non_applied_raw_cross_decisions(self):
+        baseline = [row(f"track2_035{index}", "annoyed") for index in range(5)]
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            baseline_json = tmp_path / "baseline.json"
+            matrix_path = tmp_path / "evidence.csv"
+            out_dir = tmp_path / "out"
+            submission_dir = tmp_path / "submissions"
+            baseline_json.write_text(json.dumps(baseline), encoding="utf-8")
+            write_matrix(
+                matrix_path,
+                [
+                    {
+                        "sample_id": f"track2_035{index}",
+                        "current_emotion": "annoyed",
+                        "current_valence": "Negative",
+                        "current_arousal": "High",
+                        "proposed_emotion": "calm",
+                        "proposed_valence": "Positive",
+                        "proposed_arousal": "Low",
+                        "supporting_source_count": "4",
+                        "supporting_family_count": "3",
+                        "supporting_sources": "gemini35;teacher;siglip2;dinov2",
+                        "supporting_families": "gemini35;teacher;embedding",
+                        "same_quadrant": "false",
+                        "gemini35_prefers_proposed": "true",
+                        "gemini35_fit_margin": "0.41",
+                        "evidence_score": str(10 - index / 10),
+                        "hard96_net_gain": "2",
+                        "hard96_net_loss": "0",
+                    }
+                    for index in range(5)
+                ],
+            )
+
+            report = write_v6_outputs(
+                baseline_json=baseline_json,
+                evidence_matrix=matrix_path,
+                out_dir=out_dir,
+                submission_dir=submission_dir,
+                expected_row_count=len(baseline),
+                require_all_emotions=False,
+            )
+
+            stability = json.loads(Path(report["stability_report_json"]).read_text(encoding="utf-8"))
+            self.assertTrue(stability["passed"])
+            self.assertEqual(stability["applied_cross_micro_count"], 3)
+            self.assertFalse(any(item["code"] == "transition_concentration" for item in stability["issues"]))
+
     def test_candidate_report_selected_changes_excludes_non_selected_same_sample_decisions(self):
         baseline = [row("track2_0400", "content")]
         with tempfile.TemporaryDirectory() as tmp:

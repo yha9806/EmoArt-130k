@@ -501,9 +501,12 @@ def _build_stability_report(
     thresholds: SelectorThresholds,
 ) -> dict[str, Any]:
     accepted = [item for item in decisions if item.decision in {ACCEPT_SAFE, ACCEPT_CROSS_MICRO}]
+    safe_sameq = [item for item in accepted if item.decision == ACCEPT_SAFE]
     raw_cross = [item for item in accepted if item.decision == ACCEPT_CROSS_MICRO]
     applied_cross = _capped_cross_micro_decisions(decisions, thresholds.max_cross_micro)
-    transition_counts = Counter(item.transition for item in accepted)
+    applied = [*safe_sameq, *applied_cross]
+    raw_transition_counts = Counter(item.transition for item in accepted)
+    applied_transition_counts = Counter(item.transition for item in applied)
     issues: list[dict[str, Any]] = []
     info: list[dict[str, Any]] = []
     if len(applied_cross) > thresholds.max_cross_micro:
@@ -517,9 +520,9 @@ def _build_stability_report(
                 "cap": thresholds.max_cross_micro,
             }
         )
-    if accepted:
-        top_transition, top_count = transition_counts.most_common(1)[0]
-        if top_count >= 5 and top_count / len(accepted) > 0.55:
+    if applied:
+        top_transition, top_count = applied_transition_counts.most_common(1)[0]
+        if top_count >= 5 and top_count / len(applied) > 0.55:
             issues.append(
                 {
                     "code": "transition_concentration",
@@ -530,14 +533,18 @@ def _build_stability_report(
     return {
         "method": "track2_v6_rule_stability_summary",
         "passed": not issues,
-        "accepted_count": len(accepted),
-        "safe_sameq_count": sum(1 for item in accepted if item.decision == ACCEPT_SAFE),
+        "accepted_count": len(applied),
+        "raw_accepted_count": len(accepted),
+        "applied_accepted_count": len(applied),
+        "safe_sameq_count": len(safe_sameq),
         "cross_micro_count": len(applied_cross),
         "raw_cross_micro_count": len(raw_cross),
         "applied_cross_micro_count": len(applied_cross),
         "hold_count": sum(1 for item in decisions if item.decision == HOLD_REVIEW),
         "block_count": sum(1 for item in decisions if item.decision == BLOCK),
-        "transition_counts": dict(sorted(transition_counts.items())),
+        "transition_counts": dict(sorted(applied_transition_counts.items())),
+        "raw_transition_counts": dict(sorted(raw_transition_counts.items())),
+        "applied_transition_counts": dict(sorted(applied_transition_counts.items())),
         "issues": issues,
         "info": info,
     }
