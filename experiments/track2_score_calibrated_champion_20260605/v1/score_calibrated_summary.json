@@ -1,0 +1,38 @@
+{
+  "method": "track2_score_calibrated_champion_v1",
+  "baseline_json": "submissions/track2_submission_moe_v2_accept5_candidate.json",
+  "out_dir": "experiments/track2_score_calibrated_champion_20260605/v1",
+  "source_count": 14,
+  "evidence_row_count": 156,
+  "candidates": {
+    "v3_safe_plus": {
+      "json": "submissions/track2_submission_v3_safe_plus_candidate.json",
+      "zip": "submissions/track2_submission_v3_safe_plus_candidate.zip",
+      "report_md": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_safe_plus.md",
+      "report_json": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_safe_plus.json",
+      "changed_rows": 45,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": []
+    },
+    "v3_mid": {
+      "json": "submissions/track2_submission_v3_mid_candidate.json",
+      "zip": "submissions/track2_submission_v3_mid_candidate.zip",
+      "report_md": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_mid.md",
+      "report_json": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_mid.json",
+      "changed_rows": 85,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": []
+    },
+    "v3_push": {
+      "json": "submissions/track2_submission_v3_push_candidate.json",
+      "zip": "submissions/track2_submission_v3_push_candidate.zip",
+      "report_md": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_push.md",
+      "report_json": "experiments/track2_score_calibrated_champion_20260605/v1/candidate_report_v3_push.json",
+      "changed_rows": 116,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": []
+    }
+  },
+  "html_review": "experiments/track2_score_calibrated_champion_20260605/v1/html_review/track2_score_calibrated_v3_review.html",
+  "formal_submission_overwritten": false
+}

@@ -1,0 +1,96 @@
+# Track2 v3_mid Candidate Report
+
+- JSON: `submissions/track2_submission_v3_mid_candidate.json`
+- ZIP: `submissions/track2_submission_v3_mid_candidate.zip`
+- Changed rows: 85
+- Label consistency issues: 0
+- Missing emotions: none
+- Formal submission overwritten: False
+
+## Selected Changes
+
+- track2_0112: calm->content; score=24; sources=balanced;dinov2;ensemble;gemini35_guarded;label_auto;label_selective;public_conservative10;public_landscape8;public_ref_auto;public_review11;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0347: calm->content; score=24; sources=balanced;dinov2;ensemble;gemini35_guarded;label_auto;label_selective;public_conservative10;public_landscape8;public_ref_auto;public_review11;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0798: calm->content; score=24; sources=balanced;dinov2;ensemble;gemini35_guarded;label_auto;label_selective;public_conservative10;public_landscape8;public_ref_auto;public_review11;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0960: calm->content; score=24; sources=balanced;dinov2;ensemble;gemini35_guarded;label_auto;label_selective;public_conservative10;public_landscape8;public_ref_auto;public_review11;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0745: calm->content; score=23; sources=balanced;dinov2;gemini35_guarded;label_auto;label_selective;public_conservative10;public_landscape8;public_ref_auto;public_review11;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0147: calm->content; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0316: happy->excited; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0635: happy->excited; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0638: calm->content; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0642: calm->content; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0975: calm->content; score=16; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0028: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0045: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0047: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0102: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0104: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0109: calm->content; score=15; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue
+- track2_0193: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0266: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0343: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0426: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0430: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0456: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0496: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0534: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0588: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0597: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0633: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0652: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0702: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0744: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0751: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0761: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0807: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0819: content->calm; score=15; sources=balanced;dinov2;ensemble;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue
+- track2_0937: calm->content; score=15; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue;teacher_top120
+- track2_0089: calm->content; score=14; sources=balanced;dinov2;label_auto;label_selective;public_ref_auto;selective_v2;siglip2;teacher_rescue
+- track2_0408: sad->tired; score=12; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0434: content->glad; score=12; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0604: content->glad; score=12; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0964: excited->happy; score=12; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0027: content->glad; score=11; sources=label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0057: content->glad; score=11; sources=label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0111: content->glad; score=11; sources=label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue;teacher_top120
+- track2_0622: calm->glad; score=11; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue
+- track2_0897: calm->glad; score=11; sources=balanced;label_auto;label_selective;public_ref_auto;selective_v2;teacher_rescue
+- track2_0210: content->calm; score=10; sources=ensemble;label_auto;public_ref_auto;teacher_rescue;teacher_top120
+- track2_0495: calm->content; score=10; sources=balanced;dinov2;ensemble;label_selective;selective_v2;siglip2
+- track2_0555: content->calm; score=10; sources=ensemble;label_auto;public_ref_auto;teacher_rescue;teacher_top120
+- track2_0869: content->calm; score=10; sources=ensemble;label_auto;public_ref_auto;teacher_rescue;teacher_top120
+- track2_0871: content->calm; score=10; sources=ensemble;label_auto;public_ref_auto;teacher_rescue;teacher_top120
+- track2_0914: content->calm; score=10; sources=ensemble;label_auto;public_ref_auto;teacher_rescue;teacher_top120
+- track2_0955: calm->content; score=10; sources=balanced;dinov2;ensemble;label_selective;selective_v2;siglip2
+- track2_0956: content->calm; score=10; sources=ensemble;public_conservative10;public_landscape8;public_review11;siglip2
+- track2_0023: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0130: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0169: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0285: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0410: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0443: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0515: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0580: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0647: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0651: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0765: content->calm; score=9; sources=ensemble;public_review11;teacher_top120
+- track2_0841: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0864: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0880: content->calm; score=9; sources=ensemble;public_conservative10;public_landscape8;public_review11
+- track2_0904: calm->content; score=9; sources=balanced;dinov2;label_selective;selective_v2;siglip2
+- track2_0704: content->calm; score=8; sources=ensemble;public_conservative10;public_review11
+- track2_0944: content->calm; score=8; sources=ensemble;public_conservative10;public_review11
+- track2_0372: aroused->excited; score=7; sources=balanced;dinov2;ensemble;siglip2
+- track2_0913: glad->content; score=7; sources=balanced;dinov2;ensemble;siglip2
+- track2_0031: tired->sad; score=5; sources=dinov2;ensemble;siglip2
+- track2_0113: bored->sad; score=5; sources=dinov2;ensemble;siglip2
+- track2_0152: happy->excited; score=5; sources=dinov2;ensemble;siglip2
+- track2_0237: glad->content; score=5; sources=dinov2;ensemble;siglip2
+- track2_0280: content->calm; score=5; sources=ensemble;teacher_top120
+- track2_0567: tired->sad; score=5; sources=dinov2;ensemble;siglip2
+- track2_0643: glad->calm; score=5; sources=dinov2;ensemble;siglip2
+- track2_0694: tired->sad; score=5; sources=dinov2;ensemble;siglip2
+- track2_0718: content->calm; score=5; sources=ensemble;teacher_top120
+- track2_0809: content->calm; score=5; sources=ensemble;teacher_top120
+- track2_0818: glad->content; score=5; sources=dinov2;ensemble;siglip2
+- track2_0957: glad->content; score=5; sources=dinov2;ensemble;siglip2

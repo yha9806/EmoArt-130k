@@ -1,0 +1,16 @@
+{
+  "method": "track2_description_score_v1",
+  "policy": "Conservative text-only Description Score pass. It removes evaluator-risk text, formulaic emotional-atmosphere suffixes, and label/text conflicts while preserving emotion, valence, and arousal labels.",
+  "row_count": 1000,
+  "changed_rows": 0,
+  "changed_fields": 0,
+  "classification_label_changes": 0,
+  "before_issue_counts": {},
+  "after_issue_counts": {},
+  "label_consistency_issue_count": 0,
+  "changes": [],
+  "formal_submission_overwritten": false,
+  "source_json": "submissions/track2_submission_v3_mid_candidate.json",
+  "out_json": "submissions/track2_submission_v3_mid_desc_candidate.json",
+  "out_zip": "submissions/track2_submission_v3_mid_desc_candidate.zip"
+}

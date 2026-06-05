@@ -1,0 +1,6 @@
+candidate_json,candidate_name,changed_rows,classification_expected,classification_lower,classification_upper,cross_quadrant_changes,decision,description_expected,description_issue_count,description_lower,description_upper,overall_expected,overall_lower,overall_upper,safety_issue_codes,safety_passed,same_quadrant_changes,top_emotion,top_emotion_share
+submissions/track2_submission_v3_safe_plus_candidate.json,v3_safe_plus,45,0.77715,0.73665,0.82965,0,recommend_submit,0.949667,0,0.943667,0.967667,0.8634085,0.8401585,0.8986585,,True,45,calm,0.456
+submissions/track2_submission_public_style_review11_candidate.json,public_review11,16,0.74235,0.72795,0.7687499999999999,0,recommend_submit,0.949667,0,0.943667,0.967667,0.8460084999999999,0.8358085,0.8682084999999999,,True,16,calm,0.496
+submissions/track2_submission_moe_v2_accept5_candidate.json,current_accept5,0,0.72315,0.72315,0.73515,0,recommend_submit,0.949667,0,0.943667,0.967667,0.8364085,0.8334085,0.8514085,,True,0,calm,0.49
+submissions/track2_submission_v3_mid_candidate.json,v3_mid,85,0.77815,0.70165,0.86665,0,recommend_submit,0.949667,0,0.943667,0.967667,0.8639085,0.8226585,0.9171585,,True,85,calm,0.466
+submissions/track2_submission_v3_push_candidate.json,v3_push,116,0.7399499999999999,0.4315499999999999,1.0,17,recommend_hold,0.949667,0,0.943667,0.967667,0.8448085,0.6876085,0.9838335,,True,99,calm,0.469

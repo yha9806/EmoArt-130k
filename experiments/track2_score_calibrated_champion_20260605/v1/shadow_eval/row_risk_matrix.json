@@ -1,0 +1,4456 @@
+[
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0027",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0028",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0045",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0047",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0057",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0089",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0102",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0104",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0109",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0111",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0112",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0147",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0193",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0266",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0316",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0343",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0347",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0408",
+    "transition": "sad->tired",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0426",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0430",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0434",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0456",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0496",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0534",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0588",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0597",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0604",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0622",
+    "transition": "calm->glad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0633",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0635",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0638",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0642",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0652",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0702",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0744",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0745",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0751",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0761",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0798",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0807",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0819",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0937",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0960",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0964",
+    "transition": "excited->happy",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_safe_plus",
+    "sample_id": "track2_0975",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0112",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0169",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0347",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0410",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0443",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0515",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0580",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0651",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0704",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0745",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0765",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0798",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0880",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0944",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0956",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "public_review11",
+    "sample_id": "track2_0960",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0023",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0027",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0028",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0031",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0045",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0047",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0057",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0089",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0102",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0104",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0109",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0111",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0112",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0113",
+    "transition": "bored->sad",
+    "from": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0130",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0147",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0152",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0169",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0193",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0210",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0237",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0266",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0280",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0285",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0316",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0343",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0347",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0372",
+    "transition": "aroused->excited",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0408",
+    "transition": "sad->tired",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0410",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0426",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0430",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0434",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0443",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0456",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0495",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0496",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0515",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0534",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0555",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0567",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0580",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0588",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0597",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0604",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0622",
+    "transition": "calm->glad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0633",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0635",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0638",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0642",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0643",
+    "transition": "glad->calm",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0647",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0651",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0652",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0694",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0702",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0704",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0718",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0744",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0745",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0751",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0761",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0765",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0798",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0807",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0809",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0818",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0819",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0841",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0864",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0869",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0871",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0880",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0897",
+    "transition": "calm->glad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0904",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0913",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0914",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0937",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0944",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0955",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0956",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0957",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0960",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0964",
+    "transition": "excited->happy",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_mid",
+    "sample_id": "track2_0975",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0023",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0027",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0028",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0031",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0044",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0045",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0047",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0057",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0087",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0088",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0089",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0099",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0102",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0104",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0109",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0111",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0112",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0113",
+    "transition": "bored->sad",
+    "from": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0130",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0139",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0147",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0152",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0153",
+    "transition": "calm->sad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0169",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0193",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0210",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0237",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0266",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0270",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0271",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0280",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0285",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0286",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0299",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0316",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0318",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0319",
+    "transition": "calm->bored",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0343",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0347",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0372",
+    "transition": "aroused->excited",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0408",
+    "transition": "sad->tired",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0410",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0414",
+    "transition": "calm->bored",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0426",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0430",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0434",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0443",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0455",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0456",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0457",
+    "transition": "calm->aroused",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0481",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0495",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0496",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0515",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0534",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0547",
+    "transition": "annoyed->calm",
+    "from": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0555",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0557",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0567",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0580",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0588",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0597",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0604",
+    "transition": "content->glad",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0622",
+    "transition": "calm->glad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0633",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0635",
+    "transition": "happy->excited",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0638",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0642",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0643",
+    "transition": "glad->calm",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0647",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0651",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0652",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0665",
+    "transition": "calm->aroused",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0678",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0694",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0702",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0704",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0718",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0728",
+    "transition": "alarmed->aroused",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0744",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0745",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0751",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0761",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0765",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0796",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0798",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0800",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0807",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0809",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0815",
+    "transition": "content->annoyed",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0818",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0819",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0829",
+    "transition": "calm->bored",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0832",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0841",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0864",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0869",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0871",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0873",
+    "transition": "aroused->calm",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0880",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0897",
+    "transition": "calm->glad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0904",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0913",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0914",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0925",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0937",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0941",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0942",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0944",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0955",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0956",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0957",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0960",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0964",
+    "transition": "excited->happy",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0975",
+    "transition": "calm->content",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v3_push",
+    "sample_id": "track2_0996",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  }
+]
