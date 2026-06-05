@@ -91,6 +91,72 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
         self.assertEqual(routes[0]["reference_asset_source"], "caption_style")
         self.assertEqual(routes[0]["reference_style_key"], "gongbi")
 
+    def test_poster_caption_prefers_media_matched_poster_assets_over_family_paintings(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            Image.new("RGB", (320, 180), (20, 80, 140)).save(assets / "family_oil_ship.jpg")
+            Image.new("RGB", (320, 180), (60, 140, 80)).save(assets / "family_landscape.jpg")
+            Image.new("RGB", (180, 320), (180, 40, 30)).save(assets / "Kukryniksy-TASSWindow929.jpg")
+            Image.new("RGB", (180, 320), (200, 50, 40)).save(assets / "BorisKustodiev-PosterLengiz.jpg")
+            Image.new("RGB", (320, 180), (80, 80, 80)).save(assets / "socialist_realism_oil_worker.jpg")
+            index = {
+                "references": {},
+                "family_references": {
+                    "naval_aviation_vehicle": [
+                        {"file": "family_oil_ship.jpg", "note": "ship oil painting"},
+                        {"file": "family_landscape.jpg", "note": "landscape painting"},
+                    ]
+                },
+                "caption_style_references": {
+                    "socialist realism": [
+                        {"file": "socialist_realism_oil_worker.jpg", "note": "genre painting"},
+                        {"file": "Kukryniksy-TASSWindow929.jpg", "note": "official TASS poster"},
+                        {"file": "BorisKustodiev-PosterLengiz.jpg", "note": "official poster"},
+                    ],
+                },
+            }
+            route = _route(sample_id="track1_0077", family_id="naval_aviation_vehicle")
+            route["caption"] = (
+                "A Socialist Realism Soviet naval PROPAGANDA POSTER with a sailor hoisting red and white "
+                "flags, using BOLD CYRILLIC TYPOGRAPHY."
+            )
+
+            routes = attach_reference_assets_to_routes([route], index, asset_root=assets, max_assets_per_route=2)
+
+        self.assertEqual(routes[0]["reference_asset_source"], "caption_media")
+        self.assertEqual(routes[0]["reference_style_key"], "socialist realism:poster_print")
+        self.assertEqual(len(routes[0]["reference_assets"]), 2)
+        self.assertTrue(routes[0]["reference_assets"][0].endswith("Kukryniksy-TASSWindow929.jpg"))
+        self.assertTrue(routes[0]["reference_assets"][1].endswith("BorisKustodiev-PosterLengiz.jpg"))
+        self.assertIn("caption requires poster/propaganda print medium", routes[0]["reference_asset_notes"][0])
+
+    def test_non_poster_caption_keeps_family_reference_priority(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            Image.new("RGB", (320, 180), (20, 80, 140)).save(assets / "family_oil_ship.jpg")
+            Image.new("RGB", (180, 320), (180, 40, 30)).save(assets / "Kukryniksy-TASSWindow929.jpg")
+            index = {
+                "references": {},
+                "family_references": {
+                    "naval_aviation_vehicle": [{"file": "family_oil_ship.jpg", "note": "ship oil painting"}]
+                },
+                "caption_style_references": {
+                    "socialist realism": [{"file": "Kukryniksy-TASSWindow929.jpg", "note": "official TASS poster"}],
+                },
+            }
+            route = _route(sample_id="track1_0818", family_id="naval_aviation_vehicle")
+            route["caption"] = "A Socialist Realism painting of naval vessels at sea under a dramatic sky."
+
+            routes = attach_reference_assets_to_routes([route], index, asset_root=assets)
+
+        self.assertEqual(routes[0]["reference_asset_source"], "family")
+        self.assertEqual(len(routes[0]["reference_assets"]), 1)
+        self.assertTrue(routes[0]["reference_assets"][0].endswith("family_oil_ship.jpg"))
+
     def test_writes_reports_and_cli(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

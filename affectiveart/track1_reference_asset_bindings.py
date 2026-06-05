@@ -9,7 +9,26 @@ from typing import Any, Iterable
 from affectiveart.track1_reference_family_bank import _safe_output_paths
 
 
-BINDING_VERSION = "track1_reference_asset_bindings_v1"
+BINDING_VERSION = "track1_reference_asset_bindings_v2"
+
+POSTER_CAPTION_KEYWORDS = (
+    "propaganda poster",
+    "poster",
+    "cyrillic typography",
+    "bold cyrillic",
+    "typography",
+)
+
+POSTER_ASSET_NAME_KEYWORDS = (
+    "poster",
+    "tasswindow",
+    "tass_window",
+    "frontpage",
+    "allforthefront",
+    "allforvictory",
+    "liberate",
+    "tovictory",
+)
 
 DEFAULT_FAMILY_REFERENCE_FILES: dict[str, list[str]] = {
     "kremlin_red_square": [
@@ -132,6 +151,15 @@ def _candidate_items_for_route(route: dict[str, Any], index: dict[str, Any]) -> 
     direct_items = _normalise_index_items(references.get(sample_id, []), source="sample")
     if direct_items:
         return direct_items
+    media_key, media_items = _caption_media_items(route, caption_style_references)
+    if media_items:
+        items = _normalise_index_items(media_items, source="caption_media")
+        for item in items:
+            item["style_key"] = media_key
+            note = item.get("note", "")
+            media_note = "caption requires poster/propaganda print medium"
+            item["note"] = f"{media_note}; {note}" if note else media_note
+        return items
     family_items = _normalise_index_items(family_references.get(family_id, []), source="family")
     if family_items:
         return family_items
@@ -208,6 +236,42 @@ def _caption_style_items(
             values = caption_style_references.get(style_key, [])
             return str(style_key), values if isinstance(values, list) else []
     return "", []
+
+
+def _caption_media_items(
+    route: dict[str, Any],
+    caption_style_references: Any,
+) -> tuple[str, list[Any]]:
+    if not _requires_poster_reference(route):
+        return "", []
+    style_key, style_values = _caption_style_items(route, caption_style_references)
+    poster_items = _poster_like_items(style_values)
+    if poster_items:
+        return f"{style_key}:poster_print", poster_items
+    return "", []
+
+
+def _requires_poster_reference(route: dict[str, Any]) -> bool:
+    caption = str(route.get("caption") or "").lower()
+    return any(keyword in caption for keyword in POSTER_CAPTION_KEYWORDS)
+
+
+def _poster_like_items(values: list[Any]) -> list[Any]:
+    output: list[Any] = []
+    for value in values:
+        file_value = ""
+        if isinstance(value, dict):
+            file_value = str(value.get("file") or value.get("path") or "")
+        else:
+            file_value = str(value)
+        normalized = _compact_reference_name(file_value)
+        if any(keyword in normalized for keyword in POSTER_ASSET_NAME_KEYWORDS):
+            output.append(value)
+    return output
+
+
+def _compact_reference_name(value: str) -> str:
+    return "".join(char.lower() for char in value if char.isalnum() or char == "_")
 
 
 def _asset_path(asset_root: Path, file_value: str) -> Path:
