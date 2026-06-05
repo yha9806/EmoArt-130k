@@ -202,6 +202,7 @@ def score_candidate_rows(
         changed_rows=changed_rows,
         same_quadrant=same_quadrant,
         cross_quadrant=cross_quadrant,
+        row_risks=row_risks,
     )
     description = _description_band(safety=safety, row_count=max(1, len(rows)))
     overall = ScoreBand(
@@ -314,7 +315,7 @@ def write_shadow_evaluator_outputs(
         for risk in result.row_risks
     ]
     report = {
-        "method": "track2_shadow_score_v1_formula_proxy",
+        "method": "track2_shadow_score_v2_transition_calibrated_proxy",
         "warning": (
             "This is a local shadow score. It is not the official Codabench score "
             "and must not be treated as hidden-test ground truth."
@@ -505,16 +506,52 @@ def _classification_band(
     changed_rows: int,
     same_quadrant: int,
     cross_quadrant: int,
+    row_risks: list[dict[str, Any]] | None = None,
 ) -> ScoreBand:
     if not safety.passed:
         return ScoreBand(expected=0.0, lower=0.0, upper=0.0)
-    expected_delta = min(0.055, 0.0012 * same_quadrant - 0.0060 * cross_quadrant)
-    uncertainty = 0.0009 * changed_rows + 0.0120 * cross_quadrant
+    transition_counts = Counter(str(item.get("transition", "")) for item in row_risks or [])
+    expected_delta = _transition_expected_delta(
+        transition_counts=transition_counts,
+        same_quadrant=same_quadrant,
+        cross_quadrant=cross_quadrant,
+    )
+    uncertainty = _classification_uncertainty(changed_rows=changed_rows, same_quadrant=same_quadrant, cross_quadrant=cross_quadrant)
     return ScoreBand(
         expected=OFFICIAL_ANCHOR.classification + expected_delta,
         lower=OFFICIAL_ANCHOR.classification + expected_delta - uncertainty,
         upper=OFFICIAL_ANCHOR.classification + expected_delta + uncertainty + 0.0120,
     ).clamped()
+
+
+def _transition_expected_delta(
+    *,
+    transition_counts: Counter[str],
+    same_quadrant: int,
+    cross_quadrant: int,
+) -> float:
+    # Calibrated after Codabench 781601: broad same-quadrant calm/content/glad rewrites
+    # lowered the official emotion score, so same-quadrant count is not positive evidence.
+    delta = 0.0
+    delta -= 0.0060 * cross_quadrant
+    delta -= 0.00010 * transition_counts["calm->content"]
+    delta -= 0.00010 * transition_counts["content->glad"]
+    delta -= 0.00008 * transition_counts["glad->content"]
+    delta -= 0.00006 * transition_counts["calm->glad"]
+    delta += min(0.0030, 0.00005 * transition_counts["content->calm"])
+    delta += min(0.0010, 0.00004 * transition_counts["glad->calm"])
+    delta -= 0.000015 * max(0, same_quadrant - 40)
+    delta -= 0.000020 * max(0, same_quadrant - 70)
+    return max(-0.055, min(0.010, delta))
+
+
+def _classification_uncertainty(*, changed_rows: int, same_quadrant: int, cross_quadrant: int) -> float:
+    return (
+        0.00075 * changed_rows
+        + 0.0120 * cross_quadrant
+        + 0.00045 * max(0, same_quadrant - 20)
+        + 0.00035 * max(0, same_quadrant - 50)
+    )
 
 
 def _description_band(*, safety: SafetyGateResult, row_count: int) -> ScoreBand:

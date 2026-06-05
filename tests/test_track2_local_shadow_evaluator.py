@@ -157,6 +157,43 @@ class Track2LocalShadowScoringTest(unittest.TestCase):
         self.assertGreaterEqual(result.overall.lower, 0.80)
         self.assertEqual(result.decision, "recommend_submit")
 
+    def test_calibrated_scorer_does_not_reward_v9_style_same_quadrant_batch(self):
+        transitions = (
+            [("calm", "content", "Positive", "Low")] * 43
+            + [("content", "calm", "Positive", "Low")] * 20
+            + [("content", "glad", "Positive", "Low")] * 5
+            + [("glad", "content", "Positive", "Low")] * 4
+            + [("tired", "sad", "Negative", "Low")] * 3
+            + [("happy", "excited", "Positive", "High")] * 3
+            + [("calm", "glad", "Positive", "Low")] * 2
+            + [("bored", "sad", "Negative", "Low")]
+            + [("aroused", "excited", "Positive", "High")]
+            + [("sad", "tired", "Negative", "Low")]
+            + [("glad", "calm", "Positive", "Low")]
+            + [("excited", "happy", "Positive", "High")]
+        )
+        baseline = [
+            row(f"track2_{index:04d}", before, valence, arousal)
+            for index, (before, _after, valence, arousal) in enumerate(transitions)
+        ]
+        candidate = [
+            row(f"track2_{index:04d}", after, valence, arousal)
+            for index, (_before, after, valence, arousal) in enumerate(transitions)
+        ]
+
+        result = score_candidate_rows(
+            candidate_name="v9_style_batch",
+            candidate_json=Path("submissions/v9_style_batch_candidate.json"),
+            rows=candidate,
+            baseline_rows=baseline,
+            expected_row_count=len(candidate),
+            require_all_emotions=False,
+        )
+
+        self.assertEqual(result.changed_rows, 85)
+        self.assertEqual(result.cross_quadrant_changes, 0)
+        self.assertLessEqual(result.classification.expected, OFFICIAL_ANCHOR.classification)
+
     def test_cross_quadrant_changes_reduce_lower_bound_and_hold(self):
         baseline = full_label_rows()
         candidate = [dict(item) for item in baseline]
