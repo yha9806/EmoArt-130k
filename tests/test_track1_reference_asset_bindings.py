@@ -7,6 +7,7 @@ from pathlib import Path
 from PIL import Image
 
 from affectiveart.track1_reference_asset_bindings import (
+    _reference_identity,
     attach_reference_assets_to_routes,
     load_reference_asset_index,
     load_route_rows,
@@ -98,6 +99,7 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
             assets.mkdir()
             Image.new("RGB", (320, 180), (20, 80, 140)).save(assets / "family_oil_ship.jpg")
             Image.new("RGB", (320, 180), (60, 140, 80)).save(assets / "family_landscape.jpg")
+            Image.new("RGB", (180, 320), (100, 100, 100)).save(assets / "Kukryniksy-SigningtheActofSurrender.jpg")
             Image.new("RGB", (180, 320), (180, 40, 30)).save(assets / "Kukryniksy-TASSWindow929.jpg")
             Image.new("RGB", (180, 320), (200, 50, 40)).save(assets / "BorisKustodiev-PosterLengiz.jpg")
             Image.new("RGB", (320, 180), (80, 80, 80)).save(assets / "socialist_realism_oil_worker.jpg")
@@ -112,6 +114,7 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
                 "caption_style_references": {
                     "socialist realism": [
                         {"file": "socialist_realism_oil_worker.jpg", "note": "genre painting"},
+                        {"file": "Kukryniksy-SigningtheActofSurrender.jpg", "note": "non-poster tableau"},
                         {"file": "Kukryniksy-TASSWindow929.jpg", "note": "official TASS poster"},
                         {"file": "BorisKustodiev-PosterLengiz.jpg", "note": "official poster"},
                     ],
@@ -130,7 +133,67 @@ class Track1ReferenceAssetBindingsTest(unittest.TestCase):
         self.assertEqual(len(routes[0]["reference_assets"]), 2)
         self.assertTrue(routes[0]["reference_assets"][0].endswith("Kukryniksy-TASSWindow929.jpg"))
         self.assertTrue(routes[0]["reference_assets"][1].endswith("BorisKustodiev-PosterLengiz.jpg"))
+        self.assertTrue(all("SigningtheAct" not in asset for asset in routes[0]["reference_assets"]))
         self.assertIn("caption requires poster/propaganda print medium", routes[0]["reference_asset_notes"][0])
+
+    def test_poster_caption_preserves_family_poster_references_before_generic_media_fill(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            assets = root / "assets"
+            assets.mkdir()
+            Image.new("RGB", (180, 320), (150, 20, 20)).save(
+                assets / "Kukryniksy-Splendidlyanddesperatelydowefight.jpg"
+            )
+            Image.new("RGB", (180, 320), (170, 30, 30)).save(assets / "0100747_Kukryniksy-ToVictory.jpg")
+            Image.new("RGB", (320, 180), (20, 80, 140)).save(assets / "family_oil_battle.jpg")
+            Image.new("RGB", (180, 320), (180, 40, 30)).save(assets / "Kukryniksy-TASSWindow929.jpg")
+            Image.new("RGB", (180, 320), (200, 50, 40)).save(assets / "BorisKustodiev-PosterLengiz.jpg")
+            Image.new("RGB", (180, 320), (210, 50, 50)).save(assets / "ref_socialist_realism_0100747_Kukryniksy-ToVictory.jpg")
+            index = {
+                "references": {},
+                "family_references": {
+                    "battle_tank_cavalry": [
+                        {"file": "Kukryniksy-Splendidlyanddesperatelydowefight.jpg", "note": "family soldier poster"},
+                        {"file": "0100747_Kukryniksy-ToVictory.jpg", "note": "family victory poster"},
+                        {"file": "family_oil_battle.jpg", "note": "battle oil painting"},
+                    ]
+                },
+                "caption_style_references": {
+                    "socialist realism": [
+                        {"file": "ref_socialist_realism_0100747_Kukryniksy-ToVictory.jpg", "note": "duplicate victory poster"},
+                        {"file": "Kukryniksy-TASSWindow929.jpg", "note": "generic TASS poster"},
+                        {"file": "BorisKustodiev-PosterLengiz.jpg", "note": "generic poster"},
+                    ],
+                },
+            }
+            route = _route(sample_id="track1_0019", family_id="battle_tank_cavalry")
+            route["caption"] = "Socialist Realism poster of four heroic soldiers in tan uniforms with rifles."
+
+            routes = attach_reference_assets_to_routes([route], index, asset_root=assets, max_assets_per_route=4)
+
+        self.assertEqual(routes[0]["reference_asset_source"], "caption_media_reranked")
+        self.assertEqual(routes[0]["reference_style_key"], "socialist realism:poster_print")
+        self.assertEqual(len(routes[0]["reference_assets"]), 4)
+        self.assertTrue(routes[0]["reference_assets"][0].endswith("Kukryniksy-Splendidlyanddesperatelydowefight.jpg"))
+        self.assertTrue(routes[0]["reference_assets"][1].endswith("0100747_Kukryniksy-ToVictory.jpg"))
+        self.assertTrue(routes[0]["reference_assets"][2].endswith("Kukryniksy-TASSWindow929.jpg"))
+        self.assertTrue(routes[0]["reference_assets"][3].endswith("BorisKustodiev-PosterLengiz.jpg"))
+        self.assertTrue(all("family_oil_battle.jpg" not in asset for asset in routes[0]["reference_assets"]))
+        self.assertTrue(all("ref_socialist_realism_0100747" not in asset for asset in routes[0]["reference_assets"]))
+
+    def test_reference_identity_prefers_long_reference_ids_not_years_or_sample_numbers(self):
+        self.assertEqual(
+            _reference_identity("ref_socialist_realism_0100747_Kukryniksy-ToVictory.jpg"),
+            _reference_identity("0100747_Kukryniksy-ToVictory.jpg"),
+        )
+        self.assertNotEqual(
+            _reference_identity("track1_0042_poster_study.jpg"),
+            _reference_identity("another_track1_0042_poster_study.jpg"),
+        )
+        self.assertNotEqual(
+            _reference_identity("red_square_1941_parade.jpg"),
+            _reference_identity("different_1941_battlefront.jpg"),
+        )
 
     def test_non_poster_caption_keeps_family_reference_priority(self):
         with tempfile.TemporaryDirectory() as tmp:

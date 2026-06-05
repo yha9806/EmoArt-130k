@@ -9,7 +9,7 @@ from typing import Any, Iterable
 from affectiveart.track1_reference_family_bank import _safe_output_paths
 
 
-BINDING_VERSION = "track1_reference_asset_bindings_v2"
+BINDING_VERSION = "track1_reference_asset_bindings_v3"
 
 POSTER_CAPTION_KEYWORDS = (
     "propaganda poster",
@@ -28,6 +28,10 @@ POSTER_ASSET_NAME_KEYWORDS = (
     "allforvictory",
     "liberate",
     "tovictory",
+)
+
+FAMILY_POSTER_ASSET_NAME_KEYWORDS = POSTER_ASSET_NAME_KEYWORDS + (
+    "kukryniksy",
 )
 
 DEFAULT_FAMILY_REFERENCE_FILES: dict[str, list[str]] = {
@@ -151,16 +155,10 @@ def _candidate_items_for_route(route: dict[str, Any], index: dict[str, Any]) -> 
     direct_items = _normalise_index_items(references.get(sample_id, []), source="sample")
     if direct_items:
         return direct_items
+    family_items = _normalise_index_items(family_references.get(family_id, []), source="family")
     media_key, media_items = _caption_media_items(route, caption_style_references)
     if media_items:
-        items = _normalise_index_items(media_items, source="caption_media")
-        for item in items:
-            item["style_key"] = media_key
-            note = item.get("note", "")
-            media_note = "caption requires poster/propaganda print medium"
-            item["note"] = f"{media_note}; {note}" if note else media_note
-        return items
-    family_items = _normalise_index_items(family_references.get(family_id, []), source="family")
+        return _reranked_caption_media_items(family_items, media_items, media_key)
     if family_items:
         return family_items
     style_key, style_values = _caption_style_items(route, caption_style_references)
@@ -251,12 +249,40 @@ def _caption_media_items(
     return "", []
 
 
+def _reranked_caption_media_items(
+    family_items: list[dict[str, str]],
+    media_values: list[Any],
+    media_key: str,
+) -> list[dict[str, str]]:
+    family_poster_items = _poster_like_items(family_items, keywords=FAMILY_POSTER_ASSET_NAME_KEYWORDS)
+    if not family_poster_items:
+        return _media_items_with_note(media_values, source="caption_media", style_key=media_key)
+    media_items = _media_items_with_note(media_values, source="caption_media_reranked", style_key=media_key)
+    reranked = _normalise_index_items(family_poster_items, source="caption_media_reranked")
+    for item in reranked:
+        item["style_key"] = media_key
+        note = item.get("note", "")
+        media_note = "preserved family poster/print reference for caption media fit"
+        item["note"] = f"{media_note}; {note}" if note else media_note
+    return _dedupe_reference_items(reranked + media_items)
+
+
+def _media_items_with_note(values: list[Any], *, source: str, style_key: str) -> list[dict[str, str]]:
+    items = _normalise_index_items(values, source=source)
+    for item in items:
+        item["style_key"] = style_key
+        note = item.get("note", "")
+        media_note = "caption requires poster/propaganda print medium"
+        item["note"] = f"{media_note}; {note}" if note else media_note
+    return items
+
+
 def _requires_poster_reference(route: dict[str, Any]) -> bool:
     caption = str(route.get("caption") or "").lower()
     return any(keyword in caption for keyword in POSTER_CAPTION_KEYWORDS)
 
 
-def _poster_like_items(values: list[Any]) -> list[Any]:
+def _poster_like_items(values: list[Any], *, keywords: tuple[str, ...] = POSTER_ASSET_NAME_KEYWORDS) -> list[Any]:
     output: list[Any] = []
     for value in values:
         file_value = ""
@@ -265,13 +291,33 @@ def _poster_like_items(values: list[Any]) -> list[Any]:
         else:
             file_value = str(value)
         normalized = _compact_reference_name(file_value)
-        if any(keyword in normalized for keyword in POSTER_ASSET_NAME_KEYWORDS):
+        if any(keyword in normalized for keyword in keywords):
             output.append(value)
     return output
 
 
 def _compact_reference_name(value: str) -> str:
     return "".join(char.lower() for char in value if char.isalnum() or char == "_")
+
+
+def _dedupe_reference_items(items: list[dict[str, str]]) -> list[dict[str, str]]:
+    output: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for item in items:
+        key = _reference_identity(item.get("file", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        output.append(item)
+    return output
+
+
+def _reference_identity(file_value: str) -> str:
+    stem = Path(file_value).stem.lower()
+    for part in stem.replace("-", "_").split("_"):
+        if part.isdigit() and len(part) >= 6:
+            return part
+    return _compact_reference_name(stem)
 
 
 def _asset_path(asset_root: Path, file_value: str) -> Path:
