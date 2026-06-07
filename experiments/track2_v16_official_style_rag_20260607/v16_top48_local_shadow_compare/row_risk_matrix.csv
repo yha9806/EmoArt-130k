@@ -1,0 +1,6 @@
+candidate_name,from,risk,same_quadrant,sample_id,to,transition
+v16_rag_top6_conf085,"{'emotion': 'content', 'valence': 'Positive', 'arousal': 'Low'}",same_quadrant,True,track2_0756,"{'emotion': 'calm', 'valence': 'Positive', 'arousal': 'Low'}",content->calm
+v16_rag_top6_conf085,"{'emotion': 'content', 'valence': 'Positive', 'arousal': 'Low'}",same_quadrant,True,track2_0946,"{'emotion': 'calm', 'valence': 'Positive', 'arousal': 'Low'}",content->calm
+v16_rag_top48_conf085,"{'emotion': 'content', 'valence': 'Positive', 'arousal': 'Low'}",same_quadrant,True,track2_0280,"{'emotion': 'calm', 'valence': 'Positive', 'arousal': 'Low'}",content->calm
+v16_rag_top48_conf085,"{'emotion': 'content', 'valence': 'Positive', 'arousal': 'Low'}",same_quadrant,True,track2_0756,"{'emotion': 'calm', 'valence': 'Positive', 'arousal': 'Low'}",content->calm
+v16_rag_top48_conf085,"{'emotion': 'content', 'valence': 'Positive', 'arousal': 'Low'}",same_quadrant,True,track2_0946,"{'emotion': 'calm', 'valence': 'Positive', 'arousal': 'Low'}",content->calm

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 Shadow Evaluator</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #17202a; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 28px; }
+    th, td { border: 1px solid #d7dde5; padding: 8px; text-align: left; }
+    th { background: #eef2f6; }
+    .warning { padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }
+  </style>
+</head>
+<body>
+  <h1>Track2 Local Shadow Evaluator</h1>
+  <p class="warning">This is a local shadow score. It is not the official Codabench score and must not be treated as hidden-test ground truth.</p>
+  <h2>Candidate Ranking</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>decision</th><th>overall lower</th><th>overall expected</th><th>changes</th><th>cross quadrant</th></tr></thead>
+    <tbody><tr><td>official_779605_moe_v2_anchor</td><td>recommend_submit</td><td>0.833408</td><td>0.836408</td><td>0</td><td>0</td></tr>
+<tr><td>v15_desc_expand300</td><td>recommend_submit</td><td>0.833408</td><td>0.836408</td><td>0</td><td>0</td></tr>
+<tr><td>v16_rag_top6_conf085</td><td>recommend_submit</td><td>0.832709</td><td>0.836458</td><td>2</td><td>0</td></tr>
+<tr><td>v16_rag_top48_conf085</td><td>recommend_submit</td><td>0.832359</td><td>0.836483</td><td>3</td><td>0</td></tr></tbody>
+  </table>
+  <h2>Top Row Risks</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>sample</th><th>transition</th><th>risk</th></tr></thead>
+    <tbody><tr><td>v16_rag_top6_conf085</td><td>track2_0756</td><td>content-&gt;calm</td><td>same_quadrant</td></tr>
+<tr><td>v16_rag_top6_conf085</td><td>track2_0946</td><td>content-&gt;calm</td><td>same_quadrant</td></tr>
+<tr><td>v16_rag_top48_conf085</td><td>track2_0280</td><td>content-&gt;calm</td><td>same_quadrant</td></tr>
+<tr><td>v16_rag_top48_conf085</td><td>track2_0756</td><td>content-&gt;calm</td><td>same_quadrant</td></tr>
+<tr><td>v16_rag_top48_conf085</td><td>track2_0946</td><td>content-&gt;calm</td><td>same_quadrant</td></tr></tbody>
+  </table>
+</body>
+</html>

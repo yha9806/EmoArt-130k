@@ -1,0 +1,114 @@
+{
+  "method": "track2_v16_rag_consensus_candidate_v1",
+  "row_count": 1000,
+  "decision_count": 48,
+  "accepted_label_changes": 3,
+  "rejection_counts": {
+    "kept_current": 22,
+    "low_confidence": 23
+  },
+  "transition_counts": {
+    "content->calm": 3
+  },
+  "cross_quadrant_changes": 0,
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 493,
+    "content": 235,
+    "excited": 15,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 33,
+    "tired": 40
+  },
+  "missing_emotions": [],
+  "top_emotion": "calm",
+  "top_emotion_share": 0.493,
+  "label_consistency_issue_count": 0,
+  "accepted_changes": [
+    {
+      "sample_id": "track2_0280",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "confidence": 0.85,
+      "risk_gate": "hold_needs_more_evidence",
+      "evidence_sources": [
+        "clip",
+        "dinov2",
+        "multibackbone_consensus",
+        "public_neighbor_agreement",
+        "rag_teacher",
+        "siglip2"
+      ],
+      "reason": "The artwork is a traditional Chinese landscape painting on a fan, depicting a serene, uninhabited mountain valley. The soft, diffused lighting, gentle green and ochre color palette, and delicate brushwork evoke a sense of stillness, meditation, and peace, which is more accurately described as 'calm' rather than 'content'."
+    },
+    {
+      "sample_id": "track2_0756",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "confidence": 0.85,
+      "risk_gate": "allow_strong_consensus",
+      "evidence_sources": [
+        "clip",
+        "gemini35_specialist",
+        "multibackbone_consensus",
+        "public_neighbor_agreement",
+        "rag_teacher",
+        "siglip2"
+      ],
+      "reason": "The painting depicts a classic pastoral scene of a figure playing a flute while riding a water buffalo under a tree. The soft ink washes, muted monochromatic tones, and slow, peaceful subject matter evoke a deep sense of tranquility, stillness, and quietude, which is best described as calm."
+    },
+    {
+      "sample_id": "track2_0946",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "confidence": 0.85,
+      "risk_gate": "allow_strong_consensus",
+      "evidence_sources": [
+        "clip",
+        "gemini35_specialist",
+        "multibackbone_consensus",
+        "public_neighbor_agreement",
+        "rag_teacher",
+        "siglip2"
+      ],
+      "reason": "The painting depicts a serene, traditional Chinese nature scene with a gnarled plum tree, camellias, and weathered rocks. The muted, aged background and the still, balanced composition evoke a sense of quietude, peace, and meditative stillness, which is more accurately described as calm rather than content."
+    }
+  ],
+  "formal_submission_overwritten": false,
+  "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "decisions_jsonl": "experiments/track2_v16_official_style_rag_20260607/rag_teacher/decisions_top48_gemini35.jsonl",
+  "out_json": "submissions/track2_submission_v16_rag_top48_conf085_candidate.json",
+  "out_zip": "submissions/track2_submission_v16_rag_top48_conf085_candidate.zip"
+}
