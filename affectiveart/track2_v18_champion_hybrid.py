@@ -6,6 +6,7 @@ from math import isfinite as _isfinite
 from pathlib import Path as _Path
 from typing import Any as _Any
 
+from affectiveart.challenge import TRACK2_JSON_SUBMISSION_KEYS
 from affectiveart.track2_v17_classification_calibration import load_csv_rows as _load_csv_rows
 
 
@@ -20,9 +21,11 @@ __all__ = [
     "DEFAULT_PAIRWISE_DIFFS",
     "NO_AUTO_SUBMIT_POLICY",
     "OfficialAnchor",
+    "TEXT_FIELDS",
     "choose_v18_base",
     "load_champion_targets",
     "load_official_anchors",
+    "merge_description_rows",
 ]
 
 
@@ -196,3 +199,56 @@ def _safe_int(value: _Any, default: int = 0) -> int:
         return int(float(value))
     except (TypeError, ValueError):
         return default
+
+
+TEXT_FIELDS = ("overall_caption", "brushstroke", "composition", "color", "line", "light")
+
+
+def merge_description_rows(
+    base_rows: list[dict[str, _Any]],
+    text_rows: list[dict[str, _Any]],
+) -> tuple[list[dict[str, _Any]], dict[str, _Any]]:
+    text_by_id = {str(row.get("sample_id", "")).strip(): row for row in text_rows}
+    merged: list[dict[str, _Any]] = []
+    changed_rows = 0
+    rejected_rows = 0
+    for base in base_rows:
+        sample_id = str(base.get("sample_id", "")).strip()
+        source = text_by_id.get(sample_id)
+        row = dict(base)
+        row_changed = False
+        if source:
+            for field in TEXT_FIELDS:
+                candidate_text = str(source.get(field, "")).strip()
+                current_text = str(base.get(field, "")).strip()
+                if _is_better_description_text(candidate_text, current_text):
+                    row[field] = candidate_text
+                    row_changed = True
+            if not row_changed and any(str(source.get(field, "")).strip() for field in TEXT_FIELDS):
+                rejected_rows += 1
+        if row_changed:
+            changed_rows += 1
+        merged.append({key: row.get(key, "") for key in TRACK2_JSON_SUBMISSION_KEYS})
+    report = {
+        "description_changed_rows": changed_rows,
+        "rejected_text_rows": rejected_rows,
+        "label_changed_rows": 0,
+    }
+    return merged, report
+
+
+def _is_better_description_text(candidate: str, current: str) -> bool:
+    candidate = " ".join(str(candidate or "").split())
+    current = " ".join(str(current or "").split())
+    if len(candidate) < 18:
+        return False
+    if len(candidate) <= len(current) + 8:
+        return False
+    lowered = candidate.lower()
+    field_cues = ("color", "line", "light", "composition", "brush", "space", "contrast", "tone", "atmosphere")
+    if sum(1 for cue in field_cues if cue in lowered) < 1:
+        return False
+    banned = ("evaluator", "score", "award", "judge should", "as an ai")
+    if any(term in lowered for term in banned):
+        return False
+    return True

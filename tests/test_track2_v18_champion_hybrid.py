@@ -210,3 +210,66 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertEqual(choice["submission_id"], "200")
         self.assertEqual(choice["base_json"], str(available["200"]))
         self.assertEqual(choice["reason"], "highest_exact_official_overall")
+
+    def test_merge_description_rows_preserves_labels_and_uses_better_text(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        base = [
+            {
+                "sample_id": "track2_0001",
+                "emotion": "calm",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A calm view.",
+                "brushstroke": "Soft.",
+                "composition": "Balanced.",
+                "color": "Muted.",
+                "line": "Gentle.",
+                "light": "Soft.",
+            }
+        ]
+        text = [
+            {
+                "sample_id": "track2_0001",
+                "emotion": "frustrated",
+                "emotional_valence": "Negative",
+                "emotional_arousal_level": "High",
+                "overall_caption": "A quiet landscape uses muted color and open space to create a calm atmosphere.",
+                "brushstroke": "Layered, soft brushwork keeps the surface gentle.",
+                "composition": "The open balanced arrangement creates visual stability.",
+                "color": "Muted greens and pale blues reinforce calmness.",
+                "line": "Slow horizontal lines reduce tension.",
+                "light": "Diffuse light softens contrast.",
+            }
+        ]
+
+        merged, report = merge_description_rows(base, text)
+
+        self.assertEqual(merged[0]["emotion"], "calm")
+        self.assertEqual(merged[0]["emotional_valence"], "Positive")
+        self.assertEqual(merged[0]["emotional_arousal_level"], "Low")
+        self.assertIn("quiet landscape", merged[0]["overall_caption"])
+        self.assertEqual(report["description_changed_rows"], 1)
+        self.assertEqual(report["label_changed_rows"], 0)
+
+    def test_merge_description_rows_keeps_base_when_rewrite_is_template_like(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        row = {
+            "sample_id": "track2_0001",
+            "emotion": "content",
+            "emotional_valence": "Positive",
+            "emotional_arousal_level": "Low",
+            "overall_caption": "A domestic interior creates a content emotional atmosphere.",
+            "brushstroke": "Soft layered paint describes the interior forms.",
+            "composition": "The compact arrangement centers attention on the room.",
+            "color": "Warm ochre and green tones support comfort.",
+            "line": "Curved outlines keep the space relaxed.",
+            "light": "Soft light gives the scene warmth.",
+        }
+
+        merged, report = merge_description_rows([row], [{**row, "overall_caption": "A content artwork."}])
+
+        self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
+        self.assertEqual(report["description_changed_rows"], 0)
+        self.assertEqual(report["rejected_text_rows"], 1)
