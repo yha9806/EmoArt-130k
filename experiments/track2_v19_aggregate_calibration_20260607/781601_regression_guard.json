@@ -1,0 +1,16 @@
+{
+  "method": "track2_v19_781601_regression_guard_v1",
+  "decision": "block_bulk_same_quadrant_repeat",
+  "failed_same_quadrant_count": 79,
+  "failed_transition_counts": {
+    "calm->content": 43,
+    "calm->glad": 2,
+    "content->calm": 20,
+    "content->glad": 5,
+    "excited->happy": 1,
+    "glad->calm": 1,
+    "glad->content": 4,
+    "happy->excited": 3
+  },
+  "threshold": 50
+}

@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 import csv
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
 from affectiveart.track2_v19_aggregate_calibration import (
+    build_v19_calibrated_evidence,
     derive_aggregate_targets,
     load_leaderboard_aggregates,
+    score_v19_evidence_row,
+    summarize_781601_regression_guard,
+    write_calibrated_evidence_outputs,
 )
 
 
@@ -86,6 +91,130 @@ class Track2V19AggregateCalibrationTests(unittest.TestCase):
         ]
         with self.assertRaises(ValueError):
             derive_aggregate_targets(rows, participant="vulcaart")
+
+    def test_score_evidence_penalizes_known_failed_transition(self) -> None:
+        row = {
+            "sample_id": "track2_0001",
+            "current_emotion": "calm",
+            "proposed_emotion": "content",
+            "transition": "calm->content",
+            "support_score": 3.0,
+            "model_vote_count": 3,
+            "failed_transition_count": 43,
+        }
+        scored = score_v19_evidence_row(row, failed_transition_penalty_weight=0.04)
+        self.assertEqual(scored["decision"], "hold")
+        self.assertIn("official_failed_transition_penalty", scored["reasons"])
+
+    def test_score_evidence_requires_row_level_support_even_when_aggregate_pressure_exists(self) -> None:
+        row = {
+            "sample_id": "track2_0002",
+            "current_emotion": "calm",
+            "proposed_emotion": "happy",
+            "transition": "calm->happy",
+            "support_score": 0.0,
+            "model_vote_count": 0,
+            "failed_transition_count": 0,
+        }
+        scored = score_v19_evidence_row(row, aggregate_pressure=1.0)
+        self.assertEqual(scored["decision"], "hold")
+        self.assertIn("insufficient_row_support", scored["reasons"])
+
+    def test_781601_failed_same_quadrant_batch_is_negative_regression_case(self) -> None:
+        rows = [
+            {
+                "transition": "calm->content",
+                "support_score": 3.0,
+                "model_vote_count": 3,
+                "failed_transition_count": 43,
+            },
+            {
+                "transition": "content->calm",
+                "support_score": 3.0,
+                "model_vote_count": 3,
+                "failed_transition_count": 20,
+            },
+        ]
+        report = summarize_781601_regression_guard(rows)
+        self.assertEqual(report["decision"], "block_bulk_same_quadrant_repeat")
+        self.assertGreaterEqual(report["failed_same_quadrant_count"], 63)
+
+    def test_781601_guard_deduplicates_failed_transition_counts(self) -> None:
+        rows = [
+            {"transition": "calm->content", "failed_transition_count": 43},
+            {"transition": "calm->content", "failed_transition_count": 43},
+            {"transition": "content->calm", "failed_transition_count": 20},
+        ]
+        report = summarize_781601_regression_guard(rows)
+        self.assertEqual(report["failed_same_quadrant_count"], 63)
+
+    def test_build_v19_calibrated_evidence_preserves_fields_and_sorts_accepts_first(self) -> None:
+        rows = [
+            {
+                "sample_id": "track2_0002",
+                "current_emotion": "calm",
+                "proposed_emotion": "happy",
+                "transition": "calm->happy",
+                "support_score": 0.0,
+                "model_vote_count": 0,
+                "failed_transition_count": 0,
+            },
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "tired",
+                "proposed_emotion": "sad",
+                "transition": "tired->sad",
+                "support_score": 2.4,
+                "model_vote_count": 2,
+                "failed_transition_count": 0,
+            },
+        ]
+        calibrated = build_v19_calibrated_evidence(
+            rows,
+            {"gaps": {"emotion_accuracy": 0.23}, "target_bands": {"emotion_accuracy_min_delta": 0.05}},
+        )
+        self.assertEqual(calibrated[0]["sample_id"], "track2_0001")
+        self.assertEqual(calibrated[0]["v19_decision"], "accept_candidate")
+        self.assertIn("v19_score", calibrated[0])
+        self.assertEqual(calibrated[1]["v19_decision"], "hold")
+
+    def test_write_calibrated_evidence_outputs_writes_json_csv_and_guard(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            v17_path = root / "v17_evidence.json"
+            targets_path = root / "aggregate_targets.json"
+            out_dir = root / "out"
+            v17_path.write_text(
+                json.dumps(
+                    [
+                        {
+                            "sample_id": "track2_0001",
+                            "current_emotion": "calm",
+                            "proposed_emotion": "content",
+                            "transition": "calm->content",
+                            "support_score": 3.0,
+                            "model_vote_count": 3,
+                            "failed_transition_count": 43,
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            targets_path.write_text(
+                json.dumps({"gaps": {"emotion_accuracy": 0.23}, "target_bands": {}}),
+                encoding="utf-8",
+            )
+
+            report = write_calibrated_evidence_outputs(
+                v17_evidence=v17_path,
+                aggregate_targets_json=targets_path,
+                out_dir=out_dir,
+            )
+            self.assertEqual(report["rows"], 1)
+            self.assertTrue((out_dir / "calibrated_evidence.json").exists())
+            self.assertTrue((out_dir / "calibrated_evidence.csv").exists())
+            self.assertTrue((out_dir / "781601_regression_guard.json").exists())
+            self.assertNotIn(b"\r", (out_dir / "calibrated_evidence.csv").read_bytes())
 
 
 if __name__ == "__main__":
