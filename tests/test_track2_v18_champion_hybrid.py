@@ -460,3 +460,73 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertIn("failed_official_transition", enriched[0]["risk_flags"])
         self.assertEqual(enriched[1]["champion_priority"], "low")
         self.assertIn("cross_quadrant", enriched[1]["risk_flags"])
+
+    def test_enrich_champion_evidence_handles_numeric_booleans_without_mutation(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import enrich_champion_evidence
+
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": "1.0",
+                "same_arousal": 1.0,
+                "model_vote_count": 2,
+                "support_score": 1.6,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+            },
+            {
+                "sample_id": "track2_0002",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": "0.0",
+                "same_arousal": 1.0,
+                "model_vote_count": 2,
+                "support_score": 1.6,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+            },
+        ]
+        original_rows = [dict(row) for row in rows]
+
+        enriched = enrich_champion_evidence(rows)
+
+        by_id = {str(row["sample_id"]): row for row in enriched}
+        self.assertEqual(rows, original_rows)
+        self.assertEqual(by_id["track2_0001"]["champion_priority"], "medium")
+        self.assertNotIn("cross_quadrant", by_id["track2_0001"]["risk_flags"])
+        self.assertEqual(by_id["track2_0002"]["champion_priority"], "low")
+        self.assertIn("cross_quadrant", by_id["track2_0002"]["risk_flags"])
+
+    def test_enrich_champion_evidence_prioritizes_numeric_exact_duplicate(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import enrich_champion_evidence
+
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": "1.0",
+                "same_arousal": "1.0",
+                "model_vote_count": 0,
+                "support_score": 0.0,
+                "public_duplicate_support_score": 1.0,
+                "exact_duplicate": "1.0",
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+            }
+        ]
+
+        enriched = enrich_champion_evidence(rows)
+
+        self.assertEqual(enriched[0]["champion_priority"], "high")
+        self.assertNotIn("weak_model_family_count", enriched[0]["risk_flags"])
+        self.assertNotIn("weak_support_score", enriched[0]["risk_flags"])

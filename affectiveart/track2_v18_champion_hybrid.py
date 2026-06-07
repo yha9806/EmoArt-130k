@@ -229,7 +229,20 @@ def _safe_int(value: _Any, default: int = 0) -> int:
 def _safe_bool(value: _Any) -> bool:
     if isinstance(value, bool):
         return value
-    return str(value).strip().lower() in {"1", "true", "yes", "y"}
+    text = str(value).strip().lower()
+    if text in {"true", "yes", "y"}:
+        return True
+    if text in {"false", "no", "n"}:
+        return False
+    try:
+        numeric = float(text)
+    except (TypeError, ValueError):
+        return False
+    if numeric == 1.0:
+        return True
+    if numeric == 0.0:
+        return False
+    return False
 
 
 def _load_csv_rows(path: str | _Path) -> list[dict[str, _Any]]:
