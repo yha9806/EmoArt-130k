@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import csv
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -24,6 +26,27 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
 
 
 class Track2V18ChampionHybridTests(unittest.TestCase):
+    def test_module_import_does_not_load_affectiveart_challenge(self) -> None:
+        code = (
+            "import sys\n"
+            "import affectiveart.track2_v18_champion_hybrid\n"
+            "raise SystemExit(1 if 'affectiveart.challenge' in sys.modules else 0)\n"
+        )
+
+        result = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=Path(__file__).resolve().parents[1],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(
+            result.returncode,
+            0,
+            msg=f"stdout={result.stdout!r} stderr={result.stderr!r}",
+        )
+
     def test_module_has_no_codabench_upload_surface(self) -> None:
         import affectiveart.track2_v18_champion_hybrid as module
 
@@ -301,6 +324,95 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
                 }
             ],
         )
+
+        self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
+        self.assertEqual(report["description_changed_rows"], 0)
+        self.assertEqual(report["rejected_text_rows"], 1)
+
+    def test_merge_description_rows_counts_mixed_accepted_and_rejected_text(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        row = {
+            "sample_id": "track2_0001",
+            "emotion": "calm",
+            "emotional_valence": "Positive",
+            "emotional_arousal_level": "Low",
+            "overall_caption": "A calm view.",
+            "brushstroke": "Soft.",
+            "composition": "Balanced.",
+            "color": "Muted.",
+            "line": "Gentle.",
+            "light": "Soft.",
+        }
+        text = {
+            **row,
+            "color": "Muted color expands through the open space with a calm atmosphere.",
+            "line": "High scoring in evaluation because the line and light cues are clear.",
+        }
+
+        merged, report = merge_description_rows([row], [text])
+
+        self.assertEqual(
+            merged[0]["color"],
+            "Muted color expands through the open space with a calm atmosphere.",
+        )
+        self.assertEqual(merged[0]["line"], row["line"])
+        self.assertEqual(report["description_changed_rows"], 1)
+        self.assertEqual(report["rejected_text_rows"], 1)
+
+    def test_merge_description_rows_rejects_high_scoring_in_evaluation_text(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        row = {
+            "sample_id": "track2_0001",
+            "emotion": "calm",
+            "emotional_valence": "Positive",
+            "emotional_arousal_level": "Low",
+            "overall_caption": "A calm view.",
+            "brushstroke": "Soft layered paint describes the quiet forms.",
+            "composition": "The balanced arrangement opens the central space.",
+            "color": "Muted greens and blues keep the mood calm.",
+            "line": "Slow horizontal lines reduce tension.",
+            "light": "Diffuse light softens contrast.",
+        }
+        text = {
+            **row,
+            "overall_caption": (
+                "High scoring in evaluation because color, composition, line, and light all "
+                "support the intended atmosphere."
+            ),
+        }
+
+        merged, report = merge_description_rows([row], [text])
+
+        self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
+        self.assertEqual(report["description_changed_rows"], 0)
+        self.assertEqual(report["rejected_text_rows"], 1)
+
+    def test_merge_description_rows_rejects_evaluate_text(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        row = {
+            "sample_id": "track2_0001",
+            "emotion": "calm",
+            "emotional_valence": "Positive",
+            "emotional_arousal_level": "Low",
+            "overall_caption": "A calm view.",
+            "brushstroke": "Soft layered paint describes the quiet forms.",
+            "composition": "The balanced arrangement opens the central space.",
+            "color": "Muted greens and blues keep the mood calm.",
+            "line": "Slow horizontal lines reduce tension.",
+            "light": "Diffuse light softens contrast.",
+        }
+        text = {
+            **row,
+            "overall_caption": (
+                "Please evaluate how color, composition, line, and light would support "
+                "the intended atmosphere."
+            ),
+        }
+
+        merged, report = merge_description_rows([row], [text])
 
         self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
         self.assertEqual(report["description_changed_rows"], 0)

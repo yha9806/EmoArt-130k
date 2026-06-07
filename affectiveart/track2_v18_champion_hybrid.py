@@ -6,9 +6,6 @@ from math import isfinite as _isfinite
 from pathlib import Path as _Path
 from typing import Any as _Any
 
-from affectiveart.challenge import TRACK2_JSON_SUBMISSION_KEYS
-from affectiveart.track2_v17_classification_calibration import load_csv_rows as _load_csv_rows
-
 
 __all__ = [
     "ChampionTargets",
@@ -47,6 +44,18 @@ DEFAULT_BASE_CANDIDATES = {
 DEFAULT_OUT_JSON = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.json")
 DEFAULT_OUT_ZIP = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.zip")
 NO_AUTO_SUBMIT_POLICY = True
+TRACK2_JSON_SUBMISSION_KEYS = (
+    "sample_id",
+    "emotion",
+    "emotional_valence",
+    "emotional_arousal_level",
+    "overall_caption",
+    "brushstroke",
+    "composition",
+    "color",
+    "line",
+    "light",
+)
 
 
 @_dataclass(frozen=True)
@@ -201,7 +210,22 @@ def _safe_int(value: _Any, default: int = 0) -> int:
         return default
 
 
+def _load_csv_rows(path: str | _Path) -> list[dict[str, _Any]]:
+    with _Path(path).open(newline="", encoding="utf-8") as handle:
+        return [dict(row) for row in _csv.DictReader(handle)]
+
+
 TEXT_FIELDS = ("overall_caption", "brushstroke", "composition", "color", "line", "light")
+BANNED_DESCRIPTION_TERMS = (
+    "evaluator",
+    "score",
+    "scoring",
+    "evaluation",
+    "evaluate",
+    "award",
+    "judge",
+    "as an ai",
+)
 
 
 def merge_description_rows(
@@ -217,14 +241,21 @@ def merge_description_rows(
         source = text_by_id.get(sample_id)
         row = dict(base)
         row_changed = False
+        row_rejected = False
+        saw_text = False
         if source:
             for field in TEXT_FIELDS:
                 candidate_text = str(source.get(field, "")).strip()
+                if not candidate_text:
+                    continue
+                saw_text = True
                 current_text = str(base.get(field, "")).strip()
                 if _is_better_description_text(candidate_text, current_text):
                     row[field] = candidate_text
                     row_changed = True
-            if not row_changed and any(str(source.get(field, "")).strip() for field in TEXT_FIELDS):
+                elif _has_banned_description_text(candidate_text):
+                    row_rejected = True
+            if row_rejected or (not row_changed and saw_text):
                 rejected_rows += 1
         if row_changed:
             changed_rows += 1
@@ -248,7 +279,11 @@ def _is_better_description_text(candidate: str, current: str) -> bool:
     field_cues = ("color", "line", "light", "composition", "brush", "space", "contrast", "tone", "atmosphere")
     if sum(1 for cue in field_cues if cue in lowered) < 1:
         return False
-    banned = ("evaluator", "score", "award", "judge", "as an ai")
-    if any(term in lowered for term in banned):
+    if _has_banned_description_text(lowered):
         return False
     return True
+
+
+def _has_banned_description_text(text: str) -> bool:
+    lowered = str(text or "").lower()
+    return any(term in lowered for term in BANNED_DESCRIPTION_TERMS)
