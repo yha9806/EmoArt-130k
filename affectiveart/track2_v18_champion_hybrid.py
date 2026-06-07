@@ -1,48 +1,52 @@
 from __future__ import annotations
 
-import csv
-import json
-import zipfile
-from collections import Counter
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any
+import csv as _csv
+from dataclasses import dataclass as _dataclass
+from math import isfinite as _isfinite
+from pathlib import Path as _Path
+from typing import Any as _Any
 
-from affectiveart.challenge import TRACK2_JSON_EMOTIONS, TRACK2_JSON_SUBMISSION_KEYS
-from affectiveart.track2_audit import strict_track2_label_issues
-from affectiveart.track2_v17_classification_calibration import (
-    DEFAULT_DUPLICATE_SOURCES as V17_DEFAULT_DUPLICATE_SOURCES,
-    DEFAULT_PREDICTION_SOURCES as V17_DEFAULT_PREDICTION_SOURCES,
-    FORMAL_SUBMISSION_NAMES,
-    apply_v17_changes,
-    build_evidence_rows,
-    load_csv_rows,
-    load_duplicate_rows,
-    load_prediction_sources,
-    load_track2_rows,
-    parse_official_failed_transition_counts,
+from affectiveart.track2_v17_classification_calibration import load_csv_rows as _load_csv_rows
+
+
+__all__ = [
+    "ChampionTargets",
+    "DEFAULT_BASE_CANDIDATES",
+    "DEFAULT_EXPERIMENT_DIR",
+    "DEFAULT_LEADERBOARD",
+    "DEFAULT_OFFICIAL_SCORES",
+    "DEFAULT_OUT_JSON",
+    "DEFAULT_OUT_ZIP",
+    "DEFAULT_PAIRWISE_DIFFS",
+    "NO_AUTO_SUBMIT_POLICY",
+    "OfficialAnchor",
+    "choose_v18_base",
+    "load_champion_targets",
+    "load_official_anchors",
+]
+
+
+DEFAULT_EXPERIMENT_DIR = _Path("experiments/track2_v18_champion_hybrid_20260607")
+DEFAULT_LEADERBOARD = _Path(
+    "experiments/track2_official_results_20260606/track2_public_leaderboard_20260606.csv"
 )
-
-
-DEFAULT_EXPERIMENT_DIR = Path("experiments/track2_v18_champion_hybrid_20260607")
-DEFAULT_LEADERBOARD = Path("experiments/track2_official_results_20260606/track2_public_leaderboard_20260606.csv")
-DEFAULT_OFFICIAL_SCORES = Path(
+DEFAULT_OFFICIAL_SCORES = _Path(
     "experiments/track2_official_results_20260606/track2_known_official_exact_scores_from_ledger_20260606.csv"
 )
-DEFAULT_PAIRWISE_DIFFS = Path(
+DEFAULT_PAIRWISE_DIFFS = _Path(
     "experiments/track2_official_results_20260606/track2_my_submission_pairwise_diffs_20260606.csv"
 )
 DEFAULT_BASE_CANDIDATES = {
-    "779605": Path("submissions/track2_submission_moe_v2_accept5_candidate.json"),
-    "782683": Path("submissions/track2_submission_v12_stable_probe_candidate.json"),
-    "v15_desc_expand300": Path("submissions/track2_submission_v15_desc_expand300_candidate.json"),
+    "779605": _Path("submissions/track2_submission_moe_v2_accept5_candidate.json"),
+    "782683": _Path("submissions/track2_submission_v12_stable_probe_candidate.json"),
+    "v15_desc_expand300": _Path("submissions/track2_submission_v15_desc_expand300_candidate.json"),
 }
-DEFAULT_OUT_JSON = Path("submissions/track2_submission_v18_champion_hybrid_candidate.json")
-DEFAULT_OUT_ZIP = Path("submissions/track2_submission_v18_champion_hybrid_candidate.zip")
+DEFAULT_OUT_JSON = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.json")
+DEFAULT_OUT_ZIP = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.zip")
 NO_AUTO_SUBMIT_POLICY = True
 
 
-@dataclass(frozen=True)
+@_dataclass(frozen=True)
 class OfficialAnchor:
     submission_id: str
     file_name: str
@@ -51,7 +55,7 @@ class OfficialAnchor:
     description: float
 
 
-@dataclass(frozen=True)
+@_dataclass(frozen=True)
 class ChampionTargets:
     first_participant: str
     current_participant: str
@@ -73,27 +77,45 @@ class ChampionTargets:
     current_overall_caption: float
 
 
-def load_official_anchors(path: str | Path) -> dict[str, OfficialAnchor]:
+def load_official_anchors(path: str | _Path) -> dict[str, OfficialAnchor]:
+    source = _Path(path)
     anchors: dict[str, OfficialAnchor] = {}
-    with Path(path).open(newline="", encoding="utf-8") as handle:
-        for row in csv.DictReader(handle):
+    with source.open(newline="", encoding="utf-8") as handle:
+        for row in _csv.DictReader(handle):
             submission_id = str(row.get("submission_id", "")).strip()
             if not submission_id:
                 continue
+            row_context = f"submission_id {submission_id}"
             anchors[submission_id] = OfficialAnchor(
                 submission_id=submission_id,
                 file_name=str(row.get("file_name", "")).strip(),
-                overall=_safe_float(row.get("official_overall")),
-                classification=_safe_float(row.get("official_classification")),
-                description=_safe_float(row.get("official_description")),
+                overall=_required_float(
+                    row.get("official_overall"),
+                    "official_overall",
+                    path=source,
+                    row_context=row_context,
+                ),
+                classification=_required_float(
+                    row.get("official_classification"),
+                    "official_classification",
+                    path=source,
+                    row_context=row_context,
+                ),
+                description=_required_float(
+                    row.get("official_description"),
+                    "official_description",
+                    path=source,
+                    row_context=row_context,
+                ),
             )
     return anchors
 
 
-def load_champion_targets(path: str | Path, participant: str = "vulcaart") -> ChampionTargets:
-    rows = load_csv_rows(path)
+def load_champion_targets(path: str | _Path, participant: str = "vulcaart") -> ChampionTargets:
+    source = _Path(path)
+    rows = _load_csv_rows(source)
     if not rows:
-        raise ValueError(f"leaderboard is empty: {path}")
+        raise ValueError(f"leaderboard is empty: {source}")
     first = min(rows, key=lambda row: _safe_int(row.get("#"), default=999999))
     current = next((row for row in rows if str(row.get("Participant", "")).strip() == participant), None)
     if current is None:
@@ -101,52 +123,75 @@ def load_champion_targets(path: str | Path, participant: str = "vulcaart") -> Ch
     return ChampionTargets(
         first_participant=str(first.get("Participant", "")).strip(),
         current_participant=str(current.get("Participant", "")).strip(),
-        first_overall=_safe_float(first.get("Overall Score")),
-        current_overall=_safe_float(current.get("Overall Score")),
-        first_classification=_safe_float(first.get("Classification Score")),
-        current_classification=_safe_float(current.get("Classification Score")),
-        first_description=_safe_float(first.get("Description Score")),
-        current_description=_safe_float(current.get("Description Score")),
-        first_emotion_accuracy=_safe_float(first.get("Emotion Accuracy")),
-        current_emotion_accuracy=_safe_float(current.get("Emotion Accuracy")),
-        first_emotion_macro_f1=_safe_float(first.get("Emotion Macro F1")),
-        current_emotion_macro_f1=_safe_float(current.get("Emotion Macro F1")),
-        first_visual_grounding=_safe_float(first.get("Visual Grounding")),
-        current_visual_grounding=_safe_float(current.get("Visual Grounding")),
-        first_attribute_specificity=_safe_float(first.get("Attribute Specificity")),
-        current_attribute_specificity=_safe_float(current.get("Attribute Specificity")),
-        first_overall_caption=_safe_float(first.get("Overall Caption")),
-        current_overall_caption=_safe_float(current.get("Overall Caption")),
+        first_overall=_required_leaderboard_float(first, "Overall Score", source),
+        current_overall=_required_leaderboard_float(current, "Overall Score", source),
+        first_classification=_required_leaderboard_float(first, "Classification Score", source),
+        current_classification=_required_leaderboard_float(current, "Classification Score", source),
+        first_description=_required_leaderboard_float(first, "Description Score", source),
+        current_description=_required_leaderboard_float(current, "Description Score", source),
+        first_emotion_accuracy=_required_leaderboard_float(first, "Emotion Accuracy", source),
+        current_emotion_accuracy=_required_leaderboard_float(current, "Emotion Accuracy", source),
+        first_emotion_macro_f1=_required_leaderboard_float(first, "Emotion Macro F1", source),
+        current_emotion_macro_f1=_required_leaderboard_float(current, "Emotion Macro F1", source),
+        first_visual_grounding=_required_leaderboard_float(first, "Visual Grounding", source),
+        current_visual_grounding=_required_leaderboard_float(current, "Visual Grounding", source),
+        first_attribute_specificity=_required_leaderboard_float(first, "Attribute Specificity", source),
+        current_attribute_specificity=_required_leaderboard_float(current, "Attribute Specificity", source),
+        first_overall_caption=_required_leaderboard_float(first, "Overall Caption", source),
+        current_overall_caption=_required_leaderboard_float(current, "Overall Caption", source),
     )
 
 
 def choose_v18_base(
     anchors: dict[str, OfficialAnchor],
-    available: dict[str, Path],
+    available: dict[str, _Path],
 ) -> dict[str, str]:
-    usable = [
-        (anchor.overall, anchor.classification, anchor.description, submission_id, path)
-        for submission_id, anchor in anchors.items()
-        for key, path in available.items()
-        if key == submission_id
-    ]
+    usable: list[tuple[float, str, _Path]] = []
+    for submission_id, anchor in anchors.items():
+        path = available.get(submission_id)
+        if path is not None:
+            usable.append((anchor.overall, submission_id, path))
+
     if not usable:
         fallback = available.get("v15_desc_expand300")
         if fallback is None:
             raise ValueError("no usable v18 base candidates")
-        return {"submission_id": "v15_desc_expand300", "base_json": str(fallback), "reason": "fallback_v15_desc_expand300"}
-    _, _, _, submission_id, path = max(usable)
+        return {
+            "submission_id": "v15_desc_expand300",
+            "base_json": str(fallback),
+            "reason": "fallback_v15_desc_expand300",
+        }
+    _, submission_id, path = max(usable)
     return {"submission_id": submission_id, "base_json": str(path), "reason": "highest_exact_official_overall"}
 
 
-def _safe_float(value: Any, default: float = 0.0) -> float:
+def _required_leaderboard_float(row: dict[str, _Any], field: str, path: _Path) -> float:
+    participant = str(row.get("Participant", "")).strip() or "<unknown participant>"
+    return _required_float(row.get(field), field, path=path, row_context=f"participant {participant}")
+
+
+def _required_float(value: _Any, field: str, *, path: _Path, row_context: str) -> float:
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        raise ValueError(_invalid_numeric_message(value, field, path, row_context)) from None
+    if not _isfinite(parsed):
+        raise ValueError(_invalid_numeric_message(value, field, path, row_context))
+    return parsed
+
+
+def _invalid_numeric_message(value: _Any, field: str, path: _Path, row_context: str) -> str:
+    return f"invalid numeric field {field!r} for {row_context} in {path}: {value!r}"
+
+
+def _safe_float(value: _Any, default: float = 0.0) -> float:
     try:
         return float(value)
     except (TypeError, ValueError):
         return default
 
 
-def _safe_int(value: Any, default: int = 0) -> int:
+def _safe_int(value: _Any, default: int = 0) -> int:
     try:
         return int(float(value))
     except (TypeError, ValueError):
