@@ -273,3 +273,35 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
         self.assertEqual(report["description_changed_rows"], 0)
         self.assertEqual(report["rejected_text_rows"], 1)
+
+    def test_merge_description_rows_rejects_judge_oriented_text(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import merge_description_rows
+
+        row = {
+            "sample_id": "track2_0001",
+            "emotion": "calm",
+            "emotional_valence": "Positive",
+            "emotional_arousal_level": "Low",
+            "overall_caption": "A calm view.",
+            "brushstroke": "Soft layered paint describes the quiet forms.",
+            "composition": "The balanced arrangement opens the central space.",
+            "color": "Muted greens and blues keep the mood calm.",
+            "line": "Slow horizontal lines reduce tension.",
+            "light": "Diffuse light softens contrast.",
+        }
+
+        merged, report = merge_description_rows(
+            [row],
+            [
+                {
+                    **row,
+                    "overall_caption": (
+                        "A judge sees color, composition, light, and atmosphere across the scene."
+                    ),
+                }
+            ],
+        )
+
+        self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
+        self.assertEqual(report["description_changed_rows"], 0)
+        self.assertEqual(report["rejected_text_rows"], 1)

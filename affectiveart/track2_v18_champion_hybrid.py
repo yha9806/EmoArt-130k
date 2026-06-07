@@ -248,7 +248,7 @@ def _is_better_description_text(candidate: str, current: str) -> bool:
     field_cues = ("color", "line", "light", "composition", "brush", "space", "contrast", "tone", "atmosphere")
     if sum(1 for cue in field_cues if cue in lowered) < 1:
         return False
-    banned = ("evaluator", "score", "award", "judge should", "as an ai")
+    banned = ("evaluator", "score", "award", "judge", "as an ai")
     if any(term in lowered for term in banned):
         return False
     return True
