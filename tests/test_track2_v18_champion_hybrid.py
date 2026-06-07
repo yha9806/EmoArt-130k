@@ -530,3 +530,229 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertEqual(enriched[0]["champion_priority"], "high")
         self.assertNotIn("weak_model_family_count", enriched[0]["risk_flags"])
         self.assertNotIn("weak_support_score", enriched[0]["risk_flags"])
+
+    def test_v18_gate_blocks_unsupported_cross_quadrant_change(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "transition": "content->annoyed",
+            "same_valence": False,
+            "same_arousal": False,
+            "model_vote_count": 3,
+            "support_score": 2.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": 0,
+            "risk_flags": "cross_quadrant",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "annoyed": 30})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("unsupported_cross_quadrant", gate["reasons"])
+
+    def test_v18_gate_allows_exact_duplicate_even_with_failed_transition(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "transition": "content->calm",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 0,
+            "support_score": 0.2,
+            "public_duplicate_support_score": 1.0,
+            "exact_duplicate": True,
+            "near_duplicate": False,
+            "failed_transition_count": 43,
+            "risk_flags": "failed_official_transition",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "calm": 490})
+
+        self.assertEqual(gate["decision"], "accept")
+        self.assertIn("exact_duplicate_override", gate["reasons"])
+
+    def test_select_v18_changes_caps_calm_content_family(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = []
+        for index in range(5):
+            rows.append(
+                {
+                    "sample_id": f"track2_{index:04d}",
+                    "current_emotion": "content",
+                    "proposed_emotion": "calm",
+                    "transition": "content->calm",
+                    "same_valence": True,
+                    "same_arousal": True,
+                    "model_vote_count": 3,
+                    "support_score": 2.0,
+                    "public_duplicate_support_score": 0.0,
+                    "exact_duplicate": False,
+                    "near_duplicate": False,
+                    "failed_transition_count": 0,
+                    "risk_flags": "",
+                    "transition_family": "calm<->content",
+                }
+            )
+
+        selected = select_v18_changes(rows, current_distribution={"content": 238, "calm": 490})
+
+        self.assertEqual(len(selected), 3)
+        self.assertTrue(all(row["gate_decision"] == "accept" for row in selected))
+
+    def test_v18_gate_blocks_rare_current_class_floor(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "current_emotion": "bored",
+            "proposed_emotion": "calm",
+            "transition": "bored->calm",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 3,
+            "support_score": 2.0,
+            "public_duplicate_support_score": 0.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": 0,
+            "risk_flags": "",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"bored": 3, "calm": 100})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("rare_current_class_floor", gate["reasons"])
+
+    def test_select_v18_changes_skips_duplicates_and_updates_rare_floor(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "bored",
+                "proposed_emotion": "calm",
+                "transition": "bored->calm",
+                "same_valence": True,
+                "same_arousal": True,
+                "model_vote_count": 3,
+                "support_score": 2.5,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+                "risk_flags": "",
+            },
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": True,
+                "same_arousal": True,
+                "model_vote_count": 3,
+                "support_score": 2.4,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+                "risk_flags": "",
+            },
+            {
+                "sample_id": "track2_0002",
+                "current_emotion": "bored",
+                "proposed_emotion": "calm",
+                "transition": "bored->calm",
+                "same_valence": True,
+                "same_arousal": True,
+                "model_vote_count": 3,
+                "support_score": 2.3,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+                "risk_flags": "",
+            },
+            {
+                "sample_id": "track2_0003",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": True,
+                "same_arousal": True,
+                "model_vote_count": 3,
+                "support_score": 2.2,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+                "risk_flags": "",
+            },
+        ]
+
+        selected = select_v18_changes(rows, current_distribution={"bored": 4, "content": 10, "calm": 100})
+
+        self.assertEqual([row["sample_id"] for row in selected], ["track2_0001", "track2_0003"])
+
+    def test_v18_gate_exact_duplicate_requires_high_public_duplicate_support(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "current_emotion": "content",
+            "proposed_emotion": "calm",
+            "transition": "content->calm",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 0,
+            "support_score": 0.2,
+            "public_duplicate_support_score": 0.5,
+            "exact_duplicate": True,
+            "near_duplicate": False,
+            "failed_transition_count": 0,
+            "risk_flags": "",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "calm": 490})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_model_families", gate["reasons"])
+        self.assertIn("low_support_score", gate["reasons"])
+        self.assertNotIn("exact_duplicate_override", gate["reasons"])
+
+    def test_v18_gate_blocks_failed_transition_only_outside_majority_boundary(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        blocked = {
+            "sample_id": "track2_0001",
+            "current_emotion": "content",
+            "proposed_emotion": "annoyed",
+            "transition": "content->annoyed",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 3,
+            "support_score": 2.0,
+            "public_duplicate_support_score": 0.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": 12,
+            "risk_flags": "failed_official_transition",
+        }
+        allowed = {
+            **blocked,
+            "sample_id": "track2_0002",
+            "proposed_emotion": "calm",
+            "transition": "content->calm",
+            "failed_transition_count": 43,
+        }
+
+        blocked_gate = v18_gate_for_evidence(blocked, distribution={"content": 200, "annoyed": 30, "calm": 490})
+        allowed_gate = v18_gate_for_evidence(allowed, distribution={"content": 200, "annoyed": 30, "calm": 490})
+
+        self.assertEqual(blocked_gate["decision"], "block")
+        self.assertIn("failed_official_transition_family", blocked_gate["reasons"])
+        self.assertEqual(allowed_gate["decision"], "accept")
+        self.assertNotIn("failed_official_transition_family", allowed_gate["reasons"])

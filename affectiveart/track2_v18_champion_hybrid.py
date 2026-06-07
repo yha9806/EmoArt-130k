@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv as _csv
+from collections import Counter as _Counter
 from dataclasses import dataclass as _dataclass
 from math import isfinite as _isfinite
 from pathlib import Path as _Path
@@ -19,11 +20,17 @@ __all__ = [
     "NO_AUTO_SUBMIT_POLICY",
     "OfficialAnchor",
     "TEXT_FIELDS",
+    "TRACK2_JSON_EMOTIONS",
+    "TRACK2_JSON_SUBMISSION_KEYS",
+    "V18_TOTAL_CHANGE_CAP",
+    "V18_TRANSITION_FAMILY_CAPS",
     "choose_v18_base",
     "enrich_champion_evidence",
     "load_champion_targets",
     "load_official_anchors",
     "merge_description_rows",
+    "select_v18_changes",
+    "v18_gate_for_evidence",
 ]
 
 
@@ -57,6 +64,20 @@ TRACK2_JSON_SUBMISSION_KEYS = (
     "line",
     "light",
 )
+TRACK2_JSON_EMOTIONS = {
+    "aroused",
+    "excited",
+    "happy",
+    "alarmed",
+    "annoyed",
+    "frustrated",
+    "sad",
+    "bored",
+    "tired",
+    "content",
+    "calm",
+    "glad",
+}
 MAJORITY_BOUNDARY_TRANSITIONS = {
     "calm->content",
     "content->calm",
@@ -71,6 +92,16 @@ MAJORITY_BOUNDARY_TRANSITIONS = {
     "tired->sad",
     "annoyed->frustrated",
     "frustrated->annoyed",
+}
+V18_TOTAL_CHANGE_CAP = 36
+V18_TRANSITION_FAMILY_CAPS = {
+    "calm<->content": 3,
+    "content->glad": 3,
+    "calm->glad": 2,
+    "happy<->excited": 4,
+    "aroused<->excited": 3,
+    "sad<->tired": 3,
+    "annoyed<->frustrated": 3,
 }
 
 
@@ -310,6 +341,88 @@ def _champion_sort_key(row: dict[str, _Any]) -> tuple[int, int, float, float, st
         str(row.get("sample_id", "")),
         str(row.get("proposed_emotion", "")),
     )
+
+
+def v18_gate_for_evidence(
+    row: dict[str, _Any],
+    *,
+    distribution: dict[str, _Any] | _Counter[str],
+) -> dict[str, _Any]:
+    exact_duplicate = _safe_bool(row.get("exact_duplicate"))
+    public_duplicate_support = _safe_float(row.get("public_duplicate_support_score"))
+    if exact_duplicate and public_duplicate_support >= 0.95:
+        return {"decision": "accept", "reasons": ["exact_duplicate_override"]}
+
+    reasons: list[str] = []
+    same_valence = _safe_bool(row.get("same_valence"))
+    same_arousal = _safe_bool(row.get("same_arousal"))
+    model_votes = _safe_int(row.get("model_vote_count"))
+    support_score = _safe_float(row.get("support_score"))
+    transition = str(row.get("transition", "")).strip()
+    current = str(row.get("current_emotion", "")).strip()
+    proposed = str(row.get("proposed_emotion", "")).strip()
+    if not transition or "->" not in transition:
+        reasons.append("invalid_transition")
+    if current and proposed and current == proposed:
+        reasons.append("no_label_change")
+    if not same_valence or not same_arousal:
+        reasons.append("unsupported_cross_quadrant")
+    if model_votes < 2:
+        reasons.append("insufficient_model_families")
+    if support_score < 1.45:
+        reasons.append("low_support_score")
+    if _safe_int(row.get("failed_transition_count")) >= 10 and transition not in MAJORITY_BOUNDARY_TRANSITIONS:
+        reasons.append("failed_official_transition_family")
+    if current and _would_remove_rare_class(current, distribution):
+        reasons.append("rare_current_class_floor")
+    return {"decision": "block" if reasons else "accept", "reasons": reasons or ["meets_v18_thresholds"]}
+
+
+def select_v18_changes(
+    evidence_rows: list[dict[str, _Any]],
+    *,
+    current_distribution: dict[str, _Any] | _Counter[str],
+    total_cap: int = V18_TOTAL_CHANGE_CAP,
+) -> list[dict[str, _Any]]:
+    selected: list[dict[str, _Any]] = []
+    selected_ids: set[str] = set()
+    family_counts: _Counter[str] = _Counter()
+    projected = _Counter({str(key): _safe_int(value) for key, value in dict(current_distribution).items()})
+    for row in sorted(evidence_rows, key=_champion_sort_key):
+        if len(selected) >= total_cap:
+            break
+        sample_id = str(row.get("sample_id", "")).strip()
+        if not sample_id or sample_id in selected_ids:
+            continue
+        gate = v18_gate_for_evidence(row, distribution=projected)
+        if gate["decision"] != "accept":
+            continue
+        family = str(row.get("transition_family") or _transition_family(str(row.get("transition", ""))))
+        cap = V18_TRANSITION_FAMILY_CAPS.get(family)
+        if cap is not None and family_counts[family] >= cap:
+            continue
+        item = dict(row)
+        item["gate_decision"] = "accept"
+        item["gate_reasons"] = ",".join(gate["reasons"])
+        selected.append(item)
+        selected_ids.add(sample_id)
+        family_counts[family] += 1
+        current = str(item.get("current_emotion", "")).strip()
+        proposed = str(item.get("proposed_emotion", "")).strip()
+        if current and proposed:
+            projected[current] -= 1
+            projected[proposed] += 1
+    return selected
+
+
+def _would_remove_rare_class(
+    emotion: str,
+    distribution: dict[str, _Any] | _Counter[str],
+    floor: int = 3,
+) -> bool:
+    if emotion not in TRACK2_JSON_EMOTIONS:
+        return False
+    return _safe_int(dict(distribution).get(emotion)) <= floor
 
 
 TEXT_FIELDS = ("overall_caption", "brushstroke", "composition", "color", "line", "light")
