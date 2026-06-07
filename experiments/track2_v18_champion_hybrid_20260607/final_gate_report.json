@@ -1,0 +1,21 @@
+{
+  "method": "track2_v18_final_gate_v1",
+  "decision": "hold_keep_anchor",
+  "submission_budget_policy": "first_of_two_remaining",
+  "reasons": [
+    "description_lower_below_anchor",
+    "overall_lower_not_above_anchor"
+  ],
+  "candidate_name": "v18_champion_hybrid",
+  "candidate_overall_lower": 0.8325180000000001,
+  "candidate_classification_lower": 0.7209,
+  "candidate_description_lower": 0.9441360000000001,
+  "anchor_overall": 0.836408,
+  "anchor_classification": 0.72315,
+  "anchor_description": 0.949667,
+  "accepted_label_changes": 3,
+  "description_changed_rows": 51,
+  "emotion_accuracy_proxy_delta": 0.006,
+  "caveat": "Local/fused shadow scorer is a risk control, not the official Codabench scorer.",
+  "no_auto_submit": true
+}
