@@ -21,6 +21,7 @@
 - `reference_asset_routes_media_v4_20260605` confirms the older curated bank is too small: `969/1000` routes are diversity-limited.
 - First local FID-like smoke on `2026-06-07` ranked `current` best: current `58.526207`, partial757 `62.414763`, v3_gate7 `63.010429`, full1000_no_fallback `63.098811`, strict_subset `63.287051`, safe_subset `63.308289`.
 - Therefore do not submit `full1000_no_fallback`, `partial757`, `safe_subset`, or `strict_subset` directly. Existing broad generated packages are useful as a candidate/error pool, not as final distribution packages.
+- `track1_official_score_calibration_v1` now maps local package FID-like results to a low-confidence official-scale estimate using public leaderboard FID/FID Score rows and the `v3_gate7` own official anchor.
 
 ## Proxy Calibration Warnings
 
@@ -29,6 +30,7 @@
 - Do not optimize FID at the expense of caption content, surface/support fidelity, relation logic, or style attributes.
 - Do not present any local proxy result as proof that the package will win; official Codabench remains the only ground truth.
 - If local FID proxy and human/AAS gates disagree, do not submit the risky package directly. Build a smaller conservative package or regenerate weak samples.
+- The official-score calibration is low confidence until we have at least two own Track1 submissions with both local FID-like values and official component scores.
 
 ## Non-Negotiables
 
@@ -234,7 +236,34 @@ next package must be current-preserving and candidate-level, not broad replaceme
 
 Expected: a decision document that blocks direct full1000/partial submission unless official feedback contradicts local proxy.
 
-### Task 4: Build Candidate-Level Metric Reports
+### Task 4: Run Official-Scale Shadow Calibration
+
+**Files:**
+- Read: `/Users/yhryzy/dev/emoart-130k/experiments/track1_official_score_calibration_20260607/track1_official_score_anchors.csv`
+- Read: `/Users/yhryzy/dev/emoart-130k/experiments/track1_v4_fid_distribution_champion_20260607/fid_sanity_smoke2048_dim512.json`
+- Create: `/Users/yhryzy/dev/emoart-130k/experiments/track1_official_score_calibration_20260607/track1_shadow_score_calibration_v1.json`
+- Create: `/Users/yhryzy/dev/emoart-130k/experiments/track1_official_score_calibration_20260607/track1_shadow_score_calibration_v1_zh.md`
+
+- [ ] **Step 1: Run scorer calibration**
+
+Run:
+
+```bash
+python3 scripts/track1_official_score_calibration.py \
+  --official-anchors-csv experiments/track1_official_score_calibration_20260607/track1_official_score_anchors.csv \
+  --local-fid-json experiments/track1_v4_fid_distribution_champion_20260607/fid_sanity_smoke2048_dim512.json \
+  --anchor-package v3_gate7 \
+  --out-json experiments/track1_official_score_calibration_20260607/track1_shadow_score_calibration_v1.json \
+  --out-md experiments/track1_official_score_calibration_20260607/track1_shadow_score_calibration_v1_zh.md
+```
+
+Expected:
+
+- Report confidence is `low`.
+- It ranks existing broad generated packages below or near current.
+- It is used as a rejection/triage tool, not as official score proof.
+
+### Task 5: Build Candidate-Level Metric Reports
 
 **Files:**
 - Create: `/Users/yhryzy/dev/emoart-130k/experiments/track1_v4_fid_distribution_champion_20260607/metric_proxy_full1000.json`
@@ -305,7 +334,7 @@ python3 scripts/track1_metric_proxy.py \
 
 Expected: the reports identify per-sample candidates with positive distribution/perceptual proxy and no surface/artifact penalty.
 
-### Task 5: Select V4 Replacement Sets
+### Task 6: Select V4 Replacement Sets
 
 **Files:**
 - Create: `/Users/yhryzy/dev/emoart-130k/experiments/track1_v4_fid_distribution_champion_20260607/replacement_manifest_conservative80.json`
@@ -359,7 +388,7 @@ accepted set does not collapse into one repeated poster or decorative template
 
 Expected: no systematic failure pattern. If a pattern appears, lower the replacement count and regenerate only affected families.
 
-### Task 6: Regenerate Current Outliers Only
+### Task 7: Regenerate Current Outliers Only
 
 **Files:**
 - Read: `/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/reference_asset_routes_official_v7_20260605/track1_distribution_routes_with_reference_assets.json`
@@ -400,7 +429,7 @@ done < experiments/track1_v4_fid_distribution_champion_20260607/regenerate_sampl
 
 Expected: regenerate only samples where current is likely causing distribution/AAS loss. Do not regenerate all 1000.
 
-### Task 7: Build And Validate Candidate Packages
+### Task 8: Build And Validate Candidate Packages
 
 **Files:**
 - Create: `/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v4_conservative80_20260607/`
@@ -449,7 +478,7 @@ Expected:
 - Both validation commands pass.
 - Protected champion diff is `0`.
 
-### Task 8: Submit Decision Gate
+### Task 9: Submit Decision Gate
 
 - [ ] **Step 1: Pick one package**
 
@@ -457,6 +486,7 @@ Submit `v4_balanced180` only if:
 
 ```text
 local FID-like score does not regress against current and improves against v3_gate7/rebuilt packages
+official-scale shadow calibration does not rank the package below current
 metric proxy sweep does not show broad AAS/perceptual collapse
 replacement count is at least 120
 manual spot-check page has no obvious systematic artifact
@@ -467,6 +497,7 @@ Submit `v4_conservative80` if:
 ```text
 balanced180 has visible AAS risk or template drift
 conservative80 preserves local FID-like score
+official-scale shadow calibration is at least tied with current within uncertainty
 ```
 
 Do not submit `v4_regen_outlier_300` unless:

@@ -1,0 +1,244 @@
+{
+  "anchor": {
+    "anchor_package": "v3_gate7",
+    "file_name": "track1_submit_v3_gate7_20260606.zip",
+    "local_fid_like": 63.010429,
+    "official_aas": 0.98,
+    "official_fid": 80.92,
+    "official_fid_score": 0.55,
+    "official_overall": 0.77,
+    "participant": "vulcaart",
+    "submission_id": "782831"
+  },
+  "calibration_confidence": {
+    "level": "low",
+    "own_local_official_anchor_count": 1,
+    "reason": "Track1 has too few own submissions with both local fid_like and official component scores."
+  },
+  "fid_score_model": {
+    "count": 7,
+    "fid_max": 130.53,
+    "fid_min": 66.36,
+    "fid_score_max": 0.6,
+    "fid_score_min": 0.43,
+    "intercept": 0.76757502,
+    "kind": "linear_fid_to_fid_score",
+    "r2": 0.989724,
+    "slope": -0.00261805
+  },
+  "leaderboard_context": {
+    "anchor_official_overall": 0.77,
+    "best_public_row": {
+      "official_aas": 0.99,
+      "official_fid": 66.36,
+      "official_fid_score": 0.6,
+      "official_overall": 0.8,
+      "participant": "emosuis",
+      "submission_id": "top_visible_1"
+    },
+    "gap_to_best_public_overall": 0.03,
+    "row_count": 7
+  },
+  "method": "track1_local_shadow_score_calibration_v1",
+  "packages": [
+    {
+      "fid_score_expected": 0.561592,
+      "local_delta_vs_anchor": -4.484222,
+      "local_fid_like": 58.526207,
+      "overall_expected": 0.770796,
+      "overall_lower": 0.769328,
+      "overall_upper": 0.773731,
+      "package": "current",
+      "ranking_note": "local_proxy_better_than_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.558657,
+          "projected_official_fid": 79.798945,
+          "projected_overall": 0.769328
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.561592,
+          "projected_official_fid": 78.677889,
+          "projected_overall": 0.770796
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.567462,
+          "projected_official_fid": 76.435778,
+          "projected_overall": 0.773731
+        }
+      }
+    },
+    {
+      "fid_score_expected": 0.556502,
+      "local_delta_vs_anchor": -0.595666,
+      "local_fid_like": 62.414763,
+      "overall_expected": 0.768251,
+      "overall_lower": 0.768056,
+      "overall_upper": 0.768641,
+      "package": "partial757",
+      "ranking_note": "local_proxy_better_than_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.556112,
+          "projected_official_fid": 80.771084,
+          "projected_overall": 0.768056
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.556502,
+          "projected_official_fid": 80.622167,
+          "projected_overall": 0.768251
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.557282,
+          "projected_official_fid": 80.324334,
+          "projected_overall": 0.768641
+        }
+      }
+    },
+    {
+      "fid_score_expected": 0.555722,
+      "local_delta_vs_anchor": 0.0,
+      "local_fid_like": 63.010429,
+      "overall_expected": 0.767861,
+      "overall_lower": 0.767861,
+      "overall_upper": 0.767861,
+      "package": "v3_gate7",
+      "ranking_note": "local_proxy_similar_to_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555722,
+          "projected_official_fid": 80.92,
+          "projected_overall": 0.767861
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555722,
+          "projected_official_fid": 80.92,
+          "projected_overall": 0.767861
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555722,
+          "projected_official_fid": 80.92,
+          "projected_overall": 0.767861
+        }
+      }
+    },
+    {
+      "fid_score_expected": 0.555607,
+      "local_delta_vs_anchor": 0.088382,
+      "local_fid_like": 63.098811,
+      "overall_expected": 0.767803,
+      "overall_lower": 0.767745,
+      "overall_upper": 0.767832,
+      "package": "full1000_no_fallback",
+      "ranking_note": "local_proxy_similar_to_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555665,
+          "projected_official_fid": 80.942095,
+          "projected_overall": 0.767832
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555607,
+          "projected_official_fid": 80.964191,
+          "projected_overall": 0.767803
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555491,
+          "projected_official_fid": 81.008382,
+          "projected_overall": 0.767745
+        }
+      }
+    },
+    {
+      "fid_score_expected": 0.55536,
+      "local_delta_vs_anchor": 0.276622,
+      "local_fid_like": 63.287051,
+      "overall_expected": 0.76768,
+      "overall_lower": 0.767499,
+      "overall_upper": 0.76777,
+      "package": "strict_subset",
+      "ranking_note": "local_proxy_similar_to_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555541,
+          "projected_official_fid": 80.989155,
+          "projected_overall": 0.76777
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.55536,
+          "projected_official_fid": 81.058311,
+          "projected_overall": 0.76768
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.554998,
+          "projected_official_fid": 81.196622,
+          "projected_overall": 0.767499
+        }
+      }
+    },
+    {
+      "fid_score_expected": 0.555333,
+      "local_delta_vs_anchor": 0.29786,
+      "local_fid_like": 63.308289,
+      "overall_expected": 0.767667,
+      "overall_lower": 0.767471,
+      "overall_upper": 0.767764,
+      "package": "safe_subset",
+      "ranking_note": "local_proxy_similar_to_anchor",
+      "scenarios": {
+        "conservative": {
+          "local_to_official_delta_scale": 0.25,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555527,
+          "projected_official_fid": 80.994465,
+          "projected_overall": 0.767764
+        },
+        "expected": {
+          "local_to_official_delta_scale": 0.5,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.555333,
+          "projected_official_fid": 81.06893,
+          "projected_overall": 0.767667
+        },
+        "optimistic": {
+          "local_to_official_delta_scale": 1.0,
+          "projected_aas": 0.98,
+          "projected_fid_score": 0.554943,
+          "projected_official_fid": 81.21786,
+          "projected_overall": 0.767471
+        }
+      }
+    }
+  ],
+  "warning": "LOCAL SHADOW SCORE ONLY: this is not the official Codabench evaluator or an official score. With one own local-to-official anchor, package scores are directional and low-confidence."
+}
