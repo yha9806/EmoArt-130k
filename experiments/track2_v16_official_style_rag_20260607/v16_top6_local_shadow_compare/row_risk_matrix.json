@@ -1,0 +1,36 @@
+[
+  {
+    "candidate_name": "v16_rag_top6_conf085",
+    "sample_id": "track2_0756",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v16_rag_top6_conf085",
+    "sample_id": "track2_0946",
+    "transition": "content->calm",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  }
+]

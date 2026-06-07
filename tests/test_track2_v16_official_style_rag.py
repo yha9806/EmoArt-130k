@@ -4,16 +4,20 @@ import csv
 import json
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 from affectiveart.track2_v16_official_style_rag import (
     OfficialSubmissionScore,
+    apply_v16_decisions_to_rows,
     build_rag_queue_rows,
     build_official_counterfactual_report,
     classify_transition_risk,
     load_official_scores,
     official_delta_summary,
     parse_transition_counts,
+    should_accept_v16_decision,
+    write_v16_candidate_outputs,
     write_official_counterfactual_outputs,
 )
 
@@ -179,6 +183,146 @@ class Track2V16OfficialStyleRagTests(unittest.TestCase):
         self.assertEqual(report["anchor_submission_id"], "779605")
         self.assertEqual(payload["known_failed_batches"][0]["batch_verdict"], "negative_official_evidence")
         self.assertEqual(payload["failed_transition_counts"]["calm->content"], 43)
+
+    def test_should_accept_v16_decision_requires_strong_evidence_for_label_change(self) -> None:
+        decision = {
+            "sample_id": "track2_0001",
+            "current_emotion": "calm",
+            "proposed_emotion": "content",
+            "confidence": 0.95,
+            "evidence_sources": ["same_quadrant_batch"],
+            "risk_gate": "blocked_by_failed_official_batch",
+        }
+        self.assertFalse(should_accept_v16_decision(decision))
+
+    def test_should_accept_v16_decision_allows_rag_and_backbone_consensus(self) -> None:
+        decision = {
+            "sample_id": "track2_0002",
+            "current_emotion": "content",
+            "proposed_emotion": "glad",
+            "confidence": 0.88,
+            "evidence_sources": ["rag_teacher", "multibackbone_consensus"],
+            "risk_gate": "allow_strong_consensus",
+        }
+        self.assertTrue(should_accept_v16_decision(decision))
+
+    def test_apply_v16_decisions_repairs_quadrant_labels_and_caps_changes(self) -> None:
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "x",
+                "brushstroke": "x",
+                "composition": "x",
+                "color": "x",
+                "line": "x",
+                "light": "x",
+            },
+            {
+                "sample_id": "track2_0002",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "x",
+                "brushstroke": "x",
+                "composition": "x",
+                "color": "x",
+                "line": "x",
+                "light": "x",
+            },
+        ]
+        decisions = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "confidence": 0.91,
+                "evidence_sources": ["rag_teacher", "multibackbone_consensus"],
+                "risk_gate": "allow_strong_consensus",
+            },
+            {
+                "sample_id": "track2_0002",
+                "current_emotion": "content",
+                "proposed_emotion": "glad",
+                "confidence": 0.91,
+                "evidence_sources": ["rag_teacher", "multibackbone_consensus"],
+                "risk_gate": "allow_strong_consensus",
+            },
+        ]
+        repaired, report = apply_v16_decisions_to_rows(rows, decisions, max_changes=1)
+        self.assertEqual(report["accepted_label_changes"], 1)
+        self.assertEqual(repaired[0]["emotion"], "calm")
+        self.assertEqual(repaired[0]["emotional_valence"], "Positive")
+        self.assertEqual(repaired[0]["emotional_arousal_level"], "Low")
+        self.assertEqual(repaired[1]["emotion"], "content")
+        self.assertEqual(report["rejection_counts"]["max_changes_reached"], 1)
+
+    def test_write_v16_candidate_outputs_writes_side_path_zip(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            source = root / "base.json"
+            decisions = root / "decisions.jsonl"
+            out_json = root / "track2_submission_v16_test_candidate.json"
+            out_zip = root / "track2_submission_v16_test_candidate.zip"
+            rows = [
+                {
+                    "sample_id": "track2_0001",
+                    "emotion": "content",
+                    "emotional_valence": "Positive",
+                    "emotional_arousal_level": "Low",
+                    "overall_caption": "caption",
+                    "brushstroke": "brush",
+                    "composition": "composition",
+                    "color": "color",
+                    "line": "line",
+                    "light": "light",
+                }
+            ]
+            source.write_text(json.dumps(rows), encoding="utf-8")
+            decisions.write_text(
+                json.dumps(
+                    {
+                        "sample_id": "track2_0001",
+                        "current_emotion": "content",
+                        "proposed_emotion": "calm",
+                        "confidence": 0.9,
+                        "evidence_sources": ["rag_teacher", "multibackbone_consensus"],
+                        "risk_gate": "allow_strong_consensus",
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            report = write_v16_candidate_outputs(
+                base_json=source,
+                decisions_jsonl=decisions,
+                out_json=out_json,
+                out_zip=out_zip,
+                report_json=root / "report.json",
+                report_md=root / "report.md",
+            )
+            with zipfile.ZipFile(out_zip) as archive:
+                self.assertEqual(archive.namelist(), ["submission.json"])
+        self.assertEqual(report["accepted_label_changes"], 1)
+
+    def test_write_v16_candidate_outputs_rejects_formal_submission_name(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            source = root / "base.json"
+            decisions = root / "decisions.jsonl"
+            source.write_text("[]", encoding="utf-8")
+            decisions.write_text("", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                write_v16_candidate_outputs(
+                    base_json=source,
+                    decisions_jsonl=decisions,
+                    out_json=root / "track2_submission.json",
+                    out_zip=root / "track2_submission_v16_test_candidate.zip",
+                    report_json=root / "report.json",
+                    report_md=root / "report.md",
+                )
 
 
 if __name__ == "__main__":
