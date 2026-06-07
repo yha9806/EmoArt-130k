@@ -343,7 +343,7 @@ def _champion_sort_key(row: dict[str, _Any]) -> tuple[int, int, float, float, st
     )
 
 
-def _evidence_transition_labels(row: dict[str, _Any]) -> tuple[str, str, str, bool]:
+def _evidence_transition_labels(row: dict[str, _Any]) -> tuple[str, str, str, str, str, bool, bool]:
     transition = str(row.get("transition", "")).strip()
     parts = [part.strip() for part in transition.split("->")]
     transition_current = ""
@@ -352,12 +352,26 @@ def _evidence_transition_labels(row: dict[str, _Any]) -> tuple[str, str, str, bo
     if len(parts) == 2 and parts[0] and parts[1]:
         transition_current, transition_proposed = parts
         valid_transition_shape = True
-    current = str(row.get("current_emotion", "")).strip() or transition_current
-    proposed = str(row.get("proposed_emotion", "")).strip() or transition_proposed
+    explicit_current = str(row.get("current_emotion", "")).strip()
+    explicit_proposed = str(row.get("proposed_emotion", "")).strip()
+    current = explicit_current or transition_current
+    proposed = explicit_proposed or transition_proposed
+    transition_label_mismatch = valid_transition_shape and (
+        (bool(explicit_current) and explicit_current != transition_current)
+        or (bool(explicit_proposed) and explicit_proposed != transition_proposed)
+    )
     normalized_transition = (
         f"{transition_current}->{transition_proposed}" if valid_transition_shape else transition
     )
-    return normalized_transition, current, proposed, valid_transition_shape
+    return (
+        normalized_transition,
+        current,
+        proposed,
+        transition_current,
+        transition_proposed,
+        valid_transition_shape,
+        transition_label_mismatch,
+    )
 
 
 def v18_gate_for_evidence(
@@ -371,15 +385,29 @@ def v18_gate_for_evidence(
     same_arousal = _safe_bool(row.get("same_arousal"))
     model_votes = _safe_int(row.get("model_vote_count"))
     support_score = _safe_float(row.get("support_score"))
-    transition, current, proposed, valid_transition_shape = _evidence_transition_labels(row)
+    (
+        transition,
+        current,
+        proposed,
+        transition_current,
+        transition_proposed,
+        valid_transition_shape,
+        transition_label_mismatch,
+    ) = _evidence_transition_labels(row)
     hard_reasons: list[str] = []
     if (
         not valid_transition_shape
+        or transition_current not in TRACK2_JSON_EMOTIONS
+        or transition_proposed not in TRACK2_JSON_EMOTIONS
         or current not in TRACK2_JSON_EMOTIONS
         or proposed not in TRACK2_JSON_EMOTIONS
     ):
         hard_reasons.append("invalid_transition")
-    if current and proposed and current == proposed:
+    if transition_label_mismatch:
+        hard_reasons.append("transition_label_mismatch")
+    if (current and proposed and current == proposed) or (
+        transition_current and transition_proposed and transition_current == transition_proposed
+    ):
         hard_reasons.append("no_label_change")
     if current and _would_remove_rare_class(current, distribution):
         hard_reasons.append("rare_current_class_floor")
@@ -421,7 +449,7 @@ def select_v18_changes(
         gate = v18_gate_for_evidence(row, distribution=projected)
         if gate["decision"] != "accept":
             continue
-        transition, _, _, _ = _evidence_transition_labels(row)
+        transition, _, _, _, _, _, _ = _evidence_transition_labels(row)
         family = str(row.get("transition_family") or _transition_family(transition))
         cap = V18_TRANSITION_FAMILY_CAPS.get(family)
         if cap is not None and family_counts[family] >= cap:
@@ -432,7 +460,7 @@ def select_v18_changes(
         selected.append(item)
         selected_ids.add(sample_id)
         family_counts[family] += 1
-        _, current, proposed, _ = _evidence_transition_labels(item)
+        _, current, proposed, _, _, _, _ = _evidence_transition_labels(item)
         if current and proposed:
             projected[current] -= 1
             projected[proposed] += 1
