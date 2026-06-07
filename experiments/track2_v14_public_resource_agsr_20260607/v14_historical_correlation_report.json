@@ -1,0 +1,25 @@
+{
+  "method": "track2_v14_historical_correlation_v1",
+  "fused_report": "experiments/track2_v14_public_resource_agsr_20260607/fused_shadow_eval/fused_shadow_score_report.json",
+  "official_best": "779605",
+  "shadow_must_not_prefer": "781601",
+  "historical_alignment": "pass",
+  "spearman_proxy": 0.9999999999999998,
+  "ranking": [
+    {
+      "candidate_name": "official_782683_v12_stable_probe",
+      "overall_lower": 0.834595,
+      "overall_expected": 0.8381035
+    },
+    {
+      "candidate_name": "official_779605_moe_v2_anchor",
+      "overall_lower": 0.8334085,
+      "overall_expected": 0.8364085
+    },
+    {
+      "candidate_name": "official_781601_v3_mid",
+      "overall_lower": 0.7793685,
+      "overall_expected": 0.835496
+    }
+  ]
+}

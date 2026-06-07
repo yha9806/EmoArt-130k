@@ -1,0 +1,41 @@
+{
+  "method": "track2_v14_threshold_ablation_v1",
+  "matrix_path": "experiments/track2_v14_public_resource_agsr_20260607/track2_public_evidence_matrix.json",
+  "rows": [
+    {
+      "threshold": 0.93,
+      "candidate_count": 279,
+      "changed_count": 68,
+      "exact_or_near_count": 28,
+      "style_only_count": 251
+    },
+    {
+      "threshold": 0.95,
+      "candidate_count": 69,
+      "changed_count": 8,
+      "exact_or_near_count": 28,
+      "style_only_count": 41
+    },
+    {
+      "threshold": 0.96,
+      "candidate_count": 26,
+      "changed_count": 3,
+      "exact_or_near_count": 26,
+      "style_only_count": 0
+    },
+    {
+      "threshold": 0.98,
+      "candidate_count": 5,
+      "changed_count": 0,
+      "exact_or_near_count": 5,
+      "style_only_count": 0
+    },
+    {
+      "threshold": 0.99,
+      "candidate_count": 0,
+      "changed_count": 0,
+      "exact_or_near_count": 0,
+      "style_only_count": 0
+    }
+  ]
+}
