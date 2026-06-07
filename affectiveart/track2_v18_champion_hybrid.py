@@ -27,6 +27,7 @@ __all__ = [
     "TRACK2_JSON_SUBMISSION_KEYS",
     "V18_TOTAL_CHANGE_CAP",
     "V18_TRANSITION_FAMILY_CAPS",
+    "choose_v18_final_gate",
     "choose_v18_base",
     "enrich_champion_evidence",
     "load_champion_targets",
@@ -37,6 +38,7 @@ __all__ = [
     "select_v18_changes",
     "v18_gate_for_evidence",
     "write_v18_candidate_outputs",
+    "write_v18_final_gate_report",
 ]
 
 
@@ -256,15 +258,16 @@ def _invalid_numeric_message(value: _Any, field: str, path: _Path, row_context: 
 
 def _safe_float(value: _Any, default: float = 0.0) -> float:
     try:
-        return float(value)
+        parsed = float(value)
     except (TypeError, ValueError):
         return default
+    return parsed if _isfinite(parsed) else default
 
 
 def _safe_int(value: _Any, default: int = 0) -> int:
     try:
-        return int(float(value))
-    except (TypeError, ValueError):
+        return int(_safe_float(value, float(default)))
+    except (TypeError, ValueError, OverflowError):
         return default
 
 
@@ -669,7 +672,7 @@ def _apply_v18_changes(
                 and proposed != current
                 and proposed in TRACK2_JSON_EMOTIONS
                 and (not expected_current or expected_current == current)
-                and (not gate_decision or gate_decision == "accept")
+                and gate_decision == "accept"
             ):
                 before = _label_triplet(row)
                 row["emotion"] = proposed
@@ -750,6 +753,81 @@ def render_v18_candidate_markdown(report: dict[str, _Any]) -> str:
     if not report.get("accepted_changes"):
         lines.append("- none")
     return "\n".join(lines) + "\n"
+
+
+def choose_v18_final_gate(
+    *,
+    candidate_report: dict[str, _Any],
+    fused_row: dict[str, _Any],
+    anchor: dict[str, _Any],
+    emotion_accuracy_proxy_delta: float,
+) -> dict[str, _Any]:
+    reasons: list[str] = []
+    description_merge = candidate_report.get("description_merge", {})
+    if not isinstance(description_merge, dict):
+        description_merge = {}
+    if _safe_int(candidate_report.get("label_consistency_issue_count")) != 0:
+        reasons.append("label_consistency_issues")
+    if _safe_int(description_merge.get("description_changed_rows")) <= 0:
+        reasons.append("description_not_maximized")
+    if _safe_float(fused_row.get("description_lower")) < _safe_float(anchor.get("description")) - 0.004:
+        reasons.append("description_lower_below_anchor")
+    if _safe_float(fused_row.get("classification_lower")) < _safe_float(anchor.get("classification")) - 0.006:
+        reasons.append("classification_lower_below_tolerance")
+    if _safe_float(fused_row.get("overall_lower")) <= _safe_float(anchor.get("overall")):
+        reasons.append("overall_lower_not_above_anchor")
+    if _safe_float(emotion_accuracy_proxy_delta) <= 0.005:
+        reasons.append("emotion_accuracy_proxy_not_improved")
+    if str(fused_row.get("decision", "")).strip() != "recommend_submit":
+        reasons.append("fused_shadow_not_recommended")
+    decision = "hold_keep_anchor" if reasons else "recommend_submit_v18"
+    return {
+        "method": "track2_v18_final_gate_v1",
+        "decision": decision,
+        "submission_budget_policy": "first_of_two_remaining",
+        "reasons": reasons or ["passes_v18_two_submission_gate"],
+        "candidate_name": str(fused_row.get("candidate_name", "v18_champion_hybrid")),
+        "candidate_overall_lower": _safe_float(fused_row.get("overall_lower")),
+        "candidate_classification_lower": _safe_float(fused_row.get("classification_lower")),
+        "candidate_description_lower": _safe_float(fused_row.get("description_lower")),
+        "anchor_overall": _safe_float(anchor.get("overall")),
+        "anchor_classification": _safe_float(anchor.get("classification")),
+        "anchor_description": _safe_float(anchor.get("description")),
+        "accepted_label_changes": _safe_int(candidate_report.get("accepted_label_changes")),
+        "description_changed_rows": _safe_int(description_merge.get("description_changed_rows")),
+        "emotion_accuracy_proxy_delta": _safe_float(emotion_accuracy_proxy_delta),
+        "caveat": "Local/fused shadow scorer is a risk control, not the official Codabench scorer.",
+        "no_auto_submit": True,
+    }
+
+
+def write_v18_final_gate_report(
+    report: dict[str, _Any],
+    out_json: str | _Path,
+    out_md: str | _Path,
+) -> None:
+    _assert_safe_side_path(out_json)
+    _assert_safe_side_path(out_md)
+    _write_json(out_json, report)
+    lines = [
+        "# Track2 v18 Final Gate",
+        "",
+        f"- Decision: `{report['decision']}`",
+        f"- Candidate: `{report['candidate_name']}`",
+        f"- Candidate overall lower: {float(report['candidate_overall_lower']):.6f}",
+        f"- Anchor overall: {float(report['anchor_overall']):.6f}",
+        f"- Emotion accuracy proxy delta: {float(report['emotion_accuracy_proxy_delta']):.6f}",
+        f"- No auto-submit: {report['no_auto_submit']}",
+        f"- Caveat: {report['caveat']}",
+        "",
+        "## Reasons",
+        "",
+    ]
+    for reason in report["reasons"]:
+        lines.append(f"- {reason}")
+    out_md_path = _Path(out_md)
+    out_md_path.parent.mkdir(parents=True, exist_ok=True)
+    out_md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def _assert_safe_side_path(path: str | _Path) -> None:

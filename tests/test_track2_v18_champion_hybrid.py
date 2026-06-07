@@ -605,6 +605,50 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertEqual(gate["decision"], "block")
         self.assertIn("unsupported_cross_quadrant", gate["reasons"])
 
+    def test_v18_gate_blocks_nan_support_score(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "transition": "content->calm",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 3,
+            "support_score": "nan",
+            "public_duplicate_support_score": 0.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": 0,
+            "risk_flags": "",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "calm": 490})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("low_support_score", gate["reasons"])
+
+    def test_v18_gate_handles_inf_integer_fields_fail_closed(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "transition": "content->calm",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": "inf",
+            "support_score": 2.0,
+            "public_duplicate_support_score": 0.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": "inf",
+            "risk_flags": "",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "calm": 490})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_model_families", gate["reasons"])
+
     def test_v18_gate_allows_exact_duplicate_even_with_failed_transition(self) -> None:
         from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
 
@@ -1175,6 +1219,51 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
                 self.assertEqual(archive.namelist(), ["submission.json"])
                 self.assertEqual(archive.getinfo("submission.json").date_time, (1980, 1, 1, 0, 0, 0))
 
+    def test_write_v18_candidate_outputs_requires_explicit_accept_gate(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            out_json = root / "candidate.json"
+            out_zip = root / "candidate.zip"
+            report_json = root / "candidate_report.json"
+            report_md = root / "candidate_report.md"
+            row = {
+                "sample_id": "track2_0001",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A calm room.",
+                "brushstroke": "Soft strokes.",
+                "composition": "Balanced composition.",
+                "color": "Muted color.",
+                "line": "Gentle line.",
+                "light": "Soft light.",
+            }
+            base_json.write_text(json.dumps([row]), encoding="utf-8")
+
+            report = write_v18_candidate_outputs(
+                base_json=base_json,
+                text_json=None,
+                changes=[
+                    {
+                        "sample_id": "track2_0001",
+                        "current_emotion": "content",
+                        "proposed_emotion": "calm",
+                        "transition": "content->calm",
+                    }
+                ],
+                out_json=out_json,
+                out_zip=out_zip,
+                report_json=report_json,
+                report_md=report_md,
+            )
+
+            rows = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertEqual(rows[0]["emotion"], "content")
+            self.assertEqual(report["accepted_label_changes"], 0)
+
     def test_write_v18_candidate_outputs_blocks_formal_submission_name(self) -> None:
         from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
 
@@ -1285,3 +1374,168 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
             0,
             msg=f"stdout={result.stdout!r} stderr={result.stderr!r}",
         )
+
+    def test_choose_v18_final_gate_recommends_only_when_proxy_improves(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 12,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": 80},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "0.8370",
+                "classification_lower": "0.7240",
+                "description_lower": "0.9500",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=0.025,
+        )
+
+        self.assertEqual(gate["decision"], "recommend_submit_v18")
+        self.assertEqual(gate["submission_budget_policy"], "first_of_two_remaining")
+
+    def test_choose_v18_final_gate_holds_when_emotion_proxy_does_not_improve(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 0,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": 80},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "0.8370",
+                "classification_lower": "0.7240",
+                "description_lower": "0.9500",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=0.0,
+        )
+
+        self.assertEqual(gate["decision"], "hold_keep_anchor")
+        self.assertIn("emotion_accuracy_proxy_not_improved", gate["reasons"])
+
+    def test_choose_v18_final_gate_holds_on_nan_proxy_metrics(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 12,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": 80},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "nan",
+                "classification_lower": "nan",
+                "description_lower": "nan",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=float("nan"),
+        )
+
+        self.assertEqual(gate["decision"], "hold_keep_anchor")
+        self.assertIn("description_lower_below_anchor", gate["reasons"])
+        self.assertIn("classification_lower_below_tolerance", gate["reasons"])
+        self.assertIn("emotion_accuracy_proxy_not_improved", gate["reasons"])
+
+    def test_choose_v18_final_gate_holds_when_description_is_not_maximized(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 12,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": 0},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "0.8370",
+                "classification_lower": "0.7240",
+                "description_lower": "0.9500",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=0.025,
+        )
+
+        self.assertEqual(gate["decision"], "hold_keep_anchor")
+        self.assertIn("description_not_maximized", gate["reasons"])
+
+    def test_choose_v18_final_gate_holds_when_description_change_count_is_negative(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 12,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": -1},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "0.8370",
+                "classification_lower": "0.7240",
+                "description_lower": "0.9500",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=0.025,
+        )
+
+        self.assertEqual(gate["decision"], "hold_keep_anchor")
+        self.assertIn("description_not_maximized", gate["reasons"])
+
+    def test_choose_v18_final_gate_holds_when_overall_proxy_is_below_anchor(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import choose_v18_final_gate
+
+        gate = choose_v18_final_gate(
+            candidate_report={
+                "accepted_label_changes": 12,
+                "label_consistency_issue_count": 0,
+                "description_merge": {"description_changed_rows": 80},
+            },
+            fused_row={
+                "candidate_name": "v18_champion_hybrid",
+                "overall_lower": "0.8360",
+                "classification_lower": "0.7240",
+                "description_lower": "0.9500",
+                "decision": "recommend_submit",
+            },
+            anchor={"overall": 0.836408, "classification": 0.723150, "description": 0.949667},
+            emotion_accuracy_proxy_delta=0.025,
+        )
+
+        self.assertEqual(gate["decision"], "hold_keep_anchor")
+        self.assertIn("overall_lower_not_above_anchor", gate["reasons"])
+
+    def test_write_v18_final_gate_report_writes_json_and_markdown(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_final_gate_report
+
+        report = {
+            "method": "track2_v18_final_gate_v1",
+            "decision": "recommend_submit_v18",
+            "submission_budget_policy": "first_of_two_remaining",
+            "reasons": ["passes_v18_two_submission_gate"],
+            "candidate_name": "v18_champion_hybrid",
+            "candidate_overall_lower": 0.837,
+            "anchor_overall": 0.836408,
+            "emotion_accuracy_proxy_delta": 0.025,
+            "caveat": "Local scorer caveat.",
+            "no_auto_submit": True,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            out_json = root / "final_gate_report.json"
+            out_md = root / "final_gate_report.md"
+
+            write_v18_final_gate_report(report, out_json, out_md)
+
+            self.assertEqual(json.loads(out_json.read_text(encoding="utf-8"))["decision"], "recommend_submit_v18")
+            self.assertIn("Track2 v18 Final Gate", out_md.read_text(encoding="utf-8"))
