@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import csv
 import subprocess
 import sys
@@ -23,6 +24,34 @@ def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writeheader()
         for row in rows:
             writer.writerow(row)
+
+
+def _selectable_transition_row(
+    sample_id: str,
+    transition: str,
+    *,
+    support_score: float = 2.0,
+    transition_family: str | None = None,
+) -> dict[str, object]:
+    current, proposed = transition.split("->", maxsplit=1)
+    row: dict[str, object] = {
+        "sample_id": sample_id,
+        "current_emotion": current,
+        "proposed_emotion": proposed,
+        "transition": transition,
+        "same_valence": True,
+        "same_arousal": True,
+        "model_vote_count": 3,
+        "support_score": support_score,
+        "public_duplicate_support_score": 0.0,
+        "exact_duplicate": False,
+        "near_duplicate": False,
+        "failed_transition_count": 0,
+        "risk_flags": "",
+    }
+    if transition_family is not None:
+        row["transition_family"] = transition_family
+    return row
 
 
 class Track2V18ChampionHybridTests(unittest.TestCase):
@@ -602,6 +631,81 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
 
         self.assertEqual(len(selected), 3)
         self.assertTrue(all(row["gate_decision"] == "accept" for row in selected))
+
+    def test_select_v18_changes_enforces_family_from_transition_not_stale_metadata(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = [
+            _selectable_transition_row(
+                f"track2_{index:04d}",
+                "content->calm",
+                support_score=3.0 - index * 0.1,
+                transition_family=f"stale-uncapped-{index}",
+            )
+            for index in range(5)
+        ]
+
+        selected = select_v18_changes(rows, current_distribution={"content": 238, "calm": 490})
+
+        self.assertEqual(len(selected), 3)
+        self.assertTrue(all(row["transition_family"] == "calm<->content" for row in selected))
+
+    def test_select_v18_changes_caps_content_glad_in_both_directions(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = [
+            _selectable_transition_row("track2_0001", "content->glad", support_score=3.0),
+            _selectable_transition_row("track2_0002", "glad->content", support_score=2.9),
+            _selectable_transition_row("track2_0003", "content->glad", support_score=2.8),
+            _selectable_transition_row("track2_0004", "glad->content", support_score=2.7),
+            _selectable_transition_row("track2_0005", "glad->content", support_score=2.6),
+        ]
+
+        selected = select_v18_changes(rows, current_distribution={"content": 238, "glad": 177})
+
+        self.assertEqual(len(selected), 3)
+        self.assertEqual(
+            [row["sample_id"] for row in selected],
+            ["track2_0001", "track2_0002", "track2_0003"],
+        )
+        self.assertTrue(all(row["transition_family"] == "content<->glad" for row in selected))
+
+    def test_select_v18_changes_respects_total_cap(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = [
+            _selectable_transition_row("track2_0001", "content->glad", support_score=3.0),
+            _selectable_transition_row("track2_0002", "calm->content", support_score=2.9),
+            _selectable_transition_row("track2_0003", "happy->excited", support_score=2.8),
+            _selectable_transition_row("track2_0004", "sad->tired", support_score=2.7),
+        ]
+
+        selected = select_v18_changes(
+            rows,
+            current_distribution={"content": 238, "glad": 177, "calm": 490, "happy": 210, "sad": 220},
+            total_cap=2,
+        )
+
+        self.assertEqual([row["sample_id"] for row in selected], ["track2_0001", "track2_0002"])
+
+    def test_select_v18_changes_does_not_mutate_input_rows(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import select_v18_changes
+
+        rows = [
+            _selectable_transition_row(
+                "track2_0001",
+                "content->calm",
+                support_score=3.0,
+                transition_family="stale-uncapped",
+            )
+        ]
+        original_rows = copy.deepcopy(rows)
+
+        selected = select_v18_changes(rows, current_distribution={"content": 238, "calm": 490})
+
+        self.assertEqual(rows, original_rows)
+        self.assertEqual(selected[0]["transition_family"], "calm<->content")
+        self.assertEqual(rows[0]["transition_family"], "stale-uncapped")
 
     def test_v18_gate_blocks_rare_current_class_floor(self) -> None:
         from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence

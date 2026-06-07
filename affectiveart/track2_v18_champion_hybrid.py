@@ -96,7 +96,7 @@ MAJORITY_BOUNDARY_TRANSITIONS = {
 V18_TOTAL_CHANGE_CAP = 36
 V18_TRANSITION_FAMILY_CAPS = {
     "calm<->content": 3,
-    "content->glad": 3,
+    "content<->glad": 3,
     "calm->glad": 2,
     "happy<->excited": 4,
     "aroused<->excited": 3,
@@ -319,6 +319,10 @@ def enrich_champion_evidence(rows: list[dict[str, _Any]]) -> list[dict[str, _Any
 def _transition_family(transition: str) -> str:
     if transition in {"calm->content", "content->calm"}:
         return "calm<->content"
+    if transition in {"content->glad", "glad->content"}:
+        return "content<->glad"
+    if transition == "calm->glad":
+        return "calm->glad"
     if transition in {"happy->excited", "excited->happy"}:
         return "happy<->excited"
     if transition in {"aroused->excited", "excited->aroused"}:
@@ -449,18 +453,19 @@ def select_v18_changes(
         gate = v18_gate_for_evidence(row, distribution=projected)
         if gate["decision"] != "accept":
             continue
-        transition, _, _, _, _, _, _ = _evidence_transition_labels(row)
-        family = str(row.get("transition_family") or _transition_family(transition))
+        transition, current, proposed, _, _, _, _ = _evidence_transition_labels(row)
+        family_transition = f"{current}->{proposed}" if current and proposed else transition
+        family = _transition_family(family_transition)
         cap = V18_TRANSITION_FAMILY_CAPS.get(family)
         if cap is not None and family_counts[family] >= cap:
             continue
         item = dict(row)
         item["gate_decision"] = "accept"
         item["gate_reasons"] = ",".join(gate["reasons"])
+        item["transition_family"] = family
         selected.append(item)
         selected_ids.add(sample_id)
         family_counts[family] += 1
-        _, current, proposed, _, _, _, _ = _evidence_transition_labels(item)
         if current and proposed:
             projected[current] -= 1
             projected[proposed] += 1
