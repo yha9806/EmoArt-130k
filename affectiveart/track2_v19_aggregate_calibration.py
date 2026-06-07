@@ -319,6 +319,68 @@ def write_v19_candidate_ladder_outputs(
     return summary
 
 
+def choose_v19_final_gate(
+    *,
+    candidate_name: str,
+    overall_lower: float,
+    v15_overall_lower: float,
+    classification_lower: float,
+    description_lower: float,
+    v15_description_lower: float,
+    label_consistency_issue_count: int,
+    missing_emotions: list[str],
+    emotion_accuracy_proxy_delta: float,
+    emotion_macro_f1_proxy_delta: float,
+    historical_risk: float,
+) -> dict[str, Any]:
+    reasons: list[str] = []
+    if label_consistency_issue_count != 0:
+        reasons.append("label_consistency_issues")
+    if missing_emotions:
+        reasons.append("missing_emotions")
+    if description_lower < v15_description_lower - 0.003:
+        reasons.append("description_lower_drops_more_than_0.003")
+    if classification_lower <= 0.723150:
+        reasons.append("classification_lower_not_above_anchor")
+    if overall_lower <= v15_overall_lower:
+        reasons.append("overall_lower_not_above_v15")
+    if emotion_accuracy_proxy_delta < 0.05:
+        reasons.append("emotion_accuracy_lift_below_0.05")
+    if emotion_macro_f1_proxy_delta < -0.005:
+        reasons.append("emotion_macro_f1_regresses_more_than_0.005")
+    if historical_risk > 0.10:
+        reasons.append("historical_risk_above_0.10")
+    return {
+        "method": "track2_v19_final_gate_v1",
+        "candidate_name": candidate_name,
+        "decision": "hold" if reasons else "recommend_submit",
+        "reasons": reasons,
+        "overall_lower": overall_lower,
+        "v15_overall_lower": v15_overall_lower,
+        "classification_lower": classification_lower,
+        "description_lower": description_lower,
+        "v15_description_lower": v15_description_lower,
+        "label_consistency_issue_count": label_consistency_issue_count,
+        "missing_emotions": missing_emotions,
+        "emotion_accuracy_proxy_delta": emotion_accuracy_proxy_delta,
+        "emotion_macro_f1_proxy_delta": emotion_macro_f1_proxy_delta,
+        "historical_risk": historical_risk,
+        "no_auto_submit": True,
+        "caveat": "Local gate only; this is not the official Codabench scorer.",
+    }
+
+
+def write_v19_final_gate_report(*, report: dict[str, Any], out_json: str | Path, out_md: str | Path) -> None:
+    out_json = Path(out_json)
+    out_md = Path(out_md)
+    _reject_formal_submission_path(out_json)
+    _reject_formal_submission_path(out_md)
+    out_json.parent.mkdir(parents=True, exist_ok=True)
+    out_md.parent.mkdir(parents=True, exist_ok=True)
+    _write_json(out_json, report)
+    out_md.write_text(_render_v19_final_gate_md(report), encoding="utf-8")
+
+
 def score_v19_evidence_row(
     row: dict[str, Any],
     *,
@@ -575,3 +637,23 @@ def _render_candidate_ladder_md(summary: dict[str, Any]) -> str:
             ]
         )
     return "\n".join(lines)
+
+
+def _render_v19_final_gate_md(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Track2 v19 Final Gate",
+            "",
+            f"- Candidate: `{report['candidate_name']}`",
+            f"- Decision: `{report['decision']}`",
+            f"- Reasons: `{', '.join(report['reasons']) if report['reasons'] else 'none'}`",
+            f"- Overall lower: `{report['overall_lower']}`",
+            f"- v15 overall lower: `{report['v15_overall_lower']}`",
+            f"- Classification lower: `{report['classification_lower']}`",
+            f"- Emotion accuracy proxy delta: `{report['emotion_accuracy_proxy_delta']}`",
+            f"- Emotion macro-F1 proxy delta: `{report['emotion_macro_f1_proxy_delta']}`",
+            "",
+            "No automatic Codabench submission is allowed from this report.",
+            "",
+        ]
+    )

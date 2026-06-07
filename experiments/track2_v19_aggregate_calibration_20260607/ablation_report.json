@@ -1,0 +1,68 @@
+{
+  "method": "track2_v19_ablation_report_v1",
+  "warning": "Local ablation only; not official Codabench scoring.",
+  "rows": [
+    {
+      "ablation": "no_aggregate_calibration",
+      "candidate_name": "v15_desc_expand300",
+      "changed_rows": 0,
+      "same_quadrant_changes": 0,
+      "cross_quadrant_changes": 0,
+      "classification_expected": 0.72315,
+      "classification_lower": 0.72315,
+      "description_expected": 0.9566545000000001,
+      "description_lower": 0.94855825,
+      "overall_expected": 0.83990225,
+      "overall_lower": 0.835854125,
+      "decision": "recommend_submit",
+      "repeats_781601_failure_family": false
+    },
+    {
+      "ablation": "transition_family_constrained_calibration",
+      "candidate_name": "v19_precision",
+      "changed_rows": 16,
+      "same_quadrant_changes": 12,
+      "cross_quadrant_changes": 4,
+      "classification_expected": 0.6993999999999999,
+      "classification_lower": 0.6394,
+      "description_expected": 0.9566545000000001,
+      "description_lower": 0.94855825,
+      "overall_expected": 0.82802725,
+      "overall_lower": 0.793979125,
+      "decision": "recommend_hold",
+      "repeats_781601_failure_family": false
+    },
+    {
+      "ablation": "balanced_transition_family_constrained_calibration",
+      "candidate_name": "v19_balanced",
+      "changed_rows": 29,
+      "same_quadrant_changes": 19,
+      "cross_quadrant_changes": 10,
+      "classification_expected": 0.6681499999999999,
+      "classification_lower": 0.5264,
+      "description_expected": 0.9566545000000001,
+      "description_lower": 0.9485282500000001,
+      "overall_expected": 0.81240225,
+      "overall_lower": 0.737464125,
+      "decision": "recommend_hold",
+      "repeats_781601_failure_family": false
+    },
+    {
+      "ablation": "global_aggregate_probe",
+      "candidate_name": "v19_probe",
+      "changed_rows": 39,
+      "same_quadrant_changes": 19,
+      "cross_quadrant_changes": 20,
+      "classification_expected": 0.6681499999999999,
+      "classification_lower": 0.3988999999999999,
+      "description_expected": 0.9477745000000001,
+      "description_lower": 0.9416845,
+      "overall_expected": 0.80796225,
+      "overall_lower": 0.6702922499999999,
+      "decision": "recommend_hold",
+      "repeats_781601_failure_family": true
+    }
+  ],
+  "decision": "hold_v19_keep_v15",
+  "reason": "All v19 label-changing candidates have lower local classification and overall lower bounds than v15_desc_expand300."
+}

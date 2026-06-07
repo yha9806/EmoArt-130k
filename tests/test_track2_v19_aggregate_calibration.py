@@ -16,6 +16,8 @@ from affectiveart.track2_v19_aggregate_calibration import (
     summarize_781601_regression_guard,
     summarize_v19_candidate,
     write_calibrated_evidence_outputs,
+    choose_v19_final_gate,
+    write_v19_final_gate_report,
     write_v19_candidate_ladder_outputs,
     write_v19_candidate_outputs,
 )
@@ -414,6 +416,76 @@ class Track2V19AggregateCalibrationTests(unittest.TestCase):
             self.assertEqual(set(report["candidates"]), {"precision", "balanced", "probe"})
             self.assertTrue((submissions_dir / "track2_submission_v19_precision_candidate.zip").exists())
             self.assertTrue((out_dir / "candidate_reports" / "track2_submission_v19_precision_candidate_report.json").exists())
+
+    def test_final_gate_holds_when_classification_lower_does_not_beat_anchor(self) -> None:
+        report = choose_v19_final_gate(
+            candidate_name="v19_precision",
+            overall_lower=0.840,
+            v15_overall_lower=0.835,
+            classification_lower=0.722,
+            description_lower=0.949,
+            v15_description_lower=0.949,
+            label_consistency_issue_count=0,
+            missing_emotions=[],
+            emotion_accuracy_proxy_delta=0.06,
+            emotion_macro_f1_proxy_delta=0.0,
+            historical_risk=0.05,
+        )
+        self.assertEqual(report["decision"], "hold")
+        self.assertIn("classification_lower_not_above_anchor", report["reasons"])
+
+    def test_final_gate_holds_without_material_emotion_accuracy_lift(self) -> None:
+        report = choose_v19_final_gate(
+            candidate_name="v19_balanced",
+            overall_lower=0.842,
+            v15_overall_lower=0.835,
+            classification_lower=0.742,
+            description_lower=0.949,
+            v15_description_lower=0.949,
+            label_consistency_issue_count=0,
+            missing_emotions=[],
+            emotion_accuracy_proxy_delta=0.02,
+            emotion_macro_f1_proxy_delta=0.0,
+            historical_risk=0.02,
+        )
+        self.assertEqual(report["decision"], "hold")
+        self.assertIn("emotion_accuracy_lift_below_0.05", report["reasons"])
+
+    def test_final_gate_recommends_when_candidate_clears_strict_thresholds(self) -> None:
+        report = choose_v19_final_gate(
+            candidate_name="v19_balanced",
+            overall_lower=0.842,
+            v15_overall_lower=0.835,
+            classification_lower=0.742,
+            description_lower=0.949,
+            v15_description_lower=0.949,
+            label_consistency_issue_count=0,
+            missing_emotions=[],
+            emotion_accuracy_proxy_delta=0.06,
+            emotion_macro_f1_proxy_delta=0.0,
+            historical_risk=0.02,
+        )
+        self.assertEqual(report["decision"], "recommend_submit")
+
+    def test_write_v19_final_gate_report_writes_json_and_markdown(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            report = choose_v19_final_gate(
+                candidate_name="v19_balanced",
+                overall_lower=0.842,
+                v15_overall_lower=0.835,
+                classification_lower=0.742,
+                description_lower=0.949,
+                v15_description_lower=0.949,
+                label_consistency_issue_count=0,
+                missing_emotions=[],
+                emotion_accuracy_proxy_delta=0.06,
+                emotion_macro_f1_proxy_delta=0.0,
+                historical_risk=0.02,
+            )
+            write_v19_final_gate_report(report=report, out_json=root / "gate.json", out_md=root / "gate.md")
+            self.assertTrue((root / "gate.json").exists())
+            self.assertTrue((root / "gate.md").exists())
 
 
 if __name__ == "__main__":
