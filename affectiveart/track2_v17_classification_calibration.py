@@ -1,0 +1,512 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+import zipfile
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+from affectiveart.challenge import TRACK2_JSON_EMOTIONS, TRACK2_JSON_SUBMISSION_KEYS
+from affectiveart.track2_audit import HIGH_AROUSAL_EMOTIONS, NEGATIVE_EMOTIONS, strict_track2_label_issues
+
+
+FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
+DEFAULT_EXPERIMENT_DIR = Path("experiments/track2_v17_classification_calibration_20260607")
+DEFAULT_BASE_JSON = Path("submissions/track2_submission_v15_desc_expand300_candidate.json")
+DEFAULT_OFFICIAL_SCORES = Path(
+    "experiments/track2_official_results_20260606/track2_known_official_exact_scores_from_ledger_20260606.csv"
+)
+DEFAULT_PAIRWISE_DIFFS = Path(
+    "experiments/track2_official_results_20260606/track2_my_submission_pairwise_diffs_20260606.csv"
+)
+DEFAULT_PREDICTION_SOURCES = {
+    "siglip2": Path("experiments/track2_emoart130k_siglip2/predictions.json"),
+    "clip": Path("experiments/track2_emoart130k_clip/predictions.json"),
+    "dinov2": Path("experiments/track2_emoart130k_dinov2/predictions.json"),
+    "gemini35": Path(
+        "experiments/track2_moe_specialist_ensemble_20260603/dry_run_v2/"
+        "gemini35_vlm_specialist_predictions.json"
+    ),
+    "public_clean": Path(
+        "experiments/track2_public_style_distillation_20260603/siglip2_cached_logreg_v1/clean_predictions.json"
+    ),
+    "public_inclusive": Path(
+        "experiments/track2_public_style_distillation_20260603/siglip2_cached_logreg_v1/inclusive_predictions.json"
+    ),
+}
+DEFAULT_DUPLICATE_SOURCES = [
+    Path("experiments/track2_emoart130k_clip/deep_duplicate_audit_20260511/track2_deep_duplicate_top10_audit.json"),
+    Path("experiments/track2_emoart130k_clip/overlap_reference/ge095_all/ge095_public_neighbor_audit.json"),
+]
+PUBLIC_STYLE_SOURCES = {"public_clean", "public_inclusive"}
+
+EVIDENCE_MATRIX_FIELDS = [
+    "sample_id",
+    "current_emotion",
+    "proposed_emotion",
+    "transition",
+    "current_valence",
+    "current_arousal",
+    "proposed_valence",
+    "proposed_arousal",
+    "same_valence",
+    "same_arousal",
+    "model_vote_count",
+    "model_sources",
+    "all_sources",
+    "support_score",
+    "model_support_score",
+    "public_style_support_score",
+    "public_duplicate_support_score",
+    "max_confidence",
+    "exact_duplicate",
+    "near_duplicate",
+    "failed_transition_count",
+    "current_label_issue_count",
+    "rationale",
+]
+
+
+def load_prediction_sources(paths: dict[str, str | Path]) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for source, raw_path in sorted(paths.items()):
+        path = Path(raw_path)
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for row in _payload_rows(payload):
+            sample_id = str(row.get("sample_id") or row.get("request_id") or row.get("id") or "").strip()
+            emotion = _canonical_emotion(_first_present(row, ("target_emotion", "predicted_emotion", "emotion", "label")))
+            if not sample_id or not emotion:
+                continue
+            grouped[sample_id].append(
+                {
+                    "sample_id": sample_id,
+                    "source": source,
+                    "emotion": emotion,
+                    "confidence": _safe_float(_first_present(row, ("confidence", "probability", "score"))),
+                    "margin": _safe_float(row.get("margin")),
+                    "decision": str(row.get("decision", "")).strip().lower(),
+                    "rationale": str(row.get("rationale") or row.get("reason") or "").strip(),
+                }
+            )
+    return dict(grouped)
+
+
+def parse_official_failed_transition_counts(
+    *,
+    pairwise_rows: list[dict[str, Any]],
+    score_rows: dict[str, dict[str, Any]],
+) -> dict[str, int]:
+    counts: Counter[str] = Counter()
+    for row in pairwise_rows:
+        candidate_a_id = _extract_submission_id(row.get("candidate_a"))
+        candidate_b_id = _extract_submission_id(row.get("candidate_b"))
+        if candidate_a_id not in score_rows or candidate_b_id not in score_rows:
+            continue
+        candidate_a_class = _safe_float(score_rows[candidate_a_id].get("classification"))
+        candidate_b_class = _safe_float(score_rows[candidate_b_id].get("classification"))
+        if candidate_a_class == candidate_b_class:
+            continue
+        if candidate_a_class < candidate_b_class:
+            lower = "candidate_a"
+            higher = "candidate_b"
+        else:
+            lower = "candidate_b"
+            higher = "candidate_a"
+        direction_from, direction_to = _parse_pairwise_direction(row.get("direction"))
+        invert = (direction_from, direction_to) == (lower, higher)
+        for transition, count in _parse_transition_counts(row.get("top_emotion_transitions", "")).items():
+            if invert:
+                transition = _invert_transition(transition)
+            counts[transition] += count
+    return dict(sorted(counts.items()))
+
+
+def build_evidence_rows(
+    *,
+    base_rows: list[dict[str, Any]],
+    predictions_by_sample: dict[str, list[dict[str, Any]]],
+    duplicate_rows: list[dict[str, Any]],
+    failed_transition_counts: dict[str, int],
+) -> list[dict[str, Any]]:
+    duplicates_by_id = _index_rows_by_sample_id(duplicate_rows)
+    evidence_rows: list[dict[str, Any]] = []
+    for base in base_rows:
+        sample_id = str(base.get("sample_id", "")).strip()
+        current = _canonical_emotion(base.get("emotion"))
+        if not sample_id or not current:
+            continue
+        by_emotion: dict[str, list[dict[str, Any]]] = defaultdict(list)
+        for prediction in predictions_by_sample.get(sample_id, []):
+            emotion = _canonical_emotion(prediction.get("emotion"))
+            if emotion and emotion != current:
+                by_emotion[emotion].append(prediction)
+        duplicate_payloads = _duplicate_payloads_for_sample(duplicates_by_id.get(sample_id, []), current=current)
+        for emotion, payloads in duplicate_payloads.items():
+            by_emotion[emotion].extend(payloads)
+        for proposed, votes in sorted(by_emotion.items()):
+            transition = f"{current}->{proposed}"
+            sources = sorted({str(vote.get("source", "")).strip() for vote in votes if str(vote.get("source", "")).strip()})
+            model_sources = sorted(
+                source
+                for source in sources
+                if not source.startswith("public_") and not _is_public_style_source(source)
+            )
+            exact_duplicate = any(vote.get("evidence_type") == "exact_public_duplicate" for vote in votes)
+            near_duplicate = any(vote.get("evidence_type") == "near_public_duplicate" for vote in votes)
+            confidences = [_safe_float(vote.get("confidence")) for vote in votes]
+            support_scores = _support_scores_by_family(votes)
+            support_score = sum(support_scores.values())
+            evidence_rows.append(
+                {
+                    "sample_id": sample_id,
+                    "current_emotion": current,
+                    "proposed_emotion": proposed,
+                    "transition": transition,
+                    "current_valence": str(base.get("emotional_valence", "")).strip(),
+                    "current_arousal": str(base.get("emotional_arousal_level", "")).strip(),
+                    "proposed_valence": _valence(proposed),
+                    "proposed_arousal": _arousal(proposed),
+                    "same_valence": _valence(current) == _valence(proposed),
+                    "same_arousal": _arousal(current) == _arousal(proposed),
+                    "model_vote_count": len(model_sources),
+                    "model_sources": ",".join(model_sources),
+                    "all_sources": ",".join(sources),
+                    "support_score": round(float(support_score), 6),
+                    "model_support_score": round(float(support_scores["model"]), 6),
+                    "public_style_support_score": round(float(support_scores["public_style"]), 6),
+                    "public_duplicate_support_score": round(float(support_scores["public_duplicate"]), 6),
+                    "max_confidence": round(max(confidences or [0.0]), 6),
+                    "exact_duplicate": exact_duplicate,
+                    "near_duplicate": near_duplicate,
+                    "failed_transition_count": int(failed_transition_counts.get(transition, 0)),
+                    "current_label_issue_count": len(strict_track2_label_issues(base)),
+                    "rationale": " | ".join(
+                        str(vote.get("rationale", "")).strip()
+                        for vote in votes
+                        if str(vote.get("rationale", "")).strip()
+                    )[:800],
+                }
+            )
+    return sorted(
+        evidence_rows,
+        key=lambda row: (
+            -float(row["support_score"]),
+            int(row["failed_transition_count"]),
+            str(row["sample_id"]),
+            str(row["proposed_emotion"]),
+        ),
+    )
+
+
+def load_track2_rows(path: str | Path) -> list[dict[str, Any]]:
+    path = Path(path)
+    if path.suffix.lower() == ".zip":
+        with zipfile.ZipFile(path) as archive:
+            names = [name for name in archive.namelist() if name.lower().endswith(".json")]
+            preferred = [name for name in names if Path(name).name in {"submission.json", "track2_submission.json"}]
+            if not preferred and not names:
+                raise ValueError(f"no JSON payload in Track2 zip: {path}")
+            with archive.open((preferred or names)[0]) as handle:
+                payload = json.loads(handle.read().decode("utf-8"))
+    else:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        raise ValueError(f"expected Track2 JSON list: {path}")
+    return [{key: dict(row).get(key, "") for key in TRACK2_JSON_SUBMISSION_KEYS} for row in payload if isinstance(row, dict)]
+
+
+def load_csv_rows(path: str | Path) -> list[dict[str, Any]]:
+    with Path(path).open(newline="", encoding="utf-8") as handle:
+        return [dict(row) for row in csv.DictReader(handle)]
+
+
+def load_official_score_rows(path: str | Path) -> dict[str, dict[str, Any]]:
+    rows: dict[str, dict[str, Any]] = {}
+    for row in load_csv_rows(path):
+        submission_id = str(row.get("submission_id", "")).strip()
+        if not submission_id:
+            continue
+        rows[submission_id] = {
+            "overall": _safe_float(_first_present(row, ("official_overall", "overall"))),
+            "classification": _safe_float(_first_present(row, ("official_classification", "classification"))),
+            "description": _safe_float(_first_present(row, ("official_description", "description"))),
+        }
+    return rows
+
+
+def load_duplicate_rows(paths: list[str | Path]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for raw_path in paths:
+        path = Path(raw_path)
+        if not path.exists():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        rows.extend(_flatten_duplicate_rows(_payload_rows(payload)))
+    return rows
+
+
+def _duplicate_payloads_for_sample(rows: list[dict[str, Any]], current: str) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        emotion = _canonical_emotion(row.get("public_emotion") or row.get("nearest_emotion") or row.get("emotion"))
+        if not emotion or emotion == current:
+            continue
+        cosine = _safe_float(_first_present(row, ("clip_cosine", "top1_clip_cosine", "top1_clip")))
+        suspect_duplicate = row.get("suspect_duplicate") is True
+        if suspect_duplicate or cosine >= 0.985:
+            evidence_type = "exact_public_duplicate"
+            confidence = max(cosine, 0.985)
+        elif cosine >= 0.95:
+            evidence_type = "near_public_duplicate"
+            confidence = cosine
+        else:
+            continue
+        grouped[emotion].append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "source": f"public_{evidence_type}",
+                "emotion": emotion,
+                "confidence": confidence,
+                "margin": 0.0,
+                "evidence_type": evidence_type,
+                "rationale": f"{evidence_type} supports {emotion}",
+            }
+        )
+    return dict(grouped)
+
+
+def _index_rows_by_sample_id(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        sample_id = str(row.get("sample_id", "")).strip()
+        if sample_id:
+            grouped[sample_id].append(row)
+    return dict(grouped)
+
+
+def _canonical_emotion(value: Any) -> str:
+    emotion = str(value or "").strip().lower()
+    if emotion == "contentment":
+        emotion = "content"
+    return emotion if emotion in TRACK2_JSON_EMOTIONS else ""
+
+
+def _valence(emotion: str) -> str:
+    return "Negative" if emotion in NEGATIVE_EMOTIONS else "Positive"
+
+
+def _arousal(emotion: str) -> str:
+    return "High" if emotion in HIGH_AROUSAL_EMOTIONS else "Low"
+
+
+def _first_present(row: dict[str, Any], names: tuple[str, ...]) -> Any:
+    for name in names:
+        if name in row and row[name] is not None and row[name] != "":
+            return row[name]
+    return None
+
+
+def _safe_float(value: Any) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _extract_submission_id(value: Any) -> str:
+    match = re.match(r"^(\d{6,})", str(value or "").strip())
+    return match.group(1) if match else ""
+
+
+def _parse_pairwise_direction(value: Any) -> tuple[str, str]:
+    match = re.search(r"(candidate_[ab])\s*->\s*(candidate_[ab])", str(value or "").strip().lower())
+    if match:
+        return match.group(1), match.group(2)
+    return "candidate_b", "candidate_a"
+
+
+def _invert_transition(transition: str) -> str:
+    left_right = [piece.strip() for piece in str(transition).split("->", 1)]
+    if len(left_right) != 2:
+        return transition
+    return f"{left_right[1]}->{left_right[0]}"
+
+
+def _parse_transition_counts(value: Any) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for part in str(value or "").split(";"):
+        item = part.strip()
+        if not item or ":" not in item:
+            continue
+        transition, count_text = item.rsplit(":", 1)
+        transition = transition.strip()
+        left_right = [piece.strip().lower() for piece in transition.split("->", 1)]
+        if len(left_right) != 2:
+            continue
+        left = _canonical_emotion(left_right[0])
+        right = _canonical_emotion(left_right[1])
+        if left and right:
+            counts[f"{left}->{right}"] = int(_safe_float(count_text))
+    return counts
+
+
+def _support_scores_by_family(votes: list[dict[str, Any]]) -> dict[str, float]:
+    model_scores_by_source: dict[str, float] = defaultdict(float)
+    public_style_scores: list[float] = []
+    public_duplicate_scores: list[float] = []
+    for vote in votes:
+        source = str(vote.get("source", "")).strip()
+        confidence = _safe_float(vote.get("confidence"))
+        if _is_public_duplicate_vote(vote):
+            public_duplicate_scores.append(confidence)
+        elif _is_public_style_source(source):
+            public_style_scores.append(confidence)
+        elif source:
+            contribution = confidence + 0.25 * max(0.0, _safe_float(vote.get("margin")))
+            model_scores_by_source[source] = max(model_scores_by_source[source], contribution)
+    return {
+        "model": sum(model_scores_by_source.values()),
+        "public_style": max(public_style_scores or [0.0]),
+        "public_duplicate": max(public_duplicate_scores or [0.0]),
+    }
+
+
+def _is_public_style_source(source: str) -> bool:
+    return source in PUBLIC_STYLE_SOURCES
+
+
+def _is_public_duplicate_vote(vote: dict[str, Any]) -> bool:
+    evidence_type = str(vote.get("evidence_type", "")).strip()
+    source = str(vote.get("source", "")).strip()
+    return evidence_type in {"exact_public_duplicate", "near_public_duplicate"} or source in {
+        "public_exact_public_duplicate",
+        "public_near_public_duplicate",
+    }
+
+
+def write_evidence_matrix_outputs(
+    *,
+    base_json: str | Path,
+    official_scores: str | Path,
+    pairwise_diffs: str | Path,
+    out_json: str | Path,
+    out_csv: str | Path,
+    prediction_sources: dict[str, str | Path] | None = None,
+    duplicate_sources: list[str | Path] | None = None,
+) -> list[dict[str, Any]]:
+    base_rows = load_track2_rows(base_json)
+    predictions = load_prediction_sources(prediction_sources or DEFAULT_PREDICTION_SOURCES)
+    duplicates = load_duplicate_rows(duplicate_sources or DEFAULT_DUPLICATE_SOURCES)
+    failed_counts = parse_official_failed_transition_counts(
+        pairwise_rows=load_csv_rows(pairwise_diffs),
+        score_rows=load_official_score_rows(official_scores),
+    )
+    evidence = build_evidence_rows(
+        base_rows=base_rows,
+        predictions_by_sample=predictions,
+        duplicate_rows=duplicates,
+        failed_transition_counts=failed_counts,
+    )
+    _write_json(out_json, evidence)
+    _write_csv(out_csv, evidence)
+    return evidence
+
+
+def _write_json(path: str | Path, payload: Any) -> None:
+    path = Path(path)
+    _assert_not_formal_submission(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def _write_csv(path: str | Path, rows: list[dict[str, Any]]) -> None:
+    path = Path(path)
+    _assert_not_formal_submission(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = EVIDENCE_MATRIX_FIELDS + sorted({key for row in rows for key in row} - set(EVIDENCE_MATRIX_FIELDS))
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({field: row.get(field, "") for field in fields})
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description="Track2 v17 classification calibration tools.")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    build = subparsers.add_parser("build-evidence", help="Build v17 evidence matrix")
+    build.add_argument("--base-json", type=Path, default=DEFAULT_BASE_JSON)
+    build.add_argument("--official-scores", type=Path, default=DEFAULT_OFFICIAL_SCORES)
+    build.add_argument("--pairwise-diffs", type=Path, default=DEFAULT_PAIRWISE_DIFFS)
+    build.add_argument("--out-json", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.json")
+    build.add_argument("--out-csv", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.csv")
+    args = parser.parse_args(argv)
+    if args.command == "build-evidence":
+        rows = write_evidence_matrix_outputs(
+            base_json=args.base_json,
+            official_scores=args.official_scores,
+            pairwise_diffs=args.pairwise_diffs,
+            out_json=args.out_json,
+            out_csv=args.out_csv,
+        )
+        print(
+            json.dumps(
+                {"evidence_rows": len(rows), "out_json": str(args.out_json), "out_csv": str(args.out_csv)},
+                indent=2,
+            )
+        )
+
+
+def _payload_rows(payload: Any) -> list[dict[str, Any]]:
+    if isinstance(payload, list):
+        return [dict(row) for row in payload if isinstance(row, dict)]
+    if not isinstance(payload, dict):
+        return []
+    for key in ("entries", "predictions", "rows", "items", "selected", "neighbors", "audits"):
+        value = payload.get(key)
+        if isinstance(value, list):
+            return [dict(row) for row in value if isinstance(row, dict)]
+    if all(isinstance(value, dict) for value in payload.values()):
+        rows = []
+        for key, value in payload.items():
+            row = dict(value)
+            row.setdefault("sample_id", key)
+            rows.append(row)
+        return rows
+    return []
+
+
+def _flatten_duplicate_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    flattened: list[dict[str, Any]] = []
+    for row in rows:
+        if isinstance(row.get("neighbors"), list):
+            sample_id = str(row.get("sample_id", ""))
+            for neighbor in row["neighbors"]:
+                if not isinstance(neighbor, dict):
+                    continue
+                merged = dict(neighbor)
+                merged["sample_id"] = sample_id
+                if "emotion" in merged:
+                    merged["public_emotion"] = merged["emotion"]
+                if "member" in merged:
+                    merged["public_member"] = merged["member"]
+                if "request_id" in merged:
+                    merged["public_request_id"] = merged["request_id"]
+                flattened.append(merged)
+        else:
+            flattened.append(dict(row))
+    return flattened
+
+
+def _assert_not_formal_submission(path: Path) -> None:
+    if path.name in FORMAL_SUBMISSION_NAMES:
+        raise ValueError(f"refusing to write formal Track2 submission path: {path}")
+
+
+if __name__ == "__main__":
+    main()
