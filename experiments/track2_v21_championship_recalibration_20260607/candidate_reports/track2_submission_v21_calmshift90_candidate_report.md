@@ -1,0 +1,105 @@
+# Track2 v21 calmshift90 Candidate
+
+- Accepted label changes: `90`
+- Tier counts: `{'consensus': 61, 'expansion': 24, 'reference': 5}`
+- Cross-quadrant changes: `0`
+- Top emotion: `calm` (58.0%)
+- Missing emotions: `none`
+- Label consistency issues: `0`
+
+## Transition Counts
+
+- `content->calm`: 90
+
+## Accepted Changes
+
+- `track2_0009`: content->calm tier=expansion score=2.206
+- `track2_0020`: content->calm tier=consensus score=3.240
+- `track2_0044`: content->calm tier=consensus score=4.095
+- `track2_0052`: content->calm tier=consensus score=3.267
+- `track2_0059`: content->calm tier=consensus score=2.979
+- `track2_0087`: content->calm tier=consensus score=3.592
+- `track2_0099`: content->calm tier=consensus score=3.730
+- `track2_0125`: content->calm tier=expansion score=2.501
+- `track2_0136`: content->calm tier=expansion score=2.313
+- `track2_0155`: content->calm tier=consensus score=2.716
+- `track2_0167`: content->calm tier=expansion score=2.878
+- `track2_0169`: content->calm tier=consensus score=3.749
+- `track2_0178`: content->calm tier=consensus score=3.012
+- `track2_0185`: content->calm tier=expansion score=2.520
+- `track2_0189`: content->calm tier=consensus score=2.931
+- `track2_0191`: content->calm tier=consensus score=3.124
+- `track2_0207`: content->calm tier=expansion score=3.577
+- `track2_0210`: content->calm tier=reference score=5.277
+- `track2_0229`: content->calm tier=consensus score=2.879
+- `track2_0265`: content->calm tier=expansion score=2.189
+- `track2_0268`: content->calm tier=expansion score=2.210
+- `track2_0269`: content->calm tier=expansion score=3.364
+- `track2_0270`: content->calm tier=consensus score=3.898
+- `track2_0271`: content->calm tier=expansion score=2.752
+- `track2_0280`: content->calm tier=consensus score=3.828
+- `track2_0306`: content->calm tier=consensus score=3.015
+- `track2_0335`: content->calm tier=consensus score=3.450
+- `track2_0396`: content->calm tier=consensus score=3.370
+- `track2_0410`: content->calm tier=consensus score=4.111
+- `track2_0413`: content->calm tier=consensus score=2.764
+- `track2_0417`: content->calm tier=expansion score=2.262
+- `track2_0437`: content->calm tier=consensus score=3.169
+- `track2_0442`: content->calm tier=consensus score=3.315
+- `track2_0443`: content->calm tier=consensus score=3.792
+- `track2_0447`: content->calm tier=consensus score=3.086
+- `track2_0451`: content->calm tier=consensus score=3.393
+- `track2_0455`: content->calm tier=consensus score=3.711
+- `track2_0477`: content->calm tier=consensus score=2.838
+- `track2_0481`: content->calm tier=consensus score=3.541
+- `track2_0483`: content->calm tier=consensus score=2.684
+- `track2_0493`: content->calm tier=expansion score=2.288
+- `track2_0494`: content->calm tier=consensus score=3.015
+- `track2_0515`: content->calm tier=consensus score=3.970
+- `track2_0517`: content->calm tier=consensus score=3.192
+- `track2_0526`: content->calm tier=consensus score=2.829
+- `track2_0539`: content->calm tier=expansion score=2.401
+- `track2_0550`: content->calm tier=consensus score=3.080
+- `track2_0555`: content->calm tier=reference score=5.241
+- `track2_0557`: content->calm tier=consensus score=3.675
+- `track2_0572`: content->calm tier=consensus score=2.791
+- `track2_0580`: content->calm tier=consensus score=3.997
+- `track2_0609`: content->calm tier=consensus score=2.742
+- `track2_0617`: content->calm tier=expansion score=2.287
+- `track2_0626`: content->calm tier=consensus score=2.832
+- `track2_0631`: content->calm tier=consensus score=3.148
+- `track2_0651`: content->calm tier=consensus score=4.181
+- `track2_0678`: content->calm tier=consensus score=3.533
+- `track2_0681`: content->calm tier=consensus score=3.303
+- `track2_0704`: content->calm tier=consensus score=3.992
+- `track2_0718`: content->calm tier=consensus score=3.969
+- `track2_0722`: content->calm tier=expansion score=2.231
+- `track2_0746`: content->calm tier=consensus score=3.193
+- `track2_0756`: content->calm tier=expansion score=2.792
+- `track2_0760`: content->calm tier=expansion score=2.648
+- `track2_0765`: content->calm tier=consensus score=4.186
+- `track2_0773`: content->calm tier=consensus score=2.991
+- `track2_0777`: content->calm tier=expansion score=2.950
+- `track2_0781`: content->calm tier=consensus score=3.260
+- `track2_0795`: content->calm tier=expansion score=2.367
+- `track2_0800`: content->calm tier=consensus score=3.667
+- `track2_0809`: content->calm tier=consensus score=3.803
+- `track2_0830`: content->calm tier=consensus score=3.447
+- `track2_0832`: content->calm tier=consensus score=3.703
+- `track2_0869`: content->calm tier=reference score=5.351
+- `track2_0871`: content->calm tier=reference score=5.156
+- `track2_0880`: content->calm tier=consensus score=4.093
+- `track2_0893`: content->calm tier=expansion score=2.192
+- `track2_0899`: content->calm tier=consensus score=3.247
+- `track2_0908`: content->calm tier=expansion score=2.159
+- `track2_0914`: content->calm tier=reference score=5.107
+- `track2_0928`: content->calm tier=consensus score=3.116
+- `track2_0941`: content->calm tier=consensus score=3.941
+- `track2_0942`: content->calm tier=consensus score=4.026
+- `track2_0944`: content->calm tier=expansion score=2.912
+- `track2_0946`: content->calm tier=expansion score=2.818
+- `track2_0952`: content->calm tier=expansion score=2.248
+- `track2_0956`: content->calm tier=consensus score=4.192
+- `track2_0966`: content->calm tier=consensus score=3.123
+- `track2_0994`: content->calm tier=consensus score=3.103
+- `track2_0996`: content->calm tier=consensus score=3.722

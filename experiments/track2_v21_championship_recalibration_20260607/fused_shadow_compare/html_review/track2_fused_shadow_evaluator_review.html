@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 Fused Shadow Evaluator</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #17202a; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 28px; }
+    th, td { border: 1px solid #d7dde5; padding: 8px; text-align: left; }
+    th { background: #eef2f6; }
+    .warning { padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }
+  </style>
+</head>
+<body>
+  <h1>Track2 Fused Shadow Evaluator</h1>
+  <p class="warning">This is a local fused shadow score. It is not the official Codabench score and must not be treated as hidden-test ground truth.</p>
+  <p>Classification comes from the calibrated local shadow evaluator. Description is conservatively adjusted by VULCA/Judge++ entailment risk delta with a small capped effect, so text-risk improvements can break ties but cannot override classification hold decisions.</p>
+  <table>
+    <thead><tr><th>candidate</th><th>decision</th><th>overall lower</th><th>overall expected</th><th>description expected</th><th>VULCA delta</th><th>VULCA issues</th><th>changes</th><th>cross quadrant</th></tr></thead>
+    <tbody><tr><td>v15_desc_expand300</td><td>recommend_submit</td><td>0.835854</td><td>0.839902</td><td>0.956655</td><td>0.006987</td><td>39</td><td>0</td><td>0</td></tr>
+<tr><td>v21_calmshift90</td><td>recommend_hold</td><td>0.780279</td><td>0.840827</td><td>0.956655</td><td>0.006987</td><td>39</td><td>90</td><td>0</td></tr>
+<tr><td>v21_precision80</td><td>recommend_hold</td><td>0.701689</td><td>0.812402</td><td>0.956655</td><td>0.006987</td><td>39</td><td>68</td><td>12</td></tr>
+<tr><td>v21_champion120</td><td>recommend_hold</td><td>0.648392</td><td>0.807962</td><td>0.947775</td><td>-0.001892</td><td>41</td><td>89</td><td>18</td></tr>
+<tr><td>v21_lastshot160</td><td>recommend_hold</td><td>0.636767</td><td>0.807962</td><td>0.947775</td><td>-0.001892</td><td>41</td><td>104</td><td>18</td></tr></tbody>
+  </table>
+</body>
+</html>

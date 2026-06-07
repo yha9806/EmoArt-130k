@@ -1,0 +1,105 @@
+{
+  "method": "track2_v21_final_gate_report_v1",
+  "decision": "recommend_directional_second_last_submission",
+  "selected_profile": "calmshift90",
+  "selected_candidate": {
+    "accepted_label_changes": 90,
+    "transition_counts": {
+      "content->calm": 90
+    },
+    "tier_counts": {
+      "consensus": 61,
+      "expansion": 24,
+      "reference": 5
+    },
+    "cross_quadrant_change_count": 0,
+    "distribution": {
+      "alarmed": 54,
+      "annoyed": 22,
+      "aroused": 29,
+      "bored": 20,
+      "calm": 580,
+      "content": 148,
+      "excited": 15,
+      "frustrated": 46,
+      "glad": 5,
+      "happy": 8,
+      "sad": 33,
+      "tired": 40
+    },
+    "missing_emotions": [],
+    "top_emotion": "calm",
+    "top_emotion_share": 0.58,
+    "label_consistency_issue_count": 0,
+    "description_anchor_preserved": true,
+    "paths": {
+      "out_json": "submissions/track2_submission_v21_calmshift90_candidate.json",
+      "out_zip": "submissions/track2_submission_v21_calmshift90_candidate.zip",
+      "report_json": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_calmshift90_candidate_report.json",
+      "report_md": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_calmshift90_candidate_report.md"
+    }
+  },
+  "gate_reports": {
+    "calmshift90": {
+      "method": "track2_v21_final_gate_v1",
+      "candidate_name": "v21_calmshift90",
+      "profile": "calmshift90",
+      "decision": "recommend_directional_second_last_submission",
+      "reasons": [],
+      "accepted_label_changes": 90,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "top_emotion_share": 0.58,
+      "description_anchor_preserved": true,
+      "no_auto_submit": true,
+      "caveat": "High-variance local competition gate; this is not an official hidden scorer reconstruction."
+    },
+    "champion120": {
+      "method": "track2_v21_final_gate_v1",
+      "candidate_name": "v21_champion120",
+      "profile": "champion120",
+      "decision": "hold",
+      "reasons": [
+        "profile_does_not_meet_submission_gate"
+      ],
+      "accepted_label_changes": 89,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "top_emotion_share": 0.553,
+      "description_anchor_preserved": true,
+      "no_auto_submit": true,
+      "caveat": "High-variance local competition gate; this is not an official hidden scorer reconstruction."
+    },
+    "lastshot160": {
+      "method": "track2_v21_final_gate_v1",
+      "candidate_name": "v21_lastshot160",
+      "profile": "lastshot160",
+      "decision": "hold_for_final_submission_only",
+      "reasons": [],
+      "accepted_label_changes": 104,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "top_emotion_share": 0.568,
+      "description_anchor_preserved": true,
+      "no_auto_submit": true,
+      "caveat": "High-variance local competition gate; this is not an official hidden scorer reconstruction."
+    },
+    "precision80": {
+      "method": "track2_v21_final_gate_v1",
+      "candidate_name": "v21_precision80",
+      "profile": "precision80",
+      "decision": "hold",
+      "reasons": [
+        "accepted_changes_below_80"
+      ],
+      "accepted_label_changes": 68,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "top_emotion_share": 0.533,
+      "description_anchor_preserved": true,
+      "no_auto_submit": true,
+      "caveat": "High-variance local competition gate; this is not an official hidden scorer reconstruction."
+    }
+  },
+  "no_auto_submit": true
+}

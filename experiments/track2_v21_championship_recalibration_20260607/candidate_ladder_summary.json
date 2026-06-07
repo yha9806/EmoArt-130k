@@ -1,0 +1,208 @@
+{
+  "method": "track2_v21_candidate_ladder_v1",
+  "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "championship_evidence_json": "experiments/track2_v21_championship_recalibration_20260607/championship_evidence.json",
+  "candidates": {
+    "precision80": {
+      "accepted_label_changes": 68,
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "alarmed->sad": 1,
+        "annoyed->calm": 2,
+        "aroused->calm": 1,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->content": 1,
+        "calm->tired": 1,
+        "content->calm": 40,
+        "content->excited": 3,
+        "excited->happy": 2,
+        "glad->content": 1,
+        "happy->excited": 1,
+        "sad->calm": 2,
+        "tired->bored": 2,
+        "tired->calm": 1,
+        "tired->sad": 7
+      },
+      "tier_counts": {
+        "consensus": 55,
+        "expansion": 6,
+        "reference": 7
+      },
+      "cross_quadrant_change_count": 12,
+      "distribution": {
+        "alarmed": 52,
+        "annoyed": 20,
+        "aroused": 27,
+        "bored": 23,
+        "calm": 533,
+        "content": 197,
+        "excited": 18,
+        "frustrated": 47,
+        "glad": 4,
+        "happy": 9,
+        "sad": 39,
+        "tired": 31
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.533,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v21_precision80_candidate.json",
+        "out_zip": "submissions/track2_submission_v21_precision80_candidate.zip",
+        "report_json": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_precision80_candidate_report.json",
+        "report_md": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_precision80_candidate_report.md"
+      }
+    },
+    "champion120": {
+      "accepted_label_changes": 89,
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "alarmed->sad": 1,
+        "annoyed->calm": 3,
+        "aroused->calm": 1,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->content": 1,
+        "calm->tired": 1,
+        "content->calm": 55,
+        "content->excited": 3,
+        "excited->happy": 2,
+        "glad->content": 1,
+        "happy->calm": 1,
+        "happy->excited": 1,
+        "sad->calm": 2,
+        "tired->bored": 2,
+        "tired->calm": 4,
+        "tired->content": 1,
+        "tired->sad": 7
+      },
+      "tier_counts": {
+        "consensus": 76,
+        "expansion": 6,
+        "reference": 7
+      },
+      "cross_quadrant_change_count": 18,
+      "distribution": {
+        "alarmed": 52,
+        "annoyed": 19,
+        "aroused": 27,
+        "bored": 23,
+        "calm": 553,
+        "content": 183,
+        "excited": 18,
+        "frustrated": 47,
+        "glad": 4,
+        "happy": 8,
+        "sad": 39,
+        "tired": 27
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.553,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v21_champion120_candidate.json",
+        "out_zip": "submissions/track2_submission_v21_champion120_candidate.zip",
+        "report_json": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_champion120_candidate_report.json",
+        "report_md": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_champion120_candidate_report.md"
+      }
+    },
+    "lastshot160": {
+      "accepted_label_changes": 104,
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "alarmed->sad": 1,
+        "annoyed->calm": 3,
+        "aroused->calm": 1,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->content": 1,
+        "calm->tired": 1,
+        "content->calm": 70,
+        "content->excited": 3,
+        "excited->happy": 2,
+        "glad->content": 1,
+        "happy->calm": 1,
+        "happy->excited": 1,
+        "sad->calm": 2,
+        "tired->bored": 2,
+        "tired->calm": 4,
+        "tired->content": 1,
+        "tired->sad": 7
+      },
+      "tier_counts": {
+        "consensus": 87,
+        "expansion": 10,
+        "reference": 7
+      },
+      "cross_quadrant_change_count": 18,
+      "distribution": {
+        "alarmed": 52,
+        "annoyed": 19,
+        "aroused": 27,
+        "bored": 23,
+        "calm": 568,
+        "content": 168,
+        "excited": 18,
+        "frustrated": 47,
+        "glad": 4,
+        "happy": 8,
+        "sad": 39,
+        "tired": 27
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.568,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v21_lastshot160_candidate.json",
+        "out_zip": "submissions/track2_submission_v21_lastshot160_candidate.zip",
+        "report_json": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_lastshot160_candidate_report.json",
+        "report_md": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_lastshot160_candidate_report.md"
+      }
+    },
+    "calmshift90": {
+      "accepted_label_changes": 90,
+      "transition_counts": {
+        "content->calm": 90
+      },
+      "tier_counts": {
+        "consensus": 61,
+        "expansion": 24,
+        "reference": 5
+      },
+      "cross_quadrant_change_count": 0,
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 580,
+        "content": 148,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.58,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v21_calmshift90_candidate.json",
+        "out_zip": "submissions/track2_submission_v21_calmshift90_candidate.zip",
+        "report_json": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_calmshift90_candidate_report.json",
+        "report_md": "experiments/track2_v21_championship_recalibration_20260607/candidate_reports/track2_submission_v21_calmshift90_candidate_report.md"
+      }
+    }
+  },
+  "formal_submission_overwritten": false
+}

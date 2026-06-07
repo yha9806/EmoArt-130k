@@ -1,0 +1,99 @@
+# Track2 v21 precision80 Candidate
+
+- Accepted label changes: `68`
+- Tier counts: `{'consensus': 55, 'expansion': 6, 'reference': 7}`
+- Cross-quadrant changes: `12`
+- Top emotion: `calm` (53.3%)
+- Missing emotions: `none`
+- Label consistency issues: `0`
+
+## Transition Counts
+
+- `alarmed->frustrated`: 1
+- `alarmed->sad`: 1
+- `annoyed->calm`: 2
+- `aroused->calm`: 1
+- `aroused->excited`: 1
+- `calm->bored`: 1
+- `calm->content`: 1
+- `calm->tired`: 1
+- `content->calm`: 40
+- `content->excited`: 3
+- `excited->happy`: 2
+- `glad->content`: 1
+- `happy->excited`: 1
+- `sad->calm`: 2
+- `tired->bored`: 2
+- `tired->calm`: 1
+- `tired->sad`: 7
+
+## Accepted Changes
+
+- `track2_0030`: alarmed->sad tier=consensus score=3.178
+- `track2_0044`: content->calm tier=consensus score=4.095
+- `track2_0052`: content->calm tier=consensus score=3.267
+- `track2_0063`: tired->sad tier=consensus score=3.674
+- `track2_0087`: content->calm tier=consensus score=3.592
+- `track2_0099`: content->calm tier=consensus score=3.730
+- `track2_0169`: content->calm tier=consensus score=3.749
+- `track2_0179`: tired->sad tier=consensus score=2.808
+- `track2_0196`: tired->sad tier=consensus score=3.843
+- `track2_0210`: content->calm tier=reference score=5.277
+- `track2_0221`: tired->sad tier=expansion score=2.249
+- `track2_0233`: tired->sad tier=consensus score=3.515
+- `track2_0263`: excited->happy tier=expansion score=2.289
+- `track2_0270`: content->calm tier=consensus score=3.898
+- `track2_0280`: content->calm tier=consensus score=3.828
+- `track2_0319`: calm->bored tier=consensus score=3.228
+- `track2_0335`: content->calm tier=consensus score=3.450
+- `track2_0382`: content->excited tier=reference score=5.072
+- `track2_0396`: content->calm tier=consensus score=3.370
+- `track2_0410`: content->calm tier=consensus score=4.111
+- `track2_0412`: alarmed->frustrated tier=expansion score=2.223
+- `track2_0441`: annoyed->calm tier=consensus score=3.664
+- `track2_0442`: content->calm tier=consensus score=3.315
+- `track2_0443`: content->calm tier=consensus score=3.792
+- `track2_0451`: content->calm tier=consensus score=3.393
+- `track2_0455`: content->calm tier=consensus score=3.711
+- `track2_0481`: content->calm tier=consensus score=3.541
+- `track2_0504`: tired->bored tier=consensus score=3.448
+- `track2_0505`: tired->calm tier=consensus score=4.267
+- `track2_0515`: content->calm tier=consensus score=3.970
+- `track2_0555`: content->calm tier=reference score=5.241
+- `track2_0557`: content->calm tier=consensus score=3.675
+- `track2_0567`: tired->sad tier=expansion score=2.107
+- `track2_0575`: tired->bored tier=consensus score=3.046
+- `track2_0580`: content->calm tier=consensus score=3.997
+- `track2_0618`: sad->calm tier=consensus score=3.596
+- `track2_0627`: sad->calm tier=consensus score=3.215
+- `track2_0635`: happy->excited tier=consensus score=2.721
+- `track2_0651`: content->calm tier=consensus score=4.181
+- `track2_0678`: content->calm tier=consensus score=3.533
+- `track2_0681`: content->calm tier=consensus score=3.303
+- `track2_0682`: calm->content tier=expansion score=2.286
+- `track2_0704`: content->calm tier=consensus score=3.992
+- `track2_0718`: content->calm tier=consensus score=3.969
+- `track2_0765`: content->calm tier=consensus score=4.186
+- `track2_0779`: content->excited tier=consensus score=3.631
+- `track2_0781`: content->calm tier=consensus score=3.260
+- `track2_0800`: content->calm tier=consensus score=3.667
+- `track2_0806`: annoyed->calm tier=consensus score=3.363
+- `track2_0809`: content->calm tier=consensus score=3.803
+- `track2_0818`: glad->content tier=expansion score=2.019
+- `track2_0830`: content->calm tier=consensus score=3.447
+- `track2_0832`: content->calm tier=consensus score=3.703
+- `track2_0869`: content->calm tier=reference score=5.351
+- `track2_0871`: content->calm tier=reference score=5.156
+- `track2_0873`: aroused->calm tier=reference score=2.768
+- `track2_0880`: content->calm tier=consensus score=4.093
+- `track2_0899`: content->calm tier=consensus score=3.247
+- `track2_0914`: content->calm tier=reference score=5.107
+- `track2_0925`: calm->tired tier=consensus score=3.528
+- `track2_0930`: tired->sad tier=consensus score=3.162
+- `track2_0941`: content->calm tier=consensus score=3.941
+- `track2_0942`: content->calm tier=consensus score=4.026
+- `track2_0956`: content->calm tier=consensus score=4.192
+- `track2_0964`: excited->happy tier=consensus score=3.097
+- `track2_0982`: aroused->excited tier=consensus score=2.801
+- `track2_0996`: content->calm tier=consensus score=3.722
+- `track2_0998`: content->excited tier=consensus score=3.519
