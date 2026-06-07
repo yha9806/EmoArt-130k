@@ -1,0 +1,89 @@
+{
+  "method": {
+    "batch_size": 32,
+    "device": "mps",
+    "fid_feature_dim": 512,
+    "name": "local_inception_v3_fid_like_sanity",
+    "note": "Not the official hidden evaluator. Uses torchvision InceptionV3 pool features, torchvision-style resize/normalization, sampled local EmoArt reference images, and an optional deterministic Gaussian random projection before Fréchet distance.",
+    "projection": "deterministic Gaussian random projection seeded by reference_seed when fid_feature_dim < Inception feature dim",
+    "reference_count": 2048,
+    "reference_feature_shape": [
+      2048,
+      512
+    ],
+    "reference_limit": 2048,
+    "reference_root": "/Users/yhryzy/dev/emoart-challenge/data/EmoArt-130k",
+    "reference_seed": 20260607,
+    "reference_styles": "all_tar_styles"
+  },
+  "packages": [
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 58.526207,
+      "image_count": 1000,
+      "image_dir": "submissions/track1/images",
+      "package": "current",
+      "submission_json": "submissions/track1_submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 62.414763,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images",
+      "package": "partial757",
+      "submission_json": "submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 63.010429,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_v3_gate7_20260606/images",
+      "package": "v3_gate7",
+      "submission_json": "submissions/track1_candidate_v3_gate7_20260606/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 63.098811,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images",
+      "package": "full1000_no_fallback",
+      "submission_json": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 63.287051,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_v2_strict_subset_20260606/images",
+      "package": "strict_subset",
+      "submission_json": "submissions/track1_candidate_v2_strict_subset_20260606/submission.json"
+    },
+    {
+      "feature_shape": [
+        1000,
+        512
+      ],
+      "fid_like": 63.308289,
+      "image_count": 1000,
+      "image_dir": "submissions/track1_candidate_v2_safe_subset_20260606/images",
+      "package": "safe_subset",
+      "submission_json": "submissions/track1_candidate_v2_safe_subset_20260606/submission.json"
+    }
+  ],
+  "recommended_by_fid_like": "current",
+  "wall_seconds": 389.82
+}
