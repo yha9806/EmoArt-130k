@@ -1,0 +1,85 @@
+{
+  "method": "track2_v19_candidate_ladder_outputs_v1",
+  "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "calibrated_evidence_json": "experiments/track2_v19_aggregate_calibration_20260607/calibrated_evidence.json",
+  "candidates": {
+    "precision": {
+      "accepted_label_changes": 16,
+      "paths": {
+        "out_json": "submissions/track2_submission_v19_precision_candidate.json",
+        "out_zip": "submissions/track2_submission_v19_precision_candidate.zip",
+        "report_json": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_precision_candidate_report.json",
+        "report_md": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_precision_candidate_report.md"
+      },
+      "transition_counts": {
+        "annoyed->calm": 1,
+        "content->calm": 5,
+        "content->excited": 2,
+        "excited->happy": 1,
+        "tired->bored": 2,
+        "tired->calm": 1,
+        "tired->sad": 4
+      },
+      "top_emotion": "calm",
+      "top_emotion_share": 0.497
+    },
+    "balanced": {
+      "accepted_label_changes": 29,
+      "paths": {
+        "out_json": "submissions/track2_submission_v19_balanced_candidate.json",
+        "out_zip": "submissions/track2_submission_v19_balanced_candidate.zip",
+        "report_json": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_balanced_candidate_report.json",
+        "report_md": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_balanced_candidate_report.md"
+      },
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "annoyed->calm": 2,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->tired": 1,
+        "content->calm": 5,
+        "content->excited": 3,
+        "excited->happy": 2,
+        "happy->excited": 1,
+        "sad->calm": 2,
+        "tired->bored": 2,
+        "tired->calm": 1,
+        "tired->sad": 7
+      },
+      "top_emotion": "calm",
+      "top_emotion_share": 0.498
+    },
+    "probe": {
+      "accepted_label_changes": 39,
+      "paths": {
+        "out_json": "submissions/track2_submission_v19_probe_candidate.json",
+        "out_zip": "submissions/track2_submission_v19_probe_candidate.zip",
+        "report_json": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_probe_candidate_report.json",
+        "report_md": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_probe_candidate_report.md"
+      },
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "alarmed->sad": 1,
+        "annoyed->calm": 3,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->excited": 1,
+        "calm->tired": 1,
+        "content->calm": 5,
+        "content->excited": 3,
+        "excited->calm": 1,
+        "excited->happy": 2,
+        "happy->calm": 1,
+        "happy->excited": 1,
+        "sad->calm": 3,
+        "tired->bored": 2,
+        "tired->calm": 4,
+        "tired->content": 1,
+        "tired->sad": 7
+      },
+      "top_emotion": "calm",
+      "top_emotion_share": 0.504
+    }
+  },
+  "formal_submission_overwritten": false
+}

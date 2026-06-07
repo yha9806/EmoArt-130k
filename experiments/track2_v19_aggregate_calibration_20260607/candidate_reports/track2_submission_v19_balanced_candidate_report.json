@@ -1,0 +1,48 @@
+{
+  "method": "track2_v19_candidate_summary_v1",
+  "row_count": 1000,
+  "candidates": {
+    "balanced": {
+      "profile": "balanced",
+      "accepted_label_changes": 29,
+      "transition_counts": {
+        "alarmed->frustrated": 1,
+        "annoyed->calm": 2,
+        "aroused->excited": 1,
+        "calm->bored": 1,
+        "calm->tired": 1,
+        "content->calm": 5,
+        "content->excited": 3,
+        "excited->happy": 2,
+        "happy->excited": 1,
+        "sad->calm": 2,
+        "tired->bored": 2,
+        "tired->calm": 1,
+        "tired->sad": 7
+      },
+      "distribution": {
+        "alarmed": 53,
+        "annoyed": 20,
+        "aroused": 28,
+        "bored": 23,
+        "calm": 498,
+        "content": 230,
+        "excited": 18,
+        "frustrated": 47,
+        "glad": 5,
+        "happy": 9,
+        "sad": 38,
+        "tired": 31
+      },
+      "top_emotion": "calm",
+      "top_emotion_share": 0.498
+    }
+  },
+  "paths": {
+    "out_json": "submissions/track2_submission_v19_balanced_candidate.json",
+    "out_zip": "submissions/track2_submission_v19_balanced_candidate.zip",
+    "report_json": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_balanced_candidate_report.json",
+    "report_md": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_balanced_candidate_report.md"
+  },
+  "accepted_label_changes": 29
+}

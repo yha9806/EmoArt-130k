@@ -1,0 +1,42 @@
+{
+  "method": "track2_v19_candidate_summary_v1",
+  "row_count": 1000,
+  "candidates": {
+    "precision": {
+      "profile": "precision",
+      "accepted_label_changes": 16,
+      "transition_counts": {
+        "annoyed->calm": 1,
+        "content->calm": 5,
+        "content->excited": 2,
+        "excited->happy": 1,
+        "tired->bored": 2,
+        "tired->calm": 1,
+        "tired->sad": 4
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 21,
+        "aroused": 29,
+        "bored": 22,
+        "calm": 497,
+        "content": 231,
+        "excited": 16,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 9,
+        "sad": 37,
+        "tired": 33
+      },
+      "top_emotion": "calm",
+      "top_emotion_share": 0.497
+    }
+  },
+  "paths": {
+    "out_json": "submissions/track2_submission_v19_precision_candidate.json",
+    "out_zip": "submissions/track2_submission_v19_precision_candidate.zip",
+    "report_json": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_precision_candidate_report.json",
+    "report_md": "experiments/track2_v19_aggregate_calibration_20260607/candidate_reports/track2_submission_v19_precision_candidate_report.md"
+  },
+  "accepted_label_changes": 16
+}

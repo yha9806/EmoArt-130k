@@ -7,12 +7,17 @@ import unittest
 from pathlib import Path
 
 from affectiveart.track2_v19_aggregate_calibration import (
+    apply_v19_changes,
     build_v19_calibrated_evidence,
     derive_aggregate_targets,
     load_leaderboard_aggregates,
     score_v19_evidence_row,
+    select_v19_changes,
     summarize_781601_regression_guard,
+    summarize_v19_candidate,
     write_calibrated_evidence_outputs,
+    write_v19_candidate_ladder_outputs,
+    write_v19_candidate_outputs,
 )
 
 
@@ -215,6 +220,200 @@ class Track2V19AggregateCalibrationTests(unittest.TestCase):
             self.assertTrue((out_dir / "calibrated_evidence.csv").exists())
             self.assertTrue((out_dir / "781601_regression_guard.json").exists())
             self.assertNotIn(b"\r", (out_dir / "calibrated_evidence.csv").read_bytes())
+
+    def test_select_v19_changes_keeps_highest_scored_unique_sample(self) -> None:
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "tired",
+                "proposed_emotion": "sad",
+                "transition": "tired->sad",
+                "v19_score": 2.5,
+                "v19_decision": "accept_candidate",
+            },
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "tired",
+                "proposed_emotion": "calm",
+                "transition": "tired->calm",
+                "v19_score": 2.4,
+                "v19_decision": "accept_candidate",
+            },
+        ]
+        selected = select_v19_changes(rows, profile="precision", base_distribution={"tired": 5})
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]["transition"], "tired->sad")
+
+    def test_apply_v19_changes_repairs_valence_and_arousal_from_emotion(self) -> None:
+        base_rows = [
+            {
+                "sample_id": "track2_0001",
+                "emotion": "tired",
+                "emotional_valence": "Negative",
+                "emotional_arousal_level": "Low",
+                "caption": "A subdued figure in a quiet interior.",
+                "brushstroke": "Soft brushwork.",
+                "composition": "Centered composition.",
+                "color": "Muted colors.",
+                "line": "Restrained lines.",
+                "light": "Dim light.",
+            }
+        ]
+        rows = apply_v19_changes(
+            base_rows,
+            [
+                {
+                    "sample_id": "track2_0001",
+                    "current_emotion": "tired",
+                    "proposed_emotion": "excited",
+                    "transition": "tired->excited",
+                    "v19_score": 3.0,
+                    "v19_decision": "accept_candidate",
+                }
+            ],
+        )
+        self.assertEqual(rows[0]["emotion"], "excited")
+        self.assertEqual(rows[0]["emotional_valence"], "Positive")
+        self.assertEqual(rows[0]["emotional_arousal_level"], "High")
+
+    def test_write_v19_candidate_outputs_rejects_formal_submission_names(self) -> None:
+        base_rows = [
+            {
+                "sample_id": "track2_0001",
+                "emotion": "tired",
+                "emotional_valence": "Negative",
+                "emotional_arousal_level": "Low",
+                "caption": "A subdued figure in a quiet interior.",
+                "brushstroke": "Soft brushwork.",
+                "composition": "Centered composition.",
+                "color": "Muted colors.",
+                "line": "Restrained lines.",
+                "light": "Dim light.",
+            }
+        ]
+        with self.assertRaises(ValueError):
+            write_v19_candidate_outputs(
+                base_rows=base_rows,
+                selected_changes=[],
+                out_json=Path("submissions/track2_submission.json"),
+                out_zip=Path("submissions/track2_submission_v19_precision_candidate.zip"),
+                report_json=Path("experiments/v19_report.json"),
+                report_md=Path("experiments/v19_report.md"),
+                profile="precision",
+            )
+
+    def test_write_v19_candidate_outputs_writes_side_path_zip_and_report(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_rows = [
+                {
+                    "sample_id": "track2_0001",
+                    "emotion": "tired",
+                    "emotional_valence": "Negative",
+                    "emotional_arousal_level": "Low",
+                    "caption": "A subdued figure in a quiet interior.",
+                    "brushstroke": "Soft brushwork.",
+                    "composition": "Centered composition.",
+                    "color": "Muted colors.",
+                    "line": "Restrained lines.",
+                    "light": "Dim light.",
+                }
+            ]
+            report = write_v19_candidate_outputs(
+                base_rows=base_rows,
+                selected_changes=[
+                    {
+                        "sample_id": "track2_0001",
+                        "current_emotion": "tired",
+                        "proposed_emotion": "sad",
+                        "transition": "tired->sad",
+                        "v19_score": 2.5,
+                        "v19_decision": "accept_candidate",
+                    }
+                ],
+                out_json=root / "track2_submission_v19_precision_candidate.json",
+                out_zip=root / "track2_submission_v19_precision_candidate.zip",
+                report_json=root / "candidate_report.json",
+                report_md=root / "candidate_report.md",
+                profile="precision",
+            )
+            self.assertEqual(report["accepted_label_changes"], 1)
+            self.assertTrue((root / "track2_submission_v19_precision_candidate.json").exists())
+            import zipfile
+
+            with zipfile.ZipFile(root / "track2_submission_v19_precision_candidate.zip") as zf:
+                self.assertEqual(zf.namelist(), ["submission.json"])
+
+    def test_summarize_v19_candidate_reports_transition_distribution(self) -> None:
+        report = summarize_v19_candidate(
+            base_rows=[{"sample_id": "track2_0001", "emotion": "tired"}],
+            selected_changes=[
+                {
+                    "sample_id": "track2_0001",
+                    "current_emotion": "tired",
+                    "proposed_emotion": "sad",
+                    "transition": "tired->sad",
+                    "v19_score": 2.5,
+                    "v19_decision": "accept_candidate",
+                }
+            ],
+            profile="precision",
+        )
+        self.assertEqual(report["candidates"]["precision"]["accepted_label_changes"], 1)
+        self.assertEqual(report["candidates"]["precision"]["transition_counts"], {"tired->sad": 1})
+
+    def test_write_v19_candidate_ladder_outputs_writes_three_profiles(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            evidence_json = root / "calibrated_evidence.json"
+            out_dir = root / "experiments"
+            submissions_dir = root / "submissions"
+            base_json.write_text(
+                json.dumps(
+                    [
+                        {
+                            "sample_id": "track2_0001",
+                            "emotion": "tired",
+                            "emotional_valence": "Negative",
+                            "emotional_arousal_level": "Low",
+                            "caption": "A subdued figure in a quiet interior.",
+                            "brushstroke": "Soft brushwork.",
+                            "composition": "Centered composition.",
+                            "color": "Muted colors.",
+                            "line": "Restrained lines.",
+                            "light": "Dim light.",
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            evidence_json.write_text(
+                json.dumps(
+                    [
+                        {
+                            "sample_id": "track2_0001",
+                            "current_emotion": "tired",
+                            "proposed_emotion": "sad",
+                            "transition": "tired->sad",
+                            "v19_score": 2.5,
+                            "v19_decision": "accept_candidate",
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            report = write_v19_candidate_ladder_outputs(
+                base_json=base_json,
+                calibrated_evidence_json=evidence_json,
+                out_dir=out_dir,
+                submissions_dir=submissions_dir,
+            )
+
+            self.assertEqual(set(report["candidates"]), {"precision", "balanced", "probe"})
+            self.assertTrue((submissions_dir / "track2_submission_v19_precision_candidate.zip").exists())
+            self.assertTrue((out_dir / "candidate_reports" / "track2_submission_v19_precision_candidate_report.json").exists())
 
 
 if __name__ == "__main__":
