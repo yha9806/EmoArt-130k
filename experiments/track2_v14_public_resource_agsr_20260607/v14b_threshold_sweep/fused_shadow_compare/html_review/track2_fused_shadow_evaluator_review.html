@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 Fused Shadow Evaluator</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #17202a; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 28px; }
+    th, td { border: 1px solid #d7dde5; padding: 8px; text-align: left; }
+    th { background: #eef2f6; }
+    .warning { padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }
+  </style>
+</head>
+<body>
+  <h1>Track2 Fused Shadow Evaluator</h1>
+  <p class="warning">This is a local fused shadow score. It is not the official Codabench score and must not be treated as hidden-test ground truth.</p>
+  <p>Classification comes from the calibrated local shadow evaluator. Description is conservatively adjusted by VULCA/Judge++ entailment risk delta with a small capped effect, so text-risk improvements can break ties but cannot override classification hold decisions.</p>
+  <table>
+    <thead><tr><th>candidate</th><th>decision</th><th>overall lower</th><th>overall expected</th><th>description expected</th><th>VULCA delta</th><th>VULCA issues</th><th>changes</th><th>cross quadrant</th></tr></thead>
+    <tbody><tr><td>official_782683_v12_stable_probe</td><td>recommend_submit</td><td>0.834595</td><td>0.838104</td><td>0.953057</td><td>0.003390</td><td>50</td><td>0</td><td>0</td></tr>
+<tr><td>official_779605_moe_v2_anchor</td><td>recommend_submit</td><td>0.833408</td><td>0.836408</td><td>0.949667</td><td>0.000000</td><td>62</td><td>0</td><td>0</td></tr>
+<tr><td>v14_public_resource_agsr_max</td><td>recommend_submit</td><td>0.832359</td><td>0.836483</td><td>0.949667</td><td>0.000000</td><td>62</td><td>3</td><td>0</td></tr>
+<tr><td>v14b_sameq_clip094_exactnear</td><td>recommend_submit</td><td>0.832359</td><td>0.836483</td><td>0.949667</td><td>0.000000</td><td>62</td><td>3</td><td>0</td></tr>
+<tr><td>v14b_sameq_clip095_exactnear</td><td>recommend_submit</td><td>0.832359</td><td>0.836483</td><td>0.949667</td><td>0.000000</td><td>62</td><td>3</td><td>0</td></tr>
+<tr><td>v14b_sameq_clip095</td><td>recommend_submit</td><td>0.831284</td><td>0.836534</td><td>0.949667</td><td>0.000000</td><td>62</td><td>6</td><td>0</td></tr>
+<tr><td>v14b_sameq_clip094</td><td>recommend_submit</td><td>0.824209</td><td>0.836508</td><td>0.949667</td><td>0.000000</td><td>62</td><td>23</td><td>0</td></tr>
+<tr><td>v14b_sameq_clip093</td><td>recommend_submit</td><td>0.809769</td><td>0.837068</td><td>0.949667</td><td>0.000000</td><td>62</td><td>48</td><td>0</td></tr>
+<tr><td>official_781601_v3_mid</td><td>recommend_hold</td><td>0.779369</td><td>0.835496</td><td>0.953017</td><td>0.003350</td><td>52</td><td>85</td><td>0</td></tr></tbody>
+  </table>
+</body>
+</html>
