@@ -1,0 +1,1257 @@
+{
+  "method": "track2_v17_classification_calibration_candidate_v1",
+  "profile": "aggressive_probe",
+  "row_count": 1000,
+  "input_change_count": 54,
+  "accepted_label_changes": 54,
+  "transition_counts": {
+    "alarmed->sad": 4,
+    "tired->calm": 5,
+    "tired->sad": 5,
+    "aroused->bored": 1,
+    "calm->excited": 1,
+    "excited->content": 1,
+    "calm->alarmed": 1,
+    "sad->calm": 4,
+    "tired->content": 1,
+    "frustrated->happy": 1,
+    "excited->happy": 2,
+    "calm->bored": 1,
+    "excited->calm": 1,
+    "annoyed->calm": 3,
+    "content->excited": 4,
+    "calm->aroused": 1,
+    "calm->annoyed": 2,
+    "tired->bored": 2,
+    "calm->sad": 1,
+    "aroused->annoyed": 1,
+    "aroused->alarmed": 1,
+    "content->happy": 1,
+    "glad->content": 1,
+    "aroused->calm": 1,
+    "alarmed->calm": 2,
+    "sad->alarmed": 1,
+    "bored->calm": 1,
+    "frustrated->annoyed": 1,
+    "calm->tired": 1,
+    "happy->calm": 1,
+    "aroused->excited": 1
+  },
+  "distribution": {
+    "alarmed": 51,
+    "annoyed": 23,
+    "aroused": 25,
+    "bored": 23,
+    "calm": 500,
+    "content": 236,
+    "excited": 17,
+    "frustrated": 44,
+    "glad": 4,
+    "happy": 11,
+    "sad": 38,
+    "tired": 28
+  },
+  "missing_emotions": [],
+  "top_emotion": "calm",
+  "top_emotion_share": 0.5,
+  "label_consistency_issue_count": 0,
+  "label_consistency_issues": [],
+  "accepted_changes": [
+    {
+      "sample_id": "track2_0008",
+      "transition": "alarmed->sad",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.11212,
+      "max_confidence": 0.669499,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0030",
+      "transition": "alarmed->sad",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.467842,
+      "max_confidence": 0.729156,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0056",
+      "transition": "tired->calm",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.412097,
+      "max_confidence": 0.700287,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0063",
+      "transition": "tired->sad",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.956087,
+      "max_confidence": 0.789427,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0070",
+      "transition": "aroused->bored",
+      "before": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "bored",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.061945,
+      "max_confidence": 0.667138,
+      "model_vote_count": 1,
+      "model_sources": "dinov2",
+      "all_sources": "dinov2,public_clean,public_inclusive",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0090",
+      "transition": "calm->excited",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 2.214131,
+      "max_confidence": 0.726506,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0142",
+      "transition": "excited->content",
+      "before": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.10583,
+      "max_confidence": 0.8,
+      "model_vote_count": 1,
+      "model_sources": "gemini35",
+      "all_sources": "gemini35,public_clean",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": "The serene, stylized depiction of the figures with neutral facial expressions and the muted color palette evoke a sense of peaceful contentment rather than high-arousal excitement."
+    },
+    {
+      "sample_id": "track2_0145",
+      "transition": "calm->alarmed",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.140453,
+      "max_confidence": 0.677588,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0196",
+      "transition": "tired->sad",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 3.129731,
+      "max_confidence": 0.822765,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0211",
+      "transition": "tired->calm",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.456233,
+      "max_confidence": 0.69046,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0213",
+      "transition": "sad->calm",
+      "before": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.154862,
+      "max_confidence": 0.604838,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0215",
+      "transition": "tired->content",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.959172,
+      "max_confidence": 0.807491,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0233",
+      "transition": "tired->sad",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.813789,
+      "max_confidence": 0.672189,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0256",
+      "transition": "frustrated->happy",
+      "before": {
+        "emotion": "frustrated",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "happy",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.140839,
+      "max_confidence": 0.658113,
+      "model_vote_count": 1,
+      "model_sources": "dinov2",
+      "all_sources": "dinov2,public_clean",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0263",
+      "transition": "excited->happy",
+      "before": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "happy",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.95715,
+      "max_confidence": 0.675357,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0319",
+      "transition": "calm->bored",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "bored",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.511752,
+      "max_confidence": 0.72914,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0345",
+      "transition": "tired->calm",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.317096,
+      "max_confidence": 0.644785,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0361",
+      "transition": "excited->calm",
+      "before": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.207299,
+      "max_confidence": 0.617989,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0369",
+      "transition": "annoyed->calm",
+      "before": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.39082,
+      "max_confidence": 0.666584,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0382",
+      "transition": "content->excited",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 3.836488,
+      "max_confidence": 0.950433,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,public_near_public_duplicate,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": "near_public_duplicate supports excited | near_public_duplicate supports excited"
+    },
+    {
+      "sample_id": "track2_0441",
+      "transition": "annoyed->calm",
+      "before": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.956602,
+      "max_confidence": 0.699742,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0457",
+      "transition": "calm->aroused",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.925173,
+      "max_confidence": 0.745301,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0460",
+      "transition": "calm->annoyed",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.092063,
+      "max_confidence": 0.85,
+      "model_vote_count": 1,
+      "model_sources": "gemini35",
+      "all_sources": "gemini35,public_clean",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": "The furrowed brows, sharp sideways glances, and tense facial expressions of both figures convey a strong sense of dramatic tension and annoyance rather than calmness."
+    },
+    {
+      "sample_id": "track2_0480",
+      "transition": "alarmed->sad",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 0.959167,
+      "max_confidence": 0.628104,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0504",
+      "transition": "tired->bored",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "bored",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.742527,
+      "max_confidence": 0.668029,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0505",
+      "transition": "tired->calm",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 3.539626,
+      "max_confidence": 0.812231,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0567",
+      "transition": "tired->sad",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.777204,
+      "max_confidence": 0.757149,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0575",
+      "transition": "tired->bored",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "bored",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.342766,
+      "max_confidence": 0.699128,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0591",
+      "transition": "calm->sad",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.735926,
+      "max_confidence": 0.72836,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0602",
+      "transition": "aroused->annoyed",
+      "before": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.960418,
+      "max_confidence": 0.712847,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0618",
+      "transition": "sad->calm",
+      "before": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.884137,
+      "max_confidence": 0.691262,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0627",
+      "transition": "sad->calm",
+      "before": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.51745,
+      "max_confidence": 0.637413,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0666",
+      "transition": "alarmed->sad",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.879437,
+      "max_confidence": 0.653745,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0696",
+      "transition": "sad->calm",
+      "before": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.171869,
+      "max_confidence": 0.638893,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0733",
+      "transition": "aroused->alarmed",
+      "before": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.07811,
+      "max_confidence": 0.8,
+      "model_vote_count": 1,
+      "model_sources": "gemini35",
+      "all_sources": "gemini35,public_inclusive",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": "The fierce expression of the warrior and the ominous dragon claw emerging from dark clouds evoke a sense of dramatic tension and alarm rather than positive arousal."
+    },
+    {
+      "sample_id": "track2_0747",
+      "transition": "tired->calm",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.025574,
+      "max_confidence": 0.621559,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0770",
+      "transition": "content->happy",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "happy",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.364568,
+      "max_confidence": 0.745742,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0779",
+      "transition": "content->excited",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 2.917541,
+      "max_confidence": 0.867206,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0806",
+      "transition": "annoyed->calm",
+      "before": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.652931,
+      "max_confidence": 0.686459,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0818",
+      "transition": "glad->content",
+      "before": {
+        "emotion": "glad",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.691878,
+      "max_confidence": 0.622961,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0873",
+      "transition": "aroused->calm",
+      "before": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.675997,
+      "max_confidence": 0.954631,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,public_near_public_duplicate,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": "near_public_duplicate supports calm | near_public_duplicate supports calm"
+    },
+    {
+      "sample_id": "track2_0890",
+      "transition": "alarmed->calm",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.3759,
+      "max_confidence": 0.603135,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0891",
+      "transition": "sad->alarmed",
+      "before": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.341281,
+      "max_confidence": 0.675462,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0919",
+      "transition": "bored->calm",
+      "before": {
+        "emotion": "bored",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.678096,
+      "max_confidence": 0.613388,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0922",
+      "transition": "frustrated->annoyed",
+      "before": {
+        "emotion": "frustrated",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.335526,
+      "max_confidence": 0.652307,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0923",
+      "transition": "alarmed->calm",
+      "before": {
+        "emotion": "alarmed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 1.800564,
+      "max_confidence": 0.686982,
+      "model_vote_count": 2,
+      "model_sources": "clip,siglip2",
+      "all_sources": "clip,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0925",
+      "transition": "calm->tired",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.814453,
+      "max_confidence": 0.805333,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0927",
+      "transition": "content->excited",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.457303,
+      "max_confidence": 0.635675,
+      "model_vote_count": 2,
+      "model_sources": "dinov2,siglip2",
+      "all_sources": "dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0930",
+      "transition": "tired->sad",
+      "before": {
+        "emotion": "tired",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "sad",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.45873,
+      "max_confidence": 0.676176,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0964",
+      "transition": "excited->happy",
+      "before": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "happy",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 2.395768,
+      "max_confidence": 0.669219,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0974",
+      "transition": "happy->calm",
+      "before": {
+        "emotion": "happy",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "support_score": 2.339337,
+      "max_confidence": 0.641081,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0976",
+      "transition": "calm->annoyed",
+      "before": {
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "annoyed",
+        "emotional_valence": "Negative",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 1.523116,
+      "max_confidence": 0.697109,
+      "model_vote_count": 2,
+      "model_sources": "clip,dinov2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0982",
+      "transition": "aroused->excited",
+      "before": {
+        "emotion": "aroused",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 2.113308,
+      "max_confidence": 0.712512,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    },
+    {
+      "sample_id": "track2_0998",
+      "transition": "content->excited",
+      "before": {
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low"
+      },
+      "after": {
+        "emotion": "excited",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "High"
+      },
+      "support_score": 2.812427,
+      "max_confidence": 0.68756,
+      "model_vote_count": 3,
+      "model_sources": "clip,dinov2,siglip2",
+      "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+      "gate_decision": "accept",
+      "gate_reasons": "meets_profile_thresholds",
+      "rationale": ""
+    }
+  ],
+  "formal_submission_overwritten": false,
+  "paths": {
+    "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+    "out_json": "submissions/track2_submission_v17_aggressive_probe_candidate.json",
+    "out_zip": "submissions/track2_submission_v17_aggressive_probe_candidate.zip",
+    "report_json": "experiments/track2_v17_classification_calibration_20260607/candidate_reports/track2_submission_v17_aggressive_probe_candidate_report.json",
+    "report_md": "experiments/track2_v17_classification_calibration_20260607/candidate_reports/track2_submission_v17_aggressive_probe_candidate_report.md"
+  }
+}

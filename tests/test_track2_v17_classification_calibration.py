@@ -3,15 +3,19 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
+from affectiveart.challenge import TRACK2_JSON_SUBMISSION_KEYS
 from affectiveart.track2_v17_classification_calibration import (
+    apply_v17_changes,
     build_evidence_rows,
     DEFAULT_PREDICTION_SOURCES,
     load_prediction_sources,
     parse_official_failed_transition_counts,
     select_v17_changes,
     v17_gate_for_evidence,
+    write_v17_candidate_outputs,
 )
 
 
@@ -34,6 +38,23 @@ def _evidence_row(**overrides):
         "failed_transition_count": 0,
         "current_label_issue_count": 0,
         "rationale": "",
+    }
+    row.update(overrides)
+    return row
+
+
+def _track2_row(**overrides):
+    row = {
+        "sample_id": "track2_0001",
+        "emotion": "content",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low",
+        "overall_caption": "A quiet figure beside a window.",
+        "brushstroke": "Soft layered strokes.",
+        "composition": "Centered subject with open space.",
+        "color": "Muted green and gold.",
+        "line": "Gentle curved lines.",
+        "light": "Diffuse afternoon light.",
     }
     row.update(overrides)
     return row
@@ -428,6 +449,140 @@ class Track2V17ClassificationCalibrationTests(unittest.TestCase):
         ]
         selected = select_v17_changes(rows, profile="balanced", current_distribution={"glad": 3, "content": 10})
         self.assertEqual([row["sample_id"] for row in selected], ["track2_glad_0001"])
+
+    def test_apply_v17_changes_repairs_valence_arousal_for_proposed_emotion(self) -> None:
+        candidate_rows, report = apply_v17_changes(
+            [_track2_row()],
+            [_evidence_row(proposed_emotion="alarmed", transition="content->alarmed")],
+            profile="safe",
+        )
+        self.assertEqual(candidate_rows[0]["emotion"], "alarmed")
+        self.assertEqual(candidate_rows[0]["emotional_valence"], "Negative")
+        self.assertEqual(candidate_rows[0]["emotional_arousal_level"], "High")
+        self.assertEqual(report["accepted_label_changes"], 1)
+        self.assertEqual(report["label_consistency_issue_count"], 0)
+
+    def test_apply_v17_changes_ignores_no_op_proposed_emotion(self) -> None:
+        candidate_rows, report = apply_v17_changes(
+            [_track2_row()],
+            [_evidence_row(proposed_emotion="content", transition="content->content")],
+            profile="safe",
+        )
+        self.assertEqual(candidate_rows[0]["emotion"], "content")
+        self.assertEqual(report["accepted_label_changes"], 0)
+        self.assertEqual(report["accepted_changes"], [])
+
+    def test_apply_v17_changes_preserves_text_fields_and_submission_key_order(self) -> None:
+        base = _track2_row(z_extra="ignored", overall_caption="Keep this exact caption.")
+        candidate_rows, _report = apply_v17_changes(
+            [base],
+            [_evidence_row(proposed_emotion="sad", transition="content->sad")],
+            profile="balanced",
+        )
+        self.assertEqual(list(candidate_rows[0]), TRACK2_JSON_SUBMISSION_KEYS)
+        self.assertEqual(candidate_rows[0]["overall_caption"], "Keep this exact caption.")
+        self.assertEqual(candidate_rows[0]["brushstroke"], base["brushstroke"])
+        self.assertNotIn("z_extra", candidate_rows[0])
+
+    def test_write_v17_candidate_outputs_writes_zip_with_submission_json_only(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text(json.dumps([_track2_row()]), encoding="utf-8")
+            out_json = root / "submissions" / "track2_submission_v17_safe_candidate.json"
+            out_zip = root / "submissions" / "track2_submission_v17_safe_candidate.zip"
+            report_json = root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.json"
+            report_md = root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.md"
+
+            report = write_v17_candidate_outputs(
+                base_json=base_json,
+                changes=[_evidence_row(proposed_emotion="alarmed", transition="content->alarmed")],
+                profile="safe",
+                out_json=out_json,
+                out_zip=out_zip,
+                report_json=report_json,
+                report_md=report_md,
+            )
+
+            with zipfile.ZipFile(out_zip) as archive:
+                self.assertEqual(archive.namelist(), ["submission.json"])
+                self.assertEqual(archive.getinfo("submission.json").date_time, (1980, 1, 1, 0, 0, 0))
+                zipped_payload = json.loads(archive.read("submission.json").decode("utf-8"))
+            self.assertEqual(zipped_payload, json.loads(out_json.read_text(encoding="utf-8")))
+            self.assertEqual(report["accepted_label_changes"], 1)
+            self.assertFalse(report["formal_submission_overwritten"])
+            self.assertEqual(report["paths"]["out_zip"], str(out_zip))
+
+    def test_write_v17_candidate_outputs_rejects_formal_submission_names(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text(json.dumps([_track2_row()]), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                write_v17_candidate_outputs(
+                    base_json=base_json,
+                    changes=[],
+                    profile="safe",
+                    out_json=root / "track2_submission.json",
+                    out_zip=root / "submissions" / "track2_submission_v17_safe_candidate.zip",
+                    report_json=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.json",
+                    report_md=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.md",
+                )
+
+    def test_write_v17_candidate_outputs_rejects_formal_report_md_without_overwrite(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text(json.dumps([_track2_row()]), encoding="utf-8")
+            formal_report_md = root / "track2_submission.json"
+            formal_report_md.write_text("do not overwrite\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                write_v17_candidate_outputs(
+                    base_json=base_json,
+                    changes=[],
+                    profile="safe",
+                    out_json=root / "submissions" / "track2_submission_v17_safe_candidate.json",
+                    out_zip=root / "submissions" / "track2_submission_v17_safe_candidate.zip",
+                    report_json=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.json",
+                    report_md=formal_report_md,
+                )
+            self.assertEqual(formal_report_md.read_text(encoding="utf-8"), "do not overwrite\n")
+
+    def test_write_v17_candidate_outputs_rejects_non_v17_report_side_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text(json.dumps([_track2_row()]), encoding="utf-8")
+            out_json = root / "submissions" / "track2_submission_v17_safe_candidate.json"
+            out_zip = root / "submissions" / "track2_submission_v17_safe_candidate.zip"
+            with self.assertRaises(ValueError):
+                write_v17_candidate_outputs(
+                    base_json=base_json,
+                    changes=[],
+                    profile="safe",
+                    out_json=out_json,
+                    out_zip=out_zip,
+                    report_json=root / "candidate_reports" / "track2_submission_v16_safe_candidate_report.json",
+                    report_md=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.md",
+                )
+            self.assertFalse(out_json.exists())
+            self.assertFalse(out_zip.exists())
+
+    def test_write_v17_candidate_outputs_rejects_non_v17_side_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text(json.dumps([_track2_row()]), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                write_v17_candidate_outputs(
+                    base_json=base_json,
+                    changes=[],
+                    profile="safe",
+                    out_json=root / "submissions" / "track2_submission_v16_safe_candidate.json",
+                    out_zip=root / "submissions" / "track2_submission_v17_safe_candidate.zip",
+                    report_json=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.json",
+                    report_md=root / "candidate_reports" / "track2_submission_v17_safe_candidate_report.md",
+                )
 
 
 if __name__ == "__main__":

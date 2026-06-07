@@ -74,6 +74,20 @@ PROFILE_CONFIG = {
         "transition_family_caps": {"calm<->content": 8},
     },
 }
+CANDIDATE_OUTPUT_PATHS = {
+    "safe": (
+        Path("submissions/track2_submission_v17_safe_candidate.json"),
+        Path("submissions/track2_submission_v17_safe_candidate.zip"),
+    ),
+    "balanced": (
+        Path("submissions/track2_submission_v17_balanced_candidate.json"),
+        Path("submissions/track2_submission_v17_balanced_candidate.zip"),
+    ),
+    "aggressive_probe": (
+        Path("submissions/track2_submission_v17_aggressive_probe_candidate.json"),
+        Path("submissions/track2_submission_v17_aggressive_probe_candidate.zip"),
+    ),
+}
 
 EVIDENCE_MATRIX_FIELDS = [
     "sample_id",
@@ -324,6 +338,202 @@ def select_v17_changes(
             projected_distribution[current] -= 1
             projected_distribution[proposed] += 1
     return selected
+
+
+def apply_v17_changes(
+    base_rows: list[dict[str, Any]],
+    changes: list[dict[str, Any]],
+    profile: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    _profile_config(profile)
+    changes_by_id = {str(row.get("sample_id", "")).strip(): dict(row) for row in changes if row.get("sample_id")}
+    candidate_rows: list[dict[str, Any]] = []
+    accepted_changes: list[dict[str, Any]] = []
+
+    for base in base_rows:
+        row = dict(base)
+        sample_id = str(row.get("sample_id", "")).strip()
+        change = changes_by_id.get(sample_id)
+        if change:
+            current = _canonical_emotion(row.get("emotion"))
+            proposed = _canonical_emotion(
+                _first_present(change, ("proposed_emotion", "target_emotion", "emotion"))
+            )
+            if proposed and proposed != current:
+                before = _label_triplet(row)
+                row["emotion"] = proposed
+                row["emotional_valence"] = _valence(proposed)
+                row["emotional_arousal_level"] = _arousal(proposed)
+                after = _label_triplet(row)
+                transition = _row_transition(change) or f"{before[0]}->{after[0]}"
+                accepted_changes.append(
+                    {
+                        "sample_id": sample_id,
+                        "transition": transition,
+                        "before": {
+                            "emotion": before[0],
+                            "emotional_valence": before[1],
+                            "emotional_arousal_level": before[2],
+                        },
+                        "after": {
+                            "emotion": after[0],
+                            "emotional_valence": after[1],
+                            "emotional_arousal_level": after[2],
+                        },
+                        "support_score": _safe_float(change.get("support_score")),
+                        "max_confidence": _safe_float(change.get("max_confidence")),
+                        "model_vote_count": _safe_int(change.get("model_vote_count")),
+                        "model_sources": str(change.get("model_sources", "")),
+                        "all_sources": str(change.get("all_sources", "")),
+                        "gate_decision": str(change.get("gate_decision", "")),
+                        "gate_reasons": str(change.get("gate_reasons", "")),
+                        "rationale": str(change.get("rationale", "")),
+                    }
+                )
+        candidate_rows.append({key: row.get(key, "") for key in TRACK2_JSON_SUBMISSION_KEYS})
+
+    distribution = Counter(str(row.get("emotion", "")) for row in candidate_rows)
+    label_issues = [issue for row in candidate_rows for issue in strict_track2_label_issues(row)]
+    report = {
+        "method": "track2_v17_classification_calibration_candidate_v1",
+        "profile": profile,
+        "row_count": len(candidate_rows),
+        "input_change_count": len(changes),
+        "accepted_label_changes": len(accepted_changes),
+        "transition_counts": dict(Counter(item["transition"] for item in accepted_changes)),
+        "distribution": dict(sorted(distribution.items())),
+        "missing_emotions": sorted(TRACK2_JSON_EMOTIONS - set(distribution)),
+        "top_emotion": distribution.most_common(1)[0][0] if distribution else "",
+        "top_emotion_share": (distribution.most_common(1)[0][1] / len(candidate_rows)) if candidate_rows else 0.0,
+        "label_consistency_issue_count": len(label_issues),
+        "label_consistency_issues": label_issues[:80],
+        "accepted_changes": accepted_changes,
+        "formal_submission_overwritten": False,
+    }
+    return candidate_rows, report
+
+
+def write_v17_candidate_outputs(
+    *,
+    base_json: str | Path,
+    changes: list[dict[str, Any]],
+    profile: str,
+    out_json: str | Path,
+    out_zip: str | Path,
+    report_json: str | Path,
+    report_md: str | Path,
+) -> dict[str, Any]:
+    out_json_path = Path(out_json)
+    out_zip_path = Path(out_zip)
+    report_json_path = Path(report_json)
+    report_md_path = Path(report_md)
+    _assert_safe_candidate_path(out_json_path)
+    _assert_safe_candidate_path(out_zip_path)
+    _assert_safe_candidate_report_path(report_json_path, expected_suffix=".json")
+    _assert_safe_candidate_report_path(report_md_path, expected_suffix=".md")
+    base_rows = load_track2_rows(base_json)
+    candidate_rows, report = apply_v17_changes(base_rows, changes, profile)
+    report["paths"] = {
+        "base_json": str(base_json),
+        "out_json": str(out_json_path),
+        "out_zip": str(out_zip_path),
+        "report_json": str(report_json_path),
+        "report_md": str(report_md_path),
+    }
+    _write_json(out_json_path, candidate_rows)
+    _write_zip(out_zip_path, out_json_path)
+    _write_json(report_json_path, report)
+    report_md_path.parent.mkdir(parents=True, exist_ok=True)
+    report_md_path.write_text(render_candidate_report_markdown(report), encoding="utf-8")
+    return report
+
+
+def render_candidate_report_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Track2 v17 Classification Calibration Candidate",
+        "",
+        f"- Method: `{report['method']}`",
+        f"- Profile: `{report['profile']}`",
+        f"- Base JSON: `{report.get('paths', {}).get('base_json', '')}`",
+        f"- Candidate JSON: `{report.get('paths', {}).get('out_json', '')}`",
+        f"- Candidate ZIP: `{report.get('paths', {}).get('out_zip', '')}`",
+        f"- Accepted label changes: {report['accepted_label_changes']}",
+        f"- Label consistency issues: {report['label_consistency_issue_count']}",
+        f"- Missing emotions: {', '.join(report['missing_emotions']) or 'none'}",
+        f"- Top emotion: {report['top_emotion']} ({float(report['top_emotion_share']):.1%})",
+        f"- Formal submission overwritten: {report['formal_submission_overwritten']}",
+        "",
+        "## Transition Counts",
+        "",
+    ]
+    if report.get("transition_counts"):
+        for transition, count in sorted(dict(report["transition_counts"]).items()):
+            lines.append(f"- {transition}: {count}")
+    else:
+        lines.append("- none")
+    lines.extend(["", "## Distribution", ""])
+    for emotion, count in sorted(dict(report["distribution"]).items()):
+        lines.append(f"- {emotion}: {count}")
+    lines.extend(["", "## Accepted Changes", ""])
+    if report.get("accepted_changes"):
+        for item in report["accepted_changes"][:120]:
+            lines.append(
+                "- "
+                f"{item['sample_id']}: {item['transition']}; "
+                f"support={float(item.get('support_score', 0.0)):.2f}; "
+                f"confidence={float(item.get('max_confidence', 0.0)):.2f}; "
+                f"sources={item.get('all_sources', '')}"
+            )
+    else:
+        lines.append("- none")
+    return "\n".join(lines) + "\n"
+
+
+def write_v17_profile_candidates(
+    base_json: str | Path,
+    evidence_json: str | Path,
+    out_dir: str | Path,
+) -> dict[str, Any]:
+    base_rows = load_track2_rows(base_json)
+    evidence_payload = json.loads(Path(evidence_json).read_text(encoding="utf-8"))
+    evidence_rows = _payload_rows(evidence_payload)
+    if not evidence_rows:
+        raise ValueError(f"expected non-empty evidence rows: {evidence_json}")
+    current_distribution = Counter(str(row.get("emotion", "")) for row in base_rows)
+    out_dir_path = Path(out_dir)
+    candidates: dict[str, dict[str, Any]] = {}
+
+    for profile, (out_json, out_zip) in CANDIDATE_OUTPUT_PATHS.items():
+        changes = select_v17_changes(evidence_rows, profile=profile, current_distribution=current_distribution)
+        report_json = out_dir_path / f"track2_submission_v17_{profile}_candidate_report.json"
+        report_md = out_dir_path / f"track2_submission_v17_{profile}_candidate_report.md"
+        report = write_v17_candidate_outputs(
+            base_json=base_json,
+            changes=changes,
+            profile=profile,
+            out_json=out_json,
+            out_zip=out_zip,
+            report_json=report_json,
+            report_md=report_md,
+        )
+        candidates[profile] = {
+            key: value
+            for key, value in report.items()
+            if key not in {"accepted_changes", "label_consistency_issues"}
+        }
+
+    summary = {
+        "method": "track2_v17_classification_calibration_candidates_v1",
+        "base_json": str(base_json),
+        "evidence_json": str(evidence_json),
+        "out_dir": str(out_dir_path),
+        "evidence_rows": len(evidence_rows),
+        "profiles": list(CANDIDATE_OUTPUT_PATHS),
+        "candidates": candidates,
+        "formal_submission_overwritten": False,
+    }
+    _write_json(out_dir_path / "track2_v17_candidate_summary.json", summary)
+    return summary
 
 
 def load_track2_rows(path: str | Path) -> list[dict[str, Any]]:
@@ -622,6 +832,10 @@ def main(argv: list[str] | None = None) -> None:
     build.add_argument("--pairwise-diffs", type=Path, default=DEFAULT_PAIRWISE_DIFFS)
     build.add_argument("--out-json", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.json")
     build.add_argument("--out-csv", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.csv")
+    candidates = subparsers.add_parser("build-candidates", help="Build v17 side-path candidates")
+    candidates.add_argument("--base-json", type=Path, default=DEFAULT_BASE_JSON)
+    candidates.add_argument("--evidence-json", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.json")
+    candidates.add_argument("--out-dir", type=Path, default=DEFAULT_EXPERIMENT_DIR / "candidate_reports")
     args = parser.parse_args(argv)
     if args.command == "build-evidence":
         rows = write_evidence_matrix_outputs(
@@ -637,6 +851,13 @@ def main(argv: list[str] | None = None) -> None:
                 indent=2,
             )
         )
+    elif args.command == "build-candidates":
+        summary = write_v17_profile_candidates(
+            base_json=args.base_json,
+            evidence_json=args.evidence_json,
+            out_dir=args.out_dir,
+        )
+        print(json.dumps(summary, indent=2))
 
 
 def _payload_rows(payload: Any) -> list[dict[str, Any]]:
@@ -683,6 +904,49 @@ def _flatten_duplicate_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def _assert_not_formal_submission(path: Path) -> None:
     if path.name in FORMAL_SUBMISSION_NAMES:
         raise ValueError(f"refusing to write formal Track2 submission path: {path}")
+
+
+def _assert_safe_candidate_path(path: str | Path) -> None:
+    path = Path(path)
+    _assert_not_formal_submission(path)
+    if path.suffix not in {".json", ".zip"}:
+        raise ValueError(f"candidate output must be JSON or ZIP: {path}")
+    if not path.stem.startswith("track2_submission_v17_") or not path.stem.endswith("_candidate"):
+        raise ValueError(f"candidate output must be a v17 side-path candidate: {path}")
+
+
+def _assert_safe_candidate_report_path(path: str | Path, *, expected_suffix: str) -> None:
+    path = Path(path)
+    _assert_not_formal_submission(path)
+    if path.suffix != expected_suffix:
+        raise ValueError(f"candidate report must use {expected_suffix}: {path}")
+    if not path.name.startswith("track2_submission_v17_"):
+        raise ValueError(f"candidate report must be a v17 report side path: {path}")
+    expected_tail = f"_candidate_report{expected_suffix}"
+    if not path.name.endswith(expected_tail):
+        raise ValueError(f"candidate report filename must end with {expected_tail}: {path}")
+    if not any("report" in part.lower() or part.lower() == "experiments" for part in path.parts):
+        raise ValueError(f"candidate report must live under an experiment/report path: {path}")
+
+
+def _write_zip(zip_path: str | Path, json_path: str | Path) -> None:
+    zip_path = Path(zip_path)
+    json_path = Path(json_path)
+    _assert_safe_candidate_path(zip_path)
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    info = zipfile.ZipInfo("submission.json", date_time=(1980, 1, 1, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_DEFLATED
+    info.external_attr = 0o644 << 16
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr(info, json_path.read_bytes())
+
+
+def _label_triplet(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("emotion", "")).strip(),
+        str(row.get("emotional_valence", "")).strip(),
+        str(row.get("emotional_arousal_level", "")).strip(),
+    )
 
 
 if __name__ == "__main__":

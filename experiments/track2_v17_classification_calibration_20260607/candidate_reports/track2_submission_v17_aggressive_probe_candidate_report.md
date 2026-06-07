@@ -1,0 +1,118 @@
+# Track2 v17 Classification Calibration Candidate
+
+- Method: `track2_v17_classification_calibration_candidate_v1`
+- Profile: `aggressive_probe`
+- Base JSON: `submissions/track2_submission_v15_desc_expand300_candidate.json`
+- Candidate JSON: `submissions/track2_submission_v17_aggressive_probe_candidate.json`
+- Candidate ZIP: `submissions/track2_submission_v17_aggressive_probe_candidate.zip`
+- Accepted label changes: 54
+- Label consistency issues: 0
+- Missing emotions: none
+- Top emotion: calm (50.0%)
+- Formal submission overwritten: False
+
+## Transition Counts
+
+- alarmed->calm: 2
+- alarmed->sad: 4
+- annoyed->calm: 3
+- aroused->alarmed: 1
+- aroused->annoyed: 1
+- aroused->bored: 1
+- aroused->calm: 1
+- aroused->excited: 1
+- bored->calm: 1
+- calm->alarmed: 1
+- calm->annoyed: 2
+- calm->aroused: 1
+- calm->bored: 1
+- calm->excited: 1
+- calm->sad: 1
+- calm->tired: 1
+- content->excited: 4
+- content->happy: 1
+- excited->calm: 1
+- excited->content: 1
+- excited->happy: 2
+- frustrated->annoyed: 1
+- frustrated->happy: 1
+- glad->content: 1
+- happy->calm: 1
+- sad->alarmed: 1
+- sad->calm: 4
+- tired->bored: 2
+- tired->calm: 5
+- tired->content: 1
+- tired->sad: 5
+
+## Distribution
+
+- alarmed: 51
+- annoyed: 23
+- aroused: 25
+- bored: 23
+- calm: 500
+- content: 236
+- excited: 17
+- frustrated: 44
+- glad: 4
+- happy: 11
+- sad: 38
+- tired: 28
+
+## Accepted Changes
+
+- track2_0008: alarmed->sad; support=2.11; confidence=0.67; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0030: alarmed->sad; support=2.47; confidence=0.73; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0056: tired->calm; support=2.41; confidence=0.70; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0063: tired->sad; support=2.96; confidence=0.79; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0070: aroused->bored; support=1.06; confidence=0.67; sources=dinov2,public_clean,public_inclusive
+- track2_0090: calm->excited; support=2.21; confidence=0.73; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0142: excited->content; support=1.11; confidence=0.80; sources=gemini35,public_clean
+- track2_0145: calm->alarmed; support=1.14; confidence=0.68; sources=clip,dinov2
+- track2_0196: tired->sad; support=3.13; confidence=0.82; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0211: tired->calm; support=2.46; confidence=0.69; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0213: sad->calm; support=2.15; confidence=0.60; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0215: tired->content; support=1.96; confidence=0.81; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0233: tired->sad; support=2.81; confidence=0.67; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0256: frustrated->happy; support=1.14; confidence=0.66; sources=dinov2,public_clean
+- track2_0263: excited->happy; support=1.96; confidence=0.68; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0319: calm->bored; support=2.51; confidence=0.73; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0345: tired->calm; support=2.32; confidence=0.64; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0361: excited->calm; support=2.21; confidence=0.62; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0369: annoyed->calm; support=2.39; confidence=0.67; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0382: content->excited; support=3.84; confidence=0.95; sources=clip,dinov2,public_clean,public_inclusive,public_near_public_duplicate,siglip2
+- track2_0441: annoyed->calm; support=2.96; confidence=0.70; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0457: calm->aroused; support=1.93; confidence=0.75; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0460: calm->annoyed; support=1.09; confidence=0.85; sources=gemini35,public_clean
+- track2_0480: alarmed->sad; support=0.96; confidence=0.63; sources=clip,dinov2
+- track2_0504: tired->bored; support=2.74; confidence=0.67; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0505: tired->calm; support=3.54; confidence=0.81; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0567: tired->sad; support=1.78; confidence=0.76; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0575: tired->bored; support=2.34; confidence=0.70; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0591: calm->sad; support=1.74; confidence=0.73; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0602: aroused->annoyed; support=1.96; confidence=0.71; sources=clip,dinov2,public_clean,public_inclusive
+- track2_0618: sad->calm; support=2.88; confidence=0.69; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0627: sad->calm; support=2.52; confidence=0.64; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0666: alarmed->sad; support=1.88; confidence=0.65; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0696: sad->calm; support=1.17; confidence=0.64; sources=clip,dinov2
+- track2_0733: aroused->alarmed; support=1.08; confidence=0.80; sources=gemini35,public_inclusive
+- track2_0747: tired->calm; support=2.03; confidence=0.62; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0770: content->happy; support=1.36; confidence=0.75; sources=clip,dinov2
+- track2_0779: content->excited; support=2.92; confidence=0.87; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0806: annoyed->calm; support=2.65; confidence=0.69; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0818: glad->content; support=1.69; confidence=0.62; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0873: aroused->calm; support=1.68; confidence=0.95; sources=clip,public_clean,public_inclusive,public_near_public_duplicate,siglip2
+- track2_0890: alarmed->calm; support=1.38; confidence=0.60; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0891: sad->alarmed; support=1.34; confidence=0.68; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0919: bored->calm; support=1.68; confidence=0.61; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0922: frustrated->annoyed; support=1.34; confidence=0.65; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0923: alarmed->calm; support=1.80; confidence=0.69; sources=clip,public_clean,public_inclusive,siglip2
+- track2_0925: calm->tired; support=2.81; confidence=0.81; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0927: content->excited; support=1.46; confidence=0.64; sources=dinov2,public_clean,public_inclusive,siglip2
+- track2_0930: tired->sad; support=2.46; confidence=0.68; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0964: excited->happy; support=2.40; confidence=0.67; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0974: happy->calm; support=2.34; confidence=0.64; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0976: calm->annoyed; support=1.52; confidence=0.70; sources=clip,dinov2,public_clean,public_inclusive
+- track2_0982: aroused->excited; support=2.11; confidence=0.71; sources=clip,dinov2,public_clean,public_inclusive,siglip2
+- track2_0998: content->excited; support=2.81; confidence=0.69; sources=clip,dinov2,public_clean,public_inclusive,siglip2
