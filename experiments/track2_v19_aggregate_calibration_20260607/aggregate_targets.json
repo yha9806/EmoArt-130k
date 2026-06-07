@@ -1,0 +1,46 @@
+{
+  "method": "track2_v19_aggregate_targets_v1",
+  "warning": "Visible leaderboard aggregates are not hidden labels and are only used for local risk control.",
+  "participant": "vulcaart",
+  "our": {
+    "participant": "vulcaart",
+    "overall": 0.84,
+    "classification": 0.72,
+    "description": 0.95,
+    "emotion_accuracy": 0.57,
+    "emotion_macro_f1": 0.31,
+    "valence_accuracy": 0.88,
+    "valence_macro_f1": 0.82,
+    "arousal_accuracy": 0.91,
+    "arousal_macro_f1": 0.84
+  },
+  "frontier": {
+    "participant": "N&T小分队",
+    "overall": 0.89,
+    "classification": 0.78,
+    "description": 1.0,
+    "emotion_accuracy": 0.8,
+    "emotion_macro_f1": 0.31,
+    "valence_accuracy": 0.9,
+    "valence_macro_f1": 0.86,
+    "arousal_accuracy": 0.94,
+    "arousal_macro_f1": 0.87
+  },
+  "gaps": {
+    "overall": 0.05,
+    "classification": 0.06,
+    "description": 0.05,
+    "emotion_accuracy": 0.23,
+    "emotion_macro_f1": 0.0,
+    "valence_accuracy": 0.02,
+    "valence_macro_f1": 0.04,
+    "arousal_accuracy": 0.03,
+    "arousal_macro_f1": 0.03
+  },
+  "target_bands": {
+    "emotion_accuracy_min_delta": 0.05,
+    "emotion_macro_f1_min_delta": -0.005,
+    "classification_lower_floor": 0.72315,
+    "description_lower_max_drop": 0.003
+  }
+}
