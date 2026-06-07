@@ -8,6 +8,7 @@ from pathlib import Path
 
 from affectiveart.track2_v16_official_style_rag import (
     OfficialSubmissionScore,
+    build_rag_queue_rows,
     build_official_counterfactual_report,
     classify_transition_risk,
     load_official_scores,
@@ -51,6 +52,33 @@ class Track2V16OfficialStyleRagTests(unittest.TestCase):
             official_failed_transition_count=20,
         )
         self.assertEqual(risk, "allow_exact_duplicate")
+
+    def test_build_rag_queue_prioritizes_disagreement_and_blocks_failed_transitions(self) -> None:
+        current_rows = [
+            {"sample_id": "track2_0001", "emotion": "calm"},
+            {"sample_id": "track2_0002", "emotion": "content"},
+        ]
+        prediction_rows = {
+            "track2_0001": {
+                "target_emotion": "content",
+                "sources": ["same_quadrant_batch"],
+                "confidence": 0.9,
+            },
+            "track2_0002": {
+                "target_emotion": "glad",
+                "sources": ["rag_teacher", "multibackbone_consensus"],
+                "confidence": 0.8,
+            },
+        }
+        queue = build_rag_queue_rows(
+            current_rows=current_rows,
+            prediction_rows=prediction_rows,
+            failed_transition_counts={"calm->content": 43},
+        )
+        by_id = {row["sample_id"]: row for row in queue}
+        self.assertEqual(by_id["track2_0001"]["risk_gate"], "blocked_by_failed_official_batch")
+        self.assertEqual(by_id["track2_0002"]["risk_gate"], "allow_strong_consensus")
+        self.assertGreater(by_id["track2_0002"]["priority_score"], by_id["track2_0001"]["priority_score"])
 
     def test_load_official_scores(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
