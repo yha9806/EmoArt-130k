@@ -33,6 +33,7 @@ __all__ = [
     "load_champion_targets",
     "load_official_anchors",
     "load_track2_rows",
+    "main",
     "merge_description_rows",
     "render_v18_candidate_markdown",
     "select_v18_changes",
@@ -61,6 +62,7 @@ DEFAULT_OUT_JSON = _Path("submissions/track2_submission_v18_champion_hybrid_cand
 DEFAULT_OUT_ZIP = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.zip")
 NO_AUTO_SUBMIT_POLICY = True
 FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
+FORMAL_SUBMISSION_NAMES_CASEFOLD = {name.casefold() for name in FORMAL_SUBMISSION_NAMES}
 TRACK2_JSON_SUBMISSION_KEYS = (
     "sample_id",
     "emotion",
@@ -830,9 +832,153 @@ def write_v18_final_gate_report(
     out_md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def main(argv: list[str] | None = None) -> None:
+    import argparse as _argparse
+
+    parser = _argparse.ArgumentParser(description="Build Track2 v18 champion-shaped hybrid candidates.")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    build = subparsers.add_parser("build")
+    build.add_argument("--base-json", default=str(DEFAULT_BASE_CANDIDATES["779605"]))
+    build.add_argument("--text-json", default=str(DEFAULT_BASE_CANDIDATES.get("v15_desc_expand300", "")))
+    build.add_argument("--changes-json", default="")
+    build.add_argument("--changes-csv", default="")
+    build.add_argument("--out-json", default=str(DEFAULT_OUT_JSON))
+    build.add_argument("--out-zip", default=str(DEFAULT_OUT_ZIP))
+    build.add_argument("--experiment-dir", default=str(DEFAULT_EXPERIMENT_DIR))
+    build.add_argument("--skip-evidence", action="store_true")
+
+    args = parser.parse_args(argv)
+    if args.command == "build":
+        experiment_dir = _Path(args.experiment_dir)
+        experiment_dir.mkdir(parents=True, exist_ok=True)
+        base_rows = load_track2_rows(args.base_json)
+        changes = _select_cli_changes(_load_cli_changes(args), base_rows)
+        _write_json(experiment_dir / "selected_changes.json", changes)
+        report = write_v18_candidate_outputs(
+            base_json=args.base_json,
+            text_json=args.text_json or None,
+            changes=changes,
+            out_json=args.out_json,
+            out_zip=args.out_zip,
+            report_json=experiment_dir / "candidate_report.json",
+            report_md=experiment_dir / "candidate_report.md",
+        )
+        print(
+            _json.dumps(
+                {
+                    "candidate_json": args.out_json,
+                    "candidate_zip": args.out_zip,
+                    "accepted": report["accepted_label_changes"],
+                },
+                ensure_ascii=False,
+            )
+        )
+
+
+def _load_cli_changes(args: _Any) -> list[dict[str, _Any]]:
+    if args.skip_evidence:
+        return []
+    if args.changes_json:
+        return _load_change_rows_from_json(args.changes_json)
+    if args.changes_csv:
+        return [_normalize_change_row(row) for row in _load_csv_rows(args.changes_csv)]
+    raise ValueError("provide --changes-json/--changes-csv or use --skip-evidence")
+
+
+def _select_cli_changes(
+    changes: list[dict[str, _Any]],
+    base_rows: list[dict[str, _Any]],
+) -> list[dict[str, _Any]]:
+    if not changes:
+        return []
+    distribution = _Counter(str(row.get("emotion", "")) for row in base_rows)
+    return select_v18_changes(changes, current_distribution=distribution)
+
+
+def _load_change_rows_from_json(path: str | _Path) -> list[dict[str, _Any]]:
+    source = _Path(path)
+    try:
+        payload = _json.loads(source.read_text(encoding="utf-8"))
+    except _json.JSONDecodeError as exc:
+        raise ValueError(f"invalid changes JSON in {source}: {exc}") from None
+    if isinstance(payload, list):
+        rows = payload
+    elif isinstance(payload, dict):
+        rows = _first_list_value(payload, ("accepted_changes", "selected_changes", "changes"))
+    else:
+        raise ValueError(f"changes JSON must be a list or object: {source}")
+    normalized: list[dict[str, _Any]] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f"change row {index} must be an object in {source}")
+        normalized.append(_normalize_change_row(row))
+    return normalized
+
+
+def _first_list_value(payload: dict[str, _Any], fields: tuple[str, ...]) -> list[_Any]:
+    for field in fields:
+        value = payload.get(field)
+        if isinstance(value, list):
+            return value
+    raise ValueError(f"changes JSON object must contain one of: {', '.join(fields)}")
+
+
+def _normalize_change_row(row: dict[str, _Any]) -> dict[str, _Any]:
+    item = dict(row)
+    before = row.get("before") if isinstance(row.get("before"), dict) else {}
+    after = row.get("after") if isinstance(row.get("after"), dict) else {}
+    evidence_sources = row.get("evidence_sources")
+    if isinstance(evidence_sources, list):
+        evidence_source_text = ",".join(str(source) for source in evidence_sources)
+        evidence_source_count = len(evidence_sources)
+    else:
+        evidence_source_text = str(evidence_sources or "")
+        evidence_source_count = 0
+    current = _canonical_emotion(
+        row.get("current_emotion")
+        or row.get("source_emotion")
+        or before.get("emotion")
+    )
+    proposed = _canonical_emotion(
+        row.get("proposed_emotion")
+        or row.get("target_emotion")
+        or after.get("emotion")
+        or row.get("emotion")
+    )
+    transition = str(row.get("transition", "")).strip()
+    if not transition and current and proposed:
+        transition = f"{current}->{proposed}"
+    gate_decision = str(row.get("gate_decision", "")).strip().lower()
+    decision = str(row.get("decision", "")).strip().lower()
+    if not gate_decision and decision.startswith("accept"):
+        gate_decision = "accept"
+    item.update(
+        {
+            "current_emotion": current,
+            "proposed_emotion": proposed,
+            "transition": transition,
+            "gate_decision": gate_decision,
+            "support_score": _first_present(
+                row,
+                ("support_score", "evidence_score", "confidence", "max_confidence"),
+            ),
+            "max_confidence": _first_present(row, ("max_confidence", "confidence")),
+            "model_vote_count": _first_present(
+                row,
+                ("model_vote_count", "supporting_family_count", "supporting_source_count"),
+            )
+            or evidence_source_count,
+            "model_sources": str(row.get("model_sources") or row.get("supporting_families") or evidence_source_text),
+            "all_sources": str(row.get("all_sources") or row.get("supporting_sources") or evidence_source_text),
+            "rationale": str(row.get("rationale") or row.get("reason") or ""),
+        }
+    )
+    return item
+
+
 def _assert_safe_side_path(path: str | _Path) -> None:
     candidate = _Path(path)
-    if candidate.name in FORMAL_SUBMISSION_NAMES:
+    if candidate.name.casefold() in FORMAL_SUBMISSION_NAMES_CASEFOLD:
         raise ValueError(f"refusing to write formal submission path: {candidate}")
 
 

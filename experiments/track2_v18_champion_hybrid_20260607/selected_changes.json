@@ -1,0 +1,77 @@
+[
+  {
+    "sample_id": "track2_0196",
+    "transition": "tired->sad",
+    "before": {
+      "emotion": "tired",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "after": {
+      "emotion": "sad",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "support_score": 3.129731,
+    "max_confidence": 0.822765,
+    "model_vote_count": 3,
+    "model_sources": "clip,dinov2,siglip2",
+    "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+    "gate_decision": "accept",
+    "gate_reasons": "meets_v18_thresholds",
+    "rationale": "",
+    "current_emotion": "tired",
+    "proposed_emotion": "sad",
+    "transition_family": "sad<->tired"
+  },
+  {
+    "sample_id": "track2_0063",
+    "transition": "tired->sad",
+    "before": {
+      "emotion": "tired",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "after": {
+      "emotion": "sad",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "support_score": 2.956087,
+    "max_confidence": 0.789427,
+    "model_vote_count": 3,
+    "model_sources": "clip,dinov2,siglip2",
+    "all_sources": "clip,dinov2,public_clean,public_inclusive,siglip2",
+    "gate_decision": "accept",
+    "gate_reasons": "meets_v18_thresholds",
+    "rationale": "",
+    "current_emotion": "tired",
+    "proposed_emotion": "sad",
+    "transition_family": "sad<->tired"
+  },
+  {
+    "sample_id": "track2_0567",
+    "transition": "tired->sad",
+    "before": {
+      "emotion": "tired",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "after": {
+      "emotion": "sad",
+      "emotional_valence": "Negative",
+      "emotional_arousal_level": "Low"
+    },
+    "support_score": 1.777204,
+    "max_confidence": 0.757149,
+    "model_vote_count": 2,
+    "model_sources": "clip,siglip2",
+    "all_sources": "clip,public_clean,public_inclusive,siglip2",
+    "gate_decision": "accept",
+    "gate_reasons": "meets_v18_thresholds",
+    "rationale": "",
+    "current_emotion": "tired",
+    "proposed_emotion": "sad",
+    "transition_family": "sad<->tired"
+  }
+]

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import copy
 import csv
+import contextlib
+import io
 import json
 import subprocess
 import sys
@@ -1161,7 +1163,10 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
                 "line": "Gentle line.",
                 "light": "Soft light.",
             }
-            base_json.write_text(json.dumps([row]), encoding="utf-8")
+            base_json.write_text(
+                json.dumps([row] + [{**row, "sample_id": f"track2_{index:04d}"} for index in range(2, 6)]),
+                encoding="utf-8",
+            )
             text_json.write_text(
                 json.dumps(
                     [
@@ -1241,7 +1246,10 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
                 "line": "Gentle line.",
                 "light": "Soft light.",
             }
-            base_json.write_text(json.dumps([row]), encoding="utf-8")
+            base_json.write_text(
+                json.dumps([row] + [{**row, "sample_id": f"track2_{index:04d}"} for index in range(2, 6)]),
+                encoding="utf-8",
+            )
 
             report = write_v18_candidate_outputs(
                 base_json=base_json,
@@ -1299,6 +1307,25 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
                     out_json=root / "candidate.json",
                     out_zip=root / "candidate.zip",
                     report_json=root / "track2_submission.json",
+                    report_md=root / "candidate_report.md",
+                )
+
+    def test_write_v18_candidate_outputs_blocks_case_variant_formal_name(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text("[]", encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "formal submission"):
+                write_v18_candidate_outputs(
+                    base_json=base_json,
+                    text_json=None,
+                    changes=[],
+                    out_json=root / "Track2_Submission.json",
+                    out_zip=root / "candidate.zip",
+                    report_json=root / "candidate_report.json",
                     report_md=root / "candidate_report.md",
                 )
 
@@ -1539,3 +1566,225 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
 
             self.assertEqual(json.loads(out_json.read_text(encoding="utf-8"))["decision"], "recommend_submit_v18")
             self.assertIn("Track2 v18 Final Gate", out_md.read_text(encoding="utf-8"))
+
+    def test_main_build_writes_candidate_and_reports(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import main
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            text_json = root / "text.json"
+            out_json = root / "candidate.json"
+            out_zip = root / "candidate.zip"
+            exp_dir = root / "experiment"
+            row = {
+                "sample_id": "track2_0001",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A calm room.",
+                "brushstroke": "Soft strokes.",
+                "composition": "Balanced composition.",
+                "color": "Muted color.",
+                "line": "Gentle line.",
+                "light": "Soft light.",
+            }
+            base_rows = [row] + [
+                {**row, "sample_id": f"track2_{index:04d}"}
+                for index in range(2, 6)
+            ]
+            base_json.write_text(json.dumps(base_rows), encoding="utf-8")
+            text_json.write_text(json.dumps([row]), encoding="utf-8")
+
+            with contextlib.redirect_stdout(io.StringIO()):
+                main(
+                    [
+                        "build",
+                        "--base-json",
+                        str(base_json),
+                        "--text-json",
+                        str(text_json),
+                        "--out-json",
+                        str(out_json),
+                        "--out-zip",
+                        str(out_zip),
+                        "--experiment-dir",
+                        str(exp_dir),
+                        "--skip-evidence",
+                    ]
+                )
+
+            self.assertTrue(out_json.exists())
+            self.assertTrue(out_zip.exists())
+            self.assertTrue((exp_dir / "candidate_report.json").exists())
+
+    def test_main_build_loads_v17_accepted_changes_report(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import main
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            changes_json = root / "changes.json"
+            out_json = root / "candidate.json"
+            out_zip = root / "candidate.zip"
+            exp_dir = root / "experiment"
+            row = {
+                "sample_id": "track2_0001",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A calm room.",
+                "brushstroke": "Soft strokes.",
+                "composition": "Balanced composition.",
+                "color": "Muted color.",
+                "line": "Gentle line.",
+                "light": "Soft light.",
+            }
+            base_rows = [row] + [
+                {**row, "sample_id": f"track2_{index:04d}"}
+                for index in range(2, 6)
+            ]
+            base_json.write_text(json.dumps(base_rows), encoding="utf-8")
+            changes_json.write_text(
+                json.dumps(
+                    {
+                        "accepted_changes": [
+                            {
+                                "sample_id": "track2_0001",
+                                "transition": "content->calm",
+                                "before": {"emotion": "content"},
+                                "after": {"emotion": "calm"},
+                                "support_score": 2.0,
+                                "model_vote_count": 3,
+                                "gate_decision": "accept",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with contextlib.redirect_stdout(io.StringIO()):
+                main(
+                    [
+                        "build",
+                        "--base-json",
+                        str(base_json),
+                        "--changes-json",
+                        str(changes_json),
+                        "--out-json",
+                        str(out_json),
+                        "--out-zip",
+                        str(out_zip),
+                        "--experiment-dir",
+                        str(exp_dir),
+                    ]
+                )
+
+            rows = json.loads(out_json.read_text(encoding="utf-8"))
+            report = json.loads((exp_dir / "candidate_report.json").read_text(encoding="utf-8"))
+            self.assertEqual(rows[0]["emotion"], "calm")
+            self.assertEqual(report["accepted_label_changes"], 1)
+
+    def test_main_build_rechecks_external_changes_with_v18_gate(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import main
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            changes_json = root / "changes.json"
+            out_json = root / "candidate.json"
+            out_zip = root / "candidate.zip"
+            exp_dir = root / "experiment"
+            base_rows = [
+                {
+                    "sample_id": "track2_0001",
+                    "emotion": "content",
+                    "emotional_valence": "Positive",
+                    "emotional_arousal_level": "Low",
+                    "overall_caption": "A calm room.",
+                    "brushstroke": "Soft strokes.",
+                    "composition": "Balanced composition.",
+                    "color": "Muted color.",
+                    "line": "Gentle line.",
+                    "light": "Soft light.",
+                },
+                {
+                    "sample_id": "track2_0002",
+                    "emotion": "content",
+                    "emotional_valence": "Positive",
+                    "emotional_arousal_level": "Low",
+                    "overall_caption": "A quiet room.",
+                    "brushstroke": "Soft strokes.",
+                    "composition": "Balanced composition.",
+                    "color": "Muted color.",
+                    "line": "Gentle line.",
+                    "light": "Soft light.",
+                },
+            ]
+            base_rows.extend(
+                {
+                    "sample_id": f"track2_{index:04d}",
+                    "emotion": "content",
+                    "emotional_valence": "Positive",
+                    "emotional_arousal_level": "Low",
+                    "overall_caption": "A quiet room.",
+                    "brushstroke": "Soft strokes.",
+                    "composition": "Balanced composition.",
+                    "color": "Muted color.",
+                    "line": "Gentle line.",
+                    "light": "Soft light.",
+                }
+                for index in range(3, 7)
+            )
+            base_json.write_text(json.dumps(base_rows), encoding="utf-8")
+            changes_json.write_text(
+                json.dumps(
+                    {
+                        "accepted_changes": [
+                            {
+                                "sample_id": "track2_0001",
+                                "transition": "content->calm",
+                                "before": {"emotion": "content"},
+                                "after": {"emotion": "calm"},
+                                "support_score": 2.0,
+                                "model_vote_count": 3,
+                                "gate_decision": "accept",
+                            },
+                            {
+                                "sample_id": "track2_0002",
+                                "transition": "content->annoyed",
+                                "before": {"emotion": "content"},
+                                "after": {"emotion": "annoyed"},
+                                "support_score": 2.0,
+                                "model_vote_count": 3,
+                                "gate_decision": "accept",
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with contextlib.redirect_stdout(io.StringIO()):
+                main(
+                    [
+                        "build",
+                        "--base-json",
+                        str(base_json),
+                        "--changes-json",
+                        str(changes_json),
+                        "--out-json",
+                        str(out_json),
+                        "--out-zip",
+                        str(out_zip),
+                        "--experiment-dir",
+                        str(exp_dir),
+                    ]
+                )
+
+            rows = {row["sample_id"]: row for row in json.loads(out_json.read_text(encoding="utf-8"))}
+            selected = json.loads((exp_dir / "selected_changes.json").read_text(encoding="utf-8"))
+            self.assertEqual(rows["track2_0001"]["emotion"], "calm")
+            self.assertEqual(rows["track2_0002"]["emotion"], "content")
+            self.assertEqual([row["sample_id"] for row in selected], ["track2_0001"])
