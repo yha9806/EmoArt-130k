@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import csv as _csv
+import json as _json
+import zipfile as _zipfile
 from collections import Counter as _Counter
 from dataclasses import dataclass as _dataclass
 from math import isfinite as _isfinite
@@ -20,6 +22,7 @@ __all__ = [
     "NO_AUTO_SUBMIT_POLICY",
     "OfficialAnchor",
     "TEXT_FIELDS",
+    "FORMAL_SUBMISSION_NAMES",
     "TRACK2_JSON_EMOTIONS",
     "TRACK2_JSON_SUBMISSION_KEYS",
     "V18_TOTAL_CHANGE_CAP",
@@ -28,9 +31,12 @@ __all__ = [
     "enrich_champion_evidence",
     "load_champion_targets",
     "load_official_anchors",
+    "load_track2_rows",
     "merge_description_rows",
+    "render_v18_candidate_markdown",
     "select_v18_changes",
     "v18_gate_for_evidence",
+    "write_v18_candidate_outputs",
 ]
 
 
@@ -52,6 +58,7 @@ DEFAULT_BASE_CANDIDATES = {
 DEFAULT_OUT_JSON = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.json")
 DEFAULT_OUT_ZIP = _Path("submissions/track2_submission_v18_champion_hybrid_candidate.zip")
 NO_AUTO_SUBMIT_POLICY = True
+FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
 TRACK2_JSON_SUBMISSION_KEYS = (
     "sample_id",
     "emotion",
@@ -78,6 +85,10 @@ TRACK2_JSON_EMOTIONS = {
     "calm",
     "glad",
 }
+POSITIVE_EMOTIONS = {"aroused", "excited", "happy", "content", "calm", "glad"}
+NEGATIVE_EMOTIONS = {"alarmed", "annoyed", "frustrated", "sad", "bored", "tired"}
+HIGH_AROUSAL_EMOTIONS = {"aroused", "excited", "happy", "alarmed", "annoyed", "frustrated"}
+LOW_AROUSAL_EMOTIONS = {"content", "calm", "glad", "sad", "bored", "tired"}
 MAJORITY_BOUNDARY_TRANSITIONS = {
     "calm->content",
     "content->calm",
@@ -281,13 +292,43 @@ def _load_csv_rows(path: str | _Path) -> list[dict[str, _Any]]:
         return [dict(row) for row in _csv.DictReader(handle)]
 
 
+def load_track2_rows(path: str | _Path) -> list[dict[str, _Any]]:
+    source = _Path(path)
+    try:
+        payload = _json.loads(source.read_text(encoding="utf-8"))
+    except _json.JSONDecodeError as exc:
+        raise ValueError(f"invalid Track2 JSON in {source}: {exc}") from None
+    if not isinstance(payload, list):
+        raise ValueError(f"Track2 submission JSON must be a list: {source}")
+    rows: list[dict[str, _Any]] = []
+    seen_ids: set[str] = set()
+    for index, item in enumerate(payload):
+        if not isinstance(item, dict):
+            raise ValueError(f"Track2 row {index} must be an object in {source}")
+        row = {key: item.get(key, "") for key in TRACK2_JSON_SUBMISSION_KEYS}
+        sample_id = str(row.get("sample_id", "")).strip()
+        if not sample_id:
+            raise ValueError(f"blank sample_id at row {index} in {source}")
+        if sample_id in seen_ids:
+            raise ValueError(f"duplicate sample_id {sample_id!r} in {source}")
+        seen_ids.add(sample_id)
+        issues = _strict_v18_label_issues(row)
+        if issues:
+            first = issues[0]
+            raise ValueError(
+                f"invalid {first['field']} at row {index} in {source}: "
+                f"{first.get('actual', '')!r}; expected {first.get('expected', '')!r}"
+            )
+        rows.append(row)
+    return rows
+
+
 def enrich_champion_evidence(rows: list[dict[str, _Any]]) -> list[dict[str, _Any]]:
     enriched: list[dict[str, _Any]] = []
     for row in rows:
         item = dict(row)
         transition = str(item.get("transition", "")).strip()
-        same_valence = _safe_bool(item.get("same_valence"))
-        same_arousal = _safe_bool(item.get("same_arousal"))
+        same_valence, same_arousal = _same_quadrant_from_evidence(item)
         exact_duplicate = _safe_bool(item.get("exact_duplicate"))
         support_score = _safe_float(item.get("support_score"))
         model_votes = _safe_int(item.get("model_vote_count"))
@@ -385,8 +426,6 @@ def v18_gate_for_evidence(
 ) -> dict[str, _Any]:
     exact_duplicate = _safe_bool(row.get("exact_duplicate"))
     public_duplicate_support = _safe_float(row.get("public_duplicate_support_score"))
-    same_valence = _safe_bool(row.get("same_valence"))
-    same_arousal = _safe_bool(row.get("same_arousal"))
     model_votes = _safe_int(row.get("model_vote_count"))
     support_score = _safe_float(row.get("support_score"))
     (
@@ -398,6 +437,7 @@ def v18_gate_for_evidence(
         valid_transition_shape,
         transition_label_mismatch,
     ) = _evidence_transition_labels(row)
+    same_valence, same_arousal = _same_quadrant_from_labels(current, proposed)
     hard_reasons: list[str] = []
     if (
         not valid_transition_shape
@@ -554,3 +594,306 @@ def _is_better_description_text(candidate: str, current: str) -> bool:
 def _has_banned_description_text(text: str) -> bool:
     lowered = str(text or "").lower()
     return any(term in lowered for term in BANNED_DESCRIPTION_TERMS)
+
+
+def write_v18_candidate_outputs(
+    *,
+    base_json: str | _Path,
+    text_json: str | _Path | None,
+    changes: list[dict[str, _Any]],
+    out_json: str | _Path,
+    out_zip: str | _Path,
+    report_json: str | _Path,
+    report_md: str | _Path,
+) -> dict[str, _Any]:
+    _assert_safe_side_path(out_json)
+    _assert_safe_side_path(out_zip)
+    _assert_safe_side_path(report_json)
+    _assert_safe_side_path(report_md)
+    base_rows = load_track2_rows(base_json)
+    text_rows = load_track2_rows(text_json) if text_json else base_rows
+    merged_rows, description_report = merge_description_rows(base_rows, text_rows)
+    candidate_rows, classification_report = _apply_v18_changes(merged_rows, changes)
+    report = {
+        "method": "track2_v18_champion_hybrid_candidate_v1",
+        "base_json": str(base_json),
+        "text_json": str(text_json or base_json),
+        "out_json": str(out_json),
+        "out_zip": str(out_zip),
+        "row_count": len(candidate_rows),
+        "input_change_count": len(changes),
+        "accepted_label_changes": classification_report["accepted_label_changes"],
+        "description_merge": description_report,
+        "transition_counts": classification_report["transition_counts"],
+        "distribution": classification_report["distribution"],
+        "missing_emotions": classification_report["missing_emotions"],
+        "top_emotion": classification_report["top_emotion"],
+        "top_emotion_share": classification_report["top_emotion_share"],
+        "label_consistency_issue_count": classification_report["label_consistency_issue_count"],
+        "label_consistency_issues": classification_report["label_consistency_issues"],
+        "formal_submission_overwritten": False,
+        "accepted_changes": classification_report["accepted_changes"],
+    }
+    _write_json(out_json, candidate_rows)
+    _write_zip(out_zip, out_json)
+    _write_json(report_json, report)
+    report_md_path = _Path(report_md)
+    report_md_path.parent.mkdir(parents=True, exist_ok=True)
+    report_md_path.write_text(render_v18_candidate_markdown(report), encoding="utf-8")
+    return report
+
+
+def _apply_v18_changes(
+    base_rows: list[dict[str, _Any]],
+    changes: list[dict[str, _Any]],
+) -> tuple[list[dict[str, _Any]], dict[str, _Any]]:
+    changes_by_id = {
+        str(row.get("sample_id", "")).strip(): dict(row)
+        for row in changes
+        if str(row.get("sample_id", "")).strip()
+    }
+    candidate_rows: list[dict[str, _Any]] = []
+    accepted_changes: list[dict[str, _Any]] = []
+
+    for base in base_rows:
+        row = dict(base)
+        sample_id = str(row.get("sample_id", "")).strip()
+        change = changes_by_id.get(sample_id)
+        if change:
+            current = _canonical_emotion(row.get("emotion"))
+            proposed = _canonical_emotion(_first_present(change, ("proposed_emotion", "target_emotion", "emotion")))
+            expected_current = _canonical_emotion(change.get("current_emotion"))
+            gate_decision = str(change.get("gate_decision", "")).strip().lower()
+            if (
+                proposed
+                and proposed != current
+                and proposed in TRACK2_JSON_EMOTIONS
+                and (not expected_current or expected_current == current)
+                and (not gate_decision or gate_decision == "accept")
+            ):
+                before = _label_triplet(row)
+                row["emotion"] = proposed
+                row["emotional_valence"] = _valence(proposed)
+                row["emotional_arousal_level"] = _arousal(proposed)
+                after = _label_triplet(row)
+                transition = str(change.get("transition", "")).strip() or f"{before[0]}->{after[0]}"
+                accepted_changes.append(
+                    {
+                        "sample_id": sample_id,
+                        "transition": transition,
+                        "before": {
+                            "emotion": before[0],
+                            "emotional_valence": before[1],
+                            "emotional_arousal_level": before[2],
+                        },
+                        "after": {
+                            "emotion": after[0],
+                            "emotional_valence": after[1],
+                            "emotional_arousal_level": after[2],
+                        },
+                        "support_score": _safe_float(change.get("support_score")),
+                        "max_confidence": _safe_float(change.get("max_confidence")),
+                        "model_vote_count": _safe_int(change.get("model_vote_count")),
+                        "model_sources": str(change.get("model_sources", "")),
+                        "all_sources": str(change.get("all_sources", "")),
+                        "gate_decision": str(change.get("gate_decision", "")),
+                        "gate_reasons": str(change.get("gate_reasons", "")),
+                        "rationale": str(change.get("rationale", "")),
+                    }
+                )
+        candidate_rows.append({key: row.get(key, "") for key in TRACK2_JSON_SUBMISSION_KEYS})
+
+    distribution = _Counter(str(row.get("emotion", "")) for row in candidate_rows)
+    label_issues = [issue for row in candidate_rows for issue in _strict_v18_label_issues(row)]
+    return candidate_rows, {
+        "accepted_label_changes": len(accepted_changes),
+        "transition_counts": dict(_Counter(item["transition"] for item in accepted_changes)),
+        "distribution": dict(sorted(distribution.items())),
+        "missing_emotions": sorted(TRACK2_JSON_EMOTIONS - set(distribution)),
+        "top_emotion": distribution.most_common(1)[0][0] if distribution else "",
+        "top_emotion_share": distribution.most_common(1)[0][1] / len(candidate_rows) if candidate_rows else 0.0,
+        "label_consistency_issue_count": len(label_issues),
+        "label_consistency_issues": label_issues[:80],
+        "accepted_changes": accepted_changes,
+    }
+
+
+def render_v18_candidate_markdown(report: dict[str, _Any]) -> str:
+    lines = [
+        "# Track2 v18 Champion Hybrid Candidate",
+        "",
+        f"- Method: `{report['method']}`",
+        f"- Base JSON: `{report['base_json']}`",
+        f"- Text JSON: `{report['text_json']}`",
+        f"- Candidate JSON: `{report['out_json']}`",
+        f"- Candidate ZIP: `{report['out_zip']}`",
+        f"- Accepted label changes: {report['accepted_label_changes']}",
+        f"- Description changed rows: {report['description_merge']['description_changed_rows']}",
+        f"- Label consistency issues: {report['label_consistency_issue_count']}",
+        f"- Missing emotions: {', '.join(report['missing_emotions']) or 'none'}",
+        f"- Top emotion: {report['top_emotion']} ({float(report['top_emotion_share']):.1%})",
+        "",
+        "## Transition Counts",
+        "",
+    ]
+    for transition, count in sorted(dict(report.get("transition_counts", {})).items()):
+        lines.append(f"- {transition}: {count}")
+    if not report.get("transition_counts"):
+        lines.append("- none")
+    lines.extend(["", "## Accepted Changes", ""])
+    for item in report.get("accepted_changes", [])[:120]:
+        lines.append(
+            f"- {item['sample_id']}: {item['transition']}; "
+            f"support={float(item.get('support_score', 0.0)):.2f}; "
+            f"sources={item.get('all_sources', '')}"
+        )
+    if not report.get("accepted_changes"):
+        lines.append("- none")
+    return "\n".join(lines) + "\n"
+
+
+def _assert_safe_side_path(path: str | _Path) -> None:
+    candidate = _Path(path)
+    if candidate.name in FORMAL_SUBMISSION_NAMES:
+        raise ValueError(f"refusing to write formal submission path: {candidate}")
+
+
+def _write_json(path: str | _Path, payload: _Any) -> None:
+    out = _Path(path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(_json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def _write_zip(zip_path: str | _Path, json_path: str | _Path) -> None:
+    out = _Path(zip_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with _zipfile.ZipFile(out, "w", compression=_zipfile.ZIP_DEFLATED) as archive:
+        info = _zipfile.ZipInfo("submission.json")
+        info.date_time = (1980, 1, 1, 0, 0, 0)
+        info.compress_type = _zipfile.ZIP_DEFLATED
+        archive.writestr(info, _Path(json_path).read_bytes())
+
+
+def _strict_v18_label_issues(row: dict[str, _Any]) -> list[dict[str, str]]:
+    issues: list[dict[str, str]] = []
+    emotion = str(row.get("emotion", ""))
+    valence = str(row.get("emotional_valence", ""))
+    arousal = str(row.get("emotional_arousal_level", ""))
+    if emotion not in TRACK2_JSON_EMOTIONS:
+        return [
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotion",
+                "expected": "|".join(sorted(TRACK2_JSON_EMOTIONS)),
+                "actual": emotion,
+                "reason": "emotion is not in the challenge label set",
+            }
+        ]
+    if valence not in {"Positive", "Negative"}:
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_valence",
+                "expected": "Positive|Negative",
+                "actual": valence,
+                "reason": "emotional_valence must be one of the challenge values",
+            }
+        )
+    if arousal not in {"High", "Low"}:
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_arousal_level",
+                "expected": "High|Low",
+                "actual": arousal,
+                "reason": "emotional_arousal_level must be one of the challenge values",
+            }
+        )
+    if emotion in POSITIVE_EMOTIONS and valence != "Positive":
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_valence",
+                "expected": "Positive",
+                "actual": valence,
+                "reason": f"{emotion} is normally positive in the challenge label set",
+            }
+        )
+    if emotion in NEGATIVE_EMOTIONS and valence != "Negative":
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_valence",
+                "expected": "Negative",
+                "actual": valence,
+                "reason": f"{emotion} is normally negative in the challenge label set",
+            }
+        )
+    if emotion in HIGH_AROUSAL_EMOTIONS and arousal != "High":
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_arousal_level",
+                "expected": "High",
+                "actual": arousal,
+                "reason": f"{emotion} is normally high-arousal in the challenge label set",
+            }
+        )
+    if emotion in LOW_AROUSAL_EMOTIONS and arousal != "Low":
+        issues.append(
+            {
+                "sample_id": str(row.get("sample_id", "")),
+                "field": "emotional_arousal_level",
+                "expected": "Low",
+                "actual": arousal,
+                "reason": f"{emotion} is normally low-arousal in the challenge label set",
+            }
+        )
+    return issues
+
+
+def _canonical_emotion(value: _Any) -> str:
+    emotion = str(value or "").strip().lower()
+    return emotion if emotion in TRACK2_JSON_EMOTIONS else ""
+
+
+def _same_quadrant_from_evidence(row: dict[str, _Any]) -> tuple[bool, bool]:
+    _, current, proposed, _, _, valid_transition_shape, transition_label_mismatch = _evidence_transition_labels(row)
+    if (
+        valid_transition_shape
+        and not transition_label_mismatch
+        and current in TRACK2_JSON_EMOTIONS
+        and proposed in TRACK2_JSON_EMOTIONS
+    ):
+        return _same_quadrant_from_labels(current, proposed)
+    return _safe_bool(row.get("same_valence")), _safe_bool(row.get("same_arousal"))
+
+
+def _same_quadrant_from_labels(current: str, proposed: str) -> tuple[bool, bool]:
+    if current not in TRACK2_JSON_EMOTIONS or proposed not in TRACK2_JSON_EMOTIONS:
+        return False, False
+    return _valence(current) == _valence(proposed), _arousal(current) == _arousal(proposed)
+
+
+def _first_present(row: dict[str, _Any], fields: tuple[str, ...]) -> _Any:
+    for field in fields:
+        value = row.get(field)
+        if str(value or "").strip():
+            return value
+    return ""
+
+
+def _label_triplet(row: dict[str, _Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("emotion", "")).strip(),
+        str(row.get("emotional_valence", "")).strip(),
+        str(row.get("emotional_arousal_level", "")).strip(),
+    )
+
+
+def _valence(emotion: str) -> str:
+    return "Negative" if emotion in NEGATIVE_EMOTIONS else "Positive"
+
+
+def _arousal(emotion: str) -> str:
+    return "High" if emotion in HIGH_AROUSAL_EMOTIONS else "Low"

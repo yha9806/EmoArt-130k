@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import copy
 import csv
+import json
 import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 from affectiveart.track2_v18_champion_hybrid import (
@@ -511,8 +513,8 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
             {
                 "sample_id": "track2_0002",
                 "current_emotion": "content",
-                "proposed_emotion": "calm",
-                "transition": "content->calm",
+                "proposed_emotion": "annoyed",
+                "transition": "content->annoyed",
                 "same_valence": "0.0",
                 "same_arousal": 1.0,
                 "model_vote_count": 2,
@@ -574,6 +576,28 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
             "near_duplicate": False,
             "failed_transition_count": 0,
             "risk_flags": "cross_quadrant",
+        }
+
+        gate = v18_gate_for_evidence(row, distribution={"content": 200, "annoyed": 30})
+
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("unsupported_cross_quadrant", gate["reasons"])
+
+    def test_v18_gate_derives_quadrant_from_labels_not_stale_metadata(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import v18_gate_for_evidence
+
+        row = {
+            "sample_id": "track2_0001",
+            "transition": "content->annoyed",
+            "same_valence": True,
+            "same_arousal": True,
+            "model_vote_count": 3,
+            "support_score": 2.0,
+            "public_duplicate_support_score": 0.0,
+            "exact_duplicate": False,
+            "near_duplicate": False,
+            "failed_transition_count": 0,
+            "risk_flags": "",
         }
 
         gate = v18_gate_for_evidence(row, distribution={"content": 200, "annoyed": 30})
@@ -1069,3 +1093,195 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
 
         self.assertEqual(gate["decision"], "block")
         self.assertIn("rare_current_class_floor", gate["reasons"])
+
+    def test_write_v18_candidate_outputs_writes_side_path_zip_and_report(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            text_json = root / "text.json"
+            out_json = root / "track2_submission_v18_champion_hybrid_candidate.json"
+            out_zip = root / "track2_submission_v18_champion_hybrid_candidate.zip"
+            report_json = root / "candidate_report.json"
+            report_md = root / "candidate_report.md"
+            row = {
+                "sample_id": "track2_0001",
+                "emotion": "content",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A calm room.",
+                "brushstroke": "Soft strokes.",
+                "composition": "Balanced composition.",
+                "color": "Muted color.",
+                "line": "Gentle line.",
+                "light": "Soft light.",
+            }
+            base_json.write_text(json.dumps([row]), encoding="utf-8")
+            text_json.write_text(
+                json.dumps(
+                    [
+                        {
+                            **row,
+                            "overall_caption": (
+                                "A quiet interior uses muted color and balanced space "
+                                "to create contentment."
+                            ),
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            changes = [
+                {
+                    "sample_id": "track2_0001",
+                    "current_emotion": "content",
+                    "proposed_emotion": "calm",
+                    "transition": "content->calm",
+                    "support_score": 2.0,
+                    "max_confidence": 0.9,
+                    "model_vote_count": 3,
+                    "model_sources": "clip,dinov2,siglip2",
+                    "all_sources": "clip,dinov2,siglip2",
+                    "gate_decision": "accept",
+                    "gate_reasons": "meets_v18_thresholds",
+                    "rationale": "strong visual calm cues",
+                }
+            ]
+
+            report = write_v18_candidate_outputs(
+                base_json=base_json,
+                text_json=text_json,
+                changes=changes,
+                out_json=out_json,
+                out_zip=out_zip,
+                report_json=report_json,
+                report_md=report_md,
+            )
+
+            self.assertTrue(out_json.exists())
+            self.assertTrue(out_zip.exists())
+            self.assertTrue(report_json.exists())
+            self.assertTrue(report_md.exists())
+            rows = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertEqual(rows[0]["emotion"], "calm")
+            self.assertEqual(rows[0]["emotional_valence"], "Positive")
+            self.assertEqual(rows[0]["emotional_arousal_level"], "Low")
+            self.assertIn("quiet interior", rows[0]["overall_caption"])
+            self.assertEqual(report["accepted_label_changes"], 1)
+            self.assertEqual(report["description_merge"]["description_changed_rows"], 1)
+            self.assertEqual(report["label_consistency_issue_count"], 0)
+            with zipfile.ZipFile(out_zip) as archive:
+                self.assertEqual(archive.namelist(), ["submission.json"])
+                self.assertEqual(archive.getinfo("submission.json").date_time, (1980, 1, 1, 0, 0, 0))
+
+    def test_write_v18_candidate_outputs_blocks_formal_submission_name(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text("[]", encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "formal submission"):
+                write_v18_candidate_outputs(
+                    base_json=base_json,
+                    text_json=None,
+                    changes=[],
+                    out_json=root / "track2_submission.json",
+                    out_zip=root / "candidate.zip",
+                    report_json=root / "candidate_report.json",
+                    report_md=root / "candidate_report.md",
+                )
+
+    def test_write_v18_candidate_outputs_blocks_formal_report_name(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import write_v18_candidate_outputs
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            base_json = root / "base.json"
+            base_json.write_text("[]", encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "formal submission"):
+                write_v18_candidate_outputs(
+                    base_json=base_json,
+                    text_json=None,
+                    changes=[],
+                    out_json=root / "candidate.json",
+                    out_zip=root / "candidate.zip",
+                    report_json=root / "track2_submission.json",
+                    report_md=root / "candidate_report.md",
+                )
+
+    def test_load_track2_rows_rejects_invalid_labels(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import load_track2_rows
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "bad.json"
+            path.write_text(
+                json.dumps(
+                    [
+                        {
+                            "sample_id": "track2_0001",
+                            "emotion": "joyful",
+                            "emotional_valence": "Positive",
+                            "emotional_arousal_level": "Low",
+                            "overall_caption": "A caption.",
+                            "brushstroke": "Brush.",
+                            "composition": "Composition.",
+                            "color": "Color.",
+                            "line": "Line.",
+                            "light": "Light.",
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "invalid emotion"):
+                load_track2_rows(path)
+
+    def test_load_track2_rows_rejects_duplicate_sample_id(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import load_track2_rows
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "bad.json"
+            row = {
+                "sample_id": "track2_0001",
+                "emotion": "calm",
+                "emotional_valence": "Positive",
+                "emotional_arousal_level": "Low",
+                "overall_caption": "A caption.",
+                "brushstroke": "Brush.",
+                "composition": "Composition.",
+                "color": "Color.",
+                "line": "Line.",
+                "light": "Light.",
+            }
+            path.write_text(json.dumps([row, row]), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "duplicate sample_id"):
+                load_track2_rows(path)
+
+    def test_write_v18_candidate_outputs_does_not_import_untracked_pipeline_modules(self) -> None:
+        code = (
+            "import sys\n"
+            "import affectiveart.track2_v18_champion_hybrid\n"
+            "blocked = {'affectiveart.challenge', 'affectiveart.track2_audit', "
+            "'affectiveart.track2_v17_classification_calibration'}\n"
+            "raise SystemExit(1 if blocked & set(sys.modules) else 0)\n"
+        )
+
+        result = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=Path(__file__).resolve().parents[1],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(
+            result.returncode,
+            0,
+            msg=f"stdout={result.stdout!r} stderr={result.stderr!r}",
+        )
