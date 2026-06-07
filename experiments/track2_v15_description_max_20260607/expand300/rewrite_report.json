@@ -1,0 +1,1361 @@
+{
+  "method": "track2_multimodal_description_rewrite_v1",
+  "row_count": 1000,
+  "decision_count": 492,
+  "changed_rows": 72,
+  "changed_fields": 405,
+  "classification_label_changes": 0,
+  "rejection_counts": {
+    "low_confidence": 11,
+    "low_dimension_score": 23,
+    "rewrite_not_needed": 407
+  },
+  "changes": [
+    {
+      "sample_id": "track2_0008",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed external historical attributions to Goya and the Disasters of War series to focus purely on the visual evidence in the print, while maintaining the alarmed emotional framing.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0012",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.75,
+        "attribute_quality": 0.72,
+        "caption_quality": 0.74
+      },
+      "reason": "The original descriptions were accurate but verbose; they have been shortened for conciseness while maintaining visual fidelity.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0041",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Polished the descriptions to ensure each is exactly one concise, highly descriptive sentence that directly references the visual elements of the drawing.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0060",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed specific historical terms like 'Canton' and 'hongs' to ensure the descriptions are strictly grounded in the visual evidence of the painting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line"
+      ]
+    },
+    {
+      "sample_id": "track2_0061",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.98,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions are highly accurate and visually grounded, but the color description was slightly adjusted to replace 'somber' with 'quiet' to better align with the calm emotion.",
+      "changed_fields": [
+        "color"
+      ]
+    },
+    {
+      "sample_id": "track2_0063",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were highly accurate but contained slightly interpretive language; the rewritten fields focus more directly on concrete visual details, such as the specific textures, lighting, and spatial arrangement.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0071",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original text was accurate but benefited from more specific details describing unique elements of the composition, such as the wireframe loop, the solid dot, and the specific quality of the hand-drawn lines.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0091",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed the historical style reference from the brushstroke description to ensure it remains strictly visual, and polished all fields to be concise, single-sentence descriptions.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0104",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to eliminate generic art-history terms and focus purely on the direct visual attributes of the print.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0128",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original brushstroke description contained historical references to Northern Renaissance painting, which violates the constraint against claiming historical facts. The descriptions have been refined to focus purely on visual attributes.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0135",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The overall caption was updated to remove specific historical and geographical claims that are not directly visible in the image, replacing them with precise visual descriptions of the architecture and figures.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0136",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on the visual elements of this specific print, removing generic art-historical meta-commentary.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0145",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "The original descriptions were accurate but could be enhanced with more specific visual details from the scene, such as the transition from the outdoor encampment to the classical architecture.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0147",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.98,
+        "attribute_quality": 0.98,
+        "caption_quality": 0.97
+      },
+      "reason": "The original descriptions were highly accurate, but the overall caption included interpretive iconographic claims about symbolism. The rewritten fields focus purely on the visible elements, refining the descriptions of brushwork, composition, and line quality to be entirely objective and visually grounded.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0152",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were good but could be improved by explicitly mentioning the Japanese woodblock print style, the faded/aged quality of the colors, and the specific details of the radiating ceiling perspective.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0158",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original caption incorrectly described the bird as 'perched', whereas it is clearly in flight, swooping down with wings spread. The updated fields provide more precise visual details of the composition, brushwork, and subject matter.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0171",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.75,
+        "attribute_quality": 0.72,
+        "caption_quality": 0.74
+      },
+      "reason": "The descriptions were refined into complete, concise sentences that accurately capture the visual elements of the woodblock print.",
+      "changed_fields": [
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0176",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Removed external historical references to 'The Disasters of War' series to focus strictly on the visible elements of the print, while maintaining the alarmed emotion and improving the visual descriptions of line, light, and composition.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0180",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original text was good but contained some interpretive language. The polished version focuses purely on concrete visual elements, describing the woodblock print's lines, composition, and colors with high precision.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0184",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Polished the descriptions to be more concise, precise to the printmaking medium, and visually grounded.",
+      "changed_fields": [
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0188",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The descriptions were refined to be more visually descriptive and specific to the woodblock print medium, enhancing the details about the lines, colors, and composition.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0189",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed the specific location name 'Amida Falls' to focus purely on the visible elements of the woodblock print, ensuring compliance with the guidelines.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0197",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were highly accurate but included stylistic labels like 'Northern Renaissance'. I refined the text to focus purely on visual evidence and ensured each field is exactly one concise sentence.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0200",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Improved the specificity of the descriptions by incorporating the prominent calligraphy panels at the top and bottom of the scroll, and refined the brushstroke and composition details to match the classic landscape style shown.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0209",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "The original caption contained external historical context about the series title which is not directly visible in the image. The rewritten fields focus purely on the visual details of the etching, describing the figures, printmaking marks, and stark lighting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0234",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Refined the descriptions to remove references to a 'minimalist landscape' since the background is entirely plain, and enhanced the specificity of the brushstroke, color, and line descriptions to better match the visual details of the album leaf.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0235",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Rewrote the brushstroke description to remove references to specific historical art movements like Northern Renaissance or Gothic, focusing instead on the visible, precise paint application, and ensured all fields are single, highly descriptive sentences.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0237",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed the specific geographic reference to 'Dutch' to ensure the caption is strictly grounded in visual evidence, while maintaining the overall high quality and descriptive accuracy of the original text.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke"
+      ]
+    },
+    {
+      "sample_id": "track2_0262",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Adjusted the description to remove specific historical names like 'Canton factories' and 'Pearl River' to strictly adhere to visible evidence, while preserving the calm mood and precise details of the waterfront scene.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition"
+      ]
+    },
+    {
+      "sample_id": "track2_0276",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to capture the specific visual duality of the print, highlighting the white-on-black scratched figure on the left versus the black-on-white fluid figure on the right.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0308",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original text was good but generic; the rewritten version incorporates highly specific visual details unique to this artwork, such as the octagonal ruined temple, the ship in the harbor, and the exotic animals like the peacock and giraffe.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0327",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the caption and attributes to remove specific historical and iconographical terms like 'Saint George' and 'International Gothic', focusing purely on the visible visual elements while maintaining high descriptive quality.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0347",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Refined the overall caption to focus purely on visible elements rather than symbolic interpretation, and enhanced the other fields with more concrete visual details.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0353",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to remove historical style labels and iconographical assumptions, while adding more specific visual details such as the pink and grey tiled floor and the specific color palette.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0357",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.75,
+        "attribute_quality": 0.72,
+        "caption_quality": 0.74
+      },
+      "reason": "The descriptions were simplified to be more concise and less verbose while maintaining visual accuracy.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0364",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were highly accurate, but the 'brushstroke' field was adjusted to refer to pen strokes since the medium is pen and ink, and the overall caption was slightly refined to better align with the 'alarmed' emotion.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0370",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to ensure each field is exactly one concise, highly descriptive sentence that directly references the visual elements of the engraving.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0386",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were good but contained historical references in the brushstroke field and slightly overstated the dramatic nature of the lighting. I have refined them to focus purely on the visual elements, describing the soft, graduated light and the precise engraving lines.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0420",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the caption to remove external historical series references and focused purely on the visible elements of the etching, improving the description of mark-making, composition, and lighting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0435",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were highly accurate but contained some non-visual art-historical references. The rewritten fields focus purely on the visual evidence of the artwork.",
+      "changed_fields": [
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0453",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to ensure each field is exactly one concise, highly descriptive sentence focusing on direct visual evidence while preserving the joyful, celebratory mood.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0479",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Rewrote to remove external historical attributions (Goya, Disasters of War) and focus purely on the visible printmaking details, composition, and stark lighting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0488",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.8,
+        "attribute_quality": 0.8,
+        "caption_quality": 0.8
+      },
+      "reason": "The descriptions were refined to be more concise and direct while maintaining the energetic, positive tone of the artwork.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0507",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Removed historical stylistic references such as 'High Renaissance style' to focus purely on visual characteristics, and simplified the caption to describe the visible elements directly.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition"
+      ]
+    },
+    {
+      "sample_id": "track2_0516",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.98,
+        "attribute_quality": 0.98,
+        "caption_quality": 0.98
+      },
+      "reason": "The original descriptions were enhanced to capture the specific poses of the two cats—one stretching on a slope and the other crouching—and to detail the golden-ochre silk background and precise ink outlines.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0565",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "Removed external historical attribution to Goya's series to focus purely on the visual elements of the print, and refined the descriptions of line, light, and texture to be more specific to the visual evidence.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0586",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "The original caption contained specific historical attributions to Goya and his Disparates series, which violates the constraint against claiming specific historical facts or artist names. The descriptions have been revised to focus purely on the visual elements and printmaking techniques.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0593",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.75,
+        "attribute_quality": 0.72,
+        "caption_quality": 0.74
+      },
+      "reason": "Refined descriptions to focus purely on visible details and removed historical references.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0643",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus more directly on visible details, such as the dog in the foreground, the specific textures of the garments, and the marble column, while removing stylistic labels.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0660",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original descriptions were good, but they have been refined to be more precise regarding the asymmetrical diagonal composition, the specific color tones, and the meticulous brushwork characteristic of this style.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0665",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed the specific historical name Saint Martin to focus strictly on the visible elements, and refined the descriptions to be concise, single-sentence observations of the visual style.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0680",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Improved the specificity of the overall caption by detailing the exact attributes held by the saints, and refined the brushstroke and light descriptions to be purely visual and free of historical generalizations.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0683",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on the visible printmaking techniques, composition, and lighting, removing generic art-historical assumptions.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0686",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.8,
+      "dimension_scores": {
+        "artwork_consistency": 0.75,
+        "attribute_quality": 0.72,
+        "caption_quality": 0.74
+      },
+      "reason": "The original text contained specific iconographical names and historical assumptions not directly visible, which have been simplified to focus on visual elements.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0708",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original caption used specific historical identification (Saint Jerome) which is not explicitly labeled in the image, so the text was rewritten to focus purely on the visible elements and the emotional state of frustration and distress.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0716",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed specific historical attribution to Goya's series to focus purely on the visual elements of the print, while maintaining the emotional framing of alarm and distress.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color"
+      ]
+    },
+    {
+      "sample_id": "track2_0717",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed stylistic references to the early Renaissance to focus purely on visual descriptions, and refined the sentences to be concise and descriptive of the somber narrative.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0736",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on the visible geometric elements, flat ink application, and stark monochromatic contrast, enhancing the connection to a static, low-arousal mood.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0744",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original text was highly accurate but was enhanced to explicitly mention the prominent red collector seals and calligraphic inscriptions, which are key visual elements of this traditional Chinese scroll format.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0764",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "The original caption included specific historical names and style classifications. The rewritten version focuses strictly on the visual elements, describing the figures, composition, lighting, and textures directly visible in the painting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0766",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Adjusted the composition description to accurately reflect the two-panel layout containing calligraphy on the left and the landscape on the right, and removed historical style references to focus purely on visual attributes.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0769",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.85
+      },
+      "reason": "The original caption included external historical facts such as the artist's name and the series title, which are not directly visible in the image. The rewritten fields focus strictly on the visual elements of the print, describing the figures, composition, and printmaking techniques.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0812",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "The original caption contained specific historical attributions (Goya's 'Disasters of War') which are not directly visible in the image itself. The rewritten fields focus purely on the visual elements of the print, describing the composition, lines, and tones without external historical claims.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0813",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to accurately reflect the characteristics of a Japanese woodblock print, focusing on the carved textures, keyblock outlines, and flat color areas while preserving the content mood.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0816",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on visible details, removing stylistic assumptions and enhancing the specificity of the brushstroke, color, and light descriptions.",
+      "changed_fields": [
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0818",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.8,
+        "caption_quality": 0.8
+      },
+      "reason": "The original text contained historical attributions and iconographical identifications (such as 'Renaissance', 'High Renaissance', 'St. John the Baptist') which are not plainly visible without external knowledge. The rewritten text focuses purely on the visual elements, describing the circular format, smooth brushwork, jewel-toned colors, and soft lighting.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0852",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to be more precise, replacing 'two women' with 'two figures' to remain accurate to the gender-ambiguous theatrical or wakashu styling, and polished the language for conciseness.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0865",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Removed the historical reference to the Umbrian school from the brushstroke description to focus purely on visual evidence, while maintaining the calm and serene tone of the original text.",
+      "changed_fields": [
+        "brushstroke"
+      ]
+    },
+    {
+      "sample_id": "track2_0898",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.9,
+        "attribute_quality": 0.9,
+        "caption_quality": 0.9
+      },
+      "reason": "The original descriptions were accurate but contained stylistic attributions; the rewritten fields focus purely on concrete visual details, enhancing the descriptive quality and emotional resonance of the scene.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0923",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the caption to focus on the direct visual narrative of confrontation and trial to better evoke the alarmed emotion, while removing specific iconographical assumptions.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0960",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.9,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on visible elements, removing references to printmaking techniques and styles while enhancing the description of colors, lines, and composition.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    },
+    {
+      "sample_id": "track2_0990",
+      "model": "gemini-3.5-flash",
+      "confidence": 0.95,
+      "dimension_scores": {
+        "artwork_consistency": 0.95,
+        "attribute_quality": 0.95,
+        "caption_quality": 0.95
+      },
+      "reason": "Refined the descriptions to focus purely on visible elements, replacing technical assumptions like tempera and lapis lazuli with direct visual descriptors of color, line, and light.",
+      "changed_fields": [
+        "overall_caption",
+        "brushstroke",
+        "composition",
+        "color",
+        "line",
+        "light"
+      ]
+    }
+  ],
+  "formal_submission_overwritten": false,
+  "source_json": "submissions/track2_submission_v12_stable_probe_candidate.json",
+  "decisions_jsonl": "experiments/track2_v15_description_max_20260607/expand300/decisions_combined_492_gemini35.jsonl",
+  "out_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "out_zip": "submissions/track2_submission_v15_desc_expand300_candidate.zip"
+}

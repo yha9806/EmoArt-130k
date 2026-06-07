@@ -1,0 +1,212 @@
+{
+  "source_json": "submissions/track2_submission_v12_stable_probe_candidate.json",
+  "existing_decisions": "experiments/track2_score_calibrated_champion_20260605/v1/description_gemini35_v1/decisions_gemini35_v1.jsonl",
+  "rows": 1000,
+  "existing_decision_count": 192,
+  "not_reviewed_count": 808,
+  "positive_score_not_reviewed": 68,
+  "selected_count": 300,
+  "selection_policy": "unreviewed rows sorted by VULCA entailment risk, local description audit issues, and unsupported external-knowledge/style heuristics; fill to 300 by sample_id order",
+  "top20": [
+    {
+      "sample_id": "track2_0117",
+      "score": 23.0,
+      "reviewed": false,
+      "vulca_issues": 4,
+      "vulca_risk": 1.0,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0665",
+      "score": 15.0,
+      "reviewed": false,
+      "vulca_issues": 2,
+      "vulca_risk": 0.7,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual;\\bSaint\\b",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0126",
+      "score": 14.0,
+      "reviewed": false,
+      "vulca_issues": 2,
+      "vulca_risk": 0.7,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0541",
+      "score": 14.0,
+      "reviewed": false,
+      "vulca_issues": 2,
+      "vulca_risk": 0.7,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0923",
+      "score": 9.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.55,
+      "desc_issues": 0,
+      "heuristic_hits": "Renaissance",
+      "emotion": "alarmed"
+    },
+    {
+      "sample_id": "track2_0385",
+      "score": 8.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual;creates a sense",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0543",
+      "score": 8.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual;\\bChrist\\b",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0708",
+      "score": 8.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual;\\bSaint\\b",
+      "emotion": "frustrated"
+    },
+    {
+      "sample_id": "track2_0029",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0036",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0065",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0182",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0364",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "alarmed"
+    },
+    {
+      "sample_id": "track2_0391",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0454",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0470",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0538",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0584",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0749",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    },
+    {
+      "sample_id": "track2_0875",
+      "score": 7.5,
+      "reviewed": false,
+      "vulca_issues": 1,
+      "vulca_risk": 0.35,
+      "desc_issues": 0,
+      "heuristic_hits": "spiritual",
+      "emotion": "calm"
+    }
+  ]
+}
