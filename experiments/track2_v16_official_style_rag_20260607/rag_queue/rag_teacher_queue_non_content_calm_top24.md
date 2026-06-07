@@ -1,0 +1,26 @@
+# Track2 v16 Non Content-Calm RAG Queue
+
+- track2_0982: aroused->excited gate=hold_needs_more_evidence priority=4.562512 conf=0.712512
+- track2_0873: aroused->calm gate=hold_needs_more_evidence priority=4.454631 conf=0.954631
+- track2_0382: content->excited gate=hold_needs_more_evidence priority=4.450135 conf=0.950135
+- track2_0779: content->excited gate=hold_needs_more_evidence priority=4.367206 conf=0.867206
+- track2_0622: calm->content gate=hold_needs_more_evidence priority=4.31662 conf=0.46662
+- track2_0505: tired->calm gate=hold_needs_more_evidence priority=4.312231 conf=0.812231
+- track2_0215: tired->content gate=hold_needs_more_evidence priority=4.307491 conf=0.807491
+- track2_0356: aroused->excited gate=hold_needs_more_evidence priority=4.234455 conf=0.384455
+- track2_0090: calm->excited gate=hold_needs_more_evidence priority=4.226506 conf=0.726506
+- track2_0056: tired->calm gate=hold_needs_more_evidence priority=4.200287 conf=0.700287
+- track2_0441: annoyed->calm gate=hold_needs_more_evidence priority=4.199742 conf=0.699742
+- track2_0618: sad->calm gate=hold_needs_more_evidence priority=4.191262 conf=0.691262
+- track2_0211: tired->calm gate=hold_needs_more_evidence priority=4.19046 conf=0.69046
+- track2_0998: content->excited gate=hold_needs_more_evidence priority=4.18756 conf=0.68756
+- track2_0923: alarmed->calm gate=hold_needs_more_evidence priority=4.186982 conf=0.686982
+- track2_0806: annoyed->calm gate=hold_needs_more_evidence priority=4.186459 conf=0.686459
+- track2_0369: annoyed->calm gate=hold_needs_more_evidence priority=4.166584 conf=0.666584
+- track2_0345: tired->calm gate=hold_needs_more_evidence priority=4.144785 conf=0.644785
+- track2_0974: happy->calm gate=hold_needs_more_evidence priority=4.141081 conf=0.641081
+- track2_0696: sad->calm gate=hold_needs_more_evidence priority=4.138893 conf=0.638893
+- track2_0627: sad->calm gate=hold_needs_more_evidence priority=4.137413 conf=0.637413
+- track2_0747: tired->calm gate=hold_needs_more_evidence priority=4.121559 conf=0.621559
+- track2_0361: excited->calm gate=hold_needs_more_evidence priority=4.117989 conf=0.617989
+- track2_0919: bored->calm gate=hold_needs_more_evidence priority=4.113388 conf=0.613388

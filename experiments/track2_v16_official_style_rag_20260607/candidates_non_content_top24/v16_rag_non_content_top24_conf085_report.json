@@ -1,0 +1,36 @@
+{
+  "method": "track2_v16_rag_consensus_candidate_v1",
+  "row_count": 1000,
+  "decision_count": 24,
+  "accepted_label_changes": 0,
+  "rejection_counts": {
+    "kept_current": 14,
+    "low_confidence": 10
+  },
+  "transition_counts": {},
+  "cross_quadrant_changes": 0,
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 490,
+    "content": 238,
+    "excited": 15,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 33,
+    "tired": 40
+  },
+  "missing_emotions": [],
+  "top_emotion": "calm",
+  "top_emotion_share": 0.49,
+  "label_consistency_issue_count": 0,
+  "accepted_changes": [],
+  "formal_submission_overwritten": false,
+  "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "decisions_jsonl": "experiments/track2_v16_official_style_rag_20260607/rag_teacher/decisions_non_content_calm_top24_gemini35.jsonl",
+  "out_json": "submissions/track2_submission_v16_rag_non_content_top24_conf085_candidate.json",
+  "out_zip": "submissions/track2_submission_v16_rag_non_content_top24_conf085_candidate.zip"
+}
