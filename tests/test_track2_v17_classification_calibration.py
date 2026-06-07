@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import csv
+import contextlib
+import io
 import json
 import tempfile
 import unittest
@@ -10,11 +13,15 @@ from affectiveart.challenge import TRACK2_JSON_SUBMISSION_KEYS
 from affectiveart.track2_v17_classification_calibration import (
     apply_v17_changes,
     build_evidence_rows,
+    choose_final_gate,
     DEFAULT_PREDICTION_SOURCES,
     load_prediction_sources,
+    main,
     parse_official_failed_transition_counts,
+    render_final_gate_markdown,
     select_v17_changes,
     v17_gate_for_evidence,
+    write_final_gate_report,
     write_v17_candidate_outputs,
 )
 
@@ -60,7 +67,185 @@ def _track2_row(**overrides):
     return row
 
 
+def _ranking_row(candidate_name: str, overall_lower_value: float, **overrides):
+    row = {
+        "candidate_name": candidate_name,
+        "candidate_json": f"submissions/track2_submission_{candidate_name}_candidate.json",
+        "overall_expected": overall_lower_value + 0.003,
+        "overall_lower": overall_lower_value,
+        "overall_upper": overall_lower_value + 0.012,
+        "classification_lower": 0.72,
+        "description_lower": 0.94,
+        "decision": "recommend_submit",
+    }
+    row.update(overrides)
+    return row
+
+
+def _write_ranking_csv(path: Path, rows: list[dict[str, object]]) -> None:
+    fields = sorted({key for row in rows for key in row})
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+
+
 class Track2V17ClassificationCalibrationTests(unittest.TestCase):
+    def test_choose_final_gate_prefers_v17_candidate_when_lower_bound_improves(self) -> None:
+        gate = choose_final_gate(
+            [
+                _ranking_row("v15_desc_expand300", 0.8334),
+                _ranking_row("v17_safe", 0.8335),
+                _ranking_row("v17_balanced", 0.8341),
+            ]
+        )
+
+        self.assertEqual(gate["decision"], "recommend_submit_v17")
+        self.assertEqual(gate["baseline_name"], "v15_desc_expand300")
+        self.assertEqual(gate["best_v17_name"], "v17_balanced")
+        self.assertEqual(gate["candidate_name"], "v17_balanced")
+        self.assertEqual(gate["selected_candidate_name"], "v17_balanced")
+        self.assertAlmostEqual(gate["baseline_lower"], 0.8334)
+        self.assertAlmostEqual(gate["candidate_lower"], 0.8341)
+        self.assertTrue(gate["lower_bound_improved"])
+        self.assertEqual(gate["submission_policy"], "no_auto_submit")
+
+    def test_choose_final_gate_holds_v15_without_v17_lower_bound_improvement(self) -> None:
+        gate = choose_final_gate(
+            [
+                _ranking_row("v15_desc_expand300", 0.8334),
+                _ranking_row("v17_safe", 0.8334),
+                _ranking_row("v17_balanced", 0.8331),
+            ]
+        )
+
+        self.assertEqual(gate["decision"], "hold_v17_keep_v15")
+        self.assertEqual(gate["best_v17_name"], "v17_safe")
+        self.assertEqual(gate["candidate_name"], "v15_desc_expand300")
+        self.assertEqual(gate["selected_candidate_name"], "v15_desc_expand300")
+        self.assertAlmostEqual(gate["baseline_lower"], 0.8334)
+        self.assertAlmostEqual(gate["candidate_lower"], 0.8334)
+        self.assertFalse(gate["lower_bound_improved"])
+        self.assertIn("does not strictly exceed", gate["reason"])
+
+    def test_choose_final_gate_raises_when_baseline_missing(self) -> None:
+        with self.assertRaises(ValueError):
+            choose_final_gate([_ranking_row("v17_safe", 0.8341)])
+
+    def test_choose_final_gate_ignores_non_v17_challengers(self) -> None:
+        gate = choose_final_gate(
+            [
+                _ranking_row("v15_desc_expand300", 0.8334),
+                _ranking_row("v16_top48", 0.84),
+                _ranking_row("v17_safe", 0.8330),
+            ]
+        )
+
+        self.assertEqual(gate["decision"], "hold_v17_keep_v15")
+        self.assertEqual(gate["best_v17_name"], "v17_safe")
+        self.assertAlmostEqual(gate["candidate_lower"], 0.8334)
+
+    def test_choose_final_gate_raises_when_baseline_lower_is_malformed(self) -> None:
+        with self.assertRaisesRegex(ValueError, "v15_desc_expand300.*overall_lower"):
+            choose_final_gate(
+                [
+                    _ranking_row("v15_desc_expand300", 0.8334, overall_lower="nan"),
+                    _ranking_row("v17_safe", 0.8341),
+                ]
+            )
+
+    def test_choose_final_gate_skips_malformed_v17_lower_and_records_reason(self) -> None:
+        gate = choose_final_gate(
+            [
+                _ranking_row("v15_desc_expand300", 0.8334),
+                _ranking_row("v17_bad", 0.9, overall_lower="not-a-number"),
+                _ranking_row("v17_safe", 0.8333),
+            ]
+        )
+
+        self.assertEqual(gate["decision"], "hold_v17_keep_v15")
+        self.assertEqual(gate["best_v17_name"], "v17_safe")
+        self.assertEqual(gate["candidate_name"], "v15_desc_expand300")
+        self.assertEqual(gate["skipped_v17_rows"][0]["candidate_name"], "v17_bad")
+        self.assertIn("overall_lower", gate["skipped_v17_rows"][0]["reason"])
+
+    def test_write_final_gate_report_writes_json_and_markdown(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            ranking_csv = root / "candidate_ranking.csv"
+            out_md = root / "final_gate_report.md"
+            out_json = root / "final_gate_report.json"
+            rows = [
+                _ranking_row("v15_desc_expand300", 0.8334),
+                _ranking_row("v17_balanced", 0.8341),
+            ]
+            _write_ranking_csv(ranking_csv, rows)
+
+            report = write_final_gate_report(ranking_csv, out_md, out_json)
+
+            self.assertEqual(report["decision"], "recommend_submit_v17")
+            payload = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertEqual(payload["best_v17_name"], "v17_balanced")
+            self.assertEqual(payload["candidate_name"], "v17_balanced")
+            self.assertEqual(payload["selected_candidate_name"], "v17_balanced")
+            markdown = out_md.read_text(encoding="utf-8")
+            self.assertIn("# Track2 v17 Final Gate", markdown)
+            self.assertIn("- Candidate: `v17_balanced`", markdown)
+            self.assertIn("local/fused shadow gate", markdown)
+            self.assertIn("no_auto_submit", markdown)
+
+    def test_render_final_gate_markdown_includes_full_fused_ranking_rows(self) -> None:
+        rows = [
+            _ranking_row("v15_desc_expand300", 0.8334),
+            _ranking_row("official_779605_moe_v2_anchor", 0.8334),
+            _ranking_row("v16_top48", 0.84),
+            _ranking_row("v17_safe", 0.8332),
+            _ranking_row("v17_balanced", 0.8341),
+        ]
+        report = choose_final_gate(rows)
+
+        markdown = render_final_gate_markdown(report, rows)
+
+        self.assertIn("recommend_submit_v17", markdown)
+        self.assertIn("## Fused Ranking", markdown)
+        self.assertIn("official_779605_moe_v2_anchor", markdown)
+        self.assertIn("v16_top48", markdown)
+        self.assertIn("v15_desc_expand300", markdown)
+        self.assertLess(markdown.index("v17_balanced"), markdown.index("v17_safe"))
+
+    def test_main_score_gate_writes_explicit_report_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            ranking_csv = root / "candidate_ranking.csv"
+            out_md = root / "final_gate_report.md"
+            out_json = root / "final_gate_report.json"
+            _write_ranking_csv(
+                ranking_csv,
+                [
+                    _ranking_row("v15_desc_expand300", 0.8334),
+                    _ranking_row("v17_safe", 0.8341),
+                ],
+            )
+
+            with contextlib.redirect_stdout(io.StringIO()):
+                main(
+                    [
+                        "score-gate",
+                        "--fused-ranking-csv",
+                        str(ranking_csv),
+                        "--out-md",
+                        str(out_md),
+                        "--out-json",
+                        str(out_json),
+                    ]
+                )
+
+            self.assertTrue(out_md.exists())
+            payload = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertEqual(payload["best_v17_name"], "v17_safe")
+            self.assertEqual(payload["selected_candidate_name"], "v17_safe")
+
     def test_load_prediction_sources_accepts_list_and_entries_payloads(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Track2 Shadow Evaluator</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 24px; color: #17202a; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0 28px; }
+    th, td { border: 1px solid #d7dde5; padding: 8px; text-align: left; }
+    th { background: #eef2f6; }
+    .warning { padding: 12px; background: #fff4d6; border: 1px solid #e5c66a; }
+  </style>
+</head>
+<body>
+  <h1>Track2 Local Shadow Evaluator</h1>
+  <p class="warning">This is a local shadow score. It is not the official Codabench score and must not be treated as hidden-test ground truth.</p>
+  <h2>Candidate Ranking</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>decision</th><th>overall lower</th><th>overall expected</th><th>changes</th><th>cross quadrant</th></tr></thead>
+    <tbody><tr><td>official_779605_moe_v2_anchor</td><td>recommend_submit</td><td>0.833408</td><td>0.836408</td><td>0</td><td>0</td></tr>
+<tr><td>v15_desc_expand300</td><td>recommend_submit</td><td>0.833408</td><td>0.836408</td><td>0</td><td>0</td></tr>
+<tr><td>v17_safe</td><td>recommend_hold</td><td>0.776408</td><td>0.818408</td><td>8</td><td>6</td></tr>
+<tr><td>v17_balanced</td><td>recommend_hold</td><td>0.728283</td><td>0.808909</td><td>15</td><td>12</td></tr>
+<tr><td>v17_aggressive_probe</td><td>recommend_hold</td><td>0.533583</td><td>0.808909</td><td>54</td><td>42</td></tr></tbody>
+  </table>
+  <h2>Top Row Risks</h2>
+  <table>
+    <thead><tr><th>candidate</th><th>sample</th><th>transition</th><th>risk</th></tr></thead>
+    <tbody><tr><td>v17_safe</td><td>track2_0063</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0196</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0215</td><td>tired-&gt;content</td><td>cross_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0382</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0505</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0779</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0873</td><td>aroused-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_safe</td><td>track2_0925</td><td>calm-&gt;tired</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0030</td><td>alarmed-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0063</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0090</td><td>calm-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0196</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0215</td><td>tired-&gt;content</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0319</td><td>calm-&gt;bored</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0382</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0457</td><td>calm-&gt;aroused</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0505</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0567</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0591</td><td>calm-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0770</td><td>content-&gt;happy</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0779</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0873</td><td>aroused-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_balanced</td><td>track2_0925</td><td>calm-&gt;tired</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0008</td><td>alarmed-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0030</td><td>alarmed-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0056</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0063</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0070</td><td>aroused-&gt;bored</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0090</td><td>calm-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0142</td><td>excited-&gt;content</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0145</td><td>calm-&gt;alarmed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0196</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0211</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0213</td><td>sad-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0215</td><td>tired-&gt;content</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0233</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0256</td><td>frustrated-&gt;happy</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0263</td><td>excited-&gt;happy</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0319</td><td>calm-&gt;bored</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0345</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0361</td><td>excited-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0369</td><td>annoyed-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0382</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0441</td><td>annoyed-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0457</td><td>calm-&gt;aroused</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0460</td><td>calm-&gt;annoyed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0480</td><td>alarmed-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0504</td><td>tired-&gt;bored</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0505</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0567</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0575</td><td>tired-&gt;bored</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0591</td><td>calm-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0602</td><td>aroused-&gt;annoyed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0618</td><td>sad-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0627</td><td>sad-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0666</td><td>alarmed-&gt;sad</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0696</td><td>sad-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0733</td><td>aroused-&gt;alarmed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0747</td><td>tired-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0770</td><td>content-&gt;happy</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0779</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0806</td><td>annoyed-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0818</td><td>glad-&gt;content</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0873</td><td>aroused-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0890</td><td>alarmed-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0891</td><td>sad-&gt;alarmed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0919</td><td>bored-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0922</td><td>frustrated-&gt;annoyed</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0923</td><td>alarmed-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0925</td><td>calm-&gt;tired</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0927</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0930</td><td>tired-&gt;sad</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0964</td><td>excited-&gt;happy</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0974</td><td>happy-&gt;calm</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0976</td><td>calm-&gt;annoyed</td><td>cross_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0982</td><td>aroused-&gt;excited</td><td>same_quadrant</td></tr>
+<tr><td>v17_aggressive_probe</td><td>track2_0998</td><td>content-&gt;excited</td><td>cross_quadrant</td></tr></tbody>
+  </table>
+</body>
+</html>

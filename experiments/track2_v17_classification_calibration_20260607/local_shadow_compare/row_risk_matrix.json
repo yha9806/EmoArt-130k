@@ -1,0 +1,1311 @@
+[
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0063",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0196",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0215",
+    "transition": "tired->content",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0382",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0505",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0779",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0873",
+    "transition": "aroused->calm",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_safe",
+    "sample_id": "track2_0925",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0030",
+    "transition": "alarmed->sad",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0063",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0090",
+    "transition": "calm->excited",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0196",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0215",
+    "transition": "tired->content",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0319",
+    "transition": "calm->bored",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0382",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0457",
+    "transition": "calm->aroused",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0505",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0567",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0591",
+    "transition": "calm->sad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0770",
+    "transition": "content->happy",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0779",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0873",
+    "transition": "aroused->calm",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_balanced",
+    "sample_id": "track2_0925",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0008",
+    "transition": "alarmed->sad",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0030",
+    "transition": "alarmed->sad",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0056",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0063",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0070",
+    "transition": "aroused->bored",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0090",
+    "transition": "calm->excited",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0142",
+    "transition": "excited->content",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0145",
+    "transition": "calm->alarmed",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0196",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0211",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0213",
+    "transition": "sad->calm",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0215",
+    "transition": "tired->content",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0233",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0256",
+    "transition": "frustrated->happy",
+    "from": {
+      "emotion": "frustrated",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0263",
+    "transition": "excited->happy",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0319",
+    "transition": "calm->bored",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0345",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0361",
+    "transition": "excited->calm",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0369",
+    "transition": "annoyed->calm",
+    "from": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0382",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0441",
+    "transition": "annoyed->calm",
+    "from": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0457",
+    "transition": "calm->aroused",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0460",
+    "transition": "calm->annoyed",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0480",
+    "transition": "alarmed->sad",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0504",
+    "transition": "tired->bored",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0505",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0567",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0575",
+    "transition": "tired->bored",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0591",
+    "transition": "calm->sad",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0602",
+    "transition": "aroused->annoyed",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0618",
+    "transition": "sad->calm",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0627",
+    "transition": "sad->calm",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0666",
+    "transition": "alarmed->sad",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0696",
+    "transition": "sad->calm",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0733",
+    "transition": "aroused->alarmed",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0747",
+    "transition": "tired->calm",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0770",
+    "transition": "content->happy",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0779",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0806",
+    "transition": "annoyed->calm",
+    "from": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0818",
+    "transition": "glad->content",
+    "from": {
+      "emotion": "glad",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0873",
+    "transition": "aroused->calm",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0890",
+    "transition": "alarmed->calm",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0891",
+    "transition": "sad->alarmed",
+    "from": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0919",
+    "transition": "bored->calm",
+    "from": {
+      "emotion": "bored",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0922",
+    "transition": "frustrated->annoyed",
+    "from": {
+      "emotion": "frustrated",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0923",
+    "transition": "alarmed->calm",
+    "from": {
+      "emotion": "alarmed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0925",
+    "transition": "calm->tired",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0927",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0930",
+    "transition": "tired->sad",
+    "from": {
+      "emotion": "tired",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "sad",
+      "valence": "Negative",
+      "arousal": "Low"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0964",
+    "transition": "excited->happy",
+    "from": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0974",
+    "transition": "happy->calm",
+    "from": {
+      "emotion": "happy",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0976",
+    "transition": "calm->annoyed",
+    "from": {
+      "emotion": "calm",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "annoyed",
+      "valence": "Negative",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0982",
+    "transition": "aroused->excited",
+    "from": {
+      "emotion": "aroused",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": true,
+    "risk": "same_quadrant"
+  },
+  {
+    "candidate_name": "v17_aggressive_probe",
+    "sample_id": "track2_0998",
+    "transition": "content->excited",
+    "from": {
+      "emotion": "content",
+      "valence": "Positive",
+      "arousal": "Low"
+    },
+    "to": {
+      "emotion": "excited",
+      "valence": "Positive",
+      "arousal": "High"
+    },
+    "same_quadrant": false,
+    "risk": "cross_quadrant"
+  }
+]

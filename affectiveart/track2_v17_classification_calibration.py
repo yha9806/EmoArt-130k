@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import re
 import zipfile
 from collections import Counter, defaultdict
@@ -489,6 +490,133 @@ def render_candidate_report_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def choose_final_gate(rows: list[dict[str, Any]], baseline_name: str = "v15_desc_expand300") -> dict[str, Any]:
+    baseline_row = _candidate_row_by_name(rows, baseline_name)
+    if baseline_row is None:
+        raise ValueError(f"missing baseline candidate in fused ranking: {baseline_name}")
+    baseline_lower = _parse_required_finite_float(baseline_row, "overall_lower", baseline_name)
+    v17_rows: list[dict[str, Any]] = []
+    skipped_v17_rows: list[dict[str, str]] = []
+    for row in rows:
+        candidate_name = str(row.get("candidate_name", "")).strip()
+        if not candidate_name.startswith("v17_"):
+            continue
+        try:
+            parsed_lower = _parse_required_finite_float(row, "overall_lower", candidate_name)
+        except ValueError as exc:
+            skipped_v17_rows.append(
+                {
+                    "candidate_name": candidate_name,
+                    "field": "overall_lower",
+                    "value": str(row.get("overall_lower", "")),
+                    "reason": str(exc),
+                }
+            )
+            continue
+        parsed_row = dict(row)
+        parsed_row["_parsed_overall_lower"] = parsed_lower
+        v17_rows.append(parsed_row)
+    best_v17 = _best_overall_lower_row(v17_rows)
+    best_v17_name = str(best_v17.get("candidate_name", "")).strip() if best_v17 else ""
+    best_v17_lower = float(best_v17["_parsed_overall_lower"]) if best_v17 else None
+    lower_bound_improved = best_v17_lower is not None and best_v17_lower > baseline_lower
+
+    if lower_bound_improved:
+        decision = "recommend_submit_v17"
+        selected_candidate_name = best_v17_name
+        selected_candidate_lower = best_v17_lower
+        reason = (
+            f"Best v17 candidate {best_v17_name} overall_lower {best_v17_lower:.6f} "
+            f"strictly exceeds baseline {baseline_name} overall_lower {baseline_lower:.6f}."
+        )
+    elif best_v17 is None:
+        decision = "hold_v17_keep_v15"
+        selected_candidate_name = baseline_name
+        selected_candidate_lower = baseline_lower
+        reason = f"No v17_ candidate rows were found; keep baseline {baseline_name}."
+    else:
+        decision = "hold_v17_keep_v15"
+        selected_candidate_name = baseline_name
+        selected_candidate_lower = baseline_lower
+        reason = (
+            f"Best v17 candidate {best_v17_name} overall_lower {best_v17_lower:.6f} "
+            f"does not strictly exceed baseline {baseline_name} overall_lower {baseline_lower:.6f}."
+        )
+
+    return {
+        "method": "track2_v17_classification_calibration_final_gate_v1",
+        "baseline_name": baseline_name,
+        "baseline_lower": baseline_lower,
+        "candidate_name": selected_candidate_name,
+        "candidate_lower": selected_candidate_lower,
+        "selected_candidate_name": selected_candidate_name,
+        "selected_candidate_lower": selected_candidate_lower,
+        "best_v17_name": best_v17_name,
+        "best_v17_lower": best_v17_lower,
+        "decision": decision,
+        "recommend_submit_v17": lower_bound_improved,
+        "lower_bound_improved": lower_bound_improved,
+        "reason": reason,
+        "submission_policy": "no_auto_submit",
+        "caveat": "This is a local/fused shadow gate, not official Codabench scoring; no auto-submit.",
+        "v17_candidate_count": len(v17_rows),
+        "skipped_v17_rows": skipped_v17_rows,
+        "baseline_row": dict(baseline_row),
+        "best_v17_row": _strip_internal_ranking_fields(best_v17) if best_v17 else {},
+    }
+
+
+def render_final_gate_markdown(report: dict[str, Any], rows: list[dict[str, Any]]) -> str:
+    baseline_name = str(report.get("baseline_name", ""))
+    ranking_rows = sorted(
+        [dict(row) for row in rows],
+        key=lambda row: (-_sort_float(row.get("overall_lower")), str(row.get("candidate_name", ""))),
+    )
+    lines = [
+        "# Track2 v17 Final Gate",
+        "",
+        f"- Decision: `{report.get('decision', '')}`",
+        f"- Candidate: `{report.get('selected_candidate_name', report.get('candidate_name', ''))}`",
+        f"- Submission policy: `{report.get('submission_policy', '')}`",
+        f"- Caveat: {report.get('caveat', '')}",
+        f"- Baseline: `{baseline_name}` overall_lower={_safe_float(report.get('baseline_lower')):.6f}",
+        (
+            f"- Best v17: `{report.get('best_v17_name', '')}` "
+            f"overall_lower={_format_optional_float(report.get('best_v17_lower'))}"
+        ),
+        f"- Reason: {report.get('reason', '')}",
+        "",
+        "## Fused Ranking",
+        "",
+        _render_ranking_markdown_table(ranking_rows),
+    ]
+    if report.get("skipped_v17_rows"):
+        lines.extend(["", "## Skipped v17 Rows", ""])
+        for item in report["skipped_v17_rows"]:
+            lines.append(f"- `{item.get('candidate_name', '')}`: {item.get('reason', '')}")
+    return "\n".join(lines) + "\n"
+
+
+def write_final_gate_report(
+    fused_ranking_csv: str | Path,
+    out_md: str | Path,
+    out_json: str | Path,
+) -> dict[str, Any]:
+    rows = load_csv_rows(fused_ranking_csv)
+    report = choose_final_gate(rows)
+    report["paths"] = {
+        "fused_ranking_csv": str(fused_ranking_csv),
+        "out_md": str(out_md),
+        "out_json": str(out_json),
+    }
+    _write_json(out_json, report)
+    out_md_path = Path(out_md)
+    _assert_not_formal_submission(out_md_path)
+    out_md_path.parent.mkdir(parents=True, exist_ok=True)
+    out_md_path.write_text(render_final_gate_markdown(report, rows), encoding="utf-8")
+    return report
+
+
 def write_v17_profile_candidates(
     base_json: str | Path,
     evidence_json: str | Path,
@@ -556,6 +684,82 @@ def load_track2_rows(path: str | Path) -> list[dict[str, Any]]:
 def load_csv_rows(path: str | Path) -> list[dict[str, Any]]:
     with Path(path).open(newline="", encoding="utf-8") as handle:
         return [dict(row) for row in csv.DictReader(handle)]
+
+
+def _candidate_row_by_name(rows: list[dict[str, Any]], candidate_name: str) -> dict[str, Any] | None:
+    for row in rows:
+        if str(row.get("candidate_name", "")).strip() == candidate_name:
+            return dict(row)
+    return None
+
+
+def _best_overall_lower_row(rows: list[dict[str, Any]]) -> dict[str, Any] | None:
+    if not rows:
+        return None
+    return max(rows, key=lambda row: (float(row["_parsed_overall_lower"]), str(row.get("candidate_name", ""))))
+
+
+def _format_optional_float(value: Any) -> str:
+    if value is None or value == "":
+        return "none"
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    return f"{parsed:.6f}" if math.isfinite(parsed) else str(value)
+
+
+def _parse_required_finite_float(row: dict[str, Any], field: str, candidate_name: str) -> float:
+    value = row.get(field)
+    if value is None or value == "":
+        raise ValueError(f"{candidate_name} missing required {field}")
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{candidate_name} has malformed {field}: {value!r}") from exc
+    if not math.isfinite(parsed):
+        raise ValueError(f"{candidate_name} has non-finite {field}: {value!r}")
+    return parsed
+
+
+def _sort_float(value: Any) -> float:
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return -float("inf")
+    return parsed if math.isfinite(parsed) else -float("inf")
+
+
+def _strip_internal_ranking_fields(row: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in dict(row).items() if not str(key).startswith("_")}
+
+
+def _render_ranking_markdown_table(rows: list[dict[str, Any]]) -> str:
+    if not rows or rows == [{}]:
+        return "_none_"
+    fields = [
+        "candidate_name",
+        "overall_lower",
+        "overall_expected",
+        "classification_lower",
+        "description_lower",
+        "decision",
+    ]
+    lines = [
+        "| Candidate | Overall lower | Overall expected | Classification lower | Description lower | Shadow decision |",
+        "| --- | ---: | ---: | ---: | ---: | --- |",
+    ]
+    for row in rows:
+        lines.append(
+            "| "
+            f"{str(row.get('candidate_name', '')).strip()} | "
+            f"{_format_optional_float(row.get('overall_lower'))} | "
+            f"{_format_optional_float(row.get('overall_expected'))} | "
+            f"{_format_optional_float(row.get('classification_lower'))} | "
+            f"{_format_optional_float(row.get('description_lower'))} | "
+            f"{str(row.get('decision', '')).strip()} |"
+        )
+    return "\n".join(lines)
 
 
 def load_official_score_rows(path: str | Path) -> dict[str, dict[str, Any]]:
@@ -836,6 +1040,10 @@ def main(argv: list[str] | None = None) -> None:
     candidates.add_argument("--base-json", type=Path, default=DEFAULT_BASE_JSON)
     candidates.add_argument("--evidence-json", type=Path, default=DEFAULT_EXPERIMENT_DIR / "evidence_matrix.json")
     candidates.add_argument("--out-dir", type=Path, default=DEFAULT_EXPERIMENT_DIR / "candidate_reports")
+    score_gate = subparsers.add_parser("score-gate", help="Choose final v17 gate from fused shadow ranking")
+    score_gate.add_argument("--fused-ranking-csv", type=Path, required=True)
+    score_gate.add_argument("--out-md", type=Path, default=DEFAULT_EXPERIMENT_DIR / "final_gate_report.md")
+    score_gate.add_argument("--out-json", type=Path, default=DEFAULT_EXPERIMENT_DIR / "final_gate_report.json")
     args = parser.parse_args(argv)
     if args.command == "build-evidence":
         rows = write_evidence_matrix_outputs(
@@ -858,6 +1066,13 @@ def main(argv: list[str] | None = None) -> None:
             out_dir=args.out_dir,
         )
         print(json.dumps(summary, indent=2))
+    elif args.command == "score-gate":
+        report = write_final_gate_report(
+            fused_ranking_csv=args.fused_ranking_csv,
+            out_md=args.out_md,
+            out_json=args.out_json,
+        )
+        print(json.dumps(report, indent=2))
 
 
 def _payload_rows(payload: Any) -> list[dict[str, Any]]:
