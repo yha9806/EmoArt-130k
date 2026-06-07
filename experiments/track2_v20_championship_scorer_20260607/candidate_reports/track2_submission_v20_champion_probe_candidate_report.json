@@ -1,0 +1,485 @@
+{
+  "method": "track2_v20_championship_candidate_v1",
+  "profile": "champion_probe",
+  "row_count": 1000,
+  "accepted_label_changes": 28,
+  "transition_counts": {
+    "content->calm": 28
+  },
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 518,
+    "content": 210,
+    "excited": 15,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 33,
+    "tired": 40
+  },
+  "missing_emotions": [],
+  "top_emotion": "calm",
+  "top_emotion_share": 0.518,
+  "label_consistency_issue_count": 0,
+  "accepted_changes": [
+    {
+      "sample_id": "track2_0044",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.660694,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0099",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.3017,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0169",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.312756,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0210",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 4.603903,
+      "v20_role": "championship_caution_accept"
+    },
+    {
+      "sample_id": "track2_0270",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.464206,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0280",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.392533,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0410",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.674317,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0443",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.356483,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0455",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.29023,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0515",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.533167,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0555",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 4.574226,
+      "v20_role": "championship_caution_accept"
+    },
+    {
+      "sample_id": "track2_0557",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.247301,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0580",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.561181,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0651",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.74229,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0704",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.555223,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0718",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.541693,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0765",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.746475,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0800",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.234189,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0809",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.370854,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0832",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.271503,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0869",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 4.680958,
+      "v20_role": "championship_caution_accept"
+    },
+    {
+      "sample_id": "track2_0871",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 4.483091,
+      "v20_role": "championship_caution_accept"
+    },
+    {
+      "sample_id": "track2_0880",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.656423,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0914",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 4.440933,
+      "v20_role": "championship_caution_accept"
+    },
+    {
+      "sample_id": "track2_0941",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.506554,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0942",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.590573,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0956",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.749557,
+      "v20_role": "championship_consensus_accept"
+    },
+    {
+      "sample_id": "track2_0996",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v20_score": 3.295355,
+      "v20_role": "championship_consensus_accept"
+    }
+  ],
+  "description_anchor_preserved": true,
+  "formal_submission_overwritten": false,
+  "paths": {
+    "out_json": "submissions/track2_submission_v20_champion_probe_candidate.json",
+    "out_zip": "submissions/track2_submission_v20_champion_probe_candidate.zip",
+    "report_json": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.json",
+    "report_md": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.md"
+  }
+}

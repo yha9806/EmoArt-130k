@@ -1,0 +1,98 @@
+{
+  "aroused->excited": {
+    "transition": "aroused->excited",
+    "reverse_transition": "excited->aroused",
+    "count": 1,
+    "reverse_count": 0,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "bored->sad": {
+    "transition": "bored->sad",
+    "reverse_transition": "sad->bored",
+    "count": 1,
+    "reverse_count": 0,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "calm->content": {
+    "transition": "calm->content",
+    "reverse_transition": "content->calm",
+    "count": 43,
+    "reverse_count": 20,
+    "risk": "danger",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "calm->glad": {
+    "transition": "calm->glad",
+    "reverse_transition": "glad->calm",
+    "count": 2,
+    "reverse_count": 1,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "content->calm": {
+    "transition": "content->calm",
+    "reverse_transition": "calm->content",
+    "count": 20,
+    "reverse_count": 43,
+    "risk": "caution",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "content->glad": {
+    "transition": "content->glad",
+    "reverse_transition": "glad->content",
+    "count": 5,
+    "reverse_count": 4,
+    "risk": "caution",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "excited->happy": {
+    "transition": "excited->happy",
+    "reverse_transition": "happy->excited",
+    "count": 1,
+    "reverse_count": 3,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "glad->calm": {
+    "transition": "glad->calm",
+    "reverse_transition": "calm->glad",
+    "count": 1,
+    "reverse_count": 2,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "glad->content": {
+    "transition": "glad->content",
+    "reverse_transition": "content->glad",
+    "count": 4,
+    "reverse_count": 5,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "happy->excited": {
+    "transition": "happy->excited",
+    "reverse_transition": "excited->happy",
+    "count": 3,
+    "reverse_count": 1,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "sad->tired": {
+    "transition": "sad->tired",
+    "reverse_transition": "tired->sad",
+    "count": 1,
+    "reverse_count": 3,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  },
+  "tired->sad": {
+    "transition": "tired->sad",
+    "reverse_transition": "sad->tired",
+    "count": 3,
+    "reverse_count": 1,
+    "risk": "observe",
+    "interpretation": "directional_failed_batch_inference"
+  }
+}

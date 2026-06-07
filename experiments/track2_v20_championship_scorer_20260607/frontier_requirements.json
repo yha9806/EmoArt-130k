@@ -1,0 +1,19 @@
+{
+  "method": "track2_v20_frontier_requirement_v1",
+  "participant": "vulcaart",
+  "frontier_participant": "N&T小分队",
+  "target_overall": 0.89,
+  "current_overall": 0.84,
+  "frontier_overall": 0.89,
+  "current_classification": 0.72,
+  "frontier_classification": 0.78,
+  "current_description": 0.95,
+  "frontier_description": 1.0,
+  "classification_gap": 0.06,
+  "description_gap": 0.05,
+  "emotion_accuracy_gap": 0.23,
+  "macro_f1_gap": 0.0,
+  "required_classification_if_description_1.00": 0.78,
+  "required_classification_if_description_0.98": 0.8,
+  "warning": "This is an aggregate frontier requirement, not hidden-label reconstruction."
+}

@@ -1,0 +1,102 @@
+{
+  "method": "track2_v20_final_gate_report_v1",
+  "decision": "recommend_high_variance_probe",
+  "selected_profile": "champion_probe",
+  "selected_candidate": {
+    "accepted_label_changes": 28,
+    "transition_counts": {
+      "content->calm": 28
+    },
+    "distribution": {
+      "alarmed": 54,
+      "annoyed": 22,
+      "aroused": 29,
+      "bored": 20,
+      "calm": 518,
+      "content": 210,
+      "excited": 15,
+      "frustrated": 46,
+      "glad": 5,
+      "happy": 8,
+      "sad": 33,
+      "tired": 40
+    },
+    "missing_emotions": [],
+    "top_emotion": "calm",
+    "top_emotion_share": 0.518,
+    "label_consistency_issue_count": 0,
+    "description_anchor_preserved": true,
+    "paths": {
+      "out_json": "submissions/track2_submission_v20_champion_probe_candidate.json",
+      "out_zip": "submissions/track2_submission_v20_champion_probe_candidate.zip",
+      "report_json": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.json",
+      "report_md": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.md"
+    }
+  },
+  "gate_reports": {
+    "champion_probe": {
+      "method": "track2_v20_final_gate_v1",
+      "candidate_name": "v20_champion_probe",
+      "profile": "champion_probe",
+      "decision": "recommend_high_variance_probe",
+      "reasons": [],
+      "accepted_label_changes": 28,
+      "description_anchor_preserved": true,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "frontier_classification_gap": 0.06,
+      "no_auto_submit": true,
+      "caveat": "Local high-variance gate only; this is not the official hidden scorer."
+    },
+    "last_shot": {
+      "method": "track2_v20_final_gate_v1",
+      "candidate_name": "v20_last_shot",
+      "profile": "last_shot",
+      "decision": "hold",
+      "reasons": [
+        "last_shot_not_large_enough"
+      ],
+      "accepted_label_changes": 28,
+      "description_anchor_preserved": true,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "frontier_classification_gap": 0.06,
+      "no_auto_submit": true,
+      "caveat": "Local high-variance gate only; this is not the official hidden scorer."
+    },
+    "precision": {
+      "method": "track2_v20_final_gate_v1",
+      "candidate_name": "v20_precision",
+      "profile": "precision",
+      "decision": "recommend_precision_probe",
+      "reasons": [],
+      "accepted_label_changes": 18,
+      "description_anchor_preserved": true,
+      "label_consistency_issue_count": 0,
+      "missing_emotions": [],
+      "frontier_classification_gap": 0.06,
+      "no_auto_submit": true,
+      "caveat": "Local high-variance gate only; this is not the official hidden scorer."
+    }
+  },
+  "frontier_report": {
+    "method": "track2_v20_frontier_requirement_v1",
+    "participant": "vulcaart",
+    "frontier_participant": "N&T小分队",
+    "target_overall": 0.89,
+    "current_overall": 0.84,
+    "frontier_overall": 0.89,
+    "current_classification": 0.72,
+    "frontier_classification": 0.78,
+    "current_description": 0.95,
+    "frontier_description": 1.0,
+    "classification_gap": 0.06,
+    "description_gap": 0.05,
+    "emotion_accuracy_gap": 0.23,
+    "macro_f1_gap": 0.0,
+    "required_classification_if_description_1.00": 0.78,
+    "required_classification_if_description_0.98": 0.8,
+    "warning": "This is an aggregate frontier requirement, not hidden-label reconstruction."
+  },
+  "no_auto_submit": true
+}

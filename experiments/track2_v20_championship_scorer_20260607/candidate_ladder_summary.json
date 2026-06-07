@@ -1,0 +1,101 @@
+{
+  "method": "track2_v20_candidate_ladder_v1",
+  "base_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "championship_evidence_json": "experiments/track2_v20_championship_scorer_20260607/championship_evidence.json",
+  "candidates": {
+    "precision": {
+      "accepted_label_changes": 18,
+      "transition_counts": {
+        "content->calm": 18
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 508,
+        "content": 220,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.508,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v20_precision_candidate.json",
+        "out_zip": "submissions/track2_submission_v20_precision_candidate.zip",
+        "report_json": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_precision_candidate_report.json",
+        "report_md": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_precision_candidate_report.md"
+      }
+    },
+    "champion_probe": {
+      "accepted_label_changes": 28,
+      "transition_counts": {
+        "content->calm": 28
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 518,
+        "content": 210,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.518,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v20_champion_probe_candidate.json",
+        "out_zip": "submissions/track2_submission_v20_champion_probe_candidate.zip",
+        "report_json": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.json",
+        "report_md": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_champion_probe_candidate_report.md"
+      }
+    },
+    "last_shot": {
+      "accepted_label_changes": 28,
+      "transition_counts": {
+        "content->calm": 28
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 518,
+        "content": 210,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.518,
+      "label_consistency_issue_count": 0,
+      "description_anchor_preserved": true,
+      "paths": {
+        "out_json": "submissions/track2_submission_v20_last_shot_candidate.json",
+        "out_zip": "submissions/track2_submission_v20_last_shot_candidate.zip",
+        "report_json": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_last_shot_candidate_report.json",
+        "report_md": "experiments/track2_v20_championship_scorer_20260607/candidate_reports/track2_submission_v20_last_shot_candidate_report.md"
+      }
+    }
+  },
+  "formal_submission_overwritten": false
+}
