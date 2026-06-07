@@ -1,0 +1,50 @@
+{
+  "method": "track2_v16_official_counterfactual_calibration_v1",
+  "anchor_submission_id": "779605",
+  "anchor_classification": 0.72315,
+  "official_score_count": 2,
+  "pairwise_diff_count": 3,
+  "known_failed_batches": [
+    {
+      "anchor_submission_id": "779605",
+      "candidate_submission_id": "781601",
+      "classification_delta": -0.004012999999999933,
+      "classification_delta_per_changed_row": -4.721176470588157e-05,
+      "overall_delta": -0.0023810000000000775,
+      "description_delta": -0.0007500000000000284,
+      "changed_rows": 85,
+      "batch_verdict": "negative_official_evidence",
+      "candidate_a": "781601_v3_mid_gemini35_desc_192",
+      "candidate_b": "779605_moe_v2_accept5_anchor",
+      "transition_counts": {
+        "calm->content": 43,
+        "content->calm": 20,
+        "content->glad": 5,
+        "glad->content": 4,
+        "tired->sad": 3,
+        "happy->excited": 3,
+        "calm->glad": 2,
+        "bored->sad": 1,
+        "aroused->excited": 1,
+        "sad->tired": 1,
+        "glad->calm": 1,
+        "excited->happy": 1
+      }
+    }
+  ],
+  "failed_transition_counts": {
+    "aroused->excited": 1,
+    "bored->sad": 1,
+    "calm->content": 43,
+    "calm->glad": 2,
+    "content->calm": 20,
+    "content->glad": 5,
+    "excited->happy": 1,
+    "glad->calm": 1,
+    "glad->content": 4,
+    "happy->excited": 3,
+    "sad->tired": 1,
+    "tired->sad": 3
+  },
+  "policy": "Official aggregate results show that the 781601 same-quadrant batch reduced classification. v16 therefore blocks failed high-count boundary transitions unless stronger per-sample evidence is present."
+}
