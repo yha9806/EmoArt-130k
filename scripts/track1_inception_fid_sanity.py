@@ -42,6 +42,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--out-json", required=True, type=Path)
     parser.add_argument("--out-md", required=True, type=Path)
     parser.add_argument(
+        "--feature-cache-dir",
+        type=Path,
+        help="Optional directory to save projected reference and package features as NPZ files.",
+    )
+    parser.add_argument(
         "--package",
         action="append",
         required=True,
@@ -73,6 +78,13 @@ def main(argv: list[str] | None = None) -> int:
     print(f"encoded reference features: {reference_features.shape}", flush=True)
     projector = build_projector(reference_features.shape[1], args.fid_feature_dim, args.reference_seed)
     reference_features = project_features(reference_features, projector)
+    if args.feature_cache_dir:
+        save_feature_cache(
+            args.feature_cache_dir,
+            "reference",
+            [f"{tar_path.name}::{member_name}" for tar_path, member_name in reference_items],
+            reference_features,
+        )
     reference_stats = frechet_stats(reference_features)
     packages = []
     for package_name, submission_json, image_dir in package_specs:
@@ -87,6 +99,8 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(f"encoded package {package_name}: {features.shape}", flush=True)
         features = project_features(features, projector)
+        if args.feature_cache_dir:
+            save_feature_cache(args.feature_cache_dir, package_name, [path.stem for path in image_paths], features)
         stats = frechet_stats(features)
         packages.append(
             {
@@ -330,6 +344,14 @@ def project_features(features: np.ndarray, projector: np.ndarray | None) -> np.n
     if projector is None:
         return features
     return features @ projector
+
+
+def save_feature_cache(cache_dir: Path, name: str, ids: list[str], features: np.ndarray) -> Path:
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    safe_name = "".join(char if char.isalnum() or char in {"-", "_"} else "_" for char in name)
+    path = cache_dir / f"{safe_name}_features.npz"
+    np.savez_compressed(path, ids=np.asarray(ids), features=np.asarray(features, dtype=np.float32))
+    return path
 
 
 def frechet_distance(left: tuple[np.ndarray, np.ndarray], right: tuple[np.ndarray, np.ndarray]) -> float:

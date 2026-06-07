@@ -1,0 +1,1963 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track1 V4 FID 候选审查队列</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --panel: #ffffff;
+      --line: #d9d3c8;
+      --text: #202226;
+      --muted: #5f6670;
+      --accent: #0f766e;
+      --risk: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 244, 239, 0.96);
+    }
+    h1 { margin: 0 0 8px; font-size: 22px; letter-spacing: 0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+    .pill {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .note { margin: 8px 0 0; max-width: 1180px; color: var(--risk); font-size: 14px; }
+    main { padding: 22px 24px 48px; }
+    .stats {
+      margin: 0 0 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .sample {
+      margin: 0 0 24px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .sample h2 { margin: 0 0 6px; font-size: 18px; letter-spacing: 0; }
+    .caption { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .metric-line { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .metric {
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: #eef5f3;
+      color: #164e45;
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #ede8dd;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: min(60vh, 560px);
+      object-fit: contain;
+      background: #e8e3d8;
+    }
+    figcaption {
+      min-height: 52px;
+      padding: 8px 10px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      font-size: 13px;
+    }
+    .title { display: block; font-weight: 700; }
+    .path { display: block; margin-top: 2px; color: var(--muted); overflow-wrap: anywhere; }
+    details { margin-top: 10px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      img { height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Track1 V4 FID 候选审查队列</h1>
+    <div class="meta">
+      <span class="pill">review queue: 80</span>
+      <span class="pill">unique positive: 460</span>
+      <span class="pill">high delta: 26</span>
+      <span class="pill">watchlist: 366</span>
+    </div>
+    <p class="note">这些不是已接受替换。current = 当前冠军提交包；candidate = 从 full1000/partial757 中按本地分布 proxy 选出的候选。每张都还需要 caption、文本、空间逻辑和包级 FID-like 审核。</p>
+  </header>
+  <main>
+    <section class="stats">
+      <strong>来源统计</strong>
+      <ul><li><strong>full1000</strong>: positive 460, changed 460, mean positive delta 0.01855</li>
+<li><strong>partial757</strong>: positive 341, changed 341, mean positive delta 0.016248</li></ul>
+    </section>
+    <article class="sample">
+  <h2>track1_0499</h2>
+  <p class="caption">Abstract minimalist composition with a dark blue-black monochrome field, subtle tonal gradients, and a thin shadowed frame creating a calm, mysterious atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.1049</span>
+    <span class="metric">distribution：0.3159</span>
+    <span class="metric">perceptual：0.3833</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0499.jpg" alt="track1_0499 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0499.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0499.jpg" alt="track1_0499 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0499.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.1049, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0499.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0790</h2>
+  <p class="caption">Ukiyo-e scene of travelers on a windy shoreline struggling with yellow umbrellas and scattered belongings, with waves, distant mountains, birds, fine linework, muted colors, and a vertical calligraphy panel.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.084</span>
+    <span class="metric">distribution：0.3139</span>
+    <span class="metric">perceptual：0.2457</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0790.jpg" alt="track1_0790 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0790.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0790.jpg" alt="track1_0790 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0790.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0221</h2>
+  <p class="caption">A Baroque monochrome etching of a seated nude figure with loose expressive cross-hatching and stark light-shadow contrast on aged paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0755</span>
+    <span class="metric">distribution：0.2718</span>
+    <span class="metric">perceptual：0.2317</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0221.jpg" alt="track1_0221 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0221.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0221.jpg" alt="track1_0221 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0221.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0755, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0221.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0725</h2>
+  <p class="caption">Ukiyo-e scene of three women in patterned kimonos beneath drooping willow branches, with muted colors, delicate linework, and a calm outdoor setting.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0738</span>
+    <span class="metric">distribution：0.2349</span>
+    <span class="metric">perceptual：0.2574</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0725.jpg" alt="track1_0725 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0725.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0725.jpg" alt="track1_0725 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0725.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0609</h2>
+  <p class="caption">Ukiyo-e scene of two kimono-clad women standing beneath a blossoming tree with distant mountains, delicate linework, muted earthy colors, and a calm atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0734</span>
+    <span class="metric">distribution：0.261</span>
+    <span class="metric">perceptual：0.2282</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0609.jpg" alt="track1_0609 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0609.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0609.jpg" alt="track1_0609 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0609.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0734, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0609.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0957</h2>
+  <p class="caption">Ukiyo-e style print of a dramatic red-skinned warrior in ornate robes raising a fist above a crouching green creature, with bold outlines, flat colors, and a tense theatrical composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0693</span>
+    <span class="metric">distribution：0.2757</span>
+    <span class="metric">perceptual：0.1859</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0957.jpg" alt="track1_0957 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0957.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0957.jpg" alt="track1_0957 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0957.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0049</h2>
+  <p class="caption">A Socialist Realism propaganda poster with bold flat colors and sharp graphic lines portrays a Soviet soldier with a rifle and bayonet confronting a swastika-marked fascist figure across a map of northern and southern seas, creating a tense wartime composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0676</span>
+    <span class="metric">distribution：0.2376</span>
+    <span class="metric">perceptual：0.2135</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0049.jpg" alt="track1_0049 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0049.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0049.jpg" alt="track1_0049 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0049.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0630</h2>
+  <p class="caption">A whimsical Ukiyo-e scene with a large cat looming above lively koi fish in pale blue water, using flat colors, delicate outlines, and playful composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0646</span>
+    <span class="metric">distribution：0.2229</span>
+    <span class="metric">perceptual：0.2076</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0630.jpg" alt="track1_0630 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0630.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0630.jpg" alt="track1_0630 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0630.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0646, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0630.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0911</h2>
+  <p class="caption">Ukiyo-e print of fierce warriors in flowing robes, one gripping a sword beneath curling flames, rendered in a vertical composition with fine ink lines and muted tan, orange, and black tones.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.061</span>
+    <span class="metric">distribution：0.2239</span>
+    <span class="metric">perceptual：0.1826</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0911.jpg" alt="track1_0911 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0911.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0911.jpg" alt="track1_0911 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0911.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0401</h2>
+  <p class="caption">Ukiyo-e scene of an elderly seated man and a standing woman in patterned robes inside a tatami room with shoji screens, calligraphy above, delicate linework, and muted earthy colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0609</span>
+    <span class="metric">distribution：0.2451</span>
+    <span class="metric">perceptual：0.1604</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0401.jpg" alt="track1_0401 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0401.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0401.jpg" alt="track1_0401 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0401.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0609, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0401.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0686</h2>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with Cyrillic text, Baltic republic emblems, a large red Roman numeral V, golden ribbons, oak leaves, and a pale map background on aged paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.059</span>
+    <span class="metric">distribution：0.2298</span>
+    <span class="metric">perceptual：0.1639</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0686.jpg" alt="track1_0686 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0686.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0686.jpg" alt="track1_0686 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0686.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.059, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0686.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0976</h2>
+  <p class="caption">Abstract watercolor and ink composition with layered brown mask-like forms, a red and blue zigzag band, green washes, and bold black organic shapes in a loose, textured arrangement.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0583</span>
+    <span class="metric">distribution：0.2253</span>
+    <span class="metric">perceptual：0.1629</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0976.jpg" alt="track1_0976 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0976.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0976.jpg" alt="track1_0976 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0976.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0839</h2>
+  <p class="caption">Abstract geometric composition of intersecting black lines forming rectangles and triangles, with yellow blocks, blue diagonal hatching, gray striped areas, and visible colored-pencil texture on an off-white background.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.058</span>
+    <span class="metric">distribution：0.2323</span>
+    <span class="metric">perceptual：0.1544</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0839.jpg" alt="track1_0839 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0839.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0839.jpg" alt="track1_0839 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0839.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0483</h2>
+  <p class="caption">Ukiyo-e style illustration of two fish, a large pink-red fish beneath a smaller dark mottled fish, with delicate linework, flat muted colors, and calligraphic inscriptions on a pale background.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0576</span>
+    <span class="metric">distribution：0.2074</span>
+    <span class="metric">perceptual：0.1763</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0483.jpg" alt="track1_0483 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0483.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0483.jpg" alt="track1_0483 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0483.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0576, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0483.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0899</h2>
+  <p class="caption">Ukiyo-e scene of samurai warriors carrying spears through a snowy mountain pass among snow-laden pine trees, with crisp linework, muted winter colors, and a calm yet solemn atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0572</span>
+    <span class="metric">distribution：0.2477</span>
+    <span class="metric">perceptual：0.1336</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0899.jpg" alt="track1_0899 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0899.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0899.jpg" alt="track1_0899 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0899.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0740</h2>
+  <p class="caption">A Gongbi painting of robed figures gathered in a dim interior, rendered with fine controlled linework, muted earth tones, and a solemn, aged atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0568</span>
+    <span class="metric">distribution：0.1764</span>
+    <span class="metric">perceptual：0.2025</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0740.jpg" alt="track1_0740 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0740.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg" alt="track1_0740 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0844</h2>
+  <p class="caption">A Ukiyo-e scene of travelers crossing a small arched bridge over a stream near a hillside building, framed by autumn trees, delicate linework, and muted earthy colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0562</span>
+    <span class="metric">distribution：0.2115</span>
+    <span class="metric">perceptual：0.1632</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0844.jpg" alt="track1_0844 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0844.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0844.jpg" alt="track1_0844 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0844.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0771</h2>
+  <p class="caption">A Ukiyo-e woodblock print of women gathered inside a traditional room opening onto a quiet garden with rocks, pine trees, sliding screens, and delicate linework in a muted color palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0559</span>
+    <span class="metric">distribution：0.2257</span>
+    <span class="metric">perceptual：0.1469</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0771.jpg" alt="track1_0771 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0771.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0771.jpg" alt="track1_0771 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0771.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0030</h2>
+  <p class="caption">Ukiyo-e scene of travelers in traditional robes walking through a hilly landscape with trees, distant figures on a path, and Mount Fuji in the background, rendered with delicate linework and muted earthy colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0552</span>
+    <span class="metric">distribution：0.2012</span>
+    <span class="metric">perceptual：0.167</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0030.jpg" alt="track1_0030 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0030.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0030.jpg" alt="track1_0030 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0030.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0552, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0030.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0881</h2>
+  <p class="caption">A Socialist Realism propaganda poster of a decorated Soviet pilot holding a flight map before military airplanes in a blue sky, framed by laurel wreaths, red ribbons, bold Cyrillic lettering, and heroic patriotic composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.055</span>
+    <span class="metric">distribution：0.2007</span>
+    <span class="metric">perceptual：0.1654</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0881.jpg" alt="track1_0881 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0881.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0881.jpg" alt="track1_0881 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0881.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0949</h2>
+  <p class="caption">Abstract ink sketch of a distorted standing figure with oversized arms and fragmented facial features, framed by rough linear borders and dense cross-hatched shadows on aged beige paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0529</span>
+    <span class="metric">distribution：0.2292</span>
+    <span class="metric">perceptual：0.1231</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0949.jpg" alt="track1_0949 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0949.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0949.jpg" alt="track1_0949 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0949.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0659</h2>
+  <p class="caption">Ukiyo-e woodblock print of three elegantly dressed figures walking in diagonal rain, with a large patterned parasol, delicate linework, muted colors, and a calm street scene atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0523</span>
+    <span class="metric">distribution：0.1838</span>
+    <span class="metric">perceptual：0.1645</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0659.jpg" alt="track1_0659 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0659.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0659.jpg" alt="track1_0659 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0659.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0523, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0659.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0998</h2>
+  <p class="caption">Abstract pencil sketch of a fragmented interior scene with angular geometric forms, overlapping objects, loose graphite lines, and a muted beige paper texture.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.052</span>
+    <span class="metric">distribution：0.2129</span>
+    <span class="metric">perceptual：0.1337</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0998.jpg" alt="track1_0998 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0998.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0998.jpg" alt="track1_0998 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0998.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0897</h2>
+  <p class="caption">Ink and wash painting of a serene garden scene with a twisted pine tree, bamboo, rocks, a thatched pavilion where two scholars sit at a table, and a lone figure standing by a simple fence, rendered with delicate brushwork and soft muted washes.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0517</span>
+    <span class="metric">distribution：0.2101</span>
+    <span class="metric">perceptual：0.1346</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0897.jpg" alt="track1_0897 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0897.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0897.jpg" alt="track1_0897 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0897.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0614</h2>
+  <p class="caption">Ukiyo-e scene of two women in patterned kimonos standing on a hillside above a quiet coastal landscape, one holding a closed parasol, with delicate linework and a muted earthy color palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0507</span>
+    <span class="metric">distribution：0.2064</span>
+    <span class="metric">perceptual：0.1311</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0614.jpg" alt="track1_0614 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0614.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0614.jpg" alt="track1_0614 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0614.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0507, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0614.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0945</h2>
+  <p class="caption">Ukiyo-e scene of three elegantly dressed women in patterned kimonos standing beneath blooming cherry branches, with delicate linework, muted colors, and a calm spring atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：high_delta_review</span>
+    <span class="metric">delta：0.0503</span>
+    <span class="metric">distribution：0.1982</span>
+    <span class="metric">perceptual：0.1373</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0945.jpg" alt="track1_0945 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0945.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0945.jpg" alt="track1_0945 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0945.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0785</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous landscape with clustered trees, small hillside houses, winding paths, and calligraphy, rendered with delicate brushwork and a muted earthy color palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0497</span>
+    <span class="metric">distribution：0.1635</span>
+    <span class="metric">perceptual：0.1681</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0785.jpg" alt="track1_0785 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0785.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0785.jpg" alt="track1_0785 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0785.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0168</h2>
+  <p class="caption">Ukiyo-e scene of elegant women in traditional robes gathered on a wooden veranda, with fine linework, muted colors, patterned textiles, and a calm domestic atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0484</span>
+    <span class="metric">distribution：0.1509</span>
+    <span class="metric">perceptual：0.1719</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0168.jpg" alt="track1_0168 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0168.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0168.jpg" alt="track1_0168 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0168.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0484, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0168.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0787</h2>
+  <p class="caption">Ukiyo-e portrait of a standing Japanese actor or warrior in an ornate patterned kimono with a sword, surrounded by calligraphy on aged paper with bold outlines and muted red, gold, and black tones.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0483</span>
+    <span class="metric">distribution：0.2083</span>
+    <span class="metric">perceptual：0.1141</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0787.jpg" alt="track1_0787 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0787.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0787.jpg" alt="track1_0787 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0787.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0746</h2>
+  <p class="caption">Ukiyo-e scene of two kimono-clad figures walking under yellow paper umbrellas through diagonal rain, with delicate linework, muted colors, and a calligraphy cartouche in the upper corner.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0473</span>
+    <span class="metric">distribution：0.2141</span>
+    <span class="metric">perceptual：0.1011</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0746.jpg" alt="track1_0746 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0746.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0746.jpg" alt="track1_0746 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0746.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0233</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous landscape with towering rocky peaks, dense pine trees, small riverside pavilions, and delicate monochrome brushwork on a vertical scroll.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0472</span>
+    <span class="metric">distribution：0.2143</span>
+    <span class="metric">perceptual：0.1006</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0233.jpg" alt="track1_0233 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0233.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0233.jpg" alt="track1_0233 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0233.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0472, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0233.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0832</h2>
+  <p class="caption">Ukiyo-e scene of two women in patterned kimonos, one standing and one kneeling with a fan beside tall flowering plants, rendered with flat warm colors and delicate linework.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0469</span>
+    <span class="metric">distribution：0.1803</span>
+    <span class="metric">perceptual：0.1326</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0832.jpg" alt="track1_0832 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0832.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0832.jpg" alt="track1_0832 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0832.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0180</h2>
+  <p class="caption">Ukiyo-e woodblock print of travelers crossing a high arched bridge over a blue river, with wooden supports, stone embankments, and a small village landscape in muted colors and crisp linework.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0466</span>
+    <span class="metric">distribution：0.1683</span>
+    <span class="metric">perceptual：0.1426</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0180.jpg" alt="track1_0180 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0180.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0180.jpg" alt="track1_0180 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0180.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0466, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0180.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0890</h2>
+  <p class="caption">A Ukiyo-e landscape of a winding blue river with small boats, grassy banks, pine and willow trees, and distant huts, rendered with bold outlines and a muted green and blue palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0462</span>
+    <span class="metric">distribution：0.1859</span>
+    <span class="metric">perceptual：0.1217</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0890.jpg" alt="track1_0890 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0890.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0890.jpg" alt="track1_0890 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0890.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0872</h2>
+  <p class="caption">A serene Ukiyo-e landscape with a winding stream flowing through rocky banks, dense green hills, and trees silhouetted against a dark sky, rendered with bold outlines and textured wave patterns.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.046</span>
+    <span class="metric">distribution：0.1673</span>
+    <span class="metric">perceptual：0.1394</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0872.jpg" alt="track1_0872 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0872.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0872.jpg" alt="track1_0872 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0872.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0080</h2>
+  <p class="caption">Ukiyo-e style scene of two dramatic warriors grappling in richly patterned robes, with bold outlines, flat colors, and a vertical woodblock print composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0449</span>
+    <span class="metric">distribution：0.1635</span>
+    <span class="metric">perceptual：0.1362</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0080.jpg" alt="track1_0080 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0080.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0080.jpg" alt="track1_0080 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0080.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0449, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0080.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0616</h2>
+  <p class="caption">Ink and wash painting of a gnarled pine tree rising from rocky ground beside grasses and a quiet shoreline, with delicate brushwork, muted sepia tones, calligraphy, and red seals creating a serene traditional landscape.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.044</span>
+    <span class="metric">distribution：0.1908</span>
+    <span class="metric">perceptual：0.1021</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0616.jpg" alt="track1_0616 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0616.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0616.jpg" alt="track1_0616 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0616.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.044, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0616.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0914</h2>
+  <p class="caption">Ukiyo-e print of whimsical yokai-like figures and tiny travelers parading with umbrellas, instruments, and strange sea-creature forms, rendered with fine outlines, muted colors, and a playful fantastical mood.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0433</span>
+    <span class="metric">distribution：0.1755</span>
+    <span class="metric">perceptual：0.1137</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0914.jpg" alt="track1_0914 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0914.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0914.jpg" alt="track1_0914 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0914.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0008</h2>
+  <p class="caption">Ukiyo-e rural landscape with travelers walking along a winding path beside fields and a narrow stream, tall trees rising in the foreground, muted colors, fine linework, and vertical composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0432</span>
+    <span class="metric">distribution：0.1837</span>
+    <span class="metric">perceptual：0.1039</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0008.jpg" alt="track1_0008 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0008.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0008.jpg" alt="track1_0008 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0008.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0432, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0008.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0991</h2>
+  <p class="caption">A Baroque engraved courtyard scene with grand arcaded architecture, a central tower, small figures gathered below, and winged mythological figures flying through a dramatic sky.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0432</span>
+    <span class="metric">distribution：0.1664</span>
+    <span class="metric">perceptual：0.1216</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0991.jpg" alt="track1_0991 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0991.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0991.jpg" alt="track1_0991 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0991.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0488</h2>
+  <p class="caption">A Ukiyo-e landscape with a winding blue river, small boats, a wooden bridge, riverside buildings, green trees, and distant mountains beneath a softly graded sky.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.043</span>
+    <span class="metric">distribution：0.1876</span>
+    <span class="metric">perceptual：0.0996</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0488.jpg" alt="track1_0488 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0488.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0488.jpg" alt="track1_0488 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0488.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.043, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0488.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0628</h2>
+  <p class="caption">A Socialist Realism Soviet poster with bold Cyrillic typography contrasts wartime devastation behind barbed wire with liberated Ukrainian peasants harvesting golden wheat under a bright sky, using strong graphic composition and earthy colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0429</span>
+    <span class="metric">distribution：0.1537</span>
+    <span class="metric">perceptual：0.1325</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0628.jpg" alt="track1_0628 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0628.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0628.jpg" alt="track1_0628 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0628.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0429, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0628.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0590</h2>
+  <p class="caption">Ukiyo-e style scene of three figures in traditional Japanese robes walking past a wooden building and garden, rendered with delicate linework and a muted earthy color palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0417</span>
+    <span class="metric">distribution：0.1587</span>
+    <span class="metric">perceptual：0.1192</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0590.jpg" alt="track1_0590 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0590.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0590.jpg" alt="track1_0590 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0590.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0417, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0590.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0314</h2>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with a bold Cyrillic headline, heroic soldiers, an industrial worker, anti-fascist caricature scenes, and stark wartime panels in muted reds, blues, and beige tones.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0416</span>
+    <span class="metric">distribution：0.1602</span>
+    <span class="metric">perceptual：0.1171</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0314.jpg" alt="track1_0314 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0314.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0314.jpg" alt="track1_0314 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0314.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0416, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0314.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0915</h2>
+  <p class="caption">Ukiyo-e style scene of two women in patterned kimono walking under a large umbrella in falling snow, with delicate linework, muted earthy colors, and calligraphic text in the background.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0415</span>
+    <span class="metric">distribution：0.153</span>
+    <span class="metric">perceptual：0.1233</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0915.jpg" alt="track1_0915 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0915.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0915.jpg" alt="track1_0915 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0915.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0140</h2>
+  <p class="caption">Ukiyo-e style portrait of a woman in a patterned kimono standing beside a small tea stand with a kettle, cup, wooden furnishings, vertical calligraphy, muted colors, and delicate ink linework on aged paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0413</span>
+    <span class="metric">distribution：0.1621</span>
+    <span class="metric">perceptual：0.1134</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0140.jpg" alt="track1_0140 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0140.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0140.jpg" alt="track1_0140 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0140.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0413, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0140.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0523</h2>
+  <p class="caption">Ukiyo-e style circular composition of a busy river harbor with boats, a large moored vessel in the foreground, distant waterfront buildings, muted colors, fine linework, and Japanese calligraphy on a dark background.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0411</span>
+    <span class="metric">distribution：0.1477</span>
+    <span class="metric">perceptual：0.1261</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0523.jpg" alt="track1_0523 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0523.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0523.jpg" alt="track1_0523 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0523.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0411, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0523.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0697</h2>
+  <p class="caption">Abstract composition of geometric pyramids, spheres, and block-like forms on a faint grid, layered with energetic sketchy lines, splattered textures, and a vivid yellow, teal, orange, and red palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.041</span>
+    <span class="metric">distribution：0.1492</span>
+    <span class="metric">perceptual：0.1243</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0697.jpg" alt="track1_0697 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0697.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0697.jpg" alt="track1_0697 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0697.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.041, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0697.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0223</h2>
+  <p class="caption">An Early Renaissance monochrome illustration of a robed seated figure beside a walled garden and gate, with a small church, trees, hills, and delicate hatched linework in a muted sepia palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0409</span>
+    <span class="metric">distribution：0.1753</span>
+    <span class="metric">perceptual：0.0974</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0223.jpg" alt="track1_0223 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0223.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0223.jpg" alt="track1_0223 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0223.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0409, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0223.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0952</h2>
+  <p class="caption">A Ukiyo-e portrait of an elegant woman in a richly patterned blue kimono within a decorative interior, rendered with flat color blocks, delicate linework, and a muted vintage palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0409</span>
+    <span class="metric">distribution：0.1456</span>
+    <span class="metric">perceptual：0.1274</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0952.jpg" alt="track1_0952 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0952.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0952.jpg" alt="track1_0952 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0952.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0611</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous riverside landscape with layered rocky peaks, misty water, trees, a small pavilion by the shore, a tiny boat, and delicate calligraphy rendered in monochrome brushwork.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0408</span>
+    <span class="metric">distribution：0.1661</span>
+    <span class="metric">perceptual：0.1058</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0611.jpg" alt="track1_0611 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0611.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0611.jpg" alt="track1_0611 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0611.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0408, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0611.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0385</h2>
+  <p class="caption">Ukiyo-e portrait of an elegantly dressed woman in a patterned kimono standing beneath leafy branches, holding a folding fan beside a quiet riverside landscape with delicate linework and muted colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0408</span>
+    <span class="metric">distribution：0.1458</span>
+    <span class="metric">perceptual：0.1264</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0385.jpg" alt="track1_0385 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0385.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0385.jpg" alt="track1_0385 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0385.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0408, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0385.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0635</h2>
+  <p class="caption">Ukiyo-e scene of three elegantly robed figures standing near a garden doorway with flowering trees, rendered in delicate linework, muted colors, and an aged paper texture.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0404</span>
+    <span class="metric">distribution：0.1264</span>
+    <span class="metric">perceptual：0.143</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0635.jpg" alt="track1_0635 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0635.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0635.jpg" alt="track1_0635 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0635.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0404, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0635.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0884</h2>
+  <p class="caption">A Socialist Realism poster-style scene of tanks rolling through a cheering city parade beneath sweeping red banners, red stars, and a monumental building, painted with bold colors and celebratory dramatic composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.04</span>
+    <span class="metric">distribution：0.1499</span>
+    <span class="metric">perceptual：0.117</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0884.jpg" alt="track1_0884 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0884.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0884.jpg" alt="track1_0884 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0884.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0838</h2>
+  <p class="caption">Ukiyo-e style owl perched on a mossy twisting branch with red maple leaves, Japanese calligraphy, muted earthy colors, and delicate textured linework on aged paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0396</span>
+    <span class="metric">distribution：0.1858</span>
+    <span class="metric">perceptual：0.0785</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0838.jpg" alt="track1_0838 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0838.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0838.jpg" alt="track1_0838 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0838.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0937</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous landscape with clustered trees, rocky slopes, small houses in a valley, calligraphy inscriptions, and red seal stamps rendered with delicate monochrome brushwork.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0396</span>
+    <span class="metric">distribution：0.1715</span>
+    <span class="metric">perceptual：0.0923</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0937.jpg" alt="track1_0937 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0937.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0937.jpg" alt="track1_0937 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0937.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0815</h2>
+  <p class="caption">Ukiyo-e scene of elegantly dressed Japanese figures gathered closely with folding fans and patterned robes, rendered in fine ink lines and a muted beige color palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0396</span>
+    <span class="metric">distribution：0.1387</span>
+    <span class="metric">perceptual：0.1259</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0815.jpg" alt="track1_0815 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0815.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0815.jpg" alt="track1_0815 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0815.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0724</h2>
+  <p class="caption">Abstract pencil sketch of a sparse architectural landscape with faint angular building outlines, a curving path, delicate linear marks, and a muted beige paper texture.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.039</span>
+    <span class="metric">distribution：0.1419</span>
+    <span class="metric">perceptual：0.1183</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0724.jpg" alt="track1_0724 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0724.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0724.jpg" alt="track1_0724 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0724.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0445</h2>
+  <p class="caption">Ink and wash painting of a fan-shaped mountainous landscape with rocky peaks, sparse trees, misty valleys, a calligraphy inscription, warm sepia tones, and delicate brushwork.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0388</span>
+    <span class="metric">distribution：0.1536</span>
+    <span class="metric">perceptual：0.1052</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0445.jpg" alt="track1_0445 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0445.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0445.jpg" alt="track1_0445 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0445.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0388, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0445.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0604</h2>
+  <p class="caption">Ukiyo-e scene of two women in flowing robes sharing a large umbrella beside a quiet waterside with birds and reeds, rendered in delicate linework and a muted earthy palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0385</span>
+    <span class="metric">distribution：0.1817</span>
+    <span class="metric">perceptual：0.0747</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0604.jpg" alt="track1_0604 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0604.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0604.jpg" alt="track1_0604 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0604.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0385, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0604.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0712</h2>
+  <p class="caption">Ink and wash painting of a vertical scroll with a robed sage in a circular frame above swirling dragon-like forms and bold ornamental black brushstrokes on aged sepia paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0377</span>
+    <span class="metric">distribution：0.1149</span>
+    <span class="metric">perceptual：0.1361</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0712.jpg" alt="track1_0712 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0712.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0712.jpg" alt="track1_0712 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0712.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0377, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0712.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0434</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous landscape with layered rocky ridges, dense trees, misty distant peaks, muted sepia tones, fine brushwork, and calligraphy inscription above.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.037</span>
+    <span class="metric">distribution：0.171</span>
+    <span class="metric">perceptual：0.0754</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0434.jpg" alt="track1_0434 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0434.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0434.jpg" alt="track1_0434 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0434.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.037, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0434.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0750</h2>
+  <p class="caption">A Socialist Realism wartime propaganda poster with comic-like panels of civilians resisting fascist forces through sabotage, explosions, burning vehicles, red flags, Cyrillic slogans, and bold red, black, and pale blue graphic linework.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.037</span>
+    <span class="metric">distribution：0.1256</span>
+    <span class="metric">perceptual：0.1212</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0750.jpg" alt="track1_0750 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0750.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0750.jpg" alt="track1_0750 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0750.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0249</h2>
+  <p class="caption">Abstract ink and watercolor composition of clustered skull-like heads and amorphous gray forms resting above a bold red horizontal band, with loose sketch lines on beige paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0366</span>
+    <span class="metric">distribution：0.1533</span>
+    <span class="metric">perceptual：0.0906</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0249.jpg" alt="track1_0249 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0249.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0249.jpg" alt="track1_0249 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0249.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0366, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0249.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0812</h2>
+  <p class="caption">Ukiyo-e scene of a woman holding a patterned parasol beside a child riding a small toy horse near a pink wooden building, with delicate linework, muted colors, and a calm spring atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0366</span>
+    <span class="metric">distribution：0.1394</span>
+    <span class="metric">perceptual：0.1047</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0812.jpg" alt="track1_0812 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0812.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0812.jpg" alt="track1_0812 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0812.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0366, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0812.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0665</h2>
+  <p class="caption">A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0365</span>
+    <span class="metric">distribution：0.1112</span>
+    <span class="metric">perceptual：0.1323</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0665.jpg" alt="track1_0665 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0665.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0665.jpg" alt="track1_0665 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0665.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0365, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0665.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0818</h2>
+  <p class="caption">A Socialist Realism wartime propaganda poster of Allied cargo ships, sailors, naval flags, and sea convoy scenes, rendered with bold graphic composition, flat colors, and a solemn patriotic atmosphere.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0363</span>
+    <span class="metric">distribution：0.1411</span>
+    <span class="metric">perceptual：0.1009</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0818.jpg" alt="track1_0818 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0818.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0818.jpg" alt="track1_0818 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0818.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0363, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0818.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0930</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous riverside landscape with layered rocky peaks, pine trees, a small pavilion by the water, tiny boats, and delicate calligraphy in a soft monochrome palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.036</span>
+    <span class="metric">distribution：0.1423</span>
+    <span class="metric">perceptual：0.0981</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0930.jpg" alt="track1_0930 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0930.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0930.jpg" alt="track1_0930 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0930.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0699</h2>
+  <p class="caption">Ink and wash painting of bold abstract black brushstroke forms on beige paper with Chinese calligraphy inscriptions, rough dry-brush textures, and a restrained monochrome palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0357</span>
+    <span class="metric">distribution：0.1401</span>
+    <span class="metric">perceptual：0.0981</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0699.jpg" alt="track1_0699 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0699.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0699.jpg" alt="track1_0699 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0699.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0357, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0699.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0593</h2>
+  <p class="caption">A Socialist Realism Soviet propaganda poster with bold Cyrillic text, a monumental sword-wielding historical figure above soldiers raising red flags amid a liberated battlefield town, rendered in dramatic colors and strong graphic brushwork.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0357</span>
+    <span class="metric">distribution：0.1261</span>
+    <span class="metric">perceptual：0.1122</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0593.jpg" alt="track1_0593 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0593.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0593.jpg" alt="track1_0593 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0593.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0357, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0593.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0494</h2>
+  <p class="caption">A Gongbi style double portrait of a solemn imperial couple in ornate embroidered robes and jeweled headdresses, arranged symmetrically on two warm-toned hanging scroll panels with fine linework and muted colors.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0354</span>
+    <span class="metric">distribution：0.1314</span>
+    <span class="metric">perceptual：0.1042</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0494.jpg" alt="track1_0494 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0494.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0494.jpg" alt="track1_0494 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0494.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0354, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0494.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0157</h2>
+  <p class="caption">An Early Renaissance triptych of the Nativity with Mary and Joseph kneeling before the infant Christ in a rustic manger, angels hovering above, donors in the side panels, ruined stone architecture, distant landscape, clear linear detail, and a solemn devotional mood.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0351</span>
+    <span class="metric">distribution：0.1616</span>
+    <span class="metric">perceptual：0.0727</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0157.jpg" alt="track1_0157 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0157.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0157.jpg" alt="track1_0157 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0157.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0351, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0157.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0753</h2>
+  <p class="caption">A Ukiyo-e portrait of a woman with elaborate black hair and patterned robes, surrounded by delicate decorative objects and muted aged paper tones.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0351</span>
+    <span class="metric">distribution：0.1064</span>
+    <span class="metric">perceptual：0.1278</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0753.jpg" alt="track1_0753 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0753.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0753.jpg" alt="track1_0753 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0753.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0934</h2>
+  <p class="caption">Abstract pop art composition of fragmented cow-like shapes and geometric panels with bold black outlines, diagonal hatching, flat yellow, blue, and cream colors, and vertical lettering along the right side.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0351</span>
+    <span class="metric">distribution：0.1037</span>
+    <span class="metric">perceptual：0.1303</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0934.jpg" alt="track1_0934 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0934.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0934.jpg" alt="track1_0934 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0934.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0997</h2>
+  <p class="caption">Ukiyo-e woodblock print of elegantly dressed Japanese figures gathered in an interior before sliding panels with a mountain landscape, rendered with fine linework, muted colors, and a calm theatrical composition.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0349</span>
+    <span class="metric">distribution：0.1546</span>
+    <span class="metric">perceptual：0.0784</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0997.jpg" alt="track1_0997 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0997.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0997.jpg" alt="track1_0997 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0997.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0547</h2>
+  <p class="caption">Abstract monochrome composition of blurred white light shapes and dark diagonal geometric shadows, creating a mysterious high-contrast play of light and texture.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0349</span>
+    <span class="metric">distribution：0.1455</span>
+    <span class="metric">perceptual：0.0873</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0547.jpg" alt="track1_0547 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0547.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0547.jpg" alt="track1_0547 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0547.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0349, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0547.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0238</h2>
+  <p class="caption">Ink and wash painting of a serene mountainous landscape with clustered trees, winding streams, small rustic structures, and delicate brushwork on aged muted paper.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0336</span>
+    <span class="metric">distribution：0.1434</span>
+    <span class="metric">perceptual：0.0802</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0238.jpg" alt="track1_0238 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0238.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0238.jpg" alt="track1_0238 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0238.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0336, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0238.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0045</h2>
+  <p class="caption">Ink and wash painting of a serene misty mountain landscape with layered hills, riverside trees, small huts, and a lone boat rendered in delicate brushwork and muted monochrome tones.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0334</span>
+    <span class="metric">distribution：0.1353</span>
+    <span class="metric">perceptual：0.0868</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0045.jpg" alt="track1_0045 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0045.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0045.jpg" alt="track1_0045 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0045.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0334, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0045.jpg</li></ul></details>
+</article>
+<article class="sample">
+  <h2>track1_0882</h2>
+  <p class="caption">A Gongbi painting of delicate pink, white, and red poppy-like flowers with finely outlined green foliage, subtle shading, and calligraphy on a warm beige silk background.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0333</span>
+    <span class="metric">distribution：0.1182</span>
+    <span class="metric">perceptual：0.104</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0882.jpg" alt="track1_0882 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0882.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0882.jpg" alt="track1_0882 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0882.jpg</span></figcaption>
+    </figure>
+  </div>
+
+</article>
+<article class="sample">
+  <h2>track1_0421</h2>
+  <p class="caption">Ukiyo-e composition of an open folding fan on a beige paper background, decorated with delicate calligraphy, pale linework, and small painted motifs in a calm, minimal palette.</p>
+  <div class="metric-line">
+    <span class="metric">来源：full1000</span>
+    <span class="metric">tier：medium_delta_review</span>
+    <span class="metric">delta：0.0332</span>
+    <span class="metric">distribution：0.0947</span>
+    <span class="metric">perceptual：0.1268</span>
+    <span class="metric">候选 AAS 审计：缺失</span>
+  </div>
+  <div class="grid">
+    <figure>
+      <img src="../../submissions/track1/images/track1_0421.jpg" alt="track1_0421 current">
+      <figcaption><span class="title">current：当前冠军包</span><span class="path">submissions/track1/images/track1_0421.jpg</span></figcaption>
+    </figure>
+    <figure>
+      <img src="../../submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0421.jpg" alt="track1_0421 candidate">
+      <figcaption><span class="title">candidate：本地 FID/proxy 候选</span><span class="path">submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0421.jpg</span></figcaption>
+    </figure>
+  </div>
+  <details><summary>其它候选来源</summary><ul><li>partial757: delta 0.0332, path submissions/track1_candidate_full1000_aas_safe_official_v7_partial757_20260605/images/track1_0421.jpg</li></ul></details>
+</article>
+  </main>
+</body>
+</html>

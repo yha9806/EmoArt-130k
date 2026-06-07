@@ -1,0 +1,40 @@
+{
+  "packages": [
+    {
+      "fid_like": 58.526207,
+      "package": "current"
+    },
+    {
+      "fid_like": 62.414763,
+      "package": "partial757"
+    },
+    {
+      "fid_like": 63.010429,
+      "package": "v3_gate7"
+    },
+    {
+      "fid_like": 63.098811,
+      "package": "full1000_no_fallback"
+    },
+    {
+      "fid_like": 63.287051,
+      "package": "strict_subset"
+    },
+    {
+      "fid_like": 63.308289,
+      "package": "safe_subset"
+    },
+    {
+      "fid_like": 58.602602,
+      "package": "hybrid_redteam5"
+    },
+    {
+      "fid_like": 58.348904,
+      "package": "hybrid_redteam_fid_pass4"
+    },
+    {
+      "fid_like": 57.697893,
+      "package": "greedy_top80_raw20"
+    }
+  ]
+}

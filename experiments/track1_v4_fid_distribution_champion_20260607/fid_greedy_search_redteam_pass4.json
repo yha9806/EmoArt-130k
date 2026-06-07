@@ -1,0 +1,47 @@
+{
+  "method": {
+    "candidate_label": "full1000_no_fallback_redteam_pass",
+    "max_replacements": 10,
+    "min_improvement": 1e-06,
+    "name": "track1_greedy_inception_hybrid_fid_search_v1",
+    "warning": "Local Inception feature search only. It optimizes a local FID-like proxy and does not check AAS, caption correctness, or official hidden evaluator settings."
+  },
+  "selected_replacements": [
+    {
+      "candidate_label": "full1000_no_fallback_redteam_pass",
+      "fid_like": 58.446207,
+      "improvement": 0.08,
+      "sample_id": "track1_0140",
+      "step": 1
+    },
+    {
+      "candidate_label": "full1000_no_fallback_redteam_pass",
+      "fid_like": 58.41008,
+      "improvement": 0.036127,
+      "sample_id": "track1_0488",
+      "step": 2
+    },
+    {
+      "candidate_label": "full1000_no_fallback_redteam_pass",
+      "fid_like": 58.378457,
+      "improvement": 0.031623,
+      "sample_id": "track1_0233",
+      "step": 3
+    },
+    {
+      "candidate_label": "full1000_no_fallback_redteam_pass",
+      "fid_like": 58.348904,
+      "improvement": 0.029553,
+      "sample_id": "track1_0697",
+      "step": 4
+    }
+  ],
+  "stop_conditions": [],
+  "summary": {
+    "baseline_fid_like": 58.526207,
+    "best_fid_like": 58.348904,
+    "candidate_pool_count": 4,
+    "selected_replacement_count": 4,
+    "total_improvement": 0.177303
+  }
+}

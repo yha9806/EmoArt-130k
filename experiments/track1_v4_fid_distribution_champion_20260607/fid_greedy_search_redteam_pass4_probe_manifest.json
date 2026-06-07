@@ -1,0 +1,41 @@
+{
+  "accepted_replacements": [
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0140.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.08,
+      "sample_id": "track1_0140"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0488.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.036127,
+      "sample_id": "track1_0488"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0233.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.031623,
+      "sample_id": "track1_0233"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0697.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.029553,
+      "sample_id": "track1_0697"
+    }
+  ],
+  "method": "track1_greedy_inception_hybrid_fid_probe_manifest_v1",
+  "summary": {
+    "baseline_fid_like": 58.526207,
+    "best_fid_like": 58.348904,
+    "candidate_pool_count": 4,
+    "selected_replacement_count": 4,
+    "total_improvement": 0.177303
+  },
+  "warning": "Probe-only manifest for local package FID-like sanity. Not a final replacement manifest."
+}

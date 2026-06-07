@@ -1,0 +1,153 @@
+{
+  "accepted_replacements": [
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0140.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.08,
+      "sample_id": "track1_0140"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0937.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.076284,
+      "sample_id": "track1_0937"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0952.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.061613,
+      "sample_id": "track1_0952"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0609.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.054872,
+      "sample_id": "track1_0609"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0659.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.051517,
+      "sample_id": "track1_0659"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0930.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.046511,
+      "sample_id": "track1_0930"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0753.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.04338,
+      "sample_id": "track1_0753"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0750.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.04238,
+      "sample_id": "track1_0750"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0049.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.040092,
+      "sample_id": "track1_0049"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0812.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.038232,
+      "sample_id": "track1_0812"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0488.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.035615,
+      "sample_id": "track1_0488"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0997.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.03384,
+      "sample_id": "track1_0997"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0233.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.033552,
+      "sample_id": "track1_0233"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0697.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.029392,
+      "sample_id": "track1_0697"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0635.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.028591,
+      "sample_id": "track1_0635"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0832.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.027371,
+      "sample_id": "track1_0832"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0897.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.026413,
+      "sample_id": "track1_0897"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0991.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.026366,
+      "sample_id": "track1_0991"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0957.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.026002,
+      "sample_id": "track1_0957"
+    },
+    {
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0314.jpg",
+      "decision": "accept",
+      "final_status": "probe_only_not_final_human_unconfirmed",
+      "local_fid_like_improvement": 0.026291,
+      "sample_id": "track1_0314"
+    }
+  ],
+  "method": "track1_greedy_inception_hybrid_fid_probe_manifest_v1",
+  "summary": {
+    "baseline_fid_like": 58.526207,
+    "best_fid_like": 57.697893,
+    "candidate_pool_count": 80,
+    "selected_replacement_count": 20,
+    "total_improvement": 0.828314
+  },
+  "warning": "Probe-only manifest for local package FID-like sanity. Not a final replacement manifest."
+}

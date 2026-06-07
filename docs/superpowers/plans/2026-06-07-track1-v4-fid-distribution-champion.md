@@ -23,6 +23,23 @@
 - Therefore do not submit `full1000_no_fallback`, `partial757`, `safe_subset`, or `strict_subset` directly. Existing broad generated packages are useful as a candidate/error pool, not as final distribution packages.
 - `track1_official_score_calibration_v1` now maps local package FID-like results to a low-confidence official-scale estimate using public leaderboard FID/FID Score rows and the `v3_gate7` own official anchor.
 
+## Execution Update 2026-06-07
+
+- Existing broad packages are rejected for direct submission:
+  - `full1000_no_fallback` local FID-like `63.098811`.
+  - `partial757` local FID-like `62.414763`.
+  - `v3_gate7` local FID-like `63.010429`.
+  - `current` local FID-like `58.526207`.
+- Metric proxy shortlist found `460` unique positive samples and `80` review-queue samples, but candidate AAS reviews were missing, so it was treated only as a triage queue.
+- Gemini 3.5 Flash redteam on the 26 high-delta rows supported only 5 full1000 candidates; that `hybrid_redteam5` probe still worsened package FID-like to `58.602602`.
+- A direct Inception-feature greedy search over the top80 found a raw 20-replacement package with FID-like `57.697893`, but Gemini redteam rejected 16/20, so raw20 is not AAS-safe.
+- The current conservative candidate is `hybrid_probe_redteam_fid_pass4`: `track1_0140`, `track1_0233`, `track1_0488`, `track1_0697`.
+  - Local FID-like `58.348904`.
+  - Local improvement over current `0.177303`.
+  - Structure validation passed.
+  - Still requires quick human visual confirmation before official submission.
+- Full conclusion: `experiments/track1_v4_fid_distribution_champion_20260607/v4_fid_distribution_gate_conclusion_zh.md`.
+
 ## Proxy Calibration Warnings
 
 - Local FID-like results are decision aids, not official scores.

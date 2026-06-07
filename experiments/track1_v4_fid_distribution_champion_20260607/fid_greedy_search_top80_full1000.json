@@ -1,0 +1,159 @@
+{
+  "method": {
+    "candidate_label": "full1000_no_fallback",
+    "max_replacements": 20,
+    "min_improvement": 1e-06,
+    "name": "track1_greedy_inception_hybrid_fid_search_v1",
+    "warning": "Local Inception feature search only. It optimizes a local FID-like proxy and does not check AAS, caption correctness, or official hidden evaluator settings."
+  },
+  "selected_replacements": [
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.446207,
+      "improvement": 0.08,
+      "sample_id": "track1_0140",
+      "step": 1
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.369923,
+      "improvement": 0.076284,
+      "sample_id": "track1_0937",
+      "step": 2
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.30831,
+      "improvement": 0.061613,
+      "sample_id": "track1_0952",
+      "step": 3
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.253438,
+      "improvement": 0.054872,
+      "sample_id": "track1_0609",
+      "step": 4
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.201921,
+      "improvement": 0.051517,
+      "sample_id": "track1_0659",
+      "step": 5
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.15541,
+      "improvement": 0.046511,
+      "sample_id": "track1_0930",
+      "step": 6
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.11203,
+      "improvement": 0.04338,
+      "sample_id": "track1_0753",
+      "step": 7
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.06965,
+      "improvement": 0.04238,
+      "sample_id": "track1_0750",
+      "step": 8
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 58.029558,
+      "improvement": 0.040092,
+      "sample_id": "track1_0049",
+      "step": 9
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.991326,
+      "improvement": 0.038232,
+      "sample_id": "track1_0812",
+      "step": 10
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.955711,
+      "improvement": 0.035615,
+      "sample_id": "track1_0488",
+      "step": 11
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.921871,
+      "improvement": 0.03384,
+      "sample_id": "track1_0997",
+      "step": 12
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.888319,
+      "improvement": 0.033552,
+      "sample_id": "track1_0233",
+      "step": 13
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.858927,
+      "improvement": 0.029392,
+      "sample_id": "track1_0697",
+      "step": 14
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.830336,
+      "improvement": 0.028591,
+      "sample_id": "track1_0635",
+      "step": 15
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.802965,
+      "improvement": 0.027371,
+      "sample_id": "track1_0832",
+      "step": 16
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.776552,
+      "improvement": 0.026413,
+      "sample_id": "track1_0897",
+      "step": 17
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.750186,
+      "improvement": 0.026366,
+      "sample_id": "track1_0991",
+      "step": 18
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.724184,
+      "improvement": 0.026002,
+      "sample_id": "track1_0957",
+      "step": 19
+    },
+    {
+      "candidate_label": "full1000_no_fallback",
+      "fid_like": 57.697893,
+      "improvement": 0.026291,
+      "sample_id": "track1_0314",
+      "step": 20
+    }
+  ],
+  "stop_conditions": [],
+  "summary": {
+    "baseline_fid_like": 58.526207,
+    "best_fid_like": 57.697893,
+    "candidate_pool_count": 80,
+    "selected_replacement_count": 20,
+    "total_improvement": 0.828314
+  }
+}

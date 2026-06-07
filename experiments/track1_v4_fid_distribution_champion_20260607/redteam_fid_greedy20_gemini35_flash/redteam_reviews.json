@@ -1,0 +1,865 @@
+[
+  {
+    "sample_id": "track1_0049",
+    "caption": "A Socialist Realism propaganda poster with bold flat colors and sharp graphic lines portrays a Soviet soldier with a rifle and bayonet confronting a swastika-marked fascist figure across a map of northern and southern seas, creating a tense wartime composition.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent bold graphic style with sharp lines and flat colors. The composition is highly dynamic and perfectly captures the tense wartime poster aesthetic without any text artifacts."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.82,
+          "visible_defects": [
+            "cluttered weapons on the ground"
+          ],
+          "caption_missing": [
+            "bold flat colors and sharp graphic lines"
+          ],
+          "physics_or_relation_defects": [
+            "awkward hand placement on the rifle barrel"
+          ],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "gibberish text labels on the map background"
+          ],
+          "surface_artifacts": [],
+          "reason": "The style is more of a standard illustration than a bold propaganda poster. It contains prominent gibberish text on the map and awkward weapon handling."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image has a far superior propaganda poster aesthetic with clean graphic lines, bold colors, and no distracting gibberish text.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0140",
+    "caption": "Ukiyo-e style portrait of a woman in a patterned kimono standing beside a small tea stand with a kettle, cup, wooden furnishings, vertical calligraphy, muted colors, and delicate ink linework on aged paper.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [
+            "depicts two women instead of a single portrait"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "The image depicts two women, which deviates from the singular portrait requested in the prompt."
+        },
+        {
+          "label": "full1000",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent adherence to the prompt with a single female subject, authentic Ukiyo-e style, and correct composition."
+        }
+      ],
+      "best_label": "full1000",
+      "best_reason": "The candidate image correctly depicts a single woman as specified in the prompt and features highly authentic Ukiyo-e styling.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0233",
+    "caption": "Ink and wash painting of a serene mountainous landscape with towering rocky peaks, dense pine trees, small riverside pavilions, and delicate monochrome brushwork on a vertical scroll.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [
+            "vertical scroll"
+          ],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "The image is high quality but is presented as a square crop, completely missing the requested vertical scroll format."
+        },
+        {
+          "label": "full1000",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Successfully depicts the painting on a vertical scroll with authentic calligraphy and seals, fully satisfying the caption requirements."
+        }
+      ],
+      "best_label": "full1000",
+      "best_reason": "The candidate successfully incorporates the vertical scroll format requested in the caption, which is missing from the current image.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0314",
+    "caption": "A Socialist Realism Soviet propaganda poster with a bold Cyrillic headline, heroic soldiers, an industrial worker, anti-fascist caricature scenes, and stark wartime panels in muted reds, blues, and beige tones.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent dynamic composition with clear anti-fascist caricatures and accurate Cyrillic text matching all prompt requirements."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.8,
+          "visible_defects": [
+            "awkward hand grip on hammer"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [
+            "worker's grip on the hammer handle is stiff and physically unnatural"
+          ],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "The caricature elements are weak, and the worker's hand placement on the hammer is anatomically awkward."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image features superior composition, much clearer caricature panels, and better overall execution of the prompt.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0488",
+    "caption": "A Ukiyo-e landscape with a winding blue river, small boats, a wooden bridge, riverside buildings, green trees, and distant mountains beneath a softly graded sky.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "reject",
+          "overall_score": 0.8,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [
+            "3d_canvas_mockup"
+          ],
+          "reason": "The image is presented as a 3D canvas mockup with drop shadows, which violates the surface boundary guidelines."
+        },
+        {
+          "label": "full1000",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent Ukiyo-e style rendering with a flat print border, avoiding any mockup artifacts."
+        }
+      ],
+      "best_label": "full1000",
+      "best_reason": "The candidate image successfully avoids the 3D mockup presentation of the current image while delivering a highly authentic Ukiyo-e aesthetic.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0609",
+    "caption": "Ukiyo-e scene of two kimono-clad women standing beneath a blossoming tree with distant mountains, delicate linework, muted earthy colors, and a calm atmosphere.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with highly detailed background elements, authentic Ukiyo-e style, and clean linework."
+        },
+        {
+          "label": "full1000",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Good composition, but the background landscape and tree details are simpler compared to the current version."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image offers a more detailed and authentic representation of the Ukiyo-e style with superior background elements.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0635",
+    "caption": "Ukiyo-e scene of three elegantly robed figures standing near a garden doorway with flowering trees, rendered in delicate linework, muted colors, and an aged paper texture.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Authentic style, excellent composition, and correct full-frame paper texture."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.84,
+          "visible_defects": [
+            "mockup border"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [
+            "external white background with drop shadow"
+          ],
+          "reason": "Includes an unrequested external white background and drop shadow mockup effect."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "Current is superior in composition and lacks the mockup border artifact.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0659",
+    "caption": "Ukiyo-e woodblock print of three elegantly dressed figures walking in diagonal rain, with a large patterned parasol, delicate linework, muted colors, and a calm street scene atmosphere.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent representation of the Ukiyo-e style with clean linework, accurate details, and no major defects."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.7,
+          "visible_defects": [
+            "surface_boundary_violation"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [
+            "mockup_presentation"
+          ],
+          "reason": "The image is presented as a physical print mockup lying on top of other papers, violating the surface boundary guidelines."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is a clean, high-quality digital representation of the requested style, whereas the alternative candidate is presented as a physical print mockup.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0697",
+    "caption": "Abstract composition of geometric pyramids, spheres, and block-like forms on a faint grid, layered with energetic sketchy lines, splattered textures, and a vivid yellow, teal, orange, and red palette.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [
+            "outer drop shadow suggesting a product mockup"
+          ],
+          "reason": "The image matches the caption well but contains a subtle drop shadow border, giving it a product mockup appearance."
+        },
+        {
+          "label": "full1000",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition that fully satisfies the prompt with clear geometric forms, energetic sketch lines, and a vibrant palette, without any mockup borders."
+        }
+      ],
+      "best_label": "full1000",
+      "best_reason": "The full1000 candidate is cleaner, lacks the mockup-style drop shadow of the current image, and presents a well-balanced composition of the requested elements.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0750",
+    "caption": "A Socialist Realism wartime propaganda poster with comic-like panels of civilians resisting fascist forces through sabotage, explosions, burning vehicles, red flags, Cyrillic slogans, and bold red, black, and pale blue graphic linework.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "minor text gibberish in one slogan"
+          ],
+          "surface_artifacts": [],
+          "reason": "Excellent dynamic composition with mostly accurate, iconic Cyrillic slogans and clear civilian partisan representation."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.8,
+          "visible_defects": [
+            "garbled text",
+            "uniformed soldiers instead of civilians"
+          ],
+          "caption_missing": [
+            "civilians"
+          ],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "severe Cyrillic gibberish"
+          ],
+          "surface_artifacts": [],
+          "reason": "The text is completely nonsensical and the characters appear to be regular soldiers rather than civilians."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image features superior composition, better style adherence, and much more legible, historically appropriate Cyrillic slogans.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0753",
+    "caption": "A Ukiyo-e portrait of a woman with elaborate black hair and patterned robes, surrounded by delicate decorative objects and muted aged paper tones.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [
+            "minor hairpin alignment issues"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent depiction of the requested style, featuring highly elaborate hair, detailed patterned robes, and appropriate decorative objects."
+        },
+        {
+          "label": "full1000",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [
+            "slightly awkward hand anatomy"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Authentic style, but the hand anatomy is slightly weak and the robes are less elaborate than the current image."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image features much more elaborate hair and highly detailed patterned robes, perfectly matching the prompt.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0812",
+    "caption": "Ukiyo-e scene of a woman holding a patterned parasol beside a child riding a small toy horse near a pink wooden building, with delicate linework, muted colors, and a calm spring atmosphere.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with clean linework and accurate depiction of all requested elements."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.9,
+          "visible_defects": [
+            "illogical pull string on toy"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [
+            "The pull string of the toy horse is attached to the rear instead of the front."
+          ],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Authentic style, but contains a physical defect where the toy horse's pull string trails from its rear."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is superior as it avoids the physical logic defect of the toy horse's pull string being attached to its rear.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0832",
+    "caption": "Ukiyo-e scene of two women in patterned kimonos, one standing and one kneeling with a fan beside tall flowering plants, rendered with flat warm colors and delicate linework.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "The image successfully depicts the requested scene with clean linework and accurate anatomy. The composition is well-balanced and fits the Ukiyo-e style perfectly."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.8,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [
+            "product mockup shadow"
+          ],
+          "reason": "While the artistic style is highly authentic, the image is presented as a print mockup with a visible drop shadow on a white background, which violates the surface boundary rules."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is clean, lacks any border or mockup artifacts, and accurately represents all elements of the prompt with good anatomical logic.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0897",
+    "caption": "Ink and wash painting of a serene garden scene with a twisted pine tree, bamboo, rocks, a thatched pavilion where two scholars sit at a table, and a lone figure standing by a simple fence, rendered with delicate brushwork and soft muted washes.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent rendering of the traditional ink and wash style with beautiful soft color washes. All elements from the caption are present and correctly depicted with high-quality brushwork."
+        },
+        {
+          "label": "full1000",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Very authentic monochrome antique style, but does not clearly surpass the current version which features superior color washes and composition."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is exceptionally well-executed, featuring delicate brushwork and beautiful soft color washes that perfectly match the requested serene atmosphere.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0930",
+    "caption": "Ink and wash painting of a serene mountainous riverside landscape with layered rocky peaks, pine trees, a small pavilion by the water, tiny boats, and delicate calligraphy in a soft monochrome palette.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with highly authentic-looking calligraphy and traditional brushwork. All elements from the prompt are well-represented with high aesthetic quality."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.8,
+          "visible_defects": [
+            "gibberish calligraphy"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "distorted pseudo-characters in the calligraphy section"
+          ],
+          "surface_artifacts": [],
+          "reason": "The calligraphy on the left consists of distorted, non-existent characters. The mountain shapes are also somewhat repetitive and less natural compared to the current version."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image features superior brushwork, a more dynamic composition, and much more convincing calligraphy characters.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0937",
+    "caption": "Ink and wash painting of a serene mountainous landscape with clustered trees, rocky slopes, small houses in a valley, calligraphy inscriptions, and red seal stamps rendered with delicate monochrome brushwork.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with natural flow, authentic brushwork, and perfect alignment with all caption elements."
+        },
+        {
+          "label": "full1000",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Very good quality, but the composition is slightly more static and there is a minor blue tint on the bottom rock that deviates from the monochrome style."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image features a more dynamic composition, superior brushwork flow, and strictly adheres to the monochrome ink and wash style.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0952",
+    "caption": "A Ukiyo-e portrait of an elegant woman in a richly patterned blue kimono within a decorative interior, rendered with flat color blocks, delicate linework, and a muted vintage palette.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition that perfectly captures the Ukiyo-e style with clean linework, flat color blocks, and a beautiful vintage color palette. The anatomy and hands are well-rendered."
+        },
+        {
+          "label": "full1000",
+          "status": "hold",
+          "overall_score": 1.0,
+          "visible_defects": [
+            "slightly distorted hand anatomy"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "pseudo-Japanese text in cartouche"
+          ],
+          "surface_artifacts": [],
+          "reason": "Authentic print texture and style, but the hand holding the fan has minor anatomical distortions and the face is less elegant compared to the current version."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is superior due to its cleaner linework, more elegant facial features, and better hand anatomy, while fully satisfying the style and content requirements.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0957",
+    "caption": "Ukiyo-e style print of a dramatic red-skinned warrior in ornate robes raising a fist above a crouching green creature, with bold outlines, flat colors, and a tense theatrical composition.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition and style adherence. The anatomy and details are clean, and the theatrical tension perfectly matches the Ukiyo-e aesthetic."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 0.96,
+          "visible_defects": [
+            "malformed fingers on the raised fist"
+          ],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "illegible gibberish text in the cartouches"
+          ],
+          "surface_artifacts": [],
+          "reason": "Contains gibberish text in the decorative cartouches and has minor anatomical issues on the raised hand compared to the current version."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is superior in anatomical correctness, lacks the gibberish text artifacts present in the alternative, and has a more dynamic composition.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0991",
+    "caption": "A Baroque engraved courtyard scene with grand arcaded architecture, a central tower, small figures gathered below, and winged mythological figures flying through a dramatic sky.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with highly detailed engraving style that perfectly matches all elements of the caption."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "cropped text at bottom right"
+          ],
+          "surface_artifacts": [],
+          "reason": "Less grand architectural composition and contains cropped text artifacts at the bottom right border."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image has superior architectural detail, a more dramatic composition, and lacks the text artifacts present in the alternative candidate.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  },
+  {
+    "sample_id": "track1_0997",
+    "caption": "Ukiyo-e woodblock print of elegantly dressed Japanese figures gathered in an interior before sliding panels with a mountain landscape, rendered with fine linework, muted colors, and a calm theatrical composition.",
+    "candidate_labels": [
+      "current",
+      "full1000"
+    ],
+    "review": {
+      "image_reviews": [
+        {
+          "label": "current",
+          "status": "accept",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [],
+          "surface_artifacts": [],
+          "reason": "Excellent composition with clean linework, authentic style, and no text artifacts."
+        },
+        {
+          "label": "full1000",
+          "status": "reject",
+          "overall_score": 1.0,
+          "visible_defects": [],
+          "caption_missing": [],
+          "physics_or_relation_defects": [],
+          "flag_or_symbol_defects": [],
+          "text_artifacts": [
+            "gibberish text in cartouches"
+          ],
+          "surface_artifacts": [],
+          "reason": "Contains illegible pseudo-Japanese text in multiple cartouches, and the composition is overly crowded."
+        }
+      ],
+      "best_label": "current",
+      "best_reason": "The current image is superior due to its clean execution, balanced composition, and lack of gibberish text artifacts.",
+      "needs_rerun": false,
+      "rerun_focus": []
+    }
+  }
+]
