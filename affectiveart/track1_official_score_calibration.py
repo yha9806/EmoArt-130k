@@ -71,9 +71,66 @@ def fit_fid_score_model(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def fit_local_to_official_fid_model(rows: Iterable[dict[str, Any]]) -> dict[str, Any]:
+    points = []
+    for row in rows:
+        local_fid_like = _float_or_none(row.get("local_fid_like"))
+        official_fid = _float_or_none(row.get("official_fid") or row.get("FID") or row.get("fid"))
+        if local_fid_like is not None and official_fid is not None:
+            points.append((local_fid_like, official_fid))
+    if len(points) < 2:
+        return {
+            "kind": "insufficient_own_anchors",
+            "count": len(points),
+            "proxy_direction": "unknown",
+            "warning": "At least two own submissions with local_fid_like and official_fid are required.",
+        }
+    xs = [point[0] for point in points]
+    ys = [point[1] for point in points]
+    x_mean = mean(xs)
+    y_mean = mean(ys)
+    denom = sum((x - x_mean) ** 2 for x in xs)
+    if denom <= 0:
+        return {
+            "kind": "degenerate_own_anchor_fit",
+            "count": len(points),
+            "proxy_direction": "unknown",
+            "warning": "Own local_fid_like anchors do not vary.",
+        }
+    slope = sum((x - x_mean) * (y - y_mean) for x, y in points) / denom
+    intercept = y_mean - slope * x_mean
+    residuals = [y - (intercept + slope * x) for x, y in points]
+    ss_res = sum(value * value for value in residuals)
+    ss_tot = sum((y - y_mean) ** 2 for y in ys)
+    r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else 1.0
+    if slope > 0:
+        proxy_direction = "aligned"
+    elif slope < 0:
+        proxy_direction = "anti_correlated"
+    else:
+        proxy_direction = "flat"
+    return {
+        "kind": "linear_local_fid_like_to_official_fid",
+        "count": len(points),
+        "slope": round(slope, 8),
+        "intercept": round(intercept, 8),
+        "r2": round(r2, 6),
+        "local_fid_like_min": round(min(xs), 6),
+        "local_fid_like_max": round(max(xs), 6),
+        "official_fid_min": round(min(ys), 6),
+        "official_fid_max": round(max(ys), 6),
+        "proxy_direction": proxy_direction,
+    }
+
+
 def predict_fid_score(official_fid: float, model: dict[str, Any]) -> float:
     raw = float(model["intercept"]) + float(model["slope"]) * official_fid
     return round(min(1.0, max(0.0, raw)), 6)
+
+
+def predict_official_fid_from_local(local_fid_like: float, model: dict[str, Any]) -> float:
+    raw = float(model["intercept"]) + float(model["slope"]) * local_fid_like
+    return round(max(0.0, raw), 6)
 
 
 def official_overall(fid_score: float, aas: float) -> float:
@@ -88,13 +145,71 @@ def calibrate_track1_packages(
     aas_assumption: float | None = None,
 ) -> dict[str, Any]:
     fid_score_model = fit_fid_score_model(official_rows)
+    local_to_official_model = fit_local_to_official_fid_model(official_rows)
     anchor = _find_anchor(official_rows, anchor_package)
     if aas_assumption is not None:
         anchor["official_aas"] = float(aas_assumption)
+    observed_by_package = _observed_official_by_package(official_rows)
     package_rows = []
     for row in local_fid_rows:
         package = str(row["package"])
         fid_like = float(row["fid_like"])
+        observed = observed_by_package.get(package)
+        if observed:
+            fid_score = float(observed["official_fid_score"])
+            aas = float(observed["official_aas"])
+            overall = official_overall(fid_score, aas)
+            package_rows.append(
+                {
+                    "package": package,
+                    "local_fid_like": round(fid_like, 6),
+                    "local_delta_vs_anchor": round(fid_like - float(anchor["local_fid_like"]), 6),
+                    "scenarios": {
+                        "observed": {
+                            "projected_official_fid": round(float(observed["official_fid"]), 6),
+                            "projected_fid_score": round(fid_score, 6),
+                            "projected_aas": round(aas, 6),
+                            "projected_overall": overall,
+                            "submission_id": observed["submission_id"],
+                        }
+                    },
+                    "overall_lower": overall,
+                    "overall_expected": overall,
+                    "overall_upper": overall,
+                    "fid_score_expected": round(fid_score, 6),
+                    "official_fid_expected": round(float(observed["official_fid"]), 6),
+                    "projection_method": "observed_official",
+                    "ranking_note": "observed_official",
+                }
+            )
+            continue
+        if local_to_official_model.get("kind") == "linear_local_fid_like_to_official_fid":
+            projected_fid = predict_official_fid_from_local(fid_like, local_to_official_model)
+            projected_fid_score = predict_fid_score(projected_fid, fid_score_model)
+            projected_overall = official_overall(projected_fid_score, float(anchor["official_aas"]))
+            package_rows.append(
+                {
+                    "package": package,
+                    "local_fid_like": round(fid_like, 6),
+                    "local_delta_vs_anchor": round(fid_like - float(anchor["local_fid_like"]), 6),
+                    "scenarios": {
+                        "own_anchor_fit": {
+                            "projected_official_fid": projected_fid,
+                            "projected_fid_score": projected_fid_score,
+                            "projected_aas": round(float(anchor["official_aas"]), 6),
+                            "projected_overall": projected_overall,
+                        }
+                    },
+                    "overall_lower": projected_overall,
+                    "overall_expected": projected_overall,
+                    "overall_upper": projected_overall,
+                    "fid_score_expected": projected_fid_score,
+                    "official_fid_expected": projected_fid,
+                    "projection_method": "own_anchor_fit",
+                    "ranking_note": _ranking_note_from_official_fid(projected_fid, float(anchor["official_fid"])),
+                }
+            )
+            continue
         local_delta = fid_like - float(anchor["local_fid_like"])
         scenarios = {}
         overall_values = []
@@ -120,6 +235,8 @@ def calibrate_track1_packages(
                 "overall_expected": scenarios["expected"]["projected_overall"],
                 "overall_upper": round(max(overall_values), 6),
                 "fid_score_expected": scenarios["expected"]["projected_fid_score"],
+                "official_fid_expected": scenarios["expected"]["projected_official_fid"],
+                "projection_method": "anchor_delta_heuristic",
                 "ranking_note": _ranking_note(local_delta),
             }
         )
@@ -131,6 +248,7 @@ def calibrate_track1_packages(
             "With one own local-to-official anchor, package scores are directional and low-confidence."
         ),
         "fid_score_model": fid_score_model,
+        "local_to_official_fid_model": local_to_official_model,
         "anchor": anchor,
         "calibration_confidence": _calibration_confidence(official_rows),
         "packages": package_rows,
@@ -169,6 +287,23 @@ def _find_anchor(rows: list[dict[str, Any]], anchor_package: str) -> dict[str, A
                 "local_fid_like": local_fid_like,
             }
     raise ValueError(f"no complete local official anchor found for package: {anchor_package}")
+
+
+def _observed_official_by_package(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    observed = {}
+    for row in rows:
+        package = str(row.get("local_package") or row.get("package") or "").strip()
+        official_fid = _float_or_none(row.get("official_fid"))
+        official_fid_score_value = _float_or_none(row.get("official_fid_score"))
+        official_aas_value = _float_or_none(row.get("official_aas"))
+        if package and None not in (official_fid, official_fid_score_value, official_aas_value):
+            observed[package] = {
+                "submission_id": str(row.get("submission_id") or row.get("id") or ""),
+                "official_fid": official_fid,
+                "official_fid_score": official_fid_score_value,
+                "official_aas": official_aas_value,
+            }
+    return observed
 
 
 def _calibration_confidence(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -233,11 +368,21 @@ def _ranking_note(local_delta: float) -> str:
     return "local_proxy_similar_to_anchor"
 
 
+def _ranking_note_from_official_fid(projected_fid: float, anchor_fid: float) -> str:
+    delta = projected_fid - anchor_fid
+    if delta < -0.5:
+        return "projected_official_fid_better_than_anchor"
+    if delta > 0.5:
+        return "projected_official_fid_worse_than_anchor"
+    return "projected_official_fid_similar_to_anchor"
+
+
 def _render_md(report: dict[str, Any]) -> str:
     anchor = report["anchor"]
     confidence = report["calibration_confidence"]
     context = report["leaderboard_context"]
     model = report["fid_score_model"]
+    local_model = report.get("local_to_official_fid_model", {})
     lines = [
         "# Track1 Local Shadow Score Calibration",
         "",
@@ -260,15 +405,34 @@ def _render_md(report: dict[str, Any]) -> str:
         f"- intercept: `{model['intercept']}`",
         f"- r2: `{model['r2']}`",
         "",
+        "## Local Proxy To Official FID",
+        "",
+        f"- model: `{local_model.get('kind', '')}`",
+        f"- own anchors: `{local_model.get('count', 0)}`",
+        f"- proxy direction: `{local_model.get('proxy_direction', 'unknown')}`",
+    ]
+    if "slope" in local_model:
+        lines += [
+            f"- slope: `{local_model['slope']}`",
+            f"- intercept: `{local_model['intercept']}`",
+            f"- r2: `{local_model['r2']}`",
+        ]
+    warning = local_model.get("warning")
+    if warning:
+        lines.append(f"- warning: {warning}")
+    lines += [
+        "",
         "## Package Ranking",
         "",
-        "| package | local fid_like | expected overall | lower | upper | expected FID Score | note |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| package | local fid_like | expected official FID | expected overall | lower | upper | expected FID Score | method | note |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |",
     ]
     for row in report["packages"]:
         lines.append(
-            f"| `{row['package']}` | {row['local_fid_like']:.6f} | {row['overall_expected']:.6f} | "
+            f"| `{row['package']}` | {row['local_fid_like']:.6f} | {row.get('official_fid_expected', 0):.6f} | "
+            f"{row['overall_expected']:.6f} | "
             f"{row['overall_lower']:.6f} | {row['overall_upper']:.6f} | {row['fid_score_expected']:.6f} | "
+            f"{row.get('projection_method', '')} | "
             f"{row['ranking_note']} |"
         )
     lines += [

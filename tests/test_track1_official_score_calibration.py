@@ -81,6 +81,36 @@ class Track1OfficialScoreCalibrationTest(unittest.TestCase):
         self.assertGreater(current["overall_expected"], anchor["overall_expected"])
         self.assertIn("LOCAL SHADOW SCORE ONLY", report["warning"])
 
+    def test_two_own_anchors_detect_anti_correlated_local_proxy(self):
+        official_rows = _official_rows() + [
+            {
+                "participant": "vulcaart",
+                "submission_id": "784403",
+                "file_name": "hybrid_probe_redteam_fid_pass4.zip",
+                "local_package": "hybrid_redteam_fid_pass4",
+                "official_overall": "0.74",
+                "official_fid": "105.66",
+                "official_fid_score": "0.49",
+                "official_aas": "0.99",
+                "local_fid_like": "58.348904",
+            }
+        ]
+        local_rows = [
+            {"package": "current", "fid_like": 58.526207},
+            {"package": "v3_gate7", "fid_like": 63.010429},
+            {"package": "hybrid_redteam_fid_pass4", "fid_like": 58.348904},
+            {"package": "full1000_no_fallback", "fid_like": 63.098811},
+        ]
+
+        report = calibrate_track1_packages(official_rows, local_rows, anchor_package="v3_gate7")
+
+        self.assertEqual(report["local_to_official_fid_model"]["proxy_direction"], "anti_correlated")
+        self.assertEqual(report["packages"][0]["package"], "full1000_no_fallback")
+        current = next(row for row in report["packages"] if row["package"] == "current")
+        hybrid = next(row for row in report["packages"] if row["package"] == "hybrid_redteam_fid_pass4")
+        self.assertEqual(hybrid["projection_method"], "observed_official")
+        self.assertLess(current["overall_expected"], report["anchor"]["official_overall"])
+
     def test_extreme_local_fid_like_values_are_bounded(self):
         local_rows = [
             {"package": "unrealistically_good", "fid_like": -1000.0},
