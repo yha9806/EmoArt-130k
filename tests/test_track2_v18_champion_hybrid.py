@@ -417,3 +417,46 @@ class Track2V18ChampionHybridTests(unittest.TestCase):
         self.assertEqual(merged[0]["overall_caption"], row["overall_caption"])
         self.assertEqual(report["description_changed_rows"], 0)
         self.assertEqual(report["rejected_text_rows"], 1)
+
+    def test_enrich_champion_evidence_marks_priority_and_risk(self) -> None:
+        from affectiveart.track2_v18_champion_hybrid import enrich_champion_evidence
+
+        rows = [
+            {
+                "sample_id": "track2_0001",
+                "current_emotion": "content",
+                "proposed_emotion": "calm",
+                "transition": "content->calm",
+                "same_valence": True,
+                "same_arousal": True,
+                "model_vote_count": 2,
+                "support_score": 1.6,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 43,
+            },
+            {
+                "sample_id": "track2_0002",
+                "current_emotion": "annoyed",
+                "proposed_emotion": "content",
+                "transition": "annoyed->content",
+                "same_valence": False,
+                "same_arousal": False,
+                "model_vote_count": 1,
+                "support_score": 1.0,
+                "public_duplicate_support_score": 0.0,
+                "exact_duplicate": False,
+                "near_duplicate": False,
+                "failed_transition_count": 0,
+            },
+        ]
+
+        enriched = enrich_champion_evidence(rows)
+
+        self.assertEqual(enriched[0]["transition_family"], "calm<->content")
+        self.assertTrue(enriched[0]["majority_boundary_transition"])
+        self.assertEqual(enriched[0]["champion_priority"], "medium")
+        self.assertIn("failed_official_transition", enriched[0]["risk_flags"])
+        self.assertEqual(enriched[1]["champion_priority"], "low")
+        self.assertIn("cross_quadrant", enriched[1]["risk_flags"])

@@ -20,6 +20,7 @@ __all__ = [
     "OfficialAnchor",
     "TEXT_FIELDS",
     "choose_v18_base",
+    "enrich_champion_evidence",
     "load_champion_targets",
     "load_official_anchors",
     "merge_description_rows",
@@ -56,6 +57,21 @@ TRACK2_JSON_SUBMISSION_KEYS = (
     "line",
     "light",
 )
+MAJORITY_BOUNDARY_TRANSITIONS = {
+    "calm->content",
+    "content->calm",
+    "calm->glad",
+    "content->glad",
+    "glad->content",
+    "happy->excited",
+    "excited->happy",
+    "aroused->excited",
+    "excited->aroused",
+    "sad->tired",
+    "tired->sad",
+    "annoyed->frustrated",
+    "frustrated->annoyed",
+}
 
 
 @_dataclass(frozen=True)
@@ -210,9 +226,77 @@ def _safe_int(value: _Any, default: int = 0) -> int:
         return default
 
 
+def _safe_bool(value: _Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
 def _load_csv_rows(path: str | _Path) -> list[dict[str, _Any]]:
     with _Path(path).open(newline="", encoding="utf-8") as handle:
         return [dict(row) for row in _csv.DictReader(handle)]
+
+
+def enrich_champion_evidence(rows: list[dict[str, _Any]]) -> list[dict[str, _Any]]:
+    enriched: list[dict[str, _Any]] = []
+    for row in rows:
+        item = dict(row)
+        transition = str(item.get("transition", "")).strip()
+        same_valence = _safe_bool(item.get("same_valence"))
+        same_arousal = _safe_bool(item.get("same_arousal"))
+        exact_duplicate = _safe_bool(item.get("exact_duplicate"))
+        support_score = _safe_float(item.get("support_score"))
+        model_votes = _safe_int(item.get("model_vote_count"))
+        failed_count = _safe_int(item.get("failed_transition_count"))
+        risk_flags: list[str] = []
+        if not same_valence or not same_arousal:
+            risk_flags.append("cross_quadrant")
+        if failed_count >= 10:
+            risk_flags.append("failed_official_transition")
+        if model_votes < 2 and not exact_duplicate:
+            risk_flags.append("weak_model_family_count")
+        if support_score < 1.25 and not exact_duplicate:
+            risk_flags.append("weak_support_score")
+        majority_boundary = transition in MAJORITY_BOUNDARY_TRANSITIONS
+        if exact_duplicate:
+            priority = "high"
+        elif majority_boundary and same_valence and same_arousal and model_votes >= 2:
+            priority = "medium"
+        else:
+            priority = "low"
+        item["transition_family"] = _transition_family(transition)
+        item["majority_boundary_transition"] = majority_boundary
+        item["champion_priority"] = priority
+        item["risk_flags"] = ",".join(risk_flags)
+        enriched.append(item)
+    return sorted(enriched, key=_champion_sort_key)
+
+
+def _transition_family(transition: str) -> str:
+    if transition in {"calm->content", "content->calm"}:
+        return "calm<->content"
+    if transition in {"happy->excited", "excited->happy"}:
+        return "happy<->excited"
+    if transition in {"aroused->excited", "excited->aroused"}:
+        return "aroused<->excited"
+    if transition in {"sad->tired", "tired->sad"}:
+        return "sad<->tired"
+    if transition in {"annoyed->frustrated", "frustrated->annoyed"}:
+        return "annoyed<->frustrated"
+    return transition
+
+
+def _champion_sort_key(row: dict[str, _Any]) -> tuple[int, int, float, float, str, str]:
+    priority_rank = {"high": 0, "medium": 1, "low": 2}.get(str(row.get("champion_priority", "")), 3)
+    risk_count = len([part for part in str(row.get("risk_flags", "")).split(",") if part])
+    return (
+        priority_rank,
+        risk_count,
+        -_safe_float(row.get("public_duplicate_support_score")),
+        -_safe_float(row.get("support_score")),
+        str(row.get("sample_id", "")),
+        str(row.get("proposed_emotion", "")),
+    )
 
 
 TEXT_FIELDS = ("overall_caption", "brushstroke", "composition", "color", "line", "light")
