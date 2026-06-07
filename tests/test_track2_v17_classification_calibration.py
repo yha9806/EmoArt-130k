@@ -10,7 +10,33 @@ from affectiveart.track2_v17_classification_calibration import (
     DEFAULT_PREDICTION_SOURCES,
     load_prediction_sources,
     parse_official_failed_transition_counts,
+    select_v17_changes,
+    v17_gate_for_evidence,
 )
+
+
+def _evidence_row(**overrides):
+    row = {
+        "sample_id": "track2_0001",
+        "current_emotion": "content",
+        "proposed_emotion": "calm",
+        "transition": "content->calm",
+        "model_vote_count": 2,
+        "model_sources": "clip,siglip2",
+        "all_sources": "clip,siglip2",
+        "support_score": 1.65,
+        "model_support_score": 1.65,
+        "public_style_support_score": 0.0,
+        "public_duplicate_support_score": 0.0,
+        "max_confidence": 0.82,
+        "exact_duplicate": False,
+        "near_duplicate": False,
+        "failed_transition_count": 0,
+        "current_label_issue_count": 0,
+        "rationale": "",
+    }
+    row.update(overrides)
+    return row
 
 
 class Track2V17ClassificationCalibrationTests(unittest.TestCase):
@@ -174,6 +200,234 @@ class Track2V17ClassificationCalibrationTests(unittest.TestCase):
         self.assertEqual(calm["model_vote_count"], 0)
         self.assertAlmostEqual(calm["support_score"], 0.99)
         self.assertAlmostEqual(calm["public_duplicate_support_score"], 0.99)
+
+    def test_safe_gate_accepts_two_model_families_when_not_failed_transition(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "accept")
+        self.assertIn("meets_profile_thresholds", gate["reasons"])
+
+    def test_aggressive_probe_accepts_one_supported_model_family(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=1,
+                model_sources="clip",
+                all_sources="clip",
+                support_score=1.05,
+                model_support_score=1.05,
+                max_confidence=0.72,
+            ),
+            profile="aggressive_probe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "accept")
+        self.assertIn("meets_profile_thresholds", gate["reasons"])
+
+    def test_aggressive_probe_blocks_failed_bulk_transition(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=1,
+                model_sources="clip",
+                all_sources="clip",
+                support_score=1.2,
+                model_support_score=1.2,
+                max_confidence=0.78,
+                failed_transition_count=10,
+            ),
+            profile="aggressive_probe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("failed_transition_family", gate["reasons"])
+
+    def test_safe_gate_blocks_failed_bulk_transition_without_exact_duplicate(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(failed_transition_count=10),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("failed_transition_family", gate["reasons"])
+
+    def test_exact_duplicate_overrides_failed_transition(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=0,
+                model_sources="",
+                all_sources="public_exact_public_duplicate",
+                support_score=0.99,
+                model_support_score=0.0,
+                public_duplicate_support_score=0.99,
+                max_confidence=0.99,
+                exact_duplicate=True,
+                failed_transition_count=20,
+            ),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "accept")
+        self.assertNotIn("failed_transition_family", gate["reasons"])
+
+    def test_exact_duplicate_override_requires_high_duplicate_confidence(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=0,
+                model_sources="",
+                all_sources="public_exact_public_duplicate",
+                support_score=0.0,
+                model_support_score=0.0,
+                public_duplicate_support_score=0.0,
+                max_confidence=0.99,
+                exact_duplicate=True,
+                failed_transition_count=20,
+            ),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_exact_duplicate_support", gate["reasons"])
+
+    def test_near_duplicate_does_not_bypass_failed_transition_family(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                support_score=0.97,
+                max_confidence=0.97,
+                near_duplicate=True,
+                failed_transition_count=10,
+            ),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("failed_transition_family", gate["reasons"])
+
+    def test_near_duplicate_does_not_bypass_insufficient_model_families(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=0,
+                model_sources="",
+                all_sources="public_near_public_duplicate",
+                support_score=1.1,
+                model_support_score=0.0,
+                public_duplicate_support_score=1.1,
+                max_confidence=0.99,
+                near_duplicate=True,
+            ),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_model_families", gate["reasons"])
+
+    def test_safe_gate_blocks_public_style_only_without_model_votes(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=0,
+                model_sources="",
+                all_sources="public_clean,public_inclusive",
+                support_score=1.8,
+                model_support_score=0.0,
+                public_style_support_score=1.8,
+                max_confidence=0.93,
+            ),
+            profile="safe",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_model_families", gate["reasons"])
+
+    def test_balanced_gate_blocks_public_style_only_without_model_votes(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(
+                model_vote_count=0,
+                model_sources="",
+                all_sources="public_clean,public_inclusive",
+                support_score=1.8,
+                model_support_score=0.0,
+                public_style_support_score=1.8,
+                max_confidence=0.93,
+            ),
+            profile="balanced",
+            distribution={"content": 12, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("insufficient_model_families", gate["reasons"])
+
+    def test_gate_blocks_removing_rare_current_class(self) -> None:
+        gate = v17_gate_for_evidence(
+            _evidence_row(),
+            profile="safe",
+            distribution={"content": 2, "calm": 12},
+        )
+        self.assertEqual(gate["decision"], "block")
+        self.assertIn("rare_current_class_floor", gate["reasons"])
+
+    def test_select_v17_changes_caps_balanced_content_calm_transition_family(self) -> None:
+        rows = []
+        for index in range(6):
+            rows.append(
+                _evidence_row(
+                    sample_id=f"track2_content_{index:04d}",
+                    current_emotion="content",
+                    proposed_emotion="calm",
+                    transition="content->calm",
+                    support_score=3.0 - index * 0.1,
+                    max_confidence=0.95 - index * 0.01,
+                )
+            )
+        for index in range(3):
+            rows.append(
+                _evidence_row(
+                    sample_id=f"track2_calm_{index:04d}",
+                    current_emotion="calm",
+                    proposed_emotion="content",
+                    transition="calm->content",
+                    support_score=2.2 - index * 0.1,
+                    max_confidence=0.89 - index * 0.01,
+                )
+            )
+        selected = select_v17_changes(rows, profile="balanced", current_distribution={"content": 20, "calm": 20})
+        family_selected = [
+            row
+            for row in selected
+            if row["transition"] in {"content->calm", "calm->content"}
+        ]
+        self.assertEqual(len(family_selected), 4)
+        self.assertEqual([row["sample_id"] for row in family_selected], [f"track2_content_{index:04d}" for index in range(4)])
+
+    def test_select_v17_changes_keeps_one_highest_supported_change_per_sample(self) -> None:
+        rows = [
+            _evidence_row(sample_id="track2_same", proposed_emotion="glad", transition="content->glad", support_score=1.7, max_confidence=0.8),
+            _evidence_row(sample_id="track2_same", proposed_emotion="calm", transition="content->calm", support_score=2.1, max_confidence=0.9),
+        ]
+        selected = select_v17_changes(rows, profile="balanced", current_distribution={"content": 10, "calm": 10})
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]["proposed_emotion"], "calm")
+
+    def test_select_v17_changes_tracks_projected_distribution_floor(self) -> None:
+        rows = [
+            _evidence_row(
+                sample_id="track2_glad_0001",
+                current_emotion="glad",
+                proposed_emotion="content",
+                transition="glad->content",
+                support_score=2.0,
+                max_confidence=0.9,
+            ),
+            _evidence_row(
+                sample_id="track2_glad_0002",
+                current_emotion="glad",
+                proposed_emotion="content",
+                transition="glad->content",
+                support_score=1.9,
+                max_confidence=0.88,
+            ),
+        ]
+        selected = select_v17_changes(rows, profile="balanced", current_distribution={"glad": 3, "content": 10})
+        self.assertEqual([row["sample_id"] for row in selected], ["track2_glad_0001"])
 
 
 if __name__ == "__main__":

@@ -42,6 +42,38 @@ DEFAULT_DUPLICATE_SOURCES = [
     Path("experiments/track2_emoart130k_clip/overlap_reference/ge095_all/ge095_public_neighbor_audit.json"),
 ]
 PUBLIC_STYLE_SOURCES = {"public_clean", "public_inclusive"}
+PROFILE_CONFIG = {
+    "safe": {
+        "min_model_votes": 2,
+        "min_support_score": 1.45,
+        "min_confidence": 0.78,
+        "near_duplicate_min_support_score": 0.95,
+        "near_duplicate_min_confidence": 0.95,
+        "failed_transition_block_count": 10,
+        "total_cap": 48,
+        "transition_family_caps": {"calm<->content": 2},
+    },
+    "balanced": {
+        "min_model_votes": 2,
+        "min_support_score": 1.25,
+        "min_confidence": 0.72,
+        "near_duplicate_min_support_score": 0.95,
+        "near_duplicate_min_confidence": 0.95,
+        "failed_transition_block_count": 10,
+        "total_cap": 96,
+        "transition_family_caps": {"calm<->content": 4},
+    },
+    "aggressive_probe": {
+        "min_model_votes": 1,
+        "min_support_score": 0.95,
+        "min_confidence": 0.60,
+        "near_duplicate_min_support_score": 0.90,
+        "near_duplicate_min_confidence": 0.90,
+        "failed_transition_block_count": 10,
+        "total_cap": 160,
+        "transition_family_caps": {"calm<->content": 8},
+    },
+}
 
 EVIDENCE_MATRIX_FIELDS = [
     "sample_id",
@@ -203,6 +235,97 @@ def build_evidence_rows(
     )
 
 
+def v17_gate_for_evidence(
+    row: dict[str, Any],
+    *,
+    profile: str,
+    distribution: dict[str, Any] | Counter[str],
+) -> dict[str, Any]:
+    config = _profile_config(profile)
+    reasons: list[str] = []
+    current = _canonical_emotion(row.get("current_emotion"))
+    proposed = _canonical_emotion(row.get("proposed_emotion"))
+    if not current or not proposed:
+        reasons.append("invalid_emotion")
+    elif current == proposed:
+        reasons.append("no_label_change")
+
+    raw_exact_duplicate = _safe_bool(row.get("exact_duplicate"))
+    exact_duplicate = raw_exact_duplicate and _has_exact_duplicate_override_support(row)
+    near_duplicate = _safe_bool(row.get("near_duplicate"))
+    failed_transition = _safe_int(row.get("failed_transition_count")) >= _safe_int(config["failed_transition_block_count"])
+    model_votes = _safe_int(row.get("model_vote_count"))
+    if current and _would_remove_rare_class(current, distribution):
+        reasons.append("rare_current_class_floor")
+    if failed_transition and not exact_duplicate:
+        reasons.append("failed_transition_family")
+
+    if not exact_duplicate and model_votes < _safe_int(config["min_model_votes"]):
+        reasons.append("insufficient_model_families")
+
+    min_support = float(config["min_support_score"])
+    min_confidence = float(config["min_confidence"])
+    if near_duplicate and not exact_duplicate:
+        min_support = float(config["near_duplicate_min_support_score"])
+        min_confidence = float(config["near_duplicate_min_confidence"])
+
+    if not exact_duplicate and _safe_float(row.get("support_score")) < min_support:
+        reasons.append("low_support")
+    if not exact_duplicate and _safe_float(row.get("max_confidence")) < min_confidence:
+        reasons.append("low_confidence")
+    if raw_exact_duplicate and not exact_duplicate and reasons:
+        reasons.append("insufficient_exact_duplicate_support")
+
+    decision = "block" if reasons else "accept"
+    if decision == "accept":
+        reasons.append("exact_duplicate_override" if exact_duplicate else "meets_profile_thresholds")
+    return {"decision": decision, "reasons": reasons}
+
+
+def select_v17_changes(
+    evidence_rows: list[dict[str, Any]],
+    *,
+    profile: str,
+    current_distribution: dict[str, Any] | Counter[str],
+) -> list[dict[str, Any]]:
+    config = _profile_config(profile)
+    total_cap = _safe_int(config["total_cap"])
+    transition_family_caps = dict(config.get("transition_family_caps") or {})
+    selected: list[dict[str, Any]] = []
+    selected_sample_ids: set[str] = set()
+    transition_family_counts: Counter[str] = Counter()
+    projected_distribution: Counter[str] = Counter(
+        {str(key): _safe_int(value) for key, value in dict(current_distribution).items()}
+    )
+
+    for row in sorted(evidence_rows, key=_selection_sort_key):
+        if total_cap and len(selected) >= total_cap:
+            break
+        sample_id = str(row.get("sample_id", "")).strip()
+        if not sample_id or sample_id in selected_sample_ids:
+            continue
+        gate = v17_gate_for_evidence(row, profile=profile, distribution=projected_distribution)
+        if gate["decision"] != "accept":
+            continue
+        transition = _row_transition(row)
+        family = _transition_family_key(transition)
+        family_cap = _safe_int(transition_family_caps.get(family))
+        if family_cap and transition_family_counts[family] >= family_cap:
+            continue
+        selected_row = dict(row)
+        selected_row["gate_decision"] = gate["decision"]
+        selected_row["gate_reasons"] = ",".join(gate["reasons"])
+        selected.append(selected_row)
+        selected_sample_ids.add(sample_id)
+        transition_family_counts[family] += 1
+        current = _canonical_emotion(row.get("current_emotion"))
+        proposed = _canonical_emotion(row.get("proposed_emotion"))
+        if current and proposed:
+            projected_distribution[current] -= 1
+            projected_distribution[proposed] += 1
+    return selected
+
+
 def load_track2_rows(path: str | Path) -> list[dict[str, Any]]:
     path = Path(path)
     if path.suffix.lower() == ".zip":
@@ -316,6 +439,60 @@ def _safe_float(value: Any) -> float:
         return float(value)
     except (TypeError, ValueError):
         return 0.0
+
+
+def _safe_int(value: Any) -> int:
+    return int(_safe_float(value))
+
+
+def _safe_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return value != 0
+    return str(value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _has_exact_duplicate_override_support(row: dict[str, Any]) -> bool:
+    return _safe_float(row.get("public_duplicate_support_score")) >= 0.985
+
+
+def _profile_config(profile: str) -> dict[str, Any]:
+    if profile not in PROFILE_CONFIG:
+        raise ValueError(f"unknown v17 profile: {profile}")
+    return dict(PROFILE_CONFIG[profile])
+
+
+def _would_remove_rare_class(current: str, distribution: dict[str, Any] | Counter[str]) -> bool:
+    emotion = _canonical_emotion(current)
+    if not emotion:
+        return False
+    return _safe_int(distribution.get(emotion, 0)) <= 2
+
+
+def _selection_sort_key(row: dict[str, Any]) -> tuple[float, float, str, str]:
+    return (
+        -_safe_float(row.get("support_score")),
+        -_safe_float(row.get("max_confidence")),
+        str(row.get("sample_id", "")),
+        _row_transition(row),
+    )
+
+
+def _row_transition(row: dict[str, Any]) -> str:
+    transition = str(row.get("transition", "")).strip()
+    if transition:
+        return transition
+    current = _canonical_emotion(row.get("current_emotion"))
+    proposed = _canonical_emotion(row.get("proposed_emotion"))
+    return f"{current}->{proposed}" if current and proposed else ""
+
+
+def _transition_family_key(transition: str) -> str:
+    left_right = [piece.strip() for piece in str(transition).split("->", 1)]
+    if len(left_right) != 2:
+        return str(transition)
+    return "<->".join(sorted(left_right))
 
 
 def _extract_submission_id(value: Any) -> str:
