@@ -1,0 +1,194 @@
+{
+  "fid_score_reproduction": {
+    "count": 13,
+    "fid_max": 130.772838,
+    "fid_min": 66.362192,
+    "fid_score_max": 0.601098,
+    "fid_score_min": 0.433327,
+    "intercept": 0.76613901,
+    "kind": "linear_fid_to_fid_score",
+    "mae": 0.00448162,
+    "max_abs_residual": 0.00791356,
+    "r2": 0.992139,
+    "rmse": 0.00493274,
+    "slope": -0.00260548,
+    "worst_rows": [
+      {
+        "official_fid": 130.772838,
+        "official_fid_score": 0.4333265599,
+        "participant": "zhbai",
+        "predicted_fid_score": 0.425412996,
+        "residual": 0.0079135639,
+        "submission_id": "755551"
+      },
+      {
+        "official_fid": 66.362192,
+        "official_fid_score": 0.6010981145,
+        "participant": "emosuis",
+        "predicted_fid_score": 0.5932336457,
+        "residual": 0.0078644688,
+        "submission_id": "778783"
+      },
+      {
+        "official_fid": 66.841741,
+        "official_fid_score": 0.5993703924,
+        "participant": "trybest-1",
+        "predicted_fid_score": 0.5919841897,
+        "residual": 0.0073862027,
+        "submission_id": "777611"
+      },
+      {
+        "official_fid": 80.92,
+        "official_fid_score": 0.55,
+        "participant": "vulcaart",
+        "predicted_fid_score": 0.5553035684,
+        "residual": -0.0053035684,
+        "submission_id": "782831"
+      },
+      {
+        "official_fid": 105.663816,
+        "official_fid_score": 0.4862304023,
+        "participant": "vulcaart",
+        "predicted_fid_score": 0.4908340506,
+        "residual": -0.0046036483,
+        "submission_id": "784403"
+      }
+    ]
+  },
+  "local_proxy_reproduction": {
+    "model": {
+      "count": 2,
+      "intercept": 415.38532256,
+      "kind": "linear_local_fid_like_to_official_fid",
+      "local_fid_like_max": 63.010429,
+      "local_fid_like_min": 58.348904,
+      "official_fid_max": 105.663816,
+      "official_fid_min": 80.92,
+      "proxy_direction": "anti_correlated",
+      "r2": 1.0,
+      "slope": -5.30809467
+    },
+    "model_kind": "linear_local_fid_like_to_official_fid",
+    "own_anchor_count": 2,
+    "own_anchor_rows": [
+      {
+        "local_fid_like": 58.348904,
+        "local_package": "hybrid_redteam_fid_pass4",
+        "official_aas": 0.99305,
+        "official_fid": 105.663816,
+        "official_fid_score": 0.4862304023,
+        "submission_id": "784403"
+      },
+      {
+        "local_fid_like": 63.010429,
+        "local_package": "v3_gate7",
+        "official_aas": 0.98,
+        "official_fid": 80.92,
+        "official_fid_score": 0.55,
+        "submission_id": "782831"
+      }
+    ],
+    "proxy_direction": "anti_correlated",
+    "readiness": "insufficient_own_anchors",
+    "reason": "至少需要 3 个自有提交锚点，并且每个锚点都要同时保留本地包特征和官方组件分数。"
+  },
+  "method": "track1_scorer_reproducibility_audit_v1",
+  "official_formula_reproduction": {
+    "count": 13,
+    "max_abs_error": 5e-11,
+    "mean_abs_error": 1.9e-11,
+    "rows": [
+      {
+        "error": 5e-11,
+        "official_overall": 0.7396402011,
+        "participant": "vulcaart",
+        "reproduced_overall": 0.7396402011,
+        "submission_id": "784403"
+      },
+      {
+        "error": 5e-11,
+        "official_overall": 0.6775457412,
+        "participant": "yanghaoming",
+        "reproduced_overall": 0.6775457412,
+        "submission_id": "784114"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.7143464361,
+        "participant": "echoes_42",
+        "reproduced_overall": 0.7143464361,
+        "submission_id": "781205"
+      },
+      {
+        "error": -0.0,
+        "official_overall": 0.7969073906,
+        "participant": "emosuis",
+        "reproduced_overall": 0.7969073906,
+        "submission_id": "778783"
+      },
+      {
+        "error": 5e-11,
+        "official_overall": 0.7964185295,
+        "participant": "trybest-1",
+        "reproduced_overall": 0.7964185295,
+        "submission_id": "777611"
+      },
+      {
+        "error": 5e-11,
+        "official_overall": 0.6909487214,
+        "participant": "gaozheng",
+        "reproduced_overall": 0.6909487214,
+        "submission_id": "776946"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.6838202493,
+        "participant": "labbbb",
+        "reproduced_overall": 0.6838202493,
+        "submission_id": "774153"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.6760535843,
+        "participant": "zzixuan",
+        "reproduced_overall": 0.6760535843,
+        "submission_id": "773069"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.6474966133,
+        "participant": "zhbai",
+        "reproduced_overall": 0.6474966133,
+        "submission_id": "755551"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.7708623935,
+        "participant": "laizhq",
+        "reproduced_overall": 0.7708623935,
+        "submission_id": "751157"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.7668935474,
+        "participant": "nullc",
+        "reproduced_overall": 0.7668935474,
+        "submission_id": "749402"
+      },
+      {
+        "error": 5e-11,
+        "official_overall": 0.7748755042,
+        "participant": "edaich",
+        "reproduced_overall": 0.7748755042,
+        "submission_id": "740721"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.765,
+        "participant": "vulcaart",
+        "reproduced_overall": 0.765,
+        "submission_id": "782831"
+      }
+    ]
+  }
+}

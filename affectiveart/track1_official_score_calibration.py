@@ -18,8 +18,8 @@ def load_official_score_rows(path: str | Path) -> list[dict[str, Any]]:
     path = Path(path)
     if path.suffix.lower() == ".json":
         payload = json.loads(path.read_text(encoding="utf-8"))
-        rows = payload.get("rows", payload) if isinstance(payload, dict) else payload
-        return [dict(row) for row in rows]
+        rows = payload.get("results") or payload.get("rows") or payload if isinstance(payload, dict) else payload
+        return [_normalise_official_score_row(row) for row in rows]
     with path.open(newline="", encoding="utf-8") as handle:
         return [dict(row) for row in csv.DictReader(handle)]
 
@@ -265,6 +265,94 @@ def write_calibration_reports(report: dict[str, Any], json_path: str | Path, md_
     md_path.write_text(_render_md(report), encoding="utf-8")
 
 
+def merge_local_anchor_metadata(
+    official_rows: list[dict[str, Any]],
+    anchor_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    merged_by_id = {
+        str(row.get("submission_id") or row.get("id") or ""): dict(row)
+        for row in official_rows
+        if row.get("submission_id") or row.get("id")
+    }
+    ordered_ids = list(merged_by_id)
+    for anchor in anchor_rows:
+        submission_id = str(anchor.get("submission_id") or anchor.get("id") or "")
+        if not submission_id:
+            continue
+        if submission_id not in merged_by_id:
+            merged_by_id[submission_id] = dict(anchor)
+            ordered_ids.append(submission_id)
+            continue
+        merged = dict(merged_by_id[submission_id])
+        for key in ("local_package", "local_fid_like", "source_type", "notes"):
+            if anchor.get(key) not in (None, ""):
+                merged[key] = anchor[key]
+        merged_by_id[submission_id] = merged
+    return [merged_by_id[submission_id] for submission_id in ordered_ids]
+
+
+def build_scorer_reproducibility_audit(official_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    formula_errors = []
+    formula_rows = []
+    for row in official_rows:
+        official = _float_or_none(row.get("official_overall"))
+        fid_score = _float_or_none(row.get("official_fid_score"))
+        aas = _float_or_none(row.get("official_aas"))
+        if None in (official, fid_score, aas):
+            continue
+        reproduced = 0.5 * float(fid_score) + 0.5 * float(aas)
+        error = reproduced - float(official)
+        formula_errors.append(error)
+        formula_rows.append(
+            {
+                "submission_id": str(row.get("submission_id") or row.get("id") or ""),
+                "participant": row.get("participant", ""),
+                "official_overall": official,
+                "reproduced_overall": round(reproduced, 10),
+                "error": round(error, 12),
+            }
+        )
+
+    fid_score_model = fit_fid_score_model(official_rows)
+    fid_residuals = _fid_score_residuals(official_rows, fid_score_model)
+    local_model = fit_local_to_official_fid_model(official_rows)
+    own_anchor_rows = _own_local_official_anchor_rows(official_rows)
+    return {
+        "method": "track1_scorer_reproducibility_audit_v1",
+        "official_formula_reproduction": {
+            "count": len(formula_errors),
+            "max_abs_error": round(max((abs(value) for value in formula_errors), default=0.0), 12),
+            "mean_abs_error": round(mean(abs(value) for value in formula_errors), 12) if formula_errors else 0.0,
+            "rows": formula_rows,
+        },
+        "fid_score_reproduction": {
+            **fid_score_model,
+            "mae": round(mean(abs(row["residual"]) for row in fid_residuals), 8) if fid_residuals else 0.0,
+            "rmse": round((mean(row["residual"] ** 2 for row in fid_residuals)) ** 0.5, 8) if fid_residuals else 0.0,
+            "max_abs_residual": round(max((abs(row["residual"]) for row in fid_residuals), default=0.0), 8),
+            "worst_rows": sorted(fid_residuals, key=lambda row: abs(float(row["residual"])), reverse=True)[:5],
+        },
+        "local_proxy_reproduction": {
+            "own_anchor_count": len(own_anchor_rows),
+            "model_kind": local_model.get("kind"),
+            "proxy_direction": local_model.get("proxy_direction", "unknown"),
+            "readiness": _local_proxy_readiness(local_model, len(own_anchor_rows)),
+            "reason": _local_proxy_readiness_reason(local_model, len(own_anchor_rows)),
+            "model": local_model,
+            "own_anchor_rows": own_anchor_rows,
+        },
+    }
+
+
+def write_scorer_reproducibility_audit(report: dict[str, Any], json_path: str | Path, md_path: str | Path) -> None:
+    json_path = Path(json_path)
+    md_path = Path(md_path)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
+    md_path.write_text(_render_reproducibility_audit_md(report), encoding="utf-8")
+
+
 def _find_anchor(rows: list[dict[str, Any]], anchor_package: str) -> dict[str, Any]:
     for row in rows:
         local_package = str(row.get("local_package") or row.get("package") or "").strip()
@@ -287,6 +375,148 @@ def _find_anchor(rows: list[dict[str, Any]], anchor_package: str) -> dict[str, A
                 "local_fid_like": local_fid_like,
             }
     raise ValueError(f"no complete local official anchor found for package: {anchor_package}")
+
+
+def _normalise_official_score_row(row: Any) -> dict[str, Any]:
+    if not isinstance(row, dict):
+        return {}
+    if "scores" not in row:
+        return dict(row)
+    scores = {
+        str(score.get("column_key")): _float_or_none(score.get("score"))
+        for score in row.get("scores") or []
+        if isinstance(score, dict) and score.get("column_key")
+    }
+    return {
+        "participant": row.get("owner") or row.get("participant") or "",
+        "submission_id": str(row.get("id") or row.get("pk") or row.get("submission_id") or ""),
+        "file_name": row.get("filename") or row.get("file_name") or "",
+        "date": row.get("created_when") or row.get("date") or "",
+        "official_overall": scores.get("track1_overall"),
+        "official_fid": scores.get("fid"),
+        "official_fid_score": scores.get("fid_score"),
+        "official_aas": scores.get("aas"),
+        "content_alignment": scores.get("content_alignment"),
+        "style_alignment": scores.get("style_alignment"),
+        "attribute_alignment": scores.get("attribute_alignment"),
+    }
+
+
+def _fid_score_residuals(rows: list[dict[str, Any]], model: dict[str, Any]) -> list[dict[str, Any]]:
+    output = []
+    for row in rows:
+        fid = _float_or_none(row.get("official_fid") or row.get("FID") or row.get("fid"))
+        fid_score = _float_or_none(row.get("official_fid_score") or row.get("FID Score") or row.get("fid_score"))
+        if fid is None or fid_score is None:
+            continue
+        predicted = float(model["intercept"]) + float(model["slope"]) * fid
+        residual = fid_score - predicted
+        output.append(
+            {
+                "submission_id": str(row.get("submission_id") or row.get("id") or ""),
+                "participant": row.get("participant", ""),
+                "official_fid": round(fid, 6),
+                "official_fid_score": round(fid_score, 10),
+                "predicted_fid_score": round(predicted, 10),
+                "residual": round(residual, 10),
+            }
+        )
+    return output
+
+
+def _own_local_official_anchor_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    output = []
+    for row in rows:
+        local_fid_like = _float_or_none(row.get("local_fid_like"))
+        official_fid = _float_or_none(row.get("official_fid") or row.get("FID") or row.get("fid"))
+        if local_fid_like is None or official_fid is None:
+            continue
+        output.append(
+            {
+                "local_package": str(row.get("local_package") or row.get("package") or ""),
+                "submission_id": str(row.get("submission_id") or row.get("id") or ""),
+                "official_fid": round(official_fid, 6),
+                "official_fid_score": _float_or_none(row.get("official_fid_score")),
+                "official_aas": _float_or_none(row.get("official_aas")),
+                "local_fid_like": round(local_fid_like, 6),
+            }
+        )
+    return output
+
+
+def _local_proxy_readiness(model: dict[str, Any], own_anchor_count: int) -> str:
+    if own_anchor_count < 3:
+        return "insufficient_own_anchors"
+    if model.get("proxy_direction") != "aligned":
+        return "proxy_direction_unstable"
+    return "ready_for_directional_ranking"
+
+
+def _local_proxy_readiness_reason(model: dict[str, Any], own_anchor_count: int) -> str:
+    if own_anchor_count < 3:
+        return "至少需要 3 个自有提交锚点，并且每个锚点都要同时保留本地包特征和官方组件分数。"
+    if model.get("proxy_direction") != "aligned":
+        return "本地 proxy 方向没有和官方 FID 对齐，因此不能安全用于包排序。"
+    return "锚点数量足够做方向性排序，但这仍然不是官方评测器。"
+
+
+def _render_reproducibility_audit_md(report: dict[str, Any]) -> str:
+    formula = report["official_formula_reproduction"]
+    fid_fit = report["fid_score_reproduction"]
+    local = report["local_proxy_reproduction"]
+    lines = [
+        "# Track1 Scorer Reproducibility Audit",
+        "",
+        "这是本地评分器复现性审计，不是官方隐藏评测器。",
+        "",
+        "## 结论",
+        "",
+        f"- 官方总分公式复现样本数：`{formula['count']}`",
+        f"- 官方总分公式最大绝对误差：`{formula['max_abs_error']}`",
+        f"- FID 到 FID Score 拟合 R2：`{fid_fit['r2']}`",
+        f"- FID 到 FID Score 拟合 RMSE：`{fid_fit['rmse']}`",
+        f"- 本地 local/official 锚点数：`{local['own_anchor_count']}`",
+        f"- 本地 proxy 方向：`{local['proxy_direction']}`",
+        f"- 本地 proxy 就绪度：`{local['readiness']}`",
+        f"- 原因：{local['reason']}",
+        "",
+        "## 本地锚点",
+        "",
+        "| package | submission | local fid_like | official FID | official FID Score | official AAS |",
+        "|---|---|---:|---:|---:|---:|",
+    ]
+    anchors = local.get("own_anchor_rows") or []
+    if not anchors:
+        lines.append("| none |  |  |  |  |  |")
+    for row in anchors:
+        lines.append(
+            f"| `{row.get('local_package', '')}` | `{row.get('submission_id', '')}` | "
+            f"{row.get('local_fid_like', '')} | {row.get('official_fid', '')} | "
+            f"{row.get('official_fid_score', '')} | {row.get('official_aas', '')} |"
+        )
+    lines += [
+        "",
+        "## FID Score 拟合最差残差",
+        "",
+        "| participant | submission | FID | actual FID Score | predicted | residual |",
+        "|---|---|---:|---:|---:|---:|",
+    ]
+    for row in fid_fit.get("worst_rows") or []:
+        lines.append(
+            f"| `{row.get('participant', '')}` | `{row.get('submission_id', '')}` | "
+            f"{row.get('official_fid', '')} | {row.get('official_fid_score', '')} | "
+            f"{row.get('predicted_fid_score', '')} | {row.get('residual', '')} |"
+        )
+    lines += [
+        "",
+        "## 解释",
+        "",
+        "- 官方 `overall = 0.5 * FID Score + 0.5 * AAS` 可以精确复现。",
+        "- FID Score 对 FID 的公开映射可以高置信近似，但不是官方归一化函数源码。",
+        "- 本地 proxy 目前不能当作可复现官方评分器；它只能做提交前风险排序。",
+        "- 要让本地 scorer 真正可校准，至少还需要 3 个以上自有提交锚点，并且每个锚点要保留本地包特征。",
+    ]
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def _observed_official_by_package(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
