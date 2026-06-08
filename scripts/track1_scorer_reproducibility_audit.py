@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
             anchor_rows = [
                 row
                 for row in load_official_score_rows(args.local_anchors_csv)
-                if str(row.get("local_fid_like") or "").strip()
+                if _has_reproducible_anchor_data(row)
             ]
             _fill_component_overall_for_anchor_only_rows(anchor_rows, official_rows)
             official_rows = merge_local_anchor_metadata(official_rows, anchor_rows)
@@ -60,6 +60,12 @@ def main(argv: list[str] | None = None) -> int:
         )
     )
     return 0
+
+
+def _has_reproducible_anchor_data(row: dict[str, object]) -> bool:
+    if str(row.get("local_fid_like") or "").strip():
+        return True
+    return _float_or_none(row.get("official_fid_score")) is not None and _float_or_none(row.get("official_aas")) is not None
 
 
 def _fill_component_overall_for_anchor_only_rows(anchor_rows: list[dict[str, object]], official_rows: list[dict[str, object]]) -> None:

@@ -2,12 +2,14 @@
 
 日期：2026-06-08
 
-结论先行：**当前 Track1 本地评分器不能完全复现我们提交包的官方分数**。它只能做到两件事：
+结论先行：**当前 Track1 本地评分器不能完全复现我们提交包的官方分数**。本轮修正补入了第三个自有官方提交锚点 `781916 / track1_submit_v1.zip`。更精确地说，我们现在有 **3 个自有官方组件锚点**，但只有 **2 个带本地 `fid_like` 的 local proxy 锚点**。
+
+它只能做到两件事：
 
 1. 已知官方组件分数时，`Overall = (FID Score + AAS) / 2` 可以精确复现。
 2. 已知官方 FID 时，`FID -> FID Score` 的线性近似很接近，但不是完全一致。
 
-不能做到的是：只凭本地 `fid_like` / `proxy` 就稳定预测官方 FID。两个自有官方锚点已经证明本地 `fid_like` 和官方 FID 方向相反，不能直接当冲榜评分器。
+不能做到的是：只凭本地 `fid_like` / `proxy` 就稳定预测官方 FID。两个带本地 `fid_like` 的自有官方锚点已经证明本地 `fid_like` 和官方 FID 方向相反，不能直接当冲榜评分器。
 
 ## 官方规则锚点
 
@@ -29,7 +31,29 @@ Track1 Overall = (FID Score + AAS) / 2
 
 ## 自有官方提交锚点
 
-### Anchor A：`track1_submit_v3_gate7_20260606.zip`
+### Anchor A：`track1_submit_v1.zip`
+
+这是第一版官方提交。它之前在历史文档里存在，但没有进入中心 `track1_official_score_anchors.csv` 和 scorer reproducibility audit，因此我前面说“缺”的就是这一次：`781916 / track1_submit_v1.zip`。现在已经补入官方组件复现链路；但因为没有保存本地 `fid_like`，它不能用于 local proxy 拟合。
+
+| 字段 | 数值 |
+|---|---:|
+| submission_id | `781916` |
+| local_package | `submit_v1` |
+| 官方 Overall 页面值 | `0.77` |
+| 官方 Overall 组件精确值 | `0.765` |
+| 本地公式复现 Overall | `0.765` |
+| 公式误差 | `0.0` |
+| 官方 FID | `80.78` |
+| 官方 FID Score | `0.55` |
+| 官方 AAS | `0.98` |
+| Content Alignment | `0.98` |
+| Style Alignment | `0.98` |
+| Attribute Alignment | `0.98` |
+| 本地 `fid_like` | 未记录 |
+
+内联判断：这个包和 v3 的官方组件几乎同档，但 placeholder 扫描发现 `track1_0730/0735/0740/0772` 四个 code-like 风险样本。它是有用的官方组件锚点，不是可靠的本地 proxy 锚点。
+
+### Anchor B：`track1_submit_v3_gate7_20260606.zip`
 
 这是当前较强的自有官方锚点。页面显示 rounded `0.77`，按组件精确计算为 `0.765`。
 
@@ -51,7 +75,7 @@ Track1 Overall = (FID Score + AAS) / 2
 
 内联判断：这个包 AAS 很强，但 FID 距离第一梯队仍然明显。它不是“内容失败”的包，而是“分布/FID 不够像官方 reference set”的包。
 
-### Anchor B：`hybrid_probe_redteam_fid_pass4.zip`
+### Anchor C：`hybrid_probe_redteam_fid_pass4.zip`
 
 这是一次 FID 探针提交，理论上本地 `fid_like` 更好，但官方 FID 明显变差。
 
@@ -85,6 +109,7 @@ Track1 Overall = (FID Score + AAS) / 2
 
 | 我们的包 | Overall | 距第一 | FID | FID Score | AAS |
 |---|---:|---:|---:|---:|---:|
+| `submit_v1` | `0.765` | `-0.031907` | `80.78` | `0.55` | `0.98` |
 | `v3_gate7` | `0.765` | `-0.031907` | `80.92` | `0.55` | `0.98` |
 | `hybrid_redteam_fid_pass4` | `0.7396402011` | `-0.057267` | `105.6638160234` | `0.4862304023` | `0.99305` |
 
@@ -96,9 +121,9 @@ Track1 Overall = (FID Score + AAS) / 2
 
 | 项目 | 数值 |
 |---|---:|
-| 样本数 | `13` |
+| 样本数 | `19` |
 | 最大绝对误差 | `5e-11` |
-| 平均绝对误差 | `1.9e-11` |
+| 平均绝对误差 | `1.3e-11` |
 
 结论：**完全可用**。只要官方返回了 `FID Score` 和 `AAS`，我们就能精确复现 `Overall`。
 
@@ -106,12 +131,12 @@ Track1 Overall = (FID Score + AAS) / 2
 
 | 项目 | 数值 |
 |---|---:|
-| 样本数 | `13` |
-| 线性模型 | `fid_score = 0.76613901 - 0.00260548 * fid` |
-| R2 | `0.992139` |
-| RMSE | `0.00493274` |
-| MAE | `0.00448162` |
-| 最大残差 | `0.00791356` |
+| 样本数 | `19` |
+| 线性模型 | `fid_score = 0.76709243 - 0.00261361 * fid` |
+| R2 | `0.991894` |
+| RMSE | `0.00522839` |
+| MAE | `0.00489727` |
+| 最大残差 | `0.00802333` |
 
 结论：**近似可用，但不是官方精确归一化器**。它适合估算差距，不适合决定最后两次提交。
 
@@ -157,7 +182,7 @@ Track1 Overall = (FID Score + AAS) / 2
 1. 官方 FID 使用它们的 hidden reference artistic image set 和固定实现；我们只能用本地 reference/proxy。
 2. 官方 AAS 使用固定 multimodal LLM protocol；我们不知道完整 prompt、rubric、inference settings。
 3. 本地 `fid_like` 曾经把 `hybrid_redteam_fid_pass4` 排得更好，但官方 FID 实际更差。
-4. 目前 Track1 自有官方锚点只有两个，不足以校准一个可信预测器。
+4. 目前 Track1 自有官方组件锚点有三个，但带本地 `fid_like` 的只有两个，不足以校准一个可信预测器。
 
 ## 当前决策建议
 

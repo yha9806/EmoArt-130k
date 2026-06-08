@@ -384,7 +384,8 @@ class Track1OfficialScoreCalibrationTest(unittest.TestCase):
             anchors_csv = root / "anchors.csv"
             anchors_csv.write_text(
                 "participant,submission_id,local_package,local_fid_like,official_overall,official_fid,official_fid_score,official_aas\n"
-                "vulcaart,784403,hybrid_redteam_fid_pass4,58.348904,0.74,105.66,0.49,0.99\n",
+                "vulcaart,784403,hybrid_redteam_fid_pass4,58.348904,0.74,105.66,0.49,0.99\n"
+                "vulcaart,781916,submit_v1,,0.77,80.78,0.55,0.98\n",
                 encoding="utf-8",
             )
             script = Path(__file__).resolve().parents[1] / "scripts" / "track1_scorer_reproducibility_audit.py"
@@ -409,6 +410,15 @@ class Track1OfficialScoreCalibrationTest(unittest.TestCase):
             self.assertEqual(code, 0)
             self.assertTrue((root / "audit.json").exists())
             self.assertIn("Track1 Scorer Reproducibility Audit", (root / "audit.md").read_text(encoding="utf-8"))
+            audit_json = json.loads((root / "audit.json").read_text(encoding="utf-8"))
+            formula_ids = {
+                row["submission_id"] for row in audit_json["official_formula_reproduction"]["rows"]
+            }
+            self.assertIn("781916", formula_ids)
+            local_proxy_ids = {
+                row["submission_id"] for row in audit_json["local_proxy_reproduction"]["own_anchor_rows"]
+            }
+            self.assertNotIn("781916", local_proxy_ids)
 
 
 if __name__ == "__main__":

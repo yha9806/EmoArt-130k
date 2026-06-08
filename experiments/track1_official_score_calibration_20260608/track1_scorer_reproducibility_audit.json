@@ -1,57 +1,57 @@
 {
   "fid_score_reproduction": {
-    "count": 13,
+    "count": 19,
     "fid_max": 130.772838,
-    "fid_min": 66.362192,
+    "fid_min": 66.36,
     "fid_score_max": 0.601098,
-    "fid_score_min": 0.433327,
-    "intercept": 0.76613901,
+    "fid_score_min": 0.43,
+    "intercept": 0.76709243,
     "kind": "linear_fid_to_fid_score",
-    "mae": 0.00448162,
-    "max_abs_residual": 0.00791356,
-    "r2": 0.992139,
-    "rmse": 0.00493274,
-    "slope": -0.00260548,
+    "mae": 0.00489727,
+    "max_abs_residual": 0.00802333,
+    "r2": 0.991894,
+    "rmse": 0.00522839,
+    "slope": -0.00261361,
     "worst_rows": [
       {
         "official_fid": 130.772838,
         "official_fid_score": 0.4333265599,
         "participant": "zhbai",
-        "predicted_fid_score": 0.425412996,
-        "residual": 0.0079135639,
+        "predicted_fid_score": 0.4253032329,
+        "residual": 0.008023327,
         "submission_id": "755551"
+      },
+      {
+        "official_fid": 66.84,
+        "official_fid_score": 0.6,
+        "participant": "trybest-1",
+        "predicted_fid_score": 0.5923987376,
+        "residual": 0.0076012624,
+        "submission_id": "top_visible_2"
       },
       {
         "official_fid": 66.362192,
         "official_fid_score": 0.6010981145,
         "participant": "emosuis",
-        "predicted_fid_score": 0.5932336457,
-        "residual": 0.0078644688,
+        "predicted_fid_score": 0.5936475411,
+        "residual": 0.0074505734,
         "submission_id": "778783"
       },
       {
         "official_fid": 66.841741,
         "official_fid_score": 0.5993703924,
         "participant": "trybest-1",
-        "predicted_fid_score": 0.5919841897,
-        "residual": 0.0073862027,
+        "predicted_fid_score": 0.5923941863,
+        "residual": 0.0069762061,
         "submission_id": "777611"
       },
       {
-        "official_fid": 80.92,
-        "official_fid_score": 0.55,
-        "participant": "vulcaart",
-        "predicted_fid_score": 0.5553035684,
-        "residual": -0.0053035684,
-        "submission_id": "782831"
-      },
-      {
-        "official_fid": 105.663816,
-        "official_fid_score": 0.4862304023,
-        "participant": "vulcaart",
-        "predicted_fid_score": 0.4908340506,
-        "residual": -0.0046036483,
-        "submission_id": "784403"
+        "official_fid": 66.36,
+        "official_fid_score": 0.6,
+        "participant": "emosuis",
+        "predicted_fid_score": 0.5936532704,
+        "residual": 0.0063467296,
+        "submission_id": "top_visible_1"
       }
     ]
   },
@@ -94,9 +94,9 @@
   },
   "method": "track1_scorer_reproducibility_audit_v1",
   "official_formula_reproduction": {
-    "count": 13,
+    "count": 19,
     "max_abs_error": 5e-11,
-    "mean_abs_error": 1.9e-11,
+    "mean_abs_error": 1.3e-11,
     "rows": [
       {
         "error": 5e-11,
@@ -183,11 +183,53 @@
         "submission_id": "740721"
       },
       {
+        "error": -0.0,
+        "official_overall": 0.795,
+        "participant": "emosuis",
+        "reproduced_overall": 0.795,
+        "submission_id": "top_visible_1"
+      },
+      {
+        "error": -0.0,
+        "official_overall": 0.795,
+        "participant": "trybest-1",
+        "reproduced_overall": 0.795,
+        "submission_id": "top_visible_2"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.77,
+        "participant": "VIRLab",
+        "reproduced_overall": 0.77,
+        "submission_id": "top_visible_4"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.765,
+        "participant": "Latent Feeling",
+        "reproduced_overall": 0.765,
+        "submission_id": "top_visible_5"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.765,
+        "participant": "vulcaart",
+        "reproduced_overall": 0.765,
+        "submission_id": "781916"
+      },
+      {
         "error": 0.0,
         "official_overall": 0.765,
         "participant": "vulcaart",
         "reproduced_overall": 0.765,
         "submission_id": "782831"
+      },
+      {
+        "error": 0.0,
+        "official_overall": 0.66,
+        "participant": "EmoVCC",
+        "reproduced_overall": 0.66,
+        "submission_id": "744030"
       }
     ]
   }

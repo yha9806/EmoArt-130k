@@ -244,6 +244,28 @@
       "track": "track1"
     },
     {
+      "anchor_key": "track1:781916",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.98,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.98,
+      "file_name": "track1_submit_v1.zip",
+      "local_fid_like": null,
+      "local_package": "submit_v1",
+      "notes": "Official v1 baseline anchor recovered from submission decision report; no local fid_like recorded; known 4 placeholder risks in package scan.",
+      "official_aas": 0.98,
+      "official_fid": 80.78,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.98,
+      "submission_id": "781916",
+      "track": "track1"
+    },
+    {
       "anchor_key": "track1:782831",
       "anchor_type": "official_score",
       "attribute_alignment": 0.98,
@@ -506,7 +528,7 @@
       "file_name": "track2_submission_v3_mid_gemini35_desc_192_candidate.zip",
       "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
       "label_changes_vs_anchor": 85,
-      "notes": "precalibration v3/v9 aggressive same-quadrant batch; official result exposed scorer over-reward",
+      "notes": "Exact Codabench score captured after the mixed same-quadrant probe.",
       "official_classification": 0.719137,
       "official_description": 0.948917,
       "official_overall": 0.834027,
@@ -820,6 +842,28 @@
       "submission_id": "781205",
       "track": "track1"
     },
+    "track1:781916": {
+      "anchor_key": "track1:781916",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.98,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.98,
+      "file_name": "track1_submit_v1.zip",
+      "local_fid_like": null,
+      "local_package": "submit_v1",
+      "notes": "Official v1 baseline anchor recovered from submission decision report; no local fid_like recorded; known 4 placeholder risks in package scan.",
+      "official_aas": 0.98,
+      "official_fid": 80.78,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.98,
+      "submission_id": "781916",
+      "track": "track1"
+    },
     "track1:782831": {
       "anchor_key": "track1:782831",
       "anchor_type": "official_score",
@@ -1017,7 +1061,7 @@
       "file_name": "track2_submission_v3_mid_gemini35_desc_192_candidate.zip",
       "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
       "label_changes_vs_anchor": 85,
-      "notes": "precalibration v3/v9 aggressive same-quadrant batch; official result exposed scorer over-reward",
+      "notes": "Exact Codabench score captured after the mixed same-quadrant probe.",
       "official_classification": 0.719137,
       "official_description": 0.948917,
       "official_overall": 0.834027,
@@ -1174,20 +1218,6 @@
         "[Lonetil and emovit--effect on an experimental model of a neurosis-like state in the rat]. (1983)"
       ]
     },
-    "AffectiveArt Challenge proposal": {
-      "institutions": [],
-      "method_card_ids": [
-        "official_proposal_flux_lora_style_baseline"
-      ],
-      "name": "AffectiveArt Challenge proposal",
-      "source_names": [],
-      "urls": [
-        "https://openreview.net/forum?id=LbbHX8ofXZ",
-        "https://openreview.net/pdf?id=LbbHX8ofXZ",
-        "https://zhiliangzhang.github.io/EmoArt-130k/"
-      ],
-      "works": []
-    },
     "Afrin Akhter": {
       "institutions": [
         "Islamia University of Bahawalpur"
@@ -1304,14 +1334,10 @@
       "institutions": [
         "Jilin University"
       ],
-      "method_card_ids": [
-        "structured_multistep_generation_lineage"
-      ],
+      "method_card_ids": [],
       "name": "Bin Wen",
       "source_names": [],
-      "urls": [
-        "https://www.hongxiaxie.net/research"
-      ],
+      "urls": [],
       "works": [
         "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
       ]
@@ -1344,19 +1370,10 @@
       "institutions": [
         "Jilin University"
       ],
-      "method_card_ids": [
-        "emoart_metric_text_diversity_alignment",
-        "fabg_agsr_attribute_salience_bottleneck"
-      ],
+      "method_card_ids": [],
       "name": "Cheng Zhang",
       "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2605.15755",
-        "https://github.com/ZHILIANGZHANG/EmoArt-130k",
-        "https://github.com/zhiliangzhang/FAB-G",
-        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
-        "https://zhiliangzhang.github.io/EmoArt-130k/"
-      ],
+      "urls": [],
       "works": [
         "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
         "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
@@ -1500,33 +1517,6 @@
         "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis (2026)"
       ]
     },
-    "EmoArt benchmark": {
-      "institutions": [],
-      "method_card_ids": [
-        "official_proposal_flux_lora_style_baseline"
-      ],
-      "name": "EmoArt benchmark",
-      "source_names": [],
-      "urls": [
-        "https://openreview.net/forum?id=LbbHX8ofXZ",
-        "https://openreview.net/pdf?id=LbbHX8ofXZ",
-        "https://zhiliangzhang.github.io/EmoArt-130k/"
-      ],
-      "works": []
-    },
-    "EmoArt metric code": {
-      "institutions": [],
-      "method_card_ids": [
-        "emoart_metric_text_diversity_alignment"
-      ],
-      "name": "EmoArt metric code",
-      "source_names": [],
-      "urls": [
-        "https://github.com/ZHILIANGZHANG/EmoArt-130k",
-        "https://zhiliangzhang.github.io/EmoArt-130k/"
-      ],
-      "works": []
-    },
     "Eva Cetinić": {
       "institutions": [
         "Ruđer Bošković Institute"
@@ -1611,20 +1601,10 @@
       "institutions": [
         "National Yang Ming Chiao Tung University"
       ],
-      "method_card_ids": [
-        "emovit_emotion_instruction_prompting",
-        "micro_expression_relation_graph_reasoning"
-      ],
+      "method_card_ids": [],
       "name": "Hong-Han Shuai",
       "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2004.08915",
-        "https://arxiv.org/abs/2012.11307",
-        "https://arxiv.org/abs/2404.16670",
-        "https://basiclab.lab.nycu.edu.tw/",
-        "https://github.com/aimmemotion/EmoVIT",
-        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html"
-      ],
+      "urls": [],
       "works": [
         "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
       ]
@@ -1643,24 +1623,13 @@
       "institutions": [
         "Jilin University"
       ],
-      "method_card_ids": [
-        "emovit_emotion_instruction_prompting",
-        "fabg_agsr_attribute_salience_bottleneck",
-        "structured_multistep_generation_lineage"
-      ],
+      "method_card_ids": [],
       "name": "Hongxia Xie",
       "source_names": [
         "Hongxia Xie / AVC Lab"
       ],
       "urls": [
-        "https://arxiv.org/abs/2404.16670",
-        "https://arxiv.org/abs/2605.15755",
-        "https://github.com/aimmemotion/EmoVIT",
-        "https://github.com/zhiliangzhang/FAB-G",
-        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
-        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
-        "https://www.hongxiaxie.net/",
-        "https://www.hongxiaxie.net/research"
+        "https://www.hongxiaxie.net/"
       ],
       "works": [
         "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
@@ -1795,20 +1764,6 @@
       "works": [
         "Visual In-Context Learning for Large Vision-Language Models (2024)"
       ]
-    },
-    "Jianlong Fu": {
-      "institutions": [],
-      "method_card_ids": [
-        "promptfix_vlm_auxiliary_prompt_adapter"
-      ],
-      "name": "Jianlong Fu",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2407.00640",
-        "https://github.com/microsoft/PromptFix",
-        "https://github.com/yeates/PromptFix"
-      ],
-      "works": []
     },
     "Jianlong Fu MSRA publications": {
       "institutions": [],
@@ -1950,20 +1905,6 @@
         "ArtEmis: Affective Language for Visual Art (2021)"
       ]
     },
-    "Ling Lo": {
-      "institutions": [],
-      "method_card_ids": [
-        "micro_expression_relation_graph_reasoning"
-      ],
-      "name": "Ling Lo",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2004.08915",
-        "https://arxiv.org/abs/2012.11307",
-        "https://basiclab.lab.nycu.edu.tw/"
-      ],
-      "works": []
-    },
     "Lisa Loheide‐Niesmann": {
       "institutions": [
         "Radboud University Nijmegen"
@@ -1975,20 +1916,6 @@
       "works": [
         "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
       ]
-    },
-    "MSRA generation lineage": {
-      "institutions": [],
-      "method_card_ids": [
-        "promptfix_vlm_auxiliary_prompt_adapter"
-      ],
-      "name": "MSRA generation lineage",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2407.00640",
-        "https://github.com/microsoft/PromptFix",
-        "https://github.com/yeates/PromptFix"
-      ],
-      "works": []
     },
     "Majdah Alvi": {
       "institutions": [
@@ -2310,18 +2237,6 @@
         "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
       ]
     },
-    "Ruoxuan Zhang generation-data lineage": {
-      "institutions": [],
-      "method_card_ids": [
-        "structured_multistep_generation_lineage"
-      ],
-      "name": "Ruoxuan Zhang generation-data lineage",
-      "source_names": [],
-      "urls": [
-        "https://www.hongxiaxie.net/research"
-      ],
-      "works": []
-    },
     "S. Bharadwaj": {
       "institutions": [
         "Annamalai University"
@@ -2357,19 +2272,6 @@
       "works": [
         "Multimodal Emotion Recognition from Art Using Sequential Co-Attention (2021)"
       ]
-    },
-    "Sanghoon Lee quality assessment lineage": {
-      "institutions": [],
-      "method_card_ids": [
-        "perceptual_quality_assessment_proxy"
-      ],
-      "name": "Sanghoon Lee quality assessment lineage",
-      "source_names": [],
-      "urls": [
-        "https://openreview.net/forum?id=LbbHX8ofXZ",
-        "https://scholar.google.com/citations?user=Q1XQpC8AAAAJ"
-      ],
-      "works": []
     },
     "Shaozu Yuan": {
       "institutions": [
@@ -2428,19 +2330,6 @@
       "works": [
         "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
       ]
-    },
-    "Sicheng Zhao visual emotion analysis lineage": {
-      "institutions": [],
-      "method_card_ids": [
-        "aica_affective_gap_distribution_learning"
-      ],
-      "name": "Sicheng Zhao visual emotion analysis lineage",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2106.16125",
-        "https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis"
-      ],
-      "works": []
     },
     "Songhan Zuo": {
       "institutions": [
@@ -2630,19 +2519,6 @@
         "[Emovit and lonetil--behavioral and neurochemical studies]. (1983)"
       ]
     },
-    "Visual emotion grounding ecosystem": {
-      "institutions": [],
-      "method_card_ids": [
-        "emoverse_grounded_emotion_triplets"
-      ],
-      "name": "Visual emotion grounding ecosystem",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2511.12554",
-        "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset"
-      ],
-      "works": []
-    },
     "Weidong Chen": {
       "institutions": [],
       "method_card_ids": [],
@@ -2669,38 +2545,14 @@
       "institutions": [
         "National Taiwan University"
       ],
-      "method_card_ids": [
-        "emovit_emotion_instruction_prompting",
-        "fabg_agsr_attribute_salience_bottleneck"
-      ],
+      "method_card_ids": [],
       "name": "Wen-Huang Cheng",
       "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2404.16670",
-        "https://arxiv.org/abs/2605.15755",
-        "https://github.com/aimmemotion/EmoVIT",
-        "https://github.com/zhiliangzhang/FAB-G",
-        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
-        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html"
-      ],
+      "urls": [],
       "works": [
         "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
         "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
       ]
-    },
-    "Wen-Huang Cheng affective relation lineage": {
-      "institutions": [],
-      "method_card_ids": [
-        "micro_expression_relation_graph_reasoning"
-      ],
-      "name": "Wen-Huang Cheng affective relation lineage",
-      "source_names": [],
-      "urls": [
-        "https://arxiv.org/abs/2004.08915",
-        "https://arxiv.org/abs/2012.11307",
-        "https://basiclab.lab.nycu.edu.tw/"
-      ],
-      "works": []
     },
     "Wen-Huang Cheng homepage": {
       "institutions": [],
@@ -3164,98 +3016,18 @@
       "track_use": "Organizer lineage and method crawl seed",
       "url": "https://basiclab.lab.nycu.edu.tw/",
       "verified_public_fact": "Hong-Han Shuai lab site; generative models, LLMs, data mining, multimedia projects"
-    },
-    {
-      "name": "fabg_agsr_attribute_salience_bottleneck",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "salience_aware_prompt_compiler",
-      "url": "https://arxiv.org/abs/2605.15755;https://github.com/zhiliangzhang/FAB-G;https://huggingface.co/datasets/printblue/EmoArt-Salience",
-      "verified_public_fact": "Attribute-Grounded Selective Reasoning: five attribute-specific agents decide whether color, composition, line, light, and brushstroke are emotionally salient before a final agent reasons over the selected cues."
-    },
-    {
-      "name": "emovit_emotion_instruction_prompting",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "emotion_instruction_aas_proxy",
-      "url": "https://arxiv.org/abs/2404.16670;https://github.com/aimmemotion/EmoVIT;https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
-      "verified_public_fact": "Emotion visual instruction tuning: build emotion-specific instruction data so a VLM predicts emotion and explains visual evidence rather than only generic caption content."
-    },
-    {
-      "name": "promptfix_vlm_auxiliary_prompt_adapter",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "candidate_repair_prompt_adapter",
-      "url": "https://arxiv.org/abs/2407.00640;https://github.com/yeates/PromptFix;https://github.com/microsoft/PromptFix",
-      "verified_public_fact": "PromptFix uses VLM understanding and an auxiliary prompt adapter to repair real-world images without manually writing a bespoke prompt for each case."
-    },
-    {
-      "name": "aica_affective_gap_distribution_learning",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "emotion_style_distribution_router",
-      "url": "https://arxiv.org/abs/2106.16125;https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis",
-      "verified_public_fact": "Affective Image Content Analysis survey: highlights affective gap, subjectivity, domain adaptation, label distribution learning, and affective region/entity reasoning."
-    },
-    {
-      "name": "official_proposal_flux_lora_style_baseline",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "style_family_distribution_retriever",
-      "url": "https://openreview.net/forum?id=LbbHX8ofXZ;https://openreview.net/pdf?id=LbbHX8ofXZ;https://zhiliangzhang.github.io/EmoArt-130k/",
-      "verified_public_fact": "The challenge proposal and EmoArt benchmark expose a style-adaptation baseline direction: style examples, LoRA-style adaptation, and AAS based on generated attribute descriptions."
-    },
-    {
-      "name": "micro_expression_relation_graph_reasoning",
-      "source_type": "method_card",
-      "status": "P1-adjacent",
-      "track_use": "relation_semantics_graph_gate",
-      "url": "https://arxiv.org/abs/2004.08915;https://arxiv.org/abs/2012.11307;https://basiclab.lab.nycu.edu.tw/",
-      "verified_public_fact": "Micro-expression recognition work uses relation/graph reasoning over subtle facial or temporal cues; related surveys emphasize subtle cue localization and robustness."
-    },
-    {
-      "name": "emoart_metric_text_diversity_alignment",
-      "source_type": "method_card",
-      "status": "P1-direct",
-      "track_use": "aas_text_and_template_proxy",
-      "url": "https://github.com/ZHILIANGZHANG/EmoArt-130k;https://zhiliangzhang.github.io/EmoArt-130k/",
-      "verified_public_fact": "EmoArt code includes CLIP score, attribute alignment, lexical diversity metrics such as TTR/MTLD, and entropy-style text diversity tools."
-    },
-    {
-      "name": "emoverse_grounded_emotion_triplets",
-      "source_type": "method_card",
-      "status": "P1-adjacent",
-      "track_use": "body_action_scene_content_lock",
-      "url": "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset;https://arxiv.org/abs/2511.12554",
-      "verified_public_fact": "EmoVerse provides body-action-scene triplets, concise/detailed emotion descriptions, and grounded object evidence using detection/segmentation pipelines."
-    },
-    {
-      "name": "perceptual_quality_assessment_proxy",
-      "source_type": "method_card",
-      "status": "P1-watch",
-      "track_use": "perceptual_artifact_quality_gate",
-      "url": "https://openreview.net/forum?id=LbbHX8ofXZ;https://scholar.google.com/citations?user=Q1XQpC8AAAAJ",
-      "verified_public_fact": "Quality assessment and perceptual multimedia evaluation lineage; useful as a signal that image realism, artifact detection, and perceptual quality matter alongside semantic alignment."
-    },
-    {
-      "name": "structured_multistep_generation_lineage",
-      "source_type": "method_card",
-      "status": "P1-watch",
-      "track_use": "track1_multistage_orchestrator",
-      "url": "https://www.hongxiaxie.net/research",
-      "verified_public_fact": "AVC Lab research page lists structured multimodal generation projects such as CookAnything and MindPower, suggesting a broader strategy of data-rich multi-stage generation rather than one-shot prompting."
     }
   ],
   "resource_summary": {
-    "method_card_count": 10,
+    "method_card_count": 0,
     "public_scan_work_count": 55,
     "source_index_count": 37
   },
   "summary": {
-    "anchor_count": 25,
-    "author_count": 143,
-    "resource_count": 47,
-    "track1_anchor_count": 18,
+    "anchor_count": 26,
+    "author_count": 132,
+    "resource_count": 37,
+    "track1_anchor_count": 19,
     "track2_anchor_count": 7,
     "track2_estimated_anchor_count": 3,
     "track2_exact_anchor_count": 3
