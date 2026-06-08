@@ -1,19 +1,115 @@
 {
   "candidate_count_before_current_filter": 5558,
-  "candidate_count_after_current_filter": 695,
-  "blocked_current_identical_count": 4863,
+  "candidate_count_after_placeholder_filter": 5551,
+  "candidate_count_after_current_filter": 698,
+  "blocked_placeholder_count": 7,
+  "blocked_current_identical_count": 4853,
+  "current_rescue_sample_ids": [
+    "track1_0735",
+    "track1_0740"
+  ],
+  "current_rescue_count": 10,
   "source_counts": {
     "v5_human_accept48": 48,
-    "safe_subset_package_diff": 34,
-    "strict_subset_package_diff": 30,
-    "pilot100_human24_package_diff": 44,
-    "scaled_high_precision_package_diff": 23,
-    "scaled_expanded_package_diff": 23,
-    "human_v25_wave2_package_diff": 24,
-    "human_v23_fullbank_package_diff": 23,
-    "v4_distribution_review_queue": 80,
-    "v4_distribution_positive_watchlist": 366
+    "safe_subset_package_diff": 32,
+    "strict_subset_package_diff": 28,
+    "pilot100_human24_package_diff": 46,
+    "scaled_high_precision_package_diff": 25,
+    "scaled_expanded_package_diff": 25,
+    "human_v25_wave2_package_diff": 26,
+    "human_v23_fullbank_package_diff": 25,
+    "v4_distribution_review_queue": 79,
+    "v4_distribution_positive_watchlist": 364
   },
+  "blocked_placeholders": [
+    {
+      "sample_id": "track1_0730",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0772",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0730",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0730.jpg",
+      "source": "strict_subset_package_diff",
+      "priority": 82000,
+      "score": 0.0,
+      "tier": "strict_subset"
+    },
+    {
+      "sample_id": "track1_0772",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0772.jpg",
+      "source": "strict_subset_package_diff",
+      "priority": 82000,
+      "score": 0.0,
+      "tier": "strict_subset"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0568,
+      "tier": "high_delta_review",
+      "caption": "A Gongbi painting of robed figures gathered in a dim interior, rendered with fine controlled linework, muted earth tones, and a solemn, aged atmosphere.",
+      "metadata": {
+        "delta": 0.0568,
+        "distribution_delta": 0.1764,
+        "perceptual_delta": 0.2025,
+        "candidate_score": 0.5654,
+        "current_score": 0.5086
+      }
+    },
+    {
+      "sample_id": "track1_0772",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0772.jpg",
+      "source": "v4_distribution_positive_watchlist",
+      "priority": 50000,
+      "score": 0.0144,
+      "tier": "positive_watchlist",
+      "caption": "Ukiyo-e print of a woman in a patterned kimono bending beside a small child near a potted plant, with delicate linework, muted colors, and vertical calligraphy on a pale background.",
+      "metadata": {
+        "delta": 0.0144,
+        "distribution_delta": 0.0895,
+        "perceptual_delta": 0.0061,
+        "candidate_score": 0.52,
+        "current_score": 0.5056
+      }
+    },
+    {
+      "sample_id": "track1_0730",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0730.jpg",
+      "source": "v4_distribution_positive_watchlist",
+      "priority": 50000,
+      "score": 0.0014,
+      "tier": "positive_watchlist",
+      "caption": "Abstract watercolor composition with flowing pastel washes, looping charcoal and red lines, a small flower-like form, and soft blue-green textures suggesting a dreamlike landscape.",
+      "metadata": {
+        "delta": 0.0014,
+        "distribution_delta": 0.0252,
+        "perceptual_delta": -0.0158,
+        "candidate_score": 0.505,
+        "current_score": 0.5036
+      }
+    }
+  ],
   "blocked_current_identical": [
     {
       "sample_id": "track1_0001",
@@ -6343,15 +6439,6 @@
       "tier": "human_review"
     },
     {
-      "sample_id": "track1_0735",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
-      "source": "pilot100_human24_package_diff",
-      "priority": 78000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
       "sample_id": "track1_0736",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0736.jpg",
@@ -6382,15 +6469,6 @@
       "sample_id": "track1_0739",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0739.jpg",
-      "source": "pilot100_human24_package_diff",
-      "priority": 78000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
       "source": "pilot100_human24_package_diff",
       "priority": 78000,
       "score": 0.0,
@@ -15100,15 +15178,6 @@
       "tier": "human_review"
     },
     {
-      "sample_id": "track1_0735",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0735.jpg",
-      "source": "scaled_high_precision_package_diff",
-      "priority": 76000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
       "sample_id": "track1_0736",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0736.jpg",
@@ -15139,15 +15208,6 @@
       "sample_id": "track1_0739",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0739.jpg",
-      "source": "scaled_high_precision_package_diff",
-      "priority": 76000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0740.jpg",
       "source": "scaled_high_precision_package_diff",
       "priority": 76000,
       "score": 0.0,
@@ -23893,15 +23953,6 @@
       "tier": "human_review"
     },
     {
-      "sample_id": "track1_0735",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0735.jpg",
-      "source": "scaled_expanded_package_diff",
-      "priority": 74000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
       "sample_id": "track1_0736",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0736.jpg",
@@ -23932,15 +23983,6 @@
       "sample_id": "track1_0739",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0739.jpg",
-      "source": "scaled_expanded_package_diff",
-      "priority": 74000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0740.jpg",
       "source": "scaled_expanded_package_diff",
       "priority": 74000,
       "score": 0.0,
@@ -32686,15 +32728,6 @@
       "tier": "human_review"
     },
     {
-      "sample_id": "track1_0735",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0735.jpg",
-      "source": "human_v25_wave2_package_diff",
-      "priority": 72000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
       "sample_id": "track1_0736",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0736.jpg",
@@ -32725,15 +32758,6 @@
       "sample_id": "track1_0739",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0739.jpg",
-      "source": "human_v25_wave2_package_diff",
-      "priority": 72000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0740.jpg",
       "source": "human_v25_wave2_package_diff",
       "priority": 72000,
       "score": 0.0,
@@ -41470,15 +41494,6 @@
       "tier": "human_review"
     },
     {
-      "sample_id": "track1_0735",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0735.jpg",
-      "source": "human_v23_fullbank_package_diff",
-      "priority": 70000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
       "sample_id": "track1_0736",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0736.jpg",
@@ -41509,15 +41524,6 @@
       "sample_id": "track1_0739",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0739.jpg",
-      "source": "human_v23_fullbank_package_diff",
-      "priority": 70000,
-      "score": 0.0,
-      "tier": "human_review"
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0740.jpg",
       "source": "human_v23_fullbank_package_diff",
       "priority": 70000,
       "score": 0.0,
@@ -43783,6 +43789,98 @@
       "tier": "human_review"
     }
   ],
+  "current_rescues": [
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0735.jpg",
+      "source": "scaled_high_precision_package_diff",
+      "priority": 76000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0740.jpg",
+      "source": "scaled_high_precision_package_diff",
+      "priority": 76000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0735.jpg",
+      "source": "scaled_expanded_package_diff",
+      "priority": 74000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0740.jpg",
+      "source": "scaled_expanded_package_diff",
+      "priority": 74000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0735.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0740.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0735.jpg",
+      "source": "human_v23_fullbank_package_diff",
+      "priority": 70000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0740.jpg",
+      "source": "human_v23_fullbank_package_diff",
+      "priority": 70000,
+      "score": 0.0,
+      "tier": "human_review"
+    }
+  ],
   "candidates": [
     {
       "sample_id": "track1_0077",
@@ -44634,24 +44732,6 @@
       "tier": "safe_subset"
     },
     {
-      "sample_id": "track1_0772",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
-      "sample_id": "track1_0730",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
       "sample_id": "track1_0727",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0727.jpg",
@@ -44904,24 +44984,6 @@
       "tier": "strict_subset"
     },
     {
-      "sample_id": "track1_0772",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0772.jpg",
-      "source": "strict_subset_package_diff",
-      "priority": 82000,
-      "score": 0.0,
-      "tier": "strict_subset"
-    },
-    {
-      "sample_id": "track1_0730",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0730.jpg",
-      "source": "strict_subset_package_diff",
-      "priority": 82000,
-      "score": 0.0,
-      "tier": "strict_subset"
-    },
-    {
       "sample_id": "track1_0727",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0727.jpg",
@@ -45096,6 +45158,24 @@
       "sample_id": "track1_0750",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0750.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
       "source": "pilot100_human24_package_diff",
       "priority": 78000,
       "score": 0.0,
@@ -45462,6 +45542,24 @@
       "tier": "human_review"
     },
     {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0740.jpg",
+      "source": "scaled_high_precision_package_diff",
+      "priority": 76000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0735.jpg",
+      "source": "scaled_high_precision_package_diff",
+      "priority": 76000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
       "sample_id": "track1_0709",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0709.jpg",
@@ -45663,6 +45761,24 @@
       "sample_id": "track1_0750",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0750.jpg",
+      "source": "scaled_expanded_package_diff",
+      "priority": 74000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0740.jpg",
+      "source": "scaled_expanded_package_diff",
+      "priority": 74000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_scaled_expanded_20260603/images/track1_0735.jpg",
       "source": "scaled_expanded_package_diff",
       "priority": 74000,
       "score": 0.0,
@@ -45885,6 +46001,24 @@
       "tier": "human_review"
     },
     {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0740.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0735.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
       "sample_id": "track1_0721",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0721.jpg",
@@ -46086,6 +46220,24 @@
       "sample_id": "track1_0750",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0750.jpg",
+      "source": "human_v23_fullbank_package_diff",
+      "priority": 70000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0740.jpg",
+      "source": "human_v23_fullbank_package_diff",
+      "priority": 70000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0735.jpg",
       "source": "human_v23_fullbank_package_diff",
       "priority": 70000,
       "score": 0.0,
@@ -46470,23 +46622,6 @@
         "perceptual_delta": 0.1336,
         "candidate_score": 0.5319,
         "current_score": 0.4747
-      }
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg",
-      "source": "v4_distribution_review_queue",
-      "priority": 60000,
-      "score": 0.0568,
-      "tier": "high_delta_review",
-      "caption": "A Gongbi painting of robed figures gathered in a dim interior, rendered with fine controlled linework, muted earth tones, and a solemn, aged atmosphere.",
-      "metadata": {
-        "delta": 0.0568,
-        "distribution_delta": 0.1764,
-        "perceptual_delta": 0.2025,
-        "candidate_score": 0.5654,
-        "current_score": 0.5086
       }
     },
     {
@@ -49734,23 +49869,6 @@
         "perceptual_delta": 0.047,
         "candidate_score": 0.4998,
         "current_score": 0.4853
-      }
-    },
-    {
-      "sample_id": "track1_0772",
-      "decision": "accept",
-      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0772.jpg",
-      "source": "v4_distribution_positive_watchlist",
-      "priority": 50000,
-      "score": 0.0144,
-      "tier": "positive_watchlist",
-      "caption": "Ukiyo-e print of a woman in a patterned kimono bending beside a small child near a potted plant, with delicate linework, muted colors, and vertical calligraphy on a pale background.",
-      "metadata": {
-        "delta": 0.0144,
-        "distribution_delta": 0.0895,
-        "perceptual_delta": 0.0061,
-        "candidate_score": 0.52,
-        "current_score": 0.5056
       }
     },
     {
@@ -53423,23 +53541,6 @@
         "perceptual_delta": -0.0029,
         "candidate_score": 0.4682,
         "current_score": 0.4668
-      }
-    },
-    {
-      "sample_id": "track1_0730",
-      "decision": "accept",
-      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0730.jpg",
-      "source": "v4_distribution_positive_watchlist",
-      "priority": 50000,
-      "score": 0.0014,
-      "tier": "positive_watchlist",
-      "caption": "Abstract watercolor composition with flowing pastel washes, looping charcoal and red lines, a small flower-like form, and soft blue-green textures suggesting a dreamlike landscape.",
-      "metadata": {
-        "delta": 0.0014,
-        "distribution_delta": 0.0252,
-        "perceptual_delta": -0.0158,
-        "candidate_score": 0.505,
-        "current_score": 0.5036
       }
     },
     {

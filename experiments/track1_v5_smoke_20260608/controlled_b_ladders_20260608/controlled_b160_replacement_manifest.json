@@ -1,8 +1,12 @@
 {
   "manifest_name": "track1_controlled_b160_on_v3_20260608",
-  "policy": "v3_gate7 base; old-current-identical candidates filtered; full 1000-image package",
+  "policy": "v3_gate7 base; known provider/JSON placeholder candidates filtered; old-current-identical candidates filtered except explicit v3-placeholder rescues; full 1000-image package",
   "target_replacement_count": 160,
   "accepted_count": 160,
+  "current_rescue_sample_ids": [
+    "track1_0735",
+    "track1_0740"
+  ],
   "accepted_replacements": [
     {
       "sample_id": "track1_0077",
@@ -782,24 +786,6 @@
       "tier": "safe_subset"
     },
     {
-      "sample_id": "track1_0772",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
-      "sample_id": "track1_0730",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
       "sample_id": "track1_0727",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0727.jpg",
@@ -920,6 +906,24 @@
       "sample_id": "track1_0769",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0769.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
       "source": "pilot100_human24_package_diff",
       "priority": 78000,
       "score": 0.0,
@@ -1369,23 +1373,6 @@
         "perceptual_delta": 0.1336,
         "candidate_score": 0.5319,
         "current_score": 0.4747
-      }
-    },
-    {
-      "sample_id": "track1_0740",
-      "decision": "accept",
-      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg",
-      "source": "v4_distribution_review_queue",
-      "priority": 60000,
-      "score": 0.0568,
-      "tier": "high_delta_review",
-      "caption": "A Gongbi painting of robed figures gathered in a dim interior, rendered with fine controlled linework, muted earth tones, and a solemn, aged atmosphere.",
-      "metadata": {
-        "delta": 0.0568,
-        "distribution_delta": 0.1764,
-        "perceptual_delta": 0.2025,
-        "candidate_score": 0.5654,
-        "current_score": 0.5086
       }
     },
     {
@@ -2067,12 +2054,29 @@
         "candidate_score": 0.4974,
         "current_score": 0.4608
       }
+    },
+    {
+      "sample_id": "track1_0249",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0249.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0366,
+      "tier": "medium_delta_review",
+      "caption": "Abstract ink and watercolor composition of clustered skull-like heads and amorphous gray forms resting above a bold red horizontal band, with loose sketch lines on beige paper.",
+      "metadata": {
+        "delta": 0.0366,
+        "distribution_delta": 0.1533,
+        "perceptual_delta": 0.0906,
+        "candidate_score": 0.5516,
+        "current_score": 0.515
+      }
     }
   ],
   "source_counts": {
     "v5_human_accept48": 48,
-    "safe_subset_package_diff": 24,
-    "pilot100_human24_package_diff": 32,
+    "safe_subset_package_diff": 22,
+    "pilot100_human24_package_diff": 34,
     "human_v25_wave2_package_diff": 2,
     "v4_distribution_review_queue": 54
   }

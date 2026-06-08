@@ -1,0 +1,550 @@
+{
+  "track1_0730": [
+    {
+      "label": "current",
+      "path": "submissions/track1/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "v3_gate7",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0730.jpg",
+      "sha10": "9d68fe95de",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "full1000_v7",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0730.jpg",
+      "sha10": "a7680246fd",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "safe_subset",
+      "path": "submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
+      "sha10": "a7680246fd",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "strict_subset",
+      "path": "submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0730.jpg",
+      "sha10": "a7680246fd",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "pilot100_h24",
+      "path": "submissions/track1_candidate_pilot100_human24_20260603/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_high",
+      "path": "submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_exp",
+      "path": "submissions/track1_candidate_scaled_expanded_20260603/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v20",
+      "path": "submissions/track1_candidate_human_v20_20260513/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v21",
+      "path": "submissions/track1_candidate_human_v21_plus0816_20260514/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v23",
+      "path": "submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v25",
+      "path": "submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0730.jpg",
+      "sha10": "fab1e44e73",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B80",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0730.jpg",
+      "sha10": "e167af1b65",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B120",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0730.jpg",
+      "sha10": "e167af1b65",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B160",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0730.jpg",
+      "sha10": "e167af1b65",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "track1_0735": [
+    {
+      "label": "current",
+      "path": "submissions/track1/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "v3_gate7",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "full1000_v7",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "safe_subset",
+      "path": "submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "strict_subset",
+      "path": "submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "pilot100_h24",
+      "path": "submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_high",
+      "path": "submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_exp",
+      "path": "submissions/track1_candidate_scaled_expanded_20260603/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v20",
+      "path": "submissions/track1_candidate_human_v20_20260513/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v21",
+      "path": "submissions/track1_candidate_human_v21_plus0816_20260514/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v23",
+      "path": "submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v25",
+      "path": "submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0735.jpg",
+      "sha10": "e2832fcdd3",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B80",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B120",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B160",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0735.jpg",
+      "sha10": "49a8805c4c",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "track1_0740": [
+    {
+      "label": "current",
+      "path": "submissions/track1/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "v3_gate7",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0740.jpg",
+      "sha10": "c98f1b8f5f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "full1000_v7",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg",
+      "sha10": "c98f1b8f5f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "safe_subset",
+      "path": "submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0740.jpg",
+      "sha10": "c98f1b8f5f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "strict_subset",
+      "path": "submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0740.jpg",
+      "sha10": "c98f1b8f5f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "pilot100_h24",
+      "path": "submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_high",
+      "path": "submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_exp",
+      "path": "submissions/track1_candidate_scaled_expanded_20260603/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v20",
+      "path": "submissions/track1_candidate_human_v20_20260513/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v21",
+      "path": "submissions/track1_candidate_human_v21_plus0816_20260514/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v23",
+      "path": "submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v25",
+      "path": "submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0740.jpg",
+      "sha10": "147f5e291c",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B80",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0740.jpg",
+      "sha10": "c98f1b8f5f",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B120",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0740.jpg",
+      "sha10": "28614dfdcf",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B160",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0740.jpg",
+      "sha10": "28614dfdcf",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "track1_0772": [
+    {
+      "label": "current",
+      "path": "submissions/track1/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "v3_gate7",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0772.jpg",
+      "sha10": "dbad637541",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "full1000_v7",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0772.jpg",
+      "sha10": "d856211752",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "safe_subset",
+      "path": "submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
+      "sha10": "d856211752",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "strict_subset",
+      "path": "submissions/track1_candidate_v2_strict_subset_20260606/images/track1_0772.jpg",
+      "sha10": "d856211752",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "pilot100_h24",
+      "path": "submissions/track1_candidate_pilot100_human24_20260603/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_high",
+      "path": "submissions/track1_candidate_scaled_high_precision_20260602/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "scaled_exp",
+      "path": "submissions/track1_candidate_scaled_expanded_20260603/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v20",
+      "path": "submissions/track1_candidate_human_v20_20260513/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v21",
+      "path": "submissions/track1_candidate_human_v21_plus0816_20260514/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v23",
+      "path": "submissions/track1_candidate_human_v23_fullbank_override_20260514/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "human_v25",
+      "path": "submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0772.jpg",
+      "sha10": "8a0bfd2fc7",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B80",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0772.jpg",
+      "sha10": "3a986e3ad8",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B120",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0772.jpg",
+      "sha10": "3a986e3ad8",
+      "size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "label": "B160",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0772.jpg",
+      "sha10": "3a986e3ad8",
+      "size": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

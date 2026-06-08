@@ -1,0 +1,130 @@
+{
+  "track1_0730": [
+    {
+      "label": "current",
+      "sha10": "fab1e44e73",
+      "path": "submissions/track1/images/track1_0730.jpg"
+    },
+    {
+      "label": "v3_gate7",
+      "sha10": "9d68fe95de",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0730.jpg"
+    },
+    {
+      "label": "full1000_v7",
+      "sha10": "a7680246fd",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0730.jpg"
+    },
+    {
+      "label": "B80_fixed",
+      "sha10": "9d68fe95de",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0730.jpg"
+    },
+    {
+      "label": "B120_fixed",
+      "sha10": "9d68fe95de",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0730.jpg"
+    },
+    {
+      "label": "B160_fixed",
+      "sha10": "9d68fe95de",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0730.jpg"
+    }
+  ],
+  "track1_0735": [
+    {
+      "label": "current",
+      "sha10": "e2832fcdd3",
+      "path": "submissions/track1/images/track1_0735.jpg"
+    },
+    {
+      "label": "v3_gate7",
+      "sha10": "49a8805c4c",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0735.jpg"
+    },
+    {
+      "label": "full1000_v7",
+      "sha10": "49a8805c4c",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0735.jpg"
+    },
+    {
+      "label": "B80_fixed",
+      "sha10": "e83134a018",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0735.jpg"
+    },
+    {
+      "label": "B120_fixed",
+      "sha10": "e83134a018",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0735.jpg"
+    },
+    {
+      "label": "B160_fixed",
+      "sha10": "e83134a018",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0735.jpg"
+    }
+  ],
+  "track1_0740": [
+    {
+      "label": "current",
+      "sha10": "147f5e291c",
+      "path": "submissions/track1/images/track1_0740.jpg"
+    },
+    {
+      "label": "v3_gate7",
+      "sha10": "c98f1b8f5f",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0740.jpg"
+    },
+    {
+      "label": "full1000_v7",
+      "sha10": "c98f1b8f5f",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg"
+    },
+    {
+      "label": "B80_fixed",
+      "sha10": "51ea03ccd1",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0740.jpg"
+    },
+    {
+      "label": "B120_fixed",
+      "sha10": "51ea03ccd1",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0740.jpg"
+    },
+    {
+      "label": "B160_fixed",
+      "sha10": "51ea03ccd1",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0740.jpg"
+    }
+  ],
+  "track1_0772": [
+    {
+      "label": "current",
+      "sha10": "8a0bfd2fc7",
+      "path": "submissions/track1/images/track1_0772.jpg"
+    },
+    {
+      "label": "v3_gate7",
+      "sha10": "dbad637541",
+      "path": "submissions/track1_candidate_v3_gate7_20260606/images/track1_0772.jpg"
+    },
+    {
+      "label": "full1000_v7",
+      "sha10": "d856211752",
+      "path": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0772.jpg"
+    },
+    {
+      "label": "B80_fixed",
+      "sha10": "dbad637541",
+      "path": "submissions/track1_candidate_v5_controlled_b80_on_v3_20260608/images/track1_0772.jpg"
+    },
+    {
+      "label": "B120_fixed",
+      "sha10": "dbad637541",
+      "path": "submissions/track1_candidate_v5_controlled_b120_on_v3_20260608/images/track1_0772.jpg"
+    },
+    {
+      "label": "B160_fixed",
+      "sha10": "dbad637541",
+      "path": "submissions/track1_candidate_v5_controlled_b160_on_v3_20260608/images/track1_0772.jpg"
+    }
+  ]
+}

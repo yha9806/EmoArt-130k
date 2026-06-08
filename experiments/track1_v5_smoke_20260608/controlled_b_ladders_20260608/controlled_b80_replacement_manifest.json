@@ -1,8 +1,12 @@
 {
   "manifest_name": "track1_controlled_b80_on_v3_20260608",
-  "policy": "v3_gate7 base; old-current-identical candidates filtered; full 1000-image package",
+  "policy": "v3_gate7 base; known provider/JSON placeholder candidates filtered; old-current-identical candidates filtered except explicit v3-placeholder rescues; full 1000-image package",
   "target_replacement_count": 80,
   "accepted_count": 80,
+  "current_rescue_sample_ids": [
+    "track1_0735",
+    "track1_0740"
+  ],
   "accepted_replacements": [
     {
       "sample_id": "track1_0077",
@@ -782,24 +786,6 @@
       "tier": "safe_subset"
     },
     {
-      "sample_id": "track1_0772",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
-      "sample_id": "track1_0730",
-      "decision": "accept",
-      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
-      "source": "safe_subset_package_diff",
-      "priority": 85000,
-      "score": 0.0,
-      "tier": "safe_subset"
-    },
-    {
       "sample_id": "track1_0727",
       "decision": "accept",
       "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0727.jpg",
@@ -915,11 +901,29 @@
       "priority": 78000,
       "score": 0.0,
       "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0740.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0735",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0735.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
     }
   ],
   "source_counts": {
     "v5_human_accept48": 48,
-    "safe_subset_package_diff": 24,
-    "pilot100_human24_package_diff": 8
+    "safe_subset_package_diff": 22,
+    "pilot100_human24_package_diff": 10
   }
 }
