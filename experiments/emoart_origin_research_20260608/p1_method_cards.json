@@ -1,0 +1,207 @@
+{
+  "generated_at": "2026-06-08",
+  "purpose": "P1 method intelligence for AffectiveArt Track1. P0 public EmoArt data is already local; these cards identify public methods from organizers/collaborators or closely related resources that can be converted into Track1 FID/AAS optimization modules.",
+  "non_goals": [
+    "Do not use private test labels.",
+    "Do not mutate the current champion package.",
+    "Do not treat public EmoArt rows as hidden-test gold.",
+    "Do not claim a method improves official score until validated by local gates and official submission feedback."
+  ],
+  "cards": [
+    {
+      "id": "fabg_agsr_attribute_salience_bottleneck",
+      "priority": "P1-direct",
+      "source_group": "Cheng Zhang / Hongxia Xie / Wen-Huang Cheng",
+      "public_sources": [
+        "https://arxiv.org/abs/2605.15755",
+        "https://github.com/zhiliangzhang/FAB-G",
+        "https://huggingface.co/datasets/printblue/EmoArt-Salience"
+      ],
+      "core_method": "Attribute-Grounded Selective Reasoning: five attribute-specific agents decide whether color, composition, line, light, and brushstroke are emotionally salient before a final agent reasons over the selected cues.",
+      "track1_transfer": "Use the same salience bottleneck to stop prompt packets and AAS judges from mechanically listing all five attributes. For each Track1 sample, select 2-3 operative visual levers that should control generation and evaluation.",
+      "engineering_module": "salience_aware_prompt_compiler",
+      "expected_gain": "Higher AAS stability with less prompt bloat; lower risk that reference-guided prompts over-constrain every image into the same template.",
+      "risks": [
+        "FAB-G targets Track2-style understanding, not image generation.",
+        "Training the six Qwen3-VL LoRA adapters may be too slow for final Track1 submissions.",
+        "Use AGSR-lite schema first; only train LoRA if time and GPU budget allow."
+      ],
+      "first_experiment": "Build an AGSR-lite cue selector over current Track1 captions and official reference annotations; compare generated prompt length, attribute diversity, and human AAS risk on 50 samples.",
+      "confidence": "high"
+    },
+    {
+      "id": "emovit_emotion_instruction_prompting",
+      "priority": "P1-direct",
+      "source_group": "Hongxia Xie / Hong-Han Shuai / Wen-Huang Cheng",
+      "public_sources": [
+        "https://arxiv.org/abs/2404.16670",
+        "https://github.com/aimmemotion/EmoVIT",
+        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html"
+      ],
+      "core_method": "Emotion visual instruction tuning: build emotion-specific instruction data so a VLM predicts emotion and explains visual evidence rather than only generic caption content.",
+      "track1_transfer": "Use emotion-instruction templates as a candidate review and prompt-critique layer. The generator prompt should specify visual cues that convey the target affect, not only objects and style words.",
+      "engineering_module": "emotion_instruction_aas_proxy",
+      "expected_gain": "Better separation between caption object fidelity and emotion-aware visual expression; useful for AAS attribute alignment and Track2 description consistency.",
+      "risks": [
+        "EmoVIT is an understanding model family, not a Gemini image-generation controller.",
+        "A VLM judge can be anchored by the caption; blind image-first review is still required."
+      ],
+      "first_experiment": "Create a Gemini/EmoVIT-style review prompt that asks for image-first affective evidence, then compare against current VLM gate on known relation/style failures.",
+      "confidence": "medium_high"
+    },
+    {
+      "id": "promptfix_vlm_auxiliary_prompt_adapter",
+      "priority": "P1-direct",
+      "source_group": "Jianlong Fu / MSRA generation lineage",
+      "public_sources": [
+        "https://arxiv.org/abs/2407.00640",
+        "https://github.com/yeates/PromptFix",
+        "https://github.com/microsoft/PromptFix"
+      ],
+      "core_method": "PromptFix uses VLM understanding and an auxiliary prompt adapter to repair real-world images without manually writing a bespoke prompt for each case.",
+      "track1_transfer": "Convert weak Track1 candidates into repair prompts: detect missing/incorrect objects, physical logic errors, visible text artifacts, or template overfit, then generate a targeted repair prompt rather than regenerating blindly.",
+      "engineering_module": "candidate_repair_prompt_adapter",
+      "expected_gain": "Higher yield from expensive Gemini generations; fewer reruns for hands/glass, flags/ropes, relation logic, landmark, and poster-layout problems.",
+      "risks": [
+        "PromptFix is an image restoration/editing pipeline; Gemini image API may not expose the same control surface.",
+        "Repair prompts can overfit local errors and degrade FID if they become too literal."
+      ],
+      "first_experiment": "Run a 20-sample repair queue from known visual failures and compare current one-shot regeneration vs repair-prompt regeneration.",
+      "confidence": "medium"
+    },
+    {
+      "id": "aica_affective_gap_distribution_learning",
+      "priority": "P1-direct",
+      "source_group": "Sicheng Zhao visual emotion analysis lineage",
+      "public_sources": [
+        "https://arxiv.org/abs/2106.16125",
+        "https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis"
+      ],
+      "core_method": "Affective Image Content Analysis survey: highlights affective gap, subjectivity, domain adaptation, label distribution learning, and affective region/entity reasoning.",
+      "track1_transfer": "Treat Track1 generation as a multi-objective affective distribution problem, not a deterministic caption-to-image problem. Route samples by emotion/style family and preserve distribution diversity.",
+      "engineering_module": "emotion_style_distribution_router",
+      "expected_gain": "Lower FID overfit to high-contrast posters; better coverage of low-arousal positive painterly distribution seen in EmoArt.",
+      "risks": [
+        "Survey methods are not turnkey code.",
+        "Emotion distribution priors can hurt AAS if they override explicit caption content."
+      ],
+      "first_experiment": "Add emotion/style-family buckets to candidate selection and verify whether B80/B120/B160 replacements preserve or improve public EmoArt distribution coverage.",
+      "confidence": "medium_high"
+    },
+    {
+      "id": "official_proposal_flux_lora_style_baseline",
+      "priority": "P1-direct",
+      "source_group": "AffectiveArt Challenge proposal / EmoArt benchmark",
+      "public_sources": [
+        "https://openreview.net/forum?id=LbbHX8ofXZ",
+        "https://openreview.net/pdf?id=LbbHX8ofXZ",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "core_method": "The challenge proposal and EmoArt benchmark expose a style-adaptation baseline direction: style examples, LoRA-style adaptation, and AAS based on generated attribute descriptions.",
+      "track1_transfer": "Because final generation uses Gemini, we cannot directly train LoRA inside Gemini. Instead, emulate the baseline upstream: retrieve style-family references, select style-specific prompt packets, and gate candidates against style-family proxy.",
+      "engineering_module": "style_family_distribution_retriever",
+      "expected_gain": "Directly targets the official FID gap by aligning generated image batches to the public EmoArt style distribution.",
+      "risks": [
+        "OpenReview proposal may differ from final Codabench scoring.",
+        "Over-retrieval can make all samples look like copied reference boards."
+      ],
+      "first_experiment": "Expand each sample from top4 references to a 20-50 item style family profile and score candidate distance to that family before package selection.",
+      "confidence": "high"
+    },
+    {
+      "id": "micro_expression_relation_graph_reasoning",
+      "priority": "P1-adjacent",
+      "source_group": "Ling Lo / Hong-Han Shuai / Wen-Huang Cheng affective relation lineage",
+      "public_sources": [
+        "https://arxiv.org/abs/2004.08915",
+        "https://arxiv.org/abs/2012.11307",
+        "https://basiclab.lab.nycu.edu.tw/"
+      ],
+      "core_method": "Micro-expression recognition work uses relation/graph reasoning over subtle facial or temporal cues; related surveys emphasize subtle cue localization and robustness.",
+      "track1_transfer": "The direct domain is different, but the idea transfers to relation semantics: objects being present is not enough; their spatial/causal relation must match the caption.",
+      "engineering_module": "relation_semantics_graph_gate",
+      "expected_gain": "Better detection of failures like soldiers chasing civilians instead of protecting them, hands crossing glass, or flags attached unrealistically.",
+      "risks": [
+        "Micro-expression datasets are not artwork-generation data.",
+        "This should guide gate design, not model training for Track1."
+      ],
+      "first_experiment": "Represent hard captions as subject-action-object relation triples and require blind image review to verify relation polarity.",
+      "confidence": "medium"
+    },
+    {
+      "id": "emoart_metric_text_diversity_alignment",
+      "priority": "P1-direct",
+      "source_group": "Cheng Zhang / EmoArt metric code",
+      "public_sources": [
+        "https://github.com/ZHILIANGZHANG/EmoArt-130k",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "core_method": "EmoArt code includes CLIP score, attribute alignment, lexical diversity metrics such as TTR/MTLD, and entropy-style text diversity tools.",
+      "track1_transfer": "Use these metrics as local proxy components for candidate prompts and image descriptions: penalize repeated template prompts, overlong attribute flooding, and text-like visual artifacts.",
+      "engineering_module": "aas_text_and_template_proxy",
+      "expected_gain": "Reduces template collapse in both prompts and generated images; supports stronger package-level candidate selection.",
+      "risks": [
+        "Metric code was designed for dataset evaluation, not official hidden Track1 scoring.",
+        "Text diversity alone can reward irrelevant verbosity if not tied to image evidence."
+      ],
+      "first_experiment": "Score v3, B80, B120, B160 prompts and candidates for template repetition and correlate with human review outcomes.",
+      "confidence": "high"
+    },
+    {
+      "id": "emoverse_grounded_emotion_triplets",
+      "priority": "P1-adjacent",
+      "source_group": "Visual emotion grounding ecosystem",
+      "public_sources": [
+        "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset",
+        "https://arxiv.org/abs/2511.12554"
+      ],
+      "core_method": "EmoVerse provides body-action-scene triplets, concise/detailed emotion descriptions, and grounded object evidence using detection/segmentation pipelines.",
+      "track1_transfer": "Use a similar body-action-scene decomposition for hard Track1 captions before generation and review, especially propaganda, battlefield, train, crowd, and object-interaction scenes.",
+      "engineering_module": "body_action_scene_content_lock",
+      "expected_gain": "Stronger content planning and relation consistency before image generation.",
+      "risks": [
+        "Dataset emotion ontology does not match AffectiveArt 12 classes.",
+        "External grounding pipeline may add complexity without direct FID gain."
+      ],
+      "first_experiment": "Add body-action-scene fields to prompt packets for 50 high-risk narrative samples and compare relation error rate.",
+      "confidence": "medium"
+    },
+    {
+      "id": "perceptual_quality_assessment_proxy",
+      "priority": "P1-watch",
+      "source_group": "Sanghoon Lee quality assessment lineage",
+      "public_sources": [
+        "https://openreview.net/forum?id=LbbHX8ofXZ",
+        "https://scholar.google.com/citations?user=Q1XQpC8AAAAJ"
+      ],
+      "core_method": "Quality assessment and perceptual multimedia evaluation lineage; useful as a signal that image realism, artifact detection, and perceptual quality matter alongside semantic alignment.",
+      "track1_transfer": "Add visual artifact and perceptual-quality features to candidate gates, especially for distorted anatomy, fake text, compressed/card-like images, and provider placeholder artifacts.",
+      "engineering_module": "perceptual_artifact_quality_gate",
+      "expected_gain": "Stops candidates that pass caption review but damage FID/perceptual distribution.",
+      "risks": [
+        "Need stronger primary-source mapping to specific Sanghoon Lee Track1-relevant algorithms before claiming direct transfer.",
+        "Quality metrics can prefer photorealism over painterly artwork if not style-conditioned."
+      ],
+      "first_experiment": "Keep as a watch card; implement only style-conditioned artifact checks already supported by current review images.",
+      "confidence": "low_medium"
+    },
+    {
+      "id": "structured_multistep_generation_lineage",
+      "priority": "P1-watch",
+      "source_group": "Hongxia Xie / Bin Wen / Ruoxuan Zhang generation-data lineage",
+      "public_sources": [
+        "https://www.hongxiaxie.net/research"
+      ],
+      "core_method": "AVC Lab research page lists structured multimodal generation projects such as CookAnything and MindPower, suggesting a broader strategy of data-rich multi-stage generation rather than one-shot prompting.",
+      "track1_transfer": "Keep the pipeline multi-stage: plan -> retrieve -> generate -> blind review -> repair -> package select. This validates our current direction but is not a direct code drop.",
+      "engineering_module": "track1_multistage_orchestrator",
+      "expected_gain": "Better process discipline and fewer single-shot failures.",
+      "risks": [
+        "First pass found project-level signals, not enough primary algorithm detail for Track1 implementation.",
+        "Do not overfit unrelated cooking/mental-health generation tasks."
+      ],
+      "first_experiment": "Use this only as architectural support while prioritizing FAB-G, EmoVIT, AICA, and PromptFix cards.",
+      "confidence": "low_medium"
+    }
+  ]
+}
