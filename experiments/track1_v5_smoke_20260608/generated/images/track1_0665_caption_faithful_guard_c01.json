@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0665",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0665_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0128648_KonstantinYuon_Moscowsalutes_ce1840d22b.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0123502_KonstantinYuon_TheRedArmyonparadeinRedSquare_Moscow_November1940_f58198b680.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0156362_KonstantinYuon_MoscowMorning_315ba99b71.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0140890_Kukryniksy_TheMoscowkalatchisnotoftheirbatch_78a75e5b68.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

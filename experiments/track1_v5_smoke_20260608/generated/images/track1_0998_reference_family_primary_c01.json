@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0998",
+  "candidate_index": 1,
+  "caption": "Abstract pencil sketch of a fragmented interior scene with angular geometric forms, overlapping objects, loose graphite lines, and a muted beige paper texture.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0998_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0170715_VladimirTatlin_BoardNumber1_Staro_BasmannayaStreet_087b0eec78.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0106377_BalcombGreene_Untitled_413e7cec9a.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0048173_AlbertoMagnelli_Composition_32a4e4dc92.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0013589_LeeKrasner_StillLife_aa99625fd4.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

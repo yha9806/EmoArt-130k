@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0976",
+  "candidate_index": 1,
+  "caption": "Abstract watercolor and ink composition with layered brown mask-like forms, a red and blue zigzag band, green washes, and bold black organic shapes in a loose, textured arrangement.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0976_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0145874_EdwardWadsworth_DuxetComesIV_3fb25e6bb5.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0057825_AliceRahon_LeCirque_ed3be3ac95.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0028347_DavidKakabadze_Abstraction_59d9893897.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0093732_RichardPousette_Dart_AnimalHead_0ef126c9d2.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0964",
+  "candidate_index": 1,
+  "caption": "A Ukiyo-e scene of three figures standing on a rocky coastal cliff beside blue waves, with tall misty rock formations in the distance, delicate linework, and a muted earthy color palette.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0964_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0018873_Hiroshige_PilgrimagetotheCaveShrineofBenzaiten_f3ab1b778c.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0063276_KitagawaUtamaro_DressingaBoyontheOccasionofHisFirstLettingHisHairGrow_236d6976d3.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_dscn1851_018ea2d90f.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ukiyo_e_0105244_UtagawaToyokuniII_Enoshimaseiran_c230ab5918.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

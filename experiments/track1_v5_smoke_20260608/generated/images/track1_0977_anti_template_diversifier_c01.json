@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0977",
+  "candidate_index": 1,
+  "caption": "Ink and wash painting of two small mounted landscape scenes on a pale album page, featuring misty hills, trees, riverbanks, and subdued earthy tones with delicate brushwork.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0977_anti_template_diversifier.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0070714_HanGan_MonkeysandHorses_2622511ee3.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0103350_LanYing_AutumnMountainsafterWangMeng_a0f442db9c.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0032692_LiCheng_WintryForest_LevelDistance_f7dd3b685d.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0163331_Shitao_Lightofdawnonthemonastery_4e18d3ec6b.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

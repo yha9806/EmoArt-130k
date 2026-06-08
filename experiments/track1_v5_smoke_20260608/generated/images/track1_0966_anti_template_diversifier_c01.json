@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0966",
+  "candidate_index": 1,
+  "caption": "Ink and wash painting of a serene mountain landscape with misty peaks, winding water paths, sparse trees, and soft monochrome brushwork on aged paper.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0966_anti_template_diversifier.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0047304_FuBaoshi_GatheringinMountains_3bdc53a6f7.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0163331_Shitao_Lightofdawnonthemonastery_4e18d3ec6b.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0188413_SesshuToyo_LandscapeofFourSeasons_Spring_a283a73f97.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0097419_Shitao_TheHermitlodgeinthemiddleofthetable_5c83ed2164.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

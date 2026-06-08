@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0102",
+  "candidate_index": 1,
+  "caption": "A Gongbi handscroll scene with delicate linework and muted silk tones, featuring calligraphy beside an ancient procession of riders and attendants beneath pine trees in a calm mountainous landscape.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 640,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0102_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0121218_QiuYing_Untitled_aaaf6e6306.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0036973_EmperorHuizong_AnElegantParty_cfbda0f829.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0115616_QiuYing_SayingFarewellatXunyang_detail_a6fbce6a97.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0010955_QiuYing_PeachBlossomSpring_detail_ff9939085b.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:2"
+  }
+}

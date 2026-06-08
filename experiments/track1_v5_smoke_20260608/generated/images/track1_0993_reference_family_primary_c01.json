@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0993",
+  "candidate_index": 1,
+  "caption": "An Early Renaissance portrait of a solemn middle-aged man in a deep blue robe before rich burgundy drapery, rendered with fine detail, muted colors, and soft modeling of light and shadow.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0993_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Early_Renaissance_0050124_AmbrogioBergognone_PresentationattheTemple_deyail_1ea531ee9a.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Early_Renaissance_0162899_LucaSignorelli_St_Jerome_detailfromVirginEnthronedwithSaints_59908edfc1.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Early_Renaissance_0132607_FraAngelico_Entombment_1c9cc085eb.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Early_Renaissance_0006943_FilippinoLippi_PortraitofAnOldMan_a7c79eb795.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

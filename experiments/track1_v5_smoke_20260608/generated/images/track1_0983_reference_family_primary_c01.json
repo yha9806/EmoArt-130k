@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0983",
+  "candidate_index": 1,
+  "caption": "Abstract ink line drawing of overlapping fragmented human figures and organic shapes on beige paper, with delicate contour lines, cross-hatching, and a sparse composition.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0983_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0026523_RichardPousette_Dart_BirdWoman_ef5f11f736.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0103976_PauleVezelay_DancingForms_ed7f73b086.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0067158_HelenedeBeauvoir_Untitled_8d9a04d944.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0162155_ArthurDove_Goat_a450eb4faf.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

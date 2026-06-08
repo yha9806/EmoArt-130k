@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_1000",
+  "candidate_index": 1,
+  "caption": "Ink and wash painting of a vertical Chinese landscape scroll with misty mountains, tall pine trees, a small pavilion, flowing brushwork, calligraphy inscription, and a red seal in a serene monochrome palette.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_1000_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0126921_Shitao_Oneremainsatlarge_1c17cd1544.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0021861_BadaShanren_Landscape_DongYuanandJuranStyle_ee2fd8e5ea.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0048747_XuBeihong_TianmuMountians_70a9e2c462.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0050442_Shitao_Inmeditation_atthefootofthemountainsimpossible_b4a284c797.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

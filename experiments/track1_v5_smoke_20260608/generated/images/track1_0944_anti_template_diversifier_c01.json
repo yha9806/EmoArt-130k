@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0944",
+  "candidate_index": 1,
+  "caption": "A Gongbi painting of children playing in a tranquil garden landscape with rocks, bamboo, a fence, and soft pale colors defined by delicate fine-line brushwork.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0944_anti_template_diversifier.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0146686_QiuYing_SpringMorningintheHanPalace_ViewI_70bae99333.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0129193_QiuYing_EmperorMinghuang_sJourneytoSichuan_detail_5167c26f3e.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0190304_QiuYing_SpringMorningintheHanPalace_ViewD_416f647fd1.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0119874_QiuYing_FishermanHermit_aa5657b200.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

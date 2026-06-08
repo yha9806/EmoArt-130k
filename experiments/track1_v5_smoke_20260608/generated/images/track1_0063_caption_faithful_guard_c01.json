@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0063",
+  "candidate_index": 1,
+  "caption": "Ink and wash painting of a serene mountainous landscape with layered peaks, trees, a winding stream, calligraphy, seals, and delicate monochrome brushwork on a hanging scroll.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 682,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0063_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_FS_5571_14_50cab2a740.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0134473_Shitao_JintingMountainsinAutumn_76f09c7c26.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0053840_TangYin_Snowscape_899a8d659b.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0147122_FuBaoshi_TheFarSnowsofMinshanOnlyMakeUsHappy_52dc85733c.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "2:3"
+  }
+}

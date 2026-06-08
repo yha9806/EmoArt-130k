@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0926",
+  "candidate_index": 1,
+  "caption": "A Gongbi-style album spread on aged paper with two muted brown portrait panels, delicate calligraphy columns, faint ink figures, and a quiet antique atmosphere.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 1024,
+  "requested_height": 768,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0926_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0193948_QiuYing_ScrollillustratingTheHeartSutra_6b38beddee.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0187247_EmperorHuizong_FinchesandBamboo_66ae8b4982.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0028812_QiuYing_TheImperialexaminations_87284026c7.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Gongbi_0103022_QiuYing_KonghouPlayerinaPavillion_f01554ecd2.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "4:3"
+  }
+}

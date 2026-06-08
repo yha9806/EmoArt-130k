@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0982",
+  "candidate_index": 1,
+  "caption": "Abstract black woodcut-like silhouette of a tall organic plant form with wing-shaped leaves, rough vertical texture, and sparse white carved lines on a beige paper background.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0982_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0176020_EtienneHajdu_DamedeBaigneuse_5ac0c9cadb.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0060016_RochelleBlumenfeld_FlowerPainting_6f2017a266.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0154409_LiChevalier_Chantdelaterre_0adb2d2dfe.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Abstract_Art_0077410_A_Mishra_Expressionofsadness_I_96c566f22d.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

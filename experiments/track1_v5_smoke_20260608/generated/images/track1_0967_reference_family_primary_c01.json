@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0967",
+  "candidate_index": 1,
+  "caption": "Ink and wash painting of a tranquil bamboo grove with a winding stream, small rocks, and a lone seated figure, rendered in delicate brushwork on a warm brown ground with a calm, sparse composition.",
+  "requested_model_label": "imagen-4-ultra",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 1024,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0967_reference_family_primary.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0077008_MaYuan_DancingandSinging_PeasantsReturningfromWork_detail2_69e4401ef5.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0121476_Shitao_Self_portrait_alongwithapinandabamboo_5516d05a31.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0136310_Shitao_ZhongKui_Demonstamer_69aa90a3d9.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Ink_and_wash_painting_0015738_Shitao_Crouchedattheedgeofthewater_c8d4885cfc.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "1:1"
+  }
+}

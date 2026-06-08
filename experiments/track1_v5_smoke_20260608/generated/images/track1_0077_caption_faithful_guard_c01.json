@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0077",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet naval propaganda poster with a sailor hoisting red and white flags before panels of warships and sea battles, using bold Cyrillic typography, patriotic red accents, and a solemn heroic composition.",
+  "requested_model_label": "gemini-3-pro-image",
+  "image_model": "gemini-3-pro-image",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0077_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0024021_Kukryniksy_Wherewesouldbetterland_b022dea299.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0134286_LeonidMuchnyk_TheRebelliousPotemkinitesTaketheBodyoftheMurderedVakulenchukAshore_345d832014.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0057340_VictorPuzyrkov_YachtsintheSea_f3dc9b8262.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0100591_LeonidMuchnyk_FishingHarborofIllichivsk_e60c061fb3.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3-pro-image",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

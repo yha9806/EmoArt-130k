@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0128",
+  "candidate_index": 1,
+  "caption": "Socialist Realism poster of Soviet soldiers marching beside a tank with red banners, celebratory flowers, and bold Cyrillic slogans in a patriotic, triumphant composition.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0128_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0161653_ElLissitzky_Allforthefront_AllforVictory_d08af237aa.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0041614_Kukryniksy_SplendidlyanddesperatelydowefighttheissueofSuvorovandChapayevdoitallright_4fc836ad2d.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0187485_KonstantinYuon_Nurses_c686363adc.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110349_Kukryniksy_Untitled_641fcad969.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}

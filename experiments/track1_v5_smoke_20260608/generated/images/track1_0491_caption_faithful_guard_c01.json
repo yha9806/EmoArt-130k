@@ -1,0 +1,23 @@
+{
+  "sample_id": "track1_0491",
+  "candidate_index": 1,
+  "caption": "A Socialist Realism Soviet agricultural poster with a farm woman holding a basket of vegetables before green fields, surrounded by abundant produce, bold Cyrillic lettering, bright flat colors, and strong poster-like composition.",
+  "requested_model_label": "gemini-3.1-flash-image",
+  "image_model": "gemini-3.1-flash-image-preview",
+  "requested_width": 768,
+  "requested_height": 1024,
+  "reference_image_path": "experiments/track1_v5_smoke_20260608/generated/reference_boards/track1_0491_caption_faithful_guard.jpg",
+  "reference_image_source_paths": [
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0114440_BorisKustodiev_SketchofPosterCitygivesTextiles_aVillagegivesBread_651235bacc.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0028452_BoyukaghaMirzazade_Pickingofpaddy_efa2857d65.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0110810_KonstantinYuon_ReturningfromtheWork_5e1190c7b9.jpg",
+    "/Users/yhryzy/dev/emoart-130k/experiments/track1_reference_conditioned_pilot_20260603/official_reference_bank_v7_20260605/reference_assets/official_Socialist_Realism_0191207_KarpoTrokhymenko_VillageLandscape1957_38e05b2ee1.jpg"
+  ],
+  "reference_image_fallback_without_reference": false,
+  "reference_image_fallback_reason": "",
+  "provider_metadata": {
+    "model": "gemini-3.1-flash-image-preview",
+    "image_size": "1K",
+    "aspect_ratio": "3:4"
+  }
+}
