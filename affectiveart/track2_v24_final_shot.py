@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
-from affectiveart.track2_official_anchor_calibration import CalibratedScore
+from affectiveart.track2_official_anchor_calibration import CalibratedScore, score_submission
 
 
 TRACK2_SUBMISSION_KEYS = (
@@ -40,6 +40,7 @@ TRACK2_EMOTIONS = {
 NEGATIVE_EMOTIONS = {"alarmed", "annoyed", "bored", "frustrated", "sad", "tired"}
 HIGH_AROUSAL_EMOTIONS = {"alarmed", "annoyed", "aroused", "excited", "frustrated", "happy"}
 FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
+DEFAULT_OUT_DIR = Path("experiments/track2_v24_final_shot_20260608")
 
 
 @dataclass(frozen=True)
@@ -182,6 +183,61 @@ def write_v24_candidate_outputs(
     return report
 
 
+def score_v24_candidates_with_v23(candidate_reports: list[dict[str, Any]]) -> dict[str, Any]:
+    scored_reports: list[tuple[CalibratedScore, dict[str, Any]]] = []
+    for report in candidate_reports:
+        paths = report.get("paths") if isinstance(report.get("paths"), dict) else {}
+        out_json = paths.get("out_json")
+        if not out_json:
+            raise ValueError("candidate report missing paths.out_json")
+        scored_reports.append((score_submission(out_json, candidate_name=str(report.get("profile", ""))), report))
+    scored_reports.sort(key=lambda item: (-item[0].overall_expected, item[0].candidate_name))
+    ranking = [_scoreboard_row(score, report) for score, report in scored_reports]
+    if scored_reports:
+        best_score, best_report = scored_reports[0]
+        final_gate = choose_v24_final_candidate(
+            [score for score, _ in scored_reports],
+            thresholds=FinalGateThresholds(),
+            validation_ok=bool(best_report.get("validation_ok", False)),
+            label_consistency_issue_count=int(best_report.get("label_consistency_issue_count") or 0),
+            missing_emotions=list(best_report.get("missing_emotions") or []),
+            top_emotion_share=float(best_report.get("top_emotion_share") or 0.0),
+            repeats_failed_pattern=bool(best_report.get("repeats_failed_pattern", False)),
+            unsafe_text_count=int(best_report.get("unsafe_text_count") or 0),
+        )
+        final_gate["candidate_name"] = best_score.candidate_name
+    else:
+        final_gate = choose_v24_final_candidate(
+            [],
+            thresholds=FinalGateThresholds(),
+            validation_ok=False,
+            label_consistency_issue_count=0,
+            missing_emotions=[],
+            top_emotion_share=0.0,
+            repeats_failed_pattern=False,
+            unsafe_text_count=0,
+        )
+    return {
+        "method": "track2_v24_final_shot_v1",
+        "ranking": ranking,
+        "final_gate": final_gate,
+    }
+
+
+def build_v24_run_outputs(
+    *,
+    out_dir: str | Path = DEFAULT_OUT_DIR,
+    submissions_dir: str | Path = "submissions",
+) -> dict[str, Any]:
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    report = score_v24_candidates_with_v23([])
+    report["submissions_dir"] = str(submissions_dir)
+    _write_json(out_dir / "v24_scoreboard.json", report)
+    (out_dir / "v24_final_gate_zh.md").write_text(_render_final_gate(report), encoding="utf-8")
+    return report
+
+
 def _apply_v24_changes(
     base_rows: list[dict[str, Any]],
     selected_changes: list[dict[str, Any]],
@@ -238,6 +294,25 @@ def _apply_v24_changes(
         "unsafe_text_count": len(unsafe_rows),
         "unsafe_text_rows": unsafe_rows,
         "accepted_changes": accepted,
+    }
+
+
+def _scoreboard_row(score: CalibratedScore, report: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "candidate_name": score.candidate_name,
+        "json_path": score.json_path,
+        "calibration_kind": score.calibration_kind,
+        "overall_expected": score.overall_expected,
+        "classification_expected": score.classification_expected,
+        "description_expected": score.description_expected,
+        "visible_bucket": score.visible_bucket,
+        "accepted_label_changes": int(report.get("accepted_label_changes") or 0),
+        "text_changed_rows": int(report.get("text_changed_rows") or 0),
+        "top_emotion_share": float(report.get("top_emotion_share") or 0.0),
+        "missing_emotions": list(report.get("missing_emotions") or []),
+        "unsafe_text_count": int(report.get("unsafe_text_count") or 0),
+        "repeats_failed_pattern": bool(report.get("repeats_failed_pattern", False)),
+        "warnings": list(score.warnings),
     }
 
 
@@ -317,6 +392,22 @@ def _render_candidate_report(report: dict[str, Any]) -> str:
             f"- unsafe_text_count: `{report['unsafe_text_count']}`",
             f"- missing_emotions: `{', '.join(report['missing_emotions']) if report['missing_emotions'] else 'none'}`",
             f"- repeats_failed_pattern: `{report['repeats_failed_pattern']}`",
+            "",
+        ]
+    )
+
+
+def _render_final_gate(report: dict[str, Any]) -> str:
+    gate = report["final_gate"]
+    reasons = gate.get("reasons") or []
+    return "\n".join(
+        [
+            "# Track2 v24 final gate",
+            "",
+            f"- decision: `{gate.get('decision', '')}`",
+            f"- candidate_name: `{gate.get('candidate_name', '')}`",
+            f"- reasons: `{', '.join(reasons) if reasons else 'none'}`",
+            f"- ranking_count: `{len(report.get('ranking') or [])}`",
             "",
         ]
     )

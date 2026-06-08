@@ -11,6 +11,7 @@ from affectiveart.track2_v24_final_shot import (
     FinalGateThresholds,
     choose_v24_final_candidate,
     is_text_evaluator_safe,
+    score_v24_candidates_with_v23,
     write_v24_candidate_outputs,
 )
 
@@ -142,3 +143,38 @@ class Track2V24CandidateBuilderTests(unittest.TestCase):
             self.assertEqual(rows[5]["emotional_valence"], "Positive")
             self.assertEqual(rows[5]["emotional_arousal_level"], "Low")
             self.assertEqual(rows[6]["overall_caption"], "A grounded caption with no evaluator-directed wording.")
+
+    def test_score_v24_candidates_with_v23_returns_ranking_and_gate(self) -> None:
+        emotions = [
+            "alarmed",
+            "annoyed",
+            "aroused",
+            "bored",
+            "calm",
+            "content",
+            "excited",
+            "frustrated",
+            "glad",
+            "happy",
+            "sad",
+            "tired",
+        ]
+        base_rows = [_base_row(f"track2_{index:04d}", emotion) for index, emotion in enumerate(emotions)]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            report = write_v24_candidate_outputs(
+                base_rows=base_rows,
+                selected_changes=[{"sample_id": "track2_0005", "proposed_emotion": "calm"}],
+                profile="weak_frontier",
+                out_json=root / "weak.json",
+                out_zip=root / "weak.zip",
+                report_json=root / "weak_report.json",
+                report_md=root / "weak_report.md",
+            )
+
+            scoreboard = score_v24_candidates_with_v23([report])
+
+        self.assertEqual(scoreboard["method"], "track2_v24_final_shot_v1")
+        self.assertIn("ranking", scoreboard)
+        self.assertIn("final_gate", scoreboard)
+        self.assertEqual(scoreboard["final_gate"]["decision"], "hold_no_submit")
