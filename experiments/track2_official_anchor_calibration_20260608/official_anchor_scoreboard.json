@@ -1,0 +1,175 @@
+{
+  "anchor_residual_summary": {
+    "blocking_residual_count": 0,
+    "max_abs_exact_residual": 0.0
+  },
+  "anchor_residuals": [
+    {
+      "blocking_residual": false,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_779605_moe_v2_anchor",
+      "official_overall": 0.836408,
+      "official_visible": 0.84,
+      "overall_expected": 0.836408,
+      "overall_residual": 0.0,
+      "submission_id": "779605"
+    },
+    {
+      "blocking_residual": false,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_781601_v3_mid",
+      "official_overall": 0.834027,
+      "official_visible": 0.83,
+      "overall_expected": 0.834027,
+      "overall_residual": 0.0,
+      "submission_id": "781601"
+    },
+    {
+      "blocking_residual": false,
+      "calibration_kind": "visible_official",
+      "candidate_name": "official_782683_v12_stable_probe",
+      "official_overall": 0.835833,
+      "official_visible": 0.84,
+      "overall_expected": 0.835833,
+      "overall_residual": 0.0,
+      "submission_id": "782683"
+    },
+    {
+      "blocking_residual": false,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_785979_v21_calmshift90",
+      "official_overall": 0.842559,
+      "official_visible": 0.84,
+      "overall_expected": 0.842559,
+      "overall_residual": 0.0,
+      "submission_id": "785979"
+    }
+  ],
+  "frontier_requirement": {
+    "current_public_first_place": {
+      "classification": 0.78,
+      "description": 1.0,
+      "overall": 0.89
+    },
+    "required_classification_if_description_095": 0.83,
+    "required_classification_if_description_098": 0.8,
+    "required_classification_if_description_100": 0.78,
+    "target_overall": 0.89
+  },
+  "method": "track2_official_anchor_calibration_v1",
+  "ranking": [
+    {
+      "anchor_submission_id": "779605",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshiftall",
+      "classification_expected": 0.746659,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+      "label_changes_vs_anchor": 177,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "overall_expected": 0.848163,
+      "overall_visible": 0.85,
+      "text_changed_rows_vs_anchor": 0,
+      "transition_counts": "content->calm:177",
+      "visible_bucket": 0.85,
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_submission_id": "779605",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift150",
+      "classification_expected": 0.745038,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift150_candidate.json",
+      "label_changes_vs_anchor": 150,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "overall_expected": 0.847352,
+      "overall_visible": 0.85,
+      "text_changed_rows_vs_anchor": 0,
+      "transition_counts": "content->calm:150",
+      "visible_bucket": 0.85,
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_submission_id": "779605",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift120",
+      "classification_expected": 0.743002,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift120_candidate.json",
+      "label_changes_vs_anchor": 120,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "overall_expected": 0.846335,
+      "overall_visible": 0.85,
+      "text_changed_rows_vs_anchor": 0,
+      "transition_counts": "content->calm:120",
+      "visible_bucket": 0.85,
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_submission_id": "785979",
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_785979_v21_calmshift90",
+      "classification_expected": 0.740034,
+      "description_expected": 0.945083,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v21_calmshift90_candidate.json",
+      "label_changes_vs_anchor": 90,
+      "notes": "Exact official final-shot probe score from project ledger.",
+      "overall_expected": 0.842559,
+      "overall_visible": 0.84,
+      "text_changed_rows_vs_anchor": 81,
+      "transition_counts": "content->calm:90",
+      "visible_bucket": 0.84,
+      "warnings": ""
+    },
+    {
+      "anchor_submission_id": "779605",
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_779605_moe_v2_anchor",
+      "classification_expected": 0.72315,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_moe_v2_accept5_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "Exact Codabench score captured from project ledger.",
+      "overall_expected": 0.836408,
+      "overall_visible": 0.84,
+      "text_changed_rows_vs_anchor": 0,
+      "transition_counts": "",
+      "visible_bucket": 0.84,
+      "warnings": ""
+    },
+    {
+      "anchor_submission_id": "782683",
+      "calibration_kind": "visible_official",
+      "candidate_name": "official_782683_v12_stable_probe",
+      "classification_expected": 0.721667,
+      "description_expected": 0.95,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v12_stable_probe_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "Only rounded leaderboard score is visible; detailed components are rounded leaderboard fields.",
+      "overall_expected": 0.835833,
+      "overall_visible": 0.84,
+      "text_changed_rows_vs_anchor": 12,
+      "transition_counts": "",
+      "visible_bucket": 0.84,
+      "warnings": "exact_unavailable_visible_leaderboard_only"
+    },
+    {
+      "anchor_submission_id": "781601",
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_781601_v3_mid",
+      "classification_expected": 0.719137,
+      "description_expected": 0.948917,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+      "label_changes_vs_anchor": 85,
+      "notes": "Exact Codabench score captured after the mixed same-quadrant probe.",
+      "overall_expected": 0.834027,
+      "overall_visible": 0.83,
+      "text_changed_rows_vs_anchor": 39,
+      "transition_counts": "aroused->excited:1; bored->sad:1; calm->content:43; calm->glad:2; content->calm:20; content->glad:5; excited->happy:1; glad->calm:1; glad->content:4; happy->excited:3; sad->tired:1; tired->sad:3",
+      "visible_bucket": 0.83,
+      "warnings": ""
+    }
+  ],
+  "warning": "Exact anchors are reproduced by fingerprint override; estimates are proxies, not hidden-label reconstruction."
+}
