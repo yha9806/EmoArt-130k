@@ -1,0 +1,32 @@
+# Track2 v26 public kNN probe
+
+## 结论
+
+- decision: `hold_no_submit`
+- decision_reasons: `best_below_089, classification_below_first_place_target`
+- best_threshold: `0.92`
+- best_overall_expected: `0.839288`
+- best_classification_expected: `0.728910`
+- best_description_expected: `0.949667`
+
+## Ranking
+
+| threshold | overall | class | desc | changes | top | top share | transitions | warnings |
+|---:|---:|---:|---:|---:|---|---:|---|---|
+| 0.92 | 0.839288 | 0.728910 | 0.949667 | 138 | calm | 0.558 | alarmed->calm:7; annoyed->calm:5; aroused->alarmed:1; aroused->calm:3; aroused->content:1; aroused->excited:1; aroused->frustrated:2; bored->calm:1; calm->bored:1; calm->content:22; calm->excited:1; calm->frustrated:3; calm->tired:1; content->calm:72; content->excited:1; excited->calm:2; excited->content:1; frustrated->alarmed:2; frustrated->calm:1; frustrated->excited:3; glad->calm:1; happy->calm:1; sad->calm:2; sad->content:1; sad->frustrated:1; tired->calm:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.90 | 0.838418 | 0.727170 | 0.949667 | 292 | calm | 0.642 | alarmed->calm:13; alarmed->excited:1; annoyed->calm:13; annoyed->content:1; annoyed->frustrated:1; annoyed->tired:1; aroused->alarmed:3; aroused->calm:9; aroused->content:2; aroused->excited:6; aroused->frustrated:3; bored->calm:3; bored->content:1; bored->excited:3; bored->frustrated:2; calm->annoyed:1; calm->bored:1; calm->content:34; calm->excited:3; calm->frustrated:3; calm->sad:3; calm->tired:1; content->alarmed:1; content->calm:126; content->excited:5; excited->calm:5; excited->content:1; frustrated->alarmed:4; frustrated->annoyed:1; frustrated->calm:7; frustrated->excited:5; glad->calm:3; glad->content:1; happy->calm:5; sad->calm:6; sad->content:2; sad->frustrated:2; tired->calm:8; tired->content:1; tired->sad:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.93 | 0.837763 | 0.725860 | 0.949667 | 73 | calm | 0.521 | alarmed->calm:4; annoyed->calm:3; aroused->calm:1; aroused->excited:1; aroused->frustrated:1; bored->calm:1; calm->content:16; calm->excited:1; calm->tired:1; content->calm:37; content->excited:1; frustrated->alarmed:2; frustrated->excited:1; glad->calm:1; sad->calm:1; tired->calm:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.94 | 0.837389 | 0.725110 | 0.949667 | 25 | calm | 0.503 | aroused->calm:1; calm->content:5; content->calm:16; content->excited:1; frustrated->alarmed:1; tired->calm:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.88 | 0.836978 | 0.724290 | 0.949667 | 378 | calm | 0.680 | alarmed->calm:16; alarmed->content:1; alarmed->excited:7; alarmed->frustrated:1; alarmed->sad:5; annoyed->calm:16; annoyed->content:1; annoyed->excited:1; annoyed->frustrated:1; annoyed->tired:1; aroused->alarmed:3; aroused->calm:10; aroused->content:2; aroused->excited:6; aroused->frustrated:3; bored->calm:5; bored->content:1; bored->excited:3; bored->frustrated:2; calm->annoyed:1; calm->bored:1; calm->content:40; calm->excited:6; calm->frustrated:4; calm->sad:4; calm->tired:1; content->alarmed:1; content->calm:150; content->excited:8; content->happy:1; excited->calm:7; excited->content:1; frustrated->alarmed:5; frustrated->annoyed:1; frustrated->calm:11; frustrated->excited:6; glad->calm:3; glad->content:1; happy->calm:5; happy->content:1; sad->alarmed:1; sad->calm:8; sad->content:4; sad->frustrated:3; tired->calm:16; tired->content:2; tired->sad:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.95 | 0.836704 | 0.723740 | 0.949667 | 8 | calm | 0.496 | aroused->calm:1; content->calm:5; content->excited:1; frustrated->alarmed:1 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.96 | 0.836690 | 0.723713 | 0.949667 | 3 | calm | 0.493 | content->calm:3 | not_hidden_label_reconstruction |
+| 0.97 | 0.836408 | 0.723150 | 0.949667 | 0 | calm | 0.490 |  |  |
+| 0.98 | 0.836408 | 0.723150 | 0.949667 | 0 | calm | 0.490 |  |  |
+| 0.85 | 0.833928 | 0.718190 | 0.949667 | 465 | calm | 0.715 | alarmed->calm:25; alarmed->content:1; alarmed->excited:10; alarmed->frustrated:2; alarmed->sad:6; annoyed->calm:16; annoyed->content:1; annoyed->excited:1; annoyed->frustrated:1; annoyed->tired:1; aroused->alarmed:3; aroused->calm:11; aroused->content:2; aroused->excited:8; aroused->frustrated:3; aroused->sad:1; bored->calm:10; bored->content:1; bored->excited:3; bored->frustrated:2; bored->sad:1; calm->alarmed:1; calm->annoyed:1; calm->bored:2; calm->content:43; calm->excited:10; calm->frustrated:4; calm->sad:5; calm->tired:1; content->alarmed:1; content->calm:164; content->excited:14; content->frustrated:1; content->happy:1; content->sad:1; excited->calm:9; excited->content:1; excited->sad:1; frustrated->alarmed:5; frustrated->annoyed:1; frustrated->bored:1; frustrated->calm:11; frustrated->excited:8; frustrated->sad:1; glad->calm:4; glad->content:1; happy->calm:5; happy->content:1; happy->excited:1; sad->alarmed:2; sad->calm:14; sad->content:5; sad->frustrated:4; tired->calm:23; tired->content:5; tired->sad:4 | not_hidden_label_reconstruction;out_of_family_label_changes |
+| 0.80 | 0.832869 | 0.716070 | 0.949667 | 493 | calm | 0.728 | alarmed->calm:27; alarmed->content:1; alarmed->excited:10; alarmed->frustrated:2; alarmed->sad:6; annoyed->calm:16; annoyed->content:1; annoyed->excited:1; annoyed->frustrated:1; annoyed->sad:2; annoyed->tired:1; aroused->alarmed:3; aroused->calm:12; aroused->content:2; aroused->excited:8; aroused->frustrated:3; aroused->sad:1; bored->calm:11; bored->content:2; bored->excited:3; bored->frustrated:2; bored->sad:1; calm->alarmed:1; calm->annoyed:1; calm->bored:2; calm->content:44; calm->excited:10; calm->frustrated:4; calm->sad:6; calm->tired:1; content->alarmed:1; content->calm:168; content->excited:15; content->frustrated:1; content->happy:2; content->sad:1; excited->calm:10; excited->content:1; excited->happy:1; excited->sad:1; frustrated->alarmed:6; frustrated->annoyed:1; frustrated->bored:1; frustrated->calm:11; frustrated->excited:8; frustrated->sad:1; glad->calm:4; glad->content:1; happy->calm:5; happy->content:2; happy->excited:1; sad->alarmed:2; sad->calm:15; sad->content:5; sad->frustrated:4; tired->alarmed:1; tired->calm:28; tired->content:6; tired->sad:5 | not_hidden_label_reconstruction;out_of_family_label_changes |
+
+## 判断
+
+- 只按 CLIP 最近邻阈值复制 public label 不能达到 0.89。
+- 0.92 是这组 probe 的最高本地分，但 classification 仍明显低于第一名目标。
+- 0.90 以下开始明显 calm collapse，不能作为最后一次提交的直接策略。

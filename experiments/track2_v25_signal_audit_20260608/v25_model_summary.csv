@@ -1,0 +1,5 @@
+model,rows,changes_vs_base,high_confidence_changes,top_emotion,top_emotion_share
+clip,1000,425,2,calm,0.609
+dinov2,1000,458,3,calm,0.554
+ensemble,1000,391,0,calm,0.614
+siglip2,1000,397,4,calm,0.589
