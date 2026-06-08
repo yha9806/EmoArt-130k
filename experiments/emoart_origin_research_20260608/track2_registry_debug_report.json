@@ -1,0 +1,365 @@
+{
+  "method": "track2_registry_debug_v1",
+  "source_audit": {
+    "source_index": "experiments/emoart_origin_research_20260608/source_index.csv",
+    "row_count": 37,
+    "fieldnames": [
+      "source_type",
+      "name",
+      "url",
+      "verified_public_fact",
+      "track2_use",
+      "status"
+    ],
+    "missing_required_columns": [],
+    "missing_actionability_columns": [
+      "source_scope",
+      "classification_actionability",
+      "description_actionability",
+      "track2_actionability_score",
+      "label_arbitration_allowed",
+      "recommended_use",
+      "risk_flags",
+      "merge_group"
+    ],
+    "blank_required_cells": {
+      "source_type": 0,
+      "name": 0,
+      "url": 0,
+      "verified_public_fact": 0,
+      "track2_use": 0,
+      "status": 0
+    },
+    "duplicate_url_group_count": 6,
+    "duplicate_name_group_count": 4,
+    "duplicate_url_groups": [
+      {
+        "value": "https://arxiv.org/abs/2106.16125",
+        "rows": [
+          28,
+          33
+        ],
+        "count": 2
+      },
+      {
+        "value": "https://arxiv.org/abs/2307.07961",
+        "rows": [
+          16,
+          30
+        ],
+        "count": 2
+      },
+      {
+        "value": "https://basiclab.lab.nycu.edu.tw/",
+        "rows": [
+          26,
+          37
+        ],
+        "count": 2
+      },
+      {
+        "value": "https://github.com/aimmemotion/EmoVIT",
+        "rows": [
+          13,
+          22
+        ],
+        "count": 2
+      },
+      {
+        "value": "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset",
+        "rows": [
+          17,
+          29
+        ],
+        "count": 2
+      },
+      {
+        "value": "https://www.hongxiaxie.net/",
+        "rows": [
+          11,
+          23
+        ],
+        "count": 2
+      }
+    ],
+    "duplicate_name_groups": [
+      {
+        "value": "EmoSet",
+        "rows": [
+          16,
+          30
+        ],
+        "count": 2
+      },
+      {
+        "value": "EmoVerse",
+        "rows": [
+          17,
+          29
+        ],
+        "count": 2
+      },
+      {
+        "value": "Hongxia Xie / AVC Lab",
+        "rows": [
+          11,
+          23
+        ],
+        "count": 2
+      },
+      {
+        "value": "aimmemotion/EmoVIT",
+        "rows": [
+          13,
+          22
+        ],
+        "count": 2
+      }
+    ],
+    "issue_codes": [
+      "duplicate_names_need_merge_group",
+      "duplicate_urls_need_merge_group",
+      "missing_actionability_columns"
+    ],
+    "recommended_fix": "Keep source_index.csv as raw registry; use scored derivative with merge_group for final decisions."
+  },
+  "v22_audit": {
+    "scoreboard": "experiments/track2_v22_official_author_scorer_20260608/v22_ladder_scoreboard.json",
+    "recommended_profile": "calmshiftall",
+    "candidate_json": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+    "upload_json": "submissions/v22_final_upload/track2_submission.json",
+    "upload_zip": "submissions/v22_final_upload/track2_submission.zip",
+    "upload_zip_members": [
+      "submission.json"
+    ],
+    "upload_json_matches_recommended_json": true,
+    "upload_zip_matches_recommended_json": true,
+    "projection_by_profile": {
+      "calmshift120": 0.846335,
+      "calmshift150": 0.847352,
+      "calmshiftall": 0.848163
+    },
+    "issue_count": 0,
+    "issues": []
+  },
+  "public_scan": {
+    "path": "experiments/emoart_origin_research_20260608/public_resource_scan_20260608.json",
+    "top_level_keys": [
+      "github_repos",
+      "huggingface_datasets",
+      "openalex_works"
+    ],
+    "top_level_counts": {
+      "openalex_works": 22,
+      "github_repos": 6,
+      "huggingface_datasets": 6
+    },
+    "zero_result_query_count": 9,
+    "zero_result_queries": [
+      "openalex_works:\"AffectiveArt Challenge 2026\"",
+      "openalex_works:\"Ling Lo\" \"AffectiveArt\"",
+      "openalex_works:\"Hong-Han Shuai\" \"AffectiveArt\"",
+      "openalex_works:\"Jianlong Fu\" \"AffectiveArt\"",
+      "openalex_works:\"Sicheng Zhao\" \"AffectiveArt\"",
+      "openalex_works:\"Sanghoon Lee\" \"AffectiveArt\"",
+      "openalex_works:\"Xing Huang\" \"AffectiveArt\"",
+      "openalex_works:\"Zihan Li\" \"AffectiveArt\"",
+      "github_repos:EmoArt-Salience"
+    ]
+  },
+  "full_map": {
+    "path": "experiments/emoart_origin_research_20260608/emoart_origin_full_public_research_map_zh.md",
+    "chars": 10313,
+    "has_current_conclusions": true,
+    "has_file_manifest": true
+  },
+  "local_inventory": {
+    "path": "experiments/track2_v22_official_author_scorer_20260608/local_emoart130k_inventory.json",
+    "annotation_rows": 132895,
+    "tar_count": 56,
+    "style_count": 56,
+    "issue_count": 0
+  },
+  "style_prior": {
+    "path": "experiments/track2_v22_official_author_scorer_20260608/style_emotion_prior.csv",
+    "row_count": 571,
+    "style_count": 56,
+    "emotion_count": 12,
+    "issue_count": 0
+  },
+  "high_actionability_source_count": 9,
+  "high_actionability_sources": [
+    {
+      "source_type": "project",
+      "name": "EmoArt project page",
+      "url": "https://zhiliangzhang.github.io/EmoArt-130k/",
+      "verified_public_fact": "132K+ artworks; 56 art styles; 12 emotion classes; 5 visual attributes; links to dataset/code/FAB-G",
+      "track2_use": "Primary hub for datasets and code",
+      "status": "verified",
+      "source_scope": "author",
+      "classification_actionability": "0.880",
+      "description_actionability": "0.860",
+      "track2_actionability_score": "0.873",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "2",
+      "merge_group": ""
+    },
+    {
+      "source_type": "dataset",
+      "name": "printblue/EmoArt-130k",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-130k",
+      "verified_public_fact": "132664 images; 56 styles; 7 thematic categories; Annotation.json",
+      "track2_use": "Training/reference/style prior",
+      "status": "verified",
+      "source_scope": "author",
+      "classification_actionability": "0.880",
+      "description_actionability": "0.620",
+      "track2_actionability_score": "0.792",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "3",
+      "merge_group": ""
+    },
+    {
+      "source_type": "dataset",
+      "name": "printblue/EmoArt-Salience",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+      "verified_public_fact": "1400 rows; salience labels for formal attributes",
+      "track2_use": "Description/AGSR salience gate",
+      "status": "verified",
+      "source_scope": "author",
+      "classification_actionability": "0.700",
+      "description_actionability": "0.860",
+      "track2_actionability_score": "0.769",
+      "label_arbitration_allowed": "no",
+      "recommended_use": "description_score_or_attribute_audit",
+      "risk_flags": "none",
+      "registry_row": "5",
+      "merge_group": ""
+    },
+    {
+      "source_type": "code",
+      "name": "zhiliangzhang/EmoArt-130k",
+      "url": "https://github.com/zhiliangzhang/EmoArt-130k",
+      "verified_public_fact": "Evaluation metric code including attribute alignment and CLIP score utilities",
+      "track2_use": "Description proxy and reference metrics",
+      "status": "verified",
+      "source_scope": "author",
+      "classification_actionability": "0.880",
+      "description_actionability": "0.860",
+      "track2_actionability_score": "0.873",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "6",
+      "merge_group": ""
+    },
+    {
+      "source_type": "code",
+      "name": "zhiliangzhang/FAB-G",
+      "url": "https://github.com/zhiliangzhang/FAB-G",
+      "verified_public_fact": "Qwen3-VL-8B base with six LoRA adapters for five attributes plus final agent",
+      "track2_use": "Potential LoRA route; schema for salience bottleneck",
+      "status": "verified",
+      "source_scope": "author",
+      "classification_actionability": "0.700",
+      "description_actionability": "0.860",
+      "track2_actionability_score": "0.769",
+      "label_arbitration_allowed": "no",
+      "recommended_use": "description_score_or_attribute_audit",
+      "risk_flags": "none",
+      "registry_row": "8",
+      "merge_group": ""
+    },
+    {
+      "source_type": "challenge",
+      "name": "AffectiveArt Challenge 2026 OpenReview",
+      "url": "https://openreview.net/forum?id=LbbHX8ofXZ",
+      "verified_public_fact": "Track1 generation and Track2 understanding built on EmoArt; hidden test set; AAS and human/expert evaluation proposal",
+      "track2_use": "Rules and ontology source",
+      "status": "verified",
+      "source_scope": "official",
+      "classification_actionability": "0.920",
+      "description_actionability": "0.650",
+      "track2_actionability_score": "0.835",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "9",
+      "merge_group": ""
+    },
+    {
+      "source_type": "challenge",
+      "name": "Codabench Track2",
+      "url": "https://www.codabench.org/competitions/16304",
+      "verified_public_fact": "Submission schema; 50% classification and 50% description; invalid manipulation rules",
+      "track2_use": "Official format and scoring constraints",
+      "status": "verified",
+      "source_scope": "official",
+      "classification_actionability": "0.920",
+      "description_actionability": "0.650",
+      "track2_actionability_score": "0.835",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "10",
+      "merge_group": ""
+    },
+    {
+      "source_type": "challenge",
+      "name": "AffectiveArt official website",
+      "url": "https://affectiveart-challenge.github.io/",
+      "verified_public_fact": "Official site lists rules, awards, organizers, dates, and public dataset links",
+      "track2_use": "Track1/Track2 official public hub",
+      "status": "verified",
+      "source_scope": "official",
+      "classification_actionability": "0.920",
+      "description_actionability": "0.650",
+      "track2_actionability_score": "0.835",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "18",
+      "merge_group": ""
+    },
+    {
+      "source_type": "challenge",
+      "name": "AffectiveArt submission instructions",
+      "url": "https://github.com/lizihan363-ship-it/AffectiveArt2026/blob/main/Submission%20Instructions.md",
+      "verified_public_fact": "Public submission package schema; max 5 submissions total; top teams provide code/report",
+      "track2_use": "Submission-risk control and final package planning",
+      "status": "verified",
+      "source_scope": "official",
+      "classification_actionability": "0.880",
+      "description_actionability": "0.600",
+      "track2_actionability_score": "0.794",
+      "label_arbitration_allowed": "yes",
+      "recommended_use": "label_arbitration_or_core_calibration",
+      "risk_flags": "none",
+      "registry_row": "19",
+      "merge_group": ""
+    }
+  ],
+  "open_gaps": [
+    {
+      "code": "crawler_not_materialized_as_repeatable_pipeline",
+      "severity": "medium",
+      "detail": "public_resource_scan is a snapshot, not a reusable author-level crawler with scheduling, dedup, retries, and provenance snapshots."
+    },
+    {
+      "code": "source_index_raw_has_no_numeric_actionability_columns",
+      "severity": "low",
+      "detail": "Resolved by generated scored derivative; raw source_index remains human-readable source registry."
+    },
+    {
+      "code": "duplicate_sources_require_merge_group_review",
+      "severity": "low",
+      "detail": "Scored derivative now annotates merge_group; raw duplicate rows are preserved because several entries represent different roles of the same source."
+    }
+  ],
+  "blocking_issue_count": 0,
+  "interpretation": "v22 artifacts are structurally valid; remaining crawler work is pipeline completeness, not final-shot candidate corruption."
+}
