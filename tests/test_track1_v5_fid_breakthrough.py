@@ -117,6 +117,7 @@ def test_build_plan_and_summary_join_sources() -> None:
     rows = build_v5_plan(contracts, expert_routes, official_routes)
     assert len(rows) == 1
     assert rows[0]["v5_route"] == REFERENCE_FAMILY_ROUTE
+    assert rows[0]["recommended_model"] == "gemini-3-pro-image"
     summary = summarize_v5_plan(rows)
     assert summary["total"] == 1
     assert summary["route_counts"] == {REFERENCE_FAMILY_ROUTE: 1}

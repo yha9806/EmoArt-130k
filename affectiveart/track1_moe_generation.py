@@ -13,7 +13,7 @@ from PIL import Image
 from affectiveart.track1_vulca import select_track1_tradition
 
 
-DEFAULT_FLASH_IMAGE_MODEL = "gemini-3.1-flash-image-preview"
+DEFAULT_FLASH_IMAGE_MODEL = "gemini-3.1-flash-image"
 
 
 def load_moe_packets(path: str | Path) -> list[dict[str, Any]]:
@@ -43,6 +43,8 @@ def resolve_image_model(
     if label == "gemini-3.1-flash-image-preview":
         return label
     if label == "gemini-3-pro-image":
+        return pro_image_model or flash_image_model
+    if label.startswith("imagen-"):
         return pro_image_model or flash_image_model
     return label
 
@@ -147,7 +149,8 @@ async def _run_generation_jobs_async(
     if provider_factory is None:
         from vulca.providers.gemini import GeminiImageProvider
 
-        provider_factory = lambda model: GeminiImageProvider(model=model)
+        def provider_factory(model: str) -> Any:
+            return GeminiImageProvider(model=model)
 
     providers: dict[str, Any] = {}
     rows: list[dict[str, Any]] = []

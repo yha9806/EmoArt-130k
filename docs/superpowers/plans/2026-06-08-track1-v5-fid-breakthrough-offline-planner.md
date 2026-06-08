@@ -16,7 +16,7 @@
 - Create: `affectiveart/track1_v5_fid_breakthrough.py`
 - Test: `tests/test_track1_v5_fid_breakthrough.py`
 
-- [ ] **Step 1: Write route classification tests**
+- [x] **Step 1: Write route classification tests**
 
 Create tests that cover:
 
@@ -25,7 +25,7 @@ Create tests that cover:
 - generic low-risk artwork routes to `reference_family_primary`
 - provider prompt contains the official caption and no sample id
 
-- [ ] **Step 2: Implement planner functions**
+- [x] **Step 2: Implement planner functions**
 
 Implement:
 
@@ -34,7 +34,7 @@ Implement:
 - `build_v5_plan(contracts, expert_routes, official_routes)`
 - `summarize_v5_plan(rows)`
 
-- [ ] **Step 3: Run tests**
+- [x] **Step 3: Run tests**
 
 Run:
 
@@ -50,7 +50,7 @@ Expected: tests pass.
 - Create: `scripts/track1_v5_fid_breakthrough_plan.py`
 - Modify: `affectiveart/track1_v5_fid_breakthrough.py`
 
-- [ ] **Step 1: Add CLI**
+- [x] **Step 1: Add CLI**
 
 The CLI reads:
 
@@ -62,7 +62,7 @@ It writes JSON, JSONL, CSV, Markdown, provider prompt files, and HTML under:
 
 `experiments/track1_v5_fid_breakthrough_20260608/offline_plan/`
 
-- [ ] **Step 2: Add HTML dashboard**
+- [x] **Step 2: Add HTML dashboard**
 
 The HTML must show:
 
@@ -75,7 +75,7 @@ The HTML must show:
 - four official reference thumbnails per sample
 - risk tags and provider prompt excerpt
 
-- [ ] **Step 3: Run CLI**
+- [x] **Step 3: Run CLI**
 
 Run:
 
@@ -90,7 +90,7 @@ Expected: 1000 rows and no API calls.
 **Files:**
 - Verify generated files under `experiments/track1_v5_fid_breakthrough_20260608/offline_plan/`
 
-- [ ] **Step 1: Validate champion immutability**
+- [x] **Step 1: Validate champion immutability**
 
 Run:
 
@@ -100,7 +100,7 @@ git diff -- submissions/track1_submission.json submissions/track1_submission.zip
 
 Expected: `0`
 
-- [ ] **Step 2: Run focused tests**
+- [x] **Step 2: Run focused tests**
 
 Run:
 
@@ -110,6 +110,52 @@ python3 -m pytest tests/test_track1_v5_fid_breakthrough.py -q
 
 Expected: pass.
 
-- [ ] **Step 3: Commit verified files**
+- [x] **Step 3: Commit verified files**
 
 Commit only the planner code, tests, plan doc, and generated offline review artifacts needed for handoff.
+
+---
+
+## 2026-06-08 Smoke Follow-up
+
+**New goal:** Before full 1000-image generation, run a 48-sample v5 smoke set that covers hard human-review samples, routes, aspect/support types, style families, and FID-risk tags.
+
+**Implementation added:**
+
+- `affectiveart.track1_v5_smoke_queue`
+- `scripts/track1_v5_smoke_queue.py`
+- `scripts/track1_v5_smoke_review.py`
+- `tests/test_track1_v5_smoke_queue.py`
+
+**Smoke queue result:**
+
+- total: `48`
+- routes: `caption_faithful_guard=22`, `reference_family_primary=16`, `anti_template_diversifier=10`
+- aspects: `portrait_poster=17`, `square_artwork=27`, plus vertical scroll, album spread, horizontal scroll, and panel story coverage
+- planned models after route repair: `gemini-3-pro-image=25`, `gemini-3.1-flash-image=23`
+
+**Runtime finding:**
+
+`imagen-4-ultra` is not a valid `generateContent` model for the current Gemini image provider path. The available Imagen entries are `predict/generate_images` models and do not preserve the current reference-board conditioning path. For this v5 pipeline, `imagen-*` recommendations are now mapped to Gemini image models, preferring `gemini-3-pro-image` when provided.
+
+**Generated smoke result:**
+
+- generated/cached candidates: `48/48`
+- missing current/candidate/reference board in review HTML: `0`
+- actual models: `gemini-3-pro-image=27`, `gemini-3.1-flash-image-preview=21`
+- reference fallback without reference: `4`
+- review HTML: `experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_generated_review_zh.html`
+- contact sheets: `experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_contact_sheet_page_01.jpg` through `_06.jpg`
+
+**Qualitative read:**
+
+The smoke supports the main v5 hypothesis: reference-grounded generation is materially stronger for non-poster reference-family distribution, especially Gongbi, ink-wash, ukiyo-e, Baroque, and abstract drawing cases. Poster cases are mixed: many are more poster-like, but text correctness, relation semantics, and requested object fidelity still require conservative gates. `track1_0747` remains a high-risk hold despite better poster surface.
+
+**Next full-run implication:**
+
+Do not submit a blind 1000-image v5 replacement. Use v5 as a candidate-generation layer, then build a hybrid package using:
+
+- high-confidence reference-family wins,
+- conservative poster accepts only after visual/text/relation review,
+- current champion fallback for uncertain cases,
+- local FID/style-family proxy to avoid degrading distribution.

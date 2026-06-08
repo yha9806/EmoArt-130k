@@ -1,4 +1,3 @@
-import base64
 import importlib.util
 import json
 import tempfile
@@ -145,6 +144,13 @@ class Track1MoeGenerationTest(unittest.TestCase):
         self.assertEqual(
             resolve_image_model("gemini-3-pro-image", pro_image_model="gemini-3-pro-image-preview"),
             "gemini-3-pro-image-preview",
+        )
+
+    def test_resolve_image_model_maps_imagen_text_labels_to_gemini_image_provider(self):
+        self.assertEqual(resolve_image_model("imagen-4-ultra"), DEFAULT_FLASH_IMAGE_MODEL)
+        self.assertEqual(
+            resolve_image_model("imagen-4-ultra", pro_image_model="gemini-3-pro-image"),
+            "gemini-3-pro-image",
         )
 
     def test_run_generation_jobs_writes_png_metadata_and_manifest_rows(self):

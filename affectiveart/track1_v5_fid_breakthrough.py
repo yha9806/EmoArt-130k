@@ -417,7 +417,9 @@ def _recommended_model(route: str, expert: dict[str, Any]) -> str:
     original = str(expert.get("recommended_model") or "")
     if not original:
         return DEFAULT_TRACK1_IMAGE_MODEL
-    if original.startswith("imagen-") or "image" in original:
+    if original.startswith("imagen-"):
+        return DEFAULT_TRACK1_IMAGE_MODEL
+    if "image" in original:
         return original
     return DEFAULT_TRACK1_IMAGE_MODEL
 
