@@ -1,0 +1,4373 @@
+{
+  "version": "track1_public_signal_crawl_v2",
+  "created_at": "2026-06-08T14:56:31.011958+00:00",
+  "github_repos": [
+    {
+      "repo": "zhiliangzhang/EmoArt-130k",
+      "url": "https://github.com/zhiliangzhang/EmoArt-130k",
+      "meta_ok": true,
+      "contents_ok": true,
+      "readme_ok": true,
+      "full_name": "ZHILIANGZHANG/EmoArt-130k",
+      "description": null,
+      "html_url": "https://github.com/ZHILIANGZHANG/EmoArt-130k",
+      "stargazers_count": 6,
+      "forks_count": 1,
+      "open_issues_count": 4,
+      "pushed_at": "2026-05-12T10:17:00Z",
+      "updated_at": "2026-05-24T08:42:15Z",
+      "license": "Apache-2.0",
+      "default_branch": "main",
+      "top_files": [
+        "GUI.py",
+        "LICENSE",
+        "MTLD.py",
+        "README.md",
+        "Shannon entropy.py",
+        "TTR.py",
+        "artist.png",
+        "attributes_alignments.py",
+        "clip_score.py",
+        "display.jpg",
+        "index.html",
+        "overview.jpg",
+        "sample.jpg"
+      ],
+      "readme_download_url": "https://raw.githubusercontent.com/ZHILIANGZHANG/EmoArt-130k/main/README.md"
+    },
+    {
+      "repo": "zhiliangzhang/FAB-G",
+      "url": "https://github.com/zhiliangzhang/FAB-G",
+      "meta_ok": true,
+      "contents_ok": true,
+      "readme_ok": true,
+      "full_name": "ZHILIANGZHANG/FAB-G",
+      "description": null,
+      "html_url": "https://github.com/ZHILIANGZHANG/FAB-G",
+      "stargazers_count": 1,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "pushed_at": "2026-05-12T10:06:28Z",
+      "updated_at": "2026-05-12T10:06:32Z",
+      "license": null,
+      "default_branch": "main",
+      "top_files": [
+        "README.md",
+        "fabg_sim",
+        "infer_fabg_qwen3vl.py",
+        "requirements.txt"
+      ],
+      "readme_download_url": "https://raw.githubusercontent.com/ZHILIANGZHANG/FAB-G/main/README.md"
+    },
+    {
+      "repo": "aimmemotion/EmoVIT",
+      "url": "https://github.com/aimmemotion/EmoVIT",
+      "meta_ok": true,
+      "contents_ok": true,
+      "readme_ok": true,
+      "full_name": "aimmemotion/EmoVIT",
+      "description": "[CVPR 2024] EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning",
+      "html_url": "https://github.com/aimmemotion/EmoVIT",
+      "stargazers_count": 40,
+      "forks_count": 2,
+      "open_issues_count": 6,
+      "pushed_at": "2025-04-20T01:04:39Z",
+      "updated_at": "2026-05-19T19:40:05Z",
+      "license": null,
+      "default_branch": "main",
+      "top_files": [
+        "FT.yaml",
+        "README.md",
+        "blip2_vicuna_instruct.py",
+        "emo",
+        "requirements_emo.txt",
+        "requirements_lavis.txt"
+      ],
+      "readme_download_url": "https://raw.githubusercontent.com/aimmemotion/EmoVIT/main/README.md"
+    },
+    {
+      "repo": "lizihan363-ship-it/AffectiveArt2026",
+      "url": "https://github.com/lizihan363-ship-it/AffectiveArt2026",
+      "meta_ok": true,
+      "contents_ok": true,
+      "readme_ok": true,
+      "full_name": "lizihan363-ship-it/AffectiveArt2026",
+      "description": null,
+      "html_url": "https://github.com/lizihan363-ship-it/AffectiveArt2026",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "pushed_at": "2026-05-17T05:10:00Z",
+      "updated_at": "2026-05-17T05:20:32Z",
+      "license": null,
+      "default_branch": "main",
+      "top_files": [
+        "README.md",
+        "Submission Instructions.md",
+        "assets"
+      ],
+      "readme_download_url": "https://raw.githubusercontent.com/lizihan363-ship-it/AffectiveArt2026/main/README.md"
+    }
+  ],
+  "huggingface_datasets": [
+    {
+      "dataset": "printblue/EmoArt-130k",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-130k",
+      "ok": true,
+      "id": "printblue/EmoArt-130k",
+      "author": "printblue",
+      "lastModified": "2025-05-31T06:06:36.000Z",
+      "likes": 8,
+      "downloads": 1096,
+      "private": false,
+      "disabled": false,
+      "gated": false,
+      "tags": [
+        "size_categories:100K<n<1M",
+        "format:webdataset",
+        "modality:image",
+        "modality:text",
+        "library:datasets",
+        "library:webdataset",
+        "library:mlcroissant",
+        "region:us"
+      ],
+      "cardData": null,
+      "sibling_files": [
+        ".gitattributes",
+        "Abstract Art.tar.gz",
+        "Abstract Expressionism.tar.gz",
+        "Academicism.tar.gz",
+        "Annotation.json",
+        "Art Brut.tar.gz",
+        "Art Deco.tar.gz",
+        "Art Informel.tar.gz",
+        "Art Nouveau (Modern).tar.gz",
+        "Baroque.tar.gz",
+        "China_images.tar.gz",
+        "Color Field Painting.tar.gz",
+        "Concretism.tar.gz",
+        "Constructivism.tar.gz",
+        "Contemporary Realism.tar.gz",
+        "Cubism.tar.gz",
+        "Dada.tar.gz",
+        "Early Renaissance.tar.gz",
+        "Expressionism.tar.gz",
+        "Fauvism.tar.gz",
+        "Figurative Expressionism.tar.gz",
+        "Gongbi.tar.gz",
+        "Hard Edge Painting.tar.gz",
+        "High Renaissance.tar.gz",
+        "Impressionism.tar.gz",
+        "India_art.tar.gz",
+        "Ink and wash painting.tar.gz",
+        "Islamic_image.tar.gz",
+        "Korea.tar.gz",
+        "Lyrical Abstraction.tar.gz",
+        "Magic Realism.tar.gz",
+        "Mannerism (Late Renaissance).tar.gz",
+        "Native Art.tar.gz",
+        "Naturalism.tar.gz",
+        "Naïve Art (Primitivism).tar.gz",
+        "Neo-Expressionism.tar.gz",
+        "Neo-Impressionism.tar.gz",
+        "Neo-Pop Art.tar.gz",
+        "Neo-Romanticism.tar.gz",
+        "New Realism.tar.gz",
+        "Op Art.tar.gz",
+        "Orientalism.tar.gz",
+        "Pointillism.tar.gz",
+        "Pop Art.tar.gz",
+        "Post-Impressionism.tar.gz",
+        "README.md",
+        "Realism.tar.gz",
+        "Regionalism.tar.gz",
+        "Rococo.tar.gz",
+        "Romanticism.tar.gz",
+        "Shin-hanga.tar.gz",
+        "Social Realism.tar.gz",
+        "Socialist Realism.tar.gz",
+        "Surrealism.tar.gz",
+        "Symbolism.tar.gz",
+        "Sōsaku hanga.tar.gz",
+        "Tachisme.tar.gz",
+        "Transavantgarde.tar.gz",
+        "Ukiyo-e.tar.gz"
+      ],
+      "sibling_count": 59
+    },
+    {
+      "dataset": "printblue/EmoArt-5k",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-5k",
+      "ok": true,
+      "id": "printblue/EmoArt-5k",
+      "author": "printblue",
+      "lastModified": "2025-05-31T06:04:31.000Z",
+      "likes": 4,
+      "downloads": 226,
+      "private": false,
+      "disabled": false,
+      "gated": false,
+      "tags": [
+        "size_categories:1K<n<10K",
+        "format:json",
+        "modality:text",
+        "library:datasets",
+        "library:pandas",
+        "library:mlcroissant",
+        "library:polars",
+        "region:us"
+      ],
+      "cardData": null,
+      "sibling_files": [
+        ".gitattributes",
+        "Images.tar.gz",
+        "README.md",
+        "annotation.json"
+      ],
+      "sibling_count": 4
+    },
+    {
+      "dataset": "printblue/EmoArt-Salience",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+      "ok": true,
+      "id": "printblue/EmoArt-Salience",
+      "author": "printblue",
+      "lastModified": "2026-05-12T06:30:32.000Z",
+      "likes": 1,
+      "downloads": 169,
+      "private": false,
+      "disabled": false,
+      "gated": false,
+      "tags": [
+        "license:apache-2.0",
+        "size_categories:1K<n<10K",
+        "format:parquet",
+        "modality:text",
+        "library:datasets",
+        "library:pandas",
+        "library:polars",
+        "library:mlcroissant",
+        "region:us"
+      ],
+      "cardData": {
+        "license": "apache-2.0"
+      },
+      "sibling_files": [
+        ".gitattributes",
+        "README.md",
+        "test.parquet",
+        "train.parquet"
+      ],
+      "sibling_count": 4
+    }
+  ],
+  "openalex_queries": [
+    {
+      "query": "EmoArt A Multidimensional Dataset Emotion-Aware Artistic Generation",
+      "ok": true,
+      "rows": [
+        {
+          "title": "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.1145/3746027.3758201",
+          "cited_by_count": 1,
+          "open_access": {
+            "is_oa": false,
+            "oa_status": "closed",
+            "oa_url": null,
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3746027.3758201",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1145/3746027.3758201",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 33rd ACM International Conference on Multimedia",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Cheng Zhang",
+              "institutions": [
+                "Jilin University"
+              ]
+            },
+            {
+              "author": "Hongxia Xie",
+              "institutions": [
+                "Jilin University"
+              ]
+            },
+            {
+              "author": "Bin Wen",
+              "institutions": [
+                "Jilin University"
+              ]
+            },
+            {
+              "author": "Songhan Zuo",
+              "institutions": [
+                "Jilin University"
+              ]
+            },
+            {
+              "author": "Ruoxuan Zhang",
+              "institutions": [
+                "Jilin University"
+              ]
+            },
+            {
+              "author": "Wen-Huang Cheng",
+              "institutions": [
+                "National Taiwan University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.48550/arxiv.2506.03652",
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2506.03652",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2506.03652",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2506.03652",
+            "pdf_url": "https://arxiv.org/pdf/2506.03652",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by-nc-nd",
+            "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Cheng Zhang",
+              "institutions": []
+            },
+            {
+              "author": "xie, Hongxia",
+              "institutions": []
+            },
+            {
+              "author": "Bin Wen",
+              "institutions": []
+            },
+            {
+              "author": "Songhan Zuo",
+              "institutions": []
+            },
+            {
+              "author": "Ruoxuan Zhang",
+              "institutions": []
+            },
+            {
+              "author": "Cheng, Wen-huang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.48550/arxiv.2511.12554",
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2511.12554",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2511.12554",
+            "is_oa": true,
+            "landing_page_url": "https://arxiv.org/abs/2511.12554",
+            "pdf_url": "https://arxiv.org/pdf/2511.12554",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Yijie Guo",
+              "institutions": []
+            },
+            {
+              "author": "Dexiang Hong",
+              "institutions": []
+            },
+            {
+              "author": "Weidong Chen",
+              "institutions": []
+            },
+            {
+              "author": "She, Zihan",
+              "institutions": []
+            },
+            {
+              "author": "Ye Cheng",
+              "institutions": []
+            },
+            {
+              "author": "Xiaojun Chang",
+              "institutions": []
+            },
+            {
+              "author": "Zhendong Mao",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis",
+          "publication_year": 2026,
+          "doi": null,
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2605.26262",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2605.26262",
+            "is_oa": true,
+            "landing_page_url": "https://arxiv.org/abs/2605.26262",
+            "pdf_url": "https://arxiv.org/pdf/2605.26262",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Emile Bergeron",
+              "institutions": [
+                "Université Laval"
+              ]
+            },
+            {
+              "author": "Tadagbé Dhossou",
+              "institutions": [
+                "Université Laval"
+              ]
+            },
+            {
+              "author": "Sébastien Tremblay",
+              "institutions": [
+                "Université Laval"
+              ]
+            },
+            {
+              "author": "Jean-François Lalonde",
+              "institutions": [
+                "Université Laval"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Attribute-Grounded Selective Reasoning Artwork Emotion Understanding Multimodal Large Language Models",
+      "ok": true,
+      "rows": [
+        {
+          "title": "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models",
+          "publication_year": 2026,
+          "doi": "https://doi.org/10.48550/arxiv.2605.15755",
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://doi.org/10.48550/arxiv.2605.15755",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.48550/arxiv.2605.15755",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.48550/arxiv.2605.15755",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": null,
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "article"
+          },
+          "authorships": [
+            {
+              "author": "Cheng Zhang",
+              "institutions": []
+            },
+            {
+              "author": "Yuer Liu",
+              "institutions": []
+            },
+            {
+              "author": "Zhiyu Zhou",
+              "institutions": []
+            },
+            {
+              "author": "Hongxia Xie",
+              "institutions": []
+            },
+            {
+              "author": "Wen-Huang Cheng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models",
+          "publication_year": 2026,
+          "doi": null,
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2605.15755",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2605.15755",
+            "is_oa": true,
+            "landing_page_url": "https://arxiv.org/abs/2605.15755",
+            "pdf_url": "https://arxiv.org/pdf/2605.15755",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Cheng Zhang",
+              "institutions": []
+            },
+            {
+              "author": "Yuer Liu",
+              "institutions": []
+            },
+            {
+              "author": "Zhiyu Zhou",
+              "institutions": []
+            },
+            {
+              "author": "Hongxia Xie",
+              "institutions": []
+            },
+            {
+              "author": "Wen-Huang Cheng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A Comprehensive Survey of AI-Generated Content (AIGC): A History of Generative AI from GAN to ChatGPT",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.48550/arxiv.2303.04226",
+          "cited_by_count": 401,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2303.04226",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2303.04226",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2303.04226",
+            "pdf_url": "https://arxiv.org/pdf/2303.04226",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": null
+          },
+          "authorships": [
+            {
+              "author": "Yihan Cao",
+              "institutions": []
+            },
+            {
+              "author": "Siyu Li",
+              "institutions": []
+            },
+            {
+              "author": "Yixin Liu",
+              "institutions": []
+            },
+            {
+              "author": "Zhiling Yan",
+              "institutions": []
+            },
+            {
+              "author": "Yutong Dai",
+              "institutions": []
+            },
+            {
+              "author": "Philip S. Yu",
+              "institutions": []
+            },
+            {
+              "author": "Lichao Sun",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Deepfake detection using deep learning methods: A systematic and comprehensive review",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1002/widm.1520",
+          "cited_by_count": 280,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "hybrid",
+            "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/widm.1520",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1002/widm.1520",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1002/widm.1520",
+            "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/widm.1520",
+            "source": {
+              "id": "https://openalex.org/S2505707916",
+              "display_name": "Wiley Interdisciplinary Reviews Data Mining and Knowledge Discovery",
+              "issn_l": "1942-4787",
+              "issn": [
+                "1942-4787",
+                "1942-4795"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320595",
+              "host_organization_name": "Wiley",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320595"
+              ],
+              "host_organization_lineage_names": [
+                "Wiley"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by-nc-nd",
+            "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "WIREs Data Mining and Knowledge Discovery",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Arash Heidari",
+              "institutions": [
+                "Haliç University"
+              ]
+            },
+            {
+              "author": "Nima Jafari Navimipour",
+              "institutions": [
+                "Kadir Has University",
+                "National Yunlin University of Science and Technology"
+              ]
+            },
+            {
+              "author": "Hasan Dağ",
+              "institutions": [
+                "Kadir Has University"
+              ]
+            },
+            {
+              "author": "Mehmet Ünal",
+              "institutions": [
+                "İstanbul Nişantaşı Üniversitesi"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "More Than Meets the Eye: Art Engages the Social Brain",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.3389/fnins.2022.738865",
+          "cited_by_count": 30,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.frontiersin.org/articles/10.3389/fnins.2022.738865/pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3389/fnins.2022.738865",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3389/fnins.2022.738865",
+            "pdf_url": "https://www.frontiersin.org/articles/10.3389/fnins.2022.738865/pdf",
+            "source": {
+              "id": "https://openalex.org/S115201632",
+              "display_name": "Frontiers in Neuroscience",
+              "issn_l": "1662-453X",
+              "issn": [
+                "1662-453X",
+                "1662-4548"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320527",
+              "host_organization_name": "Frontiers Media",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320527"
+              ],
+              "host_organization_lineage_names": [
+                "Frontiers Media"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Frontiers in Neuroscience",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Janneke E. P. van Leeuwen",
+              "institutions": [
+                "UK Dementia Research Institute",
+                "National Hospital for Neurology and Neurosurgery",
+                "University College London"
+              ]
+            },
+            {
+              "author": "Jeroen Boomgaard",
+              "institutions": [
+                "Gerrit Rietveld Academy"
+              ]
+            },
+            {
+              "author": "Danilo Bzdok",
+              "institutions": [
+                "McGill University"
+              ]
+            },
+            {
+              "author": "Sebastian J. Crutch",
+              "institutions": [
+                "UK Dementia Research Institute",
+                "National Hospital for Neurology and Neurosurgery",
+                "University College London"
+              ]
+            },
+            {
+              "author": "Jason D. Warren",
+              "institutions": [
+                "UK Dementia Research Institute",
+                "National Hospital for Neurology and Neurosurgery",
+                "University College London"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Mapping Intermediality in Performance",
+          "publication_year": 2011,
+          "doi": "https://doi.org/10.5117/9789089642554",
+          "cited_by_count": 82,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://library.oapen.org/bitstream/20.500.12657/34571/1/406430.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.5117/9789089642554",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.5117/9789089642554",
+            "pdf_url": "https://library.oapen.org/bitstream/20.500.12657/34571/1/406430.pdf",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": null,
+            "raw_type": "monograph"
+          },
+          "authorships": [
+            {
+              "author": "Andy Lavender",
+              "institutions": [
+                "Manchester Metropolitan University",
+                "University of London",
+                "Utrecht University",
+                "Médecins Sans Frontières",
+                "University at Buffalo, State University of New York"
+              ]
+            },
+            {
+              "author": "Chiel Kattenbelt",
+              "institutions": []
+            },
+            {
+              "author": "Robin Nelson",
+              "institutions": []
+            },
+            {
+              "author": "Sarah Bay-Cheng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "New Opportunities for Interest-Driven Arts Learning in a Digital Age",
+          "publication_year": 2013,
+          "doi": "https://doi.org/10.59656/a-ya8704.001",
+          "cited_by_count": 54,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://wallacefoundation.org/sites/default/files/2024-08/new-opportunities-for-interest-driven-arts-learning.doi_.10.59656%252FA-YA8704.001.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.59656/a-ya8704.001",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.59656/a-ya8704.001",
+            "pdf_url": "https://wallacefoundation.org/sites/default/files/2024-08/new-opportunities-for-interest-driven-arts-learning.doi_.10.59656%252FA-YA8704.001.pdf",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": null,
+            "raw_type": "report"
+          },
+          "authorships": [
+            {
+              "author": "Kylie Peppler",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Big Data for Qualitative Research",
+          "publication_year": 2019,
+          "doi": "https://doi.org/10.4324/9780429056413",
+          "cited_by_count": 42,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://api.taylorfrancis.com/content/books/oa-mono/download?identifierName=doi&identifierValue=10.4324/9780429056413&type=webpdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.4324/9780429056413",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.4324/9780429056413",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": null,
+            "raw_type": "monograph"
+          },
+          "authorships": [
+            {
+              "author": "Kathy A. Mills",
+              "institutions": [
+                "University of London",
+                "Universal Trim Supply (Taiwan)",
+                "University College London",
+                "Goldsmiths University of London",
+                "Australian Catholic University"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "EmoVIT Revolutionizing Emotion Insights Visual Instruction Tuning",
+      "ok": true,
+      "rows": [
+        {
+          "title": "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1109/cvpr52733.2024.02511",
+          "cited_by_count": 22,
+          "open_access": {
+            "is_oa": false,
+            "oa_status": "closed",
+            "oa_url": null,
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1109/cvpr52733.2024.02511",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1109/cvpr52733.2024.02511",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Hongxia Xie",
+              "institutions": [
+                "Jilin University",
+                "Jilin Medical University"
+              ]
+            },
+            {
+              "author": "Chu-Jun Peng",
+              "institutions": [
+                "National Taiwan University"
+              ]
+            },
+            {
+              "author": "Yu‐Wen Tseng",
+              "institutions": [
+                "National Taiwan University"
+              ]
+            },
+            {
+              "author": "Hung-Jen Chen",
+              "institutions": [
+                "National Yang Ming Chiao Tung University"
+              ]
+            },
+            {
+              "author": "Chan-Feng Hsu",
+              "institutions": [
+                "National Yang Ming Chiao Tung University"
+              ]
+            },
+            {
+              "author": "Hong-Han Shuai",
+              "institutions": [
+                "National Yang Ming Chiao Tung University"
+              ]
+            },
+            {
+              "author": "Hao‐Wen Cheng",
+              "institutions": [
+                "National Taiwan University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.48550/arxiv.2404.16670",
+          "cited_by_count": 1,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2404.16670",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2404.16670",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2404.16670",
+            "pdf_url": "https://arxiv.org/pdf/2404.16670",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Hongxia Xie",
+              "institutions": []
+            },
+            {
+              "author": "Chu-Jun Peng",
+              "institutions": []
+            },
+            {
+              "author": "Yu‐Wen Tseng",
+              "institutions": []
+            },
+            {
+              "author": "Hung‐Jen Chen",
+              "institutions": []
+            },
+            {
+              "author": "Chan-Feng Hsu",
+              "institutions": []
+            },
+            {
+              "author": "Hong-Han Shuai",
+              "institutions": []
+            },
+            {
+              "author": "Hao‐Wen Cheng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "SZTU-CMU at MER2024: Improving Emotion-LLaMA with Conv-Attention for Multimodal Emotion Recognition",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1145/3689092.3689404",
+          "cited_by_count": 7,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2408.10500",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3689092.3689404",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1145/3689092.3689404",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 2nd International Workshop on Multimodal and Responsible Affective Computing",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Zebang Cheng",
+              "institutions": [
+                "Shenzhen Technology University",
+                "Carnegie Mellon University"
+              ]
+            },
+            {
+              "author": "Shuyuan Tu",
+              "institutions": [
+                "Carnegie Mellon University"
+              ]
+            },
+            {
+              "author": "Dawei Huang",
+              "institutions": [
+                "Shenzhen Technology University"
+              ]
+            },
+            {
+              "author": "Minghan Li",
+              "institutions": [
+                "Carnegie Mellon University"
+              ]
+            },
+            {
+              "author": "Xiaojiang Peng",
+              "institutions": [
+                "Shenzhen Technology University"
+              ]
+            },
+            {
+              "author": "Zhi-Qi Cheng",
+              "institutions": [
+                "Shenzhen Technology University",
+                "Carnegie Mellon University"
+              ]
+            },
+            {
+              "author": "Alexander G. Hauptmann",
+              "institutions": [
+                "Carnegie Mellon University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Evaluating Vision-Language Models for Emotion Recognition",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.18653/v1/2025.findings-naacl.97",
+          "cited_by_count": 3,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://aclanthology.org/2025.findings-naacl.97.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2025.findings-naacl.97",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.18653/v1/2025.findings-naacl.97",
+            "pdf_url": "https://aclanthology.org/2025.findings-naacl.97.pdf",
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Findings of the Association for Computational Linguistics: NAACL 2025",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Sree Bhattacharyya",
+              "institutions": []
+            },
+            {
+              "author": "James Z. Wang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "AffectGPT: A New Dataset, Model, and Benchmark for Emotion Understanding with Multimodal Large Language Models",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.48550/arxiv.2501.16566",
+          "cited_by_count": 2,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2501.16566",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2501.16566",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2501.16566",
+            "pdf_url": "https://arxiv.org/pdf/2501.16566",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Zheng Lian",
+              "institutions": []
+            },
+            {
+              "author": "Haoyu Chen",
+              "institutions": []
+            },
+            {
+              "author": "Lan Chen",
+              "institutions": []
+            },
+            {
+              "author": "Haiyang Sun",
+              "institutions": []
+            },
+            {
+              "author": "Licai Sun",
+              "institutions": []
+            },
+            {
+              "author": "Yong Ren",
+              "institutions": []
+            },
+            {
+              "author": "Zebang Cheng",
+              "institutions": []
+            },
+            {
+              "author": "Bin Liu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "VLLMs Provide Better Context for Emotion Understanding Through Common Sense Reasoning",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.48550/arxiv.2404.07078",
+          "cited_by_count": 1,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2404.07078",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2404.07078",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2404.07078",
+            "pdf_url": "https://arxiv.org/pdf/2404.07078",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Alexandros Xenos",
+              "institutions": []
+            },
+            {
+              "author": "Niki Maria Foteinopoulou",
+              "institutions": []
+            },
+            {
+              "author": "Ιωάννα Ντίνου",
+              "institutions": []
+            },
+            {
+              "author": "Ioannis Patras",
+              "institutions": []
+            },
+            {
+              "author": "Georgios Tzimiropoulos",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Evaluating Vision-Language Models for Emotion Recognition",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.48550/arxiv.2502.05660",
+          "cited_by_count": 1,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2502.05660",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2502.05660",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2502.05660",
+            "pdf_url": "https://arxiv.org/pdf/2502.05660",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Sree Bhattacharyya",
+              "institutions": []
+            },
+            {
+              "author": "James Z. Wang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "EmoVLM-KD: Fusing Distilled Expertise with Vision-Language Models for Visual Emotion Analysis",
+          "publication_year": 2025,
+          "doi": "https://doi.org/10.48550/arxiv.2505.07164",
+          "cited_by_count": 0,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2505.07164",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2505.07164",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2505.07164",
+            "pdf_url": "https://arxiv.org/pdf/2505.07164",
+            "source": {
+              "id": "https://openalex.org/S4393918464",
+              "display_name": "ArXiv.org",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": null,
+              "host_organization_name": null,
+              "host_organization_lineage": [],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by-nc-sa",
+            "license_id": "https://openalex.org/licenses/cc-by-nc-sa",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "SangEun Lee",
+              "institutions": []
+            },
+            {
+              "author": "Yubeen Lee",
+              "institutions": []
+            },
+            {
+              "author": "Eunil Park",
+              "institutions": []
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Hongxia Xie visual emotion art affective computing",
+      "ok": true,
+      "rows": [
+        {
+          "title": "An End-to-End Deep Model With Discriminative Facial Features for Facial Expression Recognition",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1109/access.2021.3051403",
+          "cited_by_count": 39,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09321319.pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1109/access.2021.3051403",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1109/access.2021.3051403",
+            "pdf_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09321319.pdf",
+            "source": {
+              "id": "https://openalex.org/S2485537415",
+              "display_name": "IEEE Access",
+              "issn_l": "2169-3536",
+              "issn": [
+                "2169-3536"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Access",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Jun Liu",
+              "institutions": [
+                "Shenyang Ligong University"
+              ]
+            },
+            {
+              "author": "Hongxia Wang",
+              "institutions": [
+                "Shenyang Ligong University"
+              ]
+            },
+            {
+              "author": "Yanjun Feng",
+              "institutions": [
+                "Shenyang Ligong University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Advances and challenges in conversational recommender systems: A survey",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1016/j.aiopen.2021.06.002",
+          "cited_by_count": 38,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://doi.org/10.1016/j.aiopen.2021.06.002",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1016/j.aiopen.2021.06.002",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1016/j.aiopen.2021.06.002",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4210194376",
+              "display_name": "AI Open",
+              "issn_l": "2666-6510",
+              "issn": [
+                "2666-6510"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320990",
+              "host_organization_name": "Elsevier BV",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320990"
+              ],
+              "host_organization_lineage_names": [
+                "Elsevier BV"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "AI Open",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Chongming Gao",
+              "institutions": [
+                "University of Science and Technology of China"
+              ]
+            },
+            {
+              "author": "Wenqiang Lei",
+              "institutions": [
+                "National University of Singapore"
+              ]
+            },
+            {
+              "author": "Xiangnan He",
+              "institutions": [
+                "University of Science and Technology of China"
+              ]
+            },
+            {
+              "author": "Maarten de Rijke",
+              "institutions": [
+                "Ahold Delhaize (Netherlands)",
+                "University of Amsterdam"
+              ]
+            },
+            {
+              "author": "Tat‐Seng Chua",
+              "institutions": [
+                "National University of Singapore"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Contrastive Learning Models for Sentence Representations",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1145/3593590",
+          "cited_by_count": 43,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3593590",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3593590",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3593590",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3593590",
+            "source": {
+              "id": "https://openalex.org/S2492086750",
+              "display_name": "ACM Transactions on Intelligent Systems and Technology",
+              "issn_l": "2157-6904",
+              "issn": [
+                "2157-6904",
+                "2157-6912"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Transactions on Intelligent Systems and Technology",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Lingling Xu",
+              "institutions": []
+            },
+            {
+              "author": "Haoran Xie",
+              "institutions": []
+            },
+            {
+              "author": "Zongxi Li",
+              "institutions": []
+            },
+            {
+              "author": "Fu Lee Wang",
+              "institutions": []
+            },
+            {
+              "author": "Weiming Wang",
+              "institutions": []
+            },
+            {
+              "author": "Qing Li",
+              "institutions": [
+                "Hong Kong Polytechnic University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Multimodal Conversational AI: A Survey of Datasets and Approaches",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.18653/v1/2022.nlp4convai-1.12",
+          "cited_by_count": 33,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://aclanthology.org/2022.nlp4convai-1.12.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2022.nlp4convai-1.12",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.18653/v1/2022.nlp4convai-1.12",
+            "pdf_url": "https://aclanthology.org/2022.nlp4convai-1.12.pdf",
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 4th Workshop on NLP for Conversational AI",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Anirudh Sundar",
+              "institutions": [
+                "Georgia Institute of Technology"
+              ]
+            },
+            {
+              "author": "Larry Heck",
+              "institutions": [
+                "Georgia Institute of Technology"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "UniS-MMC: Multimodal Classification via Unimodality-supervised Multimodal Contrastive Learning",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.18653/v1/2023.findings-acl.41",
+          "cited_by_count": 21,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://aclanthology.org/2023.findings-acl.41.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2023.findings-acl.41",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.18653/v1/2023.findings-acl.41",
+            "pdf_url": "https://aclanthology.org/2023.findings-acl.41.pdf",
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Findings of the Association for Computational Linguistics: ACL 2023",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Heqing Zou",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Meng Shen",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Chen Chen",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Yu‐Chen Hu",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Deepu Rajan",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Eng Siong Chng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A Practical Tutorial on Graph Neural Networks",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.1145/3503043",
+          "cited_by_count": 26,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3503043",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3503043",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3503043",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3503043",
+            "source": {
+              "id": "https://openalex.org/S157921468",
+              "display_name": "ACM Computing Surveys",
+              "issn_l": "0360-0300",
+              "issn": [
+                "0360-0300",
+                "1557-7341"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Computing Surveys",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Isaac Ronald Ward",
+              "institutions": [
+                "University of Southern California"
+              ]
+            },
+            {
+              "author": "Jack Joyner",
+              "institutions": []
+            },
+            {
+              "author": "Casey Lickfold",
+              "institutions": []
+            },
+            {
+              "author": "Yulan Guo",
+              "institutions": [
+                "Sun Yat-sen University"
+              ]
+            },
+            {
+              "author": "Mohammed Bennamoun",
+              "institutions": [
+                "The University of Western Australia"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Creativity and Machine Learning: A Survey",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1145/3664595",
+          "cited_by_count": 36,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "hybrid",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3664595",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3664595",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3664595",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3664595",
+            "source": {
+              "id": "https://openalex.org/S157921468",
+              "display_name": "ACM Computing Surveys",
+              "issn_l": "0360-0300",
+              "issn": [
+                "0360-0300",
+                "1557-7341"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Computing Surveys",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Giorgio Franceschelli",
+              "institutions": [
+                "University of Bologna"
+              ]
+            },
+            {
+              "author": "Mirco Musolesi",
+              "institutions": [
+                "University College London",
+                "University of Bologna"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A Stethoscope for Drones: Transformers-Based Methods for UAVs Acoustic Anomaly Detection",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1109/access.2023.3262702",
+          "cited_by_count": 26,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10083087.pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1109/access.2023.3262702",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1109/access.2023.3262702",
+            "pdf_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10083087.pdf",
+            "source": {
+              "id": "https://openalex.org/S2485537415",
+              "display_name": "IEEE Access",
+              "issn_l": "2169-3536",
+              "issn": [
+                "2169-3536"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Access",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Or Haim Anidjar",
+              "institutions": [
+                "Ariel University"
+              ]
+            },
+            {
+              "author": "Alon Barak",
+              "institutions": [
+                "Ariel University"
+              ]
+            },
+            {
+              "author": "Boaz Ben‐Moshe",
+              "institutions": [
+                "Ariel University"
+              ]
+            },
+            {
+              "author": "Eyal Hagai",
+              "institutions": [
+                "Ariel University"
+              ]
+            },
+            {
+              "author": "Sahar Tuvyahu",
+              "institutions": [
+                "Ariel University"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Sicheng Zhao visual emotion analysis survey affective image",
+      "ok": true,
+      "rows": [
+        {
+          "title": "Learning an animatable detailed 3D face model from in-the-wild images",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1145/3450626.3459936",
+          "cited_by_count": 596,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "hybrid",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3450626.3459936",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3450626.3459936",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3450626.3459936",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3450626.3459936",
+            "source": {
+              "id": "https://openalex.org/S185367456",
+              "display_name": "ACM Transactions on Graphics",
+              "issn_l": "0730-0301",
+              "issn": [
+                "0730-0301",
+                "1557-7368"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Transactions on Graphics",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Yao Feng",
+              "institutions": []
+            },
+            {
+              "author": "Haiwen Feng",
+              "institutions": [
+                "Max Planck Institute for Intelligent Systems"
+              ]
+            },
+            {
+              "author": "Michael J. Black",
+              "institutions": [
+                "Max Planck Institute for Intelligent Systems"
+              ]
+            },
+            {
+              "author": "Timo Bolkart",
+              "institutions": [
+                "Max Planck Institute for Intelligent Systems"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SemEval-2020 Task 8: Memotion Analysis- the Visuo-Lingual Metaphor!",
+          "publication_year": 2020,
+          "doi": "https://doi.org/10.18653/v1/2020.semeval-1.99",
+          "cited_by_count": 166,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://aclanthology.org/2020.semeval-1.99.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2020.semeval-1.99",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.18653/v1/2020.semeval-1.99",
+            "pdf_url": "https://aclanthology.org/2020.semeval-1.99.pdf",
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the Fourteenth Workshop on Semantic Evaluation",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Chhavi Sharma",
+              "institutions": [
+                "Indian Institute of Information Technology Sri City"
+              ]
+            },
+            {
+              "author": "Deepesh Bhageria",
+              "institutions": [
+                "Indian Institute of Information Technology Sri City"
+              ]
+            },
+            {
+              "author": "William G. Scott",
+              "institutions": [
+                "Indian Institute of Technology Delhi",
+                "Indraprastha Institute of Information Technology Delhi"
+              ]
+            },
+            {
+              "author": "Srinivas Pykl",
+              "institutions": [
+                "Indian Institute of Information Technology Sri City"
+              ]
+            },
+            {
+              "author": "Amitava Das",
+              "institutions": [
+                "Wipro (India)"
+              ]
+            },
+            {
+              "author": "Tanmoy Chakraborty",
+              "institutions": [
+                "Indian Institute of Technology Delhi",
+                "Indraprastha Institute of Information Technology Delhi"
+              ]
+            },
+            {
+              "author": "P. Viswanath",
+              "institutions": [
+                "Indian Institute of Information Technology Sri City"
+              ]
+            },
+            {
+              "author": "Björn Gambäck",
+              "institutions": [
+                "NTNU Samfunnsforskning"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Affective Computing for Large-scale Heterogeneous Multimedia Data",
+          "publication_year": 2019,
+          "doi": "https://doi.org/10.1145/3363560",
+          "cited_by_count": 75,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3363560",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3363560",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3363560",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3363560",
+            "source": {
+              "id": "https://openalex.org/S19610489",
+              "display_name": "ACM Transactions on Multimedia Computing Communications and Applications",
+              "issn_l": "1551-6857",
+              "issn": [
+                "1551-6857",
+                "1551-6865"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Transactions on Multimedia Computing, Communications, and Applications",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Sicheng Zhao",
+              "institutions": [
+                "University of California, Berkeley"
+              ]
+            },
+            {
+              "author": "Shangfei Wang",
+              "institutions": [
+                "University of Science and Technology of China"
+              ]
+            },
+            {
+              "author": "Mohammad Soleymani",
+              "institutions": [
+                "University of Southern California"
+              ]
+            },
+            {
+              "author": "Dhiraj Joshi",
+              "institutions": [
+                "IBM (United States)"
+              ]
+            },
+            {
+              "author": "Qiang Ji",
+              "institutions": [
+                "Rensselaer Polytechnic Institute"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Personality-Aware Personalized Emotion Recognition from Physiological Signals",
+          "publication_year": 2018,
+          "doi": "https://doi.org/10.24963/ijcai.2018/230",
+          "cited_by_count": 52,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.ijcai.org/proceedings/2018/0230.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.24963/ijcai.2018/230",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.24963/ijcai.2018/230",
+            "pdf_url": "https://www.ijcai.org/proceedings/2018/0230.pdf",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Sicheng Zhao",
+              "institutions": [
+                "Lancaster University",
+                "University of California, Berkeley",
+                "Tsinghua University"
+              ]
+            },
+            {
+              "author": "Guiguang Ding",
+              "institutions": [
+                "Tsinghua University"
+              ]
+            },
+            {
+              "author": "Jungong Han",
+              "institutions": [
+                "Lancaster University"
+              ]
+            },
+            {
+              "author": "Yue Gao",
+              "institutions": [
+                "Tsinghua University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "AI-Empowered Persuasive Video Generation: A Survey",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1145/3588764",
+          "cited_by_count": 27,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3588764",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3588764",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3588764",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3588764",
+            "source": {
+              "id": "https://openalex.org/S157921468",
+              "display_name": "ACM Computing Surveys",
+              "issn_l": "0360-0300",
+              "issn": [
+                "0360-0300",
+                "1557-7341"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Computing Surveys",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Chang Liu",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            },
+            {
+              "author": "Han Yu",
+              "institutions": [
+                "Nanyang Technological University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Curriculum CycleGAN for Textual Sentiment Domain Adaptation with Multiple Sources",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1145/3442381.3449981",
+          "cited_by_count": 19,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3442381.3449981",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3442381.3449981",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3442381.3449981",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3442381.3449981",
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the Web Conference 2021",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Sicheng Zhao",
+              "institutions": [
+                "University of California, Berkeley"
+              ]
+            },
+            {
+              "author": "Yang Xiao",
+              "institutions": [
+                "Nankai University"
+              ]
+            },
+            {
+              "author": "Jiang Guo",
+              "institutions": [
+                "Massachusetts Institute of Technology"
+              ]
+            },
+            {
+              "author": "Xiangyu Yue",
+              "institutions": [
+                "University of California, Berkeley"
+              ]
+            },
+            {
+              "author": "Jufeng Yang",
+              "institutions": [
+                "Nankai University"
+              ]
+            },
+            {
+              "author": "Ravi Krishna",
+              "institutions": [
+                "University of California, Berkeley"
+              ]
+            },
+            {
+              "author": "Pengfei Xu",
+              "institutions": [
+                "Didi Chuxing (China)"
+              ]
+            },
+            {
+              "author": "Kurt Keutzer",
+              "institutions": [
+                "University of California, Berkeley"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Multimodal Emotion and Sentiment Modeling From Unstructured Big Data: Challenges, Architecture, &amp; Techniques",
+          "publication_year": 2019,
+          "doi": "https://doi.org/10.1109/access.2019.2926751",
+          "cited_by_count": 32,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08755834.pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1109/access.2019.2926751",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1109/access.2019.2926751",
+            "pdf_url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08755834.pdf",
+            "source": {
+              "id": "https://openalex.org/S2485537415",
+              "display_name": "IEEE Access",
+              "issn_l": "2169-3536",
+              "issn": [
+                "2169-3536"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Access",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Jasmine Kah Phooi Seng",
+              "institutions": [
+                "UNSW Sydney"
+              ]
+            },
+            {
+              "author": "Li-Minn Ang",
+              "institutions": [
+                "Griffith University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "RCEA-360VR: Real-time, Continuous Emotion Annotation in 360° VR Videos for Collecting Precise Viewport-dependent Ground Truth Labels",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1145/3411764.3445487",
+          "cited_by_count": 28,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://ir.cwi.nl/pub/31250/31250.pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3411764.3445487",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1145/3411764.3445487",
+            "pdf_url": null,
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Tong Xue",
+              "institutions": [
+                "Beijing Institute of Technology"
+              ]
+            },
+            {
+              "author": "Abdallah El Ali",
+              "institutions": [
+                "Centrum Wiskunde & Informatica"
+              ]
+            },
+            {
+              "author": "Tianyi Zhang",
+              "institutions": [
+                "Delft University of Technology",
+                "Centrum Wiskunde & Informatica"
+              ]
+            },
+            {
+              "author": "Gangyi Ding",
+              "institutions": [
+                "Beijing Institute of Technology"
+              ]
+            },
+            {
+              "author": "Pablo César",
+              "institutions": [
+                "Delft University of Technology",
+                "Centrum Wiskunde & Informatica"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Jianlong Fu multimodal generation image quality assessment",
+      "ok": true,
+      "rows": [
+        {
+          "title": "Large language models (LLMs): survey, technical frameworks, and future challenges",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1007/s10462-024-10888-y",
+          "cited_by_count": 274,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "hybrid",
+            "oa_url": "https://link.springer.com/content/pdf/10.1007/s10462-024-10888-y.pdf",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1007/s10462-024-10888-y",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1007/s10462-024-10888-y",
+            "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10462-024-10888-y.pdf",
+            "source": {
+              "id": "https://openalex.org/S122814990",
+              "display_name": "Artificial Intelligence Review",
+              "issn_l": "0269-2821",
+              "issn": [
+                "0269-2821",
+                "1573-7462"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319900",
+              "host_organization_name": "Springer Science+Business Media",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319900",
+                "https://openalex.org/P4310319965"
+              ],
+              "host_organization_lineage_names": [
+                "Springer Science+Business Media",
+                "Springer Nature"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by-nc-nd",
+            "license_id": "https://openalex.org/licenses/cc-by-nc-nd",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Artificial Intelligence Review",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Pranjal Kumar",
+              "institutions": [
+                "Lovely Professional University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "RAIM",
+          "publication_year": 2018,
+          "doi": "https://doi.org/10.1145/3219819.3220051",
+          "cited_by_count": 143,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3219819.3220051",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3219819.3220051",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3219819.3220051",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3219819.3220051",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Yanbo Xu",
+              "institutions": [
+                "Georgia Institute of Technology"
+              ]
+            },
+            {
+              "author": "Siddharth Biswal",
+              "institutions": [
+                "Georgia Institute of Technology"
+              ]
+            },
+            {
+              "author": "Shriprasad R. Deshpande",
+              "institutions": [
+                "Emory University"
+              ]
+            },
+            {
+              "author": "Kevin Maher",
+              "institutions": [
+                "Emory University"
+              ]
+            },
+            {
+              "author": "Jimeng Sun",
+              "institutions": [
+                "Georgia Institute of Technology"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A Review of Modern Fashion Recommender Systems",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1145/3624733",
+          "cited_by_count": 105,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://repositorio.uam.es/bitstream/10486/714289/1/9345659ps.pdf",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3624733",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1145/3624733",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S157921468",
+              "display_name": "ACM Computing Surveys",
+              "issn_l": "0360-0300",
+              "issn": [
+                "0360-0300",
+                "1557-7341"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Computing Surveys",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Yashar Deldjoo",
+              "institutions": [
+                "Polytechnic University of Bari"
+              ]
+            },
+            {
+              "author": "Fatemeh Nazary",
+              "institutions": [
+                "Polytechnic University of Bari"
+              ]
+            },
+            {
+              "author": "Arnau Ramisa",
+              "institutions": [
+                "Amazon (United States)"
+              ]
+            },
+            {
+              "author": "Julian McAuley",
+              "institutions": [
+                "UC San Diego Health System"
+              ]
+            },
+            {
+              "author": "Giovanni Pellegrini",
+              "institutions": [
+                "Polytechnic University of Bari"
+              ]
+            },
+            {
+              "author": "Alejandro Bellogín",
+              "institutions": [
+                "Universidad Autónoma de Madrid"
+              ]
+            },
+            {
+              "author": "Tommaso Di Noia",
+              "institutions": [
+                "Polytechnic University of Bari"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Foundational Models Defining a New Era in Vision: A Survey and Outlook",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.48550/arxiv.2307.13721",
+          "cited_by_count": 68,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2307.13721",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2307.13721",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2307.13721",
+            "pdf_url": "https://arxiv.org/pdf/2307.13721",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Muhammad Awais",
+              "institutions": []
+            },
+            {
+              "author": "Muzammal Naseer",
+              "institutions": []
+            },
+            {
+              "author": "Salman Khan",
+              "institutions": []
+            },
+            {
+              "author": "Rao Muhammad Anwer",
+              "institutions": []
+            },
+            {
+              "author": "Hisham Cholakkal",
+              "institutions": []
+            },
+            {
+              "author": "Mubarak Shah",
+              "institutions": []
+            },
+            {
+              "author": "Ming–Hsuan Yang",
+              "institutions": []
+            },
+            {
+              "author": "Fahad Shahbaz Khan",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Visual Tuning",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1145/3657632",
+          "cited_by_count": 28,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3657632",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3657632",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3657632",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3657632",
+            "source": {
+              "id": "https://openalex.org/S157921468",
+              "display_name": "ACM Computing Surveys",
+              "issn_l": "0360-0300",
+              "issn": [
+                "0360-0300",
+                "1557-7341"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Computing Surveys",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Bruce X. B. Yu",
+              "institutions": [
+                "University of Illinois Urbana-Champaign",
+                "Zhejiang University"
+              ]
+            },
+            {
+              "author": "Jianlong Chang",
+              "institutions": [
+                "Huawei Technologies (China)"
+              ]
+            },
+            {
+              "author": "Haixin Wang",
+              "institutions": [
+                "Peking University"
+              ]
+            },
+            {
+              "author": "Lingbo Liu",
+              "institutions": [
+                "Peng Cheng Laboratory"
+              ]
+            },
+            {
+              "author": "Shijie Wang",
+              "institutions": [
+                "Huawei Technologies (China)"
+              ]
+            },
+            {
+              "author": "Zhiyu Wang",
+              "institutions": [
+                "Huawei Technologies (China)"
+              ]
+            },
+            {
+              "author": "Junfan Lin",
+              "institutions": [
+                "Peng Cheng Laboratory"
+              ]
+            },
+            {
+              "author": "Lingxi Xie",
+              "institutions": [
+                "Huawei Technologies (China)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "AV-Deepfake1M: A Large-Scale LLM-Driven Audio-Visual Deepfake Dataset",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.1145/3664647.3680795",
+          "cited_by_count": 40,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://doi.org/10.1145/3664647.3680795",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3664647.3680795",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3664647.3680795",
+            "pdf_url": null,
+            "source": null,
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Proceedings of the 32nd ACM International Conference on Multimedia",
+            "raw_type": "proceedings-article"
+          },
+          "authorships": [
+            {
+              "author": "Zhixi Cai",
+              "institutions": [
+                "Monash University"
+              ]
+            },
+            {
+              "author": "Shreya Ghosh",
+              "institutions": [
+                "Curtin University"
+              ]
+            },
+            {
+              "author": "Aman Pankaj Adatia",
+              "institutions": [
+                "Indian Institute of Technology Ropar"
+              ]
+            },
+            {
+              "author": "Munawar Hayat",
+              "institutions": [
+                "Qualcomm (United States)"
+              ]
+            },
+            {
+              "author": "Abhinav Dhall",
+              "institutions": [
+                "Flinders University"
+              ]
+            },
+            {
+              "author": "Tom Gedeon",
+              "institutions": [
+                "Curtin University"
+              ]
+            },
+            {
+              "author": "Kalin Stefanov",
+              "institutions": [
+                "Monash University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Materials, Electrical Performance, Mechanisms, Applications, and Manufacturing Approaches for Flexible Strain Sensors",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.3390/nano11051220",
+          "cited_by_count": 75,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.mdpi.com/2079-4991/11/5/1220/pdf?version=1620382248",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3390/nano11051220",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3390/nano11051220",
+            "pdf_url": "https://www.mdpi.com/2079-4991/11/5/1220/pdf?version=1620382248",
+            "source": {
+              "id": "https://openalex.org/S2764646681",
+              "display_name": "Nanomaterials",
+              "issn_l": "2079-4991",
+              "issn": [
+                "2079-4991"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310310987",
+              "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310310987"
+              ],
+              "host_organization_lineage_names": [
+                "Multidisciplinary Digital Publishing Institute"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Nanomaterials",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Fei Han",
+              "institutions": [
+                "Fudan University",
+                "Institute of Semiconductors"
+              ]
+            },
+            {
+              "author": "Min Li",
+              "institutions": [
+                "Fudan University"
+              ]
+            },
+            {
+              "author": "Huaiyu Ye",
+              "institutions": [
+                "Institute of Semiconductors"
+              ]
+            },
+            {
+              "author": "Guoqi Zhang",
+              "institutions": [
+                "Fudan University",
+                "Institute of Semiconductors"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conversational Search (Dagstuhl Seminar 19461)",
+          "publication_year": 2020,
+          "doi": "https://doi.org/10.4230/dagrep.9.11.34",
+          "cited_by_count": 61,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://drops.dagstuhl.de/entities/document/10.4230/DagRep.9.11.34",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:drops-oai.dagstuhl.de:11983",
+            "is_oa": true,
+            "landing_page_url": "https://drops.dagstuhl.de/entities/document/10.4230/DagRep.9.11.34",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4377196569",
+              "display_name": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I2799853480",
+              "host_organization_name": "Schloss Dagstuhl – Leibniz Center for Informatics",
+              "host_organization_lineage": [
+                "https://openalex.org/I2799853480"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "",
+            "raw_type": "Article"
+          },
+          "authorships": [
+            {
+              "author": "Avishek Anand",
+              "institutions": [
+                "Leibniz University Hannover"
+              ]
+            },
+            {
+              "author": "Lawrence Cavedon",
+              "institutions": [
+                "RMIT University",
+                "MIT University"
+              ]
+            },
+            {
+              "author": "Hideo Joho",
+              "institutions": [
+                "University of Tsukuba"
+              ]
+            },
+            {
+              "author": "Mark Sanderson",
+              "institutions": [
+                "RMIT University",
+                "MIT University"
+              ]
+            },
+            {
+              "author": "Benno Stein",
+              "institutions": [
+                "Bauhaus-Universität Weimar"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Wen-Huang Cheng affective computing visual emotion",
+      "ok": true,
+      "rows": [
+        {
+          "title": "A Survey of Convolutional Neural Networks: Analysis, Applications, and Prospects",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.1109/tnnls.2021.3084827",
+          "cited_by_count": 4782,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "http://hdl.handle.net/10072/405164",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1109/tnnls.2021.3084827",
+            "is_oa": false,
+            "landing_page_url": "https://doi.org/10.1109/tnnls.2021.3084827",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4210175523",
+              "display_name": "IEEE Transactions on Neural Networks and Learning Systems",
+              "issn_l": "2162-237X",
+              "issn": [
+                "2162-237X",
+                "2162-2388"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319808",
+              "host_organization_name": "Institute of Electrical and Electronics Engineers",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Transactions on Neural Networks and Learning Systems",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Zewen Li",
+              "institutions": [
+                "Hohai University"
+              ]
+            },
+            {
+              "author": "Fan Liu",
+              "institutions": [
+                "Hohai University"
+              ]
+            },
+            {
+              "author": "Wenjie Yang",
+              "institutions": [
+                "Hohai University"
+              ]
+            },
+            {
+              "author": "Shouheng Peng",
+              "institutions": [
+                "Hohai University"
+              ]
+            },
+            {
+              "author": "Jun Zhou",
+              "institutions": [
+                "Griffith University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A Review of Emotion Recognition Using Physiological Signals",
+          "publication_year": 2018,
+          "doi": "https://doi.org/10.3390/s18072074",
+          "cited_by_count": 894,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.mdpi.com/1424-8220/18/7/2074/pdf?version=1530280392",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3390/s18072074",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3390/s18072074",
+            "pdf_url": "https://www.mdpi.com/1424-8220/18/7/2074/pdf?version=1530280392",
+            "source": {
+              "id": "https://openalex.org/S101949793",
+              "display_name": "Sensors",
+              "issn_l": "1424-8220",
+              "issn": [
+                "1424-8220"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310310987",
+              "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310310987"
+              ],
+              "host_organization_lineage_names": [
+                "Multidisciplinary Digital Publishing Institute"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Sensors",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Lin Shu",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Jinyan Xie",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Mingyue Yang",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Ziyi Li",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Zhiyang Li",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Dan Liao",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Xiangmin Xu",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            },
+            {
+              "author": "Xinyi Yang",
+              "institutions": [
+                "South China University of Technology"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A survey on sentiment analysis methods, applications, and challenges",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.1007/s10462-022-10144-1",
+          "cited_by_count": 1411,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://link.springer.com/content/pdf/10.1007/s10462-022-10144-1.pdf",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1007/s10462-022-10144-1",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1007/s10462-022-10144-1",
+            "pdf_url": "https://link.springer.com/content/pdf/10.1007/s10462-022-10144-1.pdf",
+            "source": {
+              "id": "https://openalex.org/S122814990",
+              "display_name": "Artificial Intelligence Review",
+              "issn_l": "0269-2821",
+              "issn": [
+                "0269-2821",
+                "1573-7462"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319900",
+              "host_organization_name": "Springer Science+Business Media",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319900",
+                "https://openalex.org/P4310319965"
+              ],
+              "host_organization_lineage_names": [
+                "Springer Science+Business Media",
+                "Springer Nature"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Artificial Intelligence Review",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Mayur Wankhade",
+              "institutions": [
+                "Indian Institute of Technology Dhanbad",
+                "Dr. Hari Singh Gour University"
+              ]
+            },
+            {
+              "author": "Annavarapu Chandra Sekhara Rao",
+              "institutions": [
+                "Indian Institute of Technology Dhanbad",
+                "Dr. Hari Singh Gour University"
+              ]
+            },
+            {
+              "author": "Chaitanya Kulkarni",
+              "institutions": [
+                "Indian Institute of Technology Dhanbad",
+                "Dr. Hari Singh Gour University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Multimodal Learning With Transformers: A Survey",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1109/tpami.2023.3275156",
+          "cited_by_count": 840,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "hybrid",
+            "oa_url": "https://ieeexplore.ieee.org/ielx7/34/4359286/10123038.pdf",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1109/tpami.2023.3275156",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1109/tpami.2023.3275156",
+            "pdf_url": "https://ieeexplore.ieee.org/ielx7/34/4359286/10123038.pdf",
+            "source": {
+              "id": "https://openalex.org/S199944782",
+              "display_name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+              "issn_l": "0162-8828",
+              "issn": [
+                "0162-8828",
+                "1939-3539",
+                "2160-9292"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320439",
+              "host_organization_name": "IEEE Computer Society",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320439",
+                "https://openalex.org/P4310319808"
+              ],
+              "host_organization_lineage_names": [
+                "IEEE Computer Society",
+                "Institute of Electrical and Electronics Engineers"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Peng Xu",
+              "institutions": [
+                "Tsinghua University"
+              ]
+            },
+            {
+              "author": "Xiatian Zhu",
+              "institutions": [
+                "University of Surrey"
+              ]
+            },
+            {
+              "author": "David A. Clifton",
+              "institutions": [
+                "University of Oxford"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Survey of the State of the Art in Natural Language Generation: Core tasks, applications and evaluation",
+          "publication_year": 2018,
+          "doi": "https://doi.org/10.1613/jair.5477",
+          "cited_by_count": 757,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "diamond",
+            "oa_url": "https://jair.org/index.php/jair/article/download/11173/26378",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1613/jair.5477",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1613/jair.5477",
+            "pdf_url": "https://jair.org/index.php/jair/article/download/11173/26378",
+            "source": {
+              "id": "https://openalex.org/S139930977",
+              "display_name": "Journal of Artificial Intelligence Research",
+              "issn_l": "1076-9757",
+              "issn": [
+                "1076-9757",
+                "1943-5037"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310315760",
+              "host_organization_name": "AI Access Foundation",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310315760"
+              ],
+              "host_organization_lineage_names": [
+                "AI Access Foundation"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Journal of Artificial Intelligence Research",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Albert Gatt",
+              "institutions": [
+                "University of Malta"
+              ]
+            },
+            {
+              "author": "Emiel Krahmer",
+              "institutions": [
+                "Tilburg University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Big data analytics: a survey",
+          "publication_year": 2015,
+          "doi": "https://doi.org/10.1186/s40537-015-0030-3",
+          "cited_by_count": 799,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://journalofbigdata.springeropen.com/track/pdf/10.1186/s40537-015-0030-3",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1186/s40537-015-0030-3",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1186/s40537-015-0030-3",
+            "pdf_url": "https://journalofbigdata.springeropen.com/track/pdf/10.1186/s40537-015-0030-3",
+            "source": {
+              "id": "https://openalex.org/S2737955091",
+              "display_name": "Journal Of Big Data",
+              "issn_l": "2196-1115",
+              "issn": [
+                "2196-1115"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319900",
+              "host_organization_name": "Springer Science+Business Media",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319900",
+                "https://openalex.org/P4310319965"
+              ],
+              "host_organization_lineage_names": [
+                "Springer Science+Business Media",
+                "Springer Nature"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Journal of Big Data",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Chun‐Wei Tsai",
+              "institutions": [
+                "National Ilan University"
+              ]
+            },
+            {
+              "author": "Chin‐Feng Lai",
+              "institutions": [
+                "National Chung Cheng University"
+              ]
+            },
+            {
+              "author": "Han‐Chieh Chao",
+              "institutions": [
+                "Fujian University of Technology",
+                "Yangzhou University",
+                "National Ilan University"
+              ]
+            },
+            {
+              "author": "Athanasios V. Vasilakos",
+              "institutions": [
+                "Luleå University of Technology"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Social motivations of live-streaming viewer engagement on Twitch",
+          "publication_year": 2018,
+          "doi": "https://doi.org/10.1016/j.chb.2018.02.013",
+          "cited_by_count": 835,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://www.sciencedirect.com/science/article/pii/S0747563218300712",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1016/j.chb.2018.02.013",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1016/j.chb.2018.02.013",
+            "pdf_url": "https://www.sciencedirect.com/science/article/pii/S0747563218300712",
+            "source": {
+              "id": "https://openalex.org/S204030396",
+              "display_name": "Computers in Human Behavior",
+              "issn_l": "0747-5632",
+              "issn": [
+                "0747-5632",
+                "1873-7692"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320990",
+              "host_organization_name": "Elsevier BV",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320990"
+              ],
+              "host_organization_lineage_names": [
+                "Elsevier BV"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Computers in Human Behavior",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Zorah Hilvert-Bruce",
+              "institutions": [
+                "University of Canberra"
+              ]
+            },
+            {
+              "author": "James T. Neill",
+              "institutions": [
+                "University of Canberra"
+              ]
+            },
+            {
+              "author": "Max Sjöblom",
+              "institutions": [
+                "Tampere University",
+                "Tampere University",
+                "Aalto University"
+              ]
+            },
+            {
+              "author": "Juho Hamari",
+              "institutions": [
+                "University of Turku",
+                "Tampere University",
+                "Tampere University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Deep learning for deepfakes creation and detection: A survey",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.1016/j.cviu.2022.103525",
+          "cited_by_count": 417,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://doi.org/science/article/pii/S1077314222001114",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.1016/j.cviu.2022.103525",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1016/j.cviu.2022.103525",
+            "pdf_url": "https://doi.org/science/article/pii/S1077314222001114",
+            "source": {
+              "id": "https://openalex.org/S185008460",
+              "display_name": "Computer Vision and Image Understanding",
+              "issn_l": "1077-3142",
+              "issn": [
+                "1077-3142",
+                "1090-235X"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310320990",
+              "host_organization_name": "Elsevier BV",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310320990"
+              ],
+              "host_organization_lineage_names": [
+                "Elsevier BV"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Computer Vision and Image Understanding",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Thanh Thi Nguyen",
+              "institutions": [
+                "Deakin University",
+                "HUTECH University",
+                "Ho Chi Minh City University of Technology"
+              ]
+            },
+            {
+              "author": "Thanh Thi Nguyen",
+              "institutions": [
+                "Griffith University",
+                "Deakin University",
+                "HUTECH University",
+                "Ho Chi Minh City University of Technology"
+              ]
+            },
+            {
+              "author": "Quoc Viet Hung Nguyen",
+              "institutions": [
+                "Griffith University",
+                "Deakin University"
+              ]
+            },
+            {
+              "author": "Dung T. Nguyen",
+              "institutions": [
+                "Deakin University"
+              ]
+            },
+            {
+              "author": "Duc Thanh Nguyen",
+              "institutions": [
+                "Kumoh National Institute of Technology",
+                "Deakin University"
+              ]
+            },
+            {
+              "author": "Thien Huynh‐The",
+              "institutions": [
+                "Kumoh National Institute of Technology",
+                "Deakin University"
+              ]
+            },
+            {
+              "author": "Saeid Nahavandi",
+              "institutions": [
+                "Deakin University",
+                "HUTECH University",
+                "Ho Chi Minh City University of Technology"
+              ]
+            },
+            {
+              "author": "Thanh Thi Nguyen",
+              "institutions": [
+                "Deakin University",
+                "HUTECH University",
+                "Ho Chi Minh City University of Technology",
+                "Pusan National University"
+              ]
+            }
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "query": "Hong-Han Shuai visual emotion instruction tuning",
+      "ok": true,
+      "rows": [
+        {
+          "title": "Proceedings of the 28th International Conference on Computational Linguistics",
+          "publication_year": 2020,
+          "doi": "https://doi.org/10.18653/v1/2020.coling-main",
+          "cited_by_count": 1422,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.aclweb.org/anthology/2020.coling-main.0.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2020.coling-main",
+            "is_oa": true,
+            "landing_page_url": "http://doi.org/10.18653/v1/2020.coling-main",
+            "pdf_url": "https://www.aclweb.org/anthology/2020.coling-main.0.pdf",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": null,
+            "raw_type": "proceedings"
+          },
+          "authorships": [
+            {
+              "author": "Xiaodan Zhu",
+              "institutions": []
+            },
+            {
+              "author": "Preslav Nakov",
+              "institutions": []
+            },
+            {
+              "author": "Jun Zhao",
+              "institutions": []
+            },
+            {
+              "author": "Michal Ptaszynski",
+              "institutions": []
+            },
+            {
+              "author": "Bartosz Ziolko",
+              "institutions": []
+            },
+            {
+              "author": "Website Chairs",
+              "institutions": []
+            },
+            {
+              "author": "Laura Prez- Mayos",
+              "institutions": []
+            },
+            {
+              "author": "Amita Misra",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Findings of the Association for Computational Linguistics: EMNLP 2021",
+          "publication_year": 2021,
+          "doi": "https://doi.org/10.18653/v1/2021.findings-emnlp",
+          "cited_by_count": 896,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://aclanthology.org/2021.findings-emnlp.0.pdf",
+            "any_repository_has_fulltext": null
+          },
+          "primary_location": {
+            "id": "doi:10.18653/v1/2021.findings-emnlp",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.18653/v1/2021.findings-emnlp",
+            "pdf_url": "https://aclanthology.org/2021.findings-emnlp.0.pdf",
+            "source": null,
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": null,
+            "raw_type": "proceedings"
+          },
+          "authorships": [
+            {
+              "author": "Firoj Alam",
+              "institutions": []
+            },
+            {
+              "author": "Shaden Shaar",
+              "institutions": []
+            },
+            {
+              "author": "Fahim Dalvi",
+              "institutions": []
+            },
+            {
+              "author": "Hassan Sajjad",
+              "institutions": []
+            },
+            {
+              "author": "Alex Nikolov",
+              "institutions": []
+            },
+            {
+              "author": "Hamdy Mubarak",
+              "institutions": []
+            },
+            {
+              "author": "Giovanni Da",
+              "institutions": []
+            },
+            {
+              "author": "San Martino",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Deep Residual Learning for Image Recognition: A Survey",
+          "publication_year": 2022,
+          "doi": "https://doi.org/10.3390/app12188972",
+          "cited_by_count": 926,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.mdpi.com/2076-3417/12/18/8972/pdf?version=1662547655",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3390/app12188972",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3390/app12188972",
+            "pdf_url": "https://www.mdpi.com/2076-3417/12/18/8972/pdf?version=1662547655",
+            "source": {
+              "id": "https://openalex.org/S4210205812",
+              "display_name": "Applied Sciences",
+              "issn_l": "2076-3417",
+              "issn": [
+                "2076-3417"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310310987",
+              "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310310987"
+              ],
+              "host_organization_lineage_names": [
+                "Multidisciplinary Digital Publishing Institute"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Applied Sciences",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Muhammad Shafiq",
+              "institutions": [
+                "Guangzhou University"
+              ]
+            },
+            {
+              "author": "Zhaoquan Gu",
+              "institutions": [
+                "Harbin Institute of Technology",
+                "Peng Cheng Laboratory"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Convolutional Neural Networks: A Survey",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.3390/computers12080151",
+          "cited_by_count": 543,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.mdpi.com/2073-431X/12/8/151/pdf?version=1690537713",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3390/computers12080151",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3390/computers12080151",
+            "pdf_url": "https://www.mdpi.com/2073-431X/12/8/151/pdf?version=1690537713",
+            "source": {
+              "id": "https://openalex.org/S4210228075",
+              "display_name": "Computers",
+              "issn_l": "2073-431X",
+              "issn": [
+                "2073-431X"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310310987",
+              "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310310987"
+              ],
+              "host_organization_lineage_names": [
+                "Multidisciplinary Digital Publishing Institute"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Computers",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Moez Krichen",
+              "institutions": [
+                "University of Sfax",
+                "Al Baha University"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A Review of Machine Learning and Deep Learning for Object Detection, Semantic Segmentation, and Human Action Recognition in Machine and Robotic Vision",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.3390/technologies12020015",
+          "cited_by_count": 240,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "gold",
+            "oa_url": "https://www.mdpi.com/2227-7080/12/2/15/pdf?version=1706013199",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "doi:10.3390/technologies12020015",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.3390/technologies12020015",
+            "pdf_url": "https://www.mdpi.com/2227-7080/12/2/15/pdf?version=1706013199",
+            "source": {
+              "id": "https://openalex.org/S2738348041",
+              "display_name": "Technologies",
+              "issn_l": "2227-7080",
+              "issn": [
+                "2227-7080"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310310987",
+              "host_organization_name": "Multidisciplinary Digital Publishing Institute",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310310987"
+              ],
+              "host_organization_lineage_names": [
+                "Multidisciplinary Digital Publishing Institute"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Technologies",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Nikoleta Manakitsa",
+              "institutions": [
+                "University of Western Macedonia"
+              ]
+            },
+            {
+              "author": "George S. Maraslidis",
+              "institutions": [
+                "University of Western Macedonia"
+              ]
+            },
+            {
+              "author": "Lazaros Moysis",
+              "institutions": [
+                "Aristotle University of Thessaloniki",
+                "University of Western Macedonia"
+              ]
+            },
+            {
+              "author": "George F. Fragulis",
+              "institutions": [
+                "University of Western Macedonia"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "A Survey on Evaluation of Large Language Models",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.48550/arxiv.2307.03109",
+          "cited_by_count": 199,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2307.03109",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2307.03109",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2307.03109",
+            "pdf_url": "https://arxiv.org/pdf/2307.03109",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": "",
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Yupeng Chang",
+              "institutions": []
+            },
+            {
+              "author": "Xu Wang",
+              "institutions": []
+            },
+            {
+              "author": "Jindong Wang",
+              "institutions": []
+            },
+            {
+              "author": "Yuan-Hsuan Wu",
+              "institutions": []
+            },
+            {
+              "author": "Linyi Yang",
+              "institutions": []
+            },
+            {
+              "author": "Kaijie Zhu",
+              "institutions": []
+            },
+            {
+              "author": "Hao Chen",
+              "institutions": []
+            },
+            {
+              "author": "Xiaoyuan Yi",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Listen, Denoise, Action! Audio-Driven Motion Synthesis with Diffusion Models",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1145/3592458",
+          "cited_by_count": 164,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "bronze",
+            "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3592458",
+            "any_repository_has_fulltext": false
+          },
+          "primary_location": {
+            "id": "doi:10.1145/3592458",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1145/3592458",
+            "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3592458",
+            "source": {
+              "id": "https://openalex.org/S185367456",
+              "display_name": "ACM Transactions on Graphics",
+              "issn_l": "0730-0301",
+              "issn": [
+                "0730-0301",
+                "1557-7368"
+              ],
+              "is_oa": false,
+              "is_in_doaj": false,
+              "is_core": true,
+              "host_organization": "https://openalex.org/P4310319798",
+              "host_organization_name": "Association for Computing Machinery",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310319798"
+              ],
+              "host_organization_lineage_names": [
+                "Association for Computing Machinery"
+              ],
+              "type": "journal"
+            },
+            "license": null,
+            "license_id": null,
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "ACM Transactions on Graphics",
+            "raw_type": "journal-article"
+          },
+          "authorships": [
+            {
+              "author": "Simon Alexanderson",
+              "institutions": [
+                "KTH Royal Institute of Technology"
+              ]
+            },
+            {
+              "author": "Rajmund Nagy",
+              "institutions": [
+                "KTH Royal Institute of Technology"
+              ]
+            },
+            {
+              "author": "Jonas Beskow",
+              "institutions": [
+                "KTH Royal Institute of Technology"
+              ]
+            },
+            {
+              "author": "Gustav Eje Henter",
+              "institutions": [
+                "KTH Royal Institute of Technology"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Unlocking the Potential of ChatGPT: A Comprehensive Exploration of its Applications, Advantages, Limitations, and Future Directions in Natural Language Processing",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.48550/arxiv.2304.02017",
+          "cited_by_count": 81,
+          "open_access": {
+            "is_oa": true,
+            "oa_status": "green",
+            "oa_url": "https://arxiv.org/pdf/2304.02017",
+            "any_repository_has_fulltext": true
+          },
+          "primary_location": {
+            "id": "pmh:oai:arXiv.org:2304.02017",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2304.02017",
+            "pdf_url": "https://arxiv.org/pdf/2304.02017",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": null,
+              "issn": null,
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          "authorships": [
+            {
+              "author": "Walid Hariri",
+              "institutions": []
+            }
+          ]
+        }
+      ],
+      "error": null
+    }
+  ],
+  "track1_signal": {
+    "fid_signals": [
+      "Official Track1 uses FID against a reference artistic image set; public EmoArt distribution is the strongest legal proxy for style-family coverage.",
+      "Top public Track1 rows have AAS near 0.99 and FID around 66-67; our gap is mostly FID/distribution, not AAS alone.",
+      "Local fid_like has already anti-correlated on two own anchors, so use it only as one feature in an ensemble."
+    ],
+    "aas_signals": [
+      "Official AAS has content/style/attribute alignment; captions must preserve supports/surfaces such as scroll, poster, silk, typography when explicitly requested.",
+      "FAB-G salience suggests attribute cues should be selected, not blindly over-stuffed.",
+      "EmoVIT affective reasoning suggests judges may value visual evidence for emotion, not only object naming."
+    ],
+    "crawler_limits": [
+      "Public crawl cannot reveal hidden FID reference images, full AAS judge prompts, exact multimodal model, or hidden inference settings.",
+      "Any private test data or labels must remain private and must not be redistributed or used outside challenge participation."
+    ]
+  },
+  "official_snapshot_files": [
+    "experiments/track1_official_score_calibration_20260607/codabench_track1_competition_16299_public_api_20260607.json",
+    "experiments/track1_official_score_calibration_20260607/codabench_track1_phase26798_submissions_20260607.json"
+  ]
+}
