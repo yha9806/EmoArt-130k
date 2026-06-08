@@ -1,0 +1,2079 @@
+{
+  "manifest_name": "track1_controlled_b160_on_v3_20260608",
+  "policy": "v3_gate7 base; old-current-identical candidates filtered; full 1000-image package",
+  "target_replacement_count": 160,
+  "accepted_count": 160,
+  "accepted_replacements": [
+    {
+      "sample_id": "track1_0077",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0077_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 48.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet naval propaganda poster with a sailor hoisting red and white flags before panels of warships and sea battles, using bold Cyrillic typography, patriotic red accents, and a solemn heroic composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0091",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0091_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 47.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism poster of a uniformed border guard saluting joyful passengers leaning from a train window beside a red and green frontier post, with bold Cyrillic lettering, muted washes, and a solemn patriotic mood.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0128",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0128_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 46.0,
+      "tier": "caption_faithful_guard",
+      "caption": "Socialist Realism poster of Soviet soldiers marching beside a tank with red banners, celebratory flowers, and bold Cyrillic slogans in a patriotic, triumphant composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0476",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0476_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 45.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster with bold Cyrillic lettering, a naval medal, sailing ships, cannon, and uniformed sailors in a dramatic maritime battle scene rendered with graphic linework and muted watercolor tones.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0628",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0628_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 44.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet poster with bold Cyrillic typography contrasts wartime devastation behind barbed wire with liberated Ukrainian peasants harvesting golden wheat under a bright sky, using strong graphic composition and earthy colors.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0747",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0747_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 43.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet wartime propaganda poster with bold Cyrillic lettering, mounted soldiers, fleeing civilians, burning village ruins, aircraft overhead, and dramatic brushwork in a muted blue, red, and ochre palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0803",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0803_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 42.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster with the Soviet, American, and British flags flying above a Kremlin tower crowned by a red star, framed by dramatic blue searchlight beams, bold Russian text, and a solemn wartime color palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0063",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0063_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 41.0,
+      "tier": "caption_faithful_guard",
+      "caption": "Ink and wash painting of a serene mountainous landscape with layered peaks, trees, a winding stream, calligraphy, seals, and delicate monochrome brushwork on a hanging scroll.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0019",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0019_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 40.0,
+      "tier": "caption_faithful_guard",
+      "caption": "Socialist Realism poster of four heroic soldiers in tan uniforms standing with rifles against a blue sky, rendered with bold angular brushstrokes, warm earthy colors, and a solemn monumental composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0534",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0534_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 39.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster with a Soviet soldier embracing a woman in traditional embroidered clothing beneath red banners, a Soviet emblem, and bold Cyrillic lettering, rendered in strong graphic colors and heroic composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0665",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0665_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 38.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0717",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0717_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 37.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet poster with two medal-wearing figures holding a commemorative scroll for the 220th anniversary of the USSR Academy of Sciences, framed by bold Cyrillic lettering, pastel watercolor washes, and a formal building below.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0353",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0353_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 36.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet poster-style scene with a jubilant crowd of soldiers and civilians watching fireworks over the Kremlin and Red Square beneath bold Cyrillic lettering, rendered in a vintage muted palette with dramatic light and shadow.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0491",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0491_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 35.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet agricultural poster with a farm woman holding a basket of vegetables before green fields, surrounded by abundant produce, bold Cyrillic lettering, bright flat colors, and strong poster-like composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0881",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0881_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 34.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster of a decorated Soviet pilot holding a flight map before military airplanes in a blue sky, framed by laurel wreaths, red ribbons, bold Cyrillic lettering, and heroic patriotic composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0816",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0816_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 33.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster with bold Cyrillic lettering, heroic cavalry, soldiers, and civilians marching through a rural wartime landscape in vivid brushstrokes and dramatic warm light.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0151",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0151_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 32.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism propaganda poster on aged folded paper, with bold Cyrillic lettering and dramatic Soviet soldiers charging with rifles and bayonets against historical Prussian figures, using muted greens, reds, and tan tones.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0160",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0160_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 31.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism Soviet poster with a vast red banner bearing Stalin’s profile above the Kremlin tower, crossed by dramatic searchlights against a dark night sky in a bold red and orange palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0926",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0926_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 30.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Gongbi-style album spread on aged paper with two muted brown portrait panels, delicate calligraphy columns, faint ink figures, and a quiet antique atmosphere.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0102",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0102_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 29.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Gongbi handscroll scene with delicate linework and muted silk tones, featuring calligraphy beside an ancient procession of riders and attendants beneath pine trees in a calm mountainous landscape.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0750",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0750_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 28.0,
+      "tier": "caption_faithful_guard",
+      "caption": "A Socialist Realism wartime propaganda poster with comic-like panels of civilians resisting fascist forces through sabotage, explosions, burning vehicles, red flags, Cyrillic slogans, and bold red, black, and pale blue graphic linework.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_1000",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_1000_caption_faithful_guard_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 27.0,
+      "tier": "caption_faithful_guard",
+      "caption": "Ink and wash painting of a vertical Chinese landscape scroll with misty mountains, tall pine trees, a small pavilion, flowing brushwork, calligraphy inscription, and a red seal in a serene monochrome palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0977",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0977_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 26.0,
+      "tier": "anti_template_diversifier",
+      "caption": "Ink and wash painting of two small mounted landscape scenes on a pale album page, featuring misty hills, trees, riverbanks, and subdued earthy tones with delicate brushwork.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0966",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0966_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 25.0,
+      "tier": "anti_template_diversifier",
+      "caption": "Ink and wash painting of a serene mountain landscape with misty peaks, winding water paths, sparse trees, and soft monochrome brushwork on aged paper.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0953",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0953_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 24.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A black bird perched on a gnarled branch with reddish autumn leaves, rendered in Gongbi style with delicate linework, muted colors, and a calm album-leaf composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0944",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0944_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 23.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A Gongbi painting of children playing in a tranquil garden landscape with rocks, bamboo, a fence, and soft pale colors defined by delicate fine-line brushwork.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0942",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0942_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 22.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A Gongbi style Chinese scene with finely outlined figures gathered around a low tea table beneath pine trees in a quiet pastoral landscape.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0938",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0938_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 21.0,
+      "tier": "anti_template_diversifier",
+      "caption": "Ink and wash painting of a serene riverside landscape with rocky banks, clustered trees, a small pavilion, and misty distant islands rendered in delicate sepia brushwork.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0932",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0932_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 20.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A serene Gongbi courtyard garden scene with finely outlined figures walking near a pavilion, willow trees, rocks, and a small bridge in muted earthy colors.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0919",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0919_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 19.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A Gongbi circular landscape painting on a pale album page, featuring a small pavilion by water among blue-green rocks, trees, distant hills, tiny figures, and delicate fine-line brushwork in muted earthy tones.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0917",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0917_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 18.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A Gongbi painting of an ancient Chinese court scene with a seated noble figure receiving attendants on a palace terrace, rendered with fine linework, delicate colors, and a calm formal atmosphere.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0903",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0903_anti_template_diversifier_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 17.0,
+      "tier": "anti_template_diversifier",
+      "caption": "A Gongbi-style traditional Chinese scene with finely outlined robed figures and children gathered beneath a twisting pine tree, rendered in delicate brushwork, muted colors, and a calm garden setting.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0999",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0999_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 16.0,
+      "tier": "reference_family_primary",
+      "caption": "A Baroque black-and-white engraved landscape with travelers on horseback and on foot moving along a rural path beside a large shadowed tree, distant fields, dense foliage, and fine etched linework.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0998",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0998_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 15.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract pencil sketch of a fragmented interior scene with angular geometric forms, overlapping objects, loose graphite lines, and a muted beige paper texture.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0997",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0997_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 14.0,
+      "tier": "reference_family_primary",
+      "caption": "Ukiyo-e woodblock print of elegantly dressed Japanese figures gathered in an interior before sliding panels with a mountain landscape, rendered with fine linework, muted colors, and a calm theatrical composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0993",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0993_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 13.0,
+      "tier": "reference_family_primary",
+      "caption": "An Early Renaissance portrait of a solemn middle-aged man in a deep blue robe before rich burgundy drapery, rendered with fine detail, muted colors, and soft modeling of light and shadow.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0992",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0992_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 12.0,
+      "tier": "reference_family_primary",
+      "caption": "Ukiyo-e scene of three figures in patterned traditional kimono among tall grasses, with muted colors, delicate linework, and a calm outdoor composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0988",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0988_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 11.0,
+      "tier": "reference_family_primary",
+      "caption": "Ukiyo-e style flowering shrubs with pink and white blossoms, green leaves, and a delicate dragonfly hovering against a muted beige background with fine ink lines and soft colors.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0986",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0986_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 10.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract pencil drawing of a stylized face with a single eye, angular mask-like forms, looping elliptical lines, and soft gray shading on warm beige paper.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0983",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0983_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 9.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract ink line drawing of overlapping fragmented human figures and organic shapes on beige paper, with delicate contour lines, cross-hatching, and a sparse composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0982",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0982_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 8.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract black woodcut-like silhouette of a tall organic plant form with wing-shaped leaves, rough vertical texture, and sparse white carved lines on a beige paper background.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0981",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0981_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 7.0,
+      "tier": "reference_family_primary",
+      "caption": "A Baroque religious scene of the Madonna and infant surrounded by kneeling and standing worshippers presenting gifts among shadowed architectural ruins, with dramatic light, muted colors, and flowing drapery.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0976",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0976_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 6.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract watercolor and ink composition with layered brown mask-like forms, a red and blue zigzag band, green washes, and bold black organic shapes in a loose, textured arrangement.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0975",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0975_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 5.0,
+      "tier": "reference_family_primary",
+      "caption": "Ink and wash painting of a serene misty mountain landscape with pine trees, a small pavilion on the hillside, a winding river or lake, and a distant sailboat rendered in delicate brushwork and muted earth tones.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0967",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0967_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 4.0,
+      "tier": "reference_family_primary",
+      "caption": "Ink and wash painting of a tranquil bamboo grove with a winding stream, small rocks, and a lone seated figure, rendered in delicate brushwork on a warm brown ground with a calm, sparse composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0964",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0964_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 3.0,
+      "tier": "reference_family_primary",
+      "caption": "A Ukiyo-e scene of three figures standing on a rocky coastal cliff beside blue waves, with tall misty rock formations in the distance, delicate linework, and a muted earthy color palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0963",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0963_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 2.0,
+      "tier": "reference_family_primary",
+      "caption": "Ukiyo-e scene of two women in patterned kimonos and a young child standing outdoors near tall vertical reeds, with delicate linework and a muted earthy color palette.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0962",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0962_reference_family_primary_c01.png",
+      "source": "v5_human_accept48",
+      "priority": 100000,
+      "score": 1.0,
+      "tier": "reference_family_primary",
+      "caption": "Abstract watercolor study of a reclining skeletal animal-like form on aged paper, with loose pink, purple, and black brushstrokes and faint pencil lines creating a somber, unfinished composition.",
+      "metadata": {
+        "source_manifest": "experiments/track1_v5_smoke_20260608/human_accept48_20260608/track1_v5_smoke_human_accept48_replacement_manifest.json"
+      }
+    },
+    {
+      "sample_id": "track1_0994",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0994.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0991",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0991.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0984",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0984.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0980",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0980.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0979",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0979.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0970",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0970.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0968",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0968.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0959",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0959.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0954",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0954.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0950",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0950.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0949",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0949.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0943",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0943.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0936",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0936.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0934",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0934.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0907",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0907.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0905",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0905.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0779",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0779.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0772",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0772.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0730",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0730.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0727",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0727.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0657",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0657.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0538",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0538.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0298",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0298.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0069",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_v2_safe_subset_20260606/images/track1_0069.jpg",
+      "source": "safe_subset_package_diff",
+      "priority": 85000,
+      "score": 0.0,
+      "tier": "safe_subset"
+    },
+    {
+      "sample_id": "track1_0971",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0971.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0920",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0920.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0901",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0901.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0898",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0898.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0884",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0884.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0831",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0831.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0802",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0802.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0792",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0792.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0769",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0769.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0732",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0732.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0709",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0709.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0708",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0708.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0699",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0699.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0696",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0696.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0695",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0695.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0694",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0694.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0686",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0686.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0543",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0543.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0497",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0497.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0468",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0468.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0428",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0428.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0397",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0397.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0381",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0381.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0251",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0251.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0235",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0235.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0196",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0196.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0193",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0193.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0145",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0145.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0140",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0140.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0057",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0057.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0048",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0048.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0042",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_pilot100_human24_20260603/images/track1_0042.jpg",
+      "source": "pilot100_human24_package_diff",
+      "priority": 78000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0721",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0721.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0197",
+      "decision": "accept",
+      "candidate_image": "/Users/yhryzy/dev/emoart-130k/submissions/track1_candidate_human_v25_wave2_redteam_20260514/images/track1_0197.jpg",
+      "source": "human_v25_wave2_package_diff",
+      "priority": 72000,
+      "score": 0.0,
+      "tier": "human_review"
+    },
+    {
+      "sample_id": "track1_0499",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0499.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.1049,
+      "tier": "high_delta_review",
+      "caption": "Abstract minimalist composition with a dark blue-black monochrome field, subtle tonal gradients, and a thin shadowed frame creating a calm, mysterious atmosphere.",
+      "metadata": {
+        "delta": 0.1049,
+        "distribution_delta": 0.3159,
+        "perceptual_delta": 0.3833,
+        "candidate_score": 0.515,
+        "current_score": 0.4101
+      }
+    },
+    {
+      "sample_id": "track1_0790",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0790.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.084,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of travelers on a windy shoreline struggling with yellow umbrellas and scattered belongings, with waves, distant mountains, birds, fine linework, muted colors, and a vertical calligraphy panel.",
+      "metadata": {
+        "delta": 0.084,
+        "distribution_delta": 0.3139,
+        "perceptual_delta": 0.2457,
+        "candidate_score": 0.5566,
+        "current_score": 0.4726
+      }
+    },
+    {
+      "sample_id": "track1_0221",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0221.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0755,
+      "tier": "high_delta_review",
+      "caption": "A Baroque monochrome etching of a seated nude figure with loose expressive cross-hatching and stark light-shadow contrast on aged paper.",
+      "metadata": {
+        "delta": 0.0755,
+        "distribution_delta": 0.2718,
+        "perceptual_delta": 0.2317,
+        "candidate_score": 0.5113,
+        "current_score": 0.4358
+      }
+    },
+    {
+      "sample_id": "track1_0725",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0725.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0738,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of three women in patterned kimonos beneath drooping willow branches, with muted colors, delicate linework, and a calm outdoor setting.",
+      "metadata": {
+        "delta": 0.0738,
+        "distribution_delta": 0.2349,
+        "perceptual_delta": 0.2574,
+        "candidate_score": 0.5415,
+        "current_score": 0.4677
+      }
+    },
+    {
+      "sample_id": "track1_0609",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0609.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0734,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of two kimono-clad women standing beneath a blossoming tree with distant mountains, delicate linework, muted earthy colors, and a calm atmosphere.",
+      "metadata": {
+        "delta": 0.0734,
+        "distribution_delta": 0.261,
+        "perceptual_delta": 0.2282,
+        "candidate_score": 0.5567,
+        "current_score": 0.4833
+      }
+    },
+    {
+      "sample_id": "track1_0957",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0957.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0693,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e style print of a dramatic red-skinned warrior in ornate robes raising a fist above a crouching green creature, with bold outlines, flat colors, and a tense theatrical composition.",
+      "metadata": {
+        "delta": 0.0693,
+        "distribution_delta": 0.2757,
+        "perceptual_delta": 0.1859,
+        "candidate_score": 0.512,
+        "current_score": 0.4427
+      }
+    },
+    {
+      "sample_id": "track1_0049",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0049.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0676,
+      "tier": "high_delta_review",
+      "caption": "A Socialist Realism propaganda poster with bold flat colors and sharp graphic lines portrays a Soviet soldier with a rifle and bayonet confronting a swastika-marked fascist figure across a map of northern and southern seas, creating a tense wartime composition.",
+      "metadata": {
+        "delta": 0.0676,
+        "distribution_delta": 0.2376,
+        "perceptual_delta": 0.2135,
+        "candidate_score": 0.5369,
+        "current_score": 0.4693
+      }
+    },
+    {
+      "sample_id": "track1_0630",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0630.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0646,
+      "tier": "high_delta_review",
+      "caption": "A whimsical Ukiyo-e scene with a large cat looming above lively koi fish in pale blue water, using flat colors, delicate outlines, and playful composition.",
+      "metadata": {
+        "delta": 0.0646,
+        "distribution_delta": 0.2229,
+        "perceptual_delta": 0.2076,
+        "candidate_score": 0.5301,
+        "current_score": 0.4655
+      }
+    },
+    {
+      "sample_id": "track1_0911",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0911.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.061,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e print of fierce warriors in flowing robes, one gripping a sword beneath curling flames, rendered in a vertical composition with fine ink lines and muted tan, orange, and black tones.",
+      "metadata": {
+        "delta": 0.061,
+        "distribution_delta": 0.2239,
+        "perceptual_delta": 0.1826,
+        "candidate_score": 0.5066,
+        "current_score": 0.4456
+      }
+    },
+    {
+      "sample_id": "track1_0401",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0401.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0609,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of an elderly seated man and a standing woman in patterned robes inside a tatami room with shoji screens, calligraphy above, delicate linework, and muted earthy colors.",
+      "metadata": {
+        "delta": 0.0609,
+        "distribution_delta": 0.2451,
+        "perceptual_delta": 0.1604,
+        "candidate_score": 0.5234,
+        "current_score": 0.4625
+      }
+    },
+    {
+      "sample_id": "track1_0839",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0839.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.058,
+      "tier": "high_delta_review",
+      "caption": "Abstract geometric composition of intersecting black lines forming rectangles and triangles, with yellow blocks, blue diagonal hatching, gray striped areas, and visible colored-pencil texture on an off-white background.",
+      "metadata": {
+        "delta": 0.058,
+        "distribution_delta": 0.2323,
+        "perceptual_delta": 0.1544,
+        "candidate_score": 0.5216,
+        "current_score": 0.4636
+      }
+    },
+    {
+      "sample_id": "track1_0483",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0483.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0576,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e style illustration of two fish, a large pink-red fish beneath a smaller dark mottled fish, with delicate linework, flat muted colors, and calligraphic inscriptions on a pale background.",
+      "metadata": {
+        "delta": 0.0576,
+        "distribution_delta": 0.2074,
+        "perceptual_delta": 0.1763,
+        "candidate_score": 0.5178,
+        "current_score": 0.4602
+      }
+    },
+    {
+      "sample_id": "track1_0899",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0899.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0572,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of samurai warriors carrying spears through a snowy mountain pass among snow-laden pine trees, with crisp linework, muted winter colors, and a calm yet solemn atmosphere.",
+      "metadata": {
+        "delta": 0.0572,
+        "distribution_delta": 0.2477,
+        "perceptual_delta": 0.1336,
+        "candidate_score": 0.5319,
+        "current_score": 0.4747
+      }
+    },
+    {
+      "sample_id": "track1_0740",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0740.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0568,
+      "tier": "high_delta_review",
+      "caption": "A Gongbi painting of robed figures gathered in a dim interior, rendered with fine controlled linework, muted earth tones, and a solemn, aged atmosphere.",
+      "metadata": {
+        "delta": 0.0568,
+        "distribution_delta": 0.1764,
+        "perceptual_delta": 0.2025,
+        "candidate_score": 0.5654,
+        "current_score": 0.5086
+      }
+    },
+    {
+      "sample_id": "track1_0844",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0844.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0562,
+      "tier": "high_delta_review",
+      "caption": "A Ukiyo-e scene of travelers crossing a small arched bridge over a stream near a hillside building, framed by autumn trees, delicate linework, and muted earthy colors.",
+      "metadata": {
+        "delta": 0.0562,
+        "distribution_delta": 0.2115,
+        "perceptual_delta": 0.1632,
+        "candidate_score": 0.5016,
+        "current_score": 0.4454
+      }
+    },
+    {
+      "sample_id": "track1_0771",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0771.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0559,
+      "tier": "high_delta_review",
+      "caption": "A Ukiyo-e woodblock print of women gathered inside a traditional room opening onto a quiet garden with rocks, pine trees, sliding screens, and delicate linework in a muted color palette.",
+      "metadata": {
+        "delta": 0.0559,
+        "distribution_delta": 0.2257,
+        "perceptual_delta": 0.1469,
+        "candidate_score": 0.5241,
+        "current_score": 0.4682
+      }
+    },
+    {
+      "sample_id": "track1_0030",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0030.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0552,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of travelers in traditional robes walking through a hilly landscape with trees, distant figures on a path, and Mount Fuji in the background, rendered with delicate linework and muted earthy colors.",
+      "metadata": {
+        "delta": 0.0552,
+        "distribution_delta": 0.2012,
+        "perceptual_delta": 0.167,
+        "candidate_score": 0.5141,
+        "current_score": 0.4589
+      }
+    },
+    {
+      "sample_id": "track1_0659",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0659.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0523,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e woodblock print of three elegantly dressed figures walking in diagonal rain, with a large patterned parasol, delicate linework, muted colors, and a calm street scene atmosphere.",
+      "metadata": {
+        "delta": 0.0523,
+        "distribution_delta": 0.1838,
+        "perceptual_delta": 0.1645,
+        "candidate_score": 0.5558,
+        "current_score": 0.5035
+      }
+    },
+    {
+      "sample_id": "track1_0897",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0897.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0517,
+      "tier": "high_delta_review",
+      "caption": "Ink and wash painting of a serene garden scene with a twisted pine tree, bamboo, rocks, a thatched pavilion where two scholars sit at a table, and a lone figure standing by a simple fence, rendered with delicate brushwork and soft muted washes.",
+      "metadata": {
+        "delta": 0.0517,
+        "distribution_delta": 0.2101,
+        "perceptual_delta": 0.1346,
+        "candidate_score": 0.5158,
+        "current_score": 0.4641
+      }
+    },
+    {
+      "sample_id": "track1_0614",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0614.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0507,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of two women in patterned kimonos standing on a hillside above a quiet coastal landscape, one holding a closed parasol, with delicate linework and a muted earthy color palette.",
+      "metadata": {
+        "delta": 0.0507,
+        "distribution_delta": 0.2064,
+        "perceptual_delta": 0.1311,
+        "candidate_score": 0.5334,
+        "current_score": 0.4827
+      }
+    },
+    {
+      "sample_id": "track1_0945",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0945.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0503,
+      "tier": "high_delta_review",
+      "caption": "Ukiyo-e scene of three elegantly dressed women in patterned kimonos standing beneath blooming cherry branches, with delicate linework, muted colors, and a calm spring atmosphere.",
+      "metadata": {
+        "delta": 0.0503,
+        "distribution_delta": 0.1982,
+        "perceptual_delta": 0.1373,
+        "candidate_score": 0.5165,
+        "current_score": 0.4662
+      }
+    },
+    {
+      "sample_id": "track1_0785",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0785.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0497,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a serene mountainous landscape with clustered trees, small hillside houses, winding paths, and calligraphy, rendered with delicate brushwork and a muted earthy color palette.",
+      "metadata": {
+        "delta": 0.0497,
+        "distribution_delta": 0.1635,
+        "perceptual_delta": 0.1681,
+        "candidate_score": 0.515,
+        "current_score": 0.4653
+      }
+    },
+    {
+      "sample_id": "track1_0168",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0168.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0484,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of elegant women in traditional robes gathered on a wooden veranda, with fine linework, muted colors, patterned textiles, and a calm domestic atmosphere.",
+      "metadata": {
+        "delta": 0.0484,
+        "distribution_delta": 0.1509,
+        "perceptual_delta": 0.1719,
+        "candidate_score": 0.5136,
+        "current_score": 0.4652
+      }
+    },
+    {
+      "sample_id": "track1_0787",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0787.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0483,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e portrait of a standing Japanese actor or warrior in an ornate patterned kimono with a sword, surrounded by calligraphy on aged paper with bold outlines and muted red, gold, and black tones.",
+      "metadata": {
+        "delta": 0.0483,
+        "distribution_delta": 0.2083,
+        "perceptual_delta": 0.1141,
+        "candidate_score": 0.5035,
+        "current_score": 0.4552
+      }
+    },
+    {
+      "sample_id": "track1_0746",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0746.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0473,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of two kimono-clad figures walking under yellow paper umbrellas through diagonal rain, with delicate linework, muted colors, and a calligraphy cartouche in the upper corner.",
+      "metadata": {
+        "delta": 0.0473,
+        "distribution_delta": 0.2141,
+        "perceptual_delta": 0.1011,
+        "candidate_score": 0.5356,
+        "current_score": 0.4883
+      }
+    },
+    {
+      "sample_id": "track1_0233",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0233.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0472,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a serene mountainous landscape with towering rocky peaks, dense pine trees, small riverside pavilions, and delicate monochrome brushwork on a vertical scroll.",
+      "metadata": {
+        "delta": 0.0472,
+        "distribution_delta": 0.2143,
+        "perceptual_delta": 0.1006,
+        "candidate_score": 0.5177,
+        "current_score": 0.4705
+      }
+    },
+    {
+      "sample_id": "track1_0832",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0832.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0469,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of two women in patterned kimonos, one standing and one kneeling with a fan beside tall flowering plants, rendered with flat warm colors and delicate linework.",
+      "metadata": {
+        "delta": 0.0469,
+        "distribution_delta": 0.1803,
+        "perceptual_delta": 0.1326,
+        "candidate_score": 0.4955,
+        "current_score": 0.4486
+      }
+    },
+    {
+      "sample_id": "track1_0180",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0180.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0466,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e woodblock print of travelers crossing a high arched bridge over a blue river, with wooden supports, stone embankments, and a small village landscape in muted colors and crisp linework.",
+      "metadata": {
+        "delta": 0.0466,
+        "distribution_delta": 0.1683,
+        "perceptual_delta": 0.1426,
+        "candidate_score": 0.519,
+        "current_score": 0.4724
+      }
+    },
+    {
+      "sample_id": "track1_0890",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0890.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0462,
+      "tier": "medium_delta_review",
+      "caption": "A Ukiyo-e landscape of a winding blue river with small boats, grassy banks, pine and willow trees, and distant huts, rendered with bold outlines and a muted green and blue palette.",
+      "metadata": {
+        "delta": 0.0462,
+        "distribution_delta": 0.1859,
+        "perceptual_delta": 0.1217,
+        "candidate_score": 0.5213,
+        "current_score": 0.4751
+      }
+    },
+    {
+      "sample_id": "track1_0872",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0872.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.046,
+      "tier": "medium_delta_review",
+      "caption": "A serene Ukiyo-e landscape with a winding stream flowing through rocky banks, dense green hills, and trees silhouetted against a dark sky, rendered with bold outlines and textured wave patterns.",
+      "metadata": {
+        "delta": 0.046,
+        "distribution_delta": 0.1673,
+        "perceptual_delta": 0.1394,
+        "candidate_score": 0.515,
+        "current_score": 0.469
+      }
+    },
+    {
+      "sample_id": "track1_0080",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0080.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0449,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e style scene of two dramatic warriors grappling in richly patterned robes, with bold outlines, flat colors, and a vertical woodblock print composition.",
+      "metadata": {
+        "delta": 0.0449,
+        "distribution_delta": 0.1635,
+        "perceptual_delta": 0.1362,
+        "candidate_score": 0.5136,
+        "current_score": 0.4687
+      }
+    },
+    {
+      "sample_id": "track1_0616",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0616.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.044,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a gnarled pine tree rising from rocky ground beside grasses and a quiet shoreline, with delicate brushwork, muted sepia tones, calligraphy, and red seals creating a serene traditional landscape.",
+      "metadata": {
+        "delta": 0.044,
+        "distribution_delta": 0.1908,
+        "perceptual_delta": 0.1021,
+        "candidate_score": 0.54,
+        "current_score": 0.496
+      }
+    },
+    {
+      "sample_id": "track1_0914",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0914.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0433,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e print of whimsical yokai-like figures and tiny travelers parading with umbrellas, instruments, and strange sea-creature forms, rendered with fine outlines, muted colors, and a playful fantastical mood.",
+      "metadata": {
+        "delta": 0.0433,
+        "distribution_delta": 0.1755,
+        "perceptual_delta": 0.1137,
+        "candidate_score": 0.5211,
+        "current_score": 0.4778
+      }
+    },
+    {
+      "sample_id": "track1_0008",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0008.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0432,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e rural landscape with travelers walking along a winding path beside fields and a narrow stream, tall trees rising in the foreground, muted colors, fine linework, and vertical composition.",
+      "metadata": {
+        "delta": 0.0432,
+        "distribution_delta": 0.1837,
+        "perceptual_delta": 0.1039,
+        "candidate_score": 0.5499,
+        "current_score": 0.5067
+      }
+    },
+    {
+      "sample_id": "track1_0488",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0488.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.043,
+      "tier": "medium_delta_review",
+      "caption": "A Ukiyo-e landscape with a winding blue river, small boats, a wooden bridge, riverside buildings, green trees, and distant mountains beneath a softly graded sky.",
+      "metadata": {
+        "delta": 0.043,
+        "distribution_delta": 0.1876,
+        "perceptual_delta": 0.0996,
+        "candidate_score": 0.552,
+        "current_score": 0.509
+      }
+    },
+    {
+      "sample_id": "track1_0590",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0590.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0417,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e style scene of three figures in traditional Japanese robes walking past a wooden building and garden, rendered with delicate linework and a muted earthy color palette.",
+      "metadata": {
+        "delta": 0.0417,
+        "distribution_delta": 0.1587,
+        "perceptual_delta": 0.1192,
+        "candidate_score": 0.5018,
+        "current_score": 0.4601
+      }
+    },
+    {
+      "sample_id": "track1_0314",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0314.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0416,
+      "tier": "medium_delta_review",
+      "caption": "A Socialist Realism Soviet propaganda poster with a bold Cyrillic headline, heroic soldiers, an industrial worker, anti-fascist caricature scenes, and stark wartime panels in muted reds, blues, and beige tones.",
+      "metadata": {
+        "delta": 0.0416,
+        "distribution_delta": 0.1602,
+        "perceptual_delta": 0.1171,
+        "candidate_score": 0.5082,
+        "current_score": 0.4666
+      }
+    },
+    {
+      "sample_id": "track1_0915",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0915.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0415,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e style scene of two women in patterned kimono walking under a large umbrella in falling snow, with delicate linework, muted earthy colors, and calligraphic text in the background.",
+      "metadata": {
+        "delta": 0.0415,
+        "distribution_delta": 0.153,
+        "perceptual_delta": 0.1233,
+        "candidate_score": 0.5154,
+        "current_score": 0.4739
+      }
+    },
+    {
+      "sample_id": "track1_0523",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0523.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0411,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e style circular composition of a busy river harbor with boats, a large moored vessel in the foreground, distant waterfront buildings, muted colors, fine linework, and Japanese calligraphy on a dark background.",
+      "metadata": {
+        "delta": 0.0411,
+        "distribution_delta": 0.1477,
+        "perceptual_delta": 0.1261,
+        "candidate_score": 0.551,
+        "current_score": 0.5099
+      }
+    },
+    {
+      "sample_id": "track1_0697",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0697.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.041,
+      "tier": "medium_delta_review",
+      "caption": "Abstract composition of geometric pyramids, spheres, and block-like forms on a faint grid, layered with energetic sketchy lines, splattered textures, and a vivid yellow, teal, orange, and red palette.",
+      "metadata": {
+        "delta": 0.041,
+        "distribution_delta": 0.1492,
+        "perceptual_delta": 0.1243,
+        "candidate_score": 0.4887,
+        "current_score": 0.4477
+      }
+    },
+    {
+      "sample_id": "track1_0952",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0952.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0409,
+      "tier": "medium_delta_review",
+      "caption": "A Ukiyo-e portrait of an elegant woman in a richly patterned blue kimono within a decorative interior, rendered with flat color blocks, delicate linework, and a muted vintage palette.",
+      "metadata": {
+        "delta": 0.0409,
+        "distribution_delta": 0.1456,
+        "perceptual_delta": 0.1274,
+        "candidate_score": 0.5042,
+        "current_score": 0.4633
+      }
+    },
+    {
+      "sample_id": "track1_0223",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0223.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0409,
+      "tier": "medium_delta_review",
+      "caption": "An Early Renaissance monochrome illustration of a robed seated figure beside a walled garden and gate, with a small church, trees, hills, and delicate hatched linework in a muted sepia palette.",
+      "metadata": {
+        "delta": 0.0409,
+        "distribution_delta": 0.1753,
+        "perceptual_delta": 0.0974,
+        "candidate_score": 0.5055,
+        "current_score": 0.4646
+      }
+    },
+    {
+      "sample_id": "track1_0611",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0611.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0408,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a serene mountainous riverside landscape with layered rocky peaks, misty water, trees, a small pavilion by the shore, a tiny boat, and delicate calligraphy rendered in monochrome brushwork.",
+      "metadata": {
+        "delta": 0.0408,
+        "distribution_delta": 0.1661,
+        "perceptual_delta": 0.1058,
+        "candidate_score": 0.5306,
+        "current_score": 0.4898
+      }
+    },
+    {
+      "sample_id": "track1_0385",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0385.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0408,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e portrait of an elegantly dressed woman in a patterned kimono standing beneath leafy branches, holding a folding fan beside a quiet riverside landscape with delicate linework and muted colors.",
+      "metadata": {
+        "delta": 0.0408,
+        "distribution_delta": 0.1458,
+        "perceptual_delta": 0.1264,
+        "candidate_score": 0.4997,
+        "current_score": 0.4589
+      }
+    },
+    {
+      "sample_id": "track1_0635",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0635.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0404,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of three elegantly robed figures standing near a garden doorway with flowering trees, rendered in delicate linework, muted colors, and an aged paper texture.",
+      "metadata": {
+        "delta": 0.0404,
+        "distribution_delta": 0.1264,
+        "perceptual_delta": 0.143,
+        "candidate_score": 0.5021,
+        "current_score": 0.4617
+      }
+    },
+    {
+      "sample_id": "track1_0937",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0937.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0396,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a serene mountainous landscape with clustered trees, rocky slopes, small houses in a valley, calligraphy inscriptions, and red seal stamps rendered with delicate monochrome brushwork.",
+      "metadata": {
+        "delta": 0.0396,
+        "distribution_delta": 0.1715,
+        "perceptual_delta": 0.0923,
+        "candidate_score": 0.5012,
+        "current_score": 0.4616
+      }
+    },
+    {
+      "sample_id": "track1_0838",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0838.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0396,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e style owl perched on a mossy twisting branch with red maple leaves, Japanese calligraphy, muted earthy colors, and delicate textured linework on aged paper.",
+      "metadata": {
+        "delta": 0.0396,
+        "distribution_delta": 0.1858,
+        "perceptual_delta": 0.0785,
+        "candidate_score": 0.511,
+        "current_score": 0.4714
+      }
+    },
+    {
+      "sample_id": "track1_0815",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0815.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0396,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of elegantly dressed Japanese figures gathered closely with folding fans and patterned robes, rendered in fine ink lines and a muted beige color palette.",
+      "metadata": {
+        "delta": 0.0396,
+        "distribution_delta": 0.1387,
+        "perceptual_delta": 0.1259,
+        "candidate_score": 0.4961,
+        "current_score": 0.4565
+      }
+    },
+    {
+      "sample_id": "track1_0724",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0724.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.039,
+      "tier": "medium_delta_review",
+      "caption": "Abstract pencil sketch of a sparse architectural landscape with faint angular building outlines, a curving path, delicate linear marks, and a muted beige paper texture.",
+      "metadata": {
+        "delta": 0.039,
+        "distribution_delta": 0.1419,
+        "perceptual_delta": 0.1183,
+        "candidate_score": 0.4466,
+        "current_score": 0.4076
+      }
+    },
+    {
+      "sample_id": "track1_0445",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0445.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0388,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a fan-shaped mountainous landscape with rocky peaks, sparse trees, misty valleys, a calligraphy inscription, warm sepia tones, and delicate brushwork.",
+      "metadata": {
+        "delta": 0.0388,
+        "distribution_delta": 0.1536,
+        "perceptual_delta": 0.1052,
+        "candidate_score": 0.5468,
+        "current_score": 0.508
+      }
+    },
+    {
+      "sample_id": "track1_0604",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0604.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0385,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of two women in flowing robes sharing a large umbrella beside a quiet waterside with birds and reeds, rendered in delicate linework and a muted earthy palette.",
+      "metadata": {
+        "delta": 0.0385,
+        "distribution_delta": 0.1817,
+        "perceptual_delta": 0.0747,
+        "candidate_score": 0.5209,
+        "current_score": 0.4824
+      }
+    },
+    {
+      "sample_id": "track1_0712",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0712.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0377,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a vertical scroll with a robed sage in a circular frame above swirling dragon-like forms and bold ornamental black brushstrokes on aged sepia paper.",
+      "metadata": {
+        "delta": 0.0377,
+        "distribution_delta": 0.1149,
+        "perceptual_delta": 0.1361,
+        "candidate_score": 0.5143,
+        "current_score": 0.4766
+      }
+    },
+    {
+      "sample_id": "track1_0434",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0434.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.037,
+      "tier": "medium_delta_review",
+      "caption": "Ink and wash painting of a serene mountainous landscape with layered rocky ridges, dense trees, misty distant peaks, muted sepia tones, fine brushwork, and calligraphy inscription above.",
+      "metadata": {
+        "delta": 0.037,
+        "distribution_delta": 0.171,
+        "perceptual_delta": 0.0754,
+        "candidate_score": 0.5247,
+        "current_score": 0.4877
+      }
+    },
+    {
+      "sample_id": "track1_0812",
+      "decision": "accept",
+      "candidate_image": "submissions/track1_candidate_full1000_aas_safe_official_v7_no_fallback_20260605/images/track1_0812.jpg",
+      "source": "v4_distribution_review_queue",
+      "priority": 60000,
+      "score": 0.0366,
+      "tier": "medium_delta_review",
+      "caption": "Ukiyo-e scene of a woman holding a patterned parasol beside a child riding a small toy horse near a pink wooden building, with delicate linework, muted colors, and a calm spring atmosphere.",
+      "metadata": {
+        "delta": 0.0366,
+        "distribution_delta": 0.1394,
+        "perceptual_delta": 0.1047,
+        "candidate_score": 0.4974,
+        "current_score": 0.4608
+      }
+    }
+  ],
+  "source_counts": {
+    "v5_human_accept48": 48,
+    "safe_subset_package_diff": 24,
+    "pilot100_human24_package_diff": 32,
+    "human_v25_wave2_package_diff": 2,
+    "v4_distribution_review_queue": 54
+  }
+}
