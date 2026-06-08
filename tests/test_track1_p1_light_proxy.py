@@ -100,7 +100,7 @@ def test_evaluate_package_reports_changed_style_concentration(tmp_path: Path) ->
     assert changed["reference_asset_count"] == 2
 
 
-def test_evaluate_package_uses_manifest_replacement_ids_over_hash_differences(tmp_path: Path) -> None:
+def test_evaluate_package_reports_actual_hash_changes_and_manifest_gaps(tmp_path: Path) -> None:
     baseline_dir = tmp_path / "baseline"
     candidate_dir = tmp_path / "candidate"
     _write_image(baseline_dir / "track1_0001.jpg", (10, 20, 30))
@@ -122,9 +122,18 @@ def test_evaluate_package_uses_manifest_replacement_ids_over_hash_differences(tm
         replacement_sample_ids={"track1_0001"},
     )
 
-    assert report["summary"]["changed_sample_count"] == 1
+    assert report["summary"]["changed_sample_count"] == 2
+    assert report["summary"]["actual_changed_sample_count"] == 2
+    assert report["summary"]["manifest_changed_sample_count"] == 1
+    assert report["summary"]["manifest_actual_gap_count"] == 1
+    assert report["summary"]["manifest_missing_actual_changed_samples"] == ["track1_0002"]
     changed_ids = [row["sample_id"] for row in report["rows"] if row["changed"]]
-    assert changed_ids == ["track1_0001"]
+    assert changed_ids == ["track1_0001", "track1_0002"]
+    rows_by_id = {row["sample_id"]: row for row in report["rows"]}
+    assert rows_by_id["track1_0001"]["actual_hash_changed"] is True
+    assert rows_by_id["track1_0001"]["manifest_changed"] is True
+    assert rows_by_id["track1_0002"]["actual_hash_changed"] is True
+    assert rows_by_id["track1_0002"]["manifest_changed"] is False
 
 
 def test_load_route_index_and_write_reports(tmp_path: Path) -> None:

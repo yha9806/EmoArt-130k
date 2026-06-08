@@ -10,7 +10,7 @@ from typing import Any, Iterable
 from PIL import Image
 
 
-P1_LIGHT_VERSION = "track1_p1_light_proxy_v1"
+P1_LIGHT_VERSION = "track1_p1_light_proxy_v2"
 
 POSTER_TERMS = (
     "poster",
@@ -143,11 +143,9 @@ def evaluate_package(
         baseline_path = _row_image_path(baseline_by_id.get(sample_id, submission_row), baseline_image_dir)
         candidate_hash = _sha256(candidate_path)
         baseline_hash = _sha256(baseline_path)
-        changed = (
-            sample_id in replacement_sample_ids
-            if replacement_sample_ids
-            else bool(candidate_hash and candidate_hash != baseline_hash)
-        )
+        actual_hash_changed = bool(candidate_hash and candidate_hash != baseline_hash)
+        manifest_changed = sample_id in replacement_sample_ids if replacement_sample_ids else actual_hash_changed
+        changed = actual_hash_changed
         route = route_index.get(sample_id, {})
         stats = _safe_image_stats(candidate_path)
         placeholder_type = known_placeholders.get(candidate_hash, "")
@@ -157,6 +155,10 @@ def evaluate_package(
             "path": str(candidate_path),
             "baseline_path": str(baseline_path),
             "changed": changed,
+            "actual_hash_changed": actual_hash_changed,
+            "manifest_changed": manifest_changed,
+            "manifest_actual_gap": actual_hash_changed and not manifest_changed,
+            "manifest_nonmaterial_change": manifest_changed and not actual_hash_changed,
             "exists": bool(stats.get("exists")),
             "image_error": str(stats.get("image_error") or ""),
             "sha256": candidate_hash,
@@ -238,6 +240,10 @@ def write_p1_light_reports(report: dict[str, Any], json_path: str | Path, md_pat
 
 def _package_summary(package_name: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
     changed = [row for row in rows if row.get("changed")]
+    actual_changed = [row for row in rows if row.get("actual_hash_changed")]
+    manifest_changed = [row for row in rows if row.get("manifest_changed")]
+    manifest_missing_actual_changed = [row for row in rows if row.get("manifest_actual_gap")]
+    manifest_nonmaterial_changed = [row for row in rows if row.get("manifest_nonmaterial_change")]
     changed_styles = Counter(str(row.get("reference_style") or "unknown") for row in changed)
     known_placeholder_rows = [row for row in rows if row.get("known_placeholder_type")]
     invalid_rows = [row for row in rows if not row.get("exists") or row.get("image_error")]
@@ -260,6 +266,16 @@ def _package_summary(package_name: str, rows: list[dict[str, Any]]) -> dict[str,
         "status": status,
         "sample_count": len(rows),
         "changed_sample_count": len(changed),
+        "actual_changed_sample_count": len(actual_changed),
+        "manifest_changed_sample_count": len(manifest_changed),
+        "manifest_actual_gap_count": len(manifest_missing_actual_changed),
+        "manifest_missing_actual_changed_samples": [
+            str(row["sample_id"]) for row in manifest_missing_actual_changed
+        ],
+        "manifest_nonmaterial_change_count": len(manifest_nonmaterial_changed),
+        "manifest_nonmaterial_changed_samples": [
+            str(row["sample_id"]) for row in manifest_nonmaterial_changed
+        ],
         "known_placeholder_hit_count": len(known_placeholder_rows),
         "known_placeholder_samples": [str(row["sample_id"]) for row in known_placeholder_rows],
         "invalid_image_count": len(invalid_rows),
@@ -467,15 +483,18 @@ def _render_markdown(report: dict[str, Any]) -> str:
                 "",
                 "## 包级结果",
                 "",
-                "| 包 | 状态 | 已替换样本 | placeholder 命中 | 最高风格集中度 | P1-light 分数 |",
-                "|---|---|---:|---:|---:|---:|",
+                "| 包 | 状态 | actual 变更 | manifest 变更 | actual/manifest 缺口 | placeholder 命中 | 最高风格集中度 | P1-light 分数 |",
+                "|---|---|---:|---:|---:|---:|---:|---:|",
             ]
         )
         for package in report.get("packages", []):
             item = package.get("summary", {})
             lines.append(
                 f"| `{package.get('package', '')}` | `{item.get('status', '')}` | "
-                f"{item.get('changed_sample_count', 0)} | {item.get('known_placeholder_hit_count', 0)} | "
+                f"{item.get('actual_changed_sample_count', item.get('changed_sample_count', 0))} | "
+                f"{item.get('manifest_changed_sample_count', 0)} | "
+                f"{item.get('manifest_actual_gap_count', 0)} | "
+                f"{item.get('known_placeholder_hit_count', 0)} | "
                 f"{item.get('max_changed_style_concentration', 0)} | {item.get('p1_light_score', 0)} |"
             )
     else:
@@ -491,7 +510,9 @@ def _package_markdown(report: dict[str, Any]) -> list[str]:
         f"- 包：`{report.get('package', '')}`",
         f"- 状态：`{summary.get('status', '')}`",
         f"- 样本数：`{summary.get('sample_count', 0)}`",
-        f"- 已替换样本：`{summary.get('changed_sample_count', 0)}`",
+        f"- actual hash 变更样本：`{summary.get('actual_changed_sample_count', summary.get('changed_sample_count', 0))}`",
+        f"- manifest 标记变更样本：`{summary.get('manifest_changed_sample_count', 0)}`",
+        f"- actual/manifest 缺口样本：`{summary.get('manifest_actual_gap_count', 0)}`",
         f"- 已知 placeholder 命中：`{summary.get('known_placeholder_hit_count', 0)}`",
         f"- 无效图片：`{summary.get('invalid_image_count', 0)}`",
         f"- 最高替换风格集中度：`{summary.get('max_changed_style_concentration', 0)}`",
