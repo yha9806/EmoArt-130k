@@ -1,0 +1,572 @@
+arousal,count,emotion,share,style,style_count,valence
+High,823,excited,0.467879,Abstract Art,1759,Positive
+Low,678,calm,0.385446,Abstract Art,1759,Positive
+Low,135,content,0.076748,Abstract Art,1759,Positive
+High,34,frustrated,0.019329,Abstract Art,1759,Negative
+Low,31,sad,0.017624,Abstract Art,1759,Negative
+High,26,alarmed,0.014781,Abstract Art,1759,Negative
+High,14,annoyed,0.007959,Abstract Art,1759,Negative
+Low,5,bored,0.002843,Abstract Art,1759,Negative
+Low,5,tired,0.002843,Abstract Art,1759,Negative
+High,4,aroused,0.002274,Abstract Art,1759,Positive
+High,4,happy,0.002274,Abstract Art,1759,Positive
+High,1730,excited,0.470876,Abstract Expressionism,3674,Positive
+Low,1151,calm,0.313283,Abstract Expressionism,3674,Positive
+Low,234,content,0.063691,Abstract Expressionism,3674,Positive
+High,229,frustrated,0.06233,Abstract Expressionism,3674,Negative
+High,122,alarmed,0.033206,Abstract Expressionism,3674,Negative
+Low,86,sad,0.023408,Abstract Expressionism,3674,Negative
+High,42,annoyed,0.011432,Abstract Expressionism,3674,Negative
+Low,31,bored,0.008438,Abstract Expressionism,3674,Negative
+High,24,aroused,0.006532,Abstract Expressionism,3674,Positive
+Low,14,tired,0.003811,Abstract Expressionism,3674,Negative
+High,11,happy,0.002994,Abstract Expressionism,3674,Positive
+Low,2237,calm,0.605741,Academicism,3693,Positive
+Low,874,content,0.236664,Academicism,3693,Positive
+High,207,excited,0.056052,Academicism,3693,Positive
+Low,140,sad,0.03791,Academicism,3693,Negative
+High,130,alarmed,0.035202,Academicism,3693,Negative
+High,58,frustrated,0.015705,Academicism,3693,Negative
+High,20,happy,0.005416,Academicism,3693,Positive
+High,10,aroused,0.002708,Academicism,3693,Positive
+High,7,annoyed,0.001895,Academicism,3693,Negative
+Low,6,tired,0.001625,Academicism,3693,Negative
+Low,3,glad,0.000812,Academicism,3693,Positive
+Low,1,bored,0.000271,Academicism,3693,Negative
+High,154,excited,0.385965,Art Brut,399,Positive
+Low,90,calm,0.225564,Art Brut,399,Positive
+High,53,alarmed,0.132832,Art Brut,399,Negative
+High,33,frustrated,0.082707,Art Brut,399,Negative
+Low,28,content,0.070175,Art Brut,399,Positive
+Low,19,sad,0.047619,Art Brut,399,Negative
+Low,10,bored,0.025063,Art Brut,399,Negative
+High,5,happy,0.012531,Art Brut,399,Positive
+High,3,annoyed,0.007519,Art Brut,399,Negative
+Low,3,tired,0.007519,Art Brut,399,Negative
+High,1,aroused,0.002506,Art Brut,399,Positive
+Low,328,calm,0.575439,Art Deco,570,Positive
+High,121,excited,0.212281,Art Deco,570,Positive
+Low,73,content,0.12807,Art Deco,570,Positive
+High,16,alarmed,0.02807,Art Deco,570,Negative
+High,10,frustrated,0.017544,Art Deco,570,Negative
+Low,8,sad,0.014035,Art Deco,570,Negative
+High,5,aroused,0.008772,Art Deco,570,Positive
+Low,3,bored,0.005263,Art Deco,570,Negative
+Low,3,tired,0.005263,Art Deco,570,Negative
+High,2,happy,0.003509,Art Deco,570,Positive
+Low,1,glad,0.001754,Art Deco,570,Positive
+High,620,excited,0.420624,Art Informel,1474,Positive
+Low,461,calm,0.312754,Art Informel,1474,Positive
+High,129,frustrated,0.087517,Art Informel,1474,Negative
+Low,93,content,0.063094,Art Informel,1474,Positive
+High,60,alarmed,0.040706,Art Informel,1474,Negative
+Low,51,sad,0.0346,Art Informel,1474,Negative
+High,19,annoyed,0.01289,Art Informel,1474,Negative
+Low,16,bored,0.010855,Art Informel,1474,Negative
+High,12,aroused,0.008141,Art Informel,1474,Positive
+Low,9,tired,0.006106,Art Informel,1474,Negative
+High,4,happy,0.002714,Art Informel,1474,Positive
+Low,3385,calm,0.573826,Art Nouveau (Modern),5899,Positive
+Low,1015,content,0.172063,Art Nouveau (Modern),5899,Positive
+High,918,excited,0.15562,Art Nouveau (Modern),5899,Positive
+High,213,alarmed,0.036108,Art Nouveau (Modern),5899,Negative
+Low,173,sad,0.029327,Art Nouveau (Modern),5899,Negative
+High,66,frustrated,0.011188,Art Nouveau (Modern),5899,Negative
+High,62,happy,0.01051,Art Nouveau (Modern),5899,Positive
+High,23,aroused,0.003899,Art Nouveau (Modern),5899,Positive
+High,18,annoyed,0.003051,Art Nouveau (Modern),5899,Negative
+Low,17,bored,0.002882,Art Nouveau (Modern),5899,Negative
+Low,5,tired,0.000848,Art Nouveau (Modern),5899,Negative
+Low,4,glad,0.000678,Art Nouveau (Modern),5899,Positive
+Low,4396,calm,0.549844,Baroque,7995,Positive
+Low,1547,content,0.193496,Baroque,7995,Positive
+High,799,excited,0.099937,Baroque,7995,Positive
+High,532,alarmed,0.066542,Baroque,7995,Negative
+Low,305,sad,0.038149,Baroque,7995,Negative
+High,206,frustrated,0.025766,Baroque,7995,Negative
+High,87,happy,0.010882,Baroque,7995,Positive
+High,60,aroused,0.007505,Baroque,7995,Positive
+Low,22,tired,0.002752,Baroque,7995,Negative
+High,19,annoyed,0.002376,Baroque,7995,Negative
+Low,17,bored,0.002126,Baroque,7995,Negative
+Low,5,glad,0.000625,Baroque,7995,Positive
+Low,3717,calm,0.894154,China_images,4157,Positive
+Low,429,content,0.103199,China_images,4157,Positive
+High,8,excited,0.001924,China_images,4157,Positive
+High,1,alarmed,0.000241,China_images,4157,Negative
+High,1,happy,0.000241,China_images,4157,Positive
+Low,1,sad,0.000241,China_images,4157,Negative
+Low,616,calm,0.539877,Color Field Painting,1141,Positive
+High,384,excited,0.336547,Color Field Painting,1141,Positive
+Low,93,content,0.081507,Color Field Painting,1141,Positive
+Low,19,sad,0.016652,Color Field Painting,1141,Negative
+High,7,alarmed,0.006135,Color Field Painting,1141,Negative
+High,7,frustrated,0.006135,Color Field Painting,1141,Negative
+High,6,happy,0.005259,Color Field Painting,1141,Positive
+High,5,aroused,0.004382,Color Field Painting,1141,Positive
+Low,3,bored,0.002629,Color Field Painting,1141,Negative
+Low,1,glad,0.000876,Color Field Painting,1141,Positive
+Low,284,calm,0.488812,Concretism,581,Positive
+High,231,excited,0.39759,Concretism,581,Positive
+Low,50,content,0.086059,Concretism,581,Positive
+High,6,happy,0.010327,Concretism,581,Positive
+High,3,aroused,0.005164,Concretism,581,Positive
+High,2,annoyed,0.003442,Concretism,581,Negative
+High,2,frustrated,0.003442,Concretism,581,Negative
+Low,2,sad,0.003442,Concretism,581,Negative
+Low,1,bored,0.001721,Concretism,581,Negative
+Low,229,calm,0.503297,Constructivism,455,Positive
+High,167,excited,0.367033,Constructivism,455,Positive
+Low,24,content,0.052747,Constructivism,455,Positive
+High,14,alarmed,0.030769,Constructivism,455,Negative
+High,6,frustrated,0.013187,Constructivism,455,Negative
+High,5,aroused,0.010989,Constructivism,455,Positive
+Low,4,bored,0.008791,Constructivism,455,Negative
+High,3,annoyed,0.006593,Constructivism,455,Negative
+Low,2,sad,0.004396,Constructivism,455,Negative
+Low,1,tired,0.002198,Constructivism,455,Negative
+Low,859,calm,0.633014,Contemporary Realism,1357,Positive
+Low,198,content,0.14591,Contemporary Realism,1357,Positive
+Low,113,sad,0.083272,Contemporary Realism,1357,Negative
+High,109,excited,0.080324,Contemporary Realism,1357,Positive
+High,27,alarmed,0.019897,Contemporary Realism,1357,Negative
+High,19,frustrated,0.014001,Contemporary Realism,1357,Negative
+Low,12,bored,0.008843,Contemporary Realism,1357,Negative
+High,9,happy,0.006632,Contemporary Realism,1357,Positive
+High,4,annoyed,0.002948,Contemporary Realism,1357,Negative
+High,4,aroused,0.002948,Contemporary Realism,1357,Positive
+Low,3,tired,0.002211,Contemporary Realism,1357,Negative
+Low,992,calm,0.406891,Cubism,2438,Positive
+High,934,excited,0.383101,Cubism,2438,Positive
+Low,259,content,0.106235,Cubism,2438,Positive
+High,77,frustrated,0.031583,Cubism,2438,Negative
+Low,58,sad,0.02379,Cubism,2438,Negative
+High,51,alarmed,0.020919,Cubism,2438,Negative
+Low,22,bored,0.009024,Cubism,2438,Negative
+Low,16,tired,0.006563,Cubism,2438,Negative
+High,12,aroused,0.004922,Cubism,2438,Positive
+High,9,annoyed,0.003692,Cubism,2438,Negative
+High,8,happy,0.003281,Cubism,2438,Positive
+Low,112,calm,0.378378,Dada,296,Positive
+High,63,excited,0.212838,Dada,296,Positive
+Low,46,content,0.155405,Dada,296,Positive
+High,25,alarmed,0.084459,Dada,296,Negative
+High,22,frustrated,0.074324,Dada,296,Negative
+Low,12,bored,0.040541,Dada,296,Negative
+High,7,annoyed,0.023649,Dada,296,Negative
+Low,6,sad,0.02027,Dada,296,Negative
+Low,2,tired,0.006757,Dada,296,Negative
+High,1,aroused,0.003378,Dada,296,Positive
+Low,652,calm,0.683438,Early Renaissance,954,Positive
+Low,116,content,0.121593,Early Renaissance,954,Positive
+Low,70,sad,0.073375,Early Renaissance,954,Negative
+High,64,excited,0.067086,Early Renaissance,954,Positive
+High,31,alarmed,0.032495,Early Renaissance,954,Negative
+High,13,frustrated,0.013627,Early Renaissance,954,Negative
+High,5,aroused,0.005241,Early Renaissance,954,Positive
+High,2,happy,0.002096,Early Renaissance,954,Positive
+Low,1,tired,0.001048,Early Renaissance,954,Negative
+Low,4201,calm,0.417387,Expressionism,10065,Positive
+High,2160,excited,0.214605,Expressionism,10065,Positive
+Low,1158,content,0.115052,Expressionism,10065,Positive
+Low,941,sad,0.093492,Expressionism,10065,Negative
+High,720,frustrated,0.071535,Expressionism,10065,Negative
+High,523,alarmed,0.051962,Expressionism,10065,Negative
+High,122,annoyed,0.012121,Expressionism,10065,Negative
+High,76,happy,0.007551,Expressionism,10065,Positive
+Low,73,tired,0.007253,Expressionism,10065,Negative
+High,45,aroused,0.004471,Expressionism,10065,Positive
+Low,45,bored,0.004471,Expressionism,10065,Negative
+Low,1,glad,9.9e-05,Expressionism,10065,Positive
+High,482,excited,0.532597,Fauvism,905,Positive
+Low,243,calm,0.268508,Fauvism,905,Positive
+Low,112,content,0.123757,Fauvism,905,Positive
+High,27,happy,0.029834,Fauvism,905,Positive
+High,16,frustrated,0.01768,Fauvism,905,Negative
+Low,14,sad,0.01547,Fauvism,905,Negative
+High,4,aroused,0.00442,Fauvism,905,Positive
+High,3,annoyed,0.003315,Fauvism,905,Negative
+High,2,alarmed,0.00221,Fauvism,905,Negative
+Low,1,bored,0.001105,Fauvism,905,Negative
+Low,1,glad,0.001105,Fauvism,905,Positive
+High,151,excited,0.368293,Figurative Expressionism,410,Positive
+Low,139,calm,0.339024,Figurative Expressionism,410,Positive
+Low,45,content,0.109756,Figurative Expressionism,410,Positive
+High,23,frustrated,0.056098,Figurative Expressionism,410,Negative
+Low,22,sad,0.053659,Figurative Expressionism,410,Negative
+High,11,alarmed,0.026829,Figurative Expressionism,410,Negative
+High,8,happy,0.019512,Figurative Expressionism,410,Positive
+High,5,annoyed,0.012195,Figurative Expressionism,410,Negative
+Low,3,bored,0.007317,Figurative Expressionism,410,Negative
+High,2,aroused,0.004878,Figurative Expressionism,410,Positive
+Low,1,tired,0.002439,Figurative Expressionism,410,Negative
+Low,28,calm,0.875,Gongbi,32,Positive
+Low,4,content,0.125,Gongbi,32,Positive
+Low,252,calm,0.495088,Hard Edge Painting,509,Positive
+High,215,excited,0.422397,Hard Edge Painting,509,Positive
+Low,31,content,0.060904,Hard Edge Painting,509,Positive
+High,4,aroused,0.007859,Hard Edge Painting,509,Positive
+High,2,alarmed,0.003929,Hard Edge Painting,509,Negative
+High,2,happy,0.003929,Hard Edge Painting,509,Positive
+Low,2,sad,0.003929,Hard Edge Painting,509,Negative
+Low,1,tired,0.001965,Hard Edge Painting,509,Negative
+Low,1027,calm,0.673443,High Renaissance,1525,Positive
+Low,210,content,0.137705,High Renaissance,1525,Positive
+High,115,excited,0.07541,High Renaissance,1525,Positive
+Low,80,sad,0.052459,High Renaissance,1525,Negative
+High,42,alarmed,0.027541,High Renaissance,1525,Negative
+High,39,frustrated,0.025574,High Renaissance,1525,Negative
+High,3,aroused,0.001967,High Renaissance,1525,Positive
+Low,3,bored,0.001967,High Renaissance,1525,Negative
+Low,3,tired,0.001967,High Renaissance,1525,Negative
+High,2,annoyed,0.001311,High Renaissance,1525,Negative
+High,1,happy,0.000656,High Renaissance,1525,Positive
+Low,7886,calm,0.67195,Impressionism,11736,Positive
+Low,2327,content,0.198279,Impressionism,11736,Positive
+High,876,excited,0.074642,Impressionism,11736,Positive
+Low,334,sad,0.028459,Impressionism,11736,Negative
+High,85,happy,0.007243,Impressionism,11736,Positive
+High,84,alarmed,0.007157,Impressionism,11736,Negative
+High,81,frustrated,0.006902,Impressionism,11736,Negative
+High,22,aroused,0.001875,Impressionism,11736,Positive
+Low,22,tired,0.001875,Impressionism,11736,Negative
+High,9,annoyed,0.000767,Impressionism,11736,Negative
+Low,5,bored,0.000426,Impressionism,11736,Negative
+Low,5,glad,0.000426,Impressionism,11736,Positive
+Low,584,calm,0.6193,India_art,943,Positive
+Low,184,content,0.195122,India_art,943,Positive
+High,160,excited,0.169671,India_art,943,Positive
+High,8,happy,0.008484,India_art,943,Positive
+High,3,alarmed,0.003181,India_art,943,Negative
+High,2,aroused,0.002121,India_art,943,Positive
+High,1,annoyed,0.00106,India_art,943,Negative
+High,1,frustrated,0.00106,India_art,943,Negative
+Low,450,calm,0.827206,Ink and wash painting,544,Positive
+Low,31,content,0.056985,Ink and wash painting,544,Positive
+High,26,excited,0.047794,Ink and wash painting,544,Positive
+Low,22,sad,0.040441,Ink and wash painting,544,Negative
+High,6,alarmed,0.011029,Ink and wash painting,544,Negative
+High,6,frustrated,0.011029,Ink and wash painting,544,Negative
+Low,2,tired,0.003676,Ink and wash painting,544,Negative
+High,1,happy,0.001838,Ink and wash painting,544,Positive
+Low,467,calm,0.585213,Islamic_image,798,Positive
+Low,186,content,0.233083,Islamic_image,798,Positive
+High,133,excited,0.166667,Islamic_image,798,Positive
+High,6,alarmed,0.007519,Islamic_image,798,Negative
+High,3,frustrated,0.003759,Islamic_image,798,Negative
+High,1,annoyed,0.001253,Islamic_image,798,Negative
+High,1,happy,0.001253,Islamic_image,798,Positive
+Low,1,sad,0.001253,Islamic_image,798,Negative
+Low,424,calm,0.874227,Korea,485,Positive
+Low,57,content,0.117526,Korea,485,Positive
+High,2,excited,0.004124,Korea,485,Positive
+Low,2,sad,0.004124,Korea,485,Negative
+High,375,excited,0.471106,Lyrical Abstraction,796,Positive
+Low,296,calm,0.371859,Lyrical Abstraction,796,Positive
+Low,62,content,0.077889,Lyrical Abstraction,796,Positive
+High,23,frustrated,0.028894,Lyrical Abstraction,796,Negative
+High,15,alarmed,0.018844,Lyrical Abstraction,796,Negative
+Low,11,sad,0.013819,Lyrical Abstraction,796,Negative
+High,5,annoyed,0.006281,Lyrical Abstraction,796,Negative
+High,4,happy,0.005025,Lyrical Abstraction,796,Positive
+Low,4,tired,0.005025,Lyrical Abstraction,796,Negative
+High,1,aroused,0.001256,Lyrical Abstraction,796,Positive
+Low,822,calm,0.588825,Magic Realism,1396,Positive
+High,225,excited,0.161175,Magic Realism,1396,Positive
+Low,168,content,0.120344,Magic Realism,1396,Positive
+Low,68,sad,0.048711,Magic Realism,1396,Negative
+High,47,alarmed,0.033668,Magic Realism,1396,Negative
+High,32,frustrated,0.022923,Magic Realism,1396,Negative
+Low,14,bored,0.010029,Magic Realism,1396,Negative
+High,7,happy,0.005014,Magic Realism,1396,Positive
+High,5,annoyed,0.003582,Magic Realism,1396,Negative
+High,4,aroused,0.002865,Magic Realism,1396,Positive
+Low,3,tired,0.002149,Magic Realism,1396,Negative
+Low,1,glad,0.000716,Magic Realism,1396,Positive
+Low,1160,calm,0.553964,Mannerism (Late Renaissance),2094,Positive
+High,301,excited,0.143744,Mannerism (Late Renaissance),2094,Positive
+Low,227,content,0.108405,Mannerism (Late Renaissance),2094,Positive
+High,169,alarmed,0.080707,Mannerism (Late Renaissance),2094,Negative
+Low,113,sad,0.053964,Mannerism (Late Renaissance),2094,Negative
+High,90,frustrated,0.04298,Mannerism (Late Renaissance),2094,Negative
+High,25,aroused,0.011939,Mannerism (Late Renaissance),2094,Positive
+High,6,annoyed,0.002865,Mannerism (Late Renaissance),2094,Negative
+High,3,happy,0.001433,Mannerism (Late Renaissance),2094,Positive
+High,219,excited,0.44332,Native Art,494,Positive
+Low,191,calm,0.38664,Native Art,494,Positive
+Low,56,content,0.11336,Native Art,494,Positive
+High,8,happy,0.016194,Native Art,494,Positive
+High,6,frustrated,0.012146,Native Art,494,Negative
+High,5,alarmed,0.010121,Native Art,494,Negative
+High,4,aroused,0.008097,Native Art,494,Positive
+High,3,annoyed,0.006073,Native Art,494,Negative
+Low,1,glad,0.002024,Native Art,494,Positive
+Low,1,sad,0.002024,Native Art,494,Negative
+Low,429,calm,0.586867,Naturalism,731,Positive
+Low,210,content,0.287278,Naturalism,731,Positive
+High,54,excited,0.073871,Naturalism,731,Positive
+Low,25,sad,0.0342,Naturalism,731,Negative
+High,6,happy,0.008208,Naturalism,731,Positive
+High,5,alarmed,0.00684,Naturalism,731,Negative
+High,2,frustrated,0.002736,Naturalism,731,Negative
+Low,1057,calm,0.44189,Naïve Art (Primitivism),2392,Positive
+High,540,excited,0.225753,Naïve Art (Primitivism),2392,Positive
+Low,461,content,0.192726,Naïve Art (Primitivism),2392,Positive
+High,85,happy,0.035535,Naïve Art (Primitivism),2392,Positive
+Low,83,sad,0.034699,Naïve Art (Primitivism),2392,Negative
+High,77,alarmed,0.032191,Naïve Art (Primitivism),2392,Negative
+High,36,frustrated,0.01505,Naïve Art (Primitivism),2392,Negative
+Low,22,bored,0.009197,Naïve Art (Primitivism),2392,Negative
+Low,17,tired,0.007107,Naïve Art (Primitivism),2392,Negative
+High,7,aroused,0.002926,Naïve Art (Primitivism),2392,Positive
+High,5,annoyed,0.00209,Naïve Art (Primitivism),2392,Negative
+Low,2,glad,0.000836,Naïve Art (Primitivism),2392,Positive
+High,496,excited,0.368773,Neo-Expressionism,1345,Positive
+Low,303,calm,0.225279,Neo-Expressionism,1345,Positive
+High,184,frustrated,0.136803,Neo-Expressionism,1345,Negative
+High,150,alarmed,0.111524,Neo-Expressionism,1345,Negative
+Low,70,content,0.052045,Neo-Expressionism,1345,Positive
+Low,66,sad,0.049071,Neo-Expressionism,1345,Negative
+High,43,annoyed,0.03197,Neo-Expressionism,1345,Negative
+High,11,aroused,0.008178,Neo-Expressionism,1345,Positive
+Low,9,bored,0.006691,Neo-Expressionism,1345,Negative
+High,7,happy,0.005204,Neo-Expressionism,1345,Positive
+Low,6,tired,0.004461,Neo-Expressionism,1345,Negative
+Low,192,calm,0.619355,Neo-Impressionism,310,Positive
+Low,64,content,0.206452,Neo-Impressionism,310,Positive
+High,42,excited,0.135484,Neo-Impressionism,310,Positive
+High,4,frustrated,0.012903,Neo-Impressionism,310,Negative
+Low,3,sad,0.009677,Neo-Impressionism,310,Negative
+High,2,alarmed,0.006452,Neo-Impressionism,310,Negative
+Low,2,tired,0.006452,Neo-Impressionism,310,Negative
+High,1,happy,0.003226,Neo-Impressionism,310,Positive
+High,194,excited,0.586103,Neo-Pop Art,331,Positive
+Low,62,calm,0.187311,Neo-Pop Art,331,Positive
+High,25,alarmed,0.075529,Neo-Pop Art,331,Negative
+High,14,happy,0.042296,Neo-Pop Art,331,Positive
+High,12,frustrated,0.036254,Neo-Pop Art,331,Negative
+Low,9,content,0.02719,Neo-Pop Art,331,Positive
+High,6,aroused,0.018127,Neo-Pop Art,331,Positive
+High,5,annoyed,0.015106,Neo-Pop Art,331,Negative
+Low,3,sad,0.009063,Neo-Pop Art,331,Negative
+Low,1,tired,0.003021,Neo-Pop Art,331,Negative
+Low,217,calm,0.465665,Neo-Romanticism,466,Positive
+Low,92,content,0.197425,Neo-Romanticism,466,Positive
+High,91,excited,0.195279,Neo-Romanticism,466,Positive
+High,20,alarmed,0.042918,Neo-Romanticism,466,Negative
+Low,17,sad,0.036481,Neo-Romanticism,466,Negative
+High,15,frustrated,0.032189,Neo-Romanticism,466,Negative
+Low,4,tired,0.008584,Neo-Romanticism,466,Negative
+High,3,annoyed,0.006438,Neo-Romanticism,466,Negative
+High,3,happy,0.006438,Neo-Romanticism,466,Positive
+High,2,aroused,0.004292,Neo-Romanticism,466,Positive
+Low,2,bored,0.004292,Neo-Romanticism,466,Negative
+Low,114,calm,0.6,New Realism,190,Positive
+Low,34,content,0.178947,New Realism,190,Positive
+High,14,excited,0.073684,New Realism,190,Positive
+Low,14,sad,0.073684,New Realism,190,Negative
+High,5,alarmed,0.026316,New Realism,190,Negative
+High,5,happy,0.026316,New Realism,190,Positive
+High,1,aroused,0.005263,New Realism,190,Positive
+Low,1,bored,0.005263,New Realism,190,Negative
+High,1,frustrated,0.005263,New Realism,190,Negative
+Low,1,tired,0.005263,New Realism,190,Negative
+High,425,excited,0.491329,Op Art,865,Positive
+Low,359,calm,0.415029,Op Art,865,Positive
+Low,40,content,0.046243,Op Art,865,Positive
+High,13,aroused,0.015029,Op Art,865,Positive
+High,11,frustrated,0.012717,Op Art,865,Negative
+High,5,alarmed,0.00578,Op Art,865,Negative
+High,4,annoyed,0.004624,Op Art,865,Negative
+High,4,happy,0.004624,Op Art,865,Positive
+Low,3,sad,0.003468,Op Art,865,Negative
+Low,1,bored,0.001156,Op Art,865,Negative
+Low,471,calm,0.55608,Orientalism,847,Positive
+Low,184,content,0.217237,Orientalism,847,Positive
+High,127,excited,0.149941,Orientalism,847,Positive
+High,27,alarmed,0.031877,Orientalism,847,Negative
+Low,19,sad,0.022432,Orientalism,847,Negative
+High,6,frustrated,0.007084,Orientalism,847,Negative
+High,5,happy,0.005903,Orientalism,847,Positive
+High,3,aroused,0.003542,Orientalism,847,Positive
+High,2,annoyed,0.002361,Orientalism,847,Negative
+Low,1,bored,0.001181,Orientalism,847,Negative
+Low,1,glad,0.001181,Orientalism,847,Positive
+Low,1,tired,0.001181,Orientalism,847,Negative
+Low,273,calm,0.552632,Pointillism,494,Positive
+Low,117,content,0.236842,Pointillism,494,Positive
+High,80,excited,0.161943,Pointillism,494,Positive
+High,12,happy,0.024291,Pointillism,494,Positive
+Low,6,sad,0.012146,Pointillism,494,Negative
+High,2,annoyed,0.004049,Pointillism,494,Negative
+High,1,alarmed,0.002024,Pointillism,494,Negative
+High,1,aroused,0.002024,Pointillism,494,Positive
+High,1,frustrated,0.002024,Pointillism,494,Negative
+Low,1,glad,0.002024,Pointillism,494,Positive
+High,882,excited,0.492737,Pop Art,1790,Positive
+Low,553,calm,0.308939,Pop Art,1790,Positive
+Low,141,content,0.078771,Pop Art,1790,Positive
+High,72,alarmed,0.040223,Pop Art,1790,Negative
+High,46,happy,0.025698,Pop Art,1790,Positive
+High,31,frustrated,0.017318,Pop Art,1790,Negative
+High,19,annoyed,0.010615,Pop Art,1790,Negative
+Low,19,sad,0.010615,Pop Art,1790,Negative
+Low,12,bored,0.006704,Pop Art,1790,Negative
+High,10,aroused,0.005587,Pop Art,1790,Positive
+Low,4,tired,0.002235,Pop Art,1790,Negative
+Low,1,glad,0.000559,Pop Art,1790,Positive
+Low,3510,calm,0.571103,Post-Impressionism,6146,Positive
+Low,1272,content,0.206964,Post-Impressionism,6146,Positive
+High,969,excited,0.157664,Post-Impressionism,6146,Positive
+Low,197,sad,0.032053,Post-Impressionism,6146,Negative
+High,85,happy,0.01383,Post-Impressionism,6146,Positive
+High,45,frustrated,0.007322,Post-Impressionism,6146,Negative
+High,28,alarmed,0.004556,Post-Impressionism,6146,Negative
+High,16,aroused,0.002603,Post-Impressionism,6146,Positive
+Low,15,tired,0.002441,Post-Impressionism,6146,Negative
+High,6,annoyed,0.000976,Post-Impressionism,6146,Negative
+Low,3,bored,0.000488,Post-Impressionism,6146,Negative
+Low,9908,calm,0.647286,Realism,15307,Positive
+Low,3023,content,0.197491,Realism,15307,Positive
+Low,1047,sad,0.0684,Realism,15307,Negative
+High,579,excited,0.037826,Realism,15307,Positive
+High,335,alarmed,0.021885,Realism,15307,Negative
+High,189,frustrated,0.012347,Realism,15307,Negative
+Low,65,tired,0.004246,Realism,15307,Negative
+High,64,happy,0.004181,Realism,15307,Positive
+Low,32,bored,0.002091,Realism,15307,Negative
+High,27,annoyed,0.001764,Realism,15307,Negative
+High,27,aroused,0.001764,Realism,15307,Positive
+Low,11,glad,0.000719,Realism,15307,Positive
+Low,216,calm,0.439024,Regionalism,492,Positive
+Low,137,content,0.278455,Regionalism,492,Positive
+High,68,excited,0.138211,Regionalism,492,Positive
+High,20,happy,0.04065,Regionalism,492,Positive
+High,17,alarmed,0.034553,Regionalism,492,Negative
+Low,13,sad,0.026423,Regionalism,492,Negative
+High,8,frustrated,0.01626,Regionalism,492,Negative
+High,5,aroused,0.010163,Regionalism,492,Positive
+Low,3,tired,0.006098,Regionalism,492,Negative
+Low,2,bored,0.004065,Regionalism,492,Negative
+Low,2,glad,0.004065,Regionalism,492,Positive
+High,1,annoyed,0.002033,Regionalism,492,Negative
+Low,2506,calm,0.67131,Rococo,3733,Positive
+Low,705,content,0.188856,Rococo,3733,Positive
+High,255,excited,0.06831,Rococo,3733,Positive
+High,129,alarmed,0.034557,Rococo,3733,Negative
+Low,54,sad,0.014466,Rococo,3733,Negative
+High,41,frustrated,0.010983,Rococo,3733,Negative
+High,15,aroused,0.004018,Rococo,3733,Positive
+High,13,annoyed,0.003482,Rococo,3733,Negative
+High,9,happy,0.002411,Rococo,3733,Positive
+Low,5,bored,0.001339,Rococo,3733,Negative
+Low,1,tired,0.000268,Rococo,3733,Negative
+Low,9543,calm,0.606637,Romanticism,15731,Positive
+Low,2541,content,0.161528,Romanticism,15731,Positive
+High,1308,alarmed,0.083148,Romanticism,15731,Negative
+High,1113,excited,0.070752,Romanticism,15731,Positive
+Low,715,sad,0.045452,Romanticism,15731,Negative
+High,290,frustrated,0.018435,Romanticism,15731,Negative
+High,78,happy,0.004958,Romanticism,15731,Positive
+High,60,aroused,0.003814,Romanticism,15731,Positive
+Low,35,tired,0.002225,Romanticism,15731,Negative
+High,25,annoyed,0.001589,Romanticism,15731,Negative
+Low,17,bored,0.001081,Romanticism,15731,Negative
+Low,6,glad,0.000381,Romanticism,15731,Positive
+Low,296,calm,0.868035,Shin-hanga,341,Positive
+Low,26,content,0.076246,Shin-hanga,341,Positive
+High,9,excited,0.026393,Shin-hanga,341,Positive
+High,2,annoyed,0.005865,Shin-hanga,341,Negative
+High,2,aroused,0.005865,Shin-hanga,341,Positive
+High,2,frustrated,0.005865,Shin-hanga,341,Negative
+High,1,alarmed,0.002933,Shin-hanga,341,Negative
+High,1,happy,0.002933,Shin-hanga,341,Positive
+Low,1,sad,0.002933,Shin-hanga,341,Negative
+Low,1,tired,0.002933,Shin-hanga,341,Negative
+Low,183,calm,0.317708,Social Realism,576,Positive
+High,104,alarmed,0.180556,Social Realism,576,Negative
+High,74,excited,0.128472,Social Realism,576,Positive
+Low,74,sad,0.128472,Social Realism,576,Negative
+Low,67,content,0.116319,Social Realism,576,Positive
+High,39,frustrated,0.067708,Social Realism,576,Negative
+High,12,annoyed,0.020833,Social Realism,576,Negative
+Low,9,tired,0.015625,Social Realism,576,Negative
+Low,7,bored,0.012153,Social Realism,576,Negative
+High,4,aroused,0.006944,Social Realism,576,Positive
+High,3,happy,0.005208,Social Realism,576,Positive
+Low,209,calm,0.38,Socialist Realism,550,Positive
+Low,104,content,0.189091,Socialist Realism,550,Positive
+High,87,excited,0.158182,Socialist Realism,550,Positive
+High,54,alarmed,0.098182,Socialist Realism,550,Negative
+Low,29,sad,0.052727,Socialist Realism,550,Negative
+High,23,frustrated,0.041818,Socialist Realism,550,Negative
+High,21,annoyed,0.038182,Socialist Realism,550,Negative
+Low,9,bored,0.016364,Socialist Realism,550,Negative
+High,9,happy,0.016364,Socialist Realism,550,Positive
+High,3,aroused,0.005455,Socialist Realism,550,Positive
+Low,2,tired,0.003636,Socialist Realism,550,Negative
+Low,1851,calm,0.417268,Surrealism,4436,Positive
+High,879,excited,0.198151,Surrealism,4436,Positive
+High,462,alarmed,0.104148,Surrealism,4436,Negative
+Low,387,content,0.087241,Surrealism,4436,Positive
+Low,380,sad,0.085663,Surrealism,4436,Negative
+High,234,frustrated,0.05275,Surrealism,4436,Negative
+Low,125,bored,0.028179,Surrealism,4436,Negative
+Low,59,tired,0.0133,Surrealism,4436,Negative
+High,24,annoyed,0.00541,Surrealism,4436,Negative
+High,22,aroused,0.004959,Surrealism,4436,Positive
+High,13,happy,0.002931,Surrealism,4436,Positive
+Low,1983,calm,0.605496,Symbolism,3275,Positive
+Low,377,content,0.115115,Symbolism,3275,Positive
+Low,292,sad,0.08916,Symbolism,3275,Negative
+High,276,excited,0.084275,Symbolism,3275,Positive
+High,223,alarmed,0.068092,Symbolism,3275,Negative
+High,88,frustrated,0.02687,Symbolism,3275,Negative
+High,11,aroused,0.003359,Symbolism,3275,Positive
+High,8,annoyed,0.002443,Symbolism,3275,Negative
+Low,7,bored,0.002137,Symbolism,3275,Negative
+Low,7,tired,0.002137,Symbolism,3275,Negative
+High,2,happy,0.000611,Symbolism,3275,Positive
+Low,1,glad,0.000305,Symbolism,3275,Positive
+Low,259,calm,0.692513,Sōsaku hanga,374,Positive
+High,53,excited,0.141711,Sōsaku hanga,374,Positive
+Low,37,content,0.09893,Sōsaku hanga,374,Positive
+High,6,alarmed,0.016043,Sōsaku hanga,374,Negative
+Low,6,sad,0.016043,Sōsaku hanga,374,Negative
+High,4,happy,0.010695,Sōsaku hanga,374,Positive
+High,3,aroused,0.008021,Sōsaku hanga,374,Positive
+High,3,frustrated,0.008021,Sōsaku hanga,374,Negative
+Low,2,bored,0.005348,Sōsaku hanga,374,Negative
+High,1,annoyed,0.002674,Sōsaku hanga,374,Negative
+High,266,excited,0.604545,Tachisme,440,Positive
+Low,83,calm,0.188636,Tachisme,440,Positive
+High,38,frustrated,0.086364,Tachisme,440,Negative
+High,19,alarmed,0.043182,Tachisme,440,Negative
+High,13,annoyed,0.029545,Tachisme,440,Negative
+Low,8,sad,0.018182,Tachisme,440,Negative
+Low,5,tired,0.011364,Tachisme,440,Negative
+High,4,aroused,0.009091,Tachisme,440,Positive
+Low,3,bored,0.006818,Tachisme,440,Negative
+High,1,happy,0.002273,Tachisme,440,Positive
+Low,130,calm,0.30303,Transavantgarde,429,Positive
+High,90,excited,0.20979,Transavantgarde,429,Positive
+High,64,alarmed,0.149184,Transavantgarde,429,Negative
+Low,49,sad,0.114219,Transavantgarde,429,Negative
+Low,43,content,0.100233,Transavantgarde,429,Positive
+High,38,frustrated,0.088578,Transavantgarde,429,Negative
+High,6,annoyed,0.013986,Transavantgarde,429,Negative
+High,4,happy,0.009324,Transavantgarde,429,Positive
+High,2,aroused,0.004662,Transavantgarde,429,Positive
+Low,2,tired,0.004662,Transavantgarde,429,Negative
+Low,1,bored,0.002331,Transavantgarde,429,Negative
+Low,1286,calm,0.743353,Ukiyo-e,1730,Positive
+Low,193,content,0.111561,Ukiyo-e,1730,Positive
+High,160,excited,0.092486,Ukiyo-e,1730,Positive
+High,45,alarmed,0.026012,Ukiyo-e,1730,Negative
+High,21,frustrated,0.012139,Ukiyo-e,1730,Negative
+Low,9,sad,0.005202,Ukiyo-e,1730,Negative
+High,6,annoyed,0.003468,Ukiyo-e,1730,Negative
+High,5,aroused,0.00289,Ukiyo-e,1730,Positive
+High,3,happy,0.001734,Ukiyo-e,1730,Positive
+Low,1,bored,0.000578,Ukiyo-e,1730,Negative
+Low,1,tired,0.000578,Ukiyo-e,1730,Negative

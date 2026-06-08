@@ -1,0 +1,209 @@
+{
+  "method": "track2_v22_official_author_candidate_suite_v1",
+  "base_json": "submissions/track2_submission_moe_v2_accept5_candidate.json",
+  "evidence_json": "experiments/track2_v17_classification_calibration_20260607/evidence_matrix.json",
+  "candidates": {
+    "calmshift120": {
+      "accepted_label_changes": 120,
+      "transition_counts": {
+        "content->calm": 120
+      },
+      "tier_counts": {
+        "official_consensus": 50,
+        "official_expansion": 65,
+        "official_reference": 5
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 610,
+        "content": 118,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.61,
+      "label_consistency_issue_count": 0,
+      "official_projection": {
+        "anchor_submission_id": "779605",
+        "v21_submission_id": "785979",
+        "accepted_changes": 120,
+        "tail_count_after_verified_90": 30,
+        "expected_tail_net_gain": 16.8,
+        "projected_emotion_accuracy": 0.6768,
+        "projected_emotion_macro_f1": 0.32165,
+        "projected_classification": 0.743002,
+        "projected_description": 0.949667,
+        "projected_overall": 0.846335,
+        "caveat": "Proxy projection calibrated from official aggregate scores; not a hidden-label reconstruction."
+      },
+      "paths": {
+        "out_json": "submissions/track2_submission_v22_official_author_calmshift120_candidate.json",
+        "out_zip": "submissions/track2_submission_v22_official_author_calmshift120_candidate.zip",
+        "report_json": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshift120_candidate_report.json",
+        "report_md": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshift120_candidate_report.md"
+      }
+    },
+    "calmshift150": {
+      "accepted_label_changes": 150,
+      "transition_counts": {
+        "content->calm": 150
+      },
+      "tier_counts": {
+        "official_consensus": 50,
+        "official_expansion": 71,
+        "official_reference": 5,
+        "official_tail": 24
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 640,
+        "content": 88,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.64,
+      "label_consistency_issue_count": 0,
+      "official_projection": {
+        "anchor_submission_id": "779605",
+        "v21_submission_id": "785979",
+        "accepted_changes": 150,
+        "tail_count_after_verified_90": 60,
+        "expected_tail_net_gain": 28.32,
+        "projected_emotion_accuracy": 0.68832,
+        "projected_emotion_macro_f1": 0.322341,
+        "projected_classification": 0.745038,
+        "projected_description": 0.949667,
+        "projected_overall": 0.847352,
+        "caveat": "Proxy projection calibrated from official aggregate scores; not a hidden-label reconstruction."
+      },
+      "paths": {
+        "out_json": "submissions/track2_submission_v22_official_author_calmshift150_candidate.json",
+        "out_zip": "submissions/track2_submission_v22_official_author_calmshift150_candidate.zip",
+        "report_json": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshift150_candidate_report.json",
+        "report_md": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshift150_candidate_report.md"
+      }
+    },
+    "calmshiftall": {
+      "accepted_label_changes": 177,
+      "transition_counts": {
+        "content->calm": 177
+      },
+      "tier_counts": {
+        "official_consensus": 50,
+        "official_expansion": 71,
+        "official_reference": 5,
+        "official_tail": 51
+      },
+      "distribution": {
+        "alarmed": 54,
+        "annoyed": 22,
+        "aroused": 29,
+        "bored": 20,
+        "calm": 667,
+        "content": 61,
+        "excited": 15,
+        "frustrated": 46,
+        "glad": 5,
+        "happy": 8,
+        "sad": 33,
+        "tired": 40
+      },
+      "missing_emotions": [],
+      "top_emotion": "calm",
+      "top_emotion_share": 0.667,
+      "label_consistency_issue_count": 0,
+      "official_projection": {
+        "anchor_submission_id": "779605",
+        "v21_submission_id": "785979",
+        "accepted_changes": 177,
+        "tail_count_after_verified_90": 87,
+        "expected_tail_net_gain": 37.5,
+        "projected_emotion_accuracy": 0.6975,
+        "projected_emotion_macro_f1": 0.322892,
+        "projected_classification": 0.746659,
+        "projected_description": 0.949667,
+        "projected_overall": 0.848163,
+        "caveat": "Proxy projection calibrated from official aggregate scores; not a hidden-label reconstruction."
+      },
+      "paths": {
+        "out_json": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+        "out_zip": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.zip",
+        "report_json": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.json",
+        "report_md": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.md"
+      }
+    }
+  },
+  "recommended_profile": "calmshiftall",
+  "recommended_candidate": {
+    "accepted_label_changes": 177,
+    "transition_counts": {
+      "content->calm": 177
+    },
+    "tier_counts": {
+      "official_consensus": 50,
+      "official_expansion": 71,
+      "official_reference": 5,
+      "official_tail": 51
+    },
+    "distribution": {
+      "alarmed": 54,
+      "annoyed": 22,
+      "aroused": 29,
+      "bored": 20,
+      "calm": 667,
+      "content": 61,
+      "excited": 15,
+      "frustrated": 46,
+      "glad": 5,
+      "happy": 8,
+      "sad": 33,
+      "tired": 40
+    },
+    "missing_emotions": [],
+    "top_emotion": "calm",
+    "top_emotion_share": 0.667,
+    "label_consistency_issue_count": 0,
+    "official_projection": {
+      "anchor_submission_id": "779605",
+      "v21_submission_id": "785979",
+      "accepted_changes": 177,
+      "tail_count_after_verified_90": 87,
+      "expected_tail_net_gain": 37.5,
+      "projected_emotion_accuracy": 0.6975,
+      "projected_emotion_macro_f1": 0.322892,
+      "projected_classification": 0.746659,
+      "projected_description": 0.949667,
+      "projected_overall": 0.848163,
+      "caveat": "Proxy projection calibrated from official aggregate scores; not a hidden-label reconstruction."
+    },
+    "paths": {
+      "out_json": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+      "out_zip": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.zip",
+      "report_json": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.json",
+      "report_md": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.md"
+    }
+  },
+  "upload_copy": {
+    "json": "submissions/v22_final_upload/track2_submission.json",
+    "zip": "submissions/v22_final_upload/track2_submission.zip"
+  },
+  "formal_submission_overwritten": false,
+  "last_submission_warning": "Use only after manual review; this is a final-shot proxy, not the official hidden scorer."
+}

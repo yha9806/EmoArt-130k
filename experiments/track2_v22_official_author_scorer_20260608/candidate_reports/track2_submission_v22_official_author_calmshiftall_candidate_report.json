@@ -1,0 +1,3070 @@
+{
+  "method": "track2_v22_official_author_final_shot_v1",
+  "profile": "calmshiftall",
+  "row_count": 1000,
+  "accepted_label_changes": 177,
+  "transition_counts": {
+    "content->calm": 177
+  },
+  "tier_counts": {
+    "official_consensus": 50,
+    "official_expansion": 71,
+    "official_reference": 5,
+    "official_tail": 51
+  },
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 667,
+    "content": 61,
+    "excited": 15,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 33,
+    "tired": 40
+  },
+  "missing_emotions": [],
+  "top_emotion": "calm",
+  "top_emotion_share": 0.667,
+  "label_consistency_issue_count": 0,
+  "label_consistency_issues": [],
+  "accepted_changes": [
+    {
+      "sample_id": "track2_0009",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.791197,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0017",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.604735,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0020",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.91892,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0022",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.891964,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0035",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.592709,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0043",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.472567,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0044",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.826091,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0049",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.850689,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0052",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.976815,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0058",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.832124,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0059",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.346422,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0067",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.851417,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0076",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.898407,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0085",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.705256,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0087",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.29763,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0091",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.676645,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0099",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.44349,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0103",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.186789,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0125",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.100221,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0127",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.596815,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0133",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.244394,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0134",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.494805,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0135",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.578981,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0136",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.911943,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0137",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.054598,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0144",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.771229,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0155",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.056326,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0167",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.808835,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0169",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.479531,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0178",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.679296,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0181",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.839876,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0185",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.153964,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0189",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.328232,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0191",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.492284,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0201",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.01384,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0202",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.404784,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0207",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.245025,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0210",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 7.231442,
+      "v22_tier": "official_reference",
+      "expected_net_correct_prob": 0.94
+    },
+    {
+      "sample_id": "track2_0219",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.096759,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0229",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.248397,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0250",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.558868,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0265",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.774515,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0268",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.798106,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0269",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.019959,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0270",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.626119,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0271",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.391488,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0280",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.55531,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0290",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.836898,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0298",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.356152,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0306",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.687143,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0308",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.564694,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0322",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.801368,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0324",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.426367,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0329",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.907643,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0335",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.156939,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0351",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.023055,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0355",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.830685,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0367",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.134294,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0374",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.34479,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0376",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.745677,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0377",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.355996,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0381",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.660782,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0396",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.065484,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0410",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.859462,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0413",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.124523,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0417",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.855669,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0428",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.797193,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0433",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.896183,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0437",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.859758,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0442",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.004977,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0443",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.523751,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0447",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.768187,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0448",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.114861,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0451",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.092912,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0455",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.396629,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0471",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.436909,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0477",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.182707,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0481",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.246599,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0483",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.028685,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0489",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.177957,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0493",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.863572,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0494",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.701295,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0503",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.658431,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0513",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.891859,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0515",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.704601,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0517",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.86586,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0526",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.206339,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0529",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.474536,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0539",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.975026,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0540",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.329911,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0550",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.756259,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0551",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.804809,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0555",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 7.171979,
+      "v22_tier": "official_reference",
+      "expected_net_correct_prob": 0.94
+    },
+    {
+      "sample_id": "track2_0557",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.378899,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0561",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.122815,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0562",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.585601,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0572",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.156304,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0580",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.728759,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0581",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.843181,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0583",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.423998,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0592",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.897742,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0593",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.666425,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0601",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.947332,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0604",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.893918,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0608",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.8965,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0609",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.118427,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0614",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.829946,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0617",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.877042,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0626",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.180273,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0631",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.832035,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0634",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.911041,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0639",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.447993,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0651",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.928976,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0656",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.216661,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0662",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.89627,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0668",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.52294,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0672",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.252759,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0678",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.235943,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0681",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.991808,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0690",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.676104,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0704",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.730829,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0715",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.336924,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0718",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.682698,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0722",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.818928,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0738",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.80736,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0739",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.713764,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0741",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.620186,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0746",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.875703,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0748",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.579812,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0755",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.951267,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0756",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.39139,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0759",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.425091,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0760",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.284686,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0765",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.934382,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0771",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.477603,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0773",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.657939,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0777",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.581981,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0781",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.953716,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0790",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.717313,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0791",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.311525,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0795",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.958025,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0800",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.380655,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0803",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.665014,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0809",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.518794,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0813",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.528682,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0815",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.549197,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0830",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.184743,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0832",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.417571,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0838",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.583929,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0852",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.711181,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0855",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.147275,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0869",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 7.293121,
+      "v22_tier": "official_reference",
+      "expected_net_correct_prob": 0.94
+    },
+    {
+      "sample_id": "track2_0871",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 7.102816,
+      "v22_tier": "official_reference",
+      "expected_net_correct_prob": 0.94
+    },
+    {
+      "sample_id": "track2_0880",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.834227,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0882",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.305498,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0893",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.777446,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0899",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.93756,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0900",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.420674,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0908",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.721671,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0914",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 7.032144,
+      "v22_tier": "official_reference",
+      "expected_net_correct_prob": 0.94
+    },
+    {
+      "sample_id": "track2_0926",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.677933,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0928",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.794484,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0929",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.206149,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0931",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.779987,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0932",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.673937,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0941",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.67184,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0942",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.756313,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0944",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.558066,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0946",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.442946,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0952",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.843503,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0956",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.965341,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0961",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 2.371896,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0966",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.792263,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0973",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 1.767073,
+      "v22_tier": "official_tail",
+      "expected_net_correct_prob": 0.34
+    },
+    {
+      "sample_id": "track2_0990",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 3.345658,
+      "v22_tier": "official_expansion",
+      "expected_net_correct_prob": 0.56
+    },
+    {
+      "sample_id": "track2_0994",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 4.778884,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    },
+    {
+      "sample_id": "track2_0996",
+      "transition": "content->calm",
+      "before": {
+        "emotion": "content",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "after": {
+        "emotion": "calm",
+        "valence": "Positive",
+        "arousal": "Low"
+      },
+      "v22_score": 5.425085,
+      "v22_tier": "official_consensus",
+      "expected_net_correct_prob": 0.78
+    }
+  ],
+  "official_projection": {
+    "anchor_submission_id": "779605",
+    "v21_submission_id": "785979",
+    "accepted_changes": 177,
+    "tail_count_after_verified_90": 87,
+    "expected_tail_net_gain": 37.5,
+    "projected_emotion_accuracy": 0.6975,
+    "projected_emotion_macro_f1": 0.322892,
+    "projected_classification": 0.746659,
+    "projected_description": 0.949667,
+    "projected_overall": 0.848163,
+    "caveat": "Proxy projection calibrated from official aggregate scores; not a hidden-label reconstruction."
+  },
+  "description_anchor": {
+    "source_json": "submissions/track2_submission_moe_v2_accept5_candidate.json",
+    "official_anchor_submission_id": "779605",
+    "expected_description_score": 0.949667
+  },
+  "formal_submission_overwritten": false,
+  "paths": {
+    "out_json": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+    "out_zip": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.zip",
+    "report_json": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.json",
+    "report_md": "experiments/track2_v22_official_author_scorer_20260608/candidate_reports/track2_submission_v22_official_author_calmshiftall_candidate_report.md"
+  }
+}

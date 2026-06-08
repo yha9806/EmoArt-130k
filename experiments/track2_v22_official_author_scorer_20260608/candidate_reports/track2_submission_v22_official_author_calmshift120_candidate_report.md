@@ -1,0 +1,133 @@
+# Track2 v22 calmshift120 Candidate
+
+- Accepted label changes: `120`
+- Transition counts: `{'content->calm': 120}`
+- Tier counts: `{'official_consensus': 50, 'official_expansion': 65, 'official_reference': 5}`
+- Top emotion: `calm` (61.0%)
+- Missing emotions: `none`
+- Label consistency issues: `0`
+- Projected official overall: `0.846335`
+- Projected classification: `0.743002`
+
+## Accepted Changes
+
+- `track2_0009`: content->calm tier=official_expansion score=3.791 expected=0.56
+- `track2_0020`: content->calm tier=official_consensus score=4.919 expected=0.78
+- `track2_0043`: content->calm tier=official_expansion score=3.473 expected=0.56
+- `track2_0044`: content->calm tier=official_consensus score=5.826 expected=0.78
+- `track2_0052`: content->calm tier=official_consensus score=4.977 expected=0.78
+- `track2_0059`: content->calm tier=official_expansion score=4.346 expected=0.56
+- `track2_0076`: content->calm tier=official_expansion score=2.898 expected=0.56
+- `track2_0085`: content->calm tier=official_expansion score=3.705 expected=0.56
+- `track2_0087`: content->calm tier=official_consensus score=5.298 expected=0.78
+- `track2_0099`: content->calm tier=official_consensus score=5.443 expected=0.78
+- `track2_0125`: content->calm tier=official_expansion score=4.100 expected=0.56
+- `track2_0133`: content->calm tier=official_expansion score=3.244 expected=0.56
+- `track2_0134`: content->calm tier=official_expansion score=3.495 expected=0.56
+- `track2_0136`: content->calm tier=official_expansion score=3.912 expected=0.56
+- `track2_0137`: content->calm tier=official_expansion score=3.055 expected=0.56
+- `track2_0155`: content->calm tier=official_expansion score=4.056 expected=0.56
+- `track2_0167`: content->calm tier=official_consensus score=4.809 expected=0.78
+- `track2_0169`: content->calm tier=official_consensus score=5.480 expected=0.78
+- `track2_0178`: content->calm tier=official_consensus score=4.679 expected=0.78
+- `track2_0185`: content->calm tier=official_expansion score=4.154 expected=0.56
+- `track2_0189`: content->calm tier=official_expansion score=4.328 expected=0.56
+- `track2_0191`: content->calm tier=official_expansion score=4.492 expected=0.56
+- `track2_0201`: content->calm tier=official_expansion score=3.014 expected=0.56
+- `track2_0202`: content->calm tier=official_expansion score=3.405 expected=0.56
+- `track2_0207`: content->calm tier=official_expansion score=5.245 expected=0.56
+- `track2_0210`: content->calm tier=official_reference score=7.231 expected=0.94
+- `track2_0229`: content->calm tier=official_expansion score=4.248 expected=0.56
+- `track2_0265`: content->calm tier=official_expansion score=3.775 expected=0.56
+- `track2_0268`: content->calm tier=official_expansion score=3.798 expected=0.56
+- `track2_0269`: content->calm tier=official_expansion score=5.020 expected=0.56
+- `track2_0270`: content->calm tier=official_consensus score=5.626 expected=0.78
+- `track2_0271`: content->calm tier=official_expansion score=4.391 expected=0.56
+- `track2_0280`: content->calm tier=official_consensus score=5.555 expected=0.78
+- `track2_0306`: content->calm tier=official_consensus score=4.687 expected=0.78
+- `track2_0329`: content->calm tier=official_expansion score=2.908 expected=0.56
+- `track2_0335`: content->calm tier=official_consensus score=5.157 expected=0.78
+- `track2_0351`: content->calm tier=official_expansion score=3.023 expected=0.56
+- `track2_0374`: content->calm tier=official_expansion score=3.345 expected=0.56
+- `track2_0396`: content->calm tier=official_consensus score=5.065 expected=0.78
+- `track2_0410`: content->calm tier=official_consensus score=5.859 expected=0.78
+- `track2_0413`: content->calm tier=official_expansion score=4.125 expected=0.56
+- `track2_0417`: content->calm tier=official_expansion score=3.856 expected=0.56
+- `track2_0437`: content->calm tier=official_consensus score=4.860 expected=0.78
+- `track2_0442`: content->calm tier=official_consensus score=5.005 expected=0.78
+- `track2_0443`: content->calm tier=official_consensus score=5.524 expected=0.78
+- `track2_0447`: content->calm tier=official_consensus score=4.768 expected=0.78
+- `track2_0451`: content->calm tier=official_consensus score=5.093 expected=0.78
+- `track2_0455`: content->calm tier=official_consensus score=5.397 expected=0.78
+- `track2_0477`: content->calm tier=official_expansion score=4.183 expected=0.56
+- `track2_0481`: content->calm tier=official_consensus score=5.247 expected=0.78
+- `track2_0483`: content->calm tier=official_expansion score=4.029 expected=0.56
+- `track2_0489`: content->calm tier=official_expansion score=3.178 expected=0.56
+- `track2_0493`: content->calm tier=official_expansion score=3.864 expected=0.56
+- `track2_0494`: content->calm tier=official_consensus score=4.701 expected=0.78
+- `track2_0515`: content->calm tier=official_consensus score=5.705 expected=0.78
+- `track2_0517`: content->calm tier=official_consensus score=4.866 expected=0.78
+- `track2_0526`: content->calm tier=official_expansion score=4.206 expected=0.56
+- `track2_0539`: content->calm tier=official_expansion score=3.975 expected=0.56
+- `track2_0550`: content->calm tier=official_consensus score=4.756 expected=0.78
+- `track2_0555`: content->calm tier=official_reference score=7.172 expected=0.94
+- `track2_0557`: content->calm tier=official_consensus score=5.379 expected=0.78
+- `track2_0561`: content->calm tier=official_expansion score=3.123 expected=0.56
+- `track2_0562`: content->calm tier=official_expansion score=3.586 expected=0.56
+- `track2_0572`: content->calm tier=official_expansion score=4.156 expected=0.56
+- `track2_0580`: content->calm tier=official_consensus score=5.729 expected=0.78
+- `track2_0583`: content->calm tier=official_expansion score=3.424 expected=0.56
+- `track2_0593`: content->calm tier=official_expansion score=3.666 expected=0.56
+- `track2_0601`: content->calm tier=official_expansion score=2.947 expected=0.56
+- `track2_0609`: content->calm tier=official_expansion score=4.118 expected=0.56
+- `track2_0617`: content->calm tier=official_expansion score=3.877 expected=0.56
+- `track2_0626`: content->calm tier=official_expansion score=4.180 expected=0.56
+- `track2_0631`: content->calm tier=official_consensus score=4.832 expected=0.78
+- `track2_0651`: content->calm tier=official_consensus score=5.929 expected=0.78
+- `track2_0668`: content->calm tier=official_expansion score=3.523 expected=0.56
+- `track2_0672`: content->calm tier=official_expansion score=3.253 expected=0.56
+- `track2_0678`: content->calm tier=official_consensus score=5.236 expected=0.78
+- `track2_0681`: content->calm tier=official_consensus score=4.992 expected=0.78
+- `track2_0704`: content->calm tier=official_consensus score=5.731 expected=0.78
+- `track2_0715`: content->calm tier=official_expansion score=3.337 expected=0.56
+- `track2_0718`: content->calm tier=official_consensus score=5.683 expected=0.78
+- `track2_0722`: content->calm tier=official_expansion score=3.819 expected=0.56
+- `track2_0741`: content->calm tier=official_expansion score=3.620 expected=0.56
+- `track2_0746`: content->calm tier=official_consensus score=4.876 expected=0.78
+- `track2_0748`: content->calm tier=official_expansion score=3.580 expected=0.56
+- `track2_0756`: content->calm tier=official_expansion score=4.391 expected=0.56
+- `track2_0759`: content->calm tier=official_expansion score=3.425 expected=0.56
+- `track2_0760`: content->calm tier=official_expansion score=4.285 expected=0.56
+- `track2_0765`: content->calm tier=official_consensus score=5.934 expected=0.78
+- `track2_0773`: content->calm tier=official_consensus score=4.658 expected=0.78
+- `track2_0777`: content->calm tier=official_expansion score=4.582 expected=0.56
+- `track2_0781`: content->calm tier=official_consensus score=4.954 expected=0.78
+- `track2_0791`: content->calm tier=official_expansion score=3.312 expected=0.56
+- `track2_0795`: content->calm tier=official_expansion score=3.958 expected=0.56
+- `track2_0800`: content->calm tier=official_consensus score=5.381 expected=0.78
+- `track2_0803`: content->calm tier=official_expansion score=3.665 expected=0.56
+- `track2_0809`: content->calm tier=official_consensus score=5.519 expected=0.78
+- `track2_0813`: content->calm tier=official_expansion score=3.529 expected=0.56
+- `track2_0830`: content->calm tier=official_consensus score=5.185 expected=0.78
+- `track2_0832`: content->calm tier=official_consensus score=5.418 expected=0.78
+- `track2_0869`: content->calm tier=official_reference score=7.293 expected=0.94
+- `track2_0871`: content->calm tier=official_reference score=7.103 expected=0.94
+- `track2_0880`: content->calm tier=official_consensus score=5.834 expected=0.78
+- `track2_0893`: content->calm tier=official_expansion score=3.777 expected=0.56
+- `track2_0899`: content->calm tier=official_consensus score=4.938 expected=0.78
+- `track2_0900`: content->calm tier=official_expansion score=3.421 expected=0.56
+- `track2_0908`: content->calm tier=official_expansion score=3.722 expected=0.56
+- `track2_0914`: content->calm tier=official_reference score=7.032 expected=0.94
+- `track2_0926`: content->calm tier=official_expansion score=3.678 expected=0.56
+- `track2_0928`: content->calm tier=official_consensus score=4.794 expected=0.78
+- `track2_0932`: content->calm tier=official_expansion score=3.674 expected=0.56
+- `track2_0941`: content->calm tier=official_consensus score=5.672 expected=0.78
+- `track2_0942`: content->calm tier=official_consensus score=5.756 expected=0.78
+- `track2_0944`: content->calm tier=official_expansion score=4.558 expected=0.56
+- `track2_0946`: content->calm tier=official_expansion score=4.443 expected=0.56
+- `track2_0952`: content->calm tier=official_expansion score=3.844 expected=0.56
+- `track2_0956`: content->calm tier=official_consensus score=5.965 expected=0.78
+- `track2_0966`: content->calm tier=official_consensus score=4.792 expected=0.78
+- `track2_0990`: content->calm tier=official_expansion score=3.346 expected=0.56
+- `track2_0994`: content->calm tier=official_consensus score=4.779 expected=0.78
+- `track2_0996`: content->calm tier=official_consensus score=5.425 expected=0.78
