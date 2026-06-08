@@ -1,0 +1,36 @@
+Create one finished artwork image for an art-generation challenge.
+
+OFFICIAL CAPTION
+Ink and wash painting of a serene misty mountain landscape with rolling hills, pine trees, a riverside cottage, and a small boat on calm water, rendered in soft monochrome washes and delicate brushwork.
+
+OUTPUT BOUNDARY
+- Output the artwork itself, not a gallery wall, product mockup, catalog page, UI screen, or photographed display.
+- Do not add sample IDs, filenames, watermarks, UI labels, explanatory captions, or unrelated footer credits.
+- Fill the image with the artwork surface unless the official caption explicitly asks for scroll, album, page, or panel support.
+
+PRIMARY V5 ROUTE
+- anti_template_diversifier: break repeated layout templates while staying inside the official caption and reference style family.
+- Secondary guard: reference_family_primary.
+
+ASPECT AND SUPPORT
+- Canvas: 1024x1024 (square_artwork).
+- Use a balanced square artwork canvas only when the caption does not imply a poster, scroll, spread, or panel format.
+
+CAPTION-FAITHFUL CONTENT LOCK
+- Preserve the named subjects, relationships, supports, text/script requirements, color/light attributes, and style words from the official caption.
+- If the caption asks for a poster, scroll, album page, document, or panel layout, keep that support visible as part of the artwork, not as an external display scene.
+- Hard constraints: caption content.
+- Composition cues: caption-led subject; medium-appropriate composition; avoid batch template.
+- Medium cues: painting or brushwork surface.
+
+FID-FIRST STYLE DISTRIBUTION
+- Match the official reference family through medium, crop, density, brushwork, color, line, lighting, and natural artwork texture.
+- Avoid a repeated generic generated-poster template: no automatic thick border, no identical centered hero figure layout, no unnecessary white mat, no stock label bands.
+- Let the composition be as free as the official art references allow while keeping the caption content clear.
+- Prefer a less common crop, viewpoint, figure scale, edge treatment, or painterly handling when the caption permits it.
+
+REFERENCE FAMILY NOTES
+- Ink and wash painting reference: Ink and wash painting\0044111_WangWei-SceneontheWangCh‘uan.jpg
+- Ink and wash painting reference: Ink and wash painting\0008679_SesshuToyo-Landscape.jpg
+- Ink and wash painting reference: Ink and wash painting\0089156_Shitao-Villageatthefootofthemountains.jpg
+- Ink and wash painting reference: Ink and wash painting\0168255_WangWei-SnowyStream.jpg

@@ -1,0 +1,36 @@
+Create one finished artwork image for an art-generation challenge.
+
+OFFICIAL CAPTION
+A Socialist Realism Soviet poster with bold Cyrillic lettering, showing a heroic medieval smith and armored warrior forging a sword above a modern soldier and factory worker shaking hands beside a tank, rendered with strong outlines, muted colors, and patriotic dramatic composition.
+
+OUTPUT BOUNDARY
+- Output the artwork itself, not a gallery wall, product mockup, catalog page, UI screen, or photographed display.
+- Do not add sample IDs, filenames, watermarks, UI labels, explanatory captions, or unrelated footer credits.
+- Fill the image with the artwork surface unless the official caption explicitly asks for scroll, album, page, or panel support.
+
+PRIMARY V5 ROUTE
+- caption_faithful_guard: protect exact caption content, relation logic, requested text, real-world anchors, and artwork support.
+- Secondary guard: anti_template_diversifier.
+
+ASPECT AND SUPPORT
+- Canvas: 768x1024 (portrait_poster).
+- Use a portrait poster canvas; keep the full printed poster front-facing and avoid left/right overflow.
+
+CAPTION-FAITHFUL CONTENT LOCK
+- Preserve the named subjects, relationships, supports, text/script requirements, color/light attributes, and style words from the official caption.
+- If the caption asks for a poster, scroll, album page, document, or panel layout, keep that support visible as part of the artwork, not as an external display scene.
+- Hard constraints: caption content; requested text policy; relation logic.
+- Composition cues: field or factory setting; working hands and tools; productive labor.
+- Medium cues: propaganda poster print.
+
+FID-FIRST STYLE DISTRIBUTION
+- Match the official reference family through medium, crop, density, brushwork, color, line, lighting, and natural artwork texture.
+- Avoid a repeated generic generated-poster template: no automatic thick border, no identical centered hero figure layout, no unnecessary white mat, no stock label bands.
+- Let the composition be as free as the official art references allow while keeping the caption content clear.
+- Because this sample has hard AAS risks, content and relation correctness outrank decorative style freedom.
+
+REFERENCE FAMILY NOTES
+- Socialist Realism reference: Socialist Realism\0187485_KonstantinYuon-Nurses.jpg
+- Socialist Realism reference: Socialist Realism\0161653_ElLissitzky-Allforthefront!AllforVictory!.jpg
+- Socialist Realism reference: Socialist Realism\0109853_Kukryniksy-Aliethrower(TheTASSWindow№625).jpg
+- Socialist Realism reference: Socialist Realism\0041614_Kukryniksy-Splendidlyanddesperatelydowefight—theissueofSuvorovandChapayevdoitallright!.jpg
