@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from affectiveart.track2_official_anchor_calibration import score_submission
 from affectiveart.track2_v29_final_shot import load_track2_rows, run_v29_sweep

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
@@ -14,6 +16,9 @@ from affectiveart.track2_v29_final_shot import (
     run_v29_sweep,
     write_candidate_json_and_zip,
 )
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def _row(sample_id: str = "track2_0001") -> dict[str, str]:
@@ -122,6 +127,18 @@ class Track2V29FinalShotTests(unittest.TestCase):
             self.assertGreaterEqual(len(profiles), 2)
             self.assertTrue(Path(profiles[0].json_path).exists())
             self.assertTrue((root / "experiments" / "v29_final_shot_report.json").exists())
+
+    def test_cli_help_runs_from_repo_root(self) -> None:
+        result = subprocess.run(
+            [sys.executable, "scripts/track2_v29_final_shot.py", "--help"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Track2 v29", result.stdout)
 
 
 if __name__ == "__main__":
