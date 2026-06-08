@@ -1,0 +1,4 @@
+submission_id,file_name,official_overall,official_classification,official_description,emotion_accuracy,emotion_macro_f1,valence_accuracy,valence_macro_f1,arousal_accuracy,arousal_macro_f1,notes
+779605,track2_submission_moe_v2_accept5_candidate.zip,0.836408,0.723150,0.949667,0.570000,0.309338,0.883000,0.823380,0.913000,0.840184,First scored anchor.
+781601,track2_submission_v3_mid_gemini35_desc_192_candidate.zip,0.834027,0.719137,0.948917,,,,,,,,Failed broad same-quadrant batch; official result exposed old shadow over-reward.
+785979,track2_submission_v21_calmshift90_candidate.zip,0.842559,0.740034,0.945083,0.660000,0.320642,0.883000,0.823380,0.913000,0.840184,Directional 90x content->calm probe; classification improved but page still rounds to 0.84.
