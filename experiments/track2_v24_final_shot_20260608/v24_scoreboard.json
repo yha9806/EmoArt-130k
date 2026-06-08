@@ -1,0 +1,78 @@
+{
+  "base_json": "submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+  "description_json": "submissions/track2_submission_v15_desc_expand300_candidate.json",
+  "evidence_json": "experiments/track2_v19_aggregate_calibration_20260607/calibrated_evidence.json",
+  "final_gate": {
+    "candidate_name": "final",
+    "classification_expected": 0.75606,
+    "decision": "hold_no_submit",
+    "description_expected": 0.950882,
+    "overall_expected": 0.853471,
+    "reasons": [
+      "overall_below_089",
+      "classification_below_078",
+      "description_below_099",
+      "top_emotion_collapse"
+    ]
+  },
+  "method": "track2_v24_final_shot_v1",
+  "ranking": [
+    {
+      "accepted_label_changes": 6,
+      "calibration_kind": "estimated",
+      "candidate_name": "final",
+      "classification_expected": 0.75606,
+      "description_expected": 0.950882,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_final_candidate.json",
+      "missing_emotions": [],
+      "overall_expected": 0.853471,
+      "repeats_failed_pattern": false,
+      "text_changed_rows": 81,
+      "top_emotion_share": 0.666,
+      "unsafe_text_count": 0,
+      "visible_bucket": 0.85,
+      "warnings": [
+        "not_hidden_label_reconstruction",
+        "out_of_family_label_changes"
+      ]
+    },
+    {
+      "accepted_label_changes": 6,
+      "calibration_kind": "estimated",
+      "candidate_name": "classification_frontier",
+      "classification_expected": 0.75606,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_classification_frontier_candidate.json",
+      "missing_emotions": [],
+      "overall_expected": 0.852863,
+      "repeats_failed_pattern": false,
+      "text_changed_rows": 0,
+      "top_emotion_share": 0.666,
+      "unsafe_text_count": 0,
+      "visible_bucket": 0.85,
+      "warnings": [
+        "not_hidden_label_reconstruction",
+        "out_of_family_label_changes"
+      ]
+    },
+    {
+      "accepted_label_changes": 0,
+      "calibration_kind": "estimated",
+      "candidate_name": "descmax",
+      "classification_expected": 0.748642,
+      "description_expected": 0.949667,
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_descmax_candidate.json",
+      "missing_emotions": [],
+      "overall_expected": 0.849154,
+      "repeats_failed_pattern": false,
+      "text_changed_rows": 81,
+      "top_emotion_share": 0.667,
+      "unsafe_text_count": 0,
+      "visible_bucket": 0.85,
+      "warnings": [
+        "not_hidden_label_reconstruction"
+      ]
+    }
+  ],
+  "submissions_dir": "submissions"
+}

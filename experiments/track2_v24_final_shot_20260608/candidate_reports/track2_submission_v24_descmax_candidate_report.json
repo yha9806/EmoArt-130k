@@ -1,0 +1,38 @@
+{
+  "accepted_changes": [],
+  "accepted_label_changes": 0,
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 667,
+    "content": 61,
+    "excited": 15,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 33,
+    "tired": 40
+  },
+  "label_consistency_issue_count": 0,
+  "label_consistency_issues": [],
+  "method": "track2_v24_candidate_v1",
+  "missing_emotions": [],
+  "paths": {
+    "out_json": "submissions/track2_submission_v24_descmax_candidate.json",
+    "out_zip": "submissions/track2_submission_v24_descmax_candidate.zip",
+    "report_json": "experiments/track2_v24_final_shot_20260608/candidate_reports/track2_submission_v24_descmax_candidate_report.json",
+    "report_md": "experiments/track2_v24_final_shot_20260608/candidate_reports/track2_submission_v24_descmax_candidate_report.md"
+  },
+  "profile": "descmax",
+  "repeats_failed_pattern": false,
+  "row_count": 1000,
+  "text_changed_rows": 81,
+  "top_emotion": "calm",
+  "top_emotion_share": 0.667,
+  "transition_counts": {},
+  "unsafe_text_count": 0,
+  "unsafe_text_rows": [],
+  "validation_ok": true
+}

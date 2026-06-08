@@ -1,0 +1,4 @@
+candidate_name,json_path,calibration_kind,overall_expected,classification_expected,description_expected,visible_bucket,accepted_label_changes,text_changed_rows,top_emotion_share,missing_emotions,unsafe_text_count,repeats_failed_pattern,warnings
+final,/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_final_candidate.json,estimated,0.853471,0.75606,0.950882,0.85,6,81,0.666,[],0,False,"['not_hidden_label_reconstruction', 'out_of_family_label_changes']"
+classification_frontier,/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_classification_frontier_candidate.json,estimated,0.852863,0.75606,0.949667,0.85,6,0,0.666,[],0,False,"['not_hidden_label_reconstruction', 'out_of_family_label_changes']"
+descmax,/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v24_descmax_candidate.json,estimated,0.849154,0.748642,0.949667,0.85,0,81,0.667,[],0,False,['not_hidden_label_reconstruction']

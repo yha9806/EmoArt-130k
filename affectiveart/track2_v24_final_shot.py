@@ -41,6 +41,9 @@ NEGATIVE_EMOTIONS = {"alarmed", "annoyed", "bored", "frustrated", "sad", "tired"
 HIGH_AROUSAL_EMOTIONS = {"alarmed", "annoyed", "aroused", "excited", "frustrated", "happy"}
 FORMAL_SUBMISSION_NAMES = {"track2_submission.json", "track2_submission.zip"}
 DEFAULT_OUT_DIR = Path("experiments/track2_v24_final_shot_20260608")
+DEFAULT_BASE_JSON = Path("submissions/track2_submission_v22_official_author_calmshiftall_candidate.json")
+DEFAULT_DESCRIPTION_JSON = Path("submissions/track2_submission_v15_desc_expand300_candidate.json")
+DEFAULT_EVIDENCE_JSON = Path("experiments/track2_v19_aggregate_calibration_20260607/calibrated_evidence.json")
 
 
 @dataclass(frozen=True)
@@ -228,12 +231,47 @@ def build_v24_run_outputs(
     *,
     out_dir: str | Path = DEFAULT_OUT_DIR,
     submissions_dir: str | Path = "submissions",
+    base_json: str | Path = DEFAULT_BASE_JSON,
+    description_json: str | Path = DEFAULT_DESCRIPTION_JSON,
+    evidence_json: str | Path = DEFAULT_EVIDENCE_JSON,
 ) -> dict[str, Any]:
     out_dir = Path(out_dir)
+    submissions_dir = Path(submissions_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    report = score_v24_candidates_with_v23([])
+    report_dir = out_dir / "candidate_reports"
+    report_dir.mkdir(parents=True, exist_ok=True)
+    base_rows = load_track2_rows(base_json)
+    evidence_rows = _load_json_list(evidence_json)
+    description_rows = load_track2_rows(description_json) if Path(description_json).exists() else []
+    frontier_changes = _select_classification_frontier_changes(base_rows, evidence_rows)
+    desc_changes = _select_description_changes(base_rows, description_rows, limit=300)
+    final_changes = _merge_changes(frontier_changes, desc_changes)
+    candidate_specs = [
+        ("classification_frontier", frontier_changes),
+        ("descmax", desc_changes),
+        ("final", final_changes),
+    ]
+    candidate_reports: list[dict[str, Any]] = []
+    for profile, changes in candidate_specs:
+        stem = f"track2_submission_v24_{profile}_candidate"
+        candidate_reports.append(
+            write_v24_candidate_outputs(
+                base_rows=base_rows,
+                selected_changes=changes,
+                profile=profile,
+                out_json=submissions_dir / f"{stem}.json",
+                out_zip=submissions_dir / f"{stem}.zip",
+                report_json=report_dir / f"{stem}_report.json",
+                report_md=report_dir / f"{stem}_report.md",
+            )
+        )
+    report = score_v24_candidates_with_v23(candidate_reports)
     report["submissions_dir"] = str(submissions_dir)
+    report["base_json"] = str(base_json)
+    report["description_json"] = str(description_json)
+    report["evidence_json"] = str(evidence_json)
     _write_json(out_dir / "v24_scoreboard.json", report)
+    _write_csv(out_dir / "v24_scoreboard.csv", report["ranking"])
     (out_dir / "v24_final_gate_zh.md").write_text(_render_final_gate(report), encoding="utf-8")
     return report
 
@@ -297,6 +335,103 @@ def _apply_v24_changes(
     }
 
 
+def _select_classification_frontier_changes(
+    base_rows: list[dict[str, str]],
+    evidence_rows: list[dict[str, Any]],
+    *,
+    limit: int = 96,
+) -> list[dict[str, Any]]:
+    base_by_id = {row["sample_id"]: row for row in base_rows}
+    projected = Counter(row["emotion"] for row in base_rows)
+    total_rows = max(1, len(base_rows))
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    blocked_transitions = {"content->glad", "glad->content"}
+    transition_counts: Counter[str] = Counter()
+    for row in sorted(evidence_rows, key=_evidence_sort_key):
+        if len(selected) >= limit:
+            break
+        if str(row.get("v19_decision", row.get("v21_decision", ""))) != "accept_candidate":
+            continue
+        sample_id = str(row.get("sample_id", "")).strip()
+        if not sample_id or sample_id in seen or sample_id not in base_by_id:
+            continue
+        current = _canonical_emotion(row.get("current_emotion"))
+        proposed = _canonical_emotion(row.get("proposed_emotion"))
+        if not current or not proposed or current == proposed:
+            continue
+        if _canonical_emotion(base_by_id[sample_id].get("emotion")) != current:
+            continue
+        transition = f"{current}->{proposed}"
+        if transition in blocked_transitions:
+            continue
+        if transition == "calm->content" and transition_counts[transition] >= 19:
+            continue
+        if projected[current] <= 4:
+            continue
+        if (projected[proposed] + 1) / total_rows > 0.58:
+            continue
+        score = _safe_float(row.get("v19_score", row.get("v21_score", row.get("support_score", 0.0))))
+        votes = _safe_int(row.get("model_vote_count"))
+        confidence = _safe_float(row.get("max_confidence"))
+        duplicate = _safe_float(row.get("public_duplicate_support_score"))
+        near_duplicate = _safe_bool(row.get("near_duplicate")) or _safe_bool(row.get("exact_duplicate"))
+        if score < 3.0 and not (near_duplicate and duplicate >= 0.95 and confidence >= 0.9 and votes >= 2):
+            continue
+        selected.append(
+            {
+                "sample_id": sample_id,
+                "proposed_emotion": proposed,
+                "v24_source": "classification_frontier",
+                "v24_score": round(score, 6),
+                "transition": transition,
+            }
+        )
+        seen.add(sample_id)
+        transition_counts[transition] += 1
+        projected[current] -= 1
+        projected[proposed] += 1
+    return selected
+
+
+def _select_description_changes(
+    base_rows: list[dict[str, str]],
+    description_rows: list[dict[str, str]],
+    *,
+    limit: int,
+) -> list[dict[str, Any]]:
+    description_by_id = {row["sample_id"]: row for row in description_rows}
+    selected: list[dict[str, Any]] = []
+    for base in base_rows:
+        if len(selected) >= limit:
+            break
+        source = description_by_id.get(base["sample_id"])
+        if not source:
+            continue
+        change: dict[str, Any] = {"sample_id": base["sample_id"], "v24_source": "description_max"}
+        changed = False
+        for field in TEXT_FIELDS:
+            value = str(source.get(field, "")).strip()
+            if value and value != base[field] and is_text_evaluator_safe(value):
+                change[field] = value
+                changed = True
+        if changed:
+            selected.append(change)
+    return selected
+
+
+def _merge_changes(*change_groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: dict[str, dict[str, Any]] = {}
+    for group in change_groups:
+        for change in group:
+            sample_id = str(change.get("sample_id", "")).strip()
+            if not sample_id:
+                continue
+            target = merged.setdefault(sample_id, {"sample_id": sample_id})
+            target.update({key: value for key, value in change.items() if key != "sample_id"})
+    return list(merged.values())
+
+
 def _scoreboard_row(score: CalibratedScore, report: dict[str, Any]) -> dict[str, Any]:
     return {
         "candidate_name": score.candidate_name,
@@ -319,6 +454,13 @@ def _scoreboard_row(score: CalibratedScore, report: dict[str, Any]) -> dict[str,
 def _canonical_emotion(value: Any) -> str:
     text = str(value or "").strip().lower()
     return text if text in TRACK2_EMOTIONS else ""
+
+
+def _evidence_sort_key(row: dict[str, Any]) -> tuple[float, float, float, str]:
+    score = _safe_float(row.get("v19_score", row.get("v21_score", row.get("support_score", 0.0))))
+    duplicate = _safe_float(row.get("public_duplicate_support_score"))
+    confidence = _safe_float(row.get("max_confidence"))
+    return (-score, -duplicate, -confidence, str(row.get("sample_id", "")))
 
 
 def _valence(emotion: str) -> str:
@@ -366,6 +508,33 @@ def _repeats_781601_failed_pattern(transition_counts: dict[str, int]) -> bool:
     return transition_counts.get("calm->content", 0) >= 20 or transition_counts.get("content->glad", 0) >= 5
 
 
+def _safe_float(value: Any) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _safe_int(value: Any) -> int:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _safe_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def _load_json_list(path: str | Path) -> list[dict[str, Any]]:
+    payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        raise ValueError(f"JSON payload must be a list: {path}")
+    return [dict(row) for row in payload if isinstance(row, dict)]
+
+
 def _reject_formal_submission_path(path: Path) -> None:
     if path.name in FORMAL_SUBMISSION_NAMES and path.parent.name != "v24_final_upload":
         raise ValueError(f"refusing to overwrite formal submission path: {path}")
@@ -373,6 +542,18 @@ def _reject_formal_submission_path(path: Path) -> None:
 
 def _write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        path.write_text("", encoding="utf-8")
+        return
+    import csv
+
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def _write_zip_payload(path: Path, rows: list[dict[str, str]]) -> None:

@@ -1,0 +1,79 @@
+{
+  "accepted_changes": [
+    {
+      "after_emotion": "sad",
+      "before_emotion": "tired",
+      "sample_id": "track2_0063",
+      "transition": "tired->sad"
+    },
+    {
+      "after_emotion": "sad",
+      "before_emotion": "tired",
+      "sample_id": "track2_0196",
+      "transition": "tired->sad"
+    },
+    {
+      "after_emotion": "excited",
+      "before_emotion": "content",
+      "sample_id": "track2_0382",
+      "transition": "content->excited"
+    },
+    {
+      "after_emotion": "excited",
+      "before_emotion": "content",
+      "sample_id": "track2_0779",
+      "transition": "content->excited"
+    },
+    {
+      "after_emotion": "tired",
+      "before_emotion": "calm",
+      "sample_id": "track2_0925",
+      "transition": "calm->tired"
+    },
+    {
+      "after_emotion": "excited",
+      "before_emotion": "content",
+      "sample_id": "track2_0998",
+      "transition": "content->excited"
+    }
+  ],
+  "accepted_label_changes": 6,
+  "distribution": {
+    "alarmed": 54,
+    "annoyed": 22,
+    "aroused": 29,
+    "bored": 20,
+    "calm": 666,
+    "content": 58,
+    "excited": 18,
+    "frustrated": 46,
+    "glad": 5,
+    "happy": 8,
+    "sad": 35,
+    "tired": 39
+  },
+  "label_consistency_issue_count": 0,
+  "label_consistency_issues": [],
+  "method": "track2_v24_candidate_v1",
+  "missing_emotions": [],
+  "paths": {
+    "out_json": "submissions/track2_submission_v24_classification_frontier_candidate.json",
+    "out_zip": "submissions/track2_submission_v24_classification_frontier_candidate.zip",
+    "report_json": "experiments/track2_v24_final_shot_20260608/candidate_reports/track2_submission_v24_classification_frontier_candidate_report.json",
+    "report_md": "experiments/track2_v24_final_shot_20260608/candidate_reports/track2_submission_v24_classification_frontier_candidate_report.md"
+  },
+  "profile": "classification_frontier",
+  "repeats_failed_pattern": false,
+  "row_count": 1000,
+  "text_changed_rows": 0,
+  "top_emotion": "calm",
+  "top_emotion_share": 0.666,
+  "transition_counts": {
+    "calm->tired": 1,
+    "content->excited": 3,
+    "tired->sad": 2
+  },
+  "unsafe_text_count": 0,
+  "unsafe_text_rows": [],
+  "validation_ok": true
+}

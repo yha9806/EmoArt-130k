@@ -9,6 +9,7 @@ from pathlib import Path
 from affectiveart.track2_official_anchor_calibration import CalibratedScore
 from affectiveart.track2_v24_final_shot import (
     FinalGateThresholds,
+    build_v24_run_outputs,
     choose_v24_final_candidate,
     is_text_evaluator_safe,
     score_v24_candidates_with_v23,
@@ -178,3 +179,21 @@ class Track2V24CandidateBuilderTests(unittest.TestCase):
         self.assertIn("ranking", scoreboard)
         self.assertIn("final_gate", scoreboard)
         self.assertEqual(scoreboard["final_gate"]["decision"], "hold_no_submit")
+
+    def test_build_v24_run_outputs_generates_real_candidate_ladder(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            report = build_v24_run_outputs(
+                out_dir=root / "out",
+                submissions_dir=root / "submissions",
+            )
+
+            self.assertEqual(report["method"], "track2_v24_final_shot_v1")
+            self.assertEqual(len(report["ranking"]), 3)
+            self.assertEqual(
+                {row["candidate_name"] for row in report["ranking"]},
+                {"classification_frontier", "descmax", "final"},
+            )
+            self.assertTrue((root / "submissions" / "track2_submission_v24_final_candidate.zip").exists())
+            self.assertFalse((root / "submissions" / "track2_submission.zip").exists())
+            self.assertIn(report["final_gate"]["decision"], {"hold_no_submit", "recommend_final_submit"})
