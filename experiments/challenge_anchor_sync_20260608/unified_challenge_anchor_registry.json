@@ -1,0 +1,3264 @@
+{
+  "anchors": [
+    {
+      "anchor_key": "track1:740721",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9945,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9842,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.9898,
+      "official_fid": 78.5870522326,
+      "official_fid_score": 0.5599510085,
+      "official_overall": 0.7748755042,
+      "participant": "edaich",
+      "source_refs": [
+        "track1_anchor_csv",
+        "track1_api"
+      ],
+      "style_alignment": 0.9907,
+      "submission_id": "740721",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:744030",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.88,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.87,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Older public Codabench crawl row used to widen FID-score fit range.",
+      "official_aas": 0.89,
+      "official_fid": 130.53,
+      "official_fid_score": 0.43,
+      "official_overall": 0.66,
+      "participant": "EmoVCC",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.92,
+      "submission_id": "744030",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:749402",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9953,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.98935,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9944666667,
+      "official_fid": 85.4185281902,
+      "official_fid_score": 0.5393204281,
+      "official_overall": 0.7668935474,
+      "participant": "nullc",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.99875,
+      "submission_id": "749402",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:751157",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9909,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.97935,
+      "file_name": "submission_1.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9883833333,
+      "official_fid": 80.7202394474,
+      "official_fid_score": 0.5533414537,
+      "official_overall": 0.7708623935,
+      "participant": "laizhq",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9949,
+      "submission_id": "751157",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:755551",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.86335,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.8774,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8616666667,
+      "official_fid": 130.7728380014,
+      "official_fid_score": 0.4333265599,
+      "official_overall": 0.6474966133,
+      "participant": "zhbai",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.84425,
+      "submission_id": "755551",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:773069",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.86935,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.84235,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8692,
+      "official_fid": 107.0791375736,
+      "official_fid_score": 0.4829071686,
+      "official_overall": 0.6760535843,
+      "participant": "zzixuan",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.8959,
+      "submission_id": "773069",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:774153",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.8842,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.8592,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8847333333,
+      "official_fid": 107.0791389754,
+      "official_fid_score": 0.4829071653,
+      "official_overall": 0.6838202493,
+      "participant": "labbbb",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9108,
+      "submission_id": "774153",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:776946",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9471,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9427,
+      "file_name": "submission_wo_lora.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9367666667,
+      "official_fid": 124.6530802791,
+      "official_fid_score": 0.4451307762,
+      "official_overall": 0.6909487214,
+      "participant": "gaozheng",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9205,
+      "submission_id": "776946",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:777611",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.996,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9889,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9934666667,
+      "official_fid": 66.8417413832,
+      "official_fid_score": 0.5993703924,
+      "official_overall": 0.7964185295,
+      "participant": "trybest-1",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9955,
+      "submission_id": "777611",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:778783",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99575,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9874,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9927166667,
+      "official_fid": 66.3621921022,
+      "official_fid_score": 0.6010981145,
+      "official_overall": 0.7969073906,
+      "participant": "emosuis",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.995,
+      "submission_id": "778783",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:781205",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9677,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9712,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9783,
+      "official_fid": 122.0283804892,
+      "official_fid_score": 0.4503928722,
+      "official_overall": 0.7143464361,
+      "participant": "echoes_42",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.996,
+      "submission_id": "781205",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:782831",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.98,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.98,
+      "file_name": "track1_submit_v3_gate7_20260606.zip",
+      "local_fid_like": 63.010429,
+      "local_package": "v3_gate7",
+      "notes": "Our only Track1 component-score anchor with local fid_like from fid_sanity_smoke2048_dim512.",
+      "official_aas": 0.98,
+      "official_fid": 80.92,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.98,
+      "submission_id": "782831",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:784114",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.8954,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.88285,
+      "file_name": "track1_ckpt4000_best_fid71p428_subm.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.88375,
+      "official_fid": 112.1604053826,
+      "official_fid_score": 0.4713414825,
+      "official_overall": 0.6775457412,
+      "participant": "yanghaoming",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.873,
+      "submission_id": "784114",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:784403",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99325,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.992,
+      "file_name": "hybrid_probe_redteam_fid_pass4.zip",
+      "local_fid_like": 58.348904,
+      "local_package": "hybrid_redteam_fid_pass4",
+      "notes": "Official probe result: AAS improved but FID worsened; package lineage was 996 old current images plus 4 full1000 replacements",
+      "official_aas": 0.99305,
+      "official_fid": 105.6638160234,
+      "official_fid_score": 0.4862304023,
+      "official_overall": 0.7396402011,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv",
+        "track1_api"
+      ],
+      "style_alignment": 0.9939,
+      "submission_id": "784403",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:top_visible_1",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 66.36,
+      "official_fid_score": 0.6,
+      "official_overall": 0.8,
+      "participant": "emosuis",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.99,
+      "submission_id": "top_visible_1",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:top_visible_2",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 66.84,
+      "official_fid_score": 0.6,
+      "official_overall": 0.8,
+      "participant": "trybest-1",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 1.0,
+      "submission_id": "top_visible_2",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:top_visible_4",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.98,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 80.72,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "VIRLab",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.99,
+      "submission_id": "top_visible_4",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track1:top_visible_5",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 85.42,
+      "official_fid_score": 0.54,
+      "official_overall": 0.77,
+      "participant": "Latent Feeling",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 1.0,
+      "submission_id": "top_visible_5",
+      "track": "track1"
+    },
+    {
+      "anchor_key": "track2_estimated:v22_calmshift120",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift120",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift120_candidate.json",
+      "label_changes_vs_anchor": 120,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.743002,
+      "official_description": 0.949667,
+      "official_overall": 0.846335,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:120",
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_key": "track2_estimated:v22_calmshift150",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift150",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift150_candidate.json",
+      "label_changes_vs_anchor": 150,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.745038,
+      "official_description": 0.949667,
+      "official_overall": 0.847352,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:150",
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_key": "track2_estimated:v22_calmshiftall",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshiftall",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+      "label_changes_vs_anchor": 177,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.746659,
+      "official_description": 0.949667,
+      "official_overall": 0.848163,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:177",
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    {
+      "anchor_key": "track2:779605",
+      "anchor_submission_id": "779605",
+      "anchor_type": "official_score",
+      "arousal_accuracy": 0.913,
+      "arousal_macro_f1": 0.840184,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_779605_moe_v2_anchor",
+      "emotion_accuracy": 0.57,
+      "emotion_macro_f1": 0.309338,
+      "file_name": "track2_submission_moe_v2_accept5_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_moe_v2_accept5_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "First scored anchor.",
+      "official_classification": 0.72315,
+      "official_description": 0.949667,
+      "official_overall": 0.836408,
+      "official_visible": 0.84,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "779605",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "valence_accuracy": 0.883,
+      "valence_macro_f1": 0.82338
+    },
+    {
+      "anchor_key": "track2:781601",
+      "anchor_submission_id": "781601",
+      "anchor_type": "official_score",
+      "arousal_accuracy": null,
+      "arousal_macro_f1": null,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_781601_v3_mid",
+      "emotion_accuracy": null,
+      "emotion_macro_f1": null,
+      "file_name": "track2_submission_v3_mid_gemini35_desc_192_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+      "label_changes_vs_anchor": 85,
+      "notes": "precalibration v3/v9 aggressive same-quadrant batch; official result exposed scorer over-reward",
+      "official_classification": 0.719137,
+      "official_description": 0.948917,
+      "official_overall": 0.834027,
+      "official_visible": 0.83,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "781601",
+      "text_changed_rows_vs_anchor": 39,
+      "track": "track2",
+      "transition_counts": "aroused->excited:1; bored->sad:1; calm->content:43; calm->glad:2; content->calm:20; content->glad:5; excited->happy:1; glad->calm:1; glad->content:4; happy->excited:3; sad->tired:1; tired->sad:3",
+      "valence_accuracy": null,
+      "valence_macro_f1": null
+    },
+    {
+      "anchor_key": "track2:782683",
+      "anchor_submission_id": "782683",
+      "anchor_type": "official_score",
+      "calibration_kind": "visible_official",
+      "candidate_name": "official_782683_v12_stable_probe",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v12_stable_probe_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "Only rounded leaderboard score is visible; detailed components are rounded leaderboard fields.",
+      "official_classification": 0.721667,
+      "official_description": 0.95,
+      "official_overall": 0.835833,
+      "official_visible": 0.84,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "782683",
+      "text_changed_rows_vs_anchor": 12,
+      "track": "track2",
+      "transition_counts": "",
+      "warnings": "exact_unavailable_visible_leaderboard_only"
+    },
+    {
+      "anchor_key": "track2:785979",
+      "anchor_submission_id": "785979",
+      "anchor_type": "official_score",
+      "arousal_accuracy": 0.913,
+      "arousal_macro_f1": 0.840184,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_785979_v21_calmshift90",
+      "emotion_accuracy": 0.66,
+      "emotion_macro_f1": 0.320642,
+      "file_name": "track2_submission_v21_calmshift90_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v21_calmshift90_candidate.json",
+      "label_changes_vs_anchor": 90,
+      "notes": "Directional 90x content->calm probe; classification improved but page still rounds to 0.84.",
+      "official_classification": 0.740034,
+      "official_description": 0.945083,
+      "official_overall": 0.842559,
+      "official_visible": 0.84,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "785979",
+      "text_changed_rows_vs_anchor": 81,
+      "track": "track2",
+      "transition_counts": "content->calm:90",
+      "valence_accuracy": 0.883,
+      "valence_macro_f1": 0.82338
+    }
+  ],
+  "anchors_by_key": {
+    "track1:740721": {
+      "anchor_key": "track1:740721",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9945,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9842,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.9898,
+      "official_fid": 78.5870522326,
+      "official_fid_score": 0.5599510085,
+      "official_overall": 0.7748755042,
+      "participant": "edaich",
+      "source_refs": [
+        "track1_anchor_csv",
+        "track1_api"
+      ],
+      "style_alignment": 0.9907,
+      "submission_id": "740721",
+      "track": "track1"
+    },
+    "track1:744030": {
+      "anchor_key": "track1:744030",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.88,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.87,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Older public Codabench crawl row used to widen FID-score fit range.",
+      "official_aas": 0.89,
+      "official_fid": 130.53,
+      "official_fid_score": 0.43,
+      "official_overall": 0.66,
+      "participant": "EmoVCC",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.92,
+      "submission_id": "744030",
+      "track": "track1"
+    },
+    "track1:749402": {
+      "anchor_key": "track1:749402",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9953,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.98935,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9944666667,
+      "official_fid": 85.4185281902,
+      "official_fid_score": 0.5393204281,
+      "official_overall": 0.7668935474,
+      "participant": "nullc",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.99875,
+      "submission_id": "749402",
+      "track": "track1"
+    },
+    "track1:751157": {
+      "anchor_key": "track1:751157",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9909,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.97935,
+      "file_name": "submission_1.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9883833333,
+      "official_fid": 80.7202394474,
+      "official_fid_score": 0.5533414537,
+      "official_overall": 0.7708623935,
+      "participant": "laizhq",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9949,
+      "submission_id": "751157",
+      "track": "track1"
+    },
+    "track1:755551": {
+      "anchor_key": "track1:755551",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.86335,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.8774,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8616666667,
+      "official_fid": 130.7728380014,
+      "official_fid_score": 0.4333265599,
+      "official_overall": 0.6474966133,
+      "participant": "zhbai",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.84425,
+      "submission_id": "755551",
+      "track": "track1"
+    },
+    "track1:773069": {
+      "anchor_key": "track1:773069",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.86935,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.84235,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8692,
+      "official_fid": 107.0791375736,
+      "official_fid_score": 0.4829071686,
+      "official_overall": 0.6760535843,
+      "participant": "zzixuan",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.8959,
+      "submission_id": "773069",
+      "track": "track1"
+    },
+    "track1:774153": {
+      "anchor_key": "track1:774153",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.8842,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.8592,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.8847333333,
+      "official_fid": 107.0791389754,
+      "official_fid_score": 0.4829071653,
+      "official_overall": 0.6838202493,
+      "participant": "labbbb",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9108,
+      "submission_id": "774153",
+      "track": "track1"
+    },
+    "track1:776946": {
+      "anchor_key": "track1:776946",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9471,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9427,
+      "file_name": "submission_wo_lora.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9367666667,
+      "official_fid": 124.6530802791,
+      "official_fid_score": 0.4451307762,
+      "official_overall": 0.6909487214,
+      "participant": "gaozheng",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9205,
+      "submission_id": "776946",
+      "track": "track1"
+    },
+    "track1:777611": {
+      "anchor_key": "track1:777611",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.996,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9889,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9934666667,
+      "official_fid": 66.8417413832,
+      "official_fid_score": 0.5993703924,
+      "official_overall": 0.7964185295,
+      "participant": "trybest-1",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.9955,
+      "submission_id": "777611",
+      "track": "track1"
+    },
+    "track1:778783": {
+      "anchor_key": "track1:778783",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99575,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9874,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9927166667,
+      "official_fid": 66.3621921022,
+      "official_fid_score": 0.6010981145,
+      "official_overall": 0.7969073906,
+      "participant": "emosuis",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.995,
+      "submission_id": "778783",
+      "track": "track1"
+    },
+    "track1:781205": {
+      "anchor_key": "track1:781205",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.9677,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.9712,
+      "file_name": "submission.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.9783,
+      "official_fid": 122.0283804892,
+      "official_fid_score": 0.4503928722,
+      "official_overall": 0.7143464361,
+      "participant": "echoes_42",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.996,
+      "submission_id": "781205",
+      "track": "track1"
+    },
+    "track1:782831": {
+      "anchor_key": "track1:782831",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.98,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.98,
+      "file_name": "track1_submit_v3_gate7_20260606.zip",
+      "local_fid_like": 63.010429,
+      "local_package": "v3_gate7",
+      "notes": "Our only Track1 component-score anchor with local fid_like from fid_sanity_smoke2048_dim512.",
+      "official_aas": 0.98,
+      "official_fid": 80.92,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.98,
+      "submission_id": "782831",
+      "track": "track1"
+    },
+    "track1:784114": {
+      "anchor_key": "track1:784114",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.8954,
+      "calibration_kind": "public_or_api_official",
+      "content_alignment": 0.88285,
+      "file_name": "track1_ckpt4000_best_fid71p428_subm.zip",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "",
+      "official_aas": 0.88375,
+      "official_fid": 112.1604053826,
+      "official_fid_score": 0.4713414825,
+      "official_overall": 0.6775457412,
+      "participant": "yanghaoming",
+      "source_refs": [
+        "track1_api"
+      ],
+      "style_alignment": 0.873,
+      "submission_id": "784114",
+      "track": "track1"
+    },
+    "track1:784403": {
+      "anchor_key": "track1:784403",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99325,
+      "calibration_kind": "own_official",
+      "content_alignment": 0.992,
+      "file_name": "hybrid_probe_redteam_fid_pass4.zip",
+      "local_fid_like": 58.348904,
+      "local_package": "hybrid_redteam_fid_pass4",
+      "notes": "Official probe result: AAS improved but FID worsened; package lineage was 996 old current images plus 4 full1000 replacements",
+      "official_aas": 0.99305,
+      "official_fid": 105.6638160234,
+      "official_fid_score": 0.4862304023,
+      "official_overall": 0.7396402011,
+      "participant": "vulcaart",
+      "source_refs": [
+        "track1_anchor_csv",
+        "track1_api"
+      ],
+      "style_alignment": 0.9939,
+      "submission_id": "784403",
+      "track": "track1"
+    },
+    "track1:top_visible_1": {
+      "anchor_key": "track1:top_visible_1",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 66.36,
+      "official_fid_score": 0.6,
+      "official_overall": 0.8,
+      "participant": "emosuis",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.99,
+      "submission_id": "top_visible_1",
+      "track": "track1"
+    },
+    "track1:top_visible_2": {
+      "anchor_key": "track1:top_visible_2",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 66.84,
+      "official_fid_score": 0.6,
+      "official_overall": 0.8,
+      "participant": "trybest-1",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 1.0,
+      "submission_id": "top_visible_2",
+      "track": "track1"
+    },
+    "track1:top_visible_4": {
+      "anchor_key": "track1:top_visible_4",
+      "anchor_type": "official_score",
+      "attribute_alignment": 0.99,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.98,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 80.72,
+      "official_fid_score": 0.55,
+      "official_overall": 0.77,
+      "participant": "VIRLab",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 0.99,
+      "submission_id": "top_visible_4",
+      "track": "track1"
+    },
+    "track1:top_visible_5": {
+      "anchor_key": "track1:top_visible_5",
+      "anchor_type": "official_score",
+      "attribute_alignment": 1.0,
+      "calibration_kind": "public_leaderboard",
+      "content_alignment": 0.99,
+      "file_name": "",
+      "local_fid_like": null,
+      "local_package": "",
+      "notes": "Visible Track1 leaderboard context from Codabench snapshot.",
+      "official_aas": 0.99,
+      "official_fid": 85.42,
+      "official_fid_score": 0.54,
+      "official_overall": 0.77,
+      "participant": "Latent Feeling",
+      "source_refs": [
+        "track1_anchor_csv"
+      ],
+      "style_alignment": 1.0,
+      "submission_id": "top_visible_5",
+      "track": "track1"
+    },
+    "track2:779605": {
+      "anchor_key": "track2:779605",
+      "anchor_submission_id": "779605",
+      "anchor_type": "official_score",
+      "arousal_accuracy": 0.913,
+      "arousal_macro_f1": 0.840184,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_779605_moe_v2_anchor",
+      "emotion_accuracy": 0.57,
+      "emotion_macro_f1": 0.309338,
+      "file_name": "track2_submission_moe_v2_accept5_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_moe_v2_accept5_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "First scored anchor.",
+      "official_classification": 0.72315,
+      "official_description": 0.949667,
+      "official_overall": 0.836408,
+      "official_visible": 0.84,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "779605",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "valence_accuracy": 0.883,
+      "valence_macro_f1": 0.82338
+    },
+    "track2:781601": {
+      "anchor_key": "track2:781601",
+      "anchor_submission_id": "781601",
+      "anchor_type": "official_score",
+      "arousal_accuracy": null,
+      "arousal_macro_f1": null,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_781601_v3_mid",
+      "emotion_accuracy": null,
+      "emotion_macro_f1": null,
+      "file_name": "track2_submission_v3_mid_gemini35_desc_192_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v3_mid_gemini35_desc_192_candidate.json",
+      "label_changes_vs_anchor": 85,
+      "notes": "precalibration v3/v9 aggressive same-quadrant batch; official result exposed scorer over-reward",
+      "official_classification": 0.719137,
+      "official_description": 0.948917,
+      "official_overall": 0.834027,
+      "official_visible": 0.83,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "781601",
+      "text_changed_rows_vs_anchor": 39,
+      "track": "track2",
+      "transition_counts": "aroused->excited:1; bored->sad:1; calm->content:43; calm->glad:2; content->calm:20; content->glad:5; excited->happy:1; glad->calm:1; glad->content:4; happy->excited:3; sad->tired:1; tired->sad:3",
+      "valence_accuracy": null,
+      "valence_macro_f1": null
+    },
+    "track2:782683": {
+      "anchor_key": "track2:782683",
+      "anchor_submission_id": "782683",
+      "anchor_type": "official_score",
+      "calibration_kind": "visible_official",
+      "candidate_name": "official_782683_v12_stable_probe",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v12_stable_probe_candidate.json",
+      "label_changes_vs_anchor": 0,
+      "notes": "Only rounded leaderboard score is visible; detailed components are rounded leaderboard fields.",
+      "official_classification": 0.721667,
+      "official_description": 0.95,
+      "official_overall": 0.835833,
+      "official_visible": 0.84,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "782683",
+      "text_changed_rows_vs_anchor": 12,
+      "track": "track2",
+      "transition_counts": "",
+      "warnings": "exact_unavailable_visible_leaderboard_only"
+    },
+    "track2:785979": {
+      "anchor_key": "track2:785979",
+      "anchor_submission_id": "785979",
+      "anchor_type": "official_score",
+      "arousal_accuracy": 0.913,
+      "arousal_macro_f1": 0.840184,
+      "calibration_kind": "exact_official",
+      "candidate_name": "official_785979_v21_calmshift90",
+      "emotion_accuracy": 0.66,
+      "emotion_macro_f1": 0.320642,
+      "file_name": "track2_submission_v21_calmshift90_candidate.zip",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v21_calmshift90_candidate.json",
+      "label_changes_vs_anchor": 90,
+      "notes": "Directional 90x content->calm probe; classification improved but page still rounds to 0.84.",
+      "official_classification": 0.740034,
+      "official_description": 0.945083,
+      "official_overall": 0.842559,
+      "official_visible": 0.84,
+      "participant": "",
+      "source_refs": [
+        "track2_exact_scores",
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "785979",
+      "text_changed_rows_vs_anchor": 81,
+      "track": "track2",
+      "transition_counts": "content->calm:90",
+      "valence_accuracy": 0.883,
+      "valence_macro_f1": 0.82338
+    },
+    "track2_estimated:v22_calmshift120": {
+      "anchor_key": "track2_estimated:v22_calmshift120",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift120",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift120_candidate.json",
+      "label_changes_vs_anchor": 120,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.743002,
+      "official_description": 0.949667,
+      "official_overall": 0.846335,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:120",
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    "track2_estimated:v22_calmshift150": {
+      "anchor_key": "track2_estimated:v22_calmshift150",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshift150",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshift150_candidate.json",
+      "label_changes_vs_anchor": 150,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.745038,
+      "official_description": 0.949667,
+      "official_overall": 0.847352,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:150",
+      "warnings": "not_hidden_label_reconstruction"
+    },
+    "track2_estimated:v22_calmshiftall": {
+      "anchor_key": "track2_estimated:v22_calmshiftall",
+      "anchor_submission_id": "779605",
+      "anchor_type": "estimated_candidate",
+      "calibration_kind": "estimated",
+      "candidate_name": "v22_calmshiftall",
+      "json_path": "/Users/yhryzy/dev/emoart-130k/submissions/track2_submission_v22_official_author_calmshiftall_candidate.json",
+      "label_changes_vs_anchor": 177,
+      "notes": "Estimated from existing v22 candidate report projection.",
+      "official_classification": 0.746659,
+      "official_description": 0.949667,
+      "official_overall": 0.848163,
+      "official_visible": 0.85,
+      "source_refs": [
+        "track2_official_anchor_scoreboard"
+      ],
+      "submission_id": "",
+      "text_changed_rows_vs_anchor": 0,
+      "track": "track2",
+      "transition_counts": "content->calm:177",
+      "warnings": "not_hidden_label_reconstruction"
+    }
+  },
+  "author_index": {
+    "A Ia Mekhedova": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "A Ia Mekhedova",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Modeling neurosis in the dog and a study of the effects of antidepressants]. (1987)"
+      ]
+    },
+    "A. V. Val'dman": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "A. V. Val'dman",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Lonetil and emovit--effect on an experimental model of a neurosis-like state in the rat]. (1983)"
+      ]
+    },
+    "AffectiveArt Challenge proposal": {
+      "institutions": [],
+      "method_card_ids": [
+        "official_proposal_flux_lora_style_baseline"
+      ],
+      "name": "AffectiveArt Challenge proposal",
+      "source_names": [],
+      "urls": [
+        "https://openreview.net/forum?id=LbbHX8ofXZ",
+        "https://openreview.net/pdf?id=LbbHX8ofXZ",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "works": []
+    },
+    "Afrin Akhter": {
+      "institutions": [
+        "Islamia University of Bahawalpur"
+      ],
+      "method_card_ids": [],
+      "name": "Afrin Akhter",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Emotion Detection and Analysis using Textual Data through Trainable and Pre-trained Word Embedding Methods (2025)"
+      ]
+    },
+    "Ahmad Lotfi": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Ahmad Lotfi",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Alexander Sumich": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Alexander Sumich",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Alina Rinn": {
+      "institutions": [
+        "Leuphana University of Lüneburg"
+      ],
+      "method_card_ids": [],
+      "name": "Alina Rinn",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Amith Ananthram": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Amith Ananthram",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "See It from My Perspective: How Language Affects Cultural Bias in Image Understanding (2024)"
+      ]
+    },
+    "Andrew Knight": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Andrew Knight",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Anmol Suryavanshi": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Anmol Suryavanshi",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Azmi Nasser": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Azmi Nasser",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Aĭrapetiants Mg": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Aĭrapetiants Mg",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Modeling neurosis in the dog and a study of the effects of antidepressants]. (1987)"
+      ]
+    },
+    "Benedict Barthold": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Benedict Barthold",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Bin Wen": {
+      "institutions": [
+        "Jilin University"
+      ],
+      "method_card_ids": [
+        "structured_multistep_generation_lineage"
+      ],
+      "name": "Bin Wen",
+      "source_names": [],
+      "urls": [
+        "https://www.hongxiaxie.net/research"
+      ],
+      "works": [
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
+      ]
+    },
+    "Brian Y. Lim": {
+      "institutions": [
+        "National University of Singapore"
+      ],
+      "method_card_ids": [],
+      "name": "Brian Y. Lim",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "RePrompt: Automatic Prompt Editing to Refine AI-Generative Art Towards Precise Expressions (2023)"
+      ]
+    },
+    "Chan-Feng Hsu": {
+      "institutions": [
+        "National Yang Ming Chiao Tung University"
+      ],
+      "method_card_ids": [],
+      "name": "Chan-Feng Hsu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Cheng Zhang": {
+      "institutions": [
+        "Jilin University"
+      ],
+      "method_card_ids": [
+        "emoart_metric_text_diversity_alignment",
+        "fabg_agsr_attribute_salience_bottleneck"
+      ],
+      "name": "Cheng Zhang",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2605.15755",
+        "https://github.com/ZHILIANGZHANG/EmoArt-130k",
+        "https://github.com/zhiliangzhang/FAB-G",
+        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "works": [
+        "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
+      ]
+    },
+    "Chenyan Wu": {
+      "institutions": [
+        "Pennsylvania State University"
+      ],
+      "method_card_ids": [],
+      "name": "Chenyan Wu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Chu-Jun Peng": {
+      "institutions": [
+        "National Taiwan University"
+      ],
+      "method_card_ids": [],
+      "name": "Chu-Jun Peng",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Chung‐Ping Yu": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Chung‐Ping Yu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Chunlei Wu": {
+      "institutions": [
+        "Institute of Software"
+      ],
+      "method_card_ids": [],
+      "name": "Chunlei Wu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "César González-Martín": {
+      "institutions": [
+        "University of Córdoba"
+      ],
+      "method_card_ids": [],
+      "name": "César González-Martín",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Detection of Emotions in Artworks Using a Convolutional Neural Network Trained on Non-Artistic Images: A Methodology to Reduce the Cross-Depiction Problem (2023)"
+      ]
+    },
+    "Danchev Nd": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Danchev Nd",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Emovit and lonetil--behavioral and neurochemical studies]. (1983)"
+      ]
+    },
+    "Dani Lischinski": {
+      "institutions": [
+        "Hebrew University of Jerusalem"
+      ],
+      "method_card_ids": [],
+      "name": "Dani Lischinski",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Daniel Cohen‐Or": {
+      "institutions": [
+        "Tel Aviv University"
+      ],
+      "method_card_ids": [],
+      "name": "Daniel Cohen‐Or",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Dexiang Hong": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Dexiang Hong",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Dirk Lehr": {
+      "institutions": [
+        "Leuphana University of Lüneburg"
+      ],
+      "method_card_ids": [],
+      "name": "Dirk Lehr",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Elias Stengel-Eskin": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Elias Stengel-Eskin",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "See It from My Perspective: How Language Affects Cultural Bias in Image Understanding (2024)"
+      ]
+    },
+    "Emile Bergeron": {
+      "institutions": [
+        "Université Laval"
+      ],
+      "method_card_ids": [],
+      "name": "Emile Bergeron",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis (2026)"
+      ]
+    },
+    "EmoArt benchmark": {
+      "institutions": [],
+      "method_card_ids": [
+        "official_proposal_flux_lora_style_baseline"
+      ],
+      "name": "EmoArt benchmark",
+      "source_names": [],
+      "urls": [
+        "https://openreview.net/forum?id=LbbHX8ofXZ",
+        "https://openreview.net/pdf?id=LbbHX8ofXZ",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "works": []
+    },
+    "EmoArt metric code": {
+      "institutions": [],
+      "method_card_ids": [
+        "emoart_metric_text_diversity_alignment"
+      ],
+      "name": "EmoArt metric code",
+      "source_names": [],
+      "urls": [
+        "https://github.com/ZHILIANGZHANG/EmoArt-130k",
+        "https://zhiliangzhang.github.io/EmoArt-130k/"
+      ],
+      "works": []
+    },
+    "Eva Cetinić": {
+      "institutions": [
+        "Ruđer Bošković Institute"
+      ],
+      "method_card_ids": [],
+      "name": "Eva Cetinić",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "A Deep Learning Perspective on Beauty, Sentiment, and Remembrance of Art (2019)"
+      ]
+    },
+    "Gennaro Vessio": {
+      "institutions": [
+        "University of Bari Aldo Moro"
+      ],
+      "method_card_ids": [],
+      "name": "Gennaro Vessio",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Deep learning approaches to pattern extraction and recognition in paintings and drawings: an overview (2021)"
+      ]
+    },
+    "Gintautas Dzemyda": {
+      "institutions": [
+        "Vilnius University"
+      ],
+      "method_card_ids": [],
+      "name": "Gintautas Dzemyda",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The Effective Evaluation of Emotions in the Visual Emotion Images Using Convolutional Neural Networks (2025)"
+      ]
+    },
+    "Giovanna Castellano": {
+      "institutions": [
+        "University of Bari Aldo Moro"
+      ],
+      "method_card_ids": [],
+      "name": "Giovanna Castellano",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Deep learning approaches to pattern extraction and recognition in paintings and drawings: an overview (2021)"
+      ]
+    },
+    "Guixiang Chang": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Guixiang Chang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Oil painting emotion recognition using multi-modal adaptive deep network (2026)"
+      ]
+    },
+    "Guliamov Mg": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Guliamov Mg",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Comparative evaluation of the therapeutic efficacy of the antidepressants adepren, linamiphen and emovit]. (1986)"
+      ]
+    },
+    "Hao‐Wen Cheng": {
+      "institutions": [
+        "National Taiwan University"
+      ],
+      "method_card_ids": [],
+      "name": "Hao‐Wen Cheng",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Hong-Han Shuai": {
+      "institutions": [
+        "National Yang Ming Chiao Tung University"
+      ],
+      "method_card_ids": [
+        "emovit_emotion_instruction_prompting",
+        "micro_expression_relation_graph_reasoning"
+      ],
+      "name": "Hong-Han Shuai",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2004.08915",
+        "https://arxiv.org/abs/2012.11307",
+        "https://arxiv.org/abs/2404.16670",
+        "https://basiclab.lab.nycu.edu.tw/",
+        "https://github.com/aimmemotion/EmoVIT",
+        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html"
+      ],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Hongjiang Xiao": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Hongjiang Xiao",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "FG-ECVG: Fine-Grained Emotion-Controllable Video Generation Algorithm (2025)"
+      ]
+    },
+    "Hongxia Xie": {
+      "institutions": [
+        "Jilin University"
+      ],
+      "method_card_ids": [
+        "emovit_emotion_instruction_prompting",
+        "fabg_agsr_attribute_salience_bottleneck",
+        "structured_multistep_generation_lineage"
+      ],
+      "name": "Hongxia Xie",
+      "source_names": [
+        "Hongxia Xie / AVC Lab"
+      ],
+      "urls": [
+        "https://arxiv.org/abs/2404.16670",
+        "https://arxiv.org/abs/2605.15755",
+        "https://github.com/aimmemotion/EmoVIT",
+        "https://github.com/zhiliangzhang/FAB-G",
+        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
+        "https://www.hongxiaxie.net/",
+        "https://www.hongxiaxie.net/research"
+      ],
+      "works": [
+        "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)",
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Hongxia Xie research page": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Hongxia Xie research page",
+      "source_names": [
+        "Hongxia Xie research page"
+      ],
+      "urls": [
+        "https://www.hongxiaxie.net/research"
+      ],
+      "works": []
+    },
+    "Hui Huang": {
+      "institutions": [
+        "Shenzhen University"
+      ],
+      "method_card_ids": [],
+      "name": "Hui Huang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Hung-Jen Chen": {
+      "institutions": [
+        "National Yang Ming Chiao Tung University"
+      ],
+      "method_card_ids": [],
+      "name": "Hung-Jen Chen",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Hung‐Jen Chen": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Hung‐Jen Chen",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "James Z. Wang": {
+      "institutions": [
+        "Pennsylvania State University"
+      ],
+      "method_card_ids": [],
+      "name": "James Z. Wang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Jan Smit": {
+      "institutions": [
+        "Amsterdam University Medical Centers"
+      ],
+      "method_card_ids": [],
+      "name": "Jan Smit",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Javier de Lope": {
+      "institutions": [
+        "Universidad Politécnica de Madrid"
+      ],
+      "method_card_ids": [],
+      "name": "Javier de Lope",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "An ongoing review of speech emotion recognition (2023)"
+      ]
+    },
+    "Jean-François Lalonde": {
+      "institutions": [
+        "Université Laval"
+      ],
+      "method_card_ids": [],
+      "name": "Jean-François Lalonde",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis (2026)"
+      ]
+    },
+    "Jeffrey H. Newcorn": {
+      "institutions": [
+        "Icahn School of Medicine at Mount Sinai"
+      ],
+      "method_card_ids": [],
+      "name": "Jeffrey H. Newcorn",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Jennie García‐Olivares": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Jennie García‐Olivares",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Jianbing Shen": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Jianbing Shen",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Visual In-Context Learning for Large Vision-Language Models (2024)"
+      ]
+    },
+    "Jianlong Fu": {
+      "institutions": [],
+      "method_card_ids": [
+        "promptfix_vlm_auxiliary_prompt_adapter"
+      ],
+      "name": "Jianlong Fu",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2407.00640",
+        "https://github.com/microsoft/PromptFix",
+        "https://github.com/yeates/PromptFix"
+      ],
+      "works": []
+    },
+    "Jianlong Fu MSRA publications": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Jianlong Fu MSRA publications",
+      "source_names": [
+        "Jianlong Fu MSRA publications"
+      ],
+      "urls": [
+        "https://www.microsoft.com/en-us/research/people/jianf/publications/"
+      ],
+      "works": []
+    },
+    "Jie Wu": {
+      "institutions": [
+        "Institute of Software"
+      ],
+      "method_card_ids": [],
+      "name": "Jie Wu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "Jingyuan Yang": {
+      "institutions": [
+        "Shenzhen University"
+      ],
+      "method_card_ids": [],
+      "name": "Jingyuan Yang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Jiska J Aardoom": {
+      "institutions": [
+        "Leiden University Medical Center"
+      ],
+      "method_card_ids": [],
+      "name": "Jiska J Aardoom",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Jordan J. Bird": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Jordan J. Bird",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Kathleen McKeown": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Kathleen McKeown",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "See It from My Perspective: How Language Affects Cultural Bias in Image Understanding (2024)"
+      ]
+    },
+    "Kilichbek Haydarov": {
+      "institutions": [
+        "King Abdullah University of Science and Technology"
+      ],
+      "method_card_ids": [],
+      "name": "Kilichbek Haydarov",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "ArtEmis: Affective Language for Visual Art (2021)"
+      ]
+    },
+    "Kozlovskaia Mm": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Kozlovskaia Mm",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Modeling neurosis in the dog and a study of the effects of antidepressants]. (1987)"
+      ]
+    },
+    "Lakshya Swarup": {
+      "institutions": [
+        "Chitkara University"
+      ],
+      "method_card_ids": [],
+      "name": "Lakshya Swarup",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Leah Bührmann": {
+      "institutions": [
+        "Amsterdam University Medical Centers"
+      ],
+      "method_card_ids": [],
+      "name": "Leah Bührmann",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Leiquan Wang": {
+      "institutions": [
+        "Institute of Software"
+      ],
+      "method_card_ids": [],
+      "name": "Leiquan Wang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "Leonidas Guibas": {
+      "institutions": [
+        "Stanford University"
+      ],
+      "method_card_ids": [],
+      "name": "Leonidas Guibas",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "ArtEmis: Affective Language for Visual Art (2021)"
+      ]
+    },
+    "Ling Lo": {
+      "institutions": [],
+      "method_card_ids": [
+        "micro_expression_relation_graph_reasoning"
+      ],
+      "name": "Ling Lo",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2004.08915",
+        "https://arxiv.org/abs/2012.11307",
+        "https://basiclab.lab.nycu.edu.tw/"
+      ],
+      "works": []
+    },
+    "Lisa Loheide‐Niesmann": {
+      "institutions": [
+        "Radboud University Nijmegen"
+      ],
+      "method_card_ids": [],
+      "name": "Lisa Loheide‐Niesmann",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "MSRA generation lineage": {
+      "institutions": [],
+      "method_card_ids": [
+        "promptfix_vlm_auxiliary_prompt_adapter"
+      ],
+      "name": "MSRA generation lineage",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2407.00640",
+        "https://github.com/microsoft/PromptFix",
+        "https://github.com/yeates/PromptFix"
+      ],
+      "works": []
+    },
+    "Majdah Alvi": {
+      "institutions": [
+        "Islamia University of Bahawalpur"
+      ],
+      "method_card_ids": [],
+      "name": "Majdah Alvi",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Emotion Detection and Analysis using Textual Data through Trainable and Pre-trained Word Embedding Methods (2025)"
+      ]
+    },
+    "Maks Ovsjanikov": {
+      "institutions": [
+        "Laboratoire d'Informatique de l'École Polytechnique"
+      ],
+      "method_card_ids": [],
+      "name": "Maks Ovsjanikov",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "ArtEmis: Affective Language for Visual Art (2021)"
+      ]
+    },
+    "Manisha Chandna": {
+      "institutions": [
+        "Chitkara University"
+      ],
+      "method_card_ids": [],
+      "name": "Manisha Chandna",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Manuel Graña": {
+      "institutions": [
+        "University of the Basque Country"
+      ],
+      "method_card_ids": [],
+      "name": "Manuel Graña",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "An ongoing review of speech emotion recognition (2023)"
+      ]
+    },
+    "Michelle G. Newman": {
+      "institutions": [
+        "Pennsylvania State University"
+      ],
+      "method_card_ids": [],
+      "name": "Michelle G. Newman",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Miguel Carrasco": {
+      "institutions": [
+        "Adolfo Ibáñez University"
+      ],
+      "method_card_ids": [],
+      "name": "Miguel Carrasco",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Detection of Emotions in Artworks Using a Convolutional Neural Network Trained on Non-Artistic Images: A Methodology to Reduce the Cross-Depiction Problem (2023)"
+      ]
+    },
+    "Modestas Motiejauskas": {
+      "institutions": [
+        "Vilnius University"
+      ],
+      "method_card_ids": [],
+      "name": "Modestas Motiejauskas",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The Effective Evaluation of Emotions in the Visual Emotion Images Using Convolutional Neural Networks (2025)"
+      ]
+    },
+    "Mohamed Elhoseiny": {
+      "institutions": [
+        "Stanford University"
+      ],
+      "method_card_ids": [],
+      "name": "Mohamed Elhoseiny",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "ArtEmis: Affective Language for Visual Art (2021)"
+      ]
+    },
+    "Mohit Bansal": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Mohit Bansal",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "See It from My Perspective: How Language Affects Cultural Bias in Image Understanding (2024)"
+      ]
+    },
+    "Ms. Sunitha BK": {
+      "institutions": [
+        "Jain University"
+      ],
+      "method_card_ids": [],
+      "name": "Ms. Sunitha BK",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Muhammad Bux Alvi": {
+      "institutions": [
+        "Islamia University of Bahawalpur"
+      ],
+      "method_card_ids": [],
+      "name": "Muhammad Bux Alvi",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Emotion Detection and Analysis using Textual Data through Trainable and Pre-trained Word Embedding Methods (2025)"
+      ]
+    },
+    "N Danchev": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "N Danchev",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Lonetil and emovit--effect on an experimental model of a neurosis-like state in the rat]. (1983)"
+      ]
+    },
+    "Nele De Witte": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Nele De Witte",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Neznamov Gg": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Neznamov Gg",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Modeling neurosis in the dog and a study of the effects of antidepressants]. (1987)"
+      ]
+    },
+    "Nidhi Sharma": {
+      "institutions": [
+        "Vivekananda Global University"
+      ],
+      "method_card_ids": [],
+      "name": "Nidhi Sharma",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Noor Fatima": {
+      "institutions": [
+        "Islamia University of Bahawalpur"
+      ],
+      "method_card_ids": [],
+      "name": "Noor Fatima",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Emotion Detection and Analysis using Textual Data through Trainable and Pre-trained Word Embedding Methods (2025)"
+      ]
+    },
+    "Nouf Abukhodair": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Nouf Abukhodair",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Creating an Emotionally Aware Portrait System Prototype using Aesthetic Emotion Evaluations of AI Art Portraits (2025)"
+      ]
+    },
+    "Panos Achlioptas": {
+      "institutions": [
+        "Stanford University"
+      ],
+      "method_card_ids": [],
+      "name": "Panos Achlioptas",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "ArtEmis: Affective Language for Visual Art (2021)"
+      ]
+    },
+    "Purna Kar": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Purna Kar",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Qianning Wang": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Qianning Wang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Visual In-Context Learning for Large Vision-Language Models (2024)"
+      ]
+    },
+    "Qinfu Xu": {
+      "institutions": [
+        "Institute of Software"
+      ],
+      "method_card_ids": [],
+      "name": "Qinfu Xu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "Qinglan Wei": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Qinglan Wei",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "FG-ECVG: Fine-Grained Emotion-Controllable Video Generation Algorithm (2025)"
+      ]
+    },
+    "Qirui Huang": {
+      "institutions": [
+        "Shenzhen University"
+      ],
+      "method_card_ids": [],
+      "name": "Qirui Huang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Rachelle Tsachor": {
+      "institutions": [
+        "University of Illinois Chicago"
+      ],
+      "method_card_ids": [],
+      "name": "Rachelle Tsachor",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Reginald B. Adams": {
+      "institutions": [
+        "Pennsylvania State University"
+      ],
+      "method_card_ids": [],
+      "name": "Reginald B. Adams",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Robert L. Findling": {
+      "institutions": [
+        "Children's Hospital of Richmond at VCU"
+      ],
+      "method_card_ids": [],
+      "name": "Robert L. Findling",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Ruiqi Xue": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Ruiqi Xue",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "FG-ECVG: Fine-Grained Emotion-Controllable Video Generation Algorithm (2025)"
+      ]
+    },
+    "Ruoxuan Zhang": {
+      "institutions": [
+        "Jilin University"
+      ],
+      "method_card_ids": [],
+      "name": "Ruoxuan Zhang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
+      ]
+    },
+    "Ruoxuan Zhang generation-data lineage": {
+      "institutions": [],
+      "method_card_ids": [
+        "structured_multistep_generation_lineage"
+      ],
+      "name": "Ruoxuan Zhang generation-data lineage",
+      "source_names": [],
+      "urls": [
+        "https://www.hongxiaxie.net/research"
+      ],
+      "works": []
+    },
+    "S. Bharadwaj": {
+      "institutions": [
+        "Annamalai University"
+      ],
+      "method_card_ids": [],
+      "name": "S. Bharadwaj",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Yeats’s “Sailing to Byzantium”: The Poetic Process of Impersonal Art (2018)"
+      ]
+    },
+    "Saif M. Mohammad": {
+      "institutions": [
+        "National Academies of Sciences, Engineering, and Medicine"
+      ],
+      "method_card_ids": [],
+      "name": "Saif M. Mohammad",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "WikiArt Emotions: An Annotated Dataset of Emotions Evoked by Art (2018)"
+      ]
+    },
+    "Sakina Hajiyeva": {
+      "institutions": [
+        "Eötvös Loránd University"
+      ],
+      "method_card_ids": [],
+      "name": "Sakina Hajiyeva",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Multimodal Emotion Recognition from Art Using Sequential Co-Attention (2021)"
+      ]
+    },
+    "Sanghoon Lee quality assessment lineage": {
+      "institutions": [],
+      "method_card_ids": [
+        "perceptual_quality_assessment_proxy"
+      ],
+      "name": "Sanghoon Lee quality assessment lineage",
+      "source_names": [],
+      "urls": [
+        "https://openreview.net/forum?id=LbbHX8ofXZ",
+        "https://scholar.google.com/citations?user=Q1XQpC8AAAAJ"
+      ],
+      "works": []
+    },
+    "Shaozu Yuan": {
+      "institutions": [
+        "Jingdong (China)"
+      ],
+      "method_card_ids": [],
+      "name": "Shaozu Yuan",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "Shawn Candler": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Shawn Candler",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "She, Zihan": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "She, Zihan",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Shuyuan Shen": {
+      "institutions": [
+        "National University of Singapore"
+      ],
+      "method_card_ids": [],
+      "name": "Shuyuan Shen",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "RePrompt: Automatic Prompt Editing to Refine AI-Generative Art Towards Precise Expressions (2023)"
+      ]
+    },
+    "Sicheng Zhao": {
+      "institutions": [
+        "Tsinghua University"
+      ],
+      "method_card_ids": [],
+      "name": "Sicheng Zhao",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Sicheng Zhao visual emotion analysis lineage": {
+      "institutions": [],
+      "method_card_ids": [
+        "aica_affective_gap_distribution_learning"
+      ],
+      "name": "Sicheng Zhao visual emotion analysis lineage",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2106.16125",
+        "https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis"
+      ],
+      "works": []
+    },
+    "Songhan Zuo": {
+      "institutions": [
+        "Jilin University"
+      ],
+      "method_card_ids": [],
+      "name": "Songhan Zuo",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
+      ]
+    },
+    "Sonja Grgić": {
+      "institutions": [
+        "University of Zagreb"
+      ],
+      "method_card_ids": [],
+      "name": "Sonja Grgić",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "A Deep Learning Perspective on Beauty, Sentiment, and Remembrance of Art (2019)"
+      ]
+    },
+    "Stefan Schwabe": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Stefan Schwabe",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Steve DiPaola": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Steve DiPaola",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Creating an Emotionally Aware Portrait System Prototype using Aesthetic Emotion Evaluations of AI Art Portraits (2025)"
+      ]
+    },
+    "Subramanian Karthick": {
+      "institutions": [
+        "International Institute of Information Technology"
+      ],
+      "method_card_ids": [],
+      "name": "Subramanian Karthick",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EMOTION RECOGNITION IN DIGITAL ART USING DEEP LEARNING (2025)"
+      ]
+    },
+    "Svetlana Kiritchenko": {
+      "institutions": [
+        "National Academies of Sciences, Engineering, and Medicine"
+      ],
+      "method_card_ids": [],
+      "name": "Svetlana Kiritchenko",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "WikiArt Emotions: An Annotated Dataset of Emotions Evoked by Art (2018)"
+      ]
+    },
+    "Sébastien Tremblay": {
+      "institutions": [
+        "Université Laval"
+      ],
+      "method_card_ids": [],
+      "name": "Sébastien Tremblay",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis (2026)"
+      ]
+    },
+    "Tadagbé Dhossou": {
+      "institutions": [
+        "Université Laval"
+      ],
+      "method_card_ids": [],
+      "name": "Tadagbé Dhossou",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Dimensional Distribution Emotion State: Leveraging Valence and Arousal as a Common Embedding Space for Visual Emotion Analysis (2026)"
+      ]
+    },
+    "Tal Shafir": {
+      "institutions": [
+        "University of Haifa"
+      ],
+      "method_card_ids": [],
+      "name": "Tal Shafir",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Unlocking the Emotional World of Visual Media: An Overview of the Science, Research, and Impact of Understanding Emotion (2023)"
+      ]
+    },
+    "Thomas Gustavo Wachter Wielandt": {
+      "institutions": [
+        "Adolfo Ibáñez University"
+      ],
+      "method_card_ids": [],
+      "name": "Thomas Gustavo Wachter Wielandt",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Detection of Emotions in Artworks Using a Convolutional Neural Network Trained on Non-Artistic Images: A Methodology to Reduce the Cross-Depiction Problem (2023)"
+      ]
+    },
+    "Tingting Ding": {
+      "institutions": [
+        "Shenzhen University"
+      ],
+      "method_card_ids": [],
+      "name": "Tingting Ding",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoSet: A Large-scale Visual Emotion Dataset with Rich Attributes (2023)"
+      ]
+    },
+    "Tom Van Daele": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Tom Van Daele",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "The feasibility of using Apple's ResearchKit for recruitment and data collection: Considerations for mental health research (2022)"
+      ]
+    },
+    "Tomislav Lipić": {
+      "institutions": [
+        "Ruđer Bošković Institute"
+      ],
+      "method_card_ids": [],
+      "name": "Tomislav Lipić",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "A Deep Learning Perspective on Beauty, Sentiment, and Remembrance of Art (2019)"
+      ]
+    },
+    "Tomáš Horváth": {
+      "institutions": [
+        "Eötvös Loránd University"
+      ],
+      "method_card_ids": [],
+      "name": "Tomáš Horváth",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Attention-Based Multi-modal Emotion Recognition from Art (2021)",
+        "Multimodal Emotion Recognition from Art Using Sequential Co-Attention (2021)"
+      ]
+    },
+    "Tsegaye Misikir Tashu": {
+      "institutions": [
+        "Eötvös Loránd University"
+      ],
+      "method_card_ids": [],
+      "name": "Tsegaye Misikir Tashu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Attention-Based Multi-modal Emotion Recognition from Art (2021)",
+        "Multimodal Emotion Recognition from Art Using Sequential Co-Attention (2021)"
+      ]
+    },
+    "Val'dman Av": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Val'dman Av",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "[Emovit and lonetil--behavioral and neurochemical studies]. (1983)"
+      ]
+    },
+    "Visual emotion grounding ecosystem": {
+      "institutions": [],
+      "method_card_ids": [
+        "emoverse_grounded_emotion_triplets"
+      ],
+      "name": "Visual emotion grounding ecosystem",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2511.12554",
+        "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset"
+      ],
+      "works": []
+    },
+    "Weidong Chen": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Weidong Chen",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Welton O’Neal": {
+      "institutions": [
+        "Supernus Pharmaceuticals (United States)"
+      ],
+      "method_card_ids": [],
+      "name": "Welton O’Neal",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Viloxazine in the Management of CNS Disorders: A Historical Overview and Current Status (2021)"
+      ]
+    },
+    "Wen-Huang Cheng": {
+      "institutions": [
+        "National Taiwan University"
+      ],
+      "method_card_ids": [
+        "emovit_emotion_instruction_prompting",
+        "fabg_agsr_attribute_salience_bottleneck"
+      ],
+      "name": "Wen-Huang Cheng",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2404.16670",
+        "https://arxiv.org/abs/2605.15755",
+        "https://github.com/aimmemotion/EmoVIT",
+        "https://github.com/zhiliangzhang/FAB-G",
+        "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+        "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html"
+      ],
+      "works": [
+        "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)",
+        "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation (2025)"
+      ]
+    },
+    "Wen-Huang Cheng affective relation lineage": {
+      "institutions": [],
+      "method_card_ids": [
+        "micro_expression_relation_graph_reasoning"
+      ],
+      "name": "Wen-Huang Cheng affective relation lineage",
+      "source_names": [],
+      "urls": [
+        "https://arxiv.org/abs/2004.08915",
+        "https://arxiv.org/abs/2012.11307",
+        "https://basiclab.lab.nycu.edu.tw/"
+      ],
+      "works": []
+    },
+    "Wen-Huang Cheng homepage": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Wen-Huang Cheng homepage",
+      "source_names": [
+        "Wen-Huang Cheng homepage"
+      ],
+      "urls": [
+        "https://www.csie.ntu.edu.tw/~wenhuang/index.html"
+      ],
+      "works": []
+    },
+    "Xiang Li": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Xiang Li",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Visual In-Context Learning for Large Vision-Language Models (2024)"
+      ]
+    },
+    "Xiaojun Chang": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Xiaojun Chang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Xiaoyan Duan": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Xiaoyan Duan",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "FG-ECVG: Fine-Grained Emotion-Controllable Video Generation Algorithm (2025)"
+      ]
+    },
+    "Yangang Xing": {
+      "institutions": [
+        "Nottingham Trent University"
+      ],
+      "method_card_ids": [],
+      "name": "Yangang Xing",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Predicting Emotions Evoked by Artworks: A Study on Multi-Modal Approaches (2024)"
+      ]
+    },
+    "Ye Cheng": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Ye Cheng",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Yijie Guo": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Yijie Guo",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Yiwei Wei": {
+      "institutions": [
+        "China University of Petroleum, Beijing"
+      ],
+      "method_card_ids": [],
+      "name": "Yiwei Wei",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Learning emotional prompt features with multiple views for visual emotion analysis (2024)"
+      ]
+    },
+    "Yucheng Zhou": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Yucheng Zhou",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Visual In-Context Learning for Large Vision-Language Models (2024)"
+      ]
+    },
+    "Yuer Liu": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Yuer Liu",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)"
+      ]
+    },
+    "Yuhao Wang": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Yuhao Wang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "FG-ECVG: Fine-Grained Emotion-Controllable Video Generation Algorithm (2025)"
+      ]
+    },
+    "Yunlong Wang": {
+      "institutions": [
+        "Agency for Science, Technology and Research"
+      ],
+      "method_card_ids": [],
+      "name": "Yunlong Wang",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "RePrompt: Automatic Prompt Editing to Refine AI-Generative Art Towards Precise Expressions (2023)"
+      ]
+    },
+    "Yu‐Wen Tseng": {
+      "institutions": [
+        "National Taiwan University"
+      ],
+      "method_card_ids": [],
+      "name": "Yu‐Wen Tseng",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVIT: Revolutionizing Emotion Insights with Visual Instruction Tuning (2024)"
+      ]
+    },
+    "Zhendong Mao": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Zhendong Mao",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "EmoVerse: A MLLMs-Driven Emotion Representation Dataset for Interpretable Visual Emotion Analysis (2025)"
+      ]
+    },
+    "Zhiyu Zhou": {
+      "institutions": [],
+      "method_card_ids": [],
+      "name": "Zhiyu Zhou",
+      "source_names": [],
+      "urls": [],
+      "works": [
+        "Attribute-Grounded Selective Reasoning for Artwork Emotion Understanding with Multimodal Large Language Models (2026)"
+      ]
+    }
+  },
+  "consistency": {
+    "blocking_issue_count": 0,
+    "issue_count": 0,
+    "issues": []
+  },
+  "resource_index": [
+    {
+      "name": "EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Core ontology and style prior",
+      "url": "https://arxiv.org/abs/2506.03652",
+      "verified_public_fact": "132664 artworks; 56 styles; five visual attributes; VA labels; 12 emotion categories"
+    },
+    {
+      "name": "EmoArt project page",
+      "source_type": "project",
+      "status": "verified",
+      "track_use": "Primary hub for datasets and code",
+      "url": "https://zhiliangzhang.github.io/EmoArt-130k/",
+      "verified_public_fact": "132K+ artworks; 56 art styles; 12 emotion classes; 5 visual attributes; links to dataset/code/FAB-G"
+    },
+    {
+      "name": "printblue/EmoArt-130k",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Training/reference/style prior",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-130k",
+      "verified_public_fact": "132664 images; 56 styles; 7 thematic categories; Annotation.json"
+    },
+    {
+      "name": "printblue/EmoArt-5k",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Fast smoke/prototyping",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-5k",
+      "verified_public_fact": "5600-image curated subset"
+    },
+    {
+      "name": "printblue/EmoArt-Salience",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Description/AGSR salience gate",
+      "url": "https://huggingface.co/datasets/printblue/EmoArt-Salience",
+      "verified_public_fact": "1400 rows; salience labels for formal attributes"
+    },
+    {
+      "name": "zhiliangzhang/EmoArt-130k",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "Description proxy and reference metrics",
+      "url": "https://github.com/zhiliangzhang/EmoArt-130k",
+      "verified_public_fact": "Evaluation metric code including attribute alignment and CLIP score utilities"
+    },
+    {
+      "name": "Attribute-Grounded Selective Reasoning / FAB-G",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Description guard; candidate evidence audit",
+      "url": "https://arxiv.org/abs/2605.15755",
+      "verified_public_fact": "AGSR; 1400-artwork salience extension; FAB-G multi-agent bottleneck"
+    },
+    {
+      "name": "zhiliangzhang/FAB-G",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "Potential LoRA route; schema for salience bottleneck",
+      "url": "https://github.com/zhiliangzhang/FAB-G",
+      "verified_public_fact": "Qwen3-VL-8B base with six LoRA adapters for five attributes plus final agent"
+    },
+    {
+      "name": "AffectiveArt Challenge 2026 OpenReview",
+      "source_type": "challenge",
+      "status": "verified",
+      "track_use": "Rules and ontology source",
+      "url": "https://openreview.net/forum?id=LbbHX8ofXZ",
+      "verified_public_fact": "Track1 generation and Track2 understanding built on EmoArt; hidden test set; AAS and human/expert evaluation proposal"
+    },
+    {
+      "name": "Codabench Track2",
+      "source_type": "challenge",
+      "status": "verified",
+      "track_use": "Official format and scoring constraints",
+      "url": "https://www.codabench.org/competitions/16304",
+      "verified_public_fact": "Submission schema; 50% classification and 50% description; invalid manipulation rules"
+    },
+    {
+      "name": "Hongxia Xie / AVC Lab",
+      "source_type": "lab",
+      "status": "verified",
+      "track_use": "Collaborator/publication graph seed",
+      "url": "https://www.hongxiaxie.net/",
+      "verified_public_fact": "Lists EmoArt ACM MM 2025; EmoVIT CVPR 2024; related affective computing outputs"
+    },
+    {
+      "name": "EmoVIT CVPR 2024",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Teacher prompt/instruction tuning pattern",
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
+      "verified_public_fact": "Emotion visual instruction tuning; GPT-assisted emotion instruction data"
+    },
+    {
+      "name": "aimmemotion/EmoVIT",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "Potential auxiliary emotion teacher",
+      "url": "https://github.com/aimmemotion/EmoVIT",
+      "verified_public_fact": "Official CVPR 2024 code and model/data preparation notes"
+    },
+    {
+      "name": "WikiArt Emotions",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Auxiliary art emotion prior; requires label mapping",
+      "url": "https://aclanthology.org/L18-1197.pdf",
+      "verified_public_fact": "4000+ WikiArt artworks; 20 emotion categories; image/title/whole-art annotations"
+    },
+    {
+      "name": "ArtEmis",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Description/caption style training; not Track2 gold",
+      "url": "https://arxiv.org/abs/2101.07396",
+      "verified_public_fact": "439K emotion attributions and explanations on 81K WikiArt artworks"
+    },
+    {
+      "name": "EmoSet",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Generic visual emotion backbone; not painting-only",
+      "url": "https://arxiv.org/abs/2307.07961",
+      "verified_public_fact": "3.3M images; 118102 human-labeled; rich attributes"
+    },
+    {
+      "name": "EmoVerse",
+      "source_type": "dataset",
+      "status": "verified",
+      "track_use": "Interpretability/grounding ideas; noncompatible label space",
+      "url": "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset",
+      "verified_public_fact": "234189 images; B-A-S triplets; CES/DES; includes EmoArt among sources"
+    },
+    {
+      "name": "AffectiveArt official website",
+      "source_type": "challenge",
+      "status": "verified",
+      "track_use": "Track1/Track2 official public hub",
+      "url": "https://affectiveart-challenge.github.io/",
+      "verified_public_fact": "Official site lists rules, awards, organizers, dates, and public dataset links"
+    },
+    {
+      "name": "AffectiveArt submission instructions",
+      "source_type": "challenge",
+      "status": "verified",
+      "track_use": "Submission-risk control and final package planning",
+      "url": "https://github.com/lizihan363-ship-it/AffectiveArt2026/blob/main/Submission%20Instructions.md",
+      "verified_public_fact": "Public submission package schema; max 5 submissions total; top teams provide code/report"
+    },
+    {
+      "name": "ACM MM 2026 Grand Challenges page",
+      "source_type": "conference",
+      "status": "verified",
+      "track_use": "Confirms official challenge status",
+      "url": "https://2026.acmmm.org/site/grand-challenges.html",
+      "verified_public_fact": "AffectiveArt listed as accepted ACM MM 2026 Grand Challenge"
+    },
+    {
+      "name": "EmoVIT",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Teacher/review prompt design; auxiliary emotion reasoning",
+      "url": "https://arxiv.org/abs/2404.16670",
+      "verified_public_fact": "Emotion visual instruction tuning; GPT-assisted emotion instruction data; code released"
+    },
+    {
+      "name": "aimmemotion/EmoVIT",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "Potential auxiliary emotion-instruction baseline",
+      "url": "https://github.com/aimmemotion/EmoVIT",
+      "verified_public_fact": "Official CVPR 2024 EmoVIT code"
+    },
+    {
+      "name": "Hongxia Xie / AVC Lab",
+      "source_type": "profile",
+      "status": "verified",
+      "track_use": "Core collaborator graph and method lineage",
+      "url": "https://www.hongxiaxie.net/",
+      "verified_public_fact": "JLU AVC Lab PI; lists EmoArt, EmoVIT, AffectiveArt, related publications"
+    },
+    {
+      "name": "Hongxia Xie research page",
+      "source_type": "profile",
+      "status": "verified",
+      "track_use": "Generation/agent/data-pipeline lineage",
+      "url": "https://www.hongxiaxie.net/research",
+      "verified_public_fact": "Research vision and project list: MindPower, EmoArt, CookAnything"
+    },
+    {
+      "name": "Wen-Huang Cheng homepage",
+      "source_type": "profile",
+      "status": "verified",
+      "track_use": "Organizer lineage and multimedia quality expertise",
+      "url": "https://www.csie.ntu.edu.tw/~wenhuang/index.html",
+      "verified_public_fact": "NTU Distinguished Chair Professor; AI/multimedia/computer vision research"
+    },
+    {
+      "name": "Hong-Han Shuai BASIC Lab",
+      "source_type": "profile",
+      "status": "verified",
+      "track_use": "Organizer lineage; generative/model robustness signals",
+      "url": "https://basiclab.lab.nycu.edu.tw/",
+      "verified_public_fact": "Generative models, LLMs, data mining, multimedia; lists EmoVIT and affective works"
+    },
+    {
+      "name": "Jianlong Fu MSRA publications",
+      "source_type": "profile",
+      "status": "verified",
+      "track_use": "Generation, repair, multimodal quality strategy signal",
+      "url": "https://www.microsoft.com/en-us/research/people/jianf/publications/",
+      "verified_public_fact": "PromptFix, MM-Diffusion, visual storytelling, multimodal generation outputs"
+    },
+    {
+      "name": "Sicheng Zhao AICA survey",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Visual emotion prior and domain adaptation strategy",
+      "url": "https://arxiv.org/abs/2106.16125",
+      "verified_public_fact": "Affective image content analysis survey; discusses affective gap, subjectivity, label noise"
+    },
+    {
+      "name": "EmoVerse",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Auxiliary interpretable grounding and cross-model verification",
+      "url": "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset",
+      "verified_public_fact": "234189 images; B-A-S triplets; DES; grounding via Grounding DINO/SAM"
+    },
+    {
+      "name": "EmoSet",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Auxiliary visual emotion attributes; not painting-only",
+      "url": "https://arxiv.org/abs/2307.07961",
+      "verified_public_fact": "3.3M images; 118102 human-labeled; rich emotion attributes"
+    },
+    {
+      "name": "PromptFix",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Track1 candidate repair prompt adapter",
+      "url": "https://arxiv.org/abs/2407.00640",
+      "verified_public_fact": "VLM-assisted auxiliary prompt adapter for image restoration; repairs images via learned prompt guidance"
+    },
+    {
+      "name": "microsoft/PromptFix",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "Track1 hardcase repair and VLM-derived prompt adaptation",
+      "url": "https://github.com/microsoft/PromptFix",
+      "verified_public_fact": "Official PromptFix repository from Microsoft organization"
+    },
+    {
+      "name": "Affective Image Content Analysis",
+      "source_type": "survey",
+      "status": "verified",
+      "track_use": "Track1 emotion/style distribution routing and Track2 label priors",
+      "url": "https://arxiv.org/abs/2106.16125",
+      "verified_public_fact": "Survey of affective gap, subjectivity, visual emotion, domain adaptation, and label distribution learning"
+    },
+    {
+      "name": "Affective Image Content Analysis list",
+      "source_type": "code",
+      "status": "verified",
+      "track_use": "P1 method crawl seed for visual emotion datasets/algorithms",
+      "url": "https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis",
+      "verified_public_fact": "Curated repository list for visual emotion analysis resources"
+    },
+    {
+      "name": "MER-GCN",
+      "source_type": "paper",
+      "status": "verified",
+      "track_use": "Track1 relation semantics graph gate inspiration",
+      "url": "https://arxiv.org/abs/2004.08915",
+      "verified_public_fact": "Micro-expression recognition with relation graph convolutional network"
+    },
+    {
+      "name": "Micro-expression recognition survey",
+      "source_type": "survey",
+      "status": "verified",
+      "track_use": "Track1 subtle visual cue and relation-gate inspiration",
+      "url": "https://arxiv.org/abs/2012.11307",
+      "verified_public_fact": "Survey on facial micro-expression analysis with attention/region/temporal cue issues"
+    },
+    {
+      "name": "BASIC Lab",
+      "source_type": "lab",
+      "status": "verified",
+      "track_use": "Organizer lineage and method crawl seed",
+      "url": "https://basiclab.lab.nycu.edu.tw/",
+      "verified_public_fact": "Hong-Han Shuai lab site; generative models, LLMs, data mining, multimedia projects"
+    },
+    {
+      "name": "fabg_agsr_attribute_salience_bottleneck",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "salience_aware_prompt_compiler",
+      "url": "https://arxiv.org/abs/2605.15755;https://github.com/zhiliangzhang/FAB-G;https://huggingface.co/datasets/printblue/EmoArt-Salience",
+      "verified_public_fact": "Attribute-Grounded Selective Reasoning: five attribute-specific agents decide whether color, composition, line, light, and brushstroke are emotionally salient before a final agent reasons over the selected cues."
+    },
+    {
+      "name": "emovit_emotion_instruction_prompting",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "emotion_instruction_aas_proxy",
+      "url": "https://arxiv.org/abs/2404.16670;https://github.com/aimmemotion/EmoVIT;https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html",
+      "verified_public_fact": "Emotion visual instruction tuning: build emotion-specific instruction data so a VLM predicts emotion and explains visual evidence rather than only generic caption content."
+    },
+    {
+      "name": "promptfix_vlm_auxiliary_prompt_adapter",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "candidate_repair_prompt_adapter",
+      "url": "https://arxiv.org/abs/2407.00640;https://github.com/yeates/PromptFix;https://github.com/microsoft/PromptFix",
+      "verified_public_fact": "PromptFix uses VLM understanding and an auxiliary prompt adapter to repair real-world images without manually writing a bespoke prompt for each case."
+    },
+    {
+      "name": "aica_affective_gap_distribution_learning",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "emotion_style_distribution_router",
+      "url": "https://arxiv.org/abs/2106.16125;https://github.com/Priscilla-Lu/Affective-Image-Content-Analysis",
+      "verified_public_fact": "Affective Image Content Analysis survey: highlights affective gap, subjectivity, domain adaptation, label distribution learning, and affective region/entity reasoning."
+    },
+    {
+      "name": "official_proposal_flux_lora_style_baseline",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "style_family_distribution_retriever",
+      "url": "https://openreview.net/forum?id=LbbHX8ofXZ;https://openreview.net/pdf?id=LbbHX8ofXZ;https://zhiliangzhang.github.io/EmoArt-130k/",
+      "verified_public_fact": "The challenge proposal and EmoArt benchmark expose a style-adaptation baseline direction: style examples, LoRA-style adaptation, and AAS based on generated attribute descriptions."
+    },
+    {
+      "name": "micro_expression_relation_graph_reasoning",
+      "source_type": "method_card",
+      "status": "P1-adjacent",
+      "track_use": "relation_semantics_graph_gate",
+      "url": "https://arxiv.org/abs/2004.08915;https://arxiv.org/abs/2012.11307;https://basiclab.lab.nycu.edu.tw/",
+      "verified_public_fact": "Micro-expression recognition work uses relation/graph reasoning over subtle facial or temporal cues; related surveys emphasize subtle cue localization and robustness."
+    },
+    {
+      "name": "emoart_metric_text_diversity_alignment",
+      "source_type": "method_card",
+      "status": "P1-direct",
+      "track_use": "aas_text_and_template_proxy",
+      "url": "https://github.com/ZHILIANGZHANG/EmoArt-130k;https://zhiliangzhang.github.io/EmoArt-130k/",
+      "verified_public_fact": "EmoArt code includes CLIP score, attribute alignment, lexical diversity metrics such as TTR/MTLD, and entropy-style text diversity tools."
+    },
+    {
+      "name": "emoverse_grounded_emotion_triplets",
+      "source_type": "method_card",
+      "status": "P1-adjacent",
+      "track_use": "body_action_scene_content_lock",
+      "url": "https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset;https://arxiv.org/abs/2511.12554",
+      "verified_public_fact": "EmoVerse provides body-action-scene triplets, concise/detailed emotion descriptions, and grounded object evidence using detection/segmentation pipelines."
+    },
+    {
+      "name": "perceptual_quality_assessment_proxy",
+      "source_type": "method_card",
+      "status": "P1-watch",
+      "track_use": "perceptual_artifact_quality_gate",
+      "url": "https://openreview.net/forum?id=LbbHX8ofXZ;https://scholar.google.com/citations?user=Q1XQpC8AAAAJ",
+      "verified_public_fact": "Quality assessment and perceptual multimedia evaluation lineage; useful as a signal that image realism, artifact detection, and perceptual quality matter alongside semantic alignment."
+    },
+    {
+      "name": "structured_multistep_generation_lineage",
+      "source_type": "method_card",
+      "status": "P1-watch",
+      "track_use": "track1_multistage_orchestrator",
+      "url": "https://www.hongxiaxie.net/research",
+      "verified_public_fact": "AVC Lab research page lists structured multimodal generation projects such as CookAnything and MindPower, suggesting a broader strategy of data-rich multi-stage generation rather than one-shot prompting."
+    }
+  ],
+  "resource_summary": {
+    "method_card_count": 10,
+    "public_scan_work_count": 55,
+    "source_index_count": 37
+  },
+  "summary": {
+    "anchor_count": 25,
+    "author_count": 143,
+    "resource_count": 47,
+    "track1_anchor_count": 18,
+    "track2_anchor_count": 7,
+    "track2_estimated_anchor_count": 3,
+    "track2_exact_anchor_count": 3
+  },
+  "version": "challenge_anchor_registry_v1"
+}
