@@ -1,0 +1,969 @@
+{
+  "manifest_name": "track1_v5_smoke_human_accept48_20260608",
+  "created_at": "2026-06-08T12:50:17",
+  "policy": "human-confirmed smoke replacements; build candidate package only; champion package immutable",
+  "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+  "accepted_count": 48,
+  "accepted_replacements": [
+    {
+      "sample_id": "track1_0077",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0077_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet naval propaganda poster with a sailor hoisting red and white flags before panels of warships and sea battles, using bold Cyrillic typography, patriotic red accents, and a solemn heroic composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0091",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0091_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism poster of a uniformed border guard saluting joyful passengers leaning from a train window beside a red and green frontier post, with bold Cyrillic lettering, muted washes, and a solemn patriotic mood.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0128",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0128_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "Socialist Realism poster of Soviet soldiers marching beside a tank with red banners, celebratory flowers, and bold Cyrillic slogans in a patriotic, triumphant composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0476",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0476_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster with bold Cyrillic lettering, a naval medal, sailing ships, cannon, and uniformed sailors in a dramatic maritime battle scene rendered with graphic linework and muted watercolor tones.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0628",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0628_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet poster with bold Cyrillic typography contrasts wartime devastation behind barbed wire with liberated Ukrainian peasants harvesting golden wheat under a bright sky, using strong graphic composition and earthy colors.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0747",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0747_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet wartime propaganda poster with bold Cyrillic lettering, mounted soldiers, fleeing civilians, burning village ruins, aircraft overhead, and dramatic brushwork in a muted blue, red, and ochre palette.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0803",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0803_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster with the Soviet, American, and British flags flying above a Kremlin tower crowned by a red star, framed by dramatic blue searchlight beams, bold Russian text, and a solemn wartime color palette.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0063",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0063_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "vertical_scroll",
+      "caption": "Ink and wash painting of a serene mountainous landscape with layered peaks, trees, a winding stream, calligraphy, seals, and delicate monochrome brushwork on a hanging scroll.",
+      "width": 848,
+      "height": 1264,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0019",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0019_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "Socialist Realism poster of four heroic soldiers in tan uniforms standing with rifles against a blue sky, rendered with bold angular brushstrokes, warm earthy colors, and a solemn monumental composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0534",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0534_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster with a Soviet soldier embracing a woman in traditional embroidered clothing beneath red banners, a Soviet emblem, and bold Cyrillic lettering, rendered in strong graphic colors and heroic composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0665",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0665_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet victory poster with bold Russian typography, a large medal suspended from a black-and-orange ribbon above Kremlin towers, crowds, fireworks, and radiant blue searchlights in a solemn celebratory composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0717",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0717_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet poster with two medal-wearing figures holding a commemorative scroll for the 220th anniversary of the USSR Academy of Sciences, framed by bold Cyrillic lettering, pastel watercolor washes, and a formal building below.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0353",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0353_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet poster-style scene with a jubilant crowd of soldiers and civilians watching fireworks over the Kremlin and Red Square beneath bold Cyrillic lettering, rendered in a vintage muted palette with dramatic light and shadow.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0491",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0491_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet agricultural poster with a farm woman holding a basket of vegetables before green fields, surrounded by abundant produce, bold Cyrillic lettering, bright flat colors, and strong poster-like composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0881",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0881_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster of a decorated Soviet pilot holding a flight map before military airplanes in a blue sky, framed by laurel wreaths, red ribbons, bold Cyrillic lettering, and heroic patriotic composition.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0816",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0816_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster with bold Cyrillic lettering, heroic cavalry, soldiers, and civilians marching through a rural wartime landscape in vivid brushstrokes and dramatic warm light.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0151",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0151_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism propaganda poster on aged folded paper, with bold Cyrillic lettering and dramatic Soviet soldiers charging with rifles and bayonets against historical Prussian figures, using muted greens, reds, and tan tones.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0160",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0160_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "portrait_poster",
+      "caption": "A Socialist Realism Soviet poster with a vast red banner bearing Stalin’s profile above the Kremlin tower, crossed by dramatic searchlights against a dark night sky in a bold red and orange palette.",
+      "width": 896,
+      "height": 1200,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0926",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0926_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "album_spread",
+      "caption": "A Gongbi-style album spread on aged paper with two muted brown portrait panels, delicate calligraphy columns, faint ink figures, and a quiet antique atmosphere.",
+      "width": 1200,
+      "height": 896,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0102",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0102_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "horizontal_scroll",
+      "caption": "A Gongbi handscroll scene with delicate linework and muted silk tones, featuring calligraphy beside an ancient procession of riders and attendants beneath pine trees in a calm mountainous landscape.",
+      "width": 1264,
+      "height": 848,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0750",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0750_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "panel_story",
+      "caption": "A Socialist Realism wartime propaganda poster with comic-like panels of civilians resisting fascist forces through sabotage, explosions, burning vehicles, red flags, Cyrillic slogans, and bold red, black, and pale blue graphic linework.",
+      "width": 1200,
+      "height": 896,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_1000",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_1000_caption_faithful_guard_c01.png",
+      "candidate_strategy": "caption_faithful_guard",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of a vertical Chinese landscape scroll with misty mountains, tall pine trees, a small pavilion, flowing brushwork, calligraphy inscription, and a red seal in a serene monochrome palette.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0977",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0977_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of two small mounted landscape scenes on a pale album page, featuring misty hills, trees, riverbanks, and subdued earthy tones with delicate brushwork.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0966",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0966_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of a serene mountain landscape with misty peaks, winding water paths, sparse trees, and soft monochrome brushwork on aged paper.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0953",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0953_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "A black bird perched on a gnarled branch with reddish autumn leaves, rendered in Gongbi style with delicate linework, muted colors, and a calm album-leaf composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0944",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0944_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A Gongbi painting of children playing in a tranquil garden landscape with rocks, bamboo, a fence, and soft pale colors defined by delicate fine-line brushwork.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0942",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0942_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A Gongbi style Chinese scene with finely outlined figures gathered around a low tea table beneath pine trees in a quiet pastoral landscape.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0938",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0938_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of a serene riverside landscape with rocky banks, clustered trees, a small pavilion, and misty distant islands rendered in delicate sepia brushwork.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0932",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0932_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A serene Gongbi courtyard garden scene with finely outlined figures walking near a pavilion, willow trees, rocks, and a small bridge in muted earthy colors.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0919",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0919_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "A Gongbi circular landscape painting on a pale album page, featuring a small pavilion by water among blue-green rocks, trees, distant hills, tiny figures, and delicate fine-line brushwork in muted earthy tones.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0917",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0917_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A Gongbi painting of an ancient Chinese court scene with a seated noble figure receiving attendants on a palace terrace, rendered with fine linework, delicate colors, and a calm formal atmosphere.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0903",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0903_anti_template_diversifier_c01.png",
+      "candidate_strategy": "anti_template_diversifier",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A Gongbi-style traditional Chinese scene with finely outlined robed figures and children gathered beneath a twisting pine tree, rendered in delicate brushwork, muted colors, and a calm garden setting.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0999",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0999_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "A Baroque black-and-white engraved landscape with travelers on horseback and on foot moving along a rural path beside a large shadowed tree, distant fields, dense foliage, and fine etched linework.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0998",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0998_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract pencil sketch of a fragmented interior scene with angular geometric forms, overlapping objects, loose graphite lines, and a muted beige paper texture.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0997",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0997_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ukiyo-e woodblock print of elegantly dressed Japanese figures gathered in an interior before sliding panels with a mountain landscape, rendered with fine linework, muted colors, and a calm theatrical composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0993",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0993_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "An Early Renaissance portrait of a solemn middle-aged man in a deep blue robe before rich burgundy drapery, rendered with fine detail, muted colors, and soft modeling of light and shadow.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0992",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0992_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ukiyo-e scene of three figures in patterned traditional kimono among tall grasses, with muted colors, delicate linework, and a calm outdoor composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0988",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0988_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ukiyo-e style flowering shrubs with pink and white blossoms, green leaves, and a delicate dragonfly hovering against a muted beige background with fine ink lines and soft colors.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0986",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0986_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract pencil drawing of a stylized face with a single eye, angular mask-like forms, looping elliptical lines, and soft gray shading on warm beige paper.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0983",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0983_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract ink line drawing of overlapping fragmented human figures and organic shapes on beige paper, with delicate contour lines, cross-hatching, and a sparse composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0982",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0982_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract black woodcut-like silhouette of a tall organic plant form with wing-shaped leaves, rough vertical texture, and sparse white carved lines on a beige paper background.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0981",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0981_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "A Baroque religious scene of the Madonna and infant surrounded by kneeling and standing worshippers presenting gifts among shadowed architectural ruins, with dramatic light, muted colors, and flowing drapery.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0976",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0976_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract watercolor and ink composition with layered brown mask-like forms, a red and blue zigzag band, green washes, and bold black organic shapes in a loose, textured arrangement.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0975",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0975_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of a serene misty mountain landscape with pine trees, a small pavilion on the hillside, a winding river or lake, and a distant sailboat rendered in delicate brushwork and muted earth tones.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0967",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0967_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Ink and wash painting of a tranquil bamboo grove with a winding stream, small rocks, and a lone seated figure, rendered in delicate brushwork on a warm brown ground with a calm, sparse composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0964",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0964_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "A Ukiyo-e scene of three figures standing on a rocky coastal cliff beside blue waves, with tall misty rock formations in the distance, delicate linework, and a muted earthy color palette.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0963",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0963_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3.1-flash-image-preview",
+      "aspect_label": "square_artwork",
+      "caption": "Ukiyo-e scene of two women in patterned kimonos and a young child standing outdoors near tall vertical reeds, with delicate linework and a muted earthy color palette.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    },
+    {
+      "sample_id": "track1_0962",
+      "decision": "accept",
+      "candidate_image": "experiments/track1_v5_smoke_20260608/generated/images/track1_0962_reference_family_primary_c01.png",
+      "candidate_strategy": "reference_family_primary",
+      "actual_model": "gemini-3-pro-image",
+      "aspect_label": "square_artwork",
+      "caption": "Abstract watercolor study of a reclining skeletal animal-like form on aged paper, with loose pink, purple, and black brushstrokes and faint pencil lines creating a somber, unfinished composition.",
+      "width": 1024,
+      "height": 1024,
+      "source_manifest": "experiments/track1_v5_smoke_20260608/generated/candidate_manifest.json",
+      "human_confirmation": {
+        "status": "confirmed_accept",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-06-08",
+        "confirmation_text_zh": "是的，都可以替换",
+        "review_page": "experiments/track1_v5_smoke_20260608/review/track1_v5_smoke_review_zh.html"
+      },
+      "notes_zh": "V5 smoke review 页面经用户确认可替换；仅用于独立候选包，不修改 current champion package。"
+    }
+  ]
+}
