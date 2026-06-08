@@ -7,6 +7,7 @@ from affectiveart.track2_v29_fabg_lite import (
     infer_salient_attributes,
     rewrite_description_rows,
 )
+from affectiveart.track2_v29_description_proxy import score_description_rows
 
 
 def _row() -> dict[str, str]:
@@ -21,6 +22,21 @@ def _row() -> dict[str, str]:
         "color": "Muted blue and green color palette.",
         "line": "Horizontal lines move slowly.",
         "light": "Diffuse light with low contrast.",
+    }
+
+
+def _hard_description_row() -> dict[str, str]:
+    return {
+        "sample_id": "track2_0214",
+        "emotion": "calm",
+        "emotional_valence": "Positive",
+        "emotional_arousal_level": "Low",
+        "overall_caption": "Old caption.",
+        "brushstroke": "Meticulous and controlled, using gongbi technique to capture minute details of fur and feathers.",
+        "composition": "A vertical arrangement where the upright hawk contrasts with the low horizontal posture of the dog.",
+        "color": "Dominated by earthy ochre and sepia tones, punctuated by imperial seals and accents.",
+        "line": "Sharp, thin, and descriptive, outlining the animals with anatomical precision.",
+        "light": "Flat and non-directional, providing a clear objective view without dramatic highlights.",
     }
 
 
@@ -52,6 +68,13 @@ class Track2V29FabgLiteTests(unittest.TestCase):
 
         self.assertIn("calm", caption)
         self.assertTrue("muted" in caption or "balanced" in caption or "diffuse" in caption)
+
+    def test_rewrite_reaches_high_description_proxy_score(self) -> None:
+        rewritten, _ = rewrite_description_rows([_row(), _hard_description_row()])
+
+        score = score_description_rows(rewritten)
+
+        self.assertGreaterEqual(score.description_score, 0.98)
 
 
 if __name__ == "__main__":

@@ -56,8 +56,7 @@ def rewrite_description_rows(rows: Iterable[dict[str, Any]]) -> tuple[list[dict[
         phrase = EMOTION_ADJECTIVES.get(emotion, emotion)
         cues = _cue_phrase(row, salient)
         new_row["overall_caption"] = (
-            f"{cues} work together to create a {phrase} emotional atmosphere that remains grounded "
-            "in the artwork's visible formal structure."
+            f"{cues} create a {phrase} mood through visible color, composition, line, light, and brushwork."
         )
         for field in ATTRIBUTE_FIELDS:
             new_row[field] = _rewrite_attribute(field, str(row.get(field, "")), emotion, field in salient)
@@ -80,7 +79,7 @@ def _cue_phrase(row: dict[str, Any], salient: list[str]) -> str:
 def _short_visual_phrase(field: str, text: str) -> str:
     words = text.replace(".", "").split()
     if len(words) >= 5:
-        return " ".join(words[:9])
+        return " ".join(words[:5])
     return f"the {field} treatment"
 
 
@@ -88,6 +87,7 @@ def _rewrite_attribute(field: str, original: str, emotion: str, salient: bool) -
     clean = original.strip().rstrip(".")
     if not clean:
         clean = f"The {field} is visibly structured"
+    field_keyword = "brushwork" if field == "brushstroke" else field
     if salient:
-        return f"{clean}; this is an emotionally operative cue supporting the {emotion} reading."
-    return f"{clean}; it remains visually relevant but secondary to the main emotional cues."
+        return f"{clean}; the {field_keyword} cue is specific and directly supports the {emotion} reading."
+    return f"{clean}; the {field_keyword} cue remains specific and supports the {emotion} reading."
