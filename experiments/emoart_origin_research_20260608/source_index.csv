@@ -1,0 +1,18 @@
+source_type,name,url,verified_public_fact,track2_use,status
+paper,EmoArt: A Multidimensional Dataset for Emotion-Aware Artistic Generation,https://arxiv.org/abs/2506.03652,"132664 artworks; 56 styles; five visual attributes; VA labels; 12 emotion categories","Core ontology and style prior",verified
+project,EmoArt project page,https://zhiliangzhang.github.io/EmoArt-130k/,"132K+ artworks; 56 art styles; 12 emotion classes; 5 visual attributes; links to dataset/code/FAB-G","Primary hub for datasets and code",verified
+dataset,printblue/EmoArt-130k,https://huggingface.co/datasets/printblue/EmoArt-130k,"132664 images; 56 styles; 7 thematic categories; Annotation.json","Training/reference/style prior",verified
+dataset,printblue/EmoArt-5k,https://huggingface.co/datasets/printblue/EmoArt-5k,"5600-image curated subset","Fast smoke/prototyping",verified
+dataset,printblue/EmoArt-Salience,https://huggingface.co/datasets/printblue/EmoArt-Salience,"1400 rows; salience labels for formal attributes","Description/AGSR salience gate",verified
+code,zhiliangzhang/EmoArt-130k,https://github.com/zhiliangzhang/EmoArt-130k,"Evaluation metric code including attribute alignment and CLIP score utilities","Description proxy and reference metrics",verified
+paper,Attribute-Grounded Selective Reasoning / FAB-G,https://arxiv.org/abs/2605.15755,"AGSR; 1400-artwork salience extension; FAB-G multi-agent bottleneck","Description guard; candidate evidence audit",verified
+code,zhiliangzhang/FAB-G,https://github.com/zhiliangzhang/FAB-G,"Qwen3-VL-8B base with six LoRA adapters for five attributes plus final agent","Potential LoRA route; schema for salience bottleneck",verified
+challenge,AffectiveArt Challenge 2026 OpenReview,https://openreview.net/forum?id=LbbHX8ofXZ,"Track1 generation and Track2 understanding built on EmoArt; hidden test set; AAS and human/expert evaluation proposal","Rules and ontology source",verified
+challenge,Codabench Track2,https://www.codabench.org/competitions/16304,"Submission schema; 50% classification and 50% description; invalid manipulation rules","Official format and scoring constraints",verified
+lab,Hongxia Xie / AVC Lab,https://www.hongxiaxie.net/,"Lists EmoArt ACM MM 2025; EmoVIT CVPR 2024; related affective computing outputs","Collaborator/publication graph seed",verified
+paper,EmoVIT CVPR 2024,https://openaccess.thecvf.com/content/CVPR2024/html/Xie_EmoVIT_Revolutionizing_Emotion_Insights_with_Visual_Instruction_Tuning_CVPR_2024_paper.html,"Emotion visual instruction tuning; GPT-assisted emotion instruction data","Teacher prompt/instruction tuning pattern",verified
+code,aimmemotion/EmoVIT,https://github.com/aimmemotion/EmoVIT,"Official CVPR 2024 code and model/data preparation notes","Potential auxiliary emotion teacher",verified
+dataset,WikiArt Emotions,https://aclanthology.org/L18-1197.pdf,"4000+ WikiArt artworks; 20 emotion categories; image/title/whole-art annotations","Auxiliary art emotion prior; requires label mapping",verified
+dataset,ArtEmis,https://arxiv.org/abs/2101.07396,"439K emotion attributions and explanations on 81K WikiArt artworks","Description/caption style training; not Track2 gold",verified
+dataset,EmoSet,https://arxiv.org/abs/2307.07961,"3.3M images; 118102 human-labeled; rich attributes","Generic visual emotion backbone; not painting-only",verified
+dataset,EmoVerse,https://huggingface.co/datasets/PiLabUSTC/EmoVerse-Dataset,"234189 images; B-A-S triplets; CES/DES; includes EmoArt among sources","Interpretability/grounding ideas; noncompatible label space",verified
